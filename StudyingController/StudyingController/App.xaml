@@ -1,8 +1,19 @@
 ﻿<Application x:Class="StudyingController.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             StartupUri="MainWindow.xaml">
+             xmlns:vm="clr-namespace:StudyingController.ViewModels"
+             xmlns:v="clr-namespace:StudyingController.Views">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            
+            <DataTemplate DataType="{x:Type vm:LoginViewModel}">
+                <v:LoginView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:MainViewModel}">
+                <v:MainView/>
+            </DataTemplate>
+
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
