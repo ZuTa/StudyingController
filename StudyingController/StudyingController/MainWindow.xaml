@@ -1,8 +1,6 @@
 ﻿<Window x:Class="StudyingController.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        Title="Інтерактивно-інформаційна система &quot;Studying controller&quot;" Height="350" Width="525" WindowStyle="SingleBorderWindow" WindowStartupLocation="CenterScreen">
+        <ContentControl Focusable="False" Content="{Binding}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 </Window>
