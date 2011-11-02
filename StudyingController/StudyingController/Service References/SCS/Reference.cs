@@ -17,6 +17,9 @@ namespace StudyingController.SCS {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/IsValidLogin", ReplyAction="http://tempuri.org/IControllerService/IsValidLoginResponse")]
         bool IsValidLogin(string login, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/AddUser", ReplyAction="http://tempuri.org/IControllerService/AddUserResponse")]
+        void AddUser(string login, string password);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -48,6 +51,10 @@ namespace StudyingController.SCS {
         
         public bool IsValidLogin(string login, string password) {
             return base.Channel.IsValidLogin(login, password);
+        }
+        
+        public void AddUser(string login, string password) {
+            base.Channel.AddUser(login, password);
         }
     }
 }

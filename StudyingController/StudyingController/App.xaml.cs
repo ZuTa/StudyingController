@@ -28,6 +28,9 @@ namespace StudyingController
             this.DispatcherUnhandledException += new System.Windows.Threading.DispatcherUnhandledExceptionEventHandler(App_DispatcherUnhandledException);
             
             mainWindow = new MainWindow();
+            mainWindow.MinHeight = 400;
+            mainWindow.MinWidth = 280;
+
             loginViewModel = new LoginViewModel(this, this, mainWindow.Dispatcher);
 
             mainWindow.DataContext = loginViewModel;

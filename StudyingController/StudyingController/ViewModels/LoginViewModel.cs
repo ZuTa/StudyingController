@@ -35,9 +35,6 @@ namespace StudyingController.ViewModels
             : base(userInterop, controllerInterop, dispatcher)
         {
             loginConfig = new UserData.LoginConfig();
-            //TODO: this is connetion to a service. replace it
-            //controllerInterop.Service = new SCS.ControllerServiceClient("BasicHttpBinding_IControllerService");
-            //controllerInterop.Service = new SCS.ControllerServiceClient("BasicHttpBinding_IControllerService", new System.ServiceModel.EndpointAddress(uri));
         }
 
         #endregion

@@ -13,5 +13,8 @@ namespace StudyingControllerService
     {
         [OperationContract]
         bool IsValidLogin(string login, string password);
+
+        [OperationContract]
+        void AddUser(string login, string password);
     }
 }
