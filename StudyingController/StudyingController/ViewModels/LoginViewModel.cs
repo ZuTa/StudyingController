@@ -13,6 +13,8 @@ namespace StudyingController.ViewModels
         public LoginViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)
         {
+            //TODO: this is connetion to a service. replace it
+            //controllerInterop.Service = new SCS.ControllerServiceClient("BasicHttpBinding_IControllerService");
         }
     }
 }
