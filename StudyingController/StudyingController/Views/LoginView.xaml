@@ -20,9 +20,9 @@
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" Content="Логін:"></Label>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="Логін:"></TextBlock>
                     <TextBox Grid.Row="0" Grid.Column="1" Margin="5"></TextBox>
-                    <Label Grid.Row="1" Grid.Column="0" Content="Пароль:"></Label>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="5" Text="Пароль:"></TextBlock>
                     <PasswordBox Grid.Row="1" Grid.Column="1" Margin="5"></PasswordBox>
                     <CheckBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Content="Запам'ятати"></CheckBox>
                     <CheckBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Content="Автологін"></CheckBox>
@@ -38,9 +38,9 @@
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" Content="Сервер:"></Label>
+                    <TextBlock Grid.Row="0" Grid.Column="0"  Margin="5" Text="Сервер:"></TextBlock>
                     <TextBox Grid.Row="0" Grid.Column="1" Margin="5"></TextBox>
-                    <Label Grid.Row="1" Grid.Column="0" Content="Порт:"></Label>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="5" Text="Порт:"></TextBlock>
                     <TextBox Grid.Row="1" Grid.Column="1" Margin="5"></TextBox>
                 </Grid>
             </GroupBox>
