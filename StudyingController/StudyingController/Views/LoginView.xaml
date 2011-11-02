@@ -44,9 +44,7 @@
                 </Grid>
             </GroupBox>
             <Button MinHeight="20" MaxHeight="40" MinWidth="50" MaxWidth="100" Margin="0,5,0,0" Content="Увійти"></Button>
-            <Label MaxWidth="230" Margin="5">
-                <TextBlock TextWrapping="Wrap" Text="//for errors"></TextBlock>
-            </Label>
+            <TextBlock MaxWidth="230" Margin="5" TextWrapping="Wrap" Text="//for errors"></TextBlock>
         </StackPanel>
     </Grid>
 </UserControl>
