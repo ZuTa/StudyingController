@@ -6,6 +6,7 @@ using StudyingController.Common;
 using System.Windows.Threading;
 using System.Windows.Input;
 using StudyingController.UserData;
+using System.Windows.Controls;
 
 namespace StudyingController.ViewModels
 {
@@ -24,6 +25,17 @@ namespace StudyingController.ViewModels
                     loginConfig = value;
                     OnPropertyChanged("LoginConfig");
                 }
+            }
+        }
+
+        private string loginDataError;
+        public string LoginDataError
+        {
+            get { return loginDataError; }
+            set
+            {
+                loginDataError = value;
+                OnPropertyChanged("LoginDataError");
             }
         }
 
@@ -50,7 +62,7 @@ namespace StudyingController.ViewModels
             get 
             {
                 if (loginCommand == null)
-                    loginCommand = new RelayCommand((param) => UserLogin(), (param) => CanUserLogin()); 
+                    loginCommand = new RelayCommand((param) => UserLogin(param), (param) => CanUserLogin()); 
 
                 return loginCommand;
             }
@@ -60,9 +72,11 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
-        private void UserLogin()
+        private void UserLogin(object parameter)
         {
- 
+            var passwordBox = parameter as PasswordBox;
+            var password = passwordBox.Password;
+            LoginConfig.Password = password;
         }
 
         private bool CanUserLogin()
@@ -73,7 +87,7 @@ namespace StudyingController.ViewModels
 
         #region Events
 
-        public event EventHandler LoginEvent;
+        public event EventHandler SuccessfulLoginEvent;
 
         #endregion
     }

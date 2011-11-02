@@ -76,7 +76,7 @@ namespace StudyingController
 
         public void ShowError(string text)
         {
-            throw new NotImplementedException();
+            MessageBox.Show(text, StudyingController.Properties.Resources.ErrorTxt, MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         #endregion
