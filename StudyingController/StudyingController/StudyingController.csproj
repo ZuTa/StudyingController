@@ -58,6 +58,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common\Checks.cs" />
+    <Compile Include="Common\HashHelper.cs" />
     <Compile Include="Common\IControllerInterop.cs" />
     <Compile Include="Common\IUserInterop.cs" />
     <Compile Include="Service References\SCS\Reference.cs">
