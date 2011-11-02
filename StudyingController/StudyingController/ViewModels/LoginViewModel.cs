@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using StudyingController.Common;
 using System.Windows.Threading;
+using System.Windows.Input;
 
 namespace StudyingController.ViewModels
 {
@@ -28,19 +29,36 @@ namespace StudyingController.ViewModels
 
         #region Commands
 
+        private RelayCommand loginCommand;
+        public ICommand LoginCommand
+        {
+            get 
+            {
+                if (loginCommand == null)
+                    loginCommand = new RelayCommand((param) => UserLogin(), (param) => CanUserLogin()); 
 
+                return loginCommand;
+            }
+        }
 
         #endregion
 
         #region Methods
 
+        private void UserLogin()
+        {
+ 
+        }
 
-
+        private bool CanUserLogin()
+        {
+            return true;
+        }
         #endregion
 
         #region Events
 
-
+        public event EventHandler LoginEvent;
 
         #endregion
     }
