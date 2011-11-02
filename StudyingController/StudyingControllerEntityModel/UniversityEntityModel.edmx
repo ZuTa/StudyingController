@@ -360,7 +360,7 @@
           </Key>
           <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Login" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="Password" Type="binary" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="binary" Nullable="false" MaxLength="32" />
           <Property Name="UserRoleID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Teacher">

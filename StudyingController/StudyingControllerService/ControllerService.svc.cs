@@ -23,7 +23,10 @@ namespace StudyingControllerService
                                       where u.Login == login.ToLower()
                                       select u;
                     foreach (SystemUser su in user)
+                    {
+                        string s = Encoding.UTF8.GetString(su.Password);
                         result = Encoding.UTF8.GetString(su.Password) == password;
+                    }
                 }
             }
             catch (Exception ex)
