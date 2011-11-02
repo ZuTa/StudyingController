@@ -52,13 +52,26 @@ namespace StudyingController
 
         #region IControllerInterop
 
+        private SCS.ControllerServiceClient service = null;
+        public SCS.ControllerServiceClient Service
+        {
+            get
+            {
+                return service;
+            }
+            set
+            {
+                service = value;
+            }
+        }
+
         #endregion
 
         #region IUserInterop
 
         public void ShowMessage(string text)
         {
-            throw new NotImplementedException();
+            MessageBox.Show(text);
         }
 
         public void ShowError(string text)
@@ -67,5 +80,8 @@ namespace StudyingController
         }
 
         #endregion
+
+
+        
     }
 }

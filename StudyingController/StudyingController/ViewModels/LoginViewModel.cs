@@ -13,6 +13,8 @@ namespace StudyingController.ViewModels
         public LoginViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)
         {
+            controllerInterop.Service = new SCS.ControllerServiceClient("BasicHttpBinding_IControllerService");
+            userInterop.ShowMessage(controllerInterop.Service.IsValidLogin("ZuTa", "1").ToString());
         }
     }
 }

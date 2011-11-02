@@ -7,5 +7,6 @@ namespace StudyingController.Common
 {
     public interface IControllerInterop
     {
+        SCS.ControllerServiceClient Service { get; set; }
     }
 }
