@@ -5,6 +5,7 @@ using System.Text;
 using StudyingController.Common;
 using System.Windows.Threading;
 using System.Windows.Input;
+using StudyingController.UserData;
 
 namespace StudyingController.ViewModels
 {
@@ -12,7 +13,19 @@ namespace StudyingController.ViewModels
     {
         #region Fields & Properties
 
-        
+        private LoginConfig loginConfig;
+        public LoginConfig LoginConfig
+        {
+            get { return loginConfig; }
+            set 
+            {
+                if (loginConfig != value)
+                {
+                    loginConfig = value;
+                    OnPropertyChanged("LoginConfig");
+                }
+            }
+        }
 
         #endregion
         
@@ -21,8 +34,10 @@ namespace StudyingController.ViewModels
         public LoginViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)
         {
+            loginConfig = new UserData.LoginConfig();
             //TODO: this is connetion to a service. replace it
             //controllerInterop.Service = new SCS.ControllerServiceClient("BasicHttpBinding_IControllerService");
+            //controllerInterop.Service = new SCS.ControllerServiceClient("BasicHttpBinding_IControllerService", new System.ServiceModel.EndpointAddress(uri));
         }
 
         #endregion
