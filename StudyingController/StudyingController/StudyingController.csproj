@@ -58,14 +58,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common\Checks.cs" />
+    <Compile Include="Common\HashHelper.cs" />
     <Compile Include="Common\IControllerInterop.cs" />
     <Compile Include="Common\IUserInterop.cs" />
+    <Compile Include="ClientData\LoginConfig.cs" />
     <Compile Include="Service References\SCS\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="UserData\LoginConfig.cs" />
     <Compile Include="ViewModels\BaseApplicationViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />

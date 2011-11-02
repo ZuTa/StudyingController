@@ -28,11 +28,8 @@ namespace StudyingController
             this.DispatcherUnhandledException += new System.Windows.Threading.DispatcherUnhandledExceptionEventHandler(App_DispatcherUnhandledException);
             
             mainWindow = new MainWindow();
-            mainWindow.MinHeight = 400;
-            mainWindow.MinWidth = 280;
-
             loginViewModel = new LoginViewModel(this, this, mainWindow.Dispatcher);
-
+            loginViewModel.SuccessfulLoginEvent += new EventHandler(loginViewModel_SuccessfulLoginEvent);
             mainWindow.DataContext = loginViewModel;
             
             mainWindow.Show();
@@ -50,6 +47,10 @@ namespace StudyingController
 
         #region Callbacks
 
+        void loginViewModel_SuccessfulLoginEvent(object sender, EventArgs e)
+        {
+            this.ShowMessage("Access granted!");
+        }
 
         #endregion
 
@@ -79,7 +80,7 @@ namespace StudyingController
 
         public void ShowError(string text)
         {
-            throw new NotImplementedException();
+            MessageBox.Show(text, StudyingController.Properties.Resources.ErrorTxt, MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         #endregion
