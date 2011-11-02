@@ -29,7 +29,7 @@ namespace StudyingController
             
             mainWindow = new MainWindow();
             loginViewModel = new LoginViewModel(this, this, mainWindow.Dispatcher);
-
+            loginViewModel.SuccessfulLoginEvent += new EventHandler(loginViewModel_SuccessfulLoginEvent);
             mainWindow.DataContext = loginViewModel;
             
             mainWindow.Show();
@@ -47,6 +47,10 @@ namespace StudyingController
 
         #region Callbacks
 
+        void loginViewModel_SuccessfulLoginEvent(object sender, EventArgs e)
+        {
+            this.ShowMessage("Access granted!");
+        }
 
         #endregion
 

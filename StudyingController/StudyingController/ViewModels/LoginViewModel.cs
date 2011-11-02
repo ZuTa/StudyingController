@@ -7,6 +7,7 @@ using System.Windows.Threading;
 using System.Windows.Input;
 using StudyingController.UserData;
 using System.Windows.Controls;
+using System.Text.RegularExpressions;
 
 namespace StudyingController.ViewModels
 {
@@ -48,7 +49,7 @@ namespace StudyingController.ViewModels
         {
             loginConfig = new UserData.LoginConfig();
             //TODO: this is connetion to a service. replace it
-            //controllerInterop.Service = new SCS.ControllerServiceClient("BasicHttpBinding_IControllerService");
+            controllerInterop.Service = new SCS.ControllerServiceClient("BasicHttpBinding_IControllerService");
             //controllerInterop.Service = new SCS.ControllerServiceClient("BasicHttpBinding_IControllerService", new System.ServiceModel.EndpointAddress(uri));
         }
 
@@ -77,11 +78,22 @@ namespace StudyingController.ViewModels
             var passwordBox = parameter as PasswordBox;
             var password = passwordBox.Password;
             LoginConfig.Password = password;
+
+            if (this.ControllerInterop.Service.IsValidLogin(LoginConfig.Login, HashHelper.ComputeHash(LoginConfig.Password)) && SuccessfulLoginEvent != null)
+                SuccessfulLoginEvent(this, EventArgs.Empty);
         }
 
         private bool CanUserLogin()
         {
-            return true;
+            if ((LoginConfig.Login != null && new Regex("^[a-z0-9]+$").IsMatch(LoginConfig.Login))
+                && (LoginConfig.Port != null && new Regex("^[0-9]+$").IsMatch(LoginConfig.Port))
+                && (LoginConfig.Server != null && new Regex("^http://[a-z0-9/]+$").IsMatch(LoginConfig.Server)))
+            {
+                LoginDataError = string.Empty;
+                return true;
+            }
+            LoginDataError = StudyingController.Properties.Resources.LoginDataError; 
+            return false;
         }
         #endregion
 

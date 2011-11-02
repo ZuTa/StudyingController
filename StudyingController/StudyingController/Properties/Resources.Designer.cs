@@ -68,5 +68,14 @@ namespace StudyingController.Properties {
                 return ResourceManager.GetString("ErrorTxt", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Заповніть коректно всі поля!.
+        /// </summary>
+        internal static string LoginDataError {
+            get {
+                return ResourceManager.GetString("LoginDataError", resourceCulture);
+            }
+        }
     }
 }

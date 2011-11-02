@@ -120,4 +120,7 @@
   <data name="ErrorTxt" xml:space="preserve">
     <value>Помилка</value>
   </data>
+  <data name="LoginDataError" xml:space="preserve">
+    <value>Заповніть коректно всі поля!</value>
+  </data>
 </root>
