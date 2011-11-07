@@ -19,16 +19,11 @@ namespace StudyingControllerService
             {
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    var user = from u in context.SystemUsers
-                                      where u.Login == login.ToLower()
-                                      select u;
-                    foreach (SystemUser su in user)
-                    {
-                        string s = Encoding.UTF8.GetString(su.Password);
-                        result = Encoding.UTF8.GetString(su.Password) == password;
-                    }
+                    var user = context.SystemUsers.Where(u => u.Login == login.ToLower()).FirstOrDefault();
+                    result = user != null && Encoding.UTF8.GetString(user.Password) == password;
                 }
             }
+                //TODO: Handle exceptions
             catch (Exception ex)
             {
             }
@@ -42,9 +37,9 @@ namespace StudyingControllerService
             {
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    var role = (from r in context.UserRoles where r.ID == 1 select r).FirstOrDefault();
-                    context.SystemUsers.AddObject(new SystemUser() { Login = login.ToLower(), Password = Encoding.UTF8.GetBytes(password), UserRole = role });
-                    context.SaveChanges();
+                    //var role = (from r in context. where r.ID == 1 select r).FirstOrDefault();
+                    //context.SystemUsers.AddObject(new SystemUser() { Login = login.ToLower(), Password = Encoding.UTF8.GetBytes(password), UserRole = role });
+                    //context.SaveChanges();
                 }
             }
             catch
