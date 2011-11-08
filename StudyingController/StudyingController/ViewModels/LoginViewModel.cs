@@ -51,6 +51,7 @@ namespace StudyingController.ViewModels
             //TODO: this is connetion to a service. replace it
             controllerInterop.Service = new SCS.ControllerServiceClient("BasicHttpBinding_IControllerService");
             //controllerInterop.Service = new SCS.ControllerServiceClient("BasicHttpBinding_IControllerService", new System.ServiceModel.EndpointAddress(uri));
+            //controllerInterop.Service.AddUser("facadmin", HashHelper.ComputeHash("facadmin"));
         }
 
         #endregion

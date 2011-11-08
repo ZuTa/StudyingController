@@ -49,6 +49,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StudyingControllerEntityModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="SystemUser.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="StudyingControllerEntityModel.edmx">
