@@ -61,11 +61,29 @@ namespace StudyingController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to StudyingController.
+        /// </summary>
+        internal static string AppDataFolderName {
+            get {
+                return ResourceManager.GetString("AppDataFolderName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Помилка.
         /// </summary>
         internal static string ErrorTxt {
             get {
                 return ResourceManager.GetString("ErrorTxt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to loginConfig.xml.
+        /// </summary>
+        internal static string LoginConfigFileName {
+            get {
+                return ResourceManager.GetString("LoginConfigFileName", resourceCulture);
             }
         }
         

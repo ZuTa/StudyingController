@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AppDataFolderName" xml:space="preserve">
+    <value>StudyingController</value>
+  </data>
   <data name="ErrorTxt" xml:space="preserve">
     <value>Помилка</value>
+  </data>
+  <data name="LoginConfigFileName" xml:space="preserve">
+    <value>loginConfig.xml</value>
   </data>
   <data name="LoginDataError" xml:space="preserve">
     <value>Заповніть коректно всі поля!</value>

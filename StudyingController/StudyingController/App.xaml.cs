@@ -49,7 +49,7 @@ namespace StudyingController
 
         void loginViewModel_SuccessfulLoginEvent(object sender, EventArgs e)
         {
-            this.ShowMessage("Access granted!");
+            ShowMessage("Access granted!");
         }
 
         #endregion

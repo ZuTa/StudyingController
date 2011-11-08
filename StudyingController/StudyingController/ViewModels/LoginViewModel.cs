@@ -5,9 +5,10 @@ using System.Text;
 using StudyingController.Common;
 using System.Windows.Threading;
 using System.Windows.Input;
-using StudyingController.UserData;
+using StudyingController.ClientData;
 using System.Windows.Controls;
 using System.Text.RegularExpressions;
+using System.ServiceModel;
 
 namespace StudyingController.ViewModels
 {
@@ -47,9 +48,9 @@ namespace StudyingController.ViewModels
         public LoginViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)
         {
-            loginConfig = new UserData.LoginConfig();
+            loginConfig = LoginConfig.Load();
             //TODO: this is connetion to a service. replace it
-            controllerInterop.Service = new SCS.ControllerServiceClient("BasicHttpBinding_IControllerService");
+            //controllerInterop.Service = new SCS.ControllerServiceClient("BasicHttpBinding_IControllerService");
             //controllerInterop.Service = new SCS.ControllerServiceClient("BasicHttpBinding_IControllerService", new System.ServiceModel.EndpointAddress(uri));
         }
 
@@ -79,15 +80,20 @@ namespace StudyingController.ViewModels
             var password = passwordBox.Password;
             LoginConfig.Password = password;
 
-            if (this.ControllerInterop.Service.IsValidLogin(LoginConfig.Login, HashHelper.ComputeHash(LoginConfig.Password)) && SuccessfulLoginEvent != null)
+            ControllerInterop.Service = new SCS.ControllerServiceClient("BasicHttpBinding_IControllerService");
+
+            if (ControllerInterop.Service.IsValidLogin(LoginConfig.Login, HashHelper.ComputeHash(LoginConfig.Password)) && SuccessfulLoginEvent != null)
+            {
+                LoginConfig.Save();
                 SuccessfulLoginEvent(this, EventArgs.Empty);
+            }
         }
 
         private bool CanUserLogin()
         {
             if ((LoginConfig.Login != null && new Regex("^[a-z0-9]+$").IsMatch(LoginConfig.Login))
                 && (LoginConfig.Port != null && new Regex("^[0-9]+$").IsMatch(LoginConfig.Port))
-                && (LoginConfig.Server != null && new Regex("^http://[a-z0-9/]+$").IsMatch(LoginConfig.Server)))
+                && (LoginConfig.Server != null && new Regex("^http://[a-z0-9/.]+$").IsMatch(LoginConfig.Server)))
             {
                 LoginDataError = string.Empty;
                 return true;

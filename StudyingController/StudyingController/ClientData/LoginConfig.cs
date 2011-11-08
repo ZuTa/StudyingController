@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using System.Xml.Serialization;
+using System.IO;
 
-namespace StudyingController.UserData
+namespace StudyingController.ClientData
 {
+    [Serializable]
     public class LoginConfig : INotifyPropertyChanged
     {
         #region Fields & Properties
@@ -88,12 +91,33 @@ namespace StudyingController.UserData
 
         public static LoginConfig Load()
         {
-            throw new NotImplementedException();
+            LoginConfig instance = new LoginConfig();
+            string configFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), StudyingController.Properties.Resources.LoginConfigFileName);
+
+            if (File.Exists(configFilePath))
+            {
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(LoginConfig));
+
+                using (Stream fileStream = File.Open(configFilePath, FileMode.Open))
+                {
+                    if(fileStream.Length > 0) instance =  (LoginConfig)xmlSerializer.Deserialize(fileStream);
+                }
+            }
+            return instance;
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+            string appDataFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), StudyingController.Properties.Resources.AppDataFolderName);
+            if (!Directory.Exists(appDataFolderPath))
+                Directory.CreateDirectory(appDataFolderPath);
+
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(LoginConfig));
+
+            using(Stream fileStream = new FileStream(Path.Combine(appDataFolderPath, StudyingController.Properties.Resources.LoginConfigFileName), FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                if (IsMemorizeLogin) xmlSerializer.Serialize(fileStream, this);
+            }
         }
 
         #endregion
