@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows;
 using StudyingController.Common;
 using StudyingController.ViewModels;
+using System.ServiceModel;
 
 namespace StudyingController
 {
@@ -38,9 +39,18 @@ namespace StudyingController
             mainWindow.Show();
         }
 
-        void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        private void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
-            throw new NotImplementedException();
+            Exception ex = e.Exception;
+            while (ex.InnerException != null)
+                ex = ex.InnerException;
+
+            if (ex is FaultException<SCS.ControllerServiceException>)
+                ShowError((ex as FaultException<SCS.ControllerServiceException>).Detail.Reason);
+            else
+                ShowError(ex.Message);
+
+            e.Handled = true;
         }
 
         #region Methods
@@ -115,8 +125,5 @@ namespace StudyingController
 
         #endregion
 
-
-
-        
     }
 }
