@@ -132,8 +132,6 @@ namespace StudyingController.ViewModels
 
                     ControllerInterop.Service = new SCS.ControllerServiceClient("BasicHttpBinding_IControllerService");
                     this.ControllerInterop.Service.BeginLogin(LoginConfig.Login, LoginConfig.Password, OnLoginCompleted, null);
-                    //if (this.ControllerInterop.Service.IsValidLogin(LoginConfig.Login, LoginConfig.Password) && SuccessfulLoginEvent != null)
-                    //    SuccessfulLoginEvent(this, EventArgs.Empty);
                 }
                 catch (Exception ex)
                 {
@@ -166,8 +164,7 @@ namespace StudyingController.ViewModels
                 {
                     try
                     {
-                        if (this.ControllerInterop.Service.EndLogin(ar) && SuccessfulLoginEvent != null)
-                            SuccessfulLoginEvent(this, EventArgs.Empty);
+                        ControllerInterop.Session = this.ControllerInterop.Service.EndLogin(ar);                           
                     }
                     catch (FaultException<SCS.ControllerServiceException> exc)
                     {
@@ -180,12 +177,6 @@ namespace StudyingController.ViewModels
 
                 }), new object[] { iar });
         }
-
-        #endregion
-
-        #region Events
-
-        public event EventHandler SuccessfulLoginEvent;
 
         #endregion
 

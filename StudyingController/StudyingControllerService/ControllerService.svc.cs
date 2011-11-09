@@ -11,9 +11,9 @@ namespace StudyingControllerService
 {
     public class ControllerService : IControllerService
     {
-        public bool Login(string login, string password)
+        public Session Login(string login, string password)
         {
-            bool result = true;
+            Session session = null;
 
             try
             {
@@ -22,15 +22,16 @@ namespace StudyingControllerService
                     var user = context.SystemUsers.Where(u => u.Login == login.ToLower()).FirstOrDefault();
                     if (!(user != null && Encoding.UTF8.GetString(user.Password) == password))
                         throw new Exception("У доступі відмовлено!");
+
+                    session = new Session();
                 }
             }
             catch (Exception ex)
             {
-                result = false;
                 throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
             }
 
-            return result;
+            return session;
         }
 
         public void AddUser(string login, string password)

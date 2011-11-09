@@ -135,6 +135,9 @@
     <None Include="Service References\SCS\ControllerService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\SCS\StudyingController.SCS.Session.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Converters\" />

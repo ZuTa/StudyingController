@@ -17,6 +17,7 @@ namespace StudyingController
         #region Properties
 
         private LoginViewModel loginViewModel;
+        private MainViewModel mainViewModel;
         private MainWindow mainWindow;
         
         #endregion
@@ -28,8 +29,10 @@ namespace StudyingController
             this.DispatcherUnhandledException += new System.Windows.Threading.DispatcherUnhandledExceptionEventHandler(App_DispatcherUnhandledException);
             
             mainWindow = new MainWindow();
+
             loginViewModel = new LoginViewModel(this, this, mainWindow.Dispatcher);
-            loginViewModel.SuccessfulLoginEvent += new EventHandler(loginViewModel_SuccessfulLoginEvent);
+            mainViewModel = new MainViewModel(this, this, mainWindow.Dispatcher);
+
             mainWindow.DataContext = loginViewModel;
             
             mainWindow.Show();
@@ -69,6 +72,33 @@ namespace StudyingController
             }
         }
 
+        private SCS.Session session;
+        public SCS.Session Session
+        {
+            get
+            {
+                return session;
+            }
+            set
+            {
+                if (session != value)
+                {
+                    session = value;
+                    OnSessionChanged();
+                }
+            }
+        }
+
+        private void OnSessionChanged()
+        {
+            if (SessionChanged != null)
+                SessionChanged(this, EventArgs.Empty);
+
+            mainWindow.DataContext = mainViewModel;
+        }
+
+        public event EventHandler SessionChanged;
+
         #endregion
 
         #region IUserInterop
@@ -84,6 +114,7 @@ namespace StudyingController
         }
 
         #endregion
+
 
 
         

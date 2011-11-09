@@ -13,6 +13,6 @@ namespace StudyingControllerService
     {
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
-        bool Login(string login, string password);
+        Session Login(string login, string password);
     }
 }

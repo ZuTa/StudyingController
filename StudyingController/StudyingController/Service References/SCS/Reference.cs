@@ -15,6 +15,35 @@ namespace StudyingController.SCS {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Session", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+    [System.SerializableAttribute()]
+    public partial class Session : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
     [System.SerializableAttribute()]
     public partial class ControllerServiceException : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -64,12 +93,12 @@ namespace StudyingController.SCS {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/Login", ReplyAction="http://tempuri.org/IControllerService/LoginResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/LoginControllerServiceExceptionFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
-        bool Login([System.ServiceModel.MessageParameterAttribute(Name="login")] string login1, string password);
+        StudyingController.SCS.Session Login([System.ServiceModel.MessageParameterAttribute(Name="login")] string login1, string password);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/Login", ReplyAction="http://tempuri.org/IControllerService/LoginResponse")]
         System.IAsyncResult BeginLogin(string login, string password, System.AsyncCallback callback, object asyncState);
         
-        bool EndLogin(System.IAsyncResult result);
+        StudyingController.SCS.Session EndLogin(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -87,10 +116,10 @@ namespace StudyingController.SCS {
             this.results = results;
         }
         
-        public bool Result {
+        public StudyingController.SCS.Session Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[0]));
+                return ((StudyingController.SCS.Session)(this.results[0]));
             }
         }
     }
@@ -126,7 +155,7 @@ namespace StudyingController.SCS {
         
         public event System.EventHandler<LoginCompletedEventArgs> LoginCompleted;
         
-        public bool Login(string login1, string password) {
+        public StudyingController.SCS.Session Login(string login1, string password) {
             return base.Channel.Login(login1, password);
         }
         
@@ -136,7 +165,7 @@ namespace StudyingController.SCS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public bool EndLogin(System.IAsyncResult result) {
+        public StudyingController.SCS.Session EndLogin(System.IAsyncResult result) {
             return base.Channel.EndLogin(result);
         }
         
@@ -147,7 +176,7 @@ namespace StudyingController.SCS {
         }
         
         private object[] OnEndLogin(System.IAsyncResult result) {
-            bool retVal = this.EndLogin(result);
+            StudyingController.SCS.Session retVal = this.EndLogin(result);
             return new object[] {
                     retVal};
         }
