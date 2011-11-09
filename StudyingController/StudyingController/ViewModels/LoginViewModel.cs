@@ -5,7 +5,7 @@ using System.Text;
 using StudyingController.Common;
 using System.Windows.Threading;
 using System.Windows.Input;
-using StudyingController.UserData;
+using StudyingController.ClientData;
 using System.Windows.Controls;
 using System.Text.RegularExpressions;
 using System.ServiceModel;
@@ -84,7 +84,7 @@ namespace StudyingController.ViewModels
         public LoginViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)
         {
-            loginConfig = new UserData.LoginConfig();
+            loginConfig = new LoginConfig();
         }
 
         #endregion
