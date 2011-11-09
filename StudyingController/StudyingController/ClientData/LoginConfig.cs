@@ -13,6 +13,8 @@ namespace StudyingController.ClientData
     {
         #region Fields & Properties
 
+        private static readonly string DEFAULT_FOLDER_PATH = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData); 
+
         private string login;
         public string Login
         {
@@ -92,7 +94,7 @@ namespace StudyingController.ClientData
         public static LoginConfig Load()
         {
             LoginConfig instance = new LoginConfig();
-            string configFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), StudyingController.Properties.Resources.LoginConfigFileName);
+            string configFilePath = Path.Combine(DEFAULT_FOLDER_PATH, StudyingController.Properties.Resources.LoginConfigFileName);
 
             if (File.Exists(configFilePath))
             {
@@ -108,7 +110,7 @@ namespace StudyingController.ClientData
 
         public void Save()
         {
-            string appDataFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), StudyingController.Properties.Resources.AppDataFolderName);
+            string appDataFolderPath = Path.Combine(DEFAULT_FOLDER_PATH, StudyingController.Properties.Resources.AppDataFolderName);
             if (!Directory.Exists(appDataFolderPath))
                 Directory.CreateDirectory(appDataFolderPath);
 
