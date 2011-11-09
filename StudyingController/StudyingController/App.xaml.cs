@@ -33,7 +33,6 @@ namespace StudyingController
             mainWindow = new MainWindow();
 
             loginViewModel = new LoginViewModel(this, this, mainWindow.Dispatcher);
-            loginViewModel.LoginConfig = LoginConfig.Load();
 
             mainViewModel = new MainViewModel(this, this, mainWindow.Dispatcher);
 
