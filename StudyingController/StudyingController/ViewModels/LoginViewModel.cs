@@ -153,7 +153,7 @@ namespace StudyingController.ViewModels
             if (!IsLoggingIn &&
                 (LoginConfig.Login != null && new Regex("^[a-z0-9]+$").IsMatch(LoginConfig.Login))
                 && (LoginConfig.Port != null && new Regex("^[0-9]+$").IsMatch(LoginConfig.Port))
-                && (LoginConfig.Server != null && new Regex("^http://[a-z0-9/-]+/$").IsMatch(LoginConfig.Server)))
+                && (LoginConfig.Server != null && new Regex("^http://[a-zA-Z0-9/.-]+/$").IsMatch(LoginConfig.Server)))
                 return true;
             
             return false;
@@ -179,6 +179,12 @@ namespace StudyingController.ViewModels
                     try
                     {
                         ControllerInterop.Session = this.ControllerInterop.Service.EndLogin(ar);
+                        if (!LoginConfig.IsMemorizeLogin) 
+                        { 
+                            LoginConfig.Login = string.Empty; 
+                            LoginConfig.Password = string.Empty;
+                            LoginConfig.IsAutologin = false;
+                        }
                         LoginConfig.Save();   
                     }
                     catch (FaultException<SCS.ControllerServiceException> exc)

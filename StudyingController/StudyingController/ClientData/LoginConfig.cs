@@ -118,7 +118,7 @@ namespace StudyingController.ClientData
 
             using(Stream fileStream = new FileStream(Path.Combine(appDataFolderPath, StudyingController.Properties.Resources.LoginConfigFileName), FileMode.Create, FileAccess.Write, FileShare.None))
             {
-                if (IsMemorizeLogin) xmlSerializer.Serialize(fileStream, this);
+                xmlSerializer.Serialize(fileStream, this);
             }
         }
 
