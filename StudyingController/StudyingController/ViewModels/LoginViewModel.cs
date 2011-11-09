@@ -75,7 +75,7 @@ namespace StudyingController.ViewModels
                 {
                     passwordSource = value;
                     if (passwordSource != null)
-                        PasswordSource.SetPassword("admin"); // here you can see how to binding password from ViewModel to View
+                        PasswordSource.SetPassword(LoginConfig.Password);
                     OnPropertyChanged("PasswordSource");
                 }
             }
@@ -132,10 +132,10 @@ namespace StudyingController.ViewModels
                 {
                     StartLogging();
 
-                    LoginConfig.Password = HashHelper.ComputeHash(passwordSource.GetPassword());
+                    LoginConfig.Password = passwordSource.GetPassword();
 
                     ControllerInterop.Service = new SCS.ControllerServiceClient("BasicHttpBinding_IControllerService", GetServiceEndPoint());
-                    this.ControllerInterop.Service.BeginLogin(LoginConfig.Login, LoginConfig.Password, OnLoginCompleted, null);
+                    this.ControllerInterop.Service.BeginLogin(LoginConfig.Login, HashHelper.ComputeHash(LoginConfig.Password), OnLoginCompleted, null);
                 }
                 catch (Exception ex)
                 {
