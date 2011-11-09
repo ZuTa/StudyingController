@@ -11,17 +11,35 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using StudyingController.Common;
 
 namespace StudyingController.Views
 {
     /// <summary>
     /// Interaction logic for LoginView.xaml
     /// </summary>
-    public partial class LoginView : UserControl
+    public partial class LoginView : UserControl, IPasswordSource
     {
         public LoginView()
         {
+            this.DataContextChanged += new DependencyPropertyChangedEventHandler(LoginView_DataContextChanged);
+
             InitializeComponent();
+        }
+
+        void LoginView_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            IPasswordConsumer old = e.OldValue as IPasswordConsumer;
+            if (old != null)
+                old.PasswordSource = null;
+            IPasswordConsumer _new = e.NewValue as IPasswordConsumer;
+            if (_new != null)
+                _new.PasswordSource = this;
+        }
+
+        public string GetPassword()
+        {
+            return password.Password;
         }
     }
 }

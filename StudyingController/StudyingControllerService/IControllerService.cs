@@ -12,9 +12,7 @@ namespace StudyingControllerService
     interface IControllerService
     {
         [OperationContract]
-        bool IsValidLogin(string login, string password);
-
-        [OperationContract]
-        void AddUser(string login, string password);
+        [FaultContract(typeof(ControllerServiceException))]
+        Session Login(string login, string password);
     }
 }

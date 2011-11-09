@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows;
 using StudyingController.Common;
 using StudyingController.ViewModels;
+using System.ServiceModel;
 
 namespace StudyingController
 {
@@ -17,6 +18,7 @@ namespace StudyingController
         #region Properties
 
         private LoginViewModel loginViewModel;
+        private MainViewModel mainViewModel;
         private MainWindow mainWindow;
         
         #endregion
@@ -28,16 +30,27 @@ namespace StudyingController
             this.DispatcherUnhandledException += new System.Windows.Threading.DispatcherUnhandledExceptionEventHandler(App_DispatcherUnhandledException);
             
             mainWindow = new MainWindow();
+
             loginViewModel = new LoginViewModel(this, this, mainWindow.Dispatcher);
-            loginViewModel.SuccessfulLoginEvent += new EventHandler(loginViewModel_SuccessfulLoginEvent);
+            mainViewModel = new MainViewModel(this, this, mainWindow.Dispatcher);
+
             mainWindow.DataContext = loginViewModel;
             
             mainWindow.Show();
         }
 
-        void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        private void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
-            throw new NotImplementedException();
+            Exception ex = e.Exception;
+            while (ex.InnerException != null)
+                ex = ex.InnerException;
+
+            if (ex is FaultException<SCS.ControllerServiceException>)
+                ShowError((ex as FaultException<SCS.ControllerServiceException>).Detail.Reason);
+            else
+                ShowError(ex.Message);
+
+            e.Handled = true;
         }
 
         #region Methods
@@ -69,6 +82,33 @@ namespace StudyingController
             }
         }
 
+        private SCS.Session session;
+        public SCS.Session Session
+        {
+            get
+            {
+                return session;
+            }
+            set
+            {
+                if (session != value)
+                {
+                    session = value;
+                    OnSessionChanged();
+                }
+            }
+        }
+
+        private void OnSessionChanged()
+        {
+            if (SessionChanged != null)
+                SessionChanged(this, EventArgs.Empty);
+
+            mainWindow.DataContext = mainViewModel;
+        }
+
+        public event EventHandler SessionChanged;
+
         #endregion
 
         #region IUserInterop
@@ -85,7 +125,5 @@ namespace StudyingController
 
         #endregion
 
-
-        
     }
 }

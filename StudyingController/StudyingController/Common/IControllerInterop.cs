@@ -8,5 +8,9 @@ namespace StudyingController.Common
     public interface IControllerInterop
     {
         SCS.ControllerServiceClient Service { get; set; }
+
+        SCS.Session Session { get; set; }
+
+        event EventHandler SessionChanged;
     }
 }
