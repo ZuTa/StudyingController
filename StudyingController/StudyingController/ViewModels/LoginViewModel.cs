@@ -8,12 +8,32 @@ using System.Windows.Input;
 using StudyingController.UserData;
 using System.Windows.Controls;
 using System.Text.RegularExpressions;
+using System.ServiceModel;
 
 namespace StudyingController.ViewModels
 {
-    public class LoginViewModel : BaseApplicationViewModel
+    public class LoginViewModel : BaseApplicationViewModel, IPasswordConsumer
     {
         #region Fields & Properties
+
+        private object loggingInLock = new object();
+
+        private bool isLoggingIn;
+        public bool IsLoggingIn
+        {
+            get
+            {
+                return isLoggingIn;
+            }
+            private set
+            {
+                if (value != isLoggingIn)
+                {
+                    isLoggingIn = value;
+                    OnPropertyChanged("IsLoggingIn");
+                }
+            }
+        }
 
         private LoginConfig loginConfig;
         public LoginConfig LoginConfig
@@ -40,6 +60,23 @@ namespace StudyingController.ViewModels
             }
         }
 
+        private IPasswordSource passwordSource;
+        public IPasswordSource PasswordSource
+        {
+            get
+            {
+                return passwordSource;
+            }
+            set
+            {
+                if (passwordSource != value)
+                {
+                    passwordSource = value;
+                    OnPropertyChanged("PasswordSource");
+                }
+            }
+        }
+
         #endregion
         
         #region Constructors
@@ -48,10 +85,6 @@ namespace StudyingController.ViewModels
             : base(userInterop, controllerInterop, dispatcher)
         {
             loginConfig = new UserData.LoginConfig();
-            //TODO: this is connetion to a service. replace it
-            controllerInterop.Service = new SCS.ControllerServiceClient("BasicHttpBinding_IControllerService");
-            //controllerInterop.Service = new SCS.ControllerServiceClient("BasicHttpBinding_IControllerService", new System.ServiceModel.EndpointAddress(uri));
-            //controllerInterop.Service.AddUser("facadmin", HashHelper.ComputeHash("facadmin"));
         }
 
         #endregion
@@ -74,28 +107,80 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
+        private void StartLogging()
+        {
+            IsLoggingIn = true;
+        }
+
+        private void StopLogging()
+        {
+            IsLoggingIn = false;
+        }
+
         private void UserLogin(object parameter)
         {
-            var passwordBox = parameter as PasswordBox;
-            var password = passwordBox.Password;
-            LoginConfig.Password = password;
+            lock (loggingInLock)
+            {
+                if (IsLoggingIn)
+                    return;
 
-            if (this.ControllerInterop.Service.IsValidLogin(LoginConfig.Login, HashHelper.ComputeHash(LoginConfig.Password)) && SuccessfulLoginEvent != null)
-                SuccessfulLoginEvent(this, EventArgs.Empty);
+                try
+                {
+                    StartLogging();
+
+                    LoginConfig.Password = HashHelper.ComputeHash(passwordSource.GetPassword());
+
+                    ControllerInterop.Service = new SCS.ControllerServiceClient("BasicHttpBinding_IControllerService");
+                    this.ControllerInterop.Service.BeginLogin(LoginConfig.Login, LoginConfig.Password, OnLoginCompleted, null);
+                    //if (this.ControllerInterop.Service.IsValidLogin(LoginConfig.Login, LoginConfig.Password) && SuccessfulLoginEvent != null)
+                    //    SuccessfulLoginEvent(this, EventArgs.Empty);
+                }
+                catch (Exception ex)
+                {
+                    LoginDataError = ex.Message;
+                }
+                finally
+                {
+                    StopLogging();
+                }
+            }
         }
 
         private bool CanUserLogin()
         {
-            if ((LoginConfig.Login != null && new Regex("^[a-z0-9]+$").IsMatch(LoginConfig.Login))
+            if (!IsLoggingIn &&
+                (LoginConfig.Login != null && new Regex("^[a-z0-9]+$").IsMatch(LoginConfig.Login))
                 && (LoginConfig.Port != null && new Regex("^[0-9]+$").IsMatch(LoginConfig.Port))
                 && (LoginConfig.Server != null && new Regex("^http://[a-z0-9/]+$").IsMatch(LoginConfig.Server)))
-            {
-                LoginDataError = string.Empty;
                 return true;
-            }
-            LoginDataError = StudyingController.Properties.Resources.LoginDataError; 
+            
             return false;
         }
+        #endregion
+
+        #region Callbacks
+
+        private void OnLoginCompleted(IAsyncResult iar)
+        {
+            this.Dispatcher.Invoke(new Action<IAsyncResult>((ar) =>
+                {
+                    try
+                    {
+                        if (this.ControllerInterop.Service.EndLogin(ar) && SuccessfulLoginEvent != null)
+                            SuccessfulLoginEvent(this, EventArgs.Empty);
+                    }
+                    catch (FaultException<SCS.ControllerServiceException> exc)
+                    {
+                        LoginDataError = exc.Detail.Reason;
+                    }
+                    finally
+                    {
+                        StopLogging();
+                    }
+
+                }), new object[] { iar });
+        }
+
         #endregion
 
         #region Events
@@ -103,5 +188,6 @@ namespace StudyingController.ViewModels
         public event EventHandler SuccessfulLoginEvent;
 
         #endregion
+
     }
 }

@@ -11,26 +11,23 @@ namespace StudyingControllerService
 {
     public class ControllerService : IControllerService
     {
-        public bool IsValidLogin(string login, string password)
+        public bool Login(string login, string password)
         {
-            bool result = false;
+            bool result = true;
 
             try
             {
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    var query = from u in context.SystemUsers select u;
-                    foreach (SystemUser su in query)
-                    {
-                        SystemUser ss = su;
-                    }
                     var user = context.SystemUsers.Where(u => u.Login == login.ToLower()).FirstOrDefault();
-                    result = user != null && Encoding.UTF8.GetString(user.Password) == password;
+                    if (!(user != null && Encoding.UTF8.GetString(user.Password) == password))
+                        throw new Exception("У доступі відмовлено!");
                 }
             }
-                //TODO: Handle exceptions
             catch (Exception ex)
             {
+                result = false;
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
             }
 
             return result;

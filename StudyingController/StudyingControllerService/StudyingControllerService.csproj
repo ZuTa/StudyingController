@@ -66,6 +66,7 @@
     <Compile Include="ControllerService.svc.cs">
       <DependentUpon>ControllerService.svc</DependentUpon>
     </Compile>
+    <Compile Include="ControllerServiceException.cs" />
     <Compile Include="IControllerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
