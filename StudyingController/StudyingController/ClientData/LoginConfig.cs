@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel;
 
-namespace StudyingController.UserData
+namespace StudyingController.ClientData
 {
     public class LoginConfig : INotifyPropertyChanged
     {
