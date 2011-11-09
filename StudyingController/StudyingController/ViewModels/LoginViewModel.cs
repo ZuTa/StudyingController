@@ -9,6 +9,8 @@ using StudyingController.ClientData;
 using System.Windows.Controls;
 using System.Text.RegularExpressions;
 using System.ServiceModel;
+using System.Data.SqlClient;
+using System.Data.EntityClient;
 
 namespace StudyingController.ViewModels
 {
@@ -130,7 +132,7 @@ namespace StudyingController.ViewModels
 
                     LoginConfig.Password = HashHelper.ComputeHash(passwordSource.GetPassword());
 
-                    ControllerInterop.Service = new SCS.ControllerServiceClient("BasicHttpBinding_IControllerService");
+                    ControllerInterop.Service = new SCS.ControllerServiceClient("BasicHttpBinding_IControllerService", GetServiceEndPoint());
                     this.ControllerInterop.Service.BeginLogin(LoginConfig.Login, LoginConfig.Password, OnLoginCompleted, null);
                 }
                 catch (Exception ex)
@@ -149,11 +151,21 @@ namespace StudyingController.ViewModels
             if (!IsLoggingIn &&
                 (LoginConfig.Login != null && new Regex("^[a-z0-9]+$").IsMatch(LoginConfig.Login))
                 && (LoginConfig.Port != null && new Regex("^[0-9]+$").IsMatch(LoginConfig.Port))
-                && (LoginConfig.Server != null && new Regex("^http://[a-z0-9/]+$").IsMatch(LoginConfig.Server)))
+                && (LoginConfig.Server != null && new Regex("^http://[a-z0-9/-]+/$").IsMatch(LoginConfig.Server)))
                 return true;
             
             return false;
         }
+
+        private EndpointAddress GetServiceEndPoint()
+        {
+            StringBuilder uri = new StringBuilder();
+            uri.Append(LoginConfig.Server);
+            uri.Insert(uri.ToString().IndexOf('/', 7), ":" + LoginConfig.Port);
+            uri.Append(StudyingController.Properties.Resources.Service);
+            return new EndpointAddress(uri.ToString());
+        }
+
         #endregion
 
         #region Callbacks
@@ -164,7 +176,8 @@ namespace StudyingController.ViewModels
                 {
                     try
                     {
-                        ControllerInterop.Session = this.ControllerInterop.Service.EndLogin(ar);                           
+                        ControllerInterop.Session = this.ControllerInterop.Service.EndLogin(ar);
+                        if(LoginConfig.IsMemorizeLogin) LoginConfig.Save();   
                     }
                     catch (FaultException<SCS.ControllerServiceException> exc)
                     {

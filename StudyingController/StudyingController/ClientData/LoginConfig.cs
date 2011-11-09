@@ -13,7 +13,7 @@ namespace StudyingController.ClientData
     {
         #region Fields & Properties
 
-        private static readonly string DEFAULT_FOLDER_PATH = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData); 
+        private static readonly string DEFAULT_FOLDER_PATH = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), StudyingController.Properties.Resources.AppDataFolderName); 
 
         private string login;
         public string Login
@@ -110,7 +110,7 @@ namespace StudyingController.ClientData
 
         public void Save()
         {
-            string appDataFolderPath = Path.Combine(DEFAULT_FOLDER_PATH, StudyingController.Properties.Resources.AppDataFolderName);
+            string appDataFolderPath = DEFAULT_FOLDER_PATH;
             if (!Directory.Exists(appDataFolderPath))
                 Directory.CreateDirectory(appDataFolderPath);
 

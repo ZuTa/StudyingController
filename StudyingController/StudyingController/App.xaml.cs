@@ -7,6 +7,7 @@ using System.Windows;
 using StudyingController.Common;
 using StudyingController.ViewModels;
 using System.ServiceModel;
+using StudyingController.ClientData;
 
 namespace StudyingController
 {
@@ -32,6 +33,8 @@ namespace StudyingController
             mainWindow = new MainWindow();
 
             loginViewModel = new LoginViewModel(this, this, mainWindow.Dispatcher);
+            loginViewModel.LoginConfig = LoginConfig.Load();
+
             mainViewModel = new MainViewModel(this, this, mainWindow.Dispatcher);
 
             mainWindow.DataContext = loginViewModel;
@@ -60,10 +63,6 @@ namespace StudyingController
 
         #region Callbacks
 
-        void loginViewModel_SuccessfulLoginEvent(object sender, EventArgs e)
-        {
-            ShowMessage("Access granted!");
-        }
 
         #endregion
 

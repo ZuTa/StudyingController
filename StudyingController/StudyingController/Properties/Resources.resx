@@ -129,4 +129,7 @@
   <data name="LoginDataError" xml:space="preserve">
     <value>Заповніть коректно всі поля!</value>
   </data>
+  <data name="Service" xml:space="preserve">
+    <value>ControllerService.svc</value>
+  </data>
 </root>
