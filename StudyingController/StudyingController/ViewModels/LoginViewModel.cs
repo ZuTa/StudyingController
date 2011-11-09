@@ -74,6 +74,8 @@ namespace StudyingController.ViewModels
                 if (passwordSource != value)
                 {
                     passwordSource = value;
+                    if (passwordSource != null)
+                        PasswordSource.SetPassword("admin"); // here you can see how to binding password from ViewModel to View
                     OnPropertyChanged("PasswordSource");
                 }
             }

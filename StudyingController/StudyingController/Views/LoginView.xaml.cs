@@ -22,9 +22,9 @@ namespace StudyingController.Views
     {
         public LoginView()
         {
-            this.DataContextChanged += new DependencyPropertyChangedEventHandler(LoginView_DataContextChanged);
-
             InitializeComponent();
+
+            this.DataContextChanged += new DependencyPropertyChangedEventHandler(LoginView_DataContextChanged);
         }
 
         void LoginView_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -40,6 +40,11 @@ namespace StudyingController.Views
         public string GetPassword()
         {
             return password.Password;
+        }
+
+        public void SetPassword(string password)
+        {
+            this.password.Password = password;
         }
     }
 }

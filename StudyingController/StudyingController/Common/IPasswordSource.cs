@@ -9,6 +9,7 @@ namespace StudyingController.Common
     {
 
         string GetPassword();
+        void SetPassword(string password);
 
     }
 }
