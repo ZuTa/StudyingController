@@ -88,7 +88,7 @@ namespace StudyingController.ViewModels
         public LoginViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)
         {
-            loginConfig = new LoginConfig();
+            loginConfig = LoginConfig.Load();
         }
 
         #endregion
@@ -179,7 +179,7 @@ namespace StudyingController.ViewModels
                     try
                     {
                         ControllerInterop.Session = this.ControllerInterop.Service.EndLogin(ar);
-                        if(LoginConfig.IsMemorizeLogin) LoginConfig.Save();   
+                        LoginConfig.Save();   
                     }
                     catch (FaultException<SCS.ControllerServiceException> exc)
                     {
