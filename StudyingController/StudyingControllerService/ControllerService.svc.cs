@@ -19,16 +19,16 @@ namespace StudyingControllerService
             {
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    var user = from u in context.SystemUsers
-                                      where u.Login == login.ToLower()
-                                      select u;
-                    foreach (SystemUser su in user)
+                    var query = from u in context.SystemUsers select u;
+                    foreach (SystemUser su in query)
                     {
-                        string s = Encoding.UTF8.GetString(su.Password);
-                        result = Encoding.UTF8.GetString(su.Password) == password;
+                        SystemUser ss = su;
                     }
+                    var user = context.SystemUsers.Where(u => u.Login == login.ToLower()).FirstOrDefault();
+                    result = user != null && Encoding.UTF8.GetString(user.Password) == password;
                 }
             }
+                //TODO: Handle exceptions
             catch (Exception ex)
             {
             }
@@ -42,8 +42,9 @@ namespace StudyingControllerService
             {
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    var role = (from r in context.UserRoles where r.ID == 1 select r).FirstOrDefault();
-                    context.SystemUsers.AddObject(new SystemUser() { Login = login.ToLower(), Password = Encoding.UTF8.GetBytes(password), UserRole = role });
+                    Faculty faculty = new Faculty { Name = "Факультет Кібернетики" };
+                    UserInformation userInformation = new UserInformation { FirstName = "Ivan", LastName = "Ivanov", Email = "email@email.com" };
+                    context.SystemUsers.AddObject(new FacultyAdmin() { Login = login.ToLower(), Password = Encoding.UTF8.GetBytes(password), UserRole = UserRoles.FacultyAdmin, UserInformation = userInformation, Faculty = faculty });
                     context.SaveChanges();
                 }
             }
