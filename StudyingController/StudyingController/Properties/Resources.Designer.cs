@@ -61,6 +61,15 @@ namespace StudyingController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to StudyingController.
+        /// </summary>
+        internal static string AppDataFolderName {
+            get {
+                return ResourceManager.GetString("AppDataFolderName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Помилка.
         /// </summary>
         internal static string ErrorTxt {
@@ -70,11 +79,29 @@ namespace StudyingController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to loginConfig.xml.
+        /// </summary>
+        internal static string LoginConfigFileName {
+            get {
+                return ResourceManager.GetString("LoginConfigFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Заповніть коректно всі поля!.
         /// </summary>
         internal static string LoginDataError {
             get {
                 return ResourceManager.GetString("LoginDataError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ControllerService.svc.
+        /// </summary>
+        internal static string Service {
+            get {
+                return ResourceManager.GetString("Service", resourceCulture);
             }
         }
     }

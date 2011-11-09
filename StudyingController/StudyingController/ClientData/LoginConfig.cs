@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace StudyingController.ClientData
 {
+    [Serializable]
     public class LoginConfig : INotifyPropertyChanged
     {
         #region Fields & Properties
+
+        private static readonly string DEFAULT_FOLDER_PATH = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), StudyingController.Properties.Resources.AppDataFolderName); 
 
         private string login;
         public string Login
@@ -88,12 +93,33 @@ namespace StudyingController.ClientData
 
         public static LoginConfig Load()
         {
-            throw new NotImplementedException();
+            LoginConfig instance = new LoginConfig();
+            string configFilePath = Path.Combine(DEFAULT_FOLDER_PATH, StudyingController.Properties.Resources.LoginConfigFileName);
+
+            if (File.Exists(configFilePath))
+            {
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(LoginConfig));
+
+                using (Stream fileStream = File.Open(configFilePath, FileMode.Open))
+                {
+                    if(fileStream.Length > 0) instance =  (LoginConfig)xmlSerializer.Deserialize(fileStream);
+                }
+            }
+            return instance;
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+            string appDataFolderPath = DEFAULT_FOLDER_PATH;
+            if (!Directory.Exists(appDataFolderPath))
+                Directory.CreateDirectory(appDataFolderPath);
+
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(LoginConfig));
+
+            using(Stream fileStream = new FileStream(Path.Combine(appDataFolderPath, StudyingController.Properties.Resources.LoginConfigFileName), FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                if (IsMemorizeLogin) xmlSerializer.Serialize(fileStream, this);
+            }
         }
 
         #endregion

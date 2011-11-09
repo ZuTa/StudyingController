@@ -21,7 +21,7 @@
     <MetadataSource Address="http://localhost:5996/ControllerService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ControllerService.xsd" MetadataType="Schema" ID="f74ba353-4bac-4556-823d-1640d4093586" SourceId="1" SourceUrl="http://localhost:5996/ControllerService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ControllerService.xsd" MetadataType="Schema" ID="1fc2c47a-fbda-4bdc-a280-e83601543993" SourceId="1" SourceUrl="http://localhost:5996/ControllerService.svc?xsd=xsd2" />
     <MetadataFile FileName="ControllerService.disco" MetadataType="Disco" ID="b002357a-3606-40b3-87a6-9e0374be5c7c" SourceId="1" SourceUrl="http://localhost:5996/ControllerService.svc?disco" />
     <MetadataFile FileName="ControllerService1.xsd" MetadataType="Schema" ID="250ecbfa-2a98-4b76-940a-72e844eb8225" SourceId="1" SourceUrl="http://localhost:5996/ControllerService.svc?xsd=xsd1" />
     <MetadataFile FileName="ControllerService2.xsd" MetadataType="Schema" ID="ad5f7aa3-00f7-4c77-ad64-a3322ec69824" SourceId="1" SourceUrl="http://localhost:5996/ControllerService.svc?xsd=xsd0" />
