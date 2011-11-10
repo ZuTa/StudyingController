@@ -156,7 +156,7 @@ namespace StudyingController.ViewModels
         {
             if ((LoginConfig.Login != null && new Regex("^[a-z0-9]+$").IsMatch(LoginConfig.Login))
                 && (LoginConfig.Port != null && new Regex("^[0-9]+$").IsMatch(LoginConfig.Port))
-                && (LoginConfig.Server != null && new Regex("^http://[a-zA-Z0-9/.-]+/$").IsMatch(LoginConfig.Server)))
+                && (LoginConfig.Server != null && new Regex("^[:a-zA-Z0-9/.-]+$").IsMatch(LoginConfig.Server)))
                 return true;
             
             return false;
@@ -165,7 +165,8 @@ namespace StudyingController.ViewModels
         private EndpointAddress GetServiceEndPoint()
         {
             StringBuilder uri = new StringBuilder();
-            uri.Append(LoginConfig.Server);
+            uri.Append(LoginConfig.Server.IndexOf("http://") == -1 ? "http://" + LoginConfig.Server : LoginConfig.Server);
+            if (uri.ToString().IndexOf('/', 7) == -1) uri.Append("/");
             uri.Insert(uri.ToString().IndexOf('/', 7), ":" + LoginConfig.Port);
             uri.Append(StudyingController.Properties.Resources.Service);
             return new EndpointAddress(uri.ToString());
