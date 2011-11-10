@@ -3,9 +3,63 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             mc:Ignorable="d" >
+             <!--:DesignHeight="Auto" d:DesignWidth="300"-->
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition  Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <ToolBarTray Background="White">
+            <ToolBar  ToolTip="This toolbar for all users">
+                <Button Width="30" Height="30" ToolTip="Logout">Out</Button>
+                <Button Width="30" Height="30" ToolTip="Edit Information">EI</Button>
+            </ToolBar>
+            <ToolBar ToolTip="This toolbar must have modifications for all users" >
+                <Button Width="30" Height="30" ToolTip="Add structure">AS</Button>
+                <Button Width="30" Height="30" ToolTip="Add user">AU</Button>
+                <Button Width="30" Height="30" ToolTip="Change structure">CS</Button>
+                <Button Width="30" Height="30" ToolTip="Change user information">CUI</Button>
+            </ToolBar>
+        </ToolBarTray>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" >
+                <Expander ExpandDirection="Right" Margin="2,0,5,2" IsExpanded="True" Background="Beige">
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="*" ></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Expander Header="User Info" IsExpanded="True" Background="Bisque">
+                                <ContentControl Width="170" Height="130"></ContentControl>
+                            </Expander>
+                            <ItemsControl Grid.Row="1" Width="Auto" HorizontalContentAlignment="Stretch" Background="Beige">
+                                <Button Margin="3" Content="Add structure item" MinHeight="20" MaxHeight="50" MinWidth="120" MaxWidth="200" ></Button>
+                                <Button Margin="3" Content="Add user" MinHeight="20" MaxHeight="50" MinWidth="120" MaxWidth="200" ></Button>
+                                <Button Margin="3" Content="Change structure" MinHeight="20" MaxHeight="50" MinWidth="120" MaxWidth="200" ></Button>
+                                <Button Margin="3" Content="Change user information" MinHeight="20" MaxHeight="50" MinWidth="120" MaxWidth="200" ></Button>
+                                <Button Margin="3" Content="Edit my information" MinHeight="20" MaxHeight="50" MinWidth="120" MaxWidth="200" ></Button>
+                                <Button Margin="3" Content="Log out" MinHeight="20" MaxHeight="50" MinWidth="120" MaxWidth="200" ></Button>
+                            </ItemsControl>
+                        </Grid>
+                    </ScrollViewer>
+                </Expander>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" HorizontalAlignment="Stretch" TextAlignment="Center" Background="AntiqueWhite" Margin="0,0,2,2">This part must contain path)))</TextBlock>
+                <ContentControl Grid.Row="1" Grid.Column="1" Background="Azure" Margin="0,0,2,2">
+                    <TextBlock VerticalAlignment="Stretch" HorizontalAlignment="Stretch" TextAlignment="Center" Background="Azure">This part must contain workspace</TextBlock>
+                </ContentControl>
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>
