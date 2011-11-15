@@ -34,12 +34,27 @@ namespace StudyingController
 
             loginViewModel = new LoginViewModel(this, this, mainWindow.Dispatcher);
 
-            mainViewModel = new MainViewModel(this, this, mainWindow.Dispatcher);
-
             mainWindow.DataContext = loginViewModel;
             
             mainWindow.Show();
         }
+
+        #region Methods
+
+        private void ShowMainView()
+        {
+            if (mainViewModel != null)
+                mainViewModel.Logout -= mainViewModel_Logout;
+
+            mainViewModel = new MainViewModel(this, this, mainWindow.Dispatcher);
+            mainViewModel.Logout += new EventHandler(mainViewModel_Logout);
+
+            mainWindow.DataContext = mainViewModel;
+        }
+
+        #endregion
+
+        #region Callbacks
 
         private void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
@@ -55,13 +70,10 @@ namespace StudyingController
             e.Handled = true;
         }
 
-        #region Methods
-
-
-        #endregion
-
-        #region Callbacks
-
+        private void mainViewModel_Logout(object sender, EventArgs e)
+        {
+            mainWindow.DataContext = loginViewModel;
+        }
 
         #endregion
 
@@ -102,7 +114,7 @@ namespace StudyingController
             if (SessionChanged != null)
                 SessionChanged(this, EventArgs.Empty);
 
-            mainWindow.DataContext = mainViewModel;
+            ShowMainView();
         }
 
         public event EventHandler SessionChanged;

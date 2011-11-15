@@ -58,6 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\NamedCommandData.cs" />
     <Compile Include="Common\Checks.cs" />
     <Compile Include="Common\HashHelper.cs" />
     <Compile Include="Common\IControllerInterop.cs" />
@@ -107,8 +108,8 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\UniversityStructureView.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -137,14 +138,14 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Service References\SCS\ControllerService1.wsdl" />
-    <None Include="Service References\SCS\ControllerService3.xsd">
+    <None Include="Service References\SCS\ControllerService.wsdl" />
+    <None Include="Service References\SCS\ControllerService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SCS\ControllerService31.xsd">
+    <None Include="Service References\SCS\ControllerService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SCS\ControllerService32.xsd">
+    <None Include="Service References\SCS\ControllerService2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\SCS\ControllerService3.xsd">
@@ -164,6 +165,9 @@
     <WCFMetadataStorage Include="Service References\SCS\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\SCS\ControllerService.disco" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Service References\SCS\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -174,9 +178,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\SCS\ControllerService1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

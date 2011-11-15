@@ -46,8 +46,20 @@ namespace StudyingController.ViewModels
         {
             get 
             {
-                if (universityStructureCommand == null) universityStructureCommand = new RelayCommand((param) => OpenUniversityStructure());
+                if (universityStructureCommand == null) 
+                    universityStructureCommand = new RelayCommand((param) => OpenUniversityStructure());
                 return universityStructureCommand;
+            }
+        }
+
+        private RelayCommand logoutCommand;
+        public RelayCommand LogoutCommand
+        {
+            get 
+            {
+                if (logoutCommand == null)
+                    logoutCommand = new RelayCommand(param => OnLogout());
+                return logoutCommand; 
             }
         }
 
@@ -59,6 +71,18 @@ namespace StudyingController.ViewModels
         {
             CurrentWorkspace = new UniversityStructureViewModel(UserInterop, ControllerInterop, Dispatcher);
         }
+
+        protected virtual void OnLogout()
+        {
+            if (Logout != null)
+                Logout(this, EventArgs.Empty);
+        }
+
+        #endregion
+
+        #region Events
+
+        public event EventHandler Logout;
 
         #endregion
     }
