@@ -20,6 +20,11 @@ namespace StudyingController.ViewModels
 
         private object loggingInLock = new object();
 
+        public bool CanChange
+        {
+            get { return !IsLoggingIn; }
+        }
+
         private bool isLoggingIn;
         public bool IsLoggingIn
         {
@@ -33,6 +38,7 @@ namespace StudyingController.ViewModels
                 {
                     isLoggingIn = value;
                     OnPropertyChanged("IsLoggingIn");
+                    OnPropertyChanged("CanChange");
                 }
             }
         }
@@ -88,7 +94,8 @@ namespace StudyingController.ViewModels
         public LoginViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)
         {
-            loginConfig = LoginConfig.Load();
+            LoginConfig = LoginConfig.Load();
+            if (loginConfig.IsAutologin) UserLogin(); 
         }
 
         #endregion
@@ -101,7 +108,7 @@ namespace StudyingController.ViewModels
             get 
             {
                 if (loginCommand == null)
-                    loginCommand = new RelayCommand((param) => UserLogin(param), (param) => CanUserLogin()); 
+                    loginCommand = new RelayCommand((param) => UserLogin(), (param) => CanUserLogin()); 
 
                 return loginCommand;
             }
@@ -121,7 +128,7 @@ namespace StudyingController.ViewModels
             IsLoggingIn = false;
         }
 
-        private void UserLogin(object parameter)
+        private void UserLogin()
         {
             lock (loggingInLock)
             {
@@ -132,7 +139,7 @@ namespace StudyingController.ViewModels
                 {
                     StartLogging();
 
-                    LoginConfig.Password = passwordSource.GetPassword();
+                    if(!LoginConfig.IsAutologin) LoginConfig.Password = passwordSource.GetPassword();
 
                     ControllerInterop.Service = new SCS.ControllerServiceClient("BasicHttpBinding_IControllerService", GetServiceEndPoint());
                     this.ControllerInterop.Service.BeginLogin(LoginConfig.Login, HashHelper.ComputeHash(LoginConfig.Password), OnLoginCompleted, null);
@@ -140,20 +147,16 @@ namespace StudyingController.ViewModels
                 catch (Exception ex)
                 {
                     LoginDataError = ex.Message;
-                }
-                finally
-                {
                     StopLogging();
-                }
+                  }             
             }
         }
 
         private bool CanUserLogin()
         {
-            if (!IsLoggingIn &&
-                (LoginConfig.Login != null && new Regex("^[a-z0-9]+$").IsMatch(LoginConfig.Login))
+            if ((LoginConfig.Login != null && new Regex("^[a-z0-9]+$").IsMatch(LoginConfig.Login))
                 && (LoginConfig.Port != null && new Regex("^[0-9]+$").IsMatch(LoginConfig.Port))
-                && (LoginConfig.Server != null && new Regex("^http://[a-z0-9/-]+/$").IsMatch(LoginConfig.Server)))
+                && (LoginConfig.Server != null && new Regex("^[:a-zA-Z0-9/.-]+$").IsMatch(LoginConfig.Server)))
                 return true;
             
             return false;
@@ -162,7 +165,8 @@ namespace StudyingController.ViewModels
         private EndpointAddress GetServiceEndPoint()
         {
             StringBuilder uri = new StringBuilder();
-            uri.Append(LoginConfig.Server);
+            uri.Append(LoginConfig.Server.IndexOf("http://") == -1 ? "http://" + LoginConfig.Server : LoginConfig.Server);
+            if (uri.ToString().IndexOf('/', 7) == -1) uri.Append("/");
             uri.Insert(uri.ToString().IndexOf('/', 7), ":" + LoginConfig.Port);
             uri.Append(StudyingController.Properties.Resources.Service);
             return new EndpointAddress(uri.ToString());
@@ -179,6 +183,12 @@ namespace StudyingController.ViewModels
                     try
                     {
                         ControllerInterop.Session = this.ControllerInterop.Service.EndLogin(ar);
+                        if (!LoginConfig.IsMemorizeLogin) 
+                        { 
+                            LoginConfig.Login = string.Empty; 
+                            LoginConfig.Password = string.Empty;
+                            LoginConfig.IsAutologin = false;
+                        }
                         LoginConfig.Save();   
                     }
                     catch (FaultException<SCS.ControllerServiceException> exc)

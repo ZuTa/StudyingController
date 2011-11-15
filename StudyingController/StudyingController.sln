@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudyingControllerService",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudyingControllerEntityModel", "StudyingControllerEntityModel\StudyingControllerEntityModel.csproj", "{8A8BED45-E1BD-4EF8-8544-E0EE09AD57FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntitiesDTO", "EntityModelDTO\EntitiesDTO.csproj", "{86B57E17-94BC-45DD-BCC9-2DA0C9C4D596}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,16 @@ Global
 		{8A8BED45-E1BD-4EF8-8544-E0EE09AD57FF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{8A8BED45-E1BD-4EF8-8544-E0EE09AD57FF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{8A8BED45-E1BD-4EF8-8544-E0EE09AD57FF}.Release|x86.ActiveCfg = Release|Any CPU
+		{86B57E17-94BC-45DD-BCC9-2DA0C9C4D596}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86B57E17-94BC-45DD-BCC9-2DA0C9C4D596}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86B57E17-94BC-45DD-BCC9-2DA0C9C4D596}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{86B57E17-94BC-45DD-BCC9-2DA0C9C4D596}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{86B57E17-94BC-45DD-BCC9-2DA0C9C4D596}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{86B57E17-94BC-45DD-BCC9-2DA0C9C4D596}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86B57E17-94BC-45DD-BCC9-2DA0C9C4D596}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86B57E17-94BC-45DD-BCC9-2DA0C9C4D596}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{86B57E17-94BC-45DD-BCC9-2DA0C9C4D596}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{86B57E17-94BC-45DD-BCC9-2DA0C9C4D596}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -61,6 +61,7 @@
     <Compile Include="Common\Checks.cs" />
     <Compile Include="Common\HashHelper.cs" />
     <Compile Include="Common\IControllerInterop.cs" />
+    <Compile Include="Common\INameable.cs" />
     <Compile Include="Common\IPasswordConsumer.cs" />
     <Compile Include="Common\IPasswordSource.cs" />
     <Compile Include="Common\IUserInterop.cs" />
@@ -136,6 +137,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\SCS\ControllerService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SCS\ControllerService3.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\SCS\StudyingController.SCS.Session.datasource">

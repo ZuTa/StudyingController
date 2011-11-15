@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{8A8BED45-E1BD-4EF8-8544-E0EE09AD57FF}</ProjectGuid>
+    <ProjectGuid>{86B57E17-94BC-45DD-BCC9-2DA0C9C4D596}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StudyingControllerEntityModel</RootNamespace>
-    <AssemblyName>StudyingControllerEntityModel</AssemblyName>
+    <RootNamespace>EntitiesDTO</RootNamespace>
+    <AssemblyName>EntitiesDTO</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -35,7 +35,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,30 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IDTOable.cs" />
+    <Compile Include="BaseEntityDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StudyingControllerEntityModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StudyingControllerEntityModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="SystemUser.cs" />
-    <Compile Include="UserInformation.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="StudyingControllerEntityModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>StudyingControllerEntityModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\EntityModelDTO\EntitiesDTO.csproj">
-      <Project>{86B57E17-94BC-45DD-BCC9-2DA0C9C4D596}</Project>
-      <Name>EntitiesDTO</Name>
-    </ProjectReference>
+    <Compile Include="SystemUserDTO.cs" />
+    <Compile Include="UserInformationDTO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

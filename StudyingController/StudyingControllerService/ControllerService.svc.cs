@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using StudyingControllerEntityModel;
+using EntitiesDTO;
 
 namespace StudyingControllerService
 {
@@ -24,10 +25,16 @@ namespace StudyingControllerService
 
         #endregion
 
+        #region Constructors
+
         public ControllerService()
         {
             sessionMonitoringTimer = new System.Threading.Timer(OnPollSessions, null, SESSION_POLL_PERIOD, SESSION_POLL_PERIOD);
         }
+
+        #endregion
+
+        #region Session's stuff
 
         private void OnPollSessions(object state)
         {
@@ -56,6 +63,13 @@ namespace StudyingControllerService
             }
         }
 
+        #endregion
+
+        private T GetDTO<T>(System.Data.Objects.DataClasses.EntityObject o) where T : BaseEntityDTO
+        {
+            return (o as IDTOable<T>).ToDTO();
+        }
+
         public Session Login(string login, string password)
         {
             Session session = null;
@@ -69,9 +83,11 @@ namespace StudyingControllerService
                     if (!(user != null && Encoding.UTF8.GetString(user.Password) == password))
                         throw new Exception("У доступі відмовлено!");
 
-                    session = new Session();
+                    session = new Session(GetDTO<SystemUserDTO>(user));
                     lock (sessions)
                         sessions[session.SessionID] = session;
+
+                    return session;
                 }
             }
             catch (Exception ex)
@@ -79,7 +95,6 @@ namespace StudyingControllerService
                 throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
             }
 
-            return session;
         }
 
     }

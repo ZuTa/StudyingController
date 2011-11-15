@@ -9,6 +9,7 @@ namespace StudyingController.ViewModels
 {
     public class MainViewModel : BaseApplicationViewModel
     {
+
         public MainViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)
         {

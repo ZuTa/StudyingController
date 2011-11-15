@@ -21,11 +21,11 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Label Grid.Row="0" Grid.Column="0" Content="Логін:"></Label>
-                    <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Text="{Binding Path=LoginConfig.Login, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Text="{Binding Path=LoginConfig.Login, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding CanChange}"></TextBox>
                     <Label Grid.Row="1" Grid.Column="0" Content="Пароль:"></Label>
-                    <PasswordBox Name="password" Grid.Row="1" Grid.Column="1" Margin="5"></PasswordBox>
-                    <CheckBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Content="Запам'ятати" IsChecked="{Binding Path=LoginConfig.IsMemorizeLogin, UpdateSourceTrigger=PropertyChanged}"></CheckBox>
-                    <CheckBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Content="Автологін" IsChecked="{Binding Path=LoginConfig.IsAutologin, UpdateSourceTrigger=PropertyChanged}"></CheckBox>
+                    <PasswordBox Name="password" Grid.Row="1" Grid.Column="1" Margin="5" IsEnabled="{Binding CanChange}"></PasswordBox>
+                    <CheckBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Content="Запам'ятати" IsChecked="{Binding Path=LoginConfig.IsMemorizeLogin, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding CanChange}"></CheckBox>
+                    <CheckBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Content="Автологін" IsChecked="{Binding Path=LoginConfig.IsAutologin, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding CanChange}"></CheckBox>
                 </Grid>
             </GroupBox>
             <GroupBox HorizontalAlignment="Stretch" Header="Зв'язок" Margin="0,5,0,0">
@@ -39,12 +39,12 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Label Grid.Row="0" Grid.Column="0" Content="Сервер:"></Label>
-                    <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Text="{Binding Path=LoginConfig.Server, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Text="{Binding Path=LoginConfig.Server, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding CanChange}"></TextBox>
                     <Label Grid.Row="1" Grid.Column="0" Content="Порт:"></Label>
-                    <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding Path=LoginConfig.Port, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding Path=LoginConfig.Port, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding CanChange}"></TextBox>
                 </Grid>
             </GroupBox>
-            <Button MinHeight="20" MaxHeight="40" MinWidth="50" MaxWidth="100" Margin="0,5,0,0" Content="Увійти" Command="{Binding Path=LoginCommand}"></Button>
+            <Button MinHeight="20" MaxHeight="40" MinWidth="50" MaxWidth="100" Margin="0,5,0,0" Content="Увійти" Command="{Binding Path=LoginCommand}" IsEnabled="{Binding CanChange}"></Button>
             <TextBlock MaxWidth="230" HorizontalAlignment="Center" Margin="5" TextWrapping="Wrap" Text="{Binding Path=LoginDataError, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
         </StackPanel>
     </Grid>
