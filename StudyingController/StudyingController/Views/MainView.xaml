@@ -41,7 +41,7 @@
                             <ItemsControl Grid.Row="1" Width="Auto" HorizontalContentAlignment="Stretch" Background="Beige">
                                 <Button Margin="3" Content="Add structure item" MinHeight="20" MaxHeight="50" MinWidth="120" MaxWidth="200" ></Button>
                                 <Button Margin="3" Content="Add user" MinHeight="20" MaxHeight="50" MinWidth="120" MaxWidth="200" ></Button>
-                                <Button Margin="3" Content="Change structure" MinHeight="20" MaxHeight="50" MinWidth="120" MaxWidth="200" ></Button>
+                                <Button Margin="3" Content="Change structure" MinHeight="20" MaxHeight="50" MinWidth="120" MaxWidth="200" Command="{Binding UniversityStructureCommand}"></Button>
                                 <Button Margin="3" Content="Change user information" MinHeight="20" MaxHeight="50" MinWidth="120" MaxWidth="200" ></Button>
                                 <Button Margin="3" Content="Edit my information" MinHeight="20" MaxHeight="50" MinWidth="120" MaxWidth="200" ></Button>
                                 <Button Margin="3" Content="Log out" MinHeight="20" MaxHeight="50" MinWidth="120" MaxWidth="200" ></Button>
@@ -56,8 +56,7 @@
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" HorizontalAlignment="Stretch" TextAlignment="Center" Background="AntiqueWhite" Margin="0,0,2,2">This part must contain path)))</TextBlock>
-                <ContentControl Grid.Row="1" Grid.Column="1" Background="Azure" Margin="0,0,2,2">
-                    <TextBlock VerticalAlignment="Stretch" HorizontalAlignment="Stretch" TextAlignment="Center" Background="Azure">This part must contain workspace</TextBlock>
+                <ContentControl Grid.Row="1" Grid.Column="1" Background="Azure" Margin="0,0,2,2" Content="{Binding CurrentWorkspace}">
                 </ContentControl>
             </Grid>
         </Grid>
