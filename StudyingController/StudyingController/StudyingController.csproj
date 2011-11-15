@@ -75,11 +75,15 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
+    <Compile Include="ViewModels\UniversityStructureViewModel.cs" />
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UniversityStructureView.xaml.cs">
+      <DependentUpon>UniversityStructureView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -98,6 +102,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UniversityStructureView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -128,14 +136,14 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Service References\SCS\ControllerService.wsdl" />
-    <None Include="Service References\SCS\ControllerService.xsd">
+    <None Include="Service References\SCS\ControllerService1.wsdl" />
+    <None Include="Service References\SCS\ControllerService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SCS\ControllerService1.xsd">
+    <None Include="Service References\SCS\ControllerService31.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SCS\ControllerService2.xsd">
+    <None Include="Service References\SCS\ControllerService32.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\SCS\StudyingController.SCS.Session.datasource">
@@ -152,9 +160,6 @@
     <WCFMetadataStorage Include="Service References\SCS\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\SCS\ControllerService.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\SCS\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -165,6 +170,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SCS\ControllerService1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

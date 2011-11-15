@@ -18,14 +18,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:5996/ControllerService.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:9833/ControllerService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ControllerService.xsd" MetadataType="Schema" ID="1fc2c47a-fbda-4bdc-a280-e83601543993" SourceId="1" SourceUrl="http://localhost:5996/ControllerService.svc?xsd=xsd2" />
-    <MetadataFile FileName="ControllerService.disco" MetadataType="Disco" ID="b002357a-3606-40b3-87a6-9e0374be5c7c" SourceId="1" SourceUrl="http://localhost:5996/ControllerService.svc?disco" />
-    <MetadataFile FileName="ControllerService1.xsd" MetadataType="Schema" ID="250ecbfa-2a98-4b76-940a-72e844eb8225" SourceId="1" SourceUrl="http://localhost:5996/ControllerService.svc?xsd=xsd1" />
-    <MetadataFile FileName="ControllerService2.xsd" MetadataType="Schema" ID="ad5f7aa3-00f7-4c77-ad64-a3322ec69824" SourceId="1" SourceUrl="http://localhost:5996/ControllerService.svc?xsd=xsd0" />
-    <MetadataFile FileName="ControllerService.wsdl" MetadataType="Wsdl" ID="6c6c00af-6ddc-4cfe-b1e9-6b7b63363548" SourceId="1" SourceUrl="http://localhost:5996/ControllerService.svc?wsdl" />
+    <MetadataFile FileName="ControllerService1.disco" MetadataType="Disco" ID="d914ebf9-9fc3-4eba-99db-9f135dca29d0" SourceId="1" SourceUrl="http://localhost:9833/ControllerService.svc?disco" />
+    <MetadataFile FileName="ControllerService1.wsdl" MetadataType="Wsdl" ID="12e6d9e1-7e8d-415a-b970-ea513811ed29" SourceId="1" SourceUrl="http://localhost:9833/ControllerService.svc?wsdl" />
+    <MetadataFile FileName="ControllerService3.xsd" MetadataType="Schema" ID="c1035fc8-ea43-4965-95d7-82de18294055" SourceId="1" SourceUrl="http://localhost:9833/ControllerService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ControllerService31.xsd" MetadataType="Schema" ID="b5016ebb-f3c9-4941-a450-72b253f60901" SourceId="1" SourceUrl="http://localhost:9833/ControllerService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ControllerService32.xsd" MetadataType="Schema" ID="098f2f19-b776-4bec-84da-58de84531b33" SourceId="1" SourceUrl="http://localhost:9833/ControllerService.svc?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
