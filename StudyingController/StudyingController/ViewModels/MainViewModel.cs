@@ -67,7 +67,7 @@ namespace StudyingController.ViewModels
         #region Commands
 
         private RelayCommand universityStructureCommand;
-        public ICommand UniversityStructureCommand
+        public RelayCommand UniversityStructureCommand
         {
             get 
             {
@@ -97,7 +97,7 @@ namespace StudyingController.ViewModels
             switch (controllerInterop.Session.User.UserRole)
             {
                 case SCS.UserRoles.MainAdmin:
-                    return new ObservableCollection<NamedCommandData>{ new NamedCommandData(){Name = "Структура університету"},
+                    return new ObservableCollection<NamedCommandData>{ new NamedCommandData(){Name = "Структура університету", Command = UniversityStructureCommand},
                                                                        new NamedCommandData(){Name = "Користувачі"}
                                                                      };
             }

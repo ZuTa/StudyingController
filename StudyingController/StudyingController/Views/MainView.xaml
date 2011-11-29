@@ -48,7 +48,7 @@
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel>
-                                                <Button Margin="3,3,3,3" FontSize="12" HorizontalAlignment="Stretch" Content="{Binding Path=Name}"></Button>
+                                                <Button Margin="3,3,3,3" FontSize="12" HorizontalAlignment="Stretch" Content="{Binding Path=Name}" Command="{Binding Path=Command}"></Button>
                                             </StackPanel>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
@@ -82,9 +82,7 @@
                         <Button Content="current workspace"  MinWidth="75" Margin="3" HorizontalAlignment="Left" />
                     </StackPanel>
                 </ScrollViewer>
-                <ContentControl Grid.Row="1" Grid.Column="1" Background="Azure" Margin="0,0,2,2">
-                    <TextBlock VerticalAlignment="Stretch" HorizontalAlignment="Stretch" TextAlignment="Center" Background="Azure">This part must contain workspace</TextBlock>
-                </ContentControl>
+                <ContentControl Grid.Row="1" Grid.Column="1" Background="Azure" Margin="0,0,2,2" Content="{Binding CurrentWorkspace}"/>
             </Grid>
         </Grid>
     </Grid>
