@@ -15,11 +15,12 @@
                 <Button Width="30" Height="30" ToolTip="Logout">Out</Button>
                 <Button Width="30" Height="30" ToolTip="Edit Information">EI</Button>
             </ToolBar>
-            <ToolBar ToolTip="This toolbar must have modifications for all users" >
-                <Button Width="30" Height="30" ToolTip="Add structure">AS</Button>
-                <Button Width="30" Height="30" ToolTip="Add user">AU</Button>
-                <Button Width="30" Height="30" ToolTip="Change structure">CS</Button>
-                <Button Width="30" Height="30" ToolTip="Change user information">CUI</Button>
+            <ToolBar ToolTip="This toolbar must have modifications for all users" ItemsSource="{Binding ToolbarCommands}">
+                <ToolBar.ItemTemplate>
+                    <DataTemplate>
+                        <Button Width="30" Height="30" Content="{Binding Path=Name}"></Button>
+                    </DataTemplate>
+                </ToolBar.ItemTemplate>
             </ToolBar>
         </ToolBarTray>
         <Grid Grid.Row="1">
@@ -38,13 +39,19 @@
                             <Expander Header="User Info" IsExpanded="True" Background="Bisque">
                                 <ContentControl Width="170" Height="130"></ContentControl>
                             </Expander>
-                            <ItemsControl Grid.Row="1" Width="Auto" HorizontalContentAlignment="Stretch" Background="Beige">
-                                <Button Margin="3" Content="Add structure item" MinHeight="20" MaxHeight="50" MinWidth="120" MaxWidth="200" ></Button>
-                                <Button Margin="3" Content="Add user" MinHeight="20" MaxHeight="50" MinWidth="120" MaxWidth="200" ></Button>
-                                <Button Margin="3" Content="Change structure" MinHeight="20" MaxHeight="50" MinWidth="120" MaxWidth="200" ></Button>
-                                <Button Margin="3" Content="Change user information" MinHeight="20" MaxHeight="50" MinWidth="120" MaxWidth="200" ></Button>
-                                <Button Margin="3" Content="Edit my information" MinHeight="20" MaxHeight="50" MinWidth="120" MaxWidth="200" ></Button>
-                                <Button Margin="3" Content="Log out" MinHeight="20" MaxHeight="50" MinWidth="120" MaxWidth="200" ></Button>
+                            <ItemsControl Grid.Row="1" Width="Auto" ItemsSource="{Binding VisibleCommands}" HorizontalContentAlignment="Stretch" Background="Beige">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel>
+                                                <Button Margin="3,3,3,3" FontSize="12" HorizontalAlignment="Stretch" Content="{Binding Path=Name}"></Button>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
                             </ItemsControl>
                         </Grid>
                     </ScrollViewer>
@@ -55,35 +62,9 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
-               <!-- <StackPanel Grid.Row="0" HorizontalAlignment="Stretch" Background="AntiqueWhite" Margin="0,0,2,2" Orientation="Horizontal">
-                    <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Left" MaxWidth="100">
-                        <ItemsControl ItemsSource="{Binding WorkspaceCollection}">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <StackPanel Orientation="Horizontal"/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <Button Margin="3,3,0,3" FontSize="12" HorizontalAlignment="Left" Content="{Binding Path=Name}"></Button>
-                                    <TextBlock Text="->" Margin="0,3,0,3"></TextBlock>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                            
-                        </ItemsControl>
-                    </ScrollViewer>
-                    <Button Content="{Binding a}"  MinWidth="75" Margin="3"></Button>
-                </StackPanel>-->
-
-                <Grid Grid.Row="0" HorizontalAlignment="Stretch" Background="AntiqueWhite" Margin="0,0,2,2" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="Auto" MinWidth="79"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Left">
-                        <ItemsControl ItemsSource="{Binding WorkspaceCollection}">
+                <ScrollViewer Grid.Row="0" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Left" >
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                        <ItemsControl ItemsSource="{Binding PathCommands}" Width="Auto" >
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <StackPanel Orientation="Horizontal"/>
@@ -92,17 +73,15 @@
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <Button Margin="3,3,0,3" FontSize="12" HorizontalAlignment="Center" Content="{Binding Path=Name}"></Button>
+                                        <Button Margin="3,3,0,3" FontSize="12" HorizontalAlignment="Center" Content="{Binding Path=Name}" Command="{Binding Path=Command}"></Button>
                                         <TextBlock Text="->" Margin="0,3,0,3"></TextBlock>
                                     </StackPanel>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
-
                         </ItemsControl>
-                    </ScrollViewer>
-                    <Button Grid.Column="1" Content="{Binding a}"  MinWidth="75" Margin="3" ></Button>
-                </Grid>
-
+                        <Button Content="current workspace"  MinWidth="75" Margin="3" HorizontalAlignment="Left" />
+                    </StackPanel>
+                </ScrollViewer>
                 <ContentControl Grid.Row="1" Grid.Column="1" Background="Azure" Margin="0,0,2,2">
                     <TextBlock VerticalAlignment="Stretch" HorizontalAlignment="Stretch" TextAlignment="Center" Background="Azure">This part must contain workspace</TextBlock>
                 </ContentControl>
