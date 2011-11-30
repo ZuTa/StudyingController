@@ -46,5 +46,5 @@ namespace StudyingController.Views
         {
             this.password.Password = password;
         }
-    }
+    }  
 }

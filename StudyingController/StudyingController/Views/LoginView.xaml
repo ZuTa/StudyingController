@@ -44,7 +44,7 @@
                     <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding Path=LoginConfig.Port, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding CanChange}"></TextBox>
                 </Grid>
             </GroupBox>
-            <Button MinHeight="20" MaxHeight="40" MinWidth="50" MaxWidth="100" Margin="0,5,0,0" Content="Увійти" Command="{Binding Path=LoginCommand}" IsEnabled="{Binding CanChange}"></Button>
+            <Button MinHeight="20" MaxHeight="40" MinWidth="50" MaxWidth="100" Margin="0,5,0,0" IsDefault="True" Content="Увійти" Command="{Binding Path=LoginCommand}" IsEnabled="{Binding CanChange}"></Button>
             <TextBlock MaxWidth="230" HorizontalAlignment="Center" Margin="5" TextWrapping="Wrap" Text="{Binding Path=LoginDataError, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
         </StackPanel>
     </Grid>

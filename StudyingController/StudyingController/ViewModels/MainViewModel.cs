@@ -5,6 +5,7 @@ using System.Text;
 using StudyingController.Common;
 using System.Windows.Threading;
 using System.Windows.Input;
+using System.Collections.ObjectModel;
 
 namespace StudyingController.ViewModels
 {   
@@ -28,6 +29,28 @@ namespace StudyingController.ViewModels
             }
         }
 
+        private ObservableCollection<NamedCommandData> visibleCommands;
+        private ReadOnlyObservableCollection<NamedCommandData> visibleCommandsRO;
+        public ReadOnlyObservableCollection<NamedCommandData> VisibleCommands
+        {
+            get { return visibleCommandsRO; }
+        }//Collection for left buttont
+
+        private ObservableCollection<NamedCommandData> pathCommands;
+        private ReadOnlyObservableCollection<NamedCommandData> pathCommandsRO;
+        public ReadOnlyObservableCollection<NamedCommandData> PathCommands
+        {
+            get { return pathCommandsRO; }
+        }//Collection for path
+
+        private ObservableCollection<NamedCommandData> toolbarCommands;
+        private ReadOnlyObservableCollection<NamedCommandData> toolbarCommandsRO;
+        public ReadOnlyObservableCollection<NamedCommandData> ToolbarCommands
+        {
+            get { return toolbarCommandsRO; }
+        }//Collection for toolbar
+        
+
         #endregion
 
         #region Constructors
@@ -35,6 +58,8 @@ namespace StudyingController.ViewModels
         public MainViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)
         {
+            visibleCommands = GetVisibleCommands(controllerInterop);
+            visibleCommandsRO = new ReadOnlyObservableCollection<NamedCommandData>(visibleCommands);
         }
 
         #endregion
@@ -42,7 +67,7 @@ namespace StudyingController.ViewModels
         #region Commands
 
         private RelayCommand universityStructureCommand;
-        public ICommand UniversityStructureCommand
+        public RelayCommand UniversityStructureCommand
         {
             get 
             {
@@ -66,6 +91,18 @@ namespace StudyingController.ViewModels
         #endregion
 
         #region Methods
+
+        private ObservableCollection<NamedCommandData> GetVisibleCommands(IControllerInterop controllerInterop)
+        {
+            switch (controllerInterop.Session.User.UserRole)
+            {
+                case SCS.UserRoles.MainAdmin:
+                    return new ObservableCollection<NamedCommandData>{ new NamedCommandData(){Name = "Структура університету", Command = UniversityStructureCommand},
+                                                                       new NamedCommandData(){Name = "Користувачі"}
+                                                                     };
+            }
+            return new ObservableCollection<NamedCommandData>();
+        }
 
         private void OpenUniversityStructure()
         {

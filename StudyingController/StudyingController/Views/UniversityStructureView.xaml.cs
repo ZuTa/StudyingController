@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 namespace StudyingController.Views
 {
     /// <summary>
-    /// Interaction logic for StructureView.xaml
+    /// Interaction logic for UniversityStructureView.xaml
     /// </summary>
     public partial class UniversityStructureView : UserControl
     {
