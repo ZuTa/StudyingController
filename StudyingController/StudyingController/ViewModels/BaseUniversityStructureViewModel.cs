@@ -49,10 +49,9 @@ namespace StudyingController.ViewModels
             {
                 case UserRoles.MainSecretary:
                 case UserRoles.MainAdmin:
-                    StartLoading(2);
+                    StartLoading();
 
                     ControllerInterop.Service.BeginGetInstitutes(ControllerInterop.Session, OnGetInstisutesCompleted, null);
-                    ControllerInterop.Service.BeginGetFaculties(ControllerInterop.Session, null, OnGetFacultiesCompleted, null);
                     break;
                 default:
                     throw new NotImplementedException();
@@ -75,6 +74,10 @@ namespace StudyingController.ViewModels
                 {
                     try
                     {
+                        //Get faculties without institute
+                        StartLoading();
+                        ControllerInterop.Service.BeginGetFaculties(ControllerInterop.Session, null, OnGetFacultiesCompleted, null);
+
                         List<InstituteDTO> institutes = ControllerInterop.Service.EndGetInstitutes(iar);
                         foreach (var institute in institutes)
                         {

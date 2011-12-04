@@ -52,6 +52,12 @@ namespace StudyingController
             mainWindow.DataContext = mainViewModel;
         }
 
+        private void Logout()
+        {
+            Session = null;
+            mainWindow.DataContext = loginViewModel;
+        }
+
         #endregion
 
         #region Callbacks
@@ -68,11 +74,13 @@ namespace StudyingController
                 ShowError(ex.Message);
 
             e.Handled = true;
+
+            Logout();
         }
 
         private void mainViewModel_Logout(object sender, EventArgs e)
         {
-            mainWindow.DataContext = loginViewModel;
+            Logout();
         }
 
         #endregion
@@ -114,7 +122,8 @@ namespace StudyingController
             if (SessionChanged != null)
                 SessionChanged(this, EventArgs.Empty);
 
-            ShowMainView();
+            if (Session != null)
+                ShowMainView();
         }
 
         public event EventHandler SessionChanged;
