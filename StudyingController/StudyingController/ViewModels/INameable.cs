@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace StudyingController.Common
+namespace StudyingController.ViewModels
 {
     public interface INameable
     {

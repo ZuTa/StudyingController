@@ -30,7 +30,7 @@ namespace StudyingController.ViewModels
         public BaseUniversityStructureViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)
         {
-            tree = new Common.Tree();
+            tree = new Tree();
             tree.Changed += new EventHandler(tree_TreeChanged);
 
             ReBuildUniversityTree();
