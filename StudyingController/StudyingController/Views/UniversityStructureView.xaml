@@ -6,17 +6,11 @@
              xmlns:common="clr-namespace:StudyingController.Common"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
-        <TreeView Grid.Row="0" ItemsSource="{Binding StructureTree.Nodes}">
-            <TreeView.ItemTemplate>
-                <HierarchicalDataTemplate DataType = "{x:Type common:TreeNode}"
-                                ItemsSource = "{Binding Path=Childs}">
-                    <TextBlock Text="{Binding Path=Name}"/>
-                </HierarchicalDataTemplate>
-            </TreeView.ItemTemplate>
-        </TreeView>
-    </Grid>
+    <TreeView IsEnabled="{Binding IsNotBusy}" ItemsSource="{Binding Tree.Nodes}">
+        <TreeView.ItemTemplate>
+            <HierarchicalDataTemplate ItemsSource = "{Binding Path=Childs}">
+                <TextBlock Text="{Binding Path=Name}"/>
+            </HierarchicalDataTemplate>
+        </TreeView.ItemTemplate>
+    </TreeView>
 </UserControl>

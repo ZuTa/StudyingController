@@ -77,6 +77,17 @@ namespace StudyingController.ViewModels
             }
         }
 
+        private RelayCommand usersStructureCommand;
+        public RelayCommand UsersStructureCommand
+        {
+            get 
+            {
+                if (usersStructureCommand == null)
+                    usersStructureCommand = new RelayCommand(param => OpenUsersStructure());
+                return usersStructureCommand; 
+            }
+        }
+
         private RelayCommand logoutCommand;
         public RelayCommand LogoutCommand
         {
@@ -98,7 +109,7 @@ namespace StudyingController.ViewModels
             {
                 case SCS.UserRoles.MainAdmin:
                     return new ObservableCollection<NamedCommandData>{ new NamedCommandData(){Name = "Структура університету", Command = UniversityStructureCommand},
-                                                                       new NamedCommandData(){Name = "Користувачі"}
+                                                                       new NamedCommandData(){Name = "Користувачі", Command = UsersStructureCommand}
                                                                      };
             }
             return new ObservableCollection<NamedCommandData>();
@@ -108,6 +119,12 @@ namespace StudyingController.ViewModels
         {
             CurrentWorkspace = new UniversityStructureViewModel(UserInterop, ControllerInterop, Dispatcher);
         }
+
+        private void OpenUsersStructure()
+        {
+            CurrentWorkspace = new UsersStructureViewModel(UserInterop, ControllerInterop, Dispatcher);
+        }
+
 
         protected virtual void OnLogout()
         {

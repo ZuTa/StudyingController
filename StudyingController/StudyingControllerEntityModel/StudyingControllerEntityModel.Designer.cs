@@ -62,7 +62,7 @@ namespace StudyingControllerEntityModel
         /// </summary>
         public UniversityEntities() : base("name=UniversityEntities", "UniversityEntities")
         {
-            this.ContextOptions.LazyLoadingEnabled = true;
+            this.ContextOptions.LazyLoadingEnabled = false;
             OnContextCreated();
         }
     
@@ -71,7 +71,7 @@ namespace StudyingControllerEntityModel
         /// </summary>
         public UniversityEntities(string connectionString) : base(connectionString, "UniversityEntities")
         {
-            this.ContextOptions.LazyLoadingEnabled = true;
+            this.ContextOptions.LazyLoadingEnabled = false;
             OnContextCreated();
         }
     
@@ -80,7 +80,7 @@ namespace StudyingControllerEntityModel
         /// </summary>
         public UniversityEntities(EntityConnection connection) : base(connection, "UniversityEntities")
         {
-            this.ContextOptions.LazyLoadingEnabled = true;
+            this.ContextOptions.LazyLoadingEnabled = false;
             OnContextCreated();
         }
     

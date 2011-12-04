@@ -3,19 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
-using System.Data.Objects.DataClasses;
 
 namespace EntitiesDTO
 {
-    [DataContract]
-    public class BaseEntityDTO 
+    public class InstituteAdminDTO : SystemUserDTO
     {
-        private int id;
+        private int instituteID;
         [DataMember]
-        public int ID
+        public int InstituteID
         {
-            get { return id; }
-            set { id = value; }
+            get { return instituteID; }
+            set { instituteID = value; }
         }
     }
 }

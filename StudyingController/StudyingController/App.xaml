@@ -17,7 +17,11 @@
             <DataTemplate DataType="{x:Type vm:UniversityStructureViewModel}">
                 <v:UniversityStructureView/>
             </DataTemplate>
-            
+
+            <DataTemplate DataType="{x:Type vm:UsersStructureViewModel}">
+                <v:UsersStructureView/>
+            </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

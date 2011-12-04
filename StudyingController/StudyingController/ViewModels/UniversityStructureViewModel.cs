@@ -7,21 +7,10 @@ using System.Windows.Threading;
 
 namespace StudyingController.ViewModels
 {
-    class UniversityStructureViewModel : BaseApplicationViewModel
+    public class UniversityStructureViewModel : BaseUniversityStructureViewModel
     {
 
         #region Fields & Properties
-
-        private Tree structureTree;
-        public Tree StructureTree
-        {
-            get { return structureTree; }
-            set
-            {
-                structureTree = value;
-                OnPropertyChanged("StructureTree");
-            }
-        }
 
         #endregion
 
@@ -30,19 +19,19 @@ namespace StudyingController.ViewModels
         public UniversityStructureViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)
         {
-            structureTree = new Tree();
-            TreeNode tn1 = new TreeNode { Name = "TreeNode1" };
-            TreeNode tn2 = new TreeNode { Name = "SubTreeNode1" };
-            tn1.Childs.Add(tn2);
-            tn2.Childs.Add(new TreeNode { Name = "SubSubTreeNode1" });
-            tn1.Childs.Add(new TreeNode { Name = "SubTreeNode2" });
-            structureTree.Nodes.Add(tn1);
-            TreeNode tn3 = new TreeNode { Name = "TreeNode3" };
-            structureTree.Nodes.Add(tn3);
         }
 
         #endregion
 
+        #region Methods
+
+
+        #endregion
+
+        #region Callbacks
+
+
+        #endregion
 
     }
 }

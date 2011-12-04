@@ -60,6 +60,7 @@
     </ApplicationDefinition>
     <Compile Include="Common\Tree.cs" />
     <Compile Include="Common\TreeNode.cs" />
+    <Compile Include="ViewModels\LoadableViewModel.cs" />
     <Compile Include="ViewModels\NamedCommandData.cs" />
     <Compile Include="Common\Checks.cs" />
     <Compile Include="Common\HashHelper.cs" />
@@ -79,7 +80,9 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
+    <Compile Include="ViewModels\BaseUniversityStructureViewModel.cs" />
     <Compile Include="ViewModels\UniversityStructureViewModel.cs" />
+    <Compile Include="ViewModels\UsersStructureViewModel.cs" />
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
@@ -88,6 +91,9 @@
     </Compile>
     <Compile Include="Views\UniversityStructureView.xaml.cs">
       <DependentUpon>UniversityStructureView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UsersStructureView.xaml.cs">
+      <DependentUpon>UsersStructureView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -110,6 +116,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\UniversityStructureView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UsersStructureView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -153,9 +163,19 @@
     <None Include="Service References\SCS\ControllerService43.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\SCS\StudyingController.SCS.CathedraDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SCS\StudyingController.SCS.FacultyDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SCS\StudyingController.SCS.InstituteDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\SCS\StudyingController.SCS.Session.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="ViewModels\ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Converters\" />

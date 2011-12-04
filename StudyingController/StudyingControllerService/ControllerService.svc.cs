@@ -78,7 +78,9 @@ namespace StudyingControllerService
             {
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    SystemUser user = context.SystemUsers.Where(u => u.Login == login.ToLower()).FirstOrDefault();
+                    SystemUser user = (from u in context.SystemUsers.Include("UserInformation")
+                                       where u.Login == login.ToLower()
+                                       select u).FirstOrDefault();
 
                     if (!(user != null && Encoding.UTF8.GetString(user.Password) == password))
                         throw new Exception("У доступі відмовлено!");
@@ -97,5 +99,73 @@ namespace StudyingControllerService
 
         }
 
+        public List<InstituteDTO> GetInstitutes(Session session)
+        {
+            try
+            {
+                CheckSession(session);
+                List<InstituteDTO> result = new List<InstituteDTO>();
+
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    foreach (Institute institute in context.Institutes)
+                    {
+                        result.Add(GetDTO<InstituteDTO>(institute));
+                    }
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public List<FacultyDTO> GetFaculties(Session session, int? instituteID)
+        {
+            try
+            {
+                CheckSession(session);
+                List<FacultyDTO> result = new List<FacultyDTO>();
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var query = from f in context.Faculties
+                                where f.InstituteID == instituteID || (instituteID == null && f.InstituteID == null)
+                                select f;
+                    foreach (var f in query)
+                        result.Add(GetDTO<FacultyDTO>(f));
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public List<CathedraDTO> GetCathedras(Session session, int facultyID)
+        {
+            try
+            {
+                CheckSession(session);
+                List<CathedraDTO> result = new List<CathedraDTO>();
+
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var query = from c in context.Cathedras
+                                where c.FacultyID == facultyID 
+                                select c;
+                    foreach (var c in query)
+                        result.Add(GetDTO<CathedraDTO>(c));
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
     }
 }

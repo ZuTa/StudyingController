@@ -12,7 +12,7 @@
         </Grid.RowDefinitions>
         <ToolBarTray Background="White">
             <ToolBar  ToolTip="This toolbar for all users">
-                <Button Width="30" Height="30" ToolTip="Logout">Out</Button>
+                <Button Width="30" Height="30" Command="{Binding LogoutCommand}" ToolTip="Logout">Out</Button>
                 <Button Width="30" Height="30" ToolTip="Edit Information">EI</Button>
             </ToolBar>
             <ToolBar ToolTip="This toolbar must have modifications for all users" ItemsSource="{Binding ToolbarCommands}">
