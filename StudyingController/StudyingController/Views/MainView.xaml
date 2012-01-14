@@ -16,11 +16,12 @@
             <ToolBar>
                 <Button Margin="3" Content="Додати" x:Name="btnAdd" Click="btnAdd_Click">
                     <Button.ContextMenu>
-                        <ContextMenu x:Name="cmAdd">
-                            <MenuItem Header="Інститут" />
-                            <MenuItem Header="Факультет" />
-                            <MenuItem Header="Кафедру" />
-                            <MenuItem Header="Групу" />
+                        <ContextMenu x:Name="cmAdd" ItemsSource="{Binding CurrentCommands}">
+                            <ContextMenu.ItemTemplate>
+                                <DataTemplate>
+                                    <MenuItem Header="{Binding Name}" Command="{Binding Command}"/>
+                                </DataTemplate>
+                            </ContextMenu.ItemTemplate>
                         </ContextMenu>
                     </Button.ContextMenu>
                 </Button>

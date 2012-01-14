@@ -28,8 +28,29 @@ namespace StudyingController.ViewModels
                     { 
                         new NamedCommandData(){Name = "Структура університету", Command = UniversityStructureCommand},
                         new NamedCommandData(){Name = "Користувачі", Command = UsersStructureCommand}
-                                                                     };
+                    };
                 return adminMainCommands;
+            }
+        }
+
+        #endregion
+
+        #region Add commands
+
+        private ObservableCollection<NamedCommandData> allAddingCommands;
+        public ObservableCollection<NamedCommandData> AllAddingCommands
+        {
+            get
+            {
+                if (allAddingCommands == null)
+                    allAddingCommands = new ObservableCollection<NamedCommandData>
+                    { 
+                        new NamedCommandData(){Name = "Університет", Command = AddUniversityCommand},
+                        new NamedCommandData(){Name = "Факультет", Command = null},
+                        new NamedCommandData(){Name = "Кафедру", Command = null},
+                        new NamedCommandData(){Name = "Групу", Command = null},
+                    };
+                return allAddingCommands;
             }
         }
 
@@ -97,10 +118,10 @@ namespace StudyingController.ViewModels
         {
             workspaces = new Stack<BaseApplicationViewModel>();
 
-            mainCommands = GetMainCommands(controllerInterop);
+            mainCommands = GetMainCommands();
             mainCommandsRO = new ReadOnlyObservableCollection<NamedCommandData>(mainCommands);
 
-            currentCommands = new ObservableCollection<NamedCommandData>();
+            currentCommands = GetModificationCommands();
             currentCommandsRO = new ReadOnlyObservableCollection<NamedCommandData>(currentCommands);
         }
 
@@ -116,28 +137,6 @@ namespace StudyingController.ViewModels
                 if (addEntityCommand == null)
                     addEntityCommand = new RelayCommand(param => AddEntity());
                 return addEntityCommand; 
-            }
-        }
-
-        private RelayCommand modifyEntityCommand;
-        public RelayCommand ModifyEntityCommand
-        {
-            get 
-            {
-                if (modifyEntityCommand == null)
-                    modifyEntityCommand = new RelayCommand(param => ModifyEntity());
-                return modifyEntityCommand; 
-            }
-        }
-
-        private RelayCommand removeEntityCommand;
-        public RelayCommand RemoveEntityCommand
-        {
-            get 
-            {
-                if (removeEntityCommand == null)
-                    removeEntityCommand = new RelayCommand(param => RemoveEntity());
-                return removeEntityCommand; 
             }
         }
 
@@ -174,9 +173,29 @@ namespace StudyingController.ViewModels
             }
         }
 
+        #region University structure
+
+        private RelayCommand addUniversityCommand;
+        public RelayCommand AddUniversityCommand
+        {
+            get
+            {
+                if (addUniversityCommand == null)
+                    addUniversityCommand = new RelayCommand(param => AddUniversity());
+                return addUniversityCommand; 
+            }
+        }
+
+        #endregion
+
         #endregion
 
         #region Methods
+
+        private void AddUniversity()
+        {
+            
+        }
 
         private void AddEntity()
         {
@@ -193,12 +212,23 @@ namespace StudyingController.ViewModels
             throw new NotImplementedException();
         }
 
-        private ObservableCollection<NamedCommandData> GetMainCommands(IControllerInterop controllerInterop)
+        private ObservableCollection<NamedCommandData> GetMainCommands()
         {
-            switch (controllerInterop.Session.User.UserRole)
+            switch (ControllerInterop.Session.User.UserRole)
             {
                 case UserRoles.MainAdmin:
                     return AdminMainCommands;
+                default:
+                    return new ObservableCollection<NamedCommandData>();
+            }
+        }
+
+        private ObservableCollection<NamedCommandData> GetModificationCommands()
+        {
+            switch (ControllerInterop.Session.User.UserRole)
+            {
+                case UserRoles.MainAdmin:
+                    return AllAddingCommands;
                 default:
                     return new ObservableCollection<NamedCommandData>();
             }
