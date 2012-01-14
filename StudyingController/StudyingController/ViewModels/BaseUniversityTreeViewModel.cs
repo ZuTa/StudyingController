@@ -5,10 +5,11 @@ using System.Text;
 using StudyingController.Common;
 using System.Windows.Threading;
 using StudyingController.SCS;
+using EntitiesDTO;
 
 namespace StudyingController.ViewModels
 {
-    public class BaseUniversityStructureViewModel : LoadableViewModel
+    public abstract class BaseUniversityTreeViewModel : LoadableViewModel, ISelectable
     {
         #region Fields & Properties
 
@@ -23,13 +24,31 @@ namespace StudyingController.ViewModels
             }
         }
 
+        private BaseEntityDTO currentEntity;
+        public BaseEntityDTO CurrentEntity
+        {
+            get { return currentEntity; }
+            set 
+            {
+                if (currentEntity != value)
+                {
+                    currentEntity = value;
+
+                    SelectedEntityChanged(currentEntity);
+                    OnPropertyChanged("CurrentEntity");
+                }
+            }
+        }
+
         #endregion
 
         #region Constructors
 
-        public BaseUniversityStructureViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
+        public BaseUniversityTreeViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)
         {
+            CurrentEntity = new BaseEntityDTO();
+
             tree = new Tree();
             tree.Changed += new EventHandler(tree_TreeChanged);
 
@@ -38,7 +57,28 @@ namespace StudyingController.ViewModels
 
         #endregion
 
+        #region Commands
+
+        private RelayCommand selectedEntityChangedCommand;
+        public RelayCommand SelectedEntityChangedCommand
+        {
+            get 
+            {
+                if (selectedEntityChangedCommand == null)
+                    selectedEntityChangedCommand = new RelayCommand(param => SelectedEntityChanged(param as BaseEntityDTO));
+                return selectedEntityChangedCommand; 
+            }
+        }
+
+        #endregion
+
         #region Methods
+
+        private void SelectedEntityChanged(BaseEntityDTO entity)
+        {
+            currentEntity = entity;
+            OnSelectedEntityChanged(entity as BaseEntityDTO);
+        }
 
         private void ReBuildUniversityTree()
         {
@@ -161,6 +201,31 @@ namespace StudyingController.ViewModels
 
         #endregion
 
+        #region Events
 
+        protected virtual void OnSelectedEntityChanged(BaseEntityDTO entity)
+        {
+            if (SelectedEntityChangedEvent != null)
+                SelectedEntityChangedEvent(this, new SelectedEntityChangedArgs(entity));
+        }
+        public event SelectedEntityChangedHandler SelectedEntityChangedEvent;
+
+        #endregion
+
+    }
+
+    public delegate void SelectedEntityChangedHandler(object sender, SelectedEntityChangedArgs e);
+    public class SelectedEntityChangedArgs
+    {
+        private BaseEntityDTO _value;
+        public BaseEntityDTO Value
+        {
+            get { return _value; }
+        }
+
+        public SelectedEntityChangedArgs(BaseEntityDTO entity)
+        {
+            this._value = entity;
+        }
     }
 }

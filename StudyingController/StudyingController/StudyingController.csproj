@@ -58,14 +58,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Common\Tree.cs" />
-    <Compile Include="Common\TreeNode.cs" />
+    <Compile Include="Common\TreeViewHelper.cs" />
+    <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="ViewModels\FacultyViewModel.cs" />
+    <Compile Include="ViewModels\InstituteViewModel.cs" />
+    <Compile Include="ViewModels\ISaveable.cs" />
+    <Compile Include="ViewModels\ISelectable.cs" />
+    <Compile Include="ViewModels\Models\BaseModel.cs" />
+    <Compile Include="ViewModels\Models\InstituteModel.cs" />
+    <Compile Include="ViewModels\Models\NamedModel.cs" />
+    <Compile Include="ViewModels\Tree.cs" />
+    <Compile Include="ViewModels\TreeNode.cs" />
     <Compile Include="ViewModels\LoadableViewModel.cs" />
     <Compile Include="ViewModels\NamedCommandData.cs" />
     <Compile Include="Common\Checks.cs" />
     <Compile Include="Common\HashHelper.cs" />
     <Compile Include="Common\IControllerInterop.cs" />
-    <Compile Include="Common\INameable.cs" />
+    <Compile Include="ViewModels\IHeaderable.cs" />
     <Compile Include="Common\IPasswordConsumer.cs" />
     <Compile Include="Common\IPasswordSource.cs" />
     <Compile Include="Common\IUserInterop.cs" />
@@ -80,17 +89,29 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
-    <Compile Include="ViewModels\BaseUniversityStructureViewModel.cs" />
+    <Compile Include="ViewModels\BaseUniversityTreeViewModel.cs" />
+    <Compile Include="ViewModels\EditableViewModel.cs" />
     <Compile Include="ViewModels\UniversityStructureViewModel.cs" />
+    <Compile Include="ViewModels\UniversityTreeViewModel.cs" />
     <Compile Include="ViewModels\UsersStructureViewModel.cs" />
+    <Compile Include="ViewModels\UsersTreeViewModel.cs" />
+    <Compile Include="Views\FacultyView.xaml.cs">
+      <DependentUpon>FacultyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InstituteView.xaml.cs">
+      <DependentUpon>InstituteView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\UniversityStructureView.xaml.cs">
-      <DependentUpon>UniversityStructureView.xaml</DependentUpon>
+    <Compile Include="Views\EditableView.xaml.cs">
+      <DependentUpon>EditableView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UniversityTreeView.xaml.cs">
+      <DependentUpon>UniversityTreeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UsersStructureView.xaml.cs">
       <DependentUpon>UsersStructureView.xaml</DependentUpon>
@@ -107,6 +128,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\FacultyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InstituteView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\LoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -115,7 +144,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\UniversityStructureView.xaml">
+    <Page Include="Views\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditableView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UniversityTreeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -145,6 +182,9 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\DataSources\EntitiesDTO.CathedraDTO.datasource" />
+    <None Include="Properties\DataSources\EntitiesDTO.FacultyDTO.datasource" />
+    <None Include="Properties\DataSources\EntitiesDTO.InstituteDTO.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -163,23 +203,12 @@
     <None Include="Service References\SCS\ControllerService43.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SCS\StudyingController.SCS.CathedraDTO.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\SCS\StudyingController.SCS.FacultyDTO.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\SCS\StudyingController.SCS.InstituteDTO.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Service References\SCS\StudyingController.SCS.Session.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="ViewModels\ClassDiagram.cd" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Converters\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
@@ -200,6 +229,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\SCS\ControllerService1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EntityModelDTO\EntitiesDTO.csproj">
+      <Project>{86B57E17-94BC-45DD-BCC9-2DA0C9C4D596}</Project>
+      <Name>EntitiesDTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

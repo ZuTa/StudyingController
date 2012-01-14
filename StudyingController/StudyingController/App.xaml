@@ -3,9 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="clr-namespace:StudyingController.ViewModels"
              xmlns:v="clr-namespace:StudyingController.Views">
-    <Application.Resources>
-        <ResourceDictionary>
-            
+    <Application.Resources>       
+        <ResourceDictionary>            
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Views/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
             <DataTemplate DataType="{x:Type vm:LoginViewModel}">
                 <v:LoginView/>
             </DataTemplate>
@@ -14,13 +17,26 @@
                 <v:MainView/>
             </DataTemplate>
             
-            <DataTemplate DataType="{x:Type vm:UniversityStructureViewModel}">
-                <v:UniversityStructureView/>
+            <DataTemplate DataType="{x:Type vm:EditableViewModel}">
+                <v:EditableView/>
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type vm:UniversityTreeViewModel}">
+                <v:UniversityTreeView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type vm:UsersStructureViewModel}">
+            <DataTemplate DataType="{x:Type vm:UsersTreeViewModel}">
                 <v:UsersStructureView/>
             </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:InstituteViewModel}">
+                <v:InstituteView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:FacultyViewModel}">
+                <v:FacultyView/>
+            </DataTemplate>
+
 
         </ResourceDictionary>
     </Application.Resources>

@@ -123,6 +123,9 @@
   <data name="ErrorTxt" xml:space="preserve">
     <value>Помилка</value>
   </data>
+  <data name="InstituteViewHeaderText" xml:space="preserve">
+    <value>Новий інститут</value>
+  </data>
   <data name="LoginConfigFileName" xml:space="preserve">
     <value>loginConfig.xml</value>
   </data>
@@ -131,5 +134,11 @@
   </data>
   <data name="Service" xml:space="preserve">
     <value>ControllerService.svc</value>
+  </data>
+  <data name="UniversityStructureHeadeText" xml:space="preserve">
+    <value>Структура університету</value>
+  </data>
+  <data name="UserStructureHeaderText" xml:space="preserve">
+    <value>Користувачі</value>
   </data>
 </root>

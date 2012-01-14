@@ -5,10 +5,10 @@ using System.Text;
 
 namespace StudyingController.ViewModels
 {
-    public interface INameable
+    public interface IHeaderable
     {
 
-        string Name { get; }
+        string HeaderText { get; }
 
     }
 }

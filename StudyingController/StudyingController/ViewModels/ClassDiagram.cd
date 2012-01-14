@@ -33,16 +33,49 @@
   <Class Name="StudyingController.ViewModels.MainViewModel" Collapsed="true">
     <Position X="5.75" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAACBAgABAACAAAQBQAIEAdAAAIAQAAAACAAAAIA=</HashCode>
+      <HashCode>EIAAgAAhAgAACiCAACArQaKgAFAABIBQAIAACQAACJg=</HashCode>
       <FileName>ViewModels\MainViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="StudyingController.ViewModels.BaseUniversityStructureViewModel" Collapsed="true">
+  <Class Name="StudyingController.ViewModels.BaseUniversityTreeViewModel" Collapsed="true">
     <Position X="3" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAEAAAAACAABAAgAAAAgAQAAAAAAAAAAAAAAAAAAI=</HashCode>
-      <FileName>ViewModels\BaseUniversityStructureViewModel.cs</FileName>
+      <HashCode>AAAAEAAAAACABhAAgAQAAgCQgAAAAIAAEAAAAAAAAAI=</HashCode>
+      <FileName>ViewModels\BaseUniversityTreeViewModel.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="StudyingController.ViewModels.EditableViewModel" Collapsed="true">
+    <Position X="4.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAYAAEAEAAAAxAAAAAAACAAAAAQAQAACAAAAAIIA=</HashCode>
+      <FileName>ViewModels\EditableViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="StudyingController.ViewModels.UsersTreeViewModel" Collapsed="true">
+    <Position X="1.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>ViewModels\UsersTreeViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="StudyingController.ViewModels.RelayCommand" Collapsed="true">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEACAAQAAECAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\RelayCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="StudyingController.ViewModels.InstituteViewModel" Collapsed="true">
+    <Position X="7.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAACCAAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\InstituteViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

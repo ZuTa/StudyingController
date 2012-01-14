@@ -6,6 +6,7 @@ using StudyingController.Common;
 using System.Windows.Threading;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
+using EntitiesDTO;
 
 namespace StudyingController.ViewModels
 {   
@@ -13,27 +14,63 @@ namespace StudyingController.ViewModels
     {
         #region Fields & Properties
 
-        private BaseApplicationViewModel currentWorkspace = null; 
+        #region Named commands
+
+        #region Main commands
+
+        private ObservableCollection<NamedCommandData> adminMainCommands;
+        public ObservableCollection<NamedCommandData> AdminMainCommands
+        {
+            get
+            {
+                if (adminMainCommands == null)
+                    adminMainCommands = new ObservableCollection<NamedCommandData>
+                    { 
+                        new NamedCommandData(){Name = "Структура університету", Command = UniversityStructureCommand},
+                        new NamedCommandData(){Name = "Користувачі", Command = UsersStructureCommand}
+                                                                     };
+                return adminMainCommands;
+            }
+        }
+
+        #endregion
+
+        #endregion
+
+        public bool IsSaveable
+        {
+            get
+            {
+                return CurrentWorkspace is ISaveable;
+            }
+        }
+
+        private Stack<BaseApplicationViewModel> workspaces;
 
         public BaseApplicationViewModel CurrentWorkspace
         {
             get 
-            { 
-                return currentWorkspace; 
-            }
-            set 
             {
-                if (currentWorkspace != value)
-                    currentWorkspace = value;
-                OnPropertyChanged("CurrentWorkspace");
+                if (workspaces.Count == 0)
+                    return null;
+
+                return workspaces.Peek();
             }
         }
 
-        private ObservableCollection<NamedCommandData> visibleCommands;
-        private ReadOnlyObservableCollection<NamedCommandData> visibleCommandsRO;
-        public ReadOnlyObservableCollection<NamedCommandData> VisibleCommands
+        public bool HasWorkspaces
         {
-            get { return visibleCommandsRO; }
+            get
+            {
+                return workspaces.Count > 0;
+            }
+        }
+
+        private ObservableCollection<NamedCommandData> mainCommands;
+        private ReadOnlyObservableCollection<NamedCommandData> mainCommandsRO;
+        public ReadOnlyObservableCollection<NamedCommandData> MainCommands
+        {
+            get { return mainCommandsRO; }
         }//Collection for left buttont
 
         private ObservableCollection<NamedCommandData> pathCommands;
@@ -43,11 +80,11 @@ namespace StudyingController.ViewModels
             get { return pathCommandsRO; }
         }//Collection for path
 
-        private ObservableCollection<NamedCommandData> toolbarCommands;
-        private ReadOnlyObservableCollection<NamedCommandData> toolbarCommandsRO;
-        public ReadOnlyObservableCollection<NamedCommandData> ToolbarCommands
+        private ObservableCollection<NamedCommandData> currentCommands;
+        private ReadOnlyObservableCollection<NamedCommandData> currentCommandsRO;
+        public ReadOnlyObservableCollection<NamedCommandData> CurrentCommands
         {
-            get { return toolbarCommandsRO; }
+            get { return currentCommandsRO; }
         }//Collection for toolbar
         
 
@@ -58,13 +95,51 @@ namespace StudyingController.ViewModels
         public MainViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)
         {
-            visibleCommands = GetVisibleCommands(controllerInterop);
-            visibleCommandsRO = new ReadOnlyObservableCollection<NamedCommandData>(visibleCommands);
+            workspaces = new Stack<BaseApplicationViewModel>();
+
+            mainCommands = GetMainCommands(controllerInterop);
+            mainCommandsRO = new ReadOnlyObservableCollection<NamedCommandData>(mainCommands);
+
+            currentCommands = new ObservableCollection<NamedCommandData>();
+            currentCommandsRO = new ReadOnlyObservableCollection<NamedCommandData>(currentCommands);
         }
 
         #endregion
 
         #region Commands
+
+        private RelayCommand addEntityCommand;
+        public RelayCommand AddEntityCommand
+        {
+            get 
+            {
+                if (addEntityCommand == null)
+                    addEntityCommand = new RelayCommand(param => AddEntity());
+                return addEntityCommand; 
+            }
+        }
+
+        private RelayCommand modifyEntityCommand;
+        public RelayCommand ModifyEntityCommand
+        {
+            get 
+            {
+                if (modifyEntityCommand == null)
+                    modifyEntityCommand = new RelayCommand(param => ModifyEntity());
+                return modifyEntityCommand; 
+            }
+        }
+
+        private RelayCommand removeEntityCommand;
+        public RelayCommand RemoveEntityCommand
+        {
+            get 
+            {
+                if (removeEntityCommand == null)
+                    removeEntityCommand = new RelayCommand(param => RemoveEntity());
+                return removeEntityCommand; 
+            }
+        }
 
         private RelayCommand universityStructureCommand;
         public RelayCommand UniversityStructureCommand
@@ -103,33 +178,110 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
-        private ObservableCollection<NamedCommandData> GetVisibleCommands(IControllerInterop controllerInterop)
+        private void AddEntity()
+        {
+            PushWorkspace(new InstituteViewModel(UserInterop, ControllerInterop, Dispatcher));   
+        }
+
+        private void ModifyEntity()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void RemoveEntity()
+        {
+            throw new NotImplementedException();
+        }
+
+        private ObservableCollection<NamedCommandData> GetMainCommands(IControllerInterop controllerInterop)
         {
             switch (controllerInterop.Session.User.UserRole)
             {
-                case SCS.UserRoles.MainAdmin:
-                    return new ObservableCollection<NamedCommandData>{ new NamedCommandData(){Name = "Структура університету", Command = UniversityStructureCommand},
-                                                                       new NamedCommandData(){Name = "Користувачі", Command = UsersStructureCommand}
-                                                                     };
+                case UserRoles.MainAdmin:
+                    return AdminMainCommands;
+                default:
+                    return new ObservableCollection<NamedCommandData>();
             }
-            return new ObservableCollection<NamedCommandData>();
         }
 
         private void OpenUniversityStructure()
         {
-            CurrentWorkspace = new UniversityStructureViewModel(UserInterop, ControllerInterop, Dispatcher);
+            ChangeCurrentWorkspace(new UniversityStructureViewModel(UserInterop, ControllerInterop, Dispatcher));
         }
 
         private void OpenUsersStructure()
         {
-            CurrentWorkspace = new UsersStructureViewModel(UserInterop, ControllerInterop, Dispatcher);
+            ChangeCurrentWorkspace(new UsersStructureViewModel(UserInterop, ControllerInterop, Dispatcher));
         }
 
+        private void ChangeCurrentWorkspace(BaseApplicationViewModel viewModel)
+        {
+            ClearWorkspaces();
+
+            PushWorkspace(viewModel);
+        }
+
+        private void SubscribeToEvents(BaseApplicationViewModel workspace)
+        {
+            if (workspace is BaseUniversityTreeViewModel)
+                (workspace as BaseUniversityTreeViewModel).SelectedEntityChangedEvent += SelectedEntityChanged;
+        }
+
+        private void UnsubscribeFromEvents(BaseApplicationViewModel workspace)
+        {
+            if (workspace is BaseUniversityTreeViewModel)
+                (workspace as BaseUniversityTreeViewModel).SelectedEntityChangedEvent -= SelectedEntityChanged;
+        }
 
         protected virtual void OnLogout()
         {
             if (Logout != null)
                 Logout(this, EventArgs.Empty);
+        }
+
+        private void AddCurrentCommands(ObservableCollection<NamedCommandData> collection)
+        {
+            foreach (NamedCommandData command in collection)
+                currentCommands.Add(command);
+        }
+
+        private void PushWorkspace(BaseApplicationViewModel viewModel)
+        {
+            workspaces.Push(viewModel);
+            SubscribeToEvents(viewModel);
+
+            OnCurrentWorkspaceChanged();
+        }
+
+        private void PopWorkspace()
+        {
+            UnsubscribeFromEvents(workspaces.Pop());
+
+            OnCurrentWorkspaceChanged();
+        }
+
+        private void ClearWorkspaces()
+        {
+            while (workspaces.Count > 0)
+            {
+                PopWorkspace();
+            }
+        }
+
+        private void OnCurrentWorkspaceChanged()
+        {
+            OnPropertyChanged("CurrentWorkspace");
+            OnPropertyChanged("HasWorkspaces");
+            OnPropertyChanged("IsSaveable");
+        }
+
+        #endregion
+
+        #region Callbacks
+
+        private void SelectedEntityChanged(object sender, SelectedEntityChangedArgs e)
+        {
+            //ChangeCurrentCommands(e.Value);
         }
 
         #endregion

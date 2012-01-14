@@ -17,5 +17,15 @@ namespace EntitiesDTO
             get { return id; }
             set { id = value; }
         }
+
+        public bool IsSameDatabaseObject(BaseEntityDTO obj)
+        {
+            if (obj == null)
+                return false;
+            if (obj.ID < 0)
+                return false;
+
+            return this.GetType() == obj.GetType() && obj.ID == this.ID;
+        }
     }
 }

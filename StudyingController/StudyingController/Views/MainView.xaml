@@ -4,23 +4,33 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" >
-             <!--:DesignHeight="Auto" d:DesignWidth="300"-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition  Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <ToolBarTray Background="White">
-            <ToolBar  ToolTip="This toolbar for all users">
-                <Button Width="30" Height="30" Command="{Binding LogoutCommand}" ToolTip="Logout">Out</Button>
-                <Button Width="30" Height="30" ToolTip="Edit Information">EI</Button>
+            <ToolBar>
+                <Button Command="{Binding LogoutCommand}" Content="Вийти"/>
             </ToolBar>
-            <ToolBar ToolTip="This toolbar must have modifications for all users" ItemsSource="{Binding ToolbarCommands}">
-                <ToolBar.ItemTemplate>
-                    <DataTemplate>
-                        <Button Width="30" Height="30" Content="{Binding Path=Name}"></Button>
-                    </DataTemplate>
-                </ToolBar.ItemTemplate>
+            <ToolBar>
+                <Button Margin="3" Content="Додати" x:Name="btnAdd" Click="btnAdd_Click">
+                    <Button.ContextMenu>
+                        <ContextMenu x:Name="cmAdd">
+                            <MenuItem Header="Інститут" />
+                            <MenuItem Header="Факультет" />
+                            <MenuItem Header="Кафедру" />
+                            <MenuItem Header="Групу" />
+                        </ContextMenu>
+                    </Button.ContextMenu>
+                </Button>
+                
+                <Button Margin="3" Content="Видалити" x:Name="btnRemove"/>
+            </ToolBar>
+
+            <ToolBar Visibility="{Binding Path=IsSaveable, Converter={StaticResource B2V}}">
+                <Button Margin="3" Content="Зберегти" IsEnabled="{Binding CurrentWorkspace.CanSave}"/>
+                <Button Margin="3" Content="Відмінити зміни" IsEnabled="{Binding CurrentWorkspace.CanSave}"/>
             </ToolBar>
         </ToolBarTray>
         <Grid Grid.Row="1">
@@ -39,7 +49,7 @@
                             <Expander Header="User Info" IsExpanded="True" Background="Bisque">
                                 <ContentControl Width="170" Height="130"></ContentControl>
                             </Expander>
-                            <ItemsControl Grid.Row="1" Width="Auto" ItemsSource="{Binding VisibleCommands}" HorizontalContentAlignment="Stretch" Background="Beige">
+                            <ItemsControl Grid.Row="1" Width="Auto" ItemsSource="{Binding MainCommands}" HorizontalContentAlignment="Stretch" Background="Beige">
                                     <ItemsControl.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <StackPanel/>
@@ -53,15 +63,12 @@
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                             </ItemsControl>
-                        </Grid>
+                        </Grid>                        
                     </ScrollViewer>
                 </Expander>
             </Grid>
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                </Grid.RowDefinitions>
+            <ContentControl Grid.Column="1" Background="Azure" Margin="0,0,2,2" Content="{Binding CurrentWorkspace}"/>
+            <!--<Grid Grid.Column="1">
                 <ScrollViewer Grid.Row="0" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Left" >
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                         <ItemsControl ItemsSource="{Binding PathCommands}" Width="Auto" >
@@ -79,11 +86,12 @@
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
-                        <Button Content="current workspace"  MinWidth="75" Margin="3" HorizontalAlignment="Left" />
+                        <TextBlock Text="{Binding CurrentWorkspace.HeaderText}" Visibility="{Binding Path=HasWorkspaces, Converter={StaticResource B2V}}"/>
                     </StackPanel>
                 </ScrollViewer>
-                <ContentControl Grid.Row="1" Grid.Column="1" Background="Azure" Margin="0,0,2,2" Content="{Binding CurrentWorkspace}"/>
-            </Grid>
+                
+                
+            </Grid>-->
         </Grid>
     </Grid>
 </UserControl>

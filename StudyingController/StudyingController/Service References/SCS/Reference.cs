@@ -26,7 +26,7 @@ namespace StudyingController.SCS {
         private double SessionIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private StudyingController.SCS.SystemUserDTO UserField;
+        private EntitiesDTO.SystemUserDTO UserField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -52,7 +52,7 @@ namespace StudyingController.SCS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public StudyingController.SCS.SystemUserDTO User {
+        public EntitiesDTO.SystemUserDTO User {
             get {
                 return this.UserField;
             }
@@ -72,275 +72,6 @@ namespace StudyingController.SCS {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="SystemUserDTO", Namespace="http://schemas.datacontract.org/2004/07/EntitiesDTO")]
-    [System.SerializableAttribute()]
-    public partial class SystemUserDTO : StudyingController.SCS.BaseEntityDTO {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LoginField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private StudyingController.SCS.UserInformationDTO UserInformationField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private StudyingController.SCS.UserRoles UserRoleField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Login {
-            get {
-                return this.LoginField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LoginField, value) != true)) {
-                    this.LoginField = value;
-                    this.RaisePropertyChanged("Login");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public StudyingController.SCS.UserInformationDTO UserInformation {
-            get {
-                return this.UserInformationField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UserInformationField, value) != true)) {
-                    this.UserInformationField = value;
-                    this.RaisePropertyChanged("UserInformation");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public StudyingController.SCS.UserRoles UserRole {
-            get {
-                return this.UserRoleField;
-            }
-            set {
-                if ((this.UserRoleField.Equals(value) != true)) {
-                    this.UserRoleField = value;
-                    this.RaisePropertyChanged("UserRole");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="BaseEntityDTO", Namespace="http://schemas.datacontract.org/2004/07/EntitiesDTO")]
-    [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(StudyingController.SCS.UserInformationDTO))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(StudyingController.SCS.NamedEntityDTO))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(StudyingController.SCS.InstituteDTO))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(StudyingController.SCS.FacultyDTO))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(StudyingController.SCS.CathedraDTO))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(StudyingController.SCS.SystemUserDTO))]
-    public partial class BaseEntityDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IDField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UserInformationDTO", Namespace="http://schemas.datacontract.org/2004/07/EntitiesDTO")]
-    [System.SerializableAttribute()]
-    public partial class UserInformationDTO : StudyingController.SCS.BaseEntityDTO {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string EmailField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FirstNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LastNameField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Email {
-            get {
-                return this.EmailField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
-                    this.EmailField = value;
-                    this.RaisePropertyChanged("Email");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FirstName {
-            get {
-                return this.FirstNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
-                    this.FirstNameField = value;
-                    this.RaisePropertyChanged("FirstName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string LastName {
-            get {
-                return this.LastNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
-                    this.LastNameField = value;
-                    this.RaisePropertyChanged("LastName");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="NamedEntityDTO", Namespace="http://schemas.datacontract.org/2004/07/EntitiesDTO")]
-    [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(StudyingController.SCS.InstituteDTO))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(StudyingController.SCS.FacultyDTO))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(StudyingController.SCS.CathedraDTO))]
-    public partial class NamedEntityDTO : StudyingController.SCS.BaseEntityDTO {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="InstituteDTO", Namespace="http://schemas.datacontract.org/2004/07/EntitiesDTO")]
-    [System.SerializableAttribute()]
-    public partial class InstituteDTO : StudyingController.SCS.NamedEntityDTO {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="FacultyDTO", Namespace="http://schemas.datacontract.org/2004/07/EntitiesDTO")]
-    [System.SerializableAttribute()]
-    public partial class FacultyDTO : StudyingController.SCS.NamedEntityDTO {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> InstituteIDField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> InstituteID {
-            get {
-                return this.InstituteIDField;
-            }
-            set {
-                if ((this.InstituteIDField.Equals(value) != true)) {
-                    this.InstituteIDField = value;
-                    this.RaisePropertyChanged("InstituteID");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CathedraDTO", Namespace="http://schemas.datacontract.org/2004/07/EntitiesDTO")]
-    [System.SerializableAttribute()]
-    public partial class CathedraDTO : StudyingController.SCS.NamedEntityDTO {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int FacultyIDField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int FacultyID {
-            get {
-                return this.FacultyIDField;
-            }
-            set {
-                if ((this.FacultyIDField.Equals(value) != true)) {
-                    this.FacultyIDField = value;
-                    this.RaisePropertyChanged("FacultyID");
-                }
-            }
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UserRoles", Namespace="http://schemas.datacontract.org/2004/07/EntitiesDTO")]
-    public enum UserRoles : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        MainAdmin = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        InstituteAdmin = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        FacultyAdmin = 2,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        MainSecretary = 3,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        InstituteSecretary = 4,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        FacultySecretary = 5,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Teacher = 6,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Student = 7,
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -404,32 +135,32 @@ namespace StudyingController.SCS {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/GetInstitutes", ReplyAction="http://tempuri.org/IControllerService/GetInstitutesResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/GetInstitutesControllerServiceExceptionFaul" +
             "t", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
-        System.Collections.Generic.List<StudyingController.SCS.InstituteDTO> GetInstitutes(StudyingController.SCS.Session session);
+        System.Collections.Generic.List<EntitiesDTO.InstituteDTO> GetInstitutes(StudyingController.SCS.Session session);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/GetInstitutes", ReplyAction="http://tempuri.org/IControllerService/GetInstitutesResponse")]
         System.IAsyncResult BeginGetInstitutes(StudyingController.SCS.Session session, System.AsyncCallback callback, object asyncState);
         
-        System.Collections.Generic.List<StudyingController.SCS.InstituteDTO> EndGetInstitutes(System.IAsyncResult result);
+        System.Collections.Generic.List<EntitiesDTO.InstituteDTO> EndGetInstitutes(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/GetFaculties", ReplyAction="http://tempuri.org/IControllerService/GetFacultiesResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/GetFacultiesControllerServiceExceptionFault" +
             "", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
-        System.Collections.Generic.List<StudyingController.SCS.FacultyDTO> GetFaculties(StudyingController.SCS.Session session, System.Nullable<int> instituteID);
+        System.Collections.Generic.List<EntitiesDTO.FacultyDTO> GetFaculties(StudyingController.SCS.Session session, System.Nullable<int> instituteID);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/GetFaculties", ReplyAction="http://tempuri.org/IControllerService/GetFacultiesResponse")]
         System.IAsyncResult BeginGetFaculties(StudyingController.SCS.Session session, System.Nullable<int> instituteID, System.AsyncCallback callback, object asyncState);
         
-        System.Collections.Generic.List<StudyingController.SCS.FacultyDTO> EndGetFaculties(System.IAsyncResult result);
+        System.Collections.Generic.List<EntitiesDTO.FacultyDTO> EndGetFaculties(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/GetCathedras", ReplyAction="http://tempuri.org/IControllerService/GetCathedrasResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/GetCathedrasControllerServiceExceptionFault" +
             "", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
-        System.Collections.Generic.List<StudyingController.SCS.CathedraDTO> GetCathedras(StudyingController.SCS.Session session, int facultyID);
+        System.Collections.Generic.List<EntitiesDTO.CathedraDTO> GetCathedras(StudyingController.SCS.Session session, int facultyID);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/GetCathedras", ReplyAction="http://tempuri.org/IControllerService/GetCathedrasResponse")]
         System.IAsyncResult BeginGetCathedras(StudyingController.SCS.Session session, int facultyID, System.AsyncCallback callback, object asyncState);
         
-        System.Collections.Generic.List<StudyingController.SCS.CathedraDTO> EndGetCathedras(System.IAsyncResult result);
+        System.Collections.Generic.List<EntitiesDTO.CathedraDTO> EndGetCathedras(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -466,10 +197,10 @@ namespace StudyingController.SCS {
             this.results = results;
         }
         
-        public System.Collections.Generic.List<StudyingController.SCS.InstituteDTO> Result {
+        public System.Collections.Generic.List<EntitiesDTO.InstituteDTO> Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((System.Collections.Generic.List<StudyingController.SCS.InstituteDTO>)(this.results[0]));
+                return ((System.Collections.Generic.List<EntitiesDTO.InstituteDTO>)(this.results[0]));
             }
         }
     }
@@ -485,10 +216,10 @@ namespace StudyingController.SCS {
             this.results = results;
         }
         
-        public System.Collections.Generic.List<StudyingController.SCS.FacultyDTO> Result {
+        public System.Collections.Generic.List<EntitiesDTO.FacultyDTO> Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((System.Collections.Generic.List<StudyingController.SCS.FacultyDTO>)(this.results[0]));
+                return ((System.Collections.Generic.List<EntitiesDTO.FacultyDTO>)(this.results[0]));
             }
         }
     }
@@ -504,10 +235,10 @@ namespace StudyingController.SCS {
             this.results = results;
         }
         
-        public System.Collections.Generic.List<StudyingController.SCS.CathedraDTO> Result {
+        public System.Collections.Generic.List<EntitiesDTO.CathedraDTO> Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((System.Collections.Generic.List<StudyingController.SCS.CathedraDTO>)(this.results[0]));
+                return ((System.Collections.Generic.List<EntitiesDTO.CathedraDTO>)(this.results[0]));
             }
         }
     }
@@ -619,7 +350,7 @@ namespace StudyingController.SCS {
                         password}, this.onEndLoginDelegate, this.onLoginCompletedDelegate, userState);
         }
         
-        public System.Collections.Generic.List<StudyingController.SCS.InstituteDTO> GetInstitutes(StudyingController.SCS.Session session) {
+        public System.Collections.Generic.List<EntitiesDTO.InstituteDTO> GetInstitutes(StudyingController.SCS.Session session) {
             return base.Channel.GetInstitutes(session);
         }
         
@@ -629,7 +360,7 @@ namespace StudyingController.SCS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.Collections.Generic.List<StudyingController.SCS.InstituteDTO> EndGetInstitutes(System.IAsyncResult result) {
+        public System.Collections.Generic.List<EntitiesDTO.InstituteDTO> EndGetInstitutes(System.IAsyncResult result) {
             return base.Channel.EndGetInstitutes(result);
         }
         
@@ -639,7 +370,7 @@ namespace StudyingController.SCS {
         }
         
         private object[] OnEndGetInstitutes(System.IAsyncResult result) {
-            System.Collections.Generic.List<StudyingController.SCS.InstituteDTO> retVal = this.EndGetInstitutes(result);
+            System.Collections.Generic.List<EntitiesDTO.InstituteDTO> retVal = this.EndGetInstitutes(result);
             return new object[] {
                     retVal};
         }
@@ -669,7 +400,7 @@ namespace StudyingController.SCS {
                         session}, this.onEndGetInstitutesDelegate, this.onGetInstitutesCompletedDelegate, userState);
         }
         
-        public System.Collections.Generic.List<StudyingController.SCS.FacultyDTO> GetFaculties(StudyingController.SCS.Session session, System.Nullable<int> instituteID) {
+        public System.Collections.Generic.List<EntitiesDTO.FacultyDTO> GetFaculties(StudyingController.SCS.Session session, System.Nullable<int> instituteID) {
             return base.Channel.GetFaculties(session, instituteID);
         }
         
@@ -679,7 +410,7 @@ namespace StudyingController.SCS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.Collections.Generic.List<StudyingController.SCS.FacultyDTO> EndGetFaculties(System.IAsyncResult result) {
+        public System.Collections.Generic.List<EntitiesDTO.FacultyDTO> EndGetFaculties(System.IAsyncResult result) {
             return base.Channel.EndGetFaculties(result);
         }
         
@@ -690,7 +421,7 @@ namespace StudyingController.SCS {
         }
         
         private object[] OnEndGetFaculties(System.IAsyncResult result) {
-            System.Collections.Generic.List<StudyingController.SCS.FacultyDTO> retVal = this.EndGetFaculties(result);
+            System.Collections.Generic.List<EntitiesDTO.FacultyDTO> retVal = this.EndGetFaculties(result);
             return new object[] {
                     retVal};
         }
@@ -721,7 +452,7 @@ namespace StudyingController.SCS {
                         instituteID}, this.onEndGetFacultiesDelegate, this.onGetFacultiesCompletedDelegate, userState);
         }
         
-        public System.Collections.Generic.List<StudyingController.SCS.CathedraDTO> GetCathedras(StudyingController.SCS.Session session, int facultyID) {
+        public System.Collections.Generic.List<EntitiesDTO.CathedraDTO> GetCathedras(StudyingController.SCS.Session session, int facultyID) {
             return base.Channel.GetCathedras(session, facultyID);
         }
         
@@ -731,7 +462,7 @@ namespace StudyingController.SCS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.Collections.Generic.List<StudyingController.SCS.CathedraDTO> EndGetCathedras(System.IAsyncResult result) {
+        public System.Collections.Generic.List<EntitiesDTO.CathedraDTO> EndGetCathedras(System.IAsyncResult result) {
             return base.Channel.EndGetCathedras(result);
         }
         
@@ -742,7 +473,7 @@ namespace StudyingController.SCS {
         }
         
         private object[] OnEndGetCathedras(System.IAsyncResult result) {
-            System.Collections.Generic.List<StudyingController.SCS.CathedraDTO> retVal = this.EndGetCathedras(result);
+            System.Collections.Generic.List<EntitiesDTO.CathedraDTO> retVal = this.EndGetCathedras(result);
             return new object[] {
                     retVal};
         }
