@@ -19,7 +19,10 @@ namespace StudyingController.ViewModels
         internal InstituteModel Institute
         {
             get { return institute; }
-            set { institute = value; }
+            set 
+            { 
+                institute = value;
+            }
         }
 
         public bool IsModified
