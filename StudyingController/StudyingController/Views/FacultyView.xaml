@@ -6,6 +6,18 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="ФАКУЛЬТЕТ :" Style="{StaticResource TextBlockStyle}"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Назва :" Style="{StaticResource TextBlockStyle}"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource TextBoxStyle}" />
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Інститут :" Style="{StaticResource TextBlockStyle}"/>
+        <ComboBox Grid.Row="1" Grid.Column="1" Style="{StaticResource ComboBoxStyle}"/>
     </Grid>
 </UserControl>

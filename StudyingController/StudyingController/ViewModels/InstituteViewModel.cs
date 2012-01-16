@@ -22,6 +22,40 @@ namespace StudyingController.ViewModels
             set { institute = value; }
         }
 
+        public bool IsModified
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public bool IsReadOnly
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public bool CanModify
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public bool CanSave
+        {
+            get { throw new NotImplementedException(); }
+        }
+
         #endregion
 
         #region Constructors
@@ -58,42 +92,5 @@ namespace StudyingController.ViewModels
 
 
         #endregion
-
-
-
-
-        public bool IsModified
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public bool IsReadOnly
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public bool CanModify
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public bool CanSave
-        {
-            get { throw new NotImplementedException(); }
-        }
     }
 }

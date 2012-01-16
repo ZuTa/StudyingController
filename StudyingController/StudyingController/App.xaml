@@ -37,7 +37,14 @@
                 <v:FacultyView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type vm:CathedraViewModel}">
+                <v:CathedraView/>
+            </DataTemplate>
 
+            <DataTemplate DataType="{x:Type vm:GroupViewModel}">
+                <v:GroupView/>
+            </DataTemplate>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

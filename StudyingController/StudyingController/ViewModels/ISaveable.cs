@@ -17,5 +17,7 @@ namespace StudyingController.ViewModels
 
         bool CanSave { get; }
 
+
+
     }
 }
