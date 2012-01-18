@@ -161,6 +161,35 @@ namespace StudyingController.SCS {
         System.IAsyncResult BeginGetCathedras(StudyingController.SCS.Session session, int facultyID, System.AsyncCallback callback, object asyncState);
         
         System.Collections.Generic.List<EntitiesDTO.CathedraDTO> EndGetCathedras(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/SaveInstitute", ReplyAction="http://tempuri.org/IControllerService/SaveInstituteResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/SaveInstituteControllerServiceExceptionFaul" +
+            "t", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        void SaveInstitute(StudyingController.SCS.Session session, EntitiesDTO.InstituteDTO institute);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/SaveInstitute", ReplyAction="http://tempuri.org/IControllerService/SaveInstituteResponse")]
+        System.IAsyncResult BeginSaveInstitute(StudyingController.SCS.Session session, EntitiesDTO.InstituteDTO institute, System.AsyncCallback callback, object asyncState);
+        
+        void EndSaveInstitute(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/SaveFaculty", ReplyAction="http://tempuri.org/IControllerService/SaveFacultyResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/SaveFacultyControllerServiceExceptionFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        void SaveFaculty(StudyingController.SCS.Session session, EntitiesDTO.FacultyDTO faculty);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/SaveFaculty", ReplyAction="http://tempuri.org/IControllerService/SaveFacultyResponse")]
+        System.IAsyncResult BeginSaveFaculty(StudyingController.SCS.Session session, EntitiesDTO.FacultyDTO faculty, System.AsyncCallback callback, object asyncState);
+        
+        void EndSaveFaculty(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/SaveCathedra", ReplyAction="http://tempuri.org/IControllerService/SaveCathedraResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/SaveCathedraControllerServiceExceptionFault" +
+            "", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        void SaveCathedra(StudyingController.SCS.Session session, EntitiesDTO.CathedraDTO cathedra);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/SaveCathedra", ReplyAction="http://tempuri.org/IControllerService/SaveCathedraResponse")]
+        System.IAsyncResult BeginSaveCathedra(StudyingController.SCS.Session session, EntitiesDTO.CathedraDTO cathedra, System.AsyncCallback callback, object asyncState);
+        
+        void EndSaveCathedra(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -271,6 +300,24 @@ namespace StudyingController.SCS {
         
         private System.Threading.SendOrPostCallback onGetCathedrasCompletedDelegate;
         
+        private BeginOperationDelegate onBeginSaveInstituteDelegate;
+        
+        private EndOperationDelegate onEndSaveInstituteDelegate;
+        
+        private System.Threading.SendOrPostCallback onSaveInstituteCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginSaveFacultyDelegate;
+        
+        private EndOperationDelegate onEndSaveFacultyDelegate;
+        
+        private System.Threading.SendOrPostCallback onSaveFacultyCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginSaveCathedraDelegate;
+        
+        private EndOperationDelegate onEndSaveCathedraDelegate;
+        
+        private System.Threading.SendOrPostCallback onSaveCathedraCompletedDelegate;
+        
         public ControllerServiceClient() {
         }
         
@@ -297,6 +344,12 @@ namespace StudyingController.SCS {
         public event System.EventHandler<GetFacultiesCompletedEventArgs> GetFacultiesCompleted;
         
         public event System.EventHandler<GetCathedrasCompletedEventArgs> GetCathedrasCompleted;
+        
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> SaveInstituteCompleted;
+        
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> SaveFacultyCompleted;
+        
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> SaveCathedraCompleted;
         
         public StudyingController.SCS.Session Login(string login1, string password) {
             return base.Channel.Login(login1, password);
@@ -502,6 +555,159 @@ namespace StudyingController.SCS {
             base.InvokeAsync(this.onBeginGetCathedrasDelegate, new object[] {
                         session,
                         facultyID}, this.onEndGetCathedrasDelegate, this.onGetCathedrasCompletedDelegate, userState);
+        }
+        
+        public void SaveInstitute(StudyingController.SCS.Session session, EntitiesDTO.InstituteDTO institute) {
+            base.Channel.SaveInstitute(session, institute);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginSaveInstitute(StudyingController.SCS.Session session, EntitiesDTO.InstituteDTO institute, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginSaveInstitute(session, institute, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public void EndSaveInstitute(System.IAsyncResult result) {
+            base.Channel.EndSaveInstitute(result);
+        }
+        
+        private System.IAsyncResult OnBeginSaveInstitute(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            StudyingController.SCS.Session session = ((StudyingController.SCS.Session)(inValues[0]));
+            EntitiesDTO.InstituteDTO institute = ((EntitiesDTO.InstituteDTO)(inValues[1]));
+            return this.BeginSaveInstitute(session, institute, callback, asyncState);
+        }
+        
+        private object[] OnEndSaveInstitute(System.IAsyncResult result) {
+            this.EndSaveInstitute(result);
+            return null;
+        }
+        
+        private void OnSaveInstituteCompleted(object state) {
+            if ((this.SaveInstituteCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.SaveInstituteCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void SaveInstituteAsync(StudyingController.SCS.Session session, EntitiesDTO.InstituteDTO institute) {
+            this.SaveInstituteAsync(session, institute, null);
+        }
+        
+        public void SaveInstituteAsync(StudyingController.SCS.Session session, EntitiesDTO.InstituteDTO institute, object userState) {
+            if ((this.onBeginSaveInstituteDelegate == null)) {
+                this.onBeginSaveInstituteDelegate = new BeginOperationDelegate(this.OnBeginSaveInstitute);
+            }
+            if ((this.onEndSaveInstituteDelegate == null)) {
+                this.onEndSaveInstituteDelegate = new EndOperationDelegate(this.OnEndSaveInstitute);
+            }
+            if ((this.onSaveInstituteCompletedDelegate == null)) {
+                this.onSaveInstituteCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnSaveInstituteCompleted);
+            }
+            base.InvokeAsync(this.onBeginSaveInstituteDelegate, new object[] {
+                        session,
+                        institute}, this.onEndSaveInstituteDelegate, this.onSaveInstituteCompletedDelegate, userState);
+        }
+        
+        public void SaveFaculty(StudyingController.SCS.Session session, EntitiesDTO.FacultyDTO faculty) {
+            base.Channel.SaveFaculty(session, faculty);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginSaveFaculty(StudyingController.SCS.Session session, EntitiesDTO.FacultyDTO faculty, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginSaveFaculty(session, faculty, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public void EndSaveFaculty(System.IAsyncResult result) {
+            base.Channel.EndSaveFaculty(result);
+        }
+        
+        private System.IAsyncResult OnBeginSaveFaculty(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            StudyingController.SCS.Session session = ((StudyingController.SCS.Session)(inValues[0]));
+            EntitiesDTO.FacultyDTO faculty = ((EntitiesDTO.FacultyDTO)(inValues[1]));
+            return this.BeginSaveFaculty(session, faculty, callback, asyncState);
+        }
+        
+        private object[] OnEndSaveFaculty(System.IAsyncResult result) {
+            this.EndSaveFaculty(result);
+            return null;
+        }
+        
+        private void OnSaveFacultyCompleted(object state) {
+            if ((this.SaveFacultyCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.SaveFacultyCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void SaveFacultyAsync(StudyingController.SCS.Session session, EntitiesDTO.FacultyDTO faculty) {
+            this.SaveFacultyAsync(session, faculty, null);
+        }
+        
+        public void SaveFacultyAsync(StudyingController.SCS.Session session, EntitiesDTO.FacultyDTO faculty, object userState) {
+            if ((this.onBeginSaveFacultyDelegate == null)) {
+                this.onBeginSaveFacultyDelegate = new BeginOperationDelegate(this.OnBeginSaveFaculty);
+            }
+            if ((this.onEndSaveFacultyDelegate == null)) {
+                this.onEndSaveFacultyDelegate = new EndOperationDelegate(this.OnEndSaveFaculty);
+            }
+            if ((this.onSaveFacultyCompletedDelegate == null)) {
+                this.onSaveFacultyCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnSaveFacultyCompleted);
+            }
+            base.InvokeAsync(this.onBeginSaveFacultyDelegate, new object[] {
+                        session,
+                        faculty}, this.onEndSaveFacultyDelegate, this.onSaveFacultyCompletedDelegate, userState);
+        }
+        
+        public void SaveCathedra(StudyingController.SCS.Session session, EntitiesDTO.CathedraDTO cathedra) {
+            base.Channel.SaveCathedra(session, cathedra);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginSaveCathedra(StudyingController.SCS.Session session, EntitiesDTO.CathedraDTO cathedra, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginSaveCathedra(session, cathedra, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public void EndSaveCathedra(System.IAsyncResult result) {
+            base.Channel.EndSaveCathedra(result);
+        }
+        
+        private System.IAsyncResult OnBeginSaveCathedra(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            StudyingController.SCS.Session session = ((StudyingController.SCS.Session)(inValues[0]));
+            EntitiesDTO.CathedraDTO cathedra = ((EntitiesDTO.CathedraDTO)(inValues[1]));
+            return this.BeginSaveCathedra(session, cathedra, callback, asyncState);
+        }
+        
+        private object[] OnEndSaveCathedra(System.IAsyncResult result) {
+            this.EndSaveCathedra(result);
+            return null;
+        }
+        
+        private void OnSaveCathedraCompleted(object state) {
+            if ((this.SaveCathedraCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.SaveCathedraCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void SaveCathedraAsync(StudyingController.SCS.Session session, EntitiesDTO.CathedraDTO cathedra) {
+            this.SaveCathedraAsync(session, cathedra, null);
+        }
+        
+        public void SaveCathedraAsync(StudyingController.SCS.Session session, EntitiesDTO.CathedraDTO cathedra, object userState) {
+            if ((this.onBeginSaveCathedraDelegate == null)) {
+                this.onBeginSaveCathedraDelegate = new BeginOperationDelegate(this.OnBeginSaveCathedra);
+            }
+            if ((this.onEndSaveCathedraDelegate == null)) {
+                this.onEndSaveCathedraDelegate = new EndOperationDelegate(this.OnEndSaveCathedra);
+            }
+            if ((this.onSaveCathedraCompletedDelegate == null)) {
+                this.onSaveCathedraCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnSaveCathedraCompleted);
+            }
+            base.InvokeAsync(this.onBeginSaveCathedraDelegate, new object[] {
+                        session,
+                        cathedra}, this.onEndSaveCathedraDelegate, this.onSaveCathedraCompletedDelegate, userState);
         }
     }
 }

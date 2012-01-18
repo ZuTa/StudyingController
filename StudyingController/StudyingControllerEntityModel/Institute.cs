@@ -8,6 +8,19 @@ namespace StudyingControllerEntityModel
 {
     public partial class Institute : IDTOable<InstituteDTO>
     {
+        #region Constructors
+
+        public Institute()
+        {
+        }
+
+        public Institute(InstituteDTO institute)
+        {
+            this.ID = institute.ID;
+            UpdateData(institute);
+        }
+
+        #endregion
 
         public InstituteDTO ToDTO()
         {
@@ -18,6 +31,11 @@ namespace StudyingControllerEntityModel
             };
 
             return institute;
+        }
+
+        public void UpdateData(InstituteDTO institute)
+        {
+            this.Name = institute.Name;
         }
     }
 }

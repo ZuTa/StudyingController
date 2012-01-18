@@ -21,5 +21,11 @@ namespace StudyingControllerEntityModel
 
             return info;
         }
+
+
+        public void UpdateData(UserInformationDTO entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
