@@ -9,54 +9,18 @@ using StudyingController.ViewModels.Models;
 
 namespace StudyingController.ViewModels
 {
-    public class InstituteViewModel : BaseApplicationViewModel, ISaveable
+    public class InstituteViewModel : SaveableViewModel
     {
         #region Fields & Properties
 
-        private InstituteDTO originalInstitute;
+        public InstituteDTO OriginalInstitute
+        {
+            get { return originalEntity as InstituteDTO; }
+        }
 
-        private InstituteModel institute;
         public InstituteModel Institute
         {
-            get { return institute; }
-            set 
-            { 
-                institute = value;
-            }
-        }
-
-        public bool IsModified
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public bool IsReadOnly
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public bool CanModify
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public bool CanSave
-        {
-            get { throw new NotImplementedException(); }
+            get { return model as InstituteModel; }
         }
 
         #endregion
@@ -66,8 +30,8 @@ namespace StudyingController.ViewModels
         public InstituteViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)
         {
-            originalInstitute = new InstituteDTO();
-            institute = new InstituteModel(originalInstitute);
+            originalEntity = new InstituteDTO();
+            model = new InstituteModel(originalEntity as InstituteDTO);
             //this.institute.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
 
         }
@@ -75,8 +39,8 @@ namespace StudyingController.ViewModels
         public InstituteViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, InstituteDTO institute)
             : base(userInterop, controllerInterop, dispatcher)
         {
-            this.originalInstitute = institute;
-            this.institute = new InstituteModel(institute);
+            this.originalEntity = institute;
+            this.model = new InstituteModel(institute);
             //this.institute.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
@@ -86,12 +50,7 @@ namespace StudyingController.ViewModels
 
         public void Save()
         {
-            throw new NotImplementedException();
-        }
-
-        public InstituteDTO ModelToDTO(InstituteModel model)
-        {
-            return new InstituteDTO() { ID = model.ID, Name = model.Name};
+            InstituteDTO instituteDTO = Institute.ToDTO();
         }
 
         #endregion

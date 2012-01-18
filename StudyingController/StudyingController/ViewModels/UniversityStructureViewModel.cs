@@ -12,6 +12,11 @@ namespace StudyingController.ViewModels
     {
         #region Fields & Properties
 
+        public override bool IsModified
+        {
+            get { throw new NotImplementedException(); }
+        }
+
         private ISelectable entitiesProvider;
         public override ISelectable EntitiesProvider
         {
@@ -65,5 +70,7 @@ namespace StudyingController.ViewModels
         #region Callbacks
 
         #endregion
+
+       
     }
 }

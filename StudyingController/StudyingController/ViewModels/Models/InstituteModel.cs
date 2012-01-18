@@ -6,12 +6,16 @@ using EntitiesDTO;
 
 namespace StudyingController.ViewModels.Models
 {
-    public class InstituteModel : NamedModel
+    public class InstituteModel : NamedModel, IDTOable<InstituteDTO>
     {
         public InstituteModel(InstituteDTO institute)
             : base(institute)
         {
         }
 
+        public InstituteDTO ToDTO()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

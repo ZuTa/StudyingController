@@ -9,7 +9,7 @@ using StudyingController.ViewModels.Models;
 
 namespace StudyingController.ViewModels
 {
-    public class CathedraViewModel : BaseApplicationViewModel, ISaveable
+    public class CathedraViewModel : SaveableViewModel
     {
         #region Fields & Properties
 
@@ -22,20 +22,6 @@ namespace StudyingController.ViewModels
             set { cathedra = value; }
         }
 
-        private FacultyDTO selectedFaculty;
-        public FacultyDTO SelectedFaculty
-        {
-            get { return selectedFaculty; }
-            set
-            {
-                if (selectedFaculty != value)
-                {
-                    selectedFaculty = value;
-                    OnPropertyChanged("SelectedFaculty");
-                }
-            }
-        }
-
         private List<FacultyDTO> faculties;
         public List<FacultyDTO> Faculties
         {
@@ -46,7 +32,6 @@ namespace StudyingController.ViewModels
                 OnPropertyChanged("Faculties");
             }
         }
-
 
         public bool IsModified
         {
@@ -115,17 +100,14 @@ namespace StudyingController.ViewModels
 
         private void Load()
         {
-            List<InstituteDTO> list = ControllerInterop.Service.GetInstitutes(ControllerInterop.Session);
             foreach(InstituteDTO institute in ControllerInterop.Service.GetInstitutes(ControllerInterop.Session))
                 Faculties.AddRange(ControllerInterop.Service.GetFaculties(ControllerInterop.Session, institute.ID));
-            SelectedFaculty = (from faculty in faculties
+
+            Faculties.AddRange(ControllerInterop.Service.GetFaculties(ControllerInterop.Session, null));
+
+            Cathedra.Faculty = (from faculty in faculties
                                where faculty.ID == originalCathedra.FacultyID
                                select faculty).FirstOrDefault();
-        }
-
-        public CathedraDTO ModelToDTO(CathedraModel model)
-        {
-            return new CathedraDTO() { ID = model.ID, Name = model.Name, FacultyID = SelectedFaculty.ID };
         }
 
         #endregion

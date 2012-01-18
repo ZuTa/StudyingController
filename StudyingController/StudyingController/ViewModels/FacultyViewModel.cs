@@ -9,32 +9,19 @@ using StudyingController.ViewModels.Models;
 
 namespace StudyingController.ViewModels
 {
-    public class FacultyViewModel : BaseApplicationViewModel, ISaveable
+    public class FacultyViewModel : SaveableViewModel
     {
 
         #region Fields & Properties
-        
-        private FacultyDTO originalFaculty;
 
-        private FacultyModel faculty;
+        public FacultyDTO OriginalFaculty
+        {
+            get { return originalEntity as FacultyDTO; }
+        }
+      
         public FacultyModel Faculty
         {
-            get { return faculty; }
-            set { faculty = value; }
-        }
-
-        private InstituteDTO selectedInstitute;
-        public InstituteDTO SelectedInstitute
-        {
-            get { return selectedInstitute; }
-            set 
-            {
-                if (selectedInstitute != value)
-                {
-                    selectedInstitute = value;
-                    OnPropertyChanged("SelectedInstitute");
-                }
-            }
+            get { return model as FacultyModel; }
         }
 
         private List<InstituteDTO> institutes;
@@ -91,8 +78,12 @@ namespace StudyingController.ViewModels
             : base(userInterop, controllerInterop, dispatcher)
         {
             institutes = new List<InstituteDTO>();
-            originalFaculty = new FacultyDTO();
-            faculty = new FacultyModel(originalFaculty);
+            originalEntity = new FacultyDTO();
+
+            if (!(originalEntity is FacultyDTO))
+                throw new InvalidCastException("Unknown entity's type");
+
+            model = new FacultyModel(originalEntity as FacultyDTO);
             Load();
         }
 
@@ -100,8 +91,8 @@ namespace StudyingController.ViewModels
             : base(userInterop, controllerInterop, dispatcher)
         {
             institutes = new List<InstituteDTO>();
-            this.originalFaculty = faculty;
-            this.faculty = new FacultyModel(originalFaculty);
+            this.originalEntity = faculty;
+            this.model = new FacultyModel(originalEntity as FacultyDTO);
             Load();
         }
 
@@ -112,19 +103,14 @@ namespace StudyingController.ViewModels
         public void Load()
         {
             Institutes = ControllerInterop.Service.GetInstitutes(ControllerInterop.Session);
-            SelectedInstitute = (from institute in institutes 
-                                 where institute.ID==originalFaculty.InstituteID 
+            Faculty.Institute = (from institute in institutes 
+                                 where institute.ID==OriginalFaculty.InstituteID 
                                  select institute).FirstOrDefault();
         }
 
         public void Save()
         {
             throw new NotImplementedException();
-        }
-
-        public FacultyDTO ModelToDTO(FacultyModel model)
-        {
-            return new FacultyDTO() { ID = model.ID, Name = model.Name, InstituteID = SelectedInstitute.ID };
         }
 
         #endregion

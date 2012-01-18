@@ -21,5 +21,11 @@ namespace StudyingControllerEntityModel
 
             return admin;
         }
+
+
+        public void UpdateData(InstituteAdminDTO entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

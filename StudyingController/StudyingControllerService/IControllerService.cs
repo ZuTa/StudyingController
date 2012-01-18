@@ -28,5 +28,16 @@ namespace StudyingControllerService
         [FaultContract(typeof(ControllerServiceException))]
         List<CathedraDTO> GetCathedras(Session session, int facultyID);
 
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        void SaveInstitute(Session session, InstituteDTO institute);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        void SaveFaculty(Session session, FacultyDTO faculty);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        void SaveCathedra(Session session, CathedraDTO cathedra);
     }
 }

@@ -7,7 +7,7 @@ using EntitiesDTO;
 
 namespace StudyingController.ViewModels.Models
 {
-    public class BaseModel : INotifyPropertyChanged
+    public abstract class BaseModel : INotifyPropertyChanged
     {
         private int id;
         public int ID

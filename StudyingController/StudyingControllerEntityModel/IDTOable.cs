@@ -11,5 +11,6 @@ namespace StudyingControllerEntityModel
 
         T ToDTO();
 
+        void UpdateData(T entity);
     }
 }

@@ -167,5 +167,71 @@ namespace StudyingControllerService
                 throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
             }
         }
+
+        public void SaveInstitute(Session session, InstituteDTO institute)
+        {
+            try
+            {
+                CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var item = context.Institutes.FirstOrDefault(inst => inst.ID == institute.ID);
+                    if (item == null)
+                        context.AddToInstitutes(new Institute(institute));
+                    else
+                        item.UpdateData(institute);
+
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public void SaveFaculty(Session session, FacultyDTO faculty)
+        {
+            try
+            {
+                 CheckSession(session);
+                 using (UniversityEntities context = new UniversityEntities())
+                 {
+                     var item = context.Faculties.FirstOrDefault(fac => fac.ID == faculty.ID);
+                     if (item == null)
+                         context.AddToFaculties(new Faculty(faculty));
+                     else
+                         item.UpdateData(faculty);
+
+                     context.SaveChanges();
+                 }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public void SaveCathedra(Session session, CathedraDTO cathedra)
+        {
+            try
+            {
+                 CheckSession(session);
+                 using (UniversityEntities context = new UniversityEntities())
+                 {
+                     var item = context.Cathedras.FirstOrDefault(cath => cath.ID == cathedra.ID);
+                     if (item == null)
+                         context.AddToCathedras(new Cathedra(cathedra));
+                     else
+                         item.UpdateData(cathedra);
+
+                     context.SaveChanges();
+                 }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
     }
 }
