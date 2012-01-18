@@ -7,7 +7,7 @@ using EntitiesDTO;
 
 namespace StudyingController.ViewModels.Models
 {
-    internal class BaseModel : INotifyPropertyChanged
+    public class BaseModel : INotifyPropertyChanged
     {
         private int id;
         public int ID
@@ -20,7 +20,7 @@ namespace StudyingController.ViewModels.Models
             }
         }
 
-        internal BaseModel(BaseEntityDTO entity)
+        public BaseModel(BaseEntityDTO entity)
         {
             this.id = entity.ID;
         }

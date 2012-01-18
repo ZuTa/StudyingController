@@ -17,7 +17,7 @@
     </Style>
 
     <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource DefaultTextStyle}" x:Key="ComboBoxStyle">
-
+        <Setter Property="IsReadOnly" Value="True"/>
     </Style>
 </ResourceDictionary>
 

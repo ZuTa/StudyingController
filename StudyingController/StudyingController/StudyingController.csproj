@@ -67,6 +67,8 @@
     <Compile Include="ViewModels\ISaveable.cs" />
     <Compile Include="ViewModels\ISelectable.cs" />
     <Compile Include="ViewModels\Models\BaseModel.cs" />
+    <Compile Include="ViewModels\Models\CathedraModel.cs" />
+    <Compile Include="ViewModels\Models\FacultyModel.cs" />
     <Compile Include="ViewModels\Models\InstituteModel.cs" />
     <Compile Include="ViewModels\Models\NamedModel.cs" />
     <Compile Include="ViewModels\Tree.cs" />

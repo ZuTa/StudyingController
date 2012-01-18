@@ -16,7 +16,7 @@ namespace StudyingController.ViewModels
         private InstituteDTO originalInstitute;
 
         private InstituteModel institute;
-        internal InstituteModel Institute
+        public InstituteModel Institute
         {
             get { return institute; }
             set 
@@ -87,6 +87,11 @@ namespace StudyingController.ViewModels
         public void Save()
         {
             throw new NotImplementedException();
+        }
+
+        public InstituteDTO ModelToDTO(InstituteModel model)
+        {
+            return new InstituteDTO() { ID = model.ID, Name = model.Name};
         }
 
         #endregion
