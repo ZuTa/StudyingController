@@ -45,7 +45,7 @@ namespace StudyingController.ViewModels
                 if (allAddingCommands == null)
                     allAddingCommands = new ObservableCollection<NamedCommandData>
                     { 
-                        new NamedCommandData(){Name = "Університет", Command = AddUniversityCommand},
+                        new NamedCommandData(){Name = "Інститут", Command = AddInstituteCommand},
                         new NamedCommandData(){Name = "Факультет", Command = null},
                         new NamedCommandData(){Name = "Кафедру", Command = null},
                         new NamedCommandData(){Name = "Групу", Command = null},
@@ -62,7 +62,7 @@ namespace StudyingController.ViewModels
         {
             get
             {
-                return CurrentWorkspace is ISaveable;
+                return CurrentWorkspace is EditableViewModel;
             }
         }
 
@@ -175,14 +175,14 @@ namespace StudyingController.ViewModels
 
         #region University structure
 
-        private RelayCommand addUniversityCommand;
-        public RelayCommand AddUniversityCommand
+        private RelayCommand addInstituteCommand;
+        public RelayCommand AddInstituteCommand
         {
             get
             {
-                if (addUniversityCommand == null)
-                    addUniversityCommand = new RelayCommand(param => AddUniversity());
-                return addUniversityCommand; 
+                if (addInstituteCommand == null)
+                    addInstituteCommand = new RelayCommand(param => AddInstitute());
+                return addInstituteCommand; 
             }
         }
 
@@ -192,9 +192,8 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
-        private void AddUniversity()
+        private void AddInstitute()
         {
-            
         }
 
         private void AddEntity()

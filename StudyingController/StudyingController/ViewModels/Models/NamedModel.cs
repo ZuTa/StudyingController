@@ -6,7 +6,7 @@ using EntitiesDTO;
 
 namespace StudyingController.ViewModels.Models
 {
-    internal class NamedModel : BaseModel
+    public abstract class NamedModel : BaseModel
     {
         private string name;
         public string Name

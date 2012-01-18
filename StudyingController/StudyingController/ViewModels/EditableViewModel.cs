@@ -9,7 +9,7 @@ using EntitiesDTO;
 
 namespace StudyingController.ViewModels
 {
-    public abstract class EditableViewModel : BaseApplicationViewModel, ISaveable
+    public abstract class EditableViewModel : BaseApplicationViewModel
     {
         #region Fields & Properties
 
@@ -18,46 +18,12 @@ namespace StudyingController.ViewModels
             get { return Properties.Resources.UniversityStructureHeaderText; }
         }
 
-        private bool isModified;
-        public bool IsModified
+        public abstract bool IsModified
         {
-            get { return isModified; }
-            set
-            {
-                isModified = value;
-                OnPropertyChanged("IsModified");
-                OnPropertyChanged("CanSave");
-            }
+            get;
         }
 
-        private bool isReadOnly;
-        public bool IsReadOnly
-        {
-            get { return isReadOnly; }
-            set
-            {
-                isReadOnly = value;
-                OnPropertyChanged("IsReadOnly");
-                OnPropertyChanged("CanModify");
-            }
-        }
-
-        public bool CanModify
-        {
-            get
-            {
-                return !isReadOnly;
-            }
-        }
-
-        public bool CanSave
-        {
-            get
-            {
-                return !isModified;
-            }
-        }
-
+       
         public abstract ISelectable EntitiesProvider { get; set; }
 
         public BaseApplicationViewModel CurrentWorkspace
@@ -83,11 +49,6 @@ namespace StudyingController.ViewModels
 
         public abstract void Save();
 
-        protected virtual void SetModified()
-        {
-            IsModified = true;
-        }
-
         protected abstract BaseApplicationViewModel GetViewModel(BaseEntityDTO entity);
 
         #endregion
@@ -101,7 +62,7 @@ namespace StudyingController.ViewModels
 
         protected virtual void ModelPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            SetModified();
+         
         }
 
         #endregion

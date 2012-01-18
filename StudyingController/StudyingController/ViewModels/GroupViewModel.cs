@@ -8,7 +8,7 @@ using EntitiesDTO;
 
 namespace StudyingController.ViewModels
 {
-    public class GroupViewModel : BaseApplicationViewModel, ISaveable
+    public class GroupViewModel : BaseApplicationViewModel
     {
         #region Fields & Properties
 

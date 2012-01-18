@@ -60,5 +60,10 @@ namespace StudyingController.ViewModels
         #region Callbacks
 
         #endregion
+
+        public override bool IsModified
+        {
+            get { throw new NotImplementedException(); }
+        }
     }
 }
