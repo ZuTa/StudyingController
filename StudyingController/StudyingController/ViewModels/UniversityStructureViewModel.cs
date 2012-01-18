@@ -45,8 +45,10 @@ namespace StudyingController.ViewModels
         {
             if (entity is InstituteDTO)
                 return new InstituteViewModel(UserInterop, ControllerInterop, Dispatcher, entity as InstituteDTO);
-            else if (entity is FacultyDTO)
+            if (entity is FacultyDTO)
                 return new FacultyViewModel(UserInterop, ControllerInterop, Dispatcher, entity as FacultyDTO);
+            if (entity is CathedraDTO)
+                return new CathedraViewModel(UserInterop, ControllerInterop, Dispatcher, entity as CathedraDTO);
 
             return null;
             //throw new NotImplementedException("Unknown entity");

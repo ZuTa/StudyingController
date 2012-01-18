@@ -5,18 +5,20 @@
 
     <converters:BoolToVisibilityConverter x:Key="B2V"/>
     
-    <Style TargetType="{x:Type FrameworkElement}" x:Key="DefaultTextkStyle">
+    <Style TargetType="{x:Type FrameworkElement}" x:Key="DefaultTextStyle">
         <Setter Property="Margin" Value="5"/>
     </Style>
 
-    <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource DefaultTextkStyle}" x:Key="TextBlockStyle">
+    <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource DefaultTextStyle}" x:Key="TextBlockStyle">
     </Style>
 
-    <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource DefaultTextkStyle}" x:Key="TextBoxStyle">
+    <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource DefaultTextStyle}" x:Key="TextBoxStyle">
         
     </Style>
-        
-    
+
+    <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource DefaultTextStyle}" x:Key="ComboBoxStyle">
+
+    </Style>
 </ResourceDictionary>
 
     

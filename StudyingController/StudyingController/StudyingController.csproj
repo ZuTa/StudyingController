@@ -60,7 +60,9 @@
     </ApplicationDefinition>
     <Compile Include="Common\TreeViewHelper.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="ViewModels\CathedraViewModel.cs" />
     <Compile Include="ViewModels\FacultyViewModel.cs" />
+    <Compile Include="ViewModels\GroupViewModel.cs" />
     <Compile Include="ViewModels\InstituteViewModel.cs" />
     <Compile Include="ViewModels\ISaveable.cs" />
     <Compile Include="ViewModels\ISelectable.cs" />
@@ -95,8 +97,14 @@
     <Compile Include="ViewModels\UniversityTreeViewModel.cs" />
     <Compile Include="ViewModels\UsersStructureViewModel.cs" />
     <Compile Include="ViewModels\UsersTreeViewModel.cs" />
+    <Compile Include="Views\CathedraView.xaml.cs">
+      <DependentUpon>CathedraView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\FacultyView.xaml.cs">
       <DependentUpon>FacultyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GroupView.xaml.cs">
+      <DependentUpon>GroupView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\InstituteView.xaml.cs">
       <DependentUpon>InstituteView.xaml</DependentUpon>
@@ -128,7 +136,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\CathedraView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\FacultyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GroupView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

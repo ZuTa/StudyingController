@@ -45,6 +45,7 @@
     <Compile Include="BaseEntityDTO.cs" />
     <Compile Include="CathedraDTO.cs" />
     <Compile Include="FacultyDTO.cs" />
+    <Compile Include="GroupDTO.cs" />
     <Compile Include="InstituteAdminDTO.cs" />
     <Compile Include="InstituteDTO.cs" />
     <Compile Include="NamedEntityDTO.cs" />

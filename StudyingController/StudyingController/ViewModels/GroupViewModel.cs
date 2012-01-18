@@ -8,9 +8,8 @@ using EntitiesDTO;
 
 namespace StudyingController.ViewModels
 {
-    public class FacultyViewModel : BaseApplicationViewModel, ISaveable
+    public class GroupViewModel : BaseApplicationViewModel, ISaveable
     {
-
         #region Fields & Properties
 
         public bool IsModified
@@ -47,17 +46,16 @@ namespace StudyingController.ViewModels
             get { throw new NotImplementedException(); }
         }
 
-
         #endregion
 
         #region Constructors
 
-        public FacultyViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
+        public GroupViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)
         {
         }
 
-        public FacultyViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, FacultyDTO faculty)
+        public GroupViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, GroupDTO group)
             : base(userInterop, controllerInterop, dispatcher)
         {
         }
@@ -76,5 +74,6 @@ namespace StudyingController.ViewModels
         #region Callbacks
 
         #endregion
+
     }
 }
