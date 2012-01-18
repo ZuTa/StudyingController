@@ -12,11 +12,6 @@ namespace StudyingController.ViewModels
     {
         #region Fields & Properties
 
-        public override bool IsModified
-        {
-            get { throw new NotImplementedException(); }
-        }
-
         private ISelectable entitiesProvider;
         public override ISelectable EntitiesProvider
         {
@@ -46,24 +41,31 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
-        protected override BaseApplicationViewModel GetViewModel(EntitiesDTO.BaseEntityDTO entity)
+        protected override SaveableViewModel GetViewModel(EntitiesDTO.BaseEntityDTO entity)
         {
-            if (entity is InstituteDTO)
-                return new InstituteViewModel(UserInterop, ControllerInterop, Dispatcher, entity as InstituteDTO);
-            if (entity is FacultyDTO)
-                return new FacultyViewModel(UserInterop, ControllerInterop, Dispatcher, entity as FacultyDTO);
-            if (entity is CathedraDTO)
-                return new CathedraViewModel(UserInterop, ControllerInterop, Dispatcher, entity as CathedraDTO);
+            if (entity == null)
+                return null;
 
-            return null;
-            //throw new NotImplementedException("Unknown entity");
+            SaveableViewModel viewModel;
+            if (entity is InstituteDTO)
+                viewModel = new InstituteViewModel(UserInterop, ControllerInterop, Dispatcher, entity as InstituteDTO);
+            else if (entity is FacultyDTO)
+                viewModel = new FacultyViewModel(UserInterop, ControllerInterop, Dispatcher, entity as FacultyDTO);
+            else if (entity is CathedraDTO)
+                viewModel = new CathedraViewModel(UserInterop, ControllerInterop, Dispatcher, entity as CathedraDTO);
+            else
+                throw new NotImplementedException("Unknown entity");
+
+            viewModel.ViewModified += new EventHandler(ViewModelModified);
+
+            return viewModel;
         }
 
         public override void Save()
         {
+            EntitiesProvider.Reload();
             throw new NotImplementedException();
         }
-
 
         #endregion
 

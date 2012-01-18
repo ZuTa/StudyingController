@@ -13,6 +13,10 @@ namespace StudyingController.ViewModels.Models
         {
         }
 
+        public virtual void Assign(BaseEntityDTO entity)
+        {
+        }
+
         public InstituteDTO ToDTO()
         {
             throw new NotImplementedException();

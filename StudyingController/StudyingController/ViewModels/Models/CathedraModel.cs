@@ -33,7 +33,18 @@ namespace StudyingController.ViewModels.Models
         public CathedraModel(CathedraDTO cathedra)
             : base(cathedra)
         {
-            facultyID = cathedra.FacultyID;
+            this.facultyID = cathedra.FacultyID;
+            this.faculty = cathedra.Faculty;
+        }
+
+        public virtual void Assign(BaseEntityDTO entity)
+        {
+            base.Assign(entity);
+
+            CathedraDTO cathedra = entity as CathedraDTO;
+
+            this.facultyID = cathedra.FacultyID;
+            this.faculty = cathedra.Faculty;
         }
 
         public CathedraDTO ToDTO()

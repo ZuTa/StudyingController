@@ -15,6 +15,6 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Row="0" Grid.Column="0" Text="Назва :" Style="{StaticResource TextBlockStyle}"/>
-        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Institute.Name}" Style="{StaticResource TextBoxStyle}" />
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=Institute.Name, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}" />
     </Grid>
 </UserControl>

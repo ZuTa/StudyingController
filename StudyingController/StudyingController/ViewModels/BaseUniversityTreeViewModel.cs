@@ -47,8 +47,6 @@ namespace StudyingController.ViewModels
         public BaseUniversityTreeViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)
         {
-            CurrentEntity = new BaseEntityDTO();
-
             tree = new Tree();
             tree.Changed += new EventHandler(tree_TreeChanged);
 
@@ -78,6 +76,12 @@ namespace StudyingController.ViewModels
         {
             currentEntity = entity;
             OnSelectedEntityChanged(entity as BaseEntityDTO);
+        }
+
+        protected virtual void OnSelectedEntityChanged(BaseEntityDTO entity)
+        {
+            if (SelectedEntityChangedEvent != null)
+                SelectedEntityChangedEvent(this, new SelectedEntityChangedArgs(entity));
         }
 
         private void ReBuildUniversityTree()
@@ -203,11 +207,6 @@ namespace StudyingController.ViewModels
 
         #region Events
 
-        protected virtual void OnSelectedEntityChanged(BaseEntityDTO entity)
-        {
-            if (SelectedEntityChangedEvent != null)
-                SelectedEntityChangedEvent(this, new SelectedEntityChangedArgs(entity));
-        }
         public event SelectedEntityChangedHandler SelectedEntityChangedEvent;
 
         #endregion

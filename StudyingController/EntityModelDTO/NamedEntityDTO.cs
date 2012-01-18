@@ -7,7 +7,7 @@ using System.Runtime.Serialization;
 namespace EntitiesDTO
 {
     [DataContract]
-    public class NamedEntityDTO :  BaseEntityDTO
+    public abstract class NamedEntityDTO :  BaseEntityDTO
     {
         private string name;
         [DataMember]

@@ -36,6 +36,13 @@ namespace StudyingController.ViewModels.Models
             instituteID = faculty.InstituteID;            
         }
 
+        public virtual void Assign(BaseEntityDTO entity)
+        {
+            FacultyDTO faculty = entity as FacultyDTO;
+
+            
+        }
+
         public FacultyDTO ToDTO()
         {
             return new FacultyDTO

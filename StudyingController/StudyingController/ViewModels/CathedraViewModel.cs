@@ -13,14 +13,19 @@ namespace StudyingController.ViewModels
     {
         #region Fields & Properties
 
-        private CathedraDTO originalCathedra;
+        public CathedraDTO OriginalCathedra
+        {
+            get
+            {
+                return originalEntity as CathedraDTO;
+            }
+        }
 
-        private CathedraModel cathedra;
         public CathedraModel Cathedra
         {
-            get { return cathedra; }
-            set { cathedra = value; }
+            get { return model as CathedraModel; }         
         }
+
 
         private List<FacultyDTO> faculties;
         public List<FacultyDTO> Faculties
@@ -33,40 +38,6 @@ namespace StudyingController.ViewModels
             }
         }
 
-        public bool IsModified
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public bool IsReadOnly
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public bool CanModify
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public bool CanSave
-        {
-            get { throw new NotImplementedException(); }
-        }
-
         #endregion
 
         #region Constructors
@@ -75,18 +46,27 @@ namespace StudyingController.ViewModels
             : base(userInterop, controllerInterop, dispatcher)
         {
             faculties = new List<FacultyDTO>();
-            originalCathedra = new CathedraDTO();
-            cathedra = new CathedraModel(originalCathedra);
             Load();
+
+            originalEntity = new CathedraDTO();
+            model = new CathedraModel(originalEntity as CathedraDTO, (from faculty in faculties
+                                                                      where faculty.ID == OriginalCathedra.FacultyID
+                                                                      select faculty).FirstOrDefault());
+            model.PropertyChanged +=new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         public CathedraViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, CathedraDTO cathedra)
             : base(userInterop, controllerInterop, dispatcher)
         {
             faculties = new List<FacultyDTO>();
-            this.originalCathedra = cathedra;
-            this.cathedra = new CathedraModel(originalCathedra);
             Load();
+
+            cathedra.Faculty = (from faculty in faculties
+                                where faculty.ID == OriginalCathedra.FacultyID
+                                select faculty).FirstOrDefault();
+            originalEntity = cathedra;
+            model = new CathedraModel(cathedra);
+            model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         #endregion
@@ -104,10 +84,6 @@ namespace StudyingController.ViewModels
                 Faculties.AddRange(ControllerInterop.Service.GetFaculties(ControllerInterop.Session, institute.ID));
 
             Faculties.AddRange(ControllerInterop.Service.GetFaculties(ControllerInterop.Session, null));
-
-            Cathedra.Faculty = (from faculty in faculties
-                               where faculty.ID == originalCathedra.FacultyID
-                               select faculty).FirstOrDefault();
         }
 
         #endregion

@@ -5,10 +5,12 @@ using System.Text;
 
 namespace StudyingController.ViewModels
 {
-    public interface IHeaderable
+    public interface IEditable
     {
 
-        string HeaderText { get; }
+        bool IsModified { get; }
+
+        event EventHandler ViewModified;
 
     }
 }

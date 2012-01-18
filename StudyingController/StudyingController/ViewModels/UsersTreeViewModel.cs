@@ -7,7 +7,7 @@ using System.Windows.Threading;
 
 namespace StudyingController.ViewModels
 {
-    public class UsersTreeViewModel : BaseUniversityTreeViewModel, IHeaderable
+    public class UsersTreeViewModel : BaseUniversityTreeViewModel
     {
         #region Fields & Properties
         

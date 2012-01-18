@@ -9,6 +9,13 @@ namespace EntitiesDTO
     public class CathedraDTO : NamedEntityDTO
     {
 
+        private FacultyDTO faculty;
+        public FacultyDTO Faculty
+        {
+            get { return faculty; }
+            set { faculty = value; }
+        }
+
         private int facultyID;
         [DataMember]
         public int FacultyID
