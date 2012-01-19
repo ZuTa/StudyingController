@@ -203,6 +203,7 @@
     </None>
     <None Include="Properties\DataSources\EntitiesDTO.CathedraDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.FacultyDTO.datasource" />
+    <None Include="Properties\DataSources\EntitiesDTO.GroupDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.InstituteDTO.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -225,7 +226,7 @@
     <None Include="Service References\SCS\StudyingController.SCS.Session.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="ViewModels\ClassDiagram.cd" />
+    <None Include="ViewModels\ViewModelsDiagram.cd" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
