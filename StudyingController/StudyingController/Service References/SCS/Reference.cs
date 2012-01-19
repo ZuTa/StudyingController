@@ -162,6 +162,16 @@ namespace StudyingController.SCS {
         
         System.Collections.Generic.List<EntitiesDTO.FacultyDTO> EndGetFaculties(System.IAsyncResult result);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/GetAllCathedras", ReplyAction="http://tempuri.org/IControllerService/GetAllCathedrasResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/GetAllCathedrasControllerServiceExceptionFa" +
+            "ult", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        System.Collections.Generic.List<EntitiesDTO.CathedraDTO> GetAllCathedras(StudyingController.SCS.Session session);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/GetAllCathedras", ReplyAction="http://tempuri.org/IControllerService/GetAllCathedrasResponse")]
+        System.IAsyncResult BeginGetAllCathedras(StudyingController.SCS.Session session, System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.Generic.List<EntitiesDTO.CathedraDTO> EndGetAllCathedras(System.IAsyncResult result);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/GetCathedras", ReplyAction="http://tempuri.org/IControllerService/GetCathedrasResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/GetCathedrasControllerServiceExceptionFault" +
             "", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
@@ -302,6 +312,25 @@ namespace StudyingController.SCS {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetAllCathedrasCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetAllCathedrasCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.Generic.List<EntitiesDTO.CathedraDTO> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.Generic.List<EntitiesDTO.CathedraDTO>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class GetCathedrasCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
@@ -366,6 +395,12 @@ namespace StudyingController.SCS {
         
         private System.Threading.SendOrPostCallback onGetFacultiesCompletedDelegate;
         
+        private BeginOperationDelegate onBeginGetAllCathedrasDelegate;
+        
+        private EndOperationDelegate onEndGetAllCathedrasDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetAllCathedrasCompletedDelegate;
+        
         private BeginOperationDelegate onBeginGetCathedrasDelegate;
         
         private EndOperationDelegate onEndGetCathedrasDelegate;
@@ -428,6 +463,8 @@ namespace StudyingController.SCS {
         public event System.EventHandler<GetAllFacultiesCompletedEventArgs> GetAllFacultiesCompleted;
         
         public event System.EventHandler<GetFacultiesCompletedEventArgs> GetFacultiesCompleted;
+        
+        public event System.EventHandler<GetAllCathedrasCompletedEventArgs> GetAllCathedrasCompleted;
         
         public event System.EventHandler<GetCathedrasCompletedEventArgs> GetCathedrasCompleted;
         
@@ -643,6 +680,56 @@ namespace StudyingController.SCS {
             base.InvokeAsync(this.onBeginGetFacultiesDelegate, new object[] {
                         session,
                         instituteID}, this.onEndGetFacultiesDelegate, this.onGetFacultiesCompletedDelegate, userState);
+        }
+        
+        public System.Collections.Generic.List<EntitiesDTO.CathedraDTO> GetAllCathedras(StudyingController.SCS.Session session) {
+            return base.Channel.GetAllCathedras(session);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetAllCathedras(StudyingController.SCS.Session session, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetAllCathedras(session, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.Collections.Generic.List<EntitiesDTO.CathedraDTO> EndGetAllCathedras(System.IAsyncResult result) {
+            return base.Channel.EndGetAllCathedras(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetAllCathedras(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            StudyingController.SCS.Session session = ((StudyingController.SCS.Session)(inValues[0]));
+            return this.BeginGetAllCathedras(session, callback, asyncState);
+        }
+        
+        private object[] OnEndGetAllCathedras(System.IAsyncResult result) {
+            System.Collections.Generic.List<EntitiesDTO.CathedraDTO> retVal = this.EndGetAllCathedras(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetAllCathedrasCompleted(object state) {
+            if ((this.GetAllCathedrasCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetAllCathedrasCompleted(this, new GetAllCathedrasCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetAllCathedrasAsync(StudyingController.SCS.Session session) {
+            this.GetAllCathedrasAsync(session, null);
+        }
+        
+        public void GetAllCathedrasAsync(StudyingController.SCS.Session session, object userState) {
+            if ((this.onBeginGetAllCathedrasDelegate == null)) {
+                this.onBeginGetAllCathedrasDelegate = new BeginOperationDelegate(this.OnBeginGetAllCathedras);
+            }
+            if ((this.onEndGetAllCathedrasDelegate == null)) {
+                this.onEndGetAllCathedrasDelegate = new EndOperationDelegate(this.OnEndGetAllCathedras);
+            }
+            if ((this.onGetAllCathedrasCompletedDelegate == null)) {
+                this.onGetAllCathedrasCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetAllCathedrasCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetAllCathedrasDelegate, new object[] {
+                        session}, this.onEndGetAllCathedrasDelegate, this.onGetAllCathedrasCompletedDelegate, userState);
         }
         
         public System.Collections.Generic.List<EntitiesDTO.CathedraDTO> GetCathedras(StudyingController.SCS.Session session, int facultyID) {

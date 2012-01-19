@@ -187,6 +187,27 @@ namespace StudyingControllerService
             }
         }
 
+        public List<CathedraDTO> GetCathedras(Session session)
+        {
+            try
+            {
+                CheckSession(session);
+                List<CathedraDTO> result = new List<CathedraDTO>();
+
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    foreach (var cathedra in context.Cathedras)
+                        result.Add(GetDTO<CathedraDTO>(cathedra));
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
         public List<GroupDTO> GetGroups(Session session, int cathedraID)
         {
             try
