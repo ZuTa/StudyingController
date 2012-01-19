@@ -13,24 +13,46 @@ namespace StudyingController.ViewModels
     {
         #region Fields & Properties
 
-        public string HeaderText
-        {
-            get { return Properties.Resources.UniversityStructureHeaderText; }
-        }
-
-        public abstract bool IsModified
-        {
-            get;
-        }
-
-       
-        public abstract ISelectable EntitiesProvider { get; set; }
-
-        public BaseApplicationViewModel CurrentWorkspace
+        public bool IsModified
         {
             get
             {
-                return GetViewModel(EntitiesProvider.CurrentEntity);
+                return (CurrentWorkspace == null) ? false : CurrentWorkspace.IsModified;
+            }
+        }
+
+        public bool IsEnabled
+        {
+            get
+            {
+                return !IsModified;
+            }
+        }
+
+        public bool CanSave
+        {
+            get 
+            {
+                return IsModified; 
+            }
+        }
+
+        public abstract ISelectable EntitiesProvider { get; set; }
+
+        private SaveableViewModel currentWorkspace;
+        public SaveableViewModel CurrentWorkspace
+        {
+            get
+            {
+                return currentWorkspace;
+            }
+            set
+            {
+                if (currentWorkspace != value)
+                {
+                    currentWorkspace = value;
+                    OnPropertyChanged("CurrentWorkspace");
+                }
             }
         }
 
@@ -49,7 +71,13 @@ namespace StudyingController.ViewModels
 
         public abstract void Save();
 
-        protected abstract BaseApplicationViewModel GetViewModel(BaseEntityDTO entity);
+        protected abstract SaveableViewModel GetViewModel(BaseEntityDTO entity);
+
+        protected virtual void ViewModified()
+        {
+            OnPropertyChanged("CanSave");
+            OnPropertyChanged("IsEnabled");
+        }
 
         #endregion
 
@@ -57,16 +85,22 @@ namespace StudyingController.ViewModels
 
         protected virtual void EntitesProvider_SelectedEntityChangedEvent(object sender, SelectedEntityChangedArgs e)
         {
-            OnPropertyChanged("CurrentWorkspace");
+            if (CurrentWorkspace != null)
+                CurrentWorkspace.ViewModified -= ViewModelModified;
+
+            CurrentWorkspace = GetViewModel(EntitiesProvider.CurrentEntity);
+            ViewModified();
         }
 
-        protected virtual void ModelPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        protected void ViewModelModified(object sender, EventArgs e)
         {
-         
+            ViewModified();
         }
 
         #endregion
 
-  
+        #region Events
+        #endregion
     }
+
 }

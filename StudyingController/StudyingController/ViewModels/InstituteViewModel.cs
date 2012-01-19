@@ -32,8 +32,7 @@ namespace StudyingController.ViewModels
         {
             originalEntity = new InstituteDTO();
             model = new InstituteModel(originalEntity as InstituteDTO);
-            //this.institute.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
-
+            this.model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         public InstituteViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, InstituteDTO institute)
@@ -41,7 +40,7 @@ namespace StudyingController.ViewModels
         {
             this.originalEntity = institute;
             this.model = new InstituteModel(institute);
-            //this.institute.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+            this.model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         #endregion

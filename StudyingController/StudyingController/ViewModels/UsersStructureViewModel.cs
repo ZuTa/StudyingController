@@ -41,7 +41,7 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
-        protected override BaseApplicationViewModel GetViewModel(EntitiesDTO.BaseEntityDTO entity)
+        protected override SaveableViewModel GetViewModel(EntitiesDTO.BaseEntityDTO entity)
         {
             if (entity is SystemUserDTO)
                 return null;
@@ -61,9 +61,5 @@ namespace StudyingController.ViewModels
 
         #endregion
 
-        public override bool IsModified
-        {
-            get { throw new NotImplementedException(); }
-        }
     }
 }

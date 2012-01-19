@@ -16,7 +16,7 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Row="0" Grid.Column="0" Text="Назва :" Style="{StaticResource TextBlockStyle}"/>
-        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Cathedra.Name}" Style="{StaticResource TextBoxStyle}" />
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=Cathedra.Name, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}" />
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Факультет :" Style="{StaticResource TextBlockStyle}"/>
         <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Faculties}" SelectedValue="{Binding Cathedra.Faculty}" Style="{StaticResource ComboBoxStyle}"/>
     </Grid>

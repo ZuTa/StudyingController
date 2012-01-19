@@ -8,7 +8,7 @@ using System.Data.Objects.DataClasses;
 namespace EntitiesDTO
 {
     [DataContract]
-    public class BaseEntityDTO 
+    public abstract class BaseEntityDTO 
     {
         private int id;
         [DataMember]

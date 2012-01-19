@@ -25,6 +25,11 @@ namespace StudyingController.ViewModels.Models
             this.id = entity.ID;
         }
 
+        public virtual void Assign(BaseEntityDTO entity)
+        {
+            this.id = entity.ID;
+        }
+
         protected void OnPropertyChanged(string propertyName)
         {
             Common.Checks.CheckPropertyExists(this, propertyName);

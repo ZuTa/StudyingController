@@ -6,14 +6,19 @@ using StudyingController.Common;
 using System.Windows.Threading;
 using EntitiesDTO;
 using StudyingController.ViewModels.Models;
+using System.ComponentModel;
 
 namespace StudyingController.ViewModels
 {
-    public abstract class SaveableViewModel : BaseApplicationViewModel
+    public abstract class SaveableViewModel : BaseApplicationViewModel, IEditable
     {
         #region Fields & Properties
 
-        private bool isModified;
+        protected bool isModified;
+        public bool IsModified
+        {
+            get { return isModified; }
+        }
 
         protected BaseEntityDTO originalEntity;
 
@@ -29,5 +34,39 @@ namespace StudyingController.ViewModels
         }
 
         #endregion
+
+        #region Methods
+
+        protected virtual void SetModified()
+        {
+            isModified = true;
+
+            OnViewModified();
+        }
+
+        protected virtual void OnViewModified()
+        {
+            if (ViewModified != null)
+                ViewModified(this, EventArgs.Empty);
+        }
+
+        #endregion
+
+        #region Callbacks
+
+        protected virtual void ModelPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            SetModified();
+        }
+
+        #endregion
+
+        #region Events
+
+        public event EventHandler ViewModified;
+
+        #endregion
+
+        
     }
 }

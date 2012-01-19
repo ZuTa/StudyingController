@@ -80,10 +80,9 @@ namespace StudyingController.ViewModels
             institutes = new List<InstituteDTO>();
             originalEntity = new FacultyDTO();
 
-            if (!(originalEntity is FacultyDTO))
-                throw new InvalidCastException("Unknown entity's type");
-
             model = new FacultyModel(originalEntity as FacultyDTO);
+            model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+
             Load();
         }
 
@@ -91,8 +90,11 @@ namespace StudyingController.ViewModels
             : base(userInterop, controllerInterop, dispatcher)
         {
             institutes = new List<InstituteDTO>();
-            this.originalEntity = faculty;
-            this.model = new FacultyModel(originalEntity as FacultyDTO);
+            originalEntity = faculty;
+
+            model = new FacultyModel(originalEntity as FacultyDTO);
+            model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+
             Load();
         }
 

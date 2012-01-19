@@ -63,6 +63,7 @@
     <Compile Include="ViewModels\CathedraViewModel.cs" />
     <Compile Include="ViewModels\FacultyViewModel.cs" />
     <Compile Include="ViewModels\GroupViewModel.cs" />
+    <Compile Include="ViewModels\IEditable.cs" />
     <Compile Include="ViewModels\InstituteViewModel.cs" />
     <Compile Include="ViewModels\ISelectable.cs" />
     <Compile Include="ViewModels\Models\BaseModel.cs" />
@@ -79,7 +80,6 @@
     <Compile Include="Common\Checks.cs" />
     <Compile Include="Common\HashHelper.cs" />
     <Compile Include="Common\IControllerInterop.cs" />
-    <Compile Include="ViewModels\IHeaderable.cs" />
     <Compile Include="Common\IPasswordConsumer.cs" />
     <Compile Include="Common\IPasswordSource.cs" />
     <Compile Include="Common\IUserInterop.cs" />

@@ -25,6 +25,15 @@ namespace StudyingController.ViewModels.Models
             this.name = entity.Name;
         }
 
+        public virtual void Assign(BaseEntityDTO entity)
+        {
+            base.Assign(entity);
+
+            NamedEntityDTO namedEntity = entity as NamedEntityDTO;
+            this.name = namedEntity.Name;
+
+        }
+
         public override string ToString()
         {
             return Name;

@@ -13,7 +13,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         
-        <ContentControl Grid.Column="0" Background="AliceBlue" Content="{Binding EntitiesProvider}"/>
+        <ContentControl Grid.Column="0" Background="AliceBlue" Content="{Binding EntitiesProvider}" IsEnabled="{Binding IsEnabled}"/>
         <GridSplitter Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="Gray" Width="1" ShowsPreview="True"/>
         <ContentControl Grid.Column="2" Background="Pink" Content="{Binding CurrentWorkspace}"/>
     </Grid>
