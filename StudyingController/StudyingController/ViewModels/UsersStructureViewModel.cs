@@ -50,11 +50,6 @@ namespace StudyingController.ViewModels
             //throw new NotImplementedException("Unknown entity");
         }
 
-        public override void Save()
-        {
-            throw new NotImplementedException();
-        }
-
         #endregion
 
         #region Callbacks

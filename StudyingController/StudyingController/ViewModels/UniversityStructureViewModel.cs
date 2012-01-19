@@ -61,12 +61,6 @@ namespace StudyingController.ViewModels
             return viewModel;
         }
 
-        public override void Save()
-        {
-            base.Save();
-
-        }
-
         #endregion
 
         #region Callbacks

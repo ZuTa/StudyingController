@@ -69,7 +69,7 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
-        public virtual void Save()
+        public void Save()
         {
             CurrentWorkspace.Save();
         }

@@ -58,6 +58,15 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
+        protected abstract void LoadData();
+        protected abstract void ClearData();
+
+        public void Load()
+        {
+            ClearData();
+            LoadData();
+        }
+
         protected virtual void StartLoading(int count = 1)
         {
             lock (lockObject)

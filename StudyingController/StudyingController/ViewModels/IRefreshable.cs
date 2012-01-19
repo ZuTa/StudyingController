@@ -5,6 +5,7 @@ using System.Text;
 
 namespace StudyingController.ViewModels
 {
+    [Obsolete]
     public interface IRefreshable
     {
         void Refresh();

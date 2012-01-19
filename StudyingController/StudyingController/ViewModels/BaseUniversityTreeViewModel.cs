@@ -9,7 +9,7 @@ using EntitiesDTO;
 
 namespace StudyingController.ViewModels
 {
-    public abstract class BaseUniversityTreeViewModel : LoadableViewModel, ISelectable, IRefreshable
+    public abstract class BaseUniversityTreeViewModel : LoadableViewModel, ISelectable
     {
         #region Fields & Properties
 
@@ -50,7 +50,7 @@ namespace StudyingController.ViewModels
             tree = new Tree();
             tree.Changed += new EventHandler(tree_TreeChanged);
 
-            ReBuildUniversityTree();
+            Load();
         }
 
         #endregion
@@ -86,9 +86,6 @@ namespace StudyingController.ViewModels
 
         private void ReBuildUniversityTree()
         {
-            lock (tree)
-                tree.Clear();
-
             switch (ControllerInterop.Session.User.UserRole)
             {
                 case UserRoles.MainSecretary:
@@ -102,9 +99,20 @@ namespace StudyingController.ViewModels
             }
         }
 
-        public void Refresh()
+        protected override void LoadData()
         {
             ReBuildUniversityTree();
+        }
+
+        protected override void ClearData()
+        {
+            lock (tree)
+                tree.Clear();
+        }
+
+        public void Refresh()
+        {
+            
         }
 
         #endregion

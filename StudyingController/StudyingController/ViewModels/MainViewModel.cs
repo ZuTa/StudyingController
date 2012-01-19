@@ -164,14 +164,14 @@ namespace StudyingController.ViewModels
             }
         }
 
-        private RelayCommand saveCommand;
-        public RelayCommand SaveCommand
+        private RelayCommand saveCurrentWorkspaceCommand;
+        public RelayCommand SaveCurrentWorkspaceCommand
         {
             get
             {
-                if (saveCommand == null)
-                    saveCommand = new RelayCommand(param => OnSave());
-                return saveCommand;
+                if (saveCurrentWorkspaceCommand == null)
+                    saveCurrentWorkspaceCommand = new RelayCommand(param => SaveCurrentWorkspace());
+                return saveCurrentWorkspaceCommand;
             }
         }
 
@@ -293,12 +293,11 @@ namespace StudyingController.ViewModels
             OnPropertyChanged("IsSaveable");
         }
 
-        private void OnSave()
+        private void SaveCurrentWorkspace()
         {
             if (CurrentWorkspace is EditableViewModel)
             {
-                EditableViewModel viewModel = CurrentWorkspace as EditableViewModel;
-                viewModel.Save();
+                (CurrentWorkspace as EditableViewModel).Save();
             }
         }
 
