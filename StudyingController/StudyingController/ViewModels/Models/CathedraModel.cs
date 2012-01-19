@@ -42,7 +42,6 @@ namespace StudyingController.ViewModels.Models
             base.Assign(entity);
 
             CathedraDTO cathedra = entity as CathedraDTO;
-
             this.facultyID = cathedra.FacultyID;
             this.faculty = cathedra.Faculty;
         }

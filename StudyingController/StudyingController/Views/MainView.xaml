@@ -30,7 +30,7 @@
             </ToolBar>
 
             <ToolBar Visibility="{Binding Path=IsSaveable, Converter={StaticResource B2V}}">
-                <Button Margin="3" Content="Зберегти" IsEnabled="{Binding CurrentWorkspace.CanSave}"/>
+                <Button Margin="3" Content="Зберегти" IsEnabled="{Binding CurrentWorkspace.CanSave}" Command="{Binding SaveCommand}" />
                 <Button Margin="3" Content="Відмінити зміни" IsEnabled="{Binding CurrentWorkspace.CanSave}"/>
             </ToolBar>
         </ToolBarTray>

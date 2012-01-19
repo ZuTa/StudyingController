@@ -31,7 +31,6 @@ namespace StudyingController.ViewModels.Models
 
             NamedEntityDTO namedEntity = entity as NamedEntityDTO;
             this.name = namedEntity.Name;
-
         }
 
         public override string ToString()

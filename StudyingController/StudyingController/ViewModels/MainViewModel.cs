@@ -54,6 +54,8 @@ namespace StudyingController.ViewModels
             }
         }
 
+
+
         #endregion
 
         #endregion
@@ -129,17 +131,6 @@ namespace StudyingController.ViewModels
 
         #region Commands
 
-        private RelayCommand addEntityCommand;
-        public RelayCommand AddEntityCommand
-        {
-            get 
-            {
-                if (addEntityCommand == null)
-                    addEntityCommand = new RelayCommand(param => AddEntity());
-                return addEntityCommand; 
-            }
-        }
-
         private RelayCommand universityStructureCommand;
         public RelayCommand UniversityStructureCommand
         {
@@ -173,6 +164,17 @@ namespace StudyingController.ViewModels
             }
         }
 
+        private RelayCommand saveCommand;
+        public RelayCommand SaveCommand
+        {
+            get
+            {
+                if (saveCommand == null)
+                    saveCommand = new RelayCommand(param => OnSave());
+                return saveCommand;
+            }
+        }
+
         #region University structure
 
         private RelayCommand addInstituteCommand;
@@ -186,6 +188,7 @@ namespace StudyingController.ViewModels
             }
         }
 
+
         #endregion
 
         #endregion
@@ -194,21 +197,11 @@ namespace StudyingController.ViewModels
 
         private void AddInstitute()
         {
-        }
-
-        private void AddEntity()
-        {
-            PushWorkspace(new InstituteViewModel(UserInterop, ControllerInterop, Dispatcher));   
-        }
-
-        private void ModifyEntity()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void RemoveEntity()
-        {
-            throw new NotImplementedException();
+            if (CurrentWorkspace is EditableViewModel)
+            {
+                EditableViewModel viewModel = CurrentWorkspace as EditableViewModel;
+                viewModel.CurrentWorkspace = new InstituteViewModel(UserInterop, ControllerInterop, Dispatcher);
+            }
         }
 
         private ObservableCollection<NamedCommandData> GetMainCommands()
@@ -252,14 +245,10 @@ namespace StudyingController.ViewModels
 
         private void SubscribeToEvents(BaseApplicationViewModel workspace)
         {
-            if (workspace is BaseUniversityTreeViewModel)
-                (workspace as BaseUniversityTreeViewModel).SelectedEntityChangedEvent += SelectedEntityChanged;
         }
 
         private void UnsubscribeFromEvents(BaseApplicationViewModel workspace)
         {
-            if (workspace is BaseUniversityTreeViewModel)
-                (workspace as BaseUniversityTreeViewModel).SelectedEntityChangedEvent -= SelectedEntityChanged;
         }
 
         protected virtual void OnLogout()
@@ -304,14 +293,18 @@ namespace StudyingController.ViewModels
             OnPropertyChanged("IsSaveable");
         }
 
+        private void OnSave()
+        {
+            if (CurrentWorkspace is EditableViewModel)
+            {
+                EditableViewModel viewModel = CurrentWorkspace as EditableViewModel;
+                viewModel.Save();
+            }
+        }
+
         #endregion
 
         #region Callbacks
-
-        private void SelectedEntityChanged(object sender, SelectedEntityChangedArgs e)
-        {
-            //ChangeCurrentCommands(e.Value);
-        }
 
         #endregion
 

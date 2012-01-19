@@ -20,6 +20,10 @@ namespace StudyingControllerService
         [FaultContract(typeof(ControllerServiceException))]
         List<InstituteDTO> GetInstitutes(Session session);
 
+        [OperationContract(Name = "GetAllFaculties")]
+        [FaultContract(typeof(ControllerServiceException))]
+        List<FacultyDTO> GetFaculties(Session session);
+
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
         List<FacultyDTO> GetFaculties(Session session, int? instituteID);
@@ -27,6 +31,10 @@ namespace StudyingControllerService
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
         List<CathedraDTO> GetCathedras(Session session, int facultyID);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        List<GroupDTO> GetGroups(Session session, int cathedraID);
 
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
@@ -39,5 +47,9 @@ namespace StudyingControllerService
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
         void SaveCathedra(Session session, CathedraDTO cathedra);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        void SaveGroup(Session session, GroupDTO group);
     }
 }

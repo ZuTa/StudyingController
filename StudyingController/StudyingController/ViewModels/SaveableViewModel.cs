@@ -37,6 +37,9 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
+        public virtual void Save()
+        { }
+
         protected virtual void SetModified()
         {
             isModified = true;

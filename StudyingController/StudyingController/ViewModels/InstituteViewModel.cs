@@ -47,9 +47,10 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
-        public void Save()
+        public virtual void Save()
         {
             InstituteDTO instituteDTO = Institute.ToDTO();
+            ControllerInterop.Service.SaveInstitute(ControllerInterop.Session, instituteDTO);
         }
 
         #endregion

@@ -22,6 +22,8 @@ namespace StudyingControllerEntityModel
 
         #endregion
 
+        #region Methods
+
         public CathedraDTO ToDTO()
         {
             CathedraDTO cathedra = new CathedraDTO
@@ -40,5 +42,7 @@ namespace StudyingControllerEntityModel
             this.Name = entity.Name;
             this.FacultyID = entity.FacultyID;
         }
+
+        #endregion
     }
 }

@@ -49,10 +49,8 @@ namespace StudyingController.ViewModels
             Load();
 
             originalEntity = new CathedraDTO();
-            model = new CathedraModel(originalEntity as CathedraDTO, (from faculty in faculties
-                                                                      where faculty.ID == OriginalCathedra.FacultyID
-                                                                      select faculty).FirstOrDefault());
-            model.PropertyChanged +=new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+            model = new CathedraModel(originalEntity as CathedraDTO);
+            model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         public CathedraViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, CathedraDTO cathedra)
@@ -60,11 +58,12 @@ namespace StudyingController.ViewModels
         {
             faculties = new List<FacultyDTO>();
             Load();
-
+            
+            originalEntity = cathedra;
             cathedra.Faculty = (from faculty in faculties
                                 where faculty.ID == OriginalCathedra.FacultyID
                                 select faculty).FirstOrDefault();
-            originalEntity = cathedra;
+
             model = new CathedraModel(cathedra);
             model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }

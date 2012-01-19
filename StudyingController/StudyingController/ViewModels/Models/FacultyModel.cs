@@ -33,7 +33,8 @@ namespace StudyingController.ViewModels.Models
         public FacultyModel(FacultyDTO faculty)
             : base(faculty)
         {
-            instituteID = faculty.InstituteID;            
+            instituteID = faculty.InstituteID;
+            institute = faculty.Institute;
         }
 
         public virtual void Assign(BaseEntityDTO entity)
@@ -41,6 +42,8 @@ namespace StudyingController.ViewModels.Models
             base.Assign(entity);
 
             FacultyDTO faculty = entity as FacultyDTO;
+            this.instituteID = faculty.InstituteID;
+            this.Institute = faculty.Institute;
         }
 
         public FacultyDTO ToDTO()
