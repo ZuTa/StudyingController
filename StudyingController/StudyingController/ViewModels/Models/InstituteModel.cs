@@ -15,6 +15,7 @@ namespace StudyingController.ViewModels.Models
 
         public virtual void Assign(BaseEntityDTO entity)
         {
+            base.Assign(entity);
         }
 
         public InstituteDTO ToDTO()

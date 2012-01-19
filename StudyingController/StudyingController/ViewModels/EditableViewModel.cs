@@ -69,7 +69,10 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
-        public abstract void Save();
+        public virtual void Save()
+        {
+            CurrentWorkspace.Save();
+        }
 
         protected abstract SaveableViewModel GetViewModel(BaseEntityDTO entity);
 

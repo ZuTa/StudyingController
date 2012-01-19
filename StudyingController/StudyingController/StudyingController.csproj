@@ -65,6 +65,8 @@
     <Compile Include="ViewModels\GroupViewModel.cs" />
     <Compile Include="ViewModels\IEditable.cs" />
     <Compile Include="ViewModels\InstituteViewModel.cs" />
+    <Compile Include="ViewModels\IRefreshable.cs" />
+    <Compile Include="ViewModels\ISaveable.cs" />
     <Compile Include="ViewModels\ISelectable.cs" />
     <Compile Include="ViewModels\Models\BaseModel.cs" />
     <Compile Include="ViewModels\Models\CathedraModel.cs" />

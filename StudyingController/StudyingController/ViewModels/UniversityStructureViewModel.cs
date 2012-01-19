@@ -63,8 +63,8 @@ namespace StudyingController.ViewModels
 
         public override void Save()
         {
-            EntitiesProvider.Reload();
-            throw new NotImplementedException();
+            base.Save();
+
         }
 
         #endregion

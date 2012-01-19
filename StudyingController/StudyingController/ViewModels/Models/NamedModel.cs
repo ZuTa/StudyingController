@@ -27,9 +27,10 @@ namespace StudyingController.ViewModels.Models
 
         public virtual void Assign(BaseEntityDTO entity)
         {
-            NamedEntityDTO model = entity as NamedEntityDTO;
+            base.Assign(entity);
 
-            this.name = model.name;
+            NamedEntityDTO namedEntity = entity as NamedEntityDTO;
+            this.name = namedEntity.Name;
         }
 
         public override string ToString()

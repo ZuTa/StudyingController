@@ -6,7 +6,7 @@ using EntitiesDTO;
 
 namespace StudyingController.ViewModels.Models
 {
-    public class FacultyModel : NamedModel, IDTOable<FacultyDTO>
+    public class FacultyModel : NamedModel
     {
         #region Fields & Properties
 
@@ -33,14 +33,17 @@ namespace StudyingController.ViewModels.Models
         public FacultyModel(FacultyDTO faculty)
             : base(faculty)
         {
-            instituteID = faculty.InstituteID;            
+            instituteID = faculty.InstituteID;
+            institute = faculty.Institute;
         }
 
         public virtual void Assign(BaseEntityDTO entity)
         {
-            FacultyDTO faculty = entity as FacultyDTO;
+            base.Assign(entity);
 
-            
+            FacultyDTO faculty = entity as FacultyDTO;
+            this.instituteID = faculty.InstituteID;
+            this.Institute = faculty.Institute;
         }
 
         public FacultyDTO ToDTO()

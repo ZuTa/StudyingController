@@ -9,7 +9,7 @@ using EntitiesDTO;
 
 namespace StudyingController.ViewModels
 {
-    public abstract class BaseUniversityTreeViewModel : LoadableViewModel, ISelectable
+    public abstract class BaseUniversityTreeViewModel : LoadableViewModel, ISelectable, IRefreshable
     {
         #region Fields & Properties
 
@@ -100,6 +100,11 @@ namespace StudyingController.ViewModels
                 default:
                     throw new NotImplementedException();
             }
+        }
+
+        public void Refresh()
+        {
+            ReBuildUniversityTree();
         }
 
         #endregion

@@ -82,20 +82,20 @@ namespace StudyingController.ViewModels
 
             model = new FacultyModel(originalEntity as FacultyDTO);
             model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
-
-            Load();
         }
 
         public FacultyViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, FacultyDTO faculty)
             : base(userInterop, controllerInterop, dispatcher)
         {
             institutes = new List<InstituteDTO>();
-            originalEntity = faculty;
-
-            model = new FacultyModel(originalEntity as FacultyDTO);
-            model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
-
             Load();
+            originalEntity = faculty;
+            faculty.Institute = (from institute in institutes
+                                 where institute.ID == OriginalFaculty.InstituteID
+                                 select institute).FirstOrDefault();
+
+            model = new FacultyModel(faculty);
+            model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         #endregion
@@ -105,9 +105,6 @@ namespace StudyingController.ViewModels
         public void Load()
         {
             Institutes = ControllerInterop.Service.GetInstitutes(ControllerInterop.Session);
-            Faculty.Institute = (from institute in institutes 
-                                 where institute.ID==OriginalFaculty.InstituteID 
-                                 select institute).FirstOrDefault();
         }
 
         public void Save()

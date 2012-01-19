@@ -54,6 +54,8 @@ namespace StudyingController.ViewModels
             }
         }
 
+
+
         #endregion
 
         #endregion
@@ -162,6 +164,17 @@ namespace StudyingController.ViewModels
             }
         }
 
+        private RelayCommand saveCommand;
+        public RelayCommand SaveCommand
+        {
+            get
+            {
+                if (saveCommand == null)
+                    saveCommand = new RelayCommand(param => OnSave());
+                return saveCommand;
+            }
+        }
+
         #region University structure
 
         private RelayCommand addInstituteCommand;
@@ -175,6 +188,7 @@ namespace StudyingController.ViewModels
             }
         }
 
+
         #endregion
 
         #endregion
@@ -183,7 +197,11 @@ namespace StudyingController.ViewModels
 
         private void AddInstitute()
         {
-            PushWorkspace(new InstituteViewModel(UserInterop, ControllerInterop, Dispatcher));
+            if (CurrentWorkspace is EditableViewModel)
+            {
+                EditableViewModel viewModel = CurrentWorkspace as EditableViewModel;
+                viewModel.CurrentWorkspace = new InstituteViewModel(UserInterop, ControllerInterop, Dispatcher);
+            }
         }
 
         private ObservableCollection<NamedCommandData> GetMainCommands()
@@ -273,6 +291,15 @@ namespace StudyingController.ViewModels
             OnPropertyChanged("CurrentWorkspace");
             OnPropertyChanged("HasWorkspaces");
             OnPropertyChanged("IsSaveable");
+        }
+
+        private void OnSave()
+        {
+            if (CurrentWorkspace is EditableViewModel)
+            {
+                EditableViewModel viewModel = CurrentWorkspace as EditableViewModel;
+                viewModel.Save();
+            }
         }
 
         #endregion
