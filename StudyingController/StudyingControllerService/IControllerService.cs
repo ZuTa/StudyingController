@@ -28,6 +28,10 @@ namespace StudyingControllerService
         [FaultContract(typeof(ControllerServiceException))]
         List<FacultyDTO> GetFaculties(Session session, int? instituteID);
 
+        [OperationContract(Name = "GetAllCathedras")]
+        [FaultContract(typeof(ControllerServiceException))]
+        List<CathedraDTO> GetCathedras(Session session);
+
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
         List<CathedraDTO> GetCathedras(Session session, int facultyID);
