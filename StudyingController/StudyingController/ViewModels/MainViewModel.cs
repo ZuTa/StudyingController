@@ -48,7 +48,7 @@ namespace StudyingController.ViewModels
                         new NamedCommandData(){Name = "Інститут", Command = AddInstituteCommand},
                         new NamedCommandData(){Name = "Факультет", Command = AddFacultyCommand},
                         new NamedCommandData(){Name = "Кафедру", Command = AddCathedraCommand},
-                        new NamedCommandData(){Name = "Групу", Command = null},
+                        new NamedCommandData(){Name = "Групу", Command = AddGroupCommand},
                     };
                 return allAddingCommands;
             }
@@ -230,6 +230,21 @@ namespace StudyingController.ViewModels
                         viewModel.ChangeCurrentWorkspace(new CathedraViewModel(UserInterop, ControllerInterop, Dispatcher));
                     });
                 return addCathedraCommand;
+            }
+        }
+
+        private RelayCommand addGroupCommand;
+        public RelayCommand AddGroupCommand
+        {
+            get
+            {
+                if (addGroupCommand == null)
+                    addGroupCommand = new RelayCommand(param =>
+                    {
+                        EditableViewModel viewModel = CurrentWorkspace as EditableViewModel;
+                        viewModel.ChangeCurrentWorkspace(new GroupViewModel(UserInterop, ControllerInterop, Dispatcher));
+                    });
+                return addGroupCommand;
             }
         }
         #endregion

@@ -74,10 +74,10 @@ namespace StudyingController.ViewModels
 
         private void Load()
         {
-            //Cathedras.AddRange(ControllerInterop.Service.get);
+            Cathedras.AddRange(ControllerInterop.Service.GetAllCathedras(ControllerInterop.Session));
         }
 
-        public void Save()
+        public override void Save()
         {
             GroupDTO groupDTO = Group.ToDTO();
             ControllerInterop.Service.SaveGroup(ControllerInterop.Session, groupDTO);
