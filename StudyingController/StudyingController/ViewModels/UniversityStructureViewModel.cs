@@ -12,8 +12,8 @@ namespace StudyingController.ViewModels
     {
         #region Fields & Properties
 
-        private ISelectable entitiesProvider;
-        public override ISelectable EntitiesProvider
+        private IProviderable entitiesProvider;
+        public override IProviderable EntitiesProvider
         {
             get { return entitiesProvider; }
             set
@@ -55,8 +55,6 @@ namespace StudyingController.ViewModels
                 viewModel = new CathedraViewModel(UserInterop, ControllerInterop, Dispatcher, entity as CathedraDTO);
             else
                 throw new NotImplementedException("Unknown entity");
-
-            viewModel.ViewModified += new EventHandler(ViewModelModified);
 
             return viewModel;
         }

@@ -13,14 +13,14 @@ namespace StudyingController.ViewModels.Models
         {
         }
 
-        public virtual void Assign(BaseEntityDTO entity)
+        public override void Assign(BaseEntityDTO entity)
         {
             base.Assign(entity);
         }
 
         public InstituteDTO ToDTO()
         {
-            throw new NotImplementedException();
+            return new InstituteDTO() { ID = this.ID, Name = this.Name };
         }
     }
 }

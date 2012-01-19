@@ -9,7 +9,7 @@ using EntitiesDTO;
 
 namespace StudyingController.ViewModels
 {
-    public abstract class BaseUniversityTreeViewModel : LoadableViewModel, ISelectable
+    public abstract class BaseUniversityTreeViewModel : LoadableViewModel, IProviderable
     {
         #region Fields & Properties
 
@@ -72,6 +72,11 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
+        public void Refresh()
+        {
+            Load();
+        }
+
         private void SelectedEntityChanged(BaseEntityDTO entity)
         {
             currentEntity = entity;
@@ -108,11 +113,6 @@ namespace StudyingController.ViewModels
         {
             lock (tree)
                 tree.Clear();
-        }
-
-        public void Refresh()
-        {
-            
         }
 
         #endregion

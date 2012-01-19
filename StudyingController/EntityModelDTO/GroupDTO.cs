@@ -8,6 +8,13 @@ namespace EntitiesDTO
 {
     public class GroupDTO : NamedEntityDTO
     {
+        private CathedraDTO cathedra;
+        public CathedraDTO Cathedra
+        {
+            get { return cathedra; }
+            set { cathedra = value; }
+        }
+
         private int cathedraID;
         [DataMember]
         public int CathedraID

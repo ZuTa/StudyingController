@@ -72,17 +72,22 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
-        public void Save()
+        public override void Rollback()
         {
-            throw new NotImplementedException();
+            Cathedra.Assign(OriginalCathedra);
+            SetUnModified();
+        }
+
+        public override void Save()
+        {
+            CathedraDTO cathedraDTO = Cathedra.ToDTO();
+            ControllerInterop.Service.SaveCathedra(ControllerInterop.Session, cathedraDTO);
+            SetUnModified();
         }
 
         private void Load()
         {
-            foreach(InstituteDTO institute in ControllerInterop.Service.GetInstitutes(ControllerInterop.Session))
-                Faculties.AddRange(ControllerInterop.Service.GetFaculties(ControllerInterop.Session, institute.ID));
-
-            Faculties.AddRange(ControllerInterop.Service.GetFaculties(ControllerInterop.Session, null));
+            Faculties.AddRange(ControllerInterop.Service.GetAllFaculties(ControllerInterop.Session));
         }
 
         #endregion

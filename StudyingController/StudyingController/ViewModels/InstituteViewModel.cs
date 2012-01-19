@@ -47,10 +47,17 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
-        public virtual void Save()
+        public override void Rollback()
+        {
+            Institute.Assign(OriginalInstitute);
+            SetUnModified();
+        }
+
+        public override void Save()
         {
             InstituteDTO instituteDTO = Institute.ToDTO();
             ControllerInterop.Service.SaveInstitute(ControllerInterop.Session, instituteDTO);
+            SetUnModified();
         }
 
         #endregion

@@ -37,8 +37,9 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
-        public virtual void Save()
-        { }
+        public abstract void Save();
+
+        public abstract void Rollback();
 
         protected virtual void SetModified()
         {
@@ -47,12 +48,24 @@ namespace StudyingController.ViewModels
             OnViewModified();
         }
 
+        protected virtual void SetUnModified()
+        {
+            isModified = false;
+
+            OnViewUnModified();
+        }
+
         protected virtual void OnViewModified()
         {
             if (ViewModified != null)
                 ViewModified(this, EventArgs.Empty);
         }
 
+        protected virtual void OnViewUnModified()
+        {
+            if (ViewUnModified != null)
+                ViewUnModified(this, EventArgs.Empty);
+        }
         #endregion
 
         #region Callbacks
@@ -67,6 +80,7 @@ namespace StudyingController.ViewModels
         #region Events
 
         public event EventHandler ViewModified;
+        public event EventHandler ViewUnModified;
 
         #endregion
 

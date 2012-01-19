@@ -46,8 +46,8 @@ namespace StudyingController.ViewModels
                     allAddingCommands = new ObservableCollection<NamedCommandData>
                     { 
                         new NamedCommandData(){Name = "Інститут", Command = AddInstituteCommand},
-                        new NamedCommandData(){Name = "Факультет", Command = null},
-                        new NamedCommandData(){Name = "Кафедру", Command = null},
+                        new NamedCommandData(){Name = "Факультет", Command = AddFacultyCommand},
+                        new NamedCommandData(){Name = "Кафедру", Command = AddCathedraCommand},
                         new NamedCommandData(){Name = "Групу", Command = null},
                     };
                 return allAddingCommands;
@@ -175,6 +175,17 @@ namespace StudyingController.ViewModels
             }
         }
 
+        private RelayCommand rollbackCurrentWorkspaceCommand;
+        public RelayCommand RollbackCurrentWorkspaceCommand
+        {
+            get
+            {
+                if (rollbackCurrentWorkspaceCommand == null)
+                    rollbackCurrentWorkspaceCommand = new RelayCommand(param => RollbackCurrentWorkspace());
+                return rollbackCurrentWorkspaceCommand;
+            }
+        }
+
         #region University structure
 
         private RelayCommand addInstituteCommand;
@@ -183,26 +194,49 @@ namespace StudyingController.ViewModels
             get
             {
                 if (addInstituteCommand == null)
-                    addInstituteCommand = new RelayCommand(param => AddInstitute());
+                    addInstituteCommand = new RelayCommand(param => 
+                    {
+                        EditableViewModel viewModel = CurrentWorkspace as EditableViewModel;
+                        viewModel.ChangeCurrentWorkspace(new InstituteViewModel(UserInterop, ControllerInterop, Dispatcher));
+                    });
                 return addInstituteCommand; 
             }
         }
 
+        private RelayCommand addFacultyCommand;
+        public RelayCommand AddFacultyCommand
+        {
+            get
+            {
+                if (addFacultyCommand == null)
+                    addFacultyCommand = new RelayCommand(param =>
+                    {
+                        EditableViewModel viewModel = CurrentWorkspace as EditableViewModel;
+                        viewModel.ChangeCurrentWorkspace(new FacultyViewModel(UserInterop, ControllerInterop, Dispatcher));
+                    });
+                return addFacultyCommand;
+            }
+        }
 
+        private RelayCommand addCathedraCommand;
+        public RelayCommand AddCathedraCommand
+        {
+            get
+            {
+                if (addCathedraCommand == null)
+                    addCathedraCommand = new RelayCommand(param =>
+                    {
+                        EditableViewModel viewModel = CurrentWorkspace as EditableViewModel;
+                        viewModel.ChangeCurrentWorkspace(new CathedraViewModel(UserInterop, ControllerInterop, Dispatcher));
+                    });
+                return addCathedraCommand;
+            }
+        }
         #endregion
 
         #endregion
 
         #region Methods
-
-        private void AddInstitute()
-        {
-            if (CurrentWorkspace is EditableViewModel)
-            {
-                EditableViewModel viewModel = CurrentWorkspace as EditableViewModel;
-                viewModel.CurrentWorkspace = new InstituteViewModel(UserInterop, ControllerInterop, Dispatcher);
-            }
-        }
 
         private ObservableCollection<NamedCommandData> GetMainCommands()
         {
@@ -295,12 +329,13 @@ namespace StudyingController.ViewModels
 
         private void SaveCurrentWorkspace()
         {
-            if (CurrentWorkspace is EditableViewModel)
-            {
-                (CurrentWorkspace as EditableViewModel).Save();
-            }
+            (CurrentWorkspace as EditableViewModel).Save();
         }
 
+        private void RollbackCurrentWorkspace()
+        {
+            (CurrentWorkspace as EditableViewModel).Rollback();
+        }
         #endregion
 
         #region Callbacks

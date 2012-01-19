@@ -70,6 +70,7 @@
     <Compile Include="ViewModels\Models\BaseModel.cs" />
     <Compile Include="ViewModels\Models\CathedraModel.cs" />
     <Compile Include="ViewModels\Models\FacultyModel.cs" />
+    <Compile Include="ViewModels\Models\GroupModel.cs" />
     <Compile Include="ViewModels\Models\IDTOable.cs" />
     <Compile Include="ViewModels\Models\InstituteModel.cs" />
     <Compile Include="ViewModels\Models\NamedModel.cs" />

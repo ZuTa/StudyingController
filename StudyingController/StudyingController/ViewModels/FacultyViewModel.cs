@@ -78,8 +78,9 @@ namespace StudyingController.ViewModels
             : base(userInterop, controllerInterop, dispatcher)
         {
             institutes = new List<InstituteDTO>();
-            originalEntity = new FacultyDTO();
+            Load();
 
+            originalEntity = new FacultyDTO();
             model = new FacultyModel(originalEntity as FacultyDTO);
             model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
@@ -101,15 +102,23 @@ namespace StudyingController.ViewModels
         #endregion
 
         #region Methods
+        
+        public override void Rollback()
+        {
+            Faculty.Assign(OriginalFaculty);
+            SetUnModified();
+        }
 
         public void Load()
         {
             Institutes = ControllerInterop.Service.GetInstitutes(ControllerInterop.Session);
         }
 
-        public void Save()
+        public override void Save()
         {
-            throw new NotImplementedException();
+            FacultyDTO facultyDTO = Faculty.ToDTO();
+            ControllerInterop.Service.SaveFaculty(ControllerInterop.Session, facultyDTO);
+            SetUnModified();
         }
 
         #endregion

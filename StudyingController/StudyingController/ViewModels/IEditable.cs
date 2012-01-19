@@ -12,5 +12,7 @@ namespace StudyingController.ViewModels
 
         event EventHandler ViewModified;
 
+        event EventHandler ViewUnModified;
+
     }
 }

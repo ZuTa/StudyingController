@@ -21,28 +21,19 @@ namespace StudyingController.ViewModels.Models
             }
         }
 
-        private int? instituteID;
-        public int? InstituteID
-        {
-            get { return instituteID; }
-            set { instituteID = value; }
-        }
-
         #endregion
 
         public FacultyModel(FacultyDTO faculty)
             : base(faculty)
         {
-            instituteID = faculty.InstituteID;
             institute = faculty.Institute;
         }
 
-        public virtual void Assign(BaseEntityDTO entity)
+        public override void Assign(BaseEntityDTO entity)
         {
             base.Assign(entity);
 
             FacultyDTO faculty = entity as FacultyDTO;
-            this.instituteID = faculty.InstituteID;
             this.Institute = faculty.Institute;
         }
 
@@ -52,7 +43,7 @@ namespace StudyingController.ViewModels.Models
             {
                 ID = this.ID,
                 Name = this.Name,
-                InstituteID = this.InstituteID
+                InstituteID = Institute.ID
             };
         }
     }

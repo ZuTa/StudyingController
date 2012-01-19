@@ -21,28 +21,19 @@ namespace StudyingController.ViewModels.Models
             }
         }
 
-        private int? facultyID;
-        public int? FacultyID
-        {
-            get { return facultyID; }
-            set { facultyID = value; }
-        }
-
         #endregion
 
         public CathedraModel(CathedraDTO cathedra)
             : base(cathedra)
         {
-            this.facultyID = cathedra.FacultyID;
             this.faculty = cathedra.Faculty;
         }
 
-        public virtual void Assign(BaseEntityDTO entity)
+        public override void Assign(BaseEntityDTO entity)
         {
             base.Assign(entity);
 
             CathedraDTO cathedra = entity as CathedraDTO;
-            this.facultyID = cathedra.FacultyID;
             this.faculty = cathedra.Faculty;
         }
 
@@ -52,6 +43,7 @@ namespace StudyingController.ViewModels.Models
             {
                 ID = this.ID,
                 Name = this.Name,
+                FacultyID = Faculty.ID
             };
         }
     }

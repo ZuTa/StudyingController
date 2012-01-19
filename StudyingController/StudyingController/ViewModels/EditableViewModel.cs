@@ -37,7 +37,7 @@ namespace StudyingController.ViewModels
             }
         }
 
-        public abstract ISelectable EntitiesProvider { get; set; }
+        public abstract IProviderable EntitiesProvider { get; set; }
 
         private SaveableViewModel currentWorkspace;
         public SaveableViewModel CurrentWorkspace
@@ -46,7 +46,7 @@ namespace StudyingController.ViewModels
             {
                 return currentWorkspace;
             }
-            set
+            protected set
             {
                 if (currentWorkspace != value)
                 {
@@ -74,12 +74,54 @@ namespace StudyingController.ViewModels
             CurrentWorkspace.Save();
         }
 
+        public void Rollback()
+        {
+            CurrentWorkspace.Rollback();
+        }
+
         protected abstract SaveableViewModel GetViewModel(BaseEntityDTO entity);
 
-        protected virtual void ViewModified()
+        protected virtual void UpdateProperties()
         {
             OnPropertyChanged("CanSave");
             OnPropertyChanged("IsEnabled");
+        }
+
+        private void ViewModelUnModified(object sender, EventArgs e)
+        {
+            UpdateProperties();
+            EntitiesProvider.Refresh();
+        }
+
+        private void ViewModelModified(object sender, EventArgs e)
+        {
+            UpdateProperties();
+        }
+
+        public void ChangeCurrentWorkspace(SaveableViewModel viewModel)
+        {
+            UnsubscribeFromEvrents();
+            CurrentWorkspace = viewModel;
+            SubscribeToEvents();
+        }
+
+
+        private void SubscribeToEvents()
+        {
+            if (CurrentWorkspace != null)
+            {
+                CurrentWorkspace.ViewModified += new EventHandler(ViewModelModified);
+                CurrentWorkspace.ViewUnModified += new EventHandler(ViewModelUnModified);
+            }
+        }
+
+        private void UnsubscribeFromEvrents()
+        {
+            if (CurrentWorkspace != null)
+            {
+                CurrentWorkspace.ViewModified -= ViewModelModified;
+                CurrentWorkspace.ViewUnModified -= ViewModelUnModified;
+            }
         }
 
         #endregion
@@ -88,17 +130,11 @@ namespace StudyingController.ViewModels
 
         protected virtual void EntitesProvider_SelectedEntityChangedEvent(object sender, SelectedEntityChangedArgs e)
         {
-            if (CurrentWorkspace != null)
-                CurrentWorkspace.ViewModified -= ViewModelModified;
+            ChangeCurrentWorkspace(GetViewModel(EntitiesProvider.CurrentEntity));
 
-            CurrentWorkspace = GetViewModel(EntitiesProvider.CurrentEntity);
-            ViewModified();
+            UpdateProperties();
         }
 
-        protected void ViewModelModified(object sender, EventArgs e)
-        {
-            ViewModified();
-        }
 
         #endregion
 

@@ -12,8 +12,8 @@ namespace StudyingController.ViewModels
     { 
         #region Fields & Properties
 
-        private ISelectable entitiesProvider;
-        public override ISelectable EntitiesProvider
+        private IProviderable entitiesProvider;
+        public override IProviderable EntitiesProvider
         {
             get { return entitiesProvider; }
             set
