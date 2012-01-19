@@ -133,8 +133,27 @@ namespace StudyingControllerService
                     var query = from f in context.Faculties
                                 where f.InstituteID == instituteID || (instituteID == null && f.InstituteID == null)
                                 select f;
-                    foreach (var f in query)
-                        result.Add(GetDTO<FacultyDTO>(f));
+                    foreach (var faculty in query)
+                        result.Add(GetDTO<FacultyDTO>(faculty));
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public List<FacultyDTO> GetFaculties(Session session)
+        {
+            try
+            {
+                CheckSession(session);
+                List<FacultyDTO> result = new List<FacultyDTO>();
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    foreach (var faculty in context.Faculties)
+                        result.Add(GetDTO<FacultyDTO>(faculty));
                 }
                 return result;
             }
@@ -158,6 +177,30 @@ namespace StudyingControllerService
                                 select c;
                     foreach (var c in query)
                         result.Add(GetDTO<CathedraDTO>(c));
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public List<GroupDTO> GetGroups(Session session, int cathedraID)
+        {
+            try
+            {
+                CheckSession(session);
+                List<GroupDTO> result = new List<GroupDTO>();
+
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var query = from g in context.Groups
+                                where g.CathedraID== cathedraID
+                                select g;
+                    foreach (var group in query)
+                        result.Add(GetDTO<GroupDTO>(group));
                 }
 
                 return result;
@@ -227,6 +270,28 @@ namespace StudyingControllerService
 
                      context.SaveChanges();
                  }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public void SaveGroup(Session session, GroupDTO group)
+        {
+            try
+            {
+                CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var item = context.Groups.FirstOrDefault(gr => gr.ID == group.ID);
+                    if (item == null)
+                        context.AddToGroups(new Group(group));
+                    else
+                        item.UpdateData(group);
+
+                    context.SaveChanges();
+                }
             }
             catch (Exception ex)
             {
