@@ -43,7 +43,7 @@ namespace StudyingController.ViewModels.Models
             {
                 ID = this.ID,
                 Name = this.Name,
-                InstituteID = Institute.ID
+                InstituteID = Institute == null ? (int?)null : Institute.ID
             };
         }
     }

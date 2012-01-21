@@ -12,9 +12,9 @@ namespace StudyingController.Converters
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             if (value is bool)
-                return (bool)value ? Visibility.Visible : Visibility.Hidden;
+                return (bool)value ? Visibility.Visible : Visibility.Collapsed;
 
-            return Visibility.Hidden;
+            return Visibility.Collapsed;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

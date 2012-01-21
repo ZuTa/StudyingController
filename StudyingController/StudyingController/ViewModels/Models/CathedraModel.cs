@@ -39,6 +39,9 @@ namespace StudyingController.ViewModels.Models
 
         public CathedraDTO ToDTO()
         {
+            if (faculty == null)
+                throw new Exception("Need UI validation!");
+
             return new CathedraDTO
             {
                 ID = this.ID,

@@ -14,51 +14,91 @@ namespace StudyingController.ViewModels
     {
         #region Fields & Properties
 
-        #region Named commands
-
-        #region Main commands
-
-        private ObservableCollection<NamedCommandData> adminMainCommands;
-        public ObservableCollection<NamedCommandData> AdminMainCommands
+        private UserInformationViewModel userInformationViewModel;
+        public UserInformationViewModel UserInformationViewModel
         {
-            get
+            get { return userInformationViewModel; }
+            set
             {
-                if (adminMainCommands == null)
-                    adminMainCommands = new ObservableCollection<NamedCommandData>
-                    { 
-                        new NamedCommandData(){Name = "Структура університету", Command = UniversityStructureCommand},
-                        new NamedCommandData(){Name = "Користувачі", Command = UsersStructureCommand}
-                    };
-                return adminMainCommands;
+                if (userInformationViewModel != value)
+                {
+                    userInformationViewModel = value;
+                    OnPropertyChanged("UserInformationViewModel");
+                }
             }
         }
 
-        #endregion
-
-        #region Add commands
-
-        private ObservableCollection<NamedCommandData> allAddingCommands;
-        public ObservableCollection<NamedCommandData> AllAddingCommands
+        public bool IsUserMainAdmin
         {
             get
             {
-                if (allAddingCommands == null)
-                    allAddingCommands = new ObservableCollection<NamedCommandData>
-                    { 
-                        new NamedCommandData(){Name = "Інститут", Command = AddInstituteCommand},
-                        new NamedCommandData(){Name = "Факультет", Command = AddFacultyCommand},
-                        new NamedCommandData(){Name = "Кафедру", Command = AddCathedraCommand},
-                        new NamedCommandData(){Name = "Групу", Command = AddGroupCommand},
-                    };
-                return allAddingCommands;
+                return ControllerInterop.User == null ? false : ControllerInterop.User.Role == UserRoles.MainAdmin;
             }
         }
 
+        public bool IsUserInstituteAdmin
+        {
+            get
+            {
+                return ControllerInterop.User == null ? false : ControllerInterop.User.Role == UserRoles.InstituteAdmin;
+            }
+        }
 
+        public bool IsUserFacultyAdmin
+        {
+            get
+            {
+                return ControllerInterop.User == null ? false : ControllerInterop.User.Role == UserRoles.FacultyAdmin;
+            }
+        }
 
-        #endregion
+        public bool IsUserMainSecretary
+        {
+            get
+            {
+                return ControllerInterop.User == null ? false : ControllerInterop.User.Role == UserRoles.MainSecretary;
+            }
+        }
 
-        #endregion
+        public bool IsUserInstituteSecretary
+        {
+            get
+            {
+                return ControllerInterop.User == null ? false : ControllerInterop.User.Role == UserRoles.InstituteSecretary;
+            }
+        }
+
+        public bool IsUserFacultySecretary
+        {
+            get
+            {
+                return ControllerInterop.User == null ? false : ControllerInterop.User.Role == UserRoles.FacultySecretary;
+            }
+        }
+
+        public bool IsUserTeacher
+        {
+            get
+            {
+                return ControllerInterop.User == null ? false : ControllerInterop.User.Role == UserRoles.Teacher;
+            }
+        }
+
+        public bool IsUserStudent
+        {
+            get
+            {
+                return ControllerInterop.User == null ? false : ControllerInterop.User.Role == UserRoles.Student;
+            }
+        }
+
+        public bool IsUserAdminOrSecretary
+        {
+            get
+            {
+                return IsUserMainAdmin || IsUserMainSecretary || IsUserInstituteAdmin || IsUserInstituteSecretary || IsUserFacultyAdmin || IsUserFacultySecretary;
+            }
+        }
 
         public bool IsSaveable
         {
@@ -89,13 +129,6 @@ namespace StudyingController.ViewModels
             }
         }
 
-        private ObservableCollection<NamedCommandData> mainCommands;
-        private ReadOnlyObservableCollection<NamedCommandData> mainCommandsRO;
-        public ReadOnlyObservableCollection<NamedCommandData> MainCommands
-        {
-            get { return mainCommandsRO; }
-        }//Collection for left buttont
-
         private ObservableCollection<NamedCommandData> pathCommands;
         private ReadOnlyObservableCollection<NamedCommandData> pathCommandsRO;
         public ReadOnlyObservableCollection<NamedCommandData> PathCommands
@@ -119,12 +152,7 @@ namespace StudyingController.ViewModels
             : base(userInterop, controllerInterop, dispatcher)
         {
             workspaces = new Stack<BaseApplicationViewModel>();
-
-            mainCommands = GetMainCommands();
-            mainCommandsRO = new ReadOnlyObservableCollection<NamedCommandData>(mainCommands);
-
-            currentCommands = GetModificationCommands();
-            currentCommandsRO = new ReadOnlyObservableCollection<NamedCommandData>(currentCommands);
+            UserInformationViewModel = new UserInformationViewModel(userInterop, controllerInterop, dispatcher, controllerInterop.User.UserInformation);
         }
 
         #endregion
@@ -186,94 +214,9 @@ namespace StudyingController.ViewModels
             }
         }
 
-        #region University structure
-
-        private RelayCommand addInstituteCommand;
-        public RelayCommand AddInstituteCommand
-        {
-            get
-            {
-                if (addInstituteCommand == null)
-                    addInstituteCommand = new RelayCommand(param => 
-                    {
-                        EditableViewModel viewModel = CurrentWorkspace as EditableViewModel;
-                        viewModel.ChangeCurrentWorkspace(new InstituteViewModel(UserInterop, ControllerInterop, Dispatcher));
-                    });
-                return addInstituteCommand; 
-            }
-        }
-
-        private RelayCommand addFacultyCommand;
-        public RelayCommand AddFacultyCommand
-        {
-            get
-            {
-                if (addFacultyCommand == null)
-                    addFacultyCommand = new RelayCommand(param =>
-                    {
-                        EditableViewModel viewModel = CurrentWorkspace as EditableViewModel;
-                        viewModel.ChangeCurrentWorkspace(new FacultyViewModel(UserInterop, ControllerInterop, Dispatcher));
-                    });
-                return addFacultyCommand;
-            }
-        }
-
-        private RelayCommand addCathedraCommand;
-        public RelayCommand AddCathedraCommand
-        {
-            get
-            {
-                if (addCathedraCommand == null)
-                    addCathedraCommand = new RelayCommand(param =>
-                    {
-                        EditableViewModel viewModel = CurrentWorkspace as EditableViewModel;
-                        viewModel.ChangeCurrentWorkspace(new CathedraViewModel(UserInterop, ControllerInterop, Dispatcher));
-                    });
-                return addCathedraCommand;
-            }
-        }
-
-        private RelayCommand addGroupCommand;
-        public RelayCommand AddGroupCommand
-        {
-            get
-            {
-                if (addGroupCommand == null)
-                    addGroupCommand = new RelayCommand(param =>
-                    {
-                        EditableViewModel viewModel = CurrentWorkspace as EditableViewModel;
-                        viewModel.ChangeCurrentWorkspace(new GroupViewModel(UserInterop, ControllerInterop, Dispatcher));
-                    });
-                return addGroupCommand;
-            }
-        }
-        #endregion
-
         #endregion
 
         #region Methods
-
-        private ObservableCollection<NamedCommandData> GetMainCommands()
-        {
-            switch (ControllerInterop.Session.User.UserRole)
-            {
-                case UserRoles.MainAdmin:
-                    return AdminMainCommands;
-                default:
-                    return new ObservableCollection<NamedCommandData>();
-            }
-        }
-
-        private ObservableCollection<NamedCommandData> GetModificationCommands()
-        {
-            switch (ControllerInterop.Session.User.UserRole)
-            {
-                case UserRoles.MainAdmin:
-                    return AllAddingCommands;
-                default:
-                    return new ObservableCollection<NamedCommandData>();
-            }
-        }
 
         private void OpenUniversityStructure()
         {
@@ -304,12 +247,6 @@ namespace StudyingController.ViewModels
         {
             if (Logout != null)
                 Logout(this, EventArgs.Empty);
-        }
-
-        private void AddCurrentCommands(ObservableCollection<NamedCommandData> collection)
-        {
-            foreach (NamedCommandData command in collection)
-                currentCommands.Add(command);
         }
 
         private void PushWorkspace(BaseApplicationViewModel viewModel)

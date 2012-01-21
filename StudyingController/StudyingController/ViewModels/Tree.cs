@@ -49,7 +49,7 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
-        public TreeNode AppendNode(TreeNode node, TreeNode parentNode)
+        public TreeNode AppendNode(TreeNode node, TreeNode parentNode = null)
         {
             node.Changed += new EventHandler(node_Changed);
             if (parentNode != null)

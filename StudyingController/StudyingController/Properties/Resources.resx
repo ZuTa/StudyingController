@@ -123,6 +123,18 @@
   <data name="ErrorTxt" xml:space="preserve">
     <value>Помилка</value>
   </data>
+  <data name="FacultyAdminsTxt" xml:space="preserve">
+    <value>Адміністратори факультетів</value>
+  </data>
+  <data name="FacultySecretariesTxt" xml:space="preserve">
+    <value>Секретарі факультетів</value>
+  </data>
+  <data name="InstituteAdminsTxt" xml:space="preserve">
+    <value>Адміністратори інститутів</value>
+  </data>
+  <data name="InstituteSecretariesTxt" xml:space="preserve">
+    <value>Секретарі інститутів</value>
+  </data>
   <data name="InstituteViewHeaderText" xml:space="preserve">
     <value>Новий інститут</value>
   </data>
@@ -132,13 +144,19 @@
   <data name="LoginDataError" xml:space="preserve">
     <value>Заповніть коректно всі поля!</value>
   </data>
+  <data name="MainAdminsTxt" xml:space="preserve">
+    <value>Головні адміністратори</value>
+  </data>
+  <data name="MainSecretariesTxt" xml:space="preserve">
+    <value>Головні секретарі</value>
+  </data>
   <data name="Service" xml:space="preserve">
     <value>ControllerService.svc</value>
   </data>
-  <data name="UniversityStructureHeadeText" xml:space="preserve">
-    <value>Структура університету</value>
+  <data name="StudentsTxt" xml:space="preserve">
+    <value>Студенти</value>
   </data>
-  <data name="UserStructureHeaderText" xml:space="preserve">
-    <value>Користувачі</value>
+  <data name="TeachersTxt" xml:space="preserve">
+    <value>Викладачі</value>
   </data>
 </root>

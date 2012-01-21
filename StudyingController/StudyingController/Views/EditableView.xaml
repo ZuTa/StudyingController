@@ -6,15 +6,47 @@
              xmlns:common="clr-namespace:StudyingController.Common"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
+    <Grid Margin="5">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*" MinWidth="150"/>
             <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*" MinWidth="150"/>
         </Grid.ColumnDefinitions>
         
-        <ContentControl Grid.Column="0" Background="AliceBlue" Content="{Binding EntitiesProvider}" IsEnabled="{Binding IsEnabled}"/>
-        <GridSplitter Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="Gray" Width="1" ShowsPreview="True"/>
-        <ContentControl Grid.Column="2" Background="Pink" Content="{Binding CurrentWorkspace}"/>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            
+            <ContentControl Grid.Row="0" Grid.ColumnSpan="3" Content="{Binding EntitiesProvider}" IsEnabled="{Binding IsEnabled}"/>
+
+            <Button x:Name="btnAdd" Grid.Row="1" Grid.Column="1" Content="Додати" Margin="3" IsEnabled="{Binding CanAddNewEntity}" Click="btnAdd_Click">
+                <Button.ContextMenu>
+                    <ContextMenu x:Name="cmAdd" ItemsSource="{Binding AddCommands}">
+                        <ContextMenu.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel/>
+                            </ItemsPanelTemplate>
+                        </ContextMenu.ItemsPanel>
+                        <ContextMenu.ItemTemplate>                            
+                            <DataTemplate>
+                                <MenuItem Header="{Binding Name}" Command="{Binding Command}"/>
+                            </DataTemplate>
+                        </ContextMenu.ItemTemplate>
+                    </ContextMenu>
+                </Button.ContextMenu>
+            </Button>
+            <Button Grid.Row="1" Grid.Column="2" Content="Видалити" IsEnabled="{Binding CanRemoveEntity}" Margin="3,3,0,3"/>
+        </Grid>
+        
+        <GridSplitter Width="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="White" ShowsPreview="True"/>
+        
+        <ContentControl Grid.Column="2" Content="{Binding CurrentWorkspace}"/>
     </Grid>
 </UserControl>

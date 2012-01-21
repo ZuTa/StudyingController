@@ -6,23 +6,21 @@ using EntitiesDTO;
 
 namespace StudyingControllerEntityModel
 {
-    public partial class InstituteAdmin : IDTOable<InstituteAdminDTO>
+    public partial class FacultyAdmin : IDTOable<FacultyAdminDTO>
     {
-        public new InstituteAdminDTO ToDTO()
+        public new FacultyAdminDTO ToDTO()
         {
-            InstituteAdminDTO admin = new InstituteAdminDTO
+            return new FacultyAdminDTO
             {
                 ID = this.ID,
                 Login = this.Login,
                 UserInformation = (this.UserInformation as IDTOable<UserInformationDTO>).ToDTO(),
                 Role = this.Role,
-                InstituteID = this.InstituteID
+                FacultyID = this.FacultyID
             };
-
-            return admin;
         }
 
-        public void UpdateData(InstituteAdminDTO entity)
+        public void UpdateData(FacultyAdminDTO entity)
         {
             throw new NotImplementedException();
         }

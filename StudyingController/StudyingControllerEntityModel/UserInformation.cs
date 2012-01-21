@@ -11,15 +11,13 @@ namespace StudyingControllerEntityModel
     {
         public UserInformationDTO ToDTO()
         {
-            UserInformationDTO info = new UserInformationDTO
+            return new UserInformationDTO
             {
                 ID = this.SystemUserID,
                 FirstName = this.FirstName,
                 LastName = this.LastName,
                 Email = this.Email,
             };
-
-            return info;
         }
 
 

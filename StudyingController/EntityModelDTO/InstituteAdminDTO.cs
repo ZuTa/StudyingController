@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 
 namespace EntitiesDTO
 {
-    public class InstituteAdminDTO : SystemUserDTO
+    public class InstituteAdminDTO : SystemUserDTO, IInstituteable
     {
         private int instituteID;
         [DataMember]

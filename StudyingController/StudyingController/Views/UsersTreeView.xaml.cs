@@ -15,14 +15,13 @@ using System.Windows.Shapes;
 namespace StudyingController.Views
 {
     /// <summary>
-    /// Interaction logic for MainView.xaml
+    /// Interaction logic for UsersTreeView.xaml
     /// </summary>
-    public partial class MainView : UserControl
+    public partial class UsersTreeView : UserControl
     {
-        public MainView()
+        public UsersTreeView()
         {
             InitializeComponent();
         }
-
     }
 }

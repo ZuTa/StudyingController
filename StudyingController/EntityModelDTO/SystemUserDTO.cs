@@ -6,43 +6,68 @@ using System.Runtime.Serialization;
 
 namespace EntitiesDTO
 {
+    [DataContract]
+    [Flags]
     public enum UserRoles
     {
         /// <summary>
+        /// Без ролі
+        /// </summary>
+        [EnumMember]
+        None = 0,
+        /// <summary>
         /// Головний адміністратор
         /// </summary>
-        MainAdmin = 0,
+        [PluralizeName("MainAdminsTxt")]
+        [EnumMember]
+        MainAdmin = 1,
         /// <summary>
         /// Адміністратор інституту
         /// </summary>
-        InstituteAdmin = 1,
+        [PluralizeName("InstituteAdminsTxt")]
+        [EnumMember]
+        InstituteAdmin = 2,
         /// <summary>
         /// Адміністратор факультет
         /// </summary>
-        FacultyAdmin = 2,
+        [PluralizeName("FacultyAdminsTxt")]
+        [EnumMember]
+        FacultyAdmin = 4,
         /// <summary>
         /// Головний секретар
         /// </summary>
-        MainSecretary = 3,
+        [PluralizeName("MainSecretariesTxt")]
+        [EnumMember]
+        MainSecretary = 8,
         /// <summary>
         /// Секретар інституту
         /// </summary>
-        InstituteSecretary = 4,
+        [PluralizeName("InstituteSecretariesTxt")]
+        [EnumMember]
+        InstituteSecretary = 16,
         /// <summary>
         /// Секретар факультету
         /// </summary>
-        FacultySecretary = 5,
+        [PluralizeName("FacultySecretariesTxt")]
+        [EnumMember]
+        FacultySecretary = 32,
         /// <summary>
         /// Викладач
         /// </summary>
-        Teacher = 6,
+        [PluralizeName("TeachersTxt")]
+        [EnumMember]
+        Teacher = 64,
         /// <summary>
         /// Студент
         /// </summary>
-        Student = 7
+        [PluralizeName("StudentsTxt")]
+        [EnumMember]
+        Student = 128
     }
 
     [DataContract]
+    [KnownType(typeof(UserInformationDTO))]
+    [KnownType(typeof(FacultyAdminDTO))]
     public class SystemUserDTO : BaseEntityDTO
     {
         private string login;
@@ -53,12 +78,12 @@ namespace EntitiesDTO
             set { login = value; }
         }
 
-        private UserRoles userRole;
+        private UserRoles role;
         [DataMember]
-        public UserRoles UserRole
+        public UserRoles Role
         {
-            get { return userRole; }
-            set { userRole = value; }
+            get { return role; }
+            set { role = value; }
         }
 
         private UserInformationDTO userInformation;

@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace StudyingController.Views
 {
     /// <summary>
-    /// Interaction logic for UsersStructureView.xaml
+    /// Interaction logic for UserInformationView.xaml
     /// </summary>
-    public partial class UsersStructureView : UserControl
+    public partial class UserInformationView : UserControl
     {
-        public UsersStructureView()
+        public UserInformationView()
         {
             InitializeComponent();
         }

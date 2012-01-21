@@ -8,6 +8,8 @@ using EntitiesDTO;
 namespace StudyingControllerService
 {
     [DataContract]
+    [KnownType(typeof(InstituteAdminDTO))]
+    [KnownType(typeof(FacultyAdminDTO))]
     public class Session
     {
         #region Fields & Properties

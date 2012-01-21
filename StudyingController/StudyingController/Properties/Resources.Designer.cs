@@ -79,6 +79,42 @@ namespace StudyingController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Адміністратори факультетів.
+        /// </summary>
+        internal static string FacultyAdminsTxt {
+            get {
+                return ResourceManager.GetString("FacultyAdminsTxt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Секретарі факультетів.
+        /// </summary>
+        internal static string FacultySecretariesTxt {
+            get {
+                return ResourceManager.GetString("FacultySecretariesTxt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Адміністратори інститутів.
+        /// </summary>
+        internal static string InstituteAdminsTxt {
+            get {
+                return ResourceManager.GetString("InstituteAdminsTxt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Секретарі інститутів.
+        /// </summary>
+        internal static string InstituteSecretariesTxt {
+            get {
+                return ResourceManager.GetString("InstituteSecretariesTxt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Новий інститут.
         /// </summary>
         internal static string InstituteViewHeaderText {
@@ -106,6 +142,24 @@ namespace StudyingController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Головні адміністратори.
+        /// </summary>
+        internal static string MainAdminsTxt {
+            get {
+                return ResourceManager.GetString("MainAdminsTxt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Головні секретарі.
+        /// </summary>
+        internal static string MainSecretariesTxt {
+            get {
+                return ResourceManager.GetString("MainSecretariesTxt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ControllerService.svc.
         /// </summary>
         internal static string Service {
@@ -115,20 +169,20 @@ namespace StudyingController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Структура університету.
+        ///   Looks up a localized string similar to Студенти.
         /// </summary>
-        internal static string UniversityStructureHeaderText {
+        internal static string StudentsTxt {
             get {
-                return ResourceManager.GetString("UniversityStructureHeadeText", resourceCulture);
+                return ResourceManager.GetString("StudentsTxt", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Користувачі.
+        ///   Looks up a localized string similar to Викладачі.
         /// </summary>
-        internal static string UserStructureHeaderText {
+        internal static string TeachersTxt {
             get {
-                return ResourceManager.GetString("UserStructureHeaderText", resourceCulture);
+                return ResourceManager.GetString("TeachersTxt", resourceCulture);
             }
         }
     }

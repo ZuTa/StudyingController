@@ -9,29 +9,54 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition  Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <ToolBarTray Background="White">
+        <ToolBarTray>
             <ToolBar>
-                <Button Command="{Binding LogoutCommand}" Content="Вийти"/>
-            </ToolBar>
-            <ToolBar>
-                <Button Margin="3" Content="Додати" x:Name="btnAdd" Click="btnAdd_Click">
-                    <Button.ContextMenu>
-                        <ContextMenu x:Name="cmAdd" ItemsSource="{Binding CurrentCommands}">
-                            <ContextMenu.ItemTemplate>
-                                <DataTemplate>
-                                    <MenuItem Header="{Binding Name}" Command="{Binding Command}"/>
-                                </DataTemplate>
-                            </ContextMenu.ItemTemplate>
-                        </ContextMenu>
-                    </Button.ContextMenu>
+                <Button Command="{Binding LogoutCommand}" ToolTip="Вийти" Margin="3" Width="32" Height="32">
+                    <Image Source="/StudyingController;component/Images/application_exit.png" Stretch="Fill" />
                 </Button>
-                
-                <Button Margin="3" Content="Видалити" x:Name="btnRemove"/>
             </ToolBar>
-
+            <ToolBar>
+                <Button Margin="3" ToolTip="Структура" Width="32" Height="32" Command="{Binding Path=UniversityStructureCommand}" Visibility="{Binding Path=IsUserAdminOrSecretary, Converter={StaticResource B2V}}">
+                    <Image Source="/StudyingController;component/Images/department.png" Stretch="Fill" />
+                </Button>
+                <Button Margin="3" ToolTip="Користувачі" Width="32" Height="32" Command="{Binding Path=UsersStructureCommand}" Visibility="{Binding Path=IsUserAdminOrSecretary, Converter={StaticResource B2V}}">
+                    <Image Source="/StudyingController;component/Images/people.png" Stretch="Fill" />
+                </Button>
+                <Button Margin="3" ToolTip="Лекції" Width="32" Height="32" Command="{Binding Path=UsersStructureCommand}" Visibility="{Binding Path=IsUserTeacher, Converter={StaticResource B2V}}">
+                    <Image Source="/StudyingController;component/Images/book_cd_vide.png" Stretch="Fill" />
+                </Button>
+            </ToolBar>
             <ToolBar Visibility="{Binding Path=IsSaveable, Converter={StaticResource B2V}}">
-                <Button Margin="3" Content="Зберегти" IsEnabled="{Binding CurrentWorkspace.CanSave}" Command="{Binding SaveCurrentWorkspaceCommand}" />
-                <Button Margin="3" Content="Відмінити зміни" IsEnabled="{Binding CurrentWorkspace.CanSave}" Command="{Binding RollbackCurrentWorkspaceCommand}" />
+                <Button Margin="3" Width="32" Height="32" ToolTip="Зберегти" IsEnabled="{Binding CurrentWorkspace.CanSave}" Command="{Binding SaveCurrentWorkspaceCommand}">
+                    <Button.Style>
+                        <Style TargetType="{x:Type FrameworkElement}">
+                            <Style.Triggers>
+                                <Trigger Property="IsEnabled" Value="True">
+                                    <Setter Property="Opacity" Value="1"/>
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Opacity" Value="0.5"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Image x:Name="img" Source="/StudyingController;component/Images/floppy.png" Stretch="Fill" />
+                </Button>
+                <Button Margin="3" Width="32" Height="32" ToolTip="Відмінити" IsEnabled="{Binding CurrentWorkspace.CanSave}" Command="{Binding RollbackCurrentWorkspaceCommand}">
+                    <Button.Style>
+                        <Style  TargetType="{x:Type FrameworkElement}">
+                            <Style.Triggers>
+                                <Trigger Property="IsEnabled" Value="True">
+                                    <Setter Property="Opacity" Value="1"/>
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Opacity" Value="0.5"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Image Source="/StudyingController;component/Images/cancel_dv.png" Stretch="Fill" />
+                </Button>
             </ToolBar>
         </ToolBarTray>
         <Grid Grid.Row="1">
@@ -39,8 +64,11 @@
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition Width="3*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0" >
-                <Expander ExpandDirection="Right" Margin="2,0,5,2" IsExpanded="True" Background="Beige">
+            <Grid Grid.Column="0" Margin="3">
+                <Expander IsExpanded="True" ExpandDirection="Right">
+                    <ContentControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding UserInformationViewModel}"/>
+                </Expander>
+                <!--<Expander ExpandDirection="Right" Margin="2,0,5,2" IsExpanded="True" Background="Beige">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -58,17 +86,15 @@
                                     </ItemsControl.ItemsPanel>
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
-                                            <StackPanel>
-                                                <Button Margin="3,3,3,3" FontSize="12" HorizontalAlignment="Stretch" Content="{Binding Path=Name}" Command="{Binding Path=Command}"></Button>
-                                            </StackPanel>
+                                            <Button Margin="3" HorizontalAlignment="Stretch" Content="{Binding Path=Name}" Command="{Binding Path=Command}"></Button>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                             </ItemsControl>
                         </Grid>                        
                     </ScrollViewer>
-                </Expander>
+                </Expander>-->
             </Grid>
-            <ContentControl Grid.Column="1" Background="Azure" Margin="0,0,2,2" Content="{Binding CurrentWorkspace}"/>
+            <ContentControl Margin="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding CurrentWorkspace}"/>
             <!--<Grid Grid.Column="1">
                 <ScrollViewer Grid.Row="0" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Left" >
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">

@@ -43,12 +43,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseEntityDTO.cs" />
+    <Compile Include="BaseNameAttribute.cs" />
     <Compile Include="CathedraDTO.cs" />
+    <Compile Include="FacultyAdminDTO.cs" />
     <Compile Include="FacultyDTO.cs" />
     <Compile Include="GroupDTO.cs" />
+    <Compile Include="IFacultyable.cs" />
+    <Compile Include="IInstituteable.cs" />
     <Compile Include="InstituteAdminDTO.cs" />
     <Compile Include="InstituteDTO.cs" />
+    <Compile Include="ITextable.cs" />
     <Compile Include="NamedEntityDTO.cs" />
+    <Compile Include="PluralizeNameAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SystemUserDTO.cs" />
     <Compile Include="UserInformationDTO.cs" />
