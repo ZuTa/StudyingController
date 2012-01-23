@@ -19,6 +19,30 @@
     <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource DefaultTextStyle}" x:Key="ComboBoxStyle">
         <Setter Property="IsReadOnly" Value="True"/>
     </Style>
+
+    <Style TargetType="TextBox" BasedOn="{StaticResource TextBoxStyle}" x:Key="ValidationTextBoxToolTipStyle">
+        <Style.Triggers>
+            <Trigger Property="Validation.HasError" Value="True">
+                <Setter Property="ToolTip">
+                    <Setter.Value>
+                        <Binding Path="(Validation.Errors).CurrentItem.ErrorContent" RelativeSource="{x:Static RelativeSource.Self}" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="ComboBox" BasedOn="{StaticResource ComboBoxStyle}" x:Key="ValidationComboBoxToolTipStyle">
+        <Style.Triggers>
+            <Trigger Property="Validation.HasError" Value="True">
+                <Setter Property="ToolTip">
+                    <Setter.Value>
+                        <Binding Path="(Validation.Errors).CurrentItem.ErrorContent" RelativeSource="{x:Static RelativeSource.Self}" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>
 
     

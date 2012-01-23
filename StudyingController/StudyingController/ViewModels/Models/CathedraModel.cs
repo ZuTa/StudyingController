@@ -49,5 +49,18 @@ namespace StudyingController.ViewModels.Models
                 FacultyID = Faculty.ID
             };
         }
+
+        protected override string Validation(string property)
+        {
+            switch (property)
+            {
+                case "Name":
+                    return base.Validation(property);
+                case "Faculty":
+                    return base.IsSelectedItem(faculty);
+            }
+            return null;
+        }
+
     }
 }
