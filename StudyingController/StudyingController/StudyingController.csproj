@@ -58,15 +58,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Common\EnumLocalizeHelper.cs" />
     <Compile Include="Common\TreeViewHelper.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="ViewModels\BaseTreeViewModel.cs" />
     <Compile Include="ViewModels\CathedraViewModel.cs" />
     <Compile Include="ViewModels\FacultyViewModel.cs" />
     <Compile Include="ViewModels\GroupViewModel.cs" />
     <Compile Include="ViewModels\IEditable.cs" />
     <Compile Include="ViewModels\InstituteViewModel.cs" />
-    <Compile Include="ViewModels\IRefreshable.cs" />
-    <Compile Include="ViewModels\ISelectable.cs" />
+    <Compile Include="ViewModels\IProviderable.cs" />
     <Compile Include="ViewModels\Models\BaseModel.cs" />
     <Compile Include="ViewModels\Models\CathedraModel.cs" />
     <Compile Include="ViewModels\Models\FacultyModel.cs" />
@@ -96,10 +97,10 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
-    <Compile Include="ViewModels\BaseUniversityTreeViewModel.cs" />
+    <Compile Include="ViewModels\UniversityTreeViewModel.cs.cs" />
     <Compile Include="ViewModels\EditableViewModel.cs" />
     <Compile Include="ViewModels\UniversityStructureViewModel.cs" />
-    <Compile Include="ViewModels\UniversityTreeViewModel.cs" />
+    <Compile Include="ViewModels\UserInformationViewModel.cs" />
     <Compile Include="ViewModels\UsersStructureViewModel.cs" />
     <Compile Include="ViewModels\UsersTreeViewModel.cs" />
     <Compile Include="Views\CathedraView.xaml.cs">
@@ -126,8 +127,11 @@
     <Compile Include="Views\UniversityTreeView.xaml.cs">
       <DependentUpon>UniversityTreeView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\UsersStructureView.xaml.cs">
-      <DependentUpon>UsersStructureView.xaml</DependentUpon>
+    <Compile Include="Views\UserInformationView.xaml.cs">
+      <DependentUpon>UserInformationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UsersTreeView.xaml.cs">
+      <DependentUpon>UsersTreeView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -177,7 +181,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\UsersStructureView.xaml">
+    <Page Include="Views\UserInformationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UsersTreeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -207,6 +215,7 @@
     <None Include="Properties\DataSources\EntitiesDTO.FacultyDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.GroupDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.InstituteDTO.datasource" />
+    <None Include="Properties\DataSources\EntitiesDTO.SystemUserDTO.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -230,7 +239,9 @@
     </None>
     <None Include="ViewModels\ViewModelsDiagram.cd" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\person.png" />
+  </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
@@ -257,6 +268,24 @@
       <Project>{86B57E17-94BC-45DD-BCC9-2DA0C9C4D596}</Project>
       <Name>EntitiesDTO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\department.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\people.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\book_cd_vide.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\application_exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\floppy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cancel_dv.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

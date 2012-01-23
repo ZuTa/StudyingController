@@ -117,6 +117,14 @@ namespace StudyingController
             }
         }
 
+        public EntitiesDTO.SystemUserDTO User
+        {
+            get 
+            {
+                return (Session == null) ? null : Session.User;
+            }
+        }
+
         private void OnSessionChanged()
         {
             if (SessionChanged != null)
@@ -143,6 +151,5 @@ namespace StudyingController
         }
 
         #endregion
-
     }
 }

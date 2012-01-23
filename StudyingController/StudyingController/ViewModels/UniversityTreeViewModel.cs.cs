@@ -9,89 +9,36 @@ using EntitiesDTO;
 
 namespace StudyingController.ViewModels
 {
-    public abstract class BaseUniversityTreeViewModel : LoadableViewModel, IProviderable
+    public class UniversityTreeViewModel : BaseTreeViewModel
     {
         #region Fields & Properties
-
-        private Tree tree;
-        public Tree Tree
-        {
-            get { return tree; }
-            set
-            {
-                tree = value;
-                OnPropertyChanged("Tree");
-            }
-        }
-
-        private BaseEntityDTO currentEntity;
-        public BaseEntityDTO CurrentEntity
-        {
-            get { return currentEntity; }
-            set 
-            {
-                if (currentEntity != value)
-                {
-                    currentEntity = value;
-
-                    SelectedEntityChanged(currentEntity);
-                    OnPropertyChanged("CurrentEntity");
-                }
-            }
-        }
 
         #endregion
 
         #region Constructors
 
-        public BaseUniversityTreeViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
+        public UniversityTreeViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)
         {
-            tree = new Tree();
-            tree.Changed += new EventHandler(tree_TreeChanged);
 
-            Load();
         }
 
         #endregion
 
         #region Commands
 
-        private RelayCommand selectedEntityChangedCommand;
-        public RelayCommand SelectedEntityChangedCommand
-        {
-            get 
-            {
-                if (selectedEntityChangedCommand == null)
-                    selectedEntityChangedCommand = new RelayCommand(param => SelectedEntityChanged(param as BaseEntityDTO));
-                return selectedEntityChangedCommand; 
-            }
-        }
-
         #endregion
 
         #region Methods
 
-        public void Refresh()
+        protected override void LoadData()
         {
-            Load();
+            BuildUniversityTree();
         }
 
-        private void SelectedEntityChanged(BaseEntityDTO entity)
+        private void BuildUniversityTree()
         {
-            currentEntity = entity;
-            OnSelectedEntityChanged(entity as BaseEntityDTO);
-        }
-
-        protected virtual void OnSelectedEntityChanged(BaseEntityDTO entity)
-        {
-            if (SelectedEntityChangedEvent != null)
-                SelectedEntityChangedEvent(this, new SelectedEntityChangedArgs(entity));
-        }
-
-        private void ReBuildUniversityTree()
-        {
-            switch (ControllerInterop.Session.User.UserRole)
+            switch (ControllerInterop.Session.User.Role)
             {
                 case UserRoles.MainSecretary:
                 case UserRoles.MainAdmin:
@@ -99,30 +46,26 @@ namespace StudyingController.ViewModels
 
                     ControllerInterop.Service.BeginGetInstitutes(ControllerInterop.Session, OnGetInstisutesCompleted, null);
                     break;
+                case UserRoles.InstituteAdmin:
+                case UserRoles.InstituteSecretary:
+                    StartLoading();
+
+                    ControllerInterop.Service.BeginGetFaculties(ControllerInterop.Session, (ControllerInterop.Session.User as IInstituteable).InstituteID, OnGetFacultiesCompleted, null);
+                    break;
+                case UserRoles.FacultyAdmin:
+                case UserRoles.FacultySecretary:
+                    StartLoading();
+
+                    ControllerInterop.Service.BeginGetCathedras(ControllerInterop.Session, (ControllerInterop.Session.User as IFacultyable).FacultyID, OnGetCathedrasCompleted, null);
+                    break;
                 default:
-                    throw new NotImplementedException();
+                    throw new NotImplementedException("Unknown user's role!");
             }
-        }
-
-        protected override void LoadData()
-        {
-            ReBuildUniversityTree();
-        }
-
-        protected override void ClearData()
-        {
-            lock (tree)
-                tree.Clear();
         }
 
         #endregion
 
         #region Callbacks
-
-        private void tree_TreeChanged(object sender, EventArgs e)
-        {
-            OnPropertyChanged("Tree");
-        }
 
         private void OnGetInstisutesCompleted(IAsyncResult ar)
         {
@@ -138,9 +81,9 @@ namespace StudyingController.ViewModels
                         List<InstituteDTO> institutes = ControllerInterop.Service.EndGetInstitutes(iar);
                         foreach (var institute in institutes)
                         {
-                            lock (tree)
+                            lock (Tree)
                             {
-                                TreeNode node = tree.AppendNode(new TreeNode { Name = institute.Name, Tag = institute }, null);
+                                TreeNode node = Tree.AppendNode(new TreeNode { Name = institute.Name, Tag = institute });
 
                                 StartLoading();
                                 ControllerInterop.Service.BeginGetFaculties(ControllerInterop.Session, institute.ID, OnGetFacultiesCompleted, node);
@@ -170,9 +113,9 @@ namespace StudyingController.ViewModels
                        var faculties = ControllerInterop.Service.EndGetFaculties(iar);
                        foreach (var faculty in faculties)
                        {
-                           lock (tree)
+                           lock (Tree)
                            {
-                               TreeNode node = tree.AppendNode(new TreeNode { Name = faculty.Name, Tag = faculty }, parentNode);
+                               TreeNode node = Tree.AppendNode(new TreeNode { Name = faculty.Name, Tag = faculty }, parentNode);
 
                                StartLoading();
                                ControllerInterop.Service.BeginGetCathedras(ControllerInterop.Session, faculty.ID, OnGetCathedrasCompleted, node);
@@ -202,7 +145,7 @@ namespace StudyingController.ViewModels
                        var cathedras = ControllerInterop.Service.EndGetCathedras(iar);
                        foreach (var cathedra in cathedras)
                        {
-                           TreeNode node = tree.AppendNode(new TreeNode { Name = cathedra.Name, Tag = cathedra }, parentNode);
+                           TreeNode node = Tree.AppendNode(new TreeNode { Name = cathedra.Name, Tag = cathedra }, parentNode);
                        }
                    }
                    catch (Exception ex)
@@ -220,24 +163,8 @@ namespace StudyingController.ViewModels
 
         #region Events
 
-        public event SelectedEntityChangedHandler SelectedEntityChangedEvent;
-
         #endregion
 
     }
 
-    public delegate void SelectedEntityChangedHandler(object sender, SelectedEntityChangedArgs e);
-    public class SelectedEntityChangedArgs
-    {
-        private BaseEntityDTO _value;
-        public BaseEntityDTO Value
-        {
-            get { return _value; }
-        }
-
-        public SelectedEntityChangedArgs(BaseEntityDTO entity)
-        {
-            this._value = entity;
-        }
-    }
 }

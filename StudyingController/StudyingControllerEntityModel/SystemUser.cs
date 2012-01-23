@@ -10,7 +10,7 @@ namespace StudyingControllerEntityModel
     public partial class SystemUser : IDTOable<SystemUserDTO>
     {
         [DataMember]
-        public UserRoles UserRole
+        public UserRoles Role
         {
             get
             {
@@ -28,7 +28,7 @@ namespace StudyingControllerEntityModel
             {
                 ID = this.ID,
                 Login = this.Login,
-                UserRole = this.UserRole,
+                Role = this.Role,
                 UserInformation = (this.UserInformation as IDTOable<UserInformationDTO>).ToDTO()
             };
 

@@ -26,7 +26,7 @@
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type vm:UsersTreeViewModel}">
-                <v:UsersStructureView/>
+                <v:UsersTreeView/>
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type vm:InstituteViewModel}">
@@ -44,7 +44,11 @@
             <DataTemplate DataType="{x:Type vm:GroupViewModel}">
                 <v:GroupView/>
             </DataTemplate>
-            
+
+            <DataTemplate DataType="{x:Type vm:UserInformationViewModel}">
+                <v:UserInformationView/>
+            </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

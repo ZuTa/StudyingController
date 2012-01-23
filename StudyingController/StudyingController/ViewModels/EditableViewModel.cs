@@ -29,6 +29,22 @@ namespace StudyingController.ViewModels
             }
         }
 
+        public bool CanAddNewEntity
+        {
+            get 
+            {
+                return !IsModified;
+            }
+        }
+
+        public bool CanRemoveEntity
+        {
+            get
+            {
+                return !IsModified;
+            }
+        }
+
         public bool CanSave
         {
             get 
@@ -56,6 +72,13 @@ namespace StudyingController.ViewModels
             }
         }
 
+        protected ObservableCollection<NamedCommandData> addCommands;
+        private ReadOnlyObservableCollection<NamedCommandData> addCommandsRO;
+        public ReadOnlyObservableCollection<NamedCommandData> AddCommands
+        {
+            get { return addCommandsRO; }
+        }
+
         #endregion
 
         #region Constructors
@@ -63,6 +86,10 @@ namespace StudyingController.ViewModels
         public EditableViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)
         {
+            addCommands = new ObservableCollection<NamedCommandData>();
+            addCommandsRO = new ReadOnlyObservableCollection<NamedCommandData>(addCommands);
+
+            DefineAddCommands();
         }
 
         #endregion
@@ -81,10 +108,14 @@ namespace StudyingController.ViewModels
 
         protected abstract SaveableViewModel GetViewModel(BaseEntityDTO entity);
 
+        protected abstract void DefineAddCommands();
+
         protected virtual void UpdateProperties()
         {
             OnPropertyChanged("CanSave");
             OnPropertyChanged("IsEnabled");
+            OnPropertyChanged("CanAddNewEntity");
+            OnPropertyChanged("CanRemoveEntity");
         }
 
         private void ViewModelUnModified(object sender, EventArgs e)

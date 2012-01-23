@@ -39,7 +39,97 @@ namespace StudyingController.ViewModels
 
         #endregion
 
+        #region Commands
+
+        private RelayCommand addInstituteCommand;
+        public RelayCommand AddInstituteCommand
+        {
+            get
+            {
+                if (addInstituteCommand == null)
+                    addInstituteCommand = new RelayCommand(param =>
+                    {
+                        ChangeCurrentWorkspace(new InstituteViewModel(UserInterop, ControllerInterop, Dispatcher));
+                    });
+                return addInstituteCommand;
+            }
+        }
+
+        private RelayCommand addFacultyCommand;
+        public RelayCommand AddFacultyCommand
+        {
+            get
+            {
+                if (addFacultyCommand == null)
+                    addFacultyCommand = new RelayCommand(param =>
+                    {
+                        ChangeCurrentWorkspace(new FacultyViewModel(UserInterop, ControllerInterop, Dispatcher));
+                    });
+                return addFacultyCommand;
+            }
+        }
+
+        private RelayCommand addCathedraCommand;
+        public RelayCommand AddCathedraCommand
+        {
+            get
+            {
+                if (addCathedraCommand == null)
+                    addCathedraCommand = new RelayCommand(param =>
+                    {
+                        ChangeCurrentWorkspace(new CathedraViewModel(UserInterop, ControllerInterop, Dispatcher));
+                    });
+                return addCathedraCommand;
+            }
+        }
+
+        private RelayCommand addGroupCommand;
+        public RelayCommand AddGroupCommand
+        {
+            get
+            {
+                if (addGroupCommand == null)
+                    addGroupCommand = new RelayCommand(param =>
+                    {
+                        ChangeCurrentWorkspace(new GroupViewModel(UserInterop, ControllerInterop, Dispatcher));
+                    });
+                return addGroupCommand;
+            }
+        }
+
+        #endregion
+
         #region Methods
+
+        protected override void DefineAddCommands()
+        {
+            addCommands.Clear();
+
+            switch (ControllerInterop.User.Role)
+            {
+                case UserRoles.MainAdmin:
+                case UserRoles.MainSecretary:
+                    addCommands.Add(new NamedCommandData { Name = "Інститут", Command = AddInstituteCommand });
+                    addCommands.Add(new NamedCommandData() { Name = "Факультет", Command = AddFacultyCommand });
+                    addCommands.Add(new NamedCommandData() { Name = "Кафедру", Command = AddCathedraCommand });
+                    addCommands.Add(new NamedCommandData() { Name = "Групу", Command = AddGroupCommand });
+                    break;
+                case UserRoles.InstituteAdmin:
+                case UserRoles.InstituteSecretary:
+                    addCommands.Add(new NamedCommandData() { Name = "Факультет", Command = AddFacultyCommand });
+                    addCommands.Add(new NamedCommandData() { Name = "Кафедру", Command = AddCathedraCommand });
+                    addCommands.Add(new NamedCommandData() { Name = "Групу", Command = AddGroupCommand });
+                    break;
+                case UserRoles.FacultyAdmin:
+                case UserRoles.FacultySecretary:
+                    addCommands.Add(new NamedCommandData() { Name = "Кафедру", Command = AddCathedraCommand });
+                    addCommands.Add(new NamedCommandData() { Name = "Групу", Command = AddGroupCommand });
+                    break;
+                default:
+                    throw new NotImplementedException("Unknown user's role");
+            }
+
+        }
 
         protected override SaveableViewModel GetViewModel(EntitiesDTO.BaseEntityDTO entity)
         {

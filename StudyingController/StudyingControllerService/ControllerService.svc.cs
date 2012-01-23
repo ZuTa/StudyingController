@@ -85,7 +85,8 @@ namespace StudyingControllerService
                     if (!(user != null && Encoding.UTF8.GetString(user.Password) == password))
                         throw new Exception("У доступі відмовлено!");
 
-                    session = new Session(GetDTO<SystemUserDTO>(user));
+                    session = new Session(GetSystemUserDTO(user));
+
                     lock (sessions)
                         sessions[session.SessionID] = session;
 
@@ -96,7 +97,26 @@ namespace StudyingControllerService
             {
                 throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
             }
+        }
 
+        private SystemUserDTO GetSystemUserDTO(SystemUser user)
+        {
+            switch (user.Role)
+            {
+                case UserRoles.None:
+                    throw new Exception("What the fuck?! This role cannot be stored into DB");
+                case UserRoles.InstituteAdmin:
+                    return GetDTO<InstituteAdminDTO>(user);
+                case UserRoles.FacultyAdmin:
+                    return GetDTO<FacultyAdminDTO>(user);
+                case UserRoles.InstituteSecretary:
+                case UserRoles.FacultySecretary:
+                case UserRoles.Student:
+                case UserRoles.Teacher:
+                    throw new NotImplementedException();
+                default:
+                    return GetDTO<SystemUserDTO>(user);
+            }
         }
 
         public List<InstituteDTO> GetInstitutes(Session session)
@@ -313,6 +333,29 @@ namespace StudyingControllerService
 
                     context.SaveChanges();
                 }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public List<SystemUserDTO> GetUsers(Session session, UserRoles roles)
+        {
+            try
+            {
+                CheckSession(session);
+
+                List<SystemUserDTO> result = new List<SystemUserDTO>();
+
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    foreach (SystemUser user in context.SystemUsers.Include("UserInformation"))
+                        if (roles.HasFlag(user.Role))
+                            result.Add(GetSystemUserDTO(user));
+                }
+
+                return result;
             }
             catch (Exception ex)
             {
