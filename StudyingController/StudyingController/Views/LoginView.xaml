@@ -20,7 +20,9 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Label Grid.Row="0" Grid.Column="0" Content="Логін:"></Label>
-                    <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Text="{Binding Path=LoginConfig.Login, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding CanChange}"></TextBox>
+                    <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Style="{StaticResource ValidationTextBoxToolTipStyle}"
+                             Text="{Binding Path=LoginConfig.Login, UpdateSourceTrigger=PropertyChanged,
+                                                                                    ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" IsEnabled="{Binding CanChange}"></TextBox>
                     <Label Grid.Row="1" Grid.Column="0" Content="Пароль:"></Label>
                     <PasswordBox Name="password" Grid.Row="1" Grid.Column="1" Margin="5" IsEnabled="{Binding CanChange}"></PasswordBox>
                     <CheckBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Content="Запам'ятати" IsChecked="{Binding Path=LoginConfig.IsMemorizeLogin, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding CanChange}"></CheckBox>
@@ -38,9 +40,13 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Label Grid.Row="0" Grid.Column="0" Content="Сервер:"></Label>
-                    <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Text="{Binding Path=LoginConfig.Server, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding CanChange}"></TextBox>
+                    <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Style="{StaticResource ValidationTextBoxToolTipStyle}"
+                             Text="{Binding Path=LoginConfig.Server, UpdateSourceTrigger=PropertyChanged,
+                                                                                    ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" IsEnabled="{Binding CanChange}"></TextBox>
                     <Label Grid.Row="1" Grid.Column="0" Content="Порт:"></Label>
-                    <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding Path=LoginConfig.Port, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding CanChange}"></TextBox>
+                    <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Style="{StaticResource ValidationTextBoxToolTipStyle}"
+                             Text="{Binding Path=LoginConfig.Port, UpdateSourceTrigger=PropertyChanged,
+                                                                                    ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" IsEnabled="{Binding CanChange}"></TextBox>
                 </Grid>
             </GroupBox>
             <Button MinHeight="20" MaxHeight="40" MinWidth="50" MaxWidth="100" Margin="0,5,0,0" IsDefault="True" Content="Увійти" Command="{Binding Path=LoginCommand}" IsEnabled="{Binding CanChange}"></Button>

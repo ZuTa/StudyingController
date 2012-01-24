@@ -45,5 +45,22 @@ namespace StudyingController.ViewModels.Models
             };
         }
         #endregion
+
+        #region Methods
+
+        protected override string Validation(string property)
+        {
+            switch (property)
+            {
+                case "Name":
+                    return base.IsTextNumberValid(Name);
+                case "Cathedra":
+                    return base.IsSelectedItem(cathedra);
+            }
+            return null;
+           
+        }
+        
+        #endregion
     }
 }

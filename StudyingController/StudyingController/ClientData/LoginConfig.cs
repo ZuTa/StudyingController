@@ -5,11 +5,12 @@ using System.Text;
 using System.ComponentModel;
 using System.Xml.Serialization;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace StudyingController.ClientData
 {
     [Serializable]
-    public class LoginConfig : INotifyPropertyChanged
+    public class LoginConfig : INotifyPropertyChanged, IDataErrorInfo
     {
         #region Fields & Properties
 
@@ -87,6 +88,16 @@ namespace StudyingController.ClientData
             }
         }
 
+        private const string LOGIN_ERROR_LENGTH = "Логін повинен мати більше 4 символів";
+        private const string LOGIN_ERROR_SYMBOLS = "Логін повинен складатись лише з символів a-z(A-Z)0-9_";
+        private const string LOGIN_ERROR_EMPTY = "Поле логін не може бути порожнім";
+        private const string PASSWORD_ERROR_LENGTH = "";
+        private const string PORT_ERROR_INT = "Порт повинен бути цілим числом";
+        private const string PORT_ERROR_BORDER = "Порт за межами (0-65535)";
+        private const string PORT_ERROR_EMPTY = "Поле порт не може бути порожнім";
+        private const string SERVER_ERROR_NAME = "Використано неприпустимі символи для сервера";
+        private const string SERVER_ERROR_EMPTY = "Поле сервер не може бути порожнім";
+
         #endregion
 
         #region Methods
@@ -108,6 +119,61 @@ namespace StudyingController.ClientData
             return instance;
         }
 
+        private string IsLoginValid()
+        {
+            List<string> errors = new List<string>();
+            if (login.Length == 0)
+                errors.Add(LOGIN_ERROR_EMPTY);
+            else
+            {
+                if (!Regex.IsMatch(login, "^\\w+$"))
+                    errors.Add(LOGIN_ERROR_SYMBOLS);
+                if (login.Length < 4)
+                    errors.Add(LOGIN_ERROR_LENGTH);
+            }
+            return string.Join(Environment.NewLine, errors);
+        }
+
+        private string IsPasswordValid()
+        {
+            List<string> errors = new List<string>();
+            if (password.Length < 4)
+                errors.Add(PASSWORD_ERROR_LENGTH);
+            return string.Join(Environment.NewLine, errors);
+        }
+
+        private string IsServerValid()
+        {
+            List<string> errors = new List<string>();
+            if (server.Length == 0)
+                errors.Add(SERVER_ERROR_EMPTY);
+            else
+            {
+                if (!Regex.IsMatch(server, "^[:a-zA-Z0-9/.-]+$"))
+                    errors.Add(SERVER_ERROR_NAME);
+            }
+            return string.Join(Environment.NewLine, errors);
+        }
+
+        private string IsPortValid()
+        {
+            List<string> errors = new List<string>();
+            int currPort;
+            if (port.Length == 0)
+                errors.Add(PORT_ERROR_EMPTY);
+            else
+            {
+                if (int.TryParse(port, out currPort))
+                {
+                    if (currPort > 65535 || currPort < 0)
+                        errors.Add(PORT_ERROR_BORDER);
+                }
+                else
+                    errors.Add(PORT_ERROR_INT);
+            }
+            return string.Join(Environment.NewLine, errors);
+        }
+
         public void Save()
         {
             string appDataFolderPath = DEFAULT_FOLDER_PATH;
@@ -119,6 +185,34 @@ namespace StudyingController.ClientData
             using(Stream fileStream = new FileStream(Path.Combine(appDataFolderPath, StudyingController.Properties.Resources.LoginConfigFileName), FileMode.Create, FileAccess.Write, FileShare.None))
             {
                 xmlSerializer.Serialize(fileStream, this);
+            }
+        }
+
+        #endregion
+
+        #region IDataErrorInfo
+
+        public string Error
+        {
+            get { return null; }
+        }
+
+        public string this[string property]
+        {
+            get
+            {
+                switch (property)
+                {
+                    case "Login":
+                        return IsLoginValid();
+                    case "Password":
+                        return IsPasswordValid();
+                    case "Server":
+                        return IsServerValid();
+                    case "Port":
+                        return IsPortValid();
+                }
+                return null;
             }
         }
 
