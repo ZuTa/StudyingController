@@ -42,7 +42,7 @@
                     </Button.Style>
                     <Image x:Name="img" Source="/StudyingController;component/Images/floppy.png" Stretch="Fill" />
                 </Button>
-                <Button Margin="3" Width="32" Height="32" ToolTip="Відмінити" IsEnabled="{Binding CurrentWorkspace.CanSave}" Command="{Binding RollbackCurrentWorkspaceCommand}">
+                <Button Margin="3" Width="32" Height="32" ToolTip="Відмінити" IsEnabled="{Binding CurrentWorkspace.IsModified}" Command="{Binding RollbackCurrentWorkspaceCommand}">
                     <Button.Style>
                         <Style  TargetType="{x:Type FrameworkElement}">
                             <Style.Triggers>

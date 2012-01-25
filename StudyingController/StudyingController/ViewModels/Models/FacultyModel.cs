@@ -46,5 +46,10 @@ namespace StudyingController.ViewModels.Models
                 InstituteID = Institute == null ? (int?)null : Institute.ID
             };
         }
+
+        protected override string Validation(string property)
+        {
+            return base.Validation(property);
+        }
     }
 }

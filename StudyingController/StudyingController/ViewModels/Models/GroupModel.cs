@@ -14,7 +14,18 @@ namespace StudyingController.ViewModels.Models
         public CathedraDTO Cathedra
         {
             get { return cathedra; }
-            set { cathedra = value; }
+            set 
+            { 
+                cathedra = value;
+                OnPropertyChanged("Cathedra");
+            }
+        }
+        public override bool IsValid
+        {
+            get
+            {
+                return base.IsValid && Validation("Cathedra") == null;
+            }
         }
 
         #endregion
@@ -48,17 +59,32 @@ namespace StudyingController.ViewModels.Models
 
         #region Methods
 
+        private bool IsCathedraValid(out string error)
+        {
+            error = null;
+            if (cathedra == null)
+            {
+                error = Properties.Resources.ErrorStructureNotFound;
+                return false;
+            }
+            return true;
+        }
+
         protected override string Validation(string property)
         {
-            switch (property)
+            string error = base.Validation(property);
+            if (error == null)
             {
-                case "Name":
-                    return base.IsTextNumberValid(Name);
-                case "Cathedra":
-                    return base.IsSelectedItem(cathedra);
+                switch (property)
+                {
+                    case "Cathedra":
+                        IsCathedraValid(out error);
+                        break;
+                    default:
+                        break;
+                }
             }
-            return null;
-           
+            return error;
         }
         
         #endregion

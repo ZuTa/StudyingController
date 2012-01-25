@@ -120,6 +120,39 @@
   <data name="AppDataFolderName" xml:space="preserve">
     <value>StudyingController</value>
   </data>
+  <data name="ErrorBadCharsUsed" xml:space="preserve">
+    <value>Використовуються недопустимі символи</value>
+  </data>
+  <data name="ErrorFieldEmpty" xml:space="preserve">
+    <value>Поле не може бути порожнім</value>
+  </data>
+  <data name="ErrorLoginBadChars" xml:space="preserve">
+    <value>Логін повинен складатись лише з символів a-z(A-Z)0-9_</value>
+  </data>
+  <data name="ErrorLoginEmpty" xml:space="preserve">
+    <value>Поле логін не може бути порожнім</value>
+  </data>
+  <data name="ErrorLoginLength" xml:space="preserve">
+    <value>Логін повинен мати більше 4 символів</value>
+  </data>
+  <data name="ErrorPortBorder" xml:space="preserve">
+    <value>Порт за межами (0-65535)</value>
+  </data>
+  <data name="ErrorPortEmpty" xml:space="preserve">
+    <value>Поле порт не може бути порожнім</value>
+  </data>
+  <data name="ErrorPortNotInt" xml:space="preserve">
+    <value>Порт повинен бути цілим числом</value>
+  </data>
+  <data name="ErrorServerBadChars" xml:space="preserve">
+    <value>Використано неприпустимі символи для сервера</value>
+  </data>
+  <data name="ErrorServerEmpty" xml:space="preserve">
+    <value>Поле сервер не може бути порожнім</value>
+  </data>
+  <data name="ErrorStructureNotFound" xml:space="preserve">
+    <value>Потрібно вибрати структуру</value>
+  </data>
   <data name="ErrorTxt" xml:space="preserve">
     <value>Помилка</value>
   </data>

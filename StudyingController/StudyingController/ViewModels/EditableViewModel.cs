@@ -49,7 +49,7 @@ namespace StudyingController.ViewModels
         {
             get 
             {
-                return IsModified; 
+                return IsModified && (CurrentWorkspace == null ? false : CurrentWorkspace.IsValid); 
             }
         }
 
@@ -112,6 +112,7 @@ namespace StudyingController.ViewModels
 
         protected virtual void UpdateProperties()
         {
+            OnPropertyChanged("IsModified");
             OnPropertyChanged("CanSave");
             OnPropertyChanged("IsEnabled");
             OnPropertyChanged("CanAddNewEntity");

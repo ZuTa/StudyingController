@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using EntitiesDTO;
+using System.Text.RegularExpressions;
 
 namespace StudyingController.ViewModels.Models
 {
@@ -19,6 +20,14 @@ namespace StudyingController.ViewModels.Models
             }
         }
 
+        public override bool IsValid
+        {
+            get
+            {
+                return base.IsValid && Validation("Name") == null;
+            }
+        }
+
         public NamedModel(NamedEntityDTO entity)
             : base(entity)
         {            
@@ -30,7 +39,7 @@ namespace StudyingController.ViewModels.Models
             base.Assign(entity);
 
             NamedEntityDTO namedEntity = entity as NamedEntityDTO;
-            this.name = namedEntity.Name;
+            this.Name = namedEntity.Name;
         }
 
         public override string ToString()
@@ -38,11 +47,31 @@ namespace StudyingController.ViewModels.Models
             return Name;
         }
 
+        private bool IsNameValid(out string error)
+        {
+            error = null;
+            if (name == null || name.Length == 0)
+            {
+                error = Properties.Resources.ErrorFieldEmpty;
+                return false;
+            }
+            if (!Regex.IsMatch(name, "^[а-яА-ЯіІїЇa-zA-Z0-9\\- ]+$"))
+            {
+                error = Properties.Resources.ErrorBadCharsUsed;
+                return false;
+            }
+            return true;
+        }
+
         protected override string Validation(string property)
         {
-            //if (property.Equals("Name"))
-                return base.IsTextValid(name);
-           // return null;
+            if (property.Equals("Name"))
+            {
+                string error;
+                IsNameValid(out error);
+                return error;
+            }
+            return null;
         }
     }
 }

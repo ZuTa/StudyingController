@@ -20,6 +20,11 @@ namespace StudyingController.ViewModels
             get { return isModified; }
         }
 
+        public bool IsValid
+        {
+            get { return model.IsValid; }
+        }        
+
         protected BaseEntityDTO originalEntity;
 
         protected BaseModel model;
@@ -44,7 +49,6 @@ namespace StudyingController.ViewModels
         protected virtual void SetModified()
         {
             isModified = true;
-
             OnViewModified();
         }
 
