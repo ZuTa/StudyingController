@@ -68,6 +68,12 @@ namespace EntitiesDTO
     [DataContract]
     [KnownType(typeof(UserInformationDTO))]
     [KnownType(typeof(FacultyAdminDTO))]
+    [KnownType(typeof(InstituteAdminDTO))]
+    [KnownType(typeof(InstituteSecretaryDTO))]
+    [KnownType(typeof(FacultySecretaryDTO))]
+    [KnownType(typeof(TeacherDTO))]
+    [KnownType(typeof(StudentDTO))]
+
     public class SystemUserDTO : BaseEntityDTO
     {
         private string login;
@@ -94,5 +100,9 @@ namespace EntitiesDTO
             set { userInformation = value; }
         }
 
+        public SystemUserDTO()
+        {
+            userInformation = new UserInformationDTO();
+        }
     }
 }

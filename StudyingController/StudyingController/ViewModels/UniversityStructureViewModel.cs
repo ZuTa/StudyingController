@@ -143,6 +143,8 @@ namespace StudyingController.ViewModels
                 viewModel = new FacultyViewModel(UserInterop, ControllerInterop, Dispatcher, entity as FacultyDTO);
             else if (entity is CathedraDTO)
                 viewModel = new CathedraViewModel(UserInterop, ControllerInterop, Dispatcher, entity as CathedraDTO);
+            else if (entity is GroupDTO)
+                viewModel = new GroupViewModel(UserInterop, ControllerInterop, Dispatcher, entity as GroupDTO);
             else
                 throw new NotImplementedException("Unknown entity");
 

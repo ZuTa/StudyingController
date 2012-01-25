@@ -66,15 +66,19 @@
     <Compile Include="ViewModels\FacultyViewModel.cs" />
     <Compile Include="ViewModels\GroupViewModel.cs" />
     <Compile Include="ViewModels\IEditable.cs" />
+    <Compile Include="ViewModels\InstituteAdminViewModel.cs" />
     <Compile Include="ViewModels\InstituteViewModel.cs" />
     <Compile Include="ViewModels\IProviderable.cs" />
+    <Compile Include="ViewModels\MainSystemUserViewModel.cs" />
     <Compile Include="ViewModels\Models\BaseModel.cs" />
     <Compile Include="ViewModels\Models\CathedraModel.cs" />
     <Compile Include="ViewModels\Models\FacultyModel.cs" />
     <Compile Include="ViewModels\Models\GroupModel.cs" />
     <Compile Include="ViewModels\Models\IDTOable.cs" />
+    <Compile Include="ViewModels\Models\InstituteAdminModel.cs" />
     <Compile Include="ViewModels\Models\InstituteModel.cs" />
     <Compile Include="ViewModels\Models\NamedModel.cs" />
+    <Compile Include="ViewModels\Models\SystemUserModel.cs" />
     <Compile Include="ViewModels\SaveableViewModel.cs" />
     <Compile Include="ViewModels\Tree.cs" />
     <Compile Include="ViewModels\TreeNode.cs" />
@@ -112,11 +116,17 @@
     <Compile Include="Views\GroupView.xaml.cs">
       <DependentUpon>GroupView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\InstituteAdminView.xaml.cs">
+      <DependentUpon>InstituteAdminView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\InstituteView.xaml.cs">
       <DependentUpon>InstituteView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainSystemUserView.xaml.cs">
+      <DependentUpon>MainSystemUserView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
@@ -157,11 +167,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\InstituteAdminView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\InstituteView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainSystemUserView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

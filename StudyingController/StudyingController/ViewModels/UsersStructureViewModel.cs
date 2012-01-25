@@ -48,7 +48,7 @@ namespace StudyingController.ViewModels
             get
             {
                 if (addInstituteAdminCommand == null)
-                    addInstituteAdminCommand = new RelayCommand(param => ChangeCurrentWorkspace(new InstituteViewModel(UserInterop, ControllerInterop, Dispatcher)));
+                    addInstituteAdminCommand = new RelayCommand(param => ChangeCurrentWorkspace(new InstituteAdminViewModel(UserInterop, ControllerInterop, Dispatcher)));
 
                 return addInstituteAdminCommand; 
             }
@@ -198,9 +198,18 @@ namespace StudyingController.ViewModels
 
         protected override SaveableViewModel GetViewModel(EntitiesDTO.BaseEntityDTO entity)
         {
-            if (entity is SystemUserDTO)
-                return null;
-
+            SystemUserDTO user = entity as SystemUserDTO;
+            if (user != null)
+            {
+                switch (user.Role)
+                {
+                    case UserRoles.MainAdmin:
+                    case UserRoles.MainSecretary:
+                        //return new MainSystemUserViewModel(UserInterop, ControllerInterop, Dispatcher, entity as MainSystemUserDTO);
+                    default:
+                        throw new NotImplementedException();
+                }
+            }
             return null;
         }
 

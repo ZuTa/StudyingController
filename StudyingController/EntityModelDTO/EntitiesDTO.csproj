@@ -47,16 +47,22 @@
     <Compile Include="CathedraDTO.cs" />
     <Compile Include="FacultyAdminDTO.cs" />
     <Compile Include="FacultyDTO.cs" />
+    <Compile Include="FacultySecretaryDTO.cs" />
     <Compile Include="GroupDTO.cs" />
+    <Compile Include="ICathedrable.cs" />
     <Compile Include="IFacultyable.cs" />
+    <Compile Include="IGroupable.cs" />
     <Compile Include="IInstituteable.cs" />
     <Compile Include="InstituteAdminDTO.cs" />
     <Compile Include="InstituteDTO.cs" />
+    <Compile Include="InstituteSecretaryDTO.cs" />
     <Compile Include="ITextable.cs" />
     <Compile Include="NamedEntityDTO.cs" />
     <Compile Include="PluralizeNameAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StudentDTO.cs" />
     <Compile Include="SystemUserDTO.cs" />
+    <Compile Include="TeacherDTO.cs" />
     <Compile Include="UserInformationDTO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

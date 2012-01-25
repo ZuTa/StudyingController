@@ -45,6 +45,10 @@
                 <v:GroupView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type vm:InstituteAdminViewModel}">
+                <v:InstituteAdminView/>
+            </DataTemplate>
+
             <DataTemplate DataType="{x:Type vm:UserInformationViewModel}">
                 <v:UserInformationView/>
             </DataTemplate>

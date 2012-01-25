@@ -110,10 +110,13 @@ namespace StudyingControllerService
                 case UserRoles.FacultyAdmin:
                     return GetDTO<FacultyAdminDTO>(user);
                 case UserRoles.InstituteSecretary:
+                    return GetDTO<InstituteSecretaryDTO>(user);
                 case UserRoles.FacultySecretary:
+                    return GetDTO<FacultySecretaryDTO>(user);
                 case UserRoles.Student:
+                    return GetDTO<StudentDTO>(user);
                 case UserRoles.Teacher:
-                    throw new NotImplementedException();
+                    return GetDTO<TeacherDTO>(user);
                 default:
                     return GetDTO<SystemUserDTO>(user);
             }

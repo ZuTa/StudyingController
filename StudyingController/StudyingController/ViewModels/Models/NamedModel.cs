@@ -37,5 +37,12 @@ namespace StudyingController.ViewModels.Models
         {
             return Name;
         }
+
+        protected override string Validation(string property)
+        {
+            //if (property.Equals("Name"))
+                return base.IsTextValid(name);
+           // return null;
+        }
     }
 }
