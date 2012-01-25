@@ -155,7 +155,7 @@ namespace StudyingController.ViewModels
 
         private bool CanUserLogin()
         {
-            if ((LoginConfig.Login != null && new Regex("^[a-z0-9]+$").IsMatch(LoginConfig.Login))
+            if ((LoginConfig.Login != null && new Regex("^[a-zA-Z0-9]+$").IsMatch(LoginConfig.Login))
                 && (LoginConfig.Port != null && new Regex("^[0-9]+$").IsMatch(LoginConfig.Port))
                 && (LoginConfig.Server != null && new Regex("^[:a-zA-Z0-9/.-]+$").IsMatch(LoginConfig.Server)))
                 return true;

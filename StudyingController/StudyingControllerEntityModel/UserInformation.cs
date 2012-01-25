@@ -9,6 +9,22 @@ namespace StudyingControllerEntityModel
 {
     public partial class UserInformation : IDTOable<UserInformationDTO>
     {
+        #region Constructors
+
+        public UserInformation()
+        {
+        }
+
+        public UserInformation(UserInformationDTO info)
+        {
+            this.SystemUserID = info.ID;
+            this.FirstName = info.FirstName;
+            this.LastName = info.LastName;
+            this.Email = info.Email;
+        }
+
+        #endregion
+
         public UserInformationDTO ToDTO()
         {
             return new UserInformationDTO

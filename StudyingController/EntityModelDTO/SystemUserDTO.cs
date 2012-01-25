@@ -78,6 +78,14 @@ namespace EntitiesDTO
             set { login = value; }
         }
 
+        private string password;
+        [DataMember]
+        public string Password
+        {
+            get { return password; }
+            set { password = value; }
+        }
+
         private UserRoles role;
         [DataMember]
         public UserRoles Role

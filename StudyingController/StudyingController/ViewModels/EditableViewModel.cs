@@ -137,7 +137,6 @@ namespace StudyingController.ViewModels
             SubscribeToEvents();
         }
 
-
         private void SubscribeToEvents()
         {
             if (CurrentWorkspace != null)
