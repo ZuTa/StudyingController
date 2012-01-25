@@ -8,6 +8,23 @@ namespace StudyingControllerEntityModel
 {
     public partial class InstituteAdmin : IDTOable<InstituteAdminDTO>
     {
+
+        #region Constructors
+
+        public InstituteAdmin()
+        {
+        }
+
+        public InstituteAdmin(SystemUserDTO user)
+            : base(user)
+        {
+            InstituteAdminDTO admin = user as InstituteAdminDTO;
+
+            this.InstituteID = admin.InstituteID;
+        }
+
+        #endregion
+
         public new InstituteAdminDTO ToDTO()
         {
             InstituteAdminDTO admin = new InstituteAdminDTO

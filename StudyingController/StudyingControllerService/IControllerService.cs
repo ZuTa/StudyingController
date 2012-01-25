@@ -59,5 +59,9 @@ namespace StudyingControllerService
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
         List<SystemUserDTO> GetUsers(Session session, UserRoles roles);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        void SaveUser(Session session, SystemUserDTO user);
     }
 }
