@@ -9,9 +9,16 @@ using EntitiesDTO;
 
 namespace StudyingController.ViewModels
 {
-    public abstract class EditableViewModel : BaseApplicationViewModel
+    public abstract class EditableViewModel : BaseApplicationViewModel, IManipulateable
     {
         #region Fields & Properties
+
+        private ObservableCollection<NamedCommandData> commands;
+        private ReadOnlyObservableCollection<NamedCommandData> commandsRO;
+        public ReadOnlyObservableCollection<NamedCommandData> Commands
+        {
+            get { return commandsRO; }
+        }
 
         public bool IsModified
         {
@@ -29,7 +36,7 @@ namespace StudyingController.ViewModels
             }
         }
 
-        public bool CanAddNewEntity
+        public bool CanAdd
         {
             get 
             {
@@ -37,7 +44,7 @@ namespace StudyingController.ViewModels
             }
         }
 
-        public bool CanRemoveEntity
+        public bool CanRemove
         {
             get
             {
@@ -94,6 +101,38 @@ namespace StudyingController.ViewModels
 
         #endregion
 
+        #region Commands
+
+        private RelayCommand removeCommand;
+        public RelayCommand RemoveCommand
+        {
+            get
+            {
+                if (removeCommand == null)
+                    removeCommand = new RelayCommand(param =>
+                        {
+                            throw new NotImplementedException();
+                        });
+                return removeCommand; 
+            }
+        }
+
+        private RelayCommand updateCommand;
+        public RelayCommand UpdateCommand
+        {
+            get 
+            {
+                if (updateCommand == null)
+                    updateCommand = new RelayCommand(param =>
+                        {
+                            throw new NotImplementedException();
+                        });
+                return updateCommand; 
+            }
+        }
+
+        #endregion
+
         #region Methods
 
         public void Save()
@@ -115,8 +154,8 @@ namespace StudyingController.ViewModels
             OnPropertyChanged("IsModified");
             OnPropertyChanged("CanSave");
             OnPropertyChanged("IsEnabled");
-            OnPropertyChanged("CanAddNewEntity");
-            OnPropertyChanged("CanRemoveEntity");
+            OnPropertyChanged("CanAdd");
+            OnPropertyChanged("CanRemove");
         }
 
         private void ViewModelUnModified(object sender, EventArgs e)
@@ -171,6 +210,7 @@ namespace StudyingController.ViewModels
 
         #region Events
         #endregion
+
     }
 
 }

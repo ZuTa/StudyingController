@@ -66,6 +66,7 @@
     <Compile Include="ViewModels\FacultyViewModel.cs" />
     <Compile Include="ViewModels\GroupViewModel.cs" />
     <Compile Include="ViewModels\IEditable.cs" />
+    <Compile Include="ViewModels\IManipulateable.cs" />
     <Compile Include="ViewModels\InstituteViewModel.cs" />
     <Compile Include="ViewModels\IProviderable.cs" />
     <Compile Include="ViewModels\Models\BaseModel.cs" />
@@ -287,6 +288,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\cancel_dv.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1327612523_Add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1327612550_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\refresh_blue.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

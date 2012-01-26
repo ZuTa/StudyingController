@@ -108,6 +108,14 @@ namespace StudyingController.ViewModels
             }
         }
 
+        public bool IsManipulateable
+        {
+            get
+            {
+                return CurrentWorkspace is IManipulateable;
+            }
+        }
+
         private Stack<BaseApplicationViewModel> workspaces;
 
         public BaseApplicationViewModel CurrentWorkspace
@@ -277,6 +285,7 @@ namespace StudyingController.ViewModels
             OnPropertyChanged("CurrentWorkspace");
             OnPropertyChanged("HasWorkspaces");
             OnPropertyChanged("IsSaveable");
+            OnPropertyChanged("IsManipulateable");
         }
 
         private void SaveCurrentWorkspace()

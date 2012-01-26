@@ -10,43 +10,24 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" MinWidth="150"/>
             <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="*" MinWidth="150"/>
+            <ColumnDefinition Width="2*" MinWidth="150"/>
         </Grid.ColumnDefinitions>
         
-        <Grid Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="auto"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-            </Grid.ColumnDefinitions>
-            
-            <ContentControl Grid.Row="0" Grid.ColumnSpan="3" Content="{Binding EntitiesProvider}" IsEnabled="{Binding IsEnabled}"/>
+        <ContentControl Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Content="{Binding EntitiesProvider}" IsEnabled="{Binding IsEnabled}"/>
 
-            <Button x:Name="btnAdd" Grid.Row="1" Grid.Column="1" Content="Додати" Margin="3" IsEnabled="{Binding CanAddNewEntity}" Click="btnAdd_Click">
-                <Button.ContextMenu>
-                    <ContextMenu x:Name="cmAdd" ItemsSource="{Binding AddCommands}">
-                        <ContextMenu.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <StackPanel/>
-                            </ItemsPanelTemplate>
-                        </ContextMenu.ItemsPanel>
-                        <ContextMenu.ItemTemplate>                            
-                            <DataTemplate>
-                                <MenuItem Header="{Binding Name}" Command="{Binding Command}"/>
-                            </DataTemplate>
-                        </ContextMenu.ItemTemplate>
-                    </ContextMenu>
-                </Button.ContextMenu>
-            </Button>
-            <Button Grid.Row="1" Grid.Column="2" Content="Видалити" IsEnabled="{Binding CanRemoveEntity}" Margin="3,3,0,3"/>
-        </Grid>
-        
-        <GridSplitter Width="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="White" ShowsPreview="True"/>
-        
+        <GridSplitter Width="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="#FF797070" ShowsPreview="True">
+            <GridSplitter.Style>
+                <Style TargetType="{x:Type GridSplitter}">
+                    <Setter Property="Opacity" Value="0.2"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="GridSplitter.Opacity" Value="1"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </GridSplitter.Style>
+        </GridSplitter>
+
         <ContentControl Grid.Column="2" Content="{Binding CurrentWorkspace}"/>
     </Grid>
 </UserControl>
