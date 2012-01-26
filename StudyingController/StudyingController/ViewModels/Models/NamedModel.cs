@@ -10,6 +10,7 @@ namespace StudyingController.ViewModels.Models
     public abstract class NamedModel : BaseModel
     {
         private string name;
+        [Validateable]
         public string Name
         {
             get { return name; }
@@ -17,14 +18,6 @@ namespace StudyingController.ViewModels.Models
             {
                 name = value;
                 OnPropertyChanged("Name");
-            }
-        }
-
-        public override bool IsValid
-        {
-            get
-            {
-                return base.IsValid && Validation("Name") == null;
             }
         }
 
@@ -63,7 +56,7 @@ namespace StudyingController.ViewModels.Models
             return true;
         }
 
-        protected override string Validation(string property)
+        protected override string Validate(string property)
         {
             if (property.Equals("Name"))
             {

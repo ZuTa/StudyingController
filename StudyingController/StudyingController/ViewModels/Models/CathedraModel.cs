@@ -11,6 +11,7 @@ namespace StudyingController.ViewModels.Models
         #region Fields & Properties
 
         private FacultyDTO faculty;
+        [Validateable]
         public FacultyDTO Faculty
         {
             get { return faculty; }
@@ -18,14 +19,6 @@ namespace StudyingController.ViewModels.Models
             { 
                 faculty = value;
                 OnPropertyChanged("Faculty");
-            }
-        }
-
-        public override bool IsValid
-        {
-            get
-            {
-                return base.IsValid && Validation("Faculty") == null;
             }
         }
 
@@ -69,9 +62,9 @@ namespace StudyingController.ViewModels.Models
             return true;
         }
 
-        protected override string Validation(string property)
+        protected override string Validate(string property)
         {
-            string error = base.Validation(property);
+            string error = base.Validate(property);
             if (error == null)
             {
                 switch (property)

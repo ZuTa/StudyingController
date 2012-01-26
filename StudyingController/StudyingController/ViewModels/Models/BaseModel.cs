@@ -5,6 +5,7 @@ using System.Text;
 using System.ComponentModel;
 using EntitiesDTO;
 using System.Text.RegularExpressions;
+using System.Reflection;
 
 namespace StudyingController.ViewModels.Models
 {
@@ -21,11 +22,11 @@ namespace StudyingController.ViewModels.Models
             }
         }
 
-        public virtual bool IsValid
+        public bool IsValid
         {
             get
             {
-                return true;
+                return ValidateProperties();
             }
         }
 
@@ -39,17 +40,34 @@ namespace StudyingController.ViewModels.Models
             this.id = entity.ID;
         }
 
+        protected bool ValidateProperties()
+        {
+            bool result = true;
+
+            Type type = this.GetType();
+            foreach (PropertyInfo propertyInfo in type.GetProperties())
+            {
+                if (propertyInfo.GetCustomAttributes(typeof(ValidateableAttribute), false).Length > 0 && Validate(propertyInfo.Name) != null)
+                {
+                    result = false;
+                    break;
+                }
+            }
+
+            return result;
+        }
+
         protected void OnPropertyChanged(string propertyName)
         {
             Common.Checks.CheckPropertyExists(this, propertyName);
-            Validation(propertyName);
+            Validate(propertyName);
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected virtual string Validation(string property)
+        protected virtual string Validate(string property)
         {
             return null;
         }
@@ -63,7 +81,7 @@ namespace StudyingController.ViewModels.Models
 
         public string this[string property]
         {
-            get { return Validation(property); }
+            get { return Validate(property); }
         }
 
         #endregion

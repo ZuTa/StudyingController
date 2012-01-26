@@ -75,6 +75,7 @@
     <Compile Include="ViewModels\Models\IDTOable.cs" />
     <Compile Include="ViewModels\Models\InstituteModel.cs" />
     <Compile Include="ViewModels\Models\NamedModel.cs" />
+    <Compile Include="ViewModels\Models\ValidateableAttribute.cs" />
     <Compile Include="ViewModels\SaveableViewModel.cs" />
     <Compile Include="ViewModels\Tree.cs" />
     <Compile Include="ViewModels\TreeNode.cs" />
