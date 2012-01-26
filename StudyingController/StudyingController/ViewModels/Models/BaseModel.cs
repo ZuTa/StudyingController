@@ -21,6 +21,14 @@ namespace StudyingController.ViewModels.Models
             }
         }
 
+        public virtual bool IsValid
+        {
+            get
+            {
+                return true;
+            }
+        }
+
         public BaseModel(BaseEntityDTO entity)
         {
             this.id = entity.ID;
@@ -34,39 +42,12 @@ namespace StudyingController.ViewModels.Models
         protected void OnPropertyChanged(string propertyName)
         {
             Common.Checks.CheckPropertyExists(this, propertyName);
+            Validation(propertyName);
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
+
         public event PropertyChangedEventHandler PropertyChanged;
-
-        #region Methods for Validation 
-
-        protected string IsTextValid(string value)
-        {
-            if (value==null || value.Length == 0)
-                return "Поле не може бути порожнім";
-            if (!Regex.IsMatch(value, "^[а-яА-ЯіІїЇa-zA-Z\\- ]+$"))
-                return "Використовуються недопустимі символи";
-            return null;
-        }
-
-        protected string IsTextNumberValid(string value)
-        {
-            if (value==null || value.Length == 0)
-                return "Поле не може бути порожнім";
-            if (!Regex.IsMatch(value, "^[а-яА-ЯіІїЇa-zA-Z0-9\\- ]+$"))
-                return "Використовуються недопустимі символи";
-            return null;
-        }
-
-        protected string IsSelectedItem(object value)
-        {
-            if (value == null)
-                return "Потрібно вибрати структуру";
-            return null;
-        }
-
-        #endregion
 
         protected virtual string Validation(string property)
         {

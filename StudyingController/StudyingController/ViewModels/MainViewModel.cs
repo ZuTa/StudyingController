@@ -119,7 +119,7 @@ namespace StudyingController.ViewModels
 
                 return workspaces.Peek();
             }
-        }
+        }        
 
         public bool HasWorkspaces
         {

@@ -22,5 +22,10 @@ namespace StudyingController.ViewModels.Models
         {
             return new InstituteDTO() { ID = this.ID, Name = this.Name };
         }
+
+        protected override string Validation(string property)
+        {
+            return base.Validation(property);
+        }
     }
 }

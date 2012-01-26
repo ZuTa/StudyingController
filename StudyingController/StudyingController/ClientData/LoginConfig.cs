@@ -87,17 +87,6 @@ namespace StudyingController.ClientData
                 OnPropertyChanged("Port");
             }
         }
-
-        private const string LOGIN_ERROR_LENGTH = "Логін повинен мати більше 4 символів";
-        private const string LOGIN_ERROR_SYMBOLS = "Логін повинен складатись лише з символів a-z(A-Z)0-9_";
-        private const string LOGIN_ERROR_EMPTY = "Поле логін не може бути порожнім";
-        private const string PASSWORD_ERROR_LENGTH = "";
-        private const string PORT_ERROR_INT = "Порт повинен бути цілим числом";
-        private const string PORT_ERROR_BORDER = "Порт за межами (0-65535)";
-        private const string PORT_ERROR_EMPTY = "Поле порт не може бути порожнім";
-        private const string SERVER_ERROR_NAME = "Використано неприпустимі символи для сервера";
-        private const string SERVER_ERROR_EMPTY = "Поле сервер не може бути порожнім";
-
         #endregion
 
         #region Methods
@@ -123,13 +112,13 @@ namespace StudyingController.ClientData
         {
             List<string> errors = new List<string>();
             if (login.Length == 0)
-                errors.Add(LOGIN_ERROR_EMPTY);
+                errors.Add(Properties.Resources.ErrorPortEmpty);
             else
             {
                 if (!Regex.IsMatch(login, "^\\w+$"))
-                    errors.Add(LOGIN_ERROR_SYMBOLS);
+                    errors.Add(Properties.Resources.ErrorLoginBadChars);
                 if (login.Length < 4)
-                    errors.Add(LOGIN_ERROR_LENGTH);
+                    errors.Add(Properties.Resources.ErrorLoginLength);
             }
             return string.Join(Environment.NewLine, errors);
         }
@@ -138,7 +127,7 @@ namespace StudyingController.ClientData
         {
             List<string> errors = new List<string>();
             if (password.Length < 4)
-                errors.Add(PASSWORD_ERROR_LENGTH);
+                errors.Add("");
             return string.Join(Environment.NewLine, errors);
         }
 
@@ -146,11 +135,11 @@ namespace StudyingController.ClientData
         {
             List<string> errors = new List<string>();
             if (server.Length == 0)
-                errors.Add(SERVER_ERROR_EMPTY);
+                errors.Add(Properties.Resources.ErrorServerEmpty);
             else
             {
                 if (!Regex.IsMatch(server, "^[:a-zA-Z0-9/.-]+$"))
-                    errors.Add(SERVER_ERROR_NAME);
+                    errors.Add(Properties.Resources.ErrorServerBadChars);
             }
             return string.Join(Environment.NewLine, errors);
         }
@@ -160,16 +149,16 @@ namespace StudyingController.ClientData
             List<string> errors = new List<string>();
             int currPort;
             if (port.Length == 0)
-                errors.Add(PORT_ERROR_EMPTY);
+                errors.Add(Properties.Resources.ErrorPortEmpty);
             else
             {
                 if (int.TryParse(port, out currPort))
                 {
                     if (currPort > 65535 || currPort < 0)
-                        errors.Add(PORT_ERROR_BORDER);
+                        errors.Add(Properties.Resources.ErrorPortBorder);
                 }
                 else
-                    errors.Add(PORT_ERROR_INT);
+                    errors.Add(Properties.Resources.ErrorPortNotInt);
             }
             return string.Join(Environment.NewLine, errors);
         }

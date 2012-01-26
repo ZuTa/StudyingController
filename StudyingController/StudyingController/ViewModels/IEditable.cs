@@ -10,6 +10,8 @@ namespace StudyingController.ViewModels
 
         bool IsModified { get; }
 
+        bool IsValid { get; }
+
         event EventHandler ViewModified;
 
         event EventHandler ViewUnModified;

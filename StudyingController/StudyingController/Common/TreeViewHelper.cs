@@ -27,6 +27,7 @@ namespace StudyingController.Common
             public void OnSelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> args)
             {
                 DependencyObject dp = sender as DependencyObject;
+                
                 if (dp != null)
                 {
                     if ((dp as TreeView).SelectedItem != null && (dp as TreeView).SelectedItem is TreeNode)
@@ -68,10 +69,15 @@ namespace StudyingController.Common
         private static void OnSelectedEntityChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             System.ComponentModel.EventDescriptor ev = TypeDescriptor.GetEvents(d)["SelectedItemChanged"];
+            
             if (ev != null && e.OldValue != null)
                 ev.RemoveEventHandler(d, new RoutedPropertyChangedEventHandler<object>(SingleHandler.Instance.OnSelectedItemChanged));
             if (ev != null && e.NewValue != null)
+            {
+
                 ev.AddEventHandler(d, new RoutedPropertyChangedEventHandler<object>(SingleHandler.Instance.OnSelectedItemChanged));
+
+            }
         }
 
         public static ICommand GetSelectedEntityChangedCommand(DependencyObject obj)

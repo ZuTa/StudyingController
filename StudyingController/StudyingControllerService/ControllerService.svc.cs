@@ -122,6 +122,26 @@ namespace StudyingControllerService
             }
         }
 
+        private SystemUser GetSystemUser(SystemUserDTO user)
+        {
+            switch (user.Role)
+            {
+                case UserRoles.None:
+                    throw new Exception("What the fuck?! This role cannot be stored into DB");
+                case UserRoles.InstituteAdmin:
+                    return new InstituteAdmin(user);
+                case UserRoles.FacultyAdmin:
+                    return new FacultyAdmin(user);
+                case UserRoles.InstituteSecretary:
+                case UserRoles.FacultySecretary:
+                case UserRoles.Student:
+                case UserRoles.Teacher:
+                    throw new NotImplementedException();
+                default:
+                    return new SystemUser(user);
+            }
+        }
+
         public List<InstituteDTO> GetInstitutes(Session session)
         {
             try
@@ -359,6 +379,29 @@ namespace StudyingControllerService
                 }
 
                 return result;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public void SaveUser(Session session, SystemUserDTO user)
+        {
+            try
+            {
+                CheckSession(session);
+
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var item = context.SystemUsers.FirstOrDefault(gr => gr.ID == user.ID);
+                    if (item == null)
+                        context.AddToSystemUsers(GetSystemUser(user));
+                    else
+                        item.UpdateData(user);
+
+                    context.SaveChanges();
+                }
             }
             catch (Exception ex)
             {

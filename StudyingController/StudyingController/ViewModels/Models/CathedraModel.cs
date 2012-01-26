@@ -21,6 +21,14 @@ namespace StudyingController.ViewModels.Models
             }
         }
 
+        public override bool IsValid
+        {
+            get
+            {
+                return base.IsValid && Validation("Faculty") == null;
+            }
+        }
+
         #endregion
 
         public CathedraModel(CathedraDTO cathedra)
@@ -34,7 +42,7 @@ namespace StudyingController.ViewModels.Models
             base.Assign(entity);
 
             CathedraDTO cathedra = entity as CathedraDTO;
-            this.faculty = cathedra.Faculty;
+            this.Faculty = cathedra.Faculty;
         }
 
         public CathedraDTO ToDTO()
@@ -50,16 +58,32 @@ namespace StudyingController.ViewModels.Models
             };
         }
 
+        private bool IsFacultyValid(out string error)
+        {
+            error = null;
+            if (faculty == null)
+            {
+                error = Properties.Resources.ErrorStructureNotFound;
+                return false;
+            }
+            return true;
+        }
+
         protected override string Validation(string property)
         {
-            switch (property)
+            string error = base.Validation(property);
+            if (error == null)
             {
-                case "Name":
-                    return base.Validation(property);
-                case "Faculty":
-                    return base.IsSelectedItem(faculty);
+                switch (property)
+                {
+                    case "Faculty":
+                        IsFacultyValid(out error);
+                        break;
+                    default:
+                        break;
+                }
             }
-            return null;
+            return error;
         }
 
     }

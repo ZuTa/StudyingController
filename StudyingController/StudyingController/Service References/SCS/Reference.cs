@@ -19,6 +19,10 @@ namespace StudyingController.SCS {
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.FacultyAdminDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.InstituteSecretaryDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.FacultySecretaryDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.TeacherDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.StudentDTO))]
     public partial class Session : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -239,6 +243,21 @@ namespace StudyingController.SCS {
         System.IAsyncResult BeginGetUsers(StudyingController.SCS.Session session, EntitiesDTO.UserRoles roles, System.AsyncCallback callback, object asyncState);
         
         System.Collections.Generic.List<EntitiesDTO.SystemUserDTO> EndGetUsers(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/SaveUser", ReplyAction="http://tempuri.org/IControllerService/SaveUserResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/SaveUserControllerServiceExceptionFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultyAdminDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteSecretaryDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultySecretaryDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.TeacherDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.StudentDTO))]
+        void SaveUser(StudyingController.SCS.Session session, EntitiesDTO.SystemUserDTO user);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/SaveUser", ReplyAction="http://tempuri.org/IControllerService/SaveUserResponse")]
+        System.IAsyncResult BeginSaveUser(StudyingController.SCS.Session session, EntitiesDTO.SystemUserDTO user, System.AsyncCallback callback, object asyncState);
+        
+        void EndSaveUser(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -473,6 +492,12 @@ namespace StudyingController.SCS {
         
         private System.Threading.SendOrPostCallback onGetUsersCompletedDelegate;
         
+        private BeginOperationDelegate onBeginSaveUserDelegate;
+        
+        private EndOperationDelegate onEndSaveUserDelegate;
+        
+        private System.Threading.SendOrPostCallback onSaveUserCompletedDelegate;
+        
         public ControllerServiceClient() {
         }
         
@@ -515,6 +540,8 @@ namespace StudyingController.SCS {
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> SaveGroupCompleted;
         
         public event System.EventHandler<GetUsersCompletedEventArgs> GetUsersCompleted;
+        
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> SaveUserCompleted;
         
         public StudyingController.SCS.Session Login(string login1, string password) {
             return base.Channel.Login(login1, password);
@@ -1128,6 +1155,57 @@ namespace StudyingController.SCS {
             base.InvokeAsync(this.onBeginGetUsersDelegate, new object[] {
                         session,
                         roles}, this.onEndGetUsersDelegate, this.onGetUsersCompletedDelegate, userState);
+        }
+        
+        public void SaveUser(StudyingController.SCS.Session session, EntitiesDTO.SystemUserDTO user) {
+            base.Channel.SaveUser(session, user);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginSaveUser(StudyingController.SCS.Session session, EntitiesDTO.SystemUserDTO user, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginSaveUser(session, user, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public void EndSaveUser(System.IAsyncResult result) {
+            base.Channel.EndSaveUser(result);
+        }
+        
+        private System.IAsyncResult OnBeginSaveUser(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            StudyingController.SCS.Session session = ((StudyingController.SCS.Session)(inValues[0]));
+            EntitiesDTO.SystemUserDTO user = ((EntitiesDTO.SystemUserDTO)(inValues[1]));
+            return this.BeginSaveUser(session, user, callback, asyncState);
+        }
+        
+        private object[] OnEndSaveUser(System.IAsyncResult result) {
+            this.EndSaveUser(result);
+            return null;
+        }
+        
+        private void OnSaveUserCompleted(object state) {
+            if ((this.SaveUserCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.SaveUserCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void SaveUserAsync(StudyingController.SCS.Session session, EntitiesDTO.SystemUserDTO user) {
+            this.SaveUserAsync(session, user, null);
+        }
+        
+        public void SaveUserAsync(StudyingController.SCS.Session session, EntitiesDTO.SystemUserDTO user, object userState) {
+            if ((this.onBeginSaveUserDelegate == null)) {
+                this.onBeginSaveUserDelegate = new BeginOperationDelegate(this.OnBeginSaveUser);
+            }
+            if ((this.onEndSaveUserDelegate == null)) {
+                this.onEndSaveUserDelegate = new EndOperationDelegate(this.OnEndSaveUser);
+            }
+            if ((this.onSaveUserCompletedDelegate == null)) {
+                this.onSaveUserCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnSaveUserCompleted);
+            }
+            base.InvokeAsync(this.onBeginSaveUserDelegate, new object[] {
+                        session,
+                        user}, this.onEndSaveUserDelegate, this.onSaveUserCompletedDelegate, userState);
         }
     }
 }
