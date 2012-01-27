@@ -49,6 +49,8 @@ namespace StudyingController.ViewModels
             set { selectedNode = value; }
         }
 
+        private BaseEntityDTO previousSelectedEntity;
+
         #endregion
 
         #region Constructors
@@ -94,8 +96,15 @@ namespace StudyingController.ViewModels
 
         protected override void ClearData()
         {
+            previousSelectedEntity = CurrentEntity;
+
             lock (Tree)
                 Tree.Clear();
+        }
+
+        protected override void LoadData()
+        {
+            CurrentEntity = previousSelectedEntity;
         }
 
         #endregion

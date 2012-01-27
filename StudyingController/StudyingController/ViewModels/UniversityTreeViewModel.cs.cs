@@ -34,6 +34,8 @@ namespace StudyingController.ViewModels
         protected override void LoadData()
         {
             BuildUniversityTree();
+
+            base.LoadData();
         }
 
         private void BuildUniversityTree()
