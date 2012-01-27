@@ -27,9 +27,11 @@ namespace StudyingController.ViewModels
 
         protected override void LoadData()
         {
-            BuildUsersTree();
-
             base.LoadData();
+
+            BuildUsersTree();
+            
+            CurrentEntity = previousSelectedEntity;
         }
 
         private void BuildUsersTree()

@@ -33,9 +33,11 @@ namespace StudyingController.ViewModels
 
         protected override void LoadData()
         {
+            base.LoadData();
+
             BuildUniversityTree();
 
-            base.LoadData();
+            CurrentEntity = previousSelectedEntity;
         }
 
         private void BuildUniversityTree()

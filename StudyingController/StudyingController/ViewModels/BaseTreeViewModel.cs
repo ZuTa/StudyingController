@@ -49,7 +49,7 @@ namespace StudyingController.ViewModels
             set { selectedNode = value; }
         }
 
-        private BaseEntityDTO previousSelectedEntity;
+        protected BaseEntityDTO previousSelectedEntity;
 
         #endregion
 
@@ -104,7 +104,6 @@ namespace StudyingController.ViewModels
 
         protected override void LoadData()
         {
-            CurrentEntity = previousSelectedEntity;
         }
 
         #endregion
