@@ -60,7 +60,7 @@ namespace StudyingController.ViewModels
             get
             {
                 if (addInstituteSecretaryCommand == null)
-                    addInstituteSecretaryCommand = new RelayCommand(param => ChangeCurrentWorkspace(new InstituteViewModel(UserInterop, ControllerInterop, Dispatcher)));
+                    addInstituteSecretaryCommand = new RelayCommand(param => ChangeCurrentWorkspace(new InstituteSecretaryViewModel(UserInterop, ControllerInterop, Dispatcher)));
 
                 return addInstituteSecretaryCommand;
             }
@@ -72,7 +72,7 @@ namespace StudyingController.ViewModels
             get
             {
                 if (addFacultyAdminCommand == null)
-                    addFacultyAdminCommand = new RelayCommand(param => ChangeCurrentWorkspace(new InstituteViewModel(UserInterop, ControllerInterop, Dispatcher)));
+                    addFacultyAdminCommand = new RelayCommand(param => ChangeCurrentWorkspace(new FacultyAdminViewModel(UserInterop, ControllerInterop, Dispatcher)));
 
                 return addFacultyAdminCommand;
             }
@@ -84,7 +84,7 @@ namespace StudyingController.ViewModels
             get
             {
                 if (addFacultySecretaryCommand == null)
-                    addFacultySecretaryCommand = new RelayCommand(param => ChangeCurrentWorkspace(new InstituteViewModel(UserInterop, ControllerInterop, Dispatcher)));
+                    addFacultySecretaryCommand = new RelayCommand(param => ChangeCurrentWorkspace(new FacultySecretaryViewModel(UserInterop, ControllerInterop, Dispatcher)));
 
                 return addFacultySecretaryCommand;
             }
@@ -96,7 +96,7 @@ namespace StudyingController.ViewModels
             get
             {
                 if (addTeacherCommand == null)
-                    addTeacherCommand = new RelayCommand(param => ChangeCurrentWorkspace(new InstituteViewModel(UserInterop, ControllerInterop, Dispatcher)));
+                    addTeacherCommand = new RelayCommand(param => ChangeCurrentWorkspace(new TeacherViewModel(UserInterop, ControllerInterop, Dispatcher)));
 
                 return addTeacherCommand;
             }
@@ -120,7 +120,7 @@ namespace StudyingController.ViewModels
             get
             {
                 if (addMainAdminCommand == null)
-                    addMainAdminCommand = new RelayCommand(param => ChangeCurrentWorkspace(new InstituteViewModel(UserInterop, ControllerInterop, Dispatcher)));
+                    addMainAdminCommand = new RelayCommand(param => ChangeCurrentWorkspace(new MainAdminViewModel(UserInterop, ControllerInterop, Dispatcher)));
 
                 return addMainAdminCommand;
             }
@@ -132,7 +132,7 @@ namespace StudyingController.ViewModels
             get
             {
                 if (addMainSecretaryCommand == null)
-                    addMainSecretaryCommand = new RelayCommand(param => ChangeCurrentWorkspace(new InstituteViewModel(UserInterop, ControllerInterop, Dispatcher)));
+                    addMainSecretaryCommand = new RelayCommand(param => ChangeCurrentWorkspace(new MainSecretaryViewModel(UserInterop, ControllerInterop, Dispatcher)));
 
                 return addMainSecretaryCommand;
             }
@@ -204,8 +204,19 @@ namespace StudyingController.ViewModels
                 switch (user.Role)
                 {
                     case UserRoles.MainAdmin:
+                        return new MainAdminViewModel(UserInterop, ControllerInterop, Dispatcher, user);
                     case UserRoles.MainSecretary:
-                        //return new MainSystemUserViewModel(UserInterop, ControllerInterop, Dispatcher, entity as MainSystemUserDTO);
+                        return new MainSecretaryViewModel(UserInterop, ControllerInterop, Dispatcher, user);
+                    case UserRoles.InstituteAdmin:
+                        return new InstituteAdminViewModel(UserInterop, ControllerInterop, Dispatcher, user as InstituteAdminDTO);
+                    case UserRoles.InstituteSecretary:
+                        return new InstituteSecretaryViewModel(UserInterop, ControllerInterop, Dispatcher, user as InstituteSecretaryDTO);
+                    case UserRoles.FacultyAdmin:
+                        return new FacultyAdminViewModel(UserInterop, ControllerInterop, Dispatcher, user as FacultyAdminDTO);
+                    case UserRoles.FacultySecretary:
+                        return new FacultySecretaryViewModel(UserInterop, ControllerInterop, Dispatcher, user as FacultySecretaryDTO);
+                    case UserRoles.Teacher:
+                        return new TeacherViewModel(UserInterop, ControllerInterop, Dispatcher, user as TeacherDTO);
                     default:
                         throw new NotImplementedException();
                 }

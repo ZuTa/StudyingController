@@ -6,6 +6,8 @@ using System.ComponentModel;
 using System.Xml.Serialization;
 using System.IO;
 using System.Text.RegularExpressions;
+using StudyingController.Common;
+using System.Reflection;
 
 namespace StudyingController.ClientData
 {
@@ -14,9 +16,18 @@ namespace StudyingController.ClientData
     {
         #region Fields & Properties
 
-        private static readonly string DEFAULT_FOLDER_PATH = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), StudyingController.Properties.Resources.AppDataFolderName); 
+        private static readonly string DEFAULT_FOLDER_PATH = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), StudyingController.Properties.Resources.AppDataFolderName);
+
+        public bool IsValid
+        {
+            get 
+            {
+                return ValidateProperties();
+            }
+        }
 
         private string login;
+        [Validateable]
         public string Login
         {
             get { return login; }
@@ -28,6 +39,7 @@ namespace StudyingController.ClientData
         }
 
         private string password;
+        [Validateable]
         public string Password
         {
             get { return password; }
@@ -67,6 +79,7 @@ namespace StudyingController.ClientData
         }
 
         private string server;
+        [Validateable]
         public string Server
         {
             get { return server; }
@@ -78,6 +91,7 @@ namespace StudyingController.ClientData
         }
 
         private string port;
+        [Validateable]
         public string Port
         {
             get { return port; }
@@ -117,7 +131,7 @@ namespace StudyingController.ClientData
             {
                 if (!Regex.IsMatch(login, "^\\w+$"))
                     errors.Add(Properties.Resources.ErrorLoginBadChars);
-                if (login.Length < 4)
+                if (login.Length < 3)
                     errors.Add(Properties.Resources.ErrorLoginLength);
             }
             return string.Join(Environment.NewLine, errors);
@@ -177,6 +191,41 @@ namespace StudyingController.ClientData
             }
         }
 
+        private bool ValidateProperties()
+        {
+            bool result = true;
+
+            Type type = this.GetType();
+            foreach (PropertyInfo propertyInfo in type.GetProperties())
+            {
+                string error = Validate(propertyInfo.Name);
+                if (propertyInfo.GetCustomAttributes(typeof(ValidateableAttribute), false).Length > 0 && error != null && error != string.Empty)
+                {
+                    result = false;
+                    break;
+                }
+            }
+
+            return result;
+        }
+
+        private string Validate(string property)
+        {
+            switch (property)
+            {
+                case "Login":
+                    return IsLoginValid();
+                case "Password":
+                    return IsPasswordValid();
+                case "Server":
+                    return IsServerValid();
+                case "Port":
+                    return IsPortValid();
+                default:
+                    return null;
+            }
+        }
+
         #endregion
 
         #region IDataErrorInfo
@@ -187,22 +236,8 @@ namespace StudyingController.ClientData
         }
 
         public string this[string property]
-        {
-            get
-            {
-                switch (property)
-                {
-                    case "Login":
-                        return IsLoginValid();
-                    case "Password":
-                        return IsPasswordValid();
-                    case "Server":
-                        return IsServerValid();
-                    case "Port":
-                        return IsPortValid();
-                }
-                return null;
-            }
+        {  
+            get { return Validate(property); }
         }
 
         #endregion

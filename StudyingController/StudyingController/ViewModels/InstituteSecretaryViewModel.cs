@@ -9,18 +9,18 @@ using System.Windows.Threading;
 
 namespace StudyingController.ViewModels
 {
-    public class InstituteAdminViewModel : SaveableViewModel
+    public class InstituteSecretaryViewModel : SaveableViewModel
     {
         #region Fields & Properties
 
-        public InstituteAdminDTO OriginalInstituteAdmin
+        public InstituteSecretaryDTO OriginalInstituteSecretary
         {
-            get { return originalEntity as InstituteAdminDTO; }
+            get { return originalEntity as InstituteSecretaryDTO; }
         }
 
-        public InstituteAdminModel InstituteAdmin
+        public InstituteSecretaryModel InstituteSecretary
         {
-            get { return model as InstituteAdminModel; }
+            get { return model as InstituteSecretaryModel; }
         }
 
         private List<InstituteDTO> institutes;
@@ -38,29 +38,29 @@ namespace StudyingController.ViewModels
 
         #region Constructors
 
-        public InstituteAdminViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
+        public InstituteSecretaryViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)
         {
             institutes = new List<InstituteDTO>();
             Load();
 
-            originalEntity = new InstituteAdminDTO();
-            model = new InstituteAdminModel(originalEntity as InstituteAdminDTO) { Role = UserRoles.InstituteAdmin };
+            originalEntity = new InstituteSecretaryDTO();
+            model = new InstituteSecretaryModel(originalEntity as InstituteSecretaryDTO) { Role = UserRoles.InstituteSecretary };
             this.model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
-        public InstituteAdminViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, InstituteAdminDTO instituteAdmin)
+        public InstituteSecretaryViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, InstituteSecretaryDTO instituteSecretary)
             : base(userInterop, controllerInterop, dispatcher)
         {
             institutes = new List<InstituteDTO>();
             Load();
 
-            originalEntity = instituteAdmin;
-            instituteAdmin.Institute = (from institute in institutes
-                                        where institute.ID == OriginalInstituteAdmin.InstituteID
+            originalEntity = instituteSecretary;
+            instituteSecretary.Institute = (from institute in institutes
+                                        where institute.ID == OriginalInstituteSecretary.InstituteID
                                         select institute).FirstOrDefault();
 
-            model = new InstituteAdminModel(instituteAdmin);
+            model = new InstituteSecretaryModel(instituteSecretary);
             model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
@@ -70,15 +70,15 @@ namespace StudyingController.ViewModels
 
         public override void Rollback()
         {
-            InstituteAdmin.Assign(OriginalInstituteAdmin);
+            InstituteSecretary.Assign(OriginalInstituteSecretary);
             SetUnModified();
         }
 
         public override void Save()
         {
-            InstituteAdminDTO instituteAdminDTO = InstituteAdmin.ToDTO();
-            instituteAdminDTO.Password = HashHelper.ComputeHash((model as SystemUserModel).Login);
-            ControllerInterop.Service.SaveUser(ControllerInterop.Session, instituteAdminDTO);
+            InstituteSecretaryDTO instituteSecretaryDTO = InstituteSecretary.ToDTO();
+            instituteSecretaryDTO.Password = HashHelper.ComputeHash((model as SystemUserModel).Login);
+            ControllerInterop.Service.SaveUser(ControllerInterop.Session, instituteSecretaryDTO);
             SetUnModified();
         }
 

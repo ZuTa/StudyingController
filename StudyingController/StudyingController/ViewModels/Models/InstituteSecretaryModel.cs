@@ -6,7 +6,7 @@ using EntitiesDTO;
 
 namespace StudyingController.ViewModels.Models
 {
-    public class InstituteAdminModel : SystemUserModel, IDTOable<InstituteAdminDTO>
+    public class InstituteSecretaryModel : SystemUserModel, IDTOable<InstituteSecretaryDTO>
     {
         private InstituteDTO institute;
         public InstituteDTO Institute
@@ -19,7 +19,7 @@ namespace StudyingController.ViewModels.Models
             }
         }
 
-        public InstituteAdminModel(InstituteAdminDTO entity)
+        public InstituteSecretaryModel(InstituteSecretaryDTO entity)
             : base(entity)
         {
             this.Institute = entity.Institute;
@@ -29,13 +29,13 @@ namespace StudyingController.ViewModels.Models
         {
             base.Assign(entity);
 
-            InstituteAdminDTO instituteAdmin = entity as InstituteAdminDTO;
-            this.Institute = instituteAdmin.Institute;
+            InstituteSecretaryDTO InstituteSecretary = entity as InstituteSecretaryDTO;
+            this.Institute = InstituteSecretary.Institute;
         }
 
-        public InstituteAdminDTO ToDTO()
+        public InstituteSecretaryDTO ToDTO()
         {
-            return new InstituteAdminDTO
+            return new InstituteSecretaryDTO
             {
                 ID = this.ID,
                 Login = this.Login,

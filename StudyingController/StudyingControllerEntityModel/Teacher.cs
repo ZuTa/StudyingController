@@ -8,6 +8,22 @@ namespace StudyingControllerEntityModel
 {
     partial class Teacher : IDTOable<TeacherDTO>
     {
+        #region Constructors
+
+        public Teacher()
+        {
+        }
+
+        public Teacher(SystemUserDTO user)
+            : base(user)
+        {
+            TeacherDTO teacher = user as TeacherDTO;
+
+            this.CathedraID = teacher.CathedraID;
+        }
+
+        #endregion
+
         public new TeacherDTO ToDTO()
         {
             return new TeacherDTO

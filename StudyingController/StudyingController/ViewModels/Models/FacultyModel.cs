@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using EntitiesDTO;
+using StudyingController.Common;
 
 namespace StudyingController.ViewModels.Models
 {
@@ -11,6 +12,7 @@ namespace StudyingController.ViewModels.Models
         #region Fields & Properties
 
         private InstituteDTO institute;
+        [Validateable]
         public InstituteDTO Institute
         {
             get { return institute; }
@@ -47,9 +49,9 @@ namespace StudyingController.ViewModels.Models
             };
         }
 
-        protected override string Validation(string property)
+        protected override string Validate(string property)
         {
-            return base.Validation(property);
+            return base.Validate(property);
         }
     }
 }

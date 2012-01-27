@@ -6,7 +6,7 @@ using EntitiesDTO;
 
 namespace StudyingController.ViewModels.Models
 {
-    public class SystemUserModel : BaseModel
+    public class SystemUserModel : BaseModel, IDTOable<SystemUserDTO>
     {
         private string login;
         public string Login
@@ -26,63 +26,39 @@ namespace StudyingController.ViewModels.Models
             set { role = value; }
         }
 
-        private string firstName;
-        public string FirstName
+        private UserInformationModel userInformation;
+        public UserInformationModel UserInformation
         {
-            get { return firstName; }
-            set 
-            { 
-                firstName = value;
-                OnPropertyChanged("FirstName");
-            }
+            get { return userInformation; }
+            set { userInformation = value; }
         }
 
-        private string lastName;
-        public string LastName
-        {
-            get { return lastName; }
-            set
-            {
-                lastName = value;
-                OnPropertyChanged("LastName");
-            }
-        }
-
-        private string email;
-        public string Email
-        {
-            get { return email; }
-            set 
-            { 
-                email = value;
-                OnPropertyChanged("Email");
-            }
-        }
         public SystemUserModel(SystemUserDTO user)
             : base(user)
         {
             this.login = user.Login;
             this.role = user.Role;
-
-            if (user.UserInformation != null)
-            {
-                this.firstName = user.UserInformation.FirstName;
-                this.lastName = user.UserInformation.LastName;
-                this.email = user.UserInformation.Email;
-            }
+            this.userInformation = new UserInformationModel(user.UserInformation);
         }
 
         public override void Assign(BaseEntityDTO entity)
         {
             base.Assign(entity);
 
-            SystemUserDTO userEntity = entity as SystemUserDTO;
-            this.Login = userEntity.Login;
-            
-            if (userEntity.UserInformation == null) userEntity.UserInformation = new UserInformationDTO();
-            this.FirstName = userEntity.UserInformation.FirstName;
-            this.LastName = userEntity.UserInformation.LastName;
-            this.Email = userEntity.UserInformation.Email;
+            SystemUserDTO user = entity as SystemUserDTO;
+            this.Login = user.Login;
+            this.UserInformation.Assign(user.UserInformation);
+        }
+
+        public SystemUserDTO ToDTO()
+        {
+            return new SystemUserDTO
+            {
+                ID = this.ID,
+                Login = this.Login,
+                Role = this.Role,
+                UserInformation = this.UserInformation.ToDTO()
+            };
         }
     }
 }

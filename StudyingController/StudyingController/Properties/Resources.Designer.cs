@@ -106,7 +106,7 @@ namespace StudyingController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Логін повинен мати більше 4 символів.
+        ///   Looks up a localized string similar to Логін повинен мати не менше 3 символів.
         /// </summary>
         internal static string ErrorLoginLength {
             get {

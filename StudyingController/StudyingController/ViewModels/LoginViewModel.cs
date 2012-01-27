@@ -139,7 +139,8 @@ namespace StudyingController.ViewModels
                 {
                     StartLogging();
 
-                    if (!LoginConfig.IsAutologin)
+                    //if (!LoginConfig.IsAutologin)
+                    if (passwordSource != null)
                         LoginConfig.Password = passwordSource.GetPassword();
 
                     ControllerInterop.Service = new SCS.ControllerServiceClient("BasicHttpBinding_IControllerService", GetServiceEndPoint());
@@ -149,27 +150,25 @@ namespace StudyingController.ViewModels
                 {
                     LoginDataError = ex.Message;
                     StopLogging();
-                  }             
+                }             
             }
         }
 
         private bool CanUserLogin()
         {
-            if ((LoginConfig.Login != null && new Regex("^[a-zA-Z0-9]+$").IsMatch(LoginConfig.Login))
-                && (LoginConfig.Port != null && new Regex("^[0-9]+$").IsMatch(LoginConfig.Port))
-                && (LoginConfig.Server != null && new Regex("^[:a-zA-Z0-9/.-]+$").IsMatch(LoginConfig.Server)))
-                return true;
-            
-            return false;
+            return LoginConfig == null ? false : LoginConfig.IsValid;
         }
 
         private EndpointAddress GetServiceEndPoint()
         {
             StringBuilder uri = new StringBuilder();
             uri.Append(LoginConfig.Server.IndexOf("http://") == -1 ? "http://" + LoginConfig.Server : LoginConfig.Server);
+            
             if (uri.ToString().IndexOf('/', 7) == -1) uri.Append("/");
+            
             uri.Insert(uri.ToString().IndexOf('/', 7), ":" + LoginConfig.Port);
             uri.Append(StudyingController.Properties.Resources.Service);
+            
             return new EndpointAddress(uri.ToString());
         }
 

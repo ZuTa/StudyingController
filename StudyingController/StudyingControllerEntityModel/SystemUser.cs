@@ -53,8 +53,6 @@ namespace StudyingControllerEntityModel
             return user;
         }
 
-
-
         public void UpdateData(SystemUserDTO entity)
         {
             throw new NotImplementedException();

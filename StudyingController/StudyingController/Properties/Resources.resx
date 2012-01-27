@@ -133,7 +133,7 @@
     <value>Поле логін не може бути порожнім</value>
   </data>
   <data name="ErrorLoginLength" xml:space="preserve">
-    <value>Логін повинен мати більше 4 символів</value>
+    <value>Логін повинен мати не менше 3 символів</value>
   </data>
   <data name="ErrorPortBorder" xml:space="preserve">
     <value>Порт за межами (0-65535)</value>

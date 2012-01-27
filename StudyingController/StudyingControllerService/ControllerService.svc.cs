@@ -81,7 +81,7 @@ namespace StudyingControllerService
                     SystemUser user = (from u in context.SystemUsers.Include("UserInformation")
                                        where u.Login == login.ToLower()
                                        select u).FirstOrDefault();
-
+                   
                     if (!(user != null && Encoding.UTF8.GetString(user.Password) == password))
                         throw new Exception("У доступі відмовлено!");
 
@@ -133,10 +133,12 @@ namespace StudyingControllerService
                 case UserRoles.FacultyAdmin:
                     return new FacultyAdmin(user);
                 case UserRoles.InstituteSecretary:
+                    return new InstituteSecretary(user);
                 case UserRoles.FacultySecretary:
+                    return new FacultySecretary(user);
                 case UserRoles.Student:
                 case UserRoles.Teacher:
-                    throw new NotImplementedException();
+                    return new Teacher(user);
                 default:
                     return new SystemUser(user);
             }
@@ -395,6 +397,7 @@ namespace StudyingControllerService
                 using (UniversityEntities context = new UniversityEntities())
                 {
                     var item = context.SystemUsers.FirstOrDefault(gr => gr.ID == user.ID);
+
                     if (item == null)
                         context.AddToSystemUsers(GetSystemUser(user));
                     else

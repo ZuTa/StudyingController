@@ -49,6 +49,32 @@
                 <v:InstituteAdminView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type vm:InstituteSecretaryViewModel}">
+                <v:InstituteSecretaryView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:FacultyAdminViewModel}">
+                <v:FacultyAdminView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:FacultySecretaryViewModel}">
+                <v:FacultySecretaryView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:TeacherViewModel}">
+                <v:TeacherView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:MainAdminViewModel}">
+                <v:MainAdminView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:MainSecretaryViewModel}">
+                <v:MainSecretaryView/>
+            </DataTemplate>
+
+            
+            
             <DataTemplate DataType="{x:Type vm:UserInformationViewModel}">
                 <v:UserInformationView/>
             </DataTemplate>

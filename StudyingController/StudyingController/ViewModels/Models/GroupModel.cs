@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using EntitiesDTO;
+using StudyingController.Common;
 
 namespace StudyingController.ViewModels.Models
 {
@@ -11,6 +12,7 @@ namespace StudyingController.ViewModels.Models
         #region Fields & Properties
 
         private CathedraDTO cathedra;
+        [Validateable]
         public CathedraDTO Cathedra
         {
             get { return cathedra; }
@@ -20,14 +22,6 @@ namespace StudyingController.ViewModels.Models
                 OnPropertyChanged("Cathedra");
             }
         }
-        public override bool IsValid
-        {
-            get
-            {
-                return base.IsValid && Validation("Cathedra") == null;
-            }
-        }
-
         #endregion
 
         #region Constructors
@@ -37,6 +31,10 @@ namespace StudyingController.ViewModels.Models
         {
             cathedra = group.Cathedra;
         }
+
+        #endregion
+
+        #region Methods
 
         public override void Assign(BaseEntityDTO entity)
         {
@@ -55,9 +53,6 @@ namespace StudyingController.ViewModels.Models
                 CathedraID = cathedra.ID
             };
         }
-        #endregion
-
-        #region Methods
 
         private bool IsCathedraValid(out string error)
         {
@@ -70,9 +65,9 @@ namespace StudyingController.ViewModels.Models
             return true;
         }
 
-        protected override string Validation(string property)
+        protected override string Validate(string property)
         {
-            string error = base.Validation(property);
+            string error = base.Validate(property);
             if (error == null)
             {
                 switch (property)

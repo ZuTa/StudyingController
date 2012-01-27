@@ -63,23 +63,34 @@
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="ViewModels\BaseTreeViewModel.cs" />
     <Compile Include="ViewModels\CathedraViewModel.cs" />
+    <Compile Include="ViewModels\FacultyAdminViewModel.cs" />
+    <Compile Include="ViewModels\FacultySecretaryViewModel.cs" />
     <Compile Include="ViewModels\FacultyViewModel.cs" />
     <Compile Include="ViewModels\GroupViewModel.cs" />
     <Compile Include="ViewModels\IEditable.cs" />
     <Compile Include="ViewModels\InstituteAdminViewModel.cs" />
+    <Compile Include="ViewModels\InstituteSecretaryViewModel.cs" />
     <Compile Include="ViewModels\InstituteViewModel.cs" />
     <Compile Include="ViewModels\IProviderable.cs" />
-    <Compile Include="ViewModels\MainSystemUserViewModel.cs" />
+    <Compile Include="ViewModels\MainAdminViewModel.cs" />
+    <Compile Include="ViewModels\MainSecretaryViewModel.cs" />
     <Compile Include="ViewModels\Models\BaseModel.cs" />
     <Compile Include="ViewModels\Models\CathedraModel.cs" />
+    <Compile Include="ViewModels\Models\FacultyAdminModel.cs" />
     <Compile Include="ViewModels\Models\FacultyModel.cs" />
+    <Compile Include="ViewModels\Models\FacultySecretaryModel.cs" />
     <Compile Include="ViewModels\Models\GroupModel.cs" />
     <Compile Include="ViewModels\Models\IDTOable.cs" />
     <Compile Include="ViewModels\Models\InstituteAdminModel.cs" />
     <Compile Include="ViewModels\Models\InstituteModel.cs" />
+    <Compile Include="ViewModels\Models\InstituteSecretaryModel.cs" />
     <Compile Include="ViewModels\Models\NamedModel.cs" />
     <Compile Include="ViewModels\Models\SystemUserModel.cs" />
+    <Compile Include="ViewModels\Models\TeacherModel.cs" />
+    <Compile Include="ViewModels\Models\UserInformationModel.cs" />
+    <Compile Include="Common\ValidateableAttribute.cs" />
     <Compile Include="ViewModels\SaveableViewModel.cs" />
+    <Compile Include="ViewModels\TeacherViewModel.cs" />
     <Compile Include="ViewModels\Tree.cs" />
     <Compile Include="ViewModels\TreeNode.cs" />
     <Compile Include="ViewModels\LoadableViewModel.cs" />
@@ -110,6 +121,12 @@
     <Compile Include="Views\CathedraView.xaml.cs">
       <DependentUpon>CathedraView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\FacultyAdminView.xaml.cs">
+      <DependentUpon>FacultyAdminView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FacultySecretaryView.xaml.cs">
+      <DependentUpon>FacultySecretaryView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\FacultyView.xaml.cs">
       <DependentUpon>FacultyView.xaml</DependentUpon>
     </Compile>
@@ -119,20 +136,29 @@
     <Compile Include="Views\InstituteAdminView.xaml.cs">
       <DependentUpon>InstituteAdminView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\InstituteSecretaryView.xaml.cs">
+      <DependentUpon>InstituteSecretaryView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\InstituteView.xaml.cs">
       <DependentUpon>InstituteView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MainSystemUserView.xaml.cs">
-      <DependentUpon>MainSystemUserView.xaml</DependentUpon>
+    <Compile Include="Views\MainAdminView.xaml.cs">
+      <DependentUpon>MainAdminView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainSecretaryView.xaml.cs">
+      <DependentUpon>MainSecretaryView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\EditableView.xaml.cs">
       <DependentUpon>EditableView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TeacherView.xaml.cs">
+      <DependentUpon>TeacherView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UniversityTreeView.xaml.cs">
       <DependentUpon>UniversityTreeView.xaml</DependentUpon>
@@ -159,6 +185,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\FacultyAdminView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FacultySecretaryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\FacultyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -168,6 +202,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\InstituteAdminView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\InstituteSecretaryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -179,7 +217,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MainSystemUserView.xaml">
+    <Page Include="Views\MainAdminView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainSecretaryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -192,6 +234,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\EditableView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TeacherView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
