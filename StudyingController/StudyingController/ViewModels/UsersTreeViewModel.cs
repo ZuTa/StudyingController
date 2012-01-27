@@ -30,8 +30,8 @@ namespace StudyingController.ViewModels
             base.LoadData();
 
             BuildUsersTree();
-            
-            CurrentEntity = previousSelectedEntity;
+
+            CurrentEntity = GetActualEntity(previousSelectedEntity);
         }
 
         private void BuildUsersTree()
