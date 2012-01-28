@@ -16,7 +16,7 @@
           <EntitySet Name="InstituteAdmin" EntityType="UniversityDBModel.Store.InstituteAdmin" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="InstituteSecretary" EntityType="UniversityDBModel.Store.InstituteSecretary" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Lecture" EntityType="UniversityDBModel.Store.Lecture" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Lecture_Specialization" EntityType="UniversityDBModel.Store.Lecture_Specialization" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Lecture_Group" EntityType="UniversityDBModel.Store.Lecture_Group" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="LectureControl" EntityType="UniversityDBModel.Store.LectureControl" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="LectureControlMark" EntityType="UniversityDBModel.Store.LectureControlMark" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Mark" EntityType="UniversityDBModel.Store.Mark" store:Type="Tables" Schema="dbo" />
@@ -79,13 +79,13 @@
             <End Role="SystemUser" EntitySet="SystemUser" />
             <End Role="InstituteSecretary" EntitySet="InstituteSecretary" />
           </AssociationSet>
+          <AssociationSet Name="FK_Lecture_Specialization_Group" Association="UniversityDBModel.Store.FK_Lecture_Specialization_Group">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="Lecture_Group" EntitySet="Lecture_Group" />
+          </AssociationSet>
           <AssociationSet Name="FK_Lecture_Specialization_Lecture" Association="UniversityDBModel.Store.FK_Lecture_Specialization_Lecture">
             <End Role="Lecture" EntitySet="Lecture" />
-            <End Role="Lecture_Specialization" EntitySet="Lecture_Specialization" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Lecture_Specialization_Specialization" Association="UniversityDBModel.Store.FK_Lecture_Specialization_Specialization">
-            <End Role="Specialization" EntitySet="Specialization" />
-            <End Role="Lecture_Specialization" EntitySet="Lecture_Specialization" />
+            <End Role="Lecture_Group" EntitySet="Lecture_Group" />
           </AssociationSet>
           <AssociationSet Name="FK_Lecture_Subject" Association="UniversityDBModel.Store.FK_Lecture_Subject">
             <End Role="Subject" EntitySet="Subject" />
@@ -259,19 +259,19 @@
           <Property Name="TeacherID" Type="int" Nullable="false" />
           <Property Name="SubjectID" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Lecture_Specialization">
+        <EntityType Name="Lecture_Group">
           <Key>
-            <PropertyRef Name="SpecializationID" />
+            <PropertyRef Name="GroupID" />
             <PropertyRef Name="LectureID" />
           </Key>
-          <Property Name="SpecializationID" Type="int" Nullable="false" />
+          <Property Name="GroupID" Type="int" Nullable="false" />
           <Property Name="LectureID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="LectureControl">
           <Key>
-            <PropertyRef Name="ControlInformationID" />
+            <PropertyRef Name="ControlID" />
           </Key>
-          <Property Name="ControlInformationID" Type="int" Nullable="false" />
+          <Property Name="ControlID" Type="int" Nullable="false" />
           <Property Name="LectureID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="LectureControlMark">
@@ -314,9 +314,9 @@
         </EntityType>
         <EntityType Name="PracticeControl">
           <Key>
-            <PropertyRef Name="ControlInformationID" />
+            <PropertyRef Name="ControlID" />
           </Key>
-          <Property Name="ControlInformationID" Type="int" Nullable="false" />
+          <Property Name="ControlID" Type="int" Nullable="false" />
           <Property Name="PracticeID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="PracticeControlMark">
@@ -518,27 +518,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Lecture_Specialization_Group">
+          <End Role="Group" Type="UniversityDBModel.Store.Group" Multiplicity="1" />
+          <End Role="Lecture_Group" Type="UniversityDBModel.Store.Lecture_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Lecture_Group">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Lecture_Specialization_Lecture">
           <End Role="Lecture" Type="UniversityDBModel.Store.Lecture" Multiplicity="1" />
-          <End Role="Lecture_Specialization" Type="UniversityDBModel.Store.Lecture_Specialization" Multiplicity="*" />
+          <End Role="Lecture_Group" Type="UniversityDBModel.Store.Lecture_Group" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Lecture">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Lecture_Specialization">
+            <Dependent Role="Lecture_Group">
               <PropertyRef Name="LectureID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Lecture_Specialization_Specialization">
-          <End Role="Specialization" Type="UniversityDBModel.Store.Specialization" Multiplicity="1" />
-          <End Role="Lecture_Specialization" Type="UniversityDBModel.Store.Lecture_Specialization" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Specialization">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Lecture_Specialization">
-              <PropertyRef Name="SpecializationID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -574,7 +574,7 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="LectureControl">
-              <PropertyRef Name="ControlInformationID" />
+              <PropertyRef Name="ControlID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -595,7 +595,7 @@
           <End Role="LectureControlMark" Type="UniversityDBModel.Store.LectureControlMark" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="LectureControl">
-              <PropertyRef Name="ControlInformationID" />
+              <PropertyRef Name="ControlID" />
             </Principal>
             <Dependent Role="LectureControlMark">
               <PropertyRef Name="LectureControlID" />
@@ -694,7 +694,7 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="PracticeControl">
-              <PropertyRef Name="ControlInformationID" />
+              <PropertyRef Name="ControlID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -727,7 +727,7 @@
           <End Role="PracticeControlMark" Type="UniversityDBModel.Store.PracticeControlMark" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PracticeControl">
-              <PropertyRef Name="ControlInformationID" />
+              <PropertyRef Name="ControlID" />
             </Principal>
             <Dependent Role="PracticeControlMark">
               <PropertyRef Name="PracticeControlID" />
@@ -910,10 +910,6 @@
             <End Role="Practice_Teacher" EntitySet="PracticeTeachers" />
             <End Role="Student" EntitySet="SystemUsers" />
           </AssociationSet>
-          <AssociationSet Name="Lecture_Specialization" Association="UniversityDBModel.Lecture_Specialization">
-            <End Role="Lecture" EntitySet="Lectures" />
-            <End Role="Specialization" EntitySet="Specializations" />
-          </AssociationSet>
           <AssociationSet Name="FK_LectureControl_Lecture" Association="UniversityDBModel.FK_LectureControl_Lecture">
             <End Role="Lecture" EntitySet="Lectures" />
             <End Role="LectureControl" EntitySet="Controls" />
@@ -923,20 +919,24 @@
             <End Role="Practice" EntitySet="Practices" />
             <End Role="PracticeControl" EntitySet="Controls" />
           </AssociationSet>
-          <EntitySet Name="Marks" EntityType="UniversityDBModel.Mark" />
+          <AssociationSet Name="Lecture_Group" Association="UniversityDBModel.Lecture_Group">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="Lecture" EntitySet="Lectures" />
+          </AssociationSet>
           <AssociationSet Name="FK_Mark_Student" Association="UniversityDBModel.FK_Mark_Student">
             <End Role="Student" EntitySet="SystemUsers" />
             <End Role="Mark" EntitySet="Marks" />
           </AssociationSet>
-          <AssociationSet Name="FK_LectureControlMark_LectureControl1" Association="UniversityDBModel.FK_LectureControlMark_LectureControl1">
-            <End Role="LectureControl" EntitySet="Controls" />
-            <End Role="LectureControlMark" EntitySet="Marks" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PracticeControlMark_PracticeControl" Association="UniversityDBModel.FK_PracticeControlMark_PracticeControl">
+          <EntitySet Name="Marks" EntityType="UniversityDBModel.Mark" />
+          <AssociationSet Name="PracticeControlPracticeControlMark" Association="UniversityDBModel.PracticeControlPracticeControlMark">
             <End Role="PracticeControl" EntitySet="Controls" />
             <End Role="PracticeControlMark" EntitySet="Marks" />
           </AssociationSet>
-        </EntityContainer>
+          <AssociationSet Name="LectureControlLectureControlMark" Association="UniversityDBModel.LectureControlLectureControlMark">
+            <End Role="LectureControl" EntitySet="Controls" />
+            <End Role="LectureControlMark" EntitySet="Marks" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="SystemUser" Abstract="false">
           <Key>
             <PropertyRef Name="ID" />
@@ -1122,6 +1122,7 @@
           <NavigationProperty Name="Cathedra" Relationship="UniversityDBModel.FK_Group_Cathedra" FromRole="Group" ToRole="Cathedra" />
           <NavigationProperty Name="Specialization" Relationship="UniversityDBModel.FK_Group_Specialization" FromRole="Group" ToRole="Specialization" />
           <NavigationProperty Name="Students" Relationship="UniversityDBModel.FK_Student_Group" FromRole="Group" ToRole="Student" />
+          <NavigationProperty Name="Lectures" Relationship="UniversityDBModel.Lecture_Group" FromRole="Group" ToRole="Lecture" />
         </EntityType>
         <EntityType Name="Specialization">
           <Key>
@@ -1132,7 +1133,6 @@
           <Property Type="Int32" Name="FacultyID" Nullable="false" />
           <NavigationProperty Name="Faculty" Relationship="UniversityDBModel.FK_Specialization_Faculty" FromRole="Specialization" ToRole="Faculty" />
           <NavigationProperty Name="Groups" Relationship="UniversityDBModel.FK_Group_Specialization" FromRole="Specialization" ToRole="Group" />
-          <NavigationProperty Name="Lectures" Relationship="UniversityDBModel.Lecture_Specialization" FromRole="Specialization" ToRole="Lecture" />
         </EntityType>
         <Association Name="FK_Group_Cathedra">
           <End Type="UniversityDBModel.Cathedra" Role="Cathedra" Multiplicity="1" />
@@ -1197,8 +1197,8 @@
           <Property Type="Int32" Name="SubjectID" Nullable="false" />
           <NavigationProperty Name="Subject" Relationship="UniversityDBModel.FK_Lecture_Subject" FromRole="Lecture" ToRole="Subject" />
           <NavigationProperty Name="Teacher" Relationship="UniversityDBModel.FK_Lecture_Teacher" FromRole="Lecture" ToRole="Teacher" />
-          <NavigationProperty Name="Specializations" Relationship="UniversityDBModel.Lecture_Specialization" FromRole="Lecture" ToRole="Specialization" />
           <NavigationProperty Name="LectureControls" Relationship="UniversityDBModel.FK_LectureControl_Lecture" FromRole="Lecture" ToRole="LectureControl" />
+          <NavigationProperty Name="Groups" Relationship="UniversityDBModel.Lecture_Group" FromRole="Lecture" ToRole="Group" />
         </EntityType>
         <EntityType Name="Practice">
           <Key>
@@ -1308,14 +1308,10 @@
           <End Type="UniversityDBModel.PracticeTeacher" Role="Practice_Teacher" Multiplicity="*" />
           <End Type="UniversityDBModel.Student" Role="Student" Multiplicity="*" />
         </Association>
-        <Association Name="Lecture_Specialization">
-          <End Type="UniversityDBModel.Lecture" Role="Lecture" Multiplicity="*" />
-          <End Type="UniversityDBModel.Specialization" Role="Specialization" Multiplicity="*" />
-        </Association>
         <EntityType Name="LectureControl" BaseType="UniversityDBModel.Control">
           <Property Type="Int32" Name="LectureID" Nullable="false" />
           <NavigationProperty Name="Lecture" Relationship="UniversityDBModel.FK_LectureControl_Lecture" FromRole="LectureControl" ToRole="Lecture" />
-          <NavigationProperty Name="LectureControlMarks" Relationship="UniversityDBModel.FK_LectureControlMark_LectureControl1" FromRole="LectureControl" ToRole="LectureControlMark" />
+          <NavigationProperty Name="LectureControlMarks" Relationship="UniversityDBModel.LectureControlLectureControlMark" FromRole="LectureControl" ToRole="LectureControlMark" />
         </EntityType>
         <Association Name="FK_LectureControl_Lecture">
           <End Type="UniversityDBModel.Lecture" Role="Lecture" Multiplicity="1" />
@@ -1342,7 +1338,7 @@
         <EntityType Name="PracticeControl" BaseType="UniversityDBModel.Control">
           <Property Type="Int32" Name="PracticeID" Nullable="false" />
           <NavigationProperty Name="Practice" Relationship="UniversityDBModel.FK_PracticeControl_Practice" FromRole="PracticeControl" ToRole="Practice" />
-          <NavigationProperty Name="PracticeControlMarks" Relationship="UniversityDBModel.FK_PracticeControlMark_PracticeControl" FromRole="PracticeControl" ToRole="PracticeControlMark" />
+          <NavigationProperty Name="PracticeControlMarks" Relationship="UniversityDBModel.PracticeControlPracticeControlMark" FromRole="PracticeControl" ToRole="PracticeControlMark" />
         </EntityType>
         <Association Name="FK_PracticeControl_Practice">
           <End Type="UniversityDBModel.Practice" Role="Practice" Multiplicity="1" />
@@ -1356,13 +1352,25 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Mark" Abstract="true">
+        <EntityType Name="LectureControlMark" BaseType="UniversityDBModel.Mark">
+          <NavigationProperty Name="LectureControl" Relationship="UniversityDBModel.LectureControlLectureControlMark" FromRole="LectureControlMark" ToRole="LectureControl" />
+          <Property Type="Int32" Name="LectureControlID" Nullable="false" />
+        </EntityType>
+        <Association Name="Lecture_Group">
+          <End Type="UniversityDBModel.Group" Role="Group" Multiplicity="*" />
+          <End Type="UniversityDBModel.Lecture" Role="Lecture" Multiplicity="*" />
+        </Association>
+        <EntityType Name="PracticeControlMark" BaseType="UniversityDBModel.Mark">
+          <NavigationProperty Name="PracticeControl" Relationship="UniversityDBModel.PracticeControlPracticeControlMark" FromRole="PracticeControlMark" ToRole="PracticeControl" />
+          <Property Type="Int32" Name="PracticeControlID" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mark">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="StudentID" Nullable="false" />
-          <Property Type="Decimal" Name="Value" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="MarkValue" Nullable="false" Precision="18" Scale="0" />
           <NavigationProperty Name="Student" Relationship="UniversityDBModel.FK_Mark_Student" FromRole="Mark" ToRole="Student" />
         </EntityType>
         <Association Name="FK_Mark_Student">
@@ -1377,27 +1385,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="LectureControlMark" BaseType="UniversityDBModel.Mark">
-          <Property Type="Int32" Name="LectureControlID" Nullable="false" />
-          <NavigationProperty Name="LectureControl" Relationship="UniversityDBModel.FK_LectureControlMark_LectureControl1" FromRole="LectureControlMark" ToRole="LectureControl" />
-        </EntityType>
-        <EntityType Name="PracticeControlMark" BaseType="UniversityDBModel.Mark">
-          <Property Type="Int32" Name="PracticeControlID" Nullable="false" />
-          <NavigationProperty Name="PracticeControl" Relationship="UniversityDBModel.FK_PracticeControlMark_PracticeControl" FromRole="PracticeControlMark" ToRole="PracticeControl" />
-        </EntityType>
-        <Association Name="FK_LectureControlMark_LectureControl1">
-          <End Type="UniversityDBModel.LectureControl" Role="LectureControl" Multiplicity="1" />
-          <End Type="UniversityDBModel.LectureControlMark" Role="LectureControlMark" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="LectureControl">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="LectureControlMark">
-              <PropertyRef Name="LectureControlID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PracticeControlMark_PracticeControl">
+        <Association Name="PracticeControlPracticeControlMark">
           <End Type="UniversityDBModel.PracticeControl" Role="PracticeControl" Multiplicity="1" />
           <End Type="UniversityDBModel.PracticeControlMark" Role="PracticeControlMark" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1409,7 +1397,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <Association Name="LectureControlLectureControlMark">
+          <End Type="UniversityDBModel.LectureControl" Role="LectureControl" Multiplicity="1" />
+          <End Type="UniversityDBModel.LectureControlMark" Role="LectureControlMark" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LectureControl">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LectureControlMark">
+              <PropertyRef Name="LectureControlID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1560,14 +1560,6 @@
               <ScalarProperty Name="ID" ColumnName="Practice_TeacherID" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="Lecture_Specialization" TypeName="UniversityDBModel.Lecture_Specialization" StoreEntitySet="Lecture_Specialization">
-            <EndProperty Name="Specialization">
-              <ScalarProperty Name="ID" ColumnName="SpecializationID" />
-            </EndProperty>
-            <EndProperty Name="Lecture">
-              <ScalarProperty Name="ID" ColumnName="LectureID" />
-            </EndProperty>
-          </AssociationSetMapping>
           <EntitySetMapping Name="Controls">
             <EntityTypeMapping TypeName="IsTypeOf(UniversityDBModel.Control)">
               <MappingFragment StoreEntitySet="Control">
@@ -1580,39 +1572,47 @@
             </EntityTypeMapping>
             <EntityTypeMapping TypeName="IsTypeOf(UniversityDBModel.LectureControl)">
               <MappingFragment StoreEntitySet="LectureControl">
-                <ScalarProperty Name="ID" ColumnName="ControlInformationID" />
+                <ScalarProperty Name="ID" ColumnName="ControlID" />
                 <ScalarProperty Name="LectureID" ColumnName="LectureID" />
               </MappingFragment>
             </EntityTypeMapping>
             <EntityTypeMapping TypeName="IsTypeOf(UniversityDBModel.PracticeControl)">
               <MappingFragment StoreEntitySet="PracticeControl">
-                <ScalarProperty Name="ID" ColumnName="ControlInformationID" />
+                <ScalarProperty Name="ID" ColumnName="ControlID" />
                 <ScalarProperty Name="PracticeID" ColumnName="PracticeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <AssociationSetMapping Name="Lecture_Group" TypeName="UniversityDBModel.Lecture_Group" StoreEntitySet="Lecture_Group">
+            <EndProperty Name="Lecture">
+              <ScalarProperty Name="ID" ColumnName="LectureID" />
+            </EndProperty>
+            <EndProperty Name="Group">
+              <ScalarProperty Name="ID" ColumnName="GroupID" />
+            </EndProperty>
+          </AssociationSetMapping>
           <EntitySetMapping Name="Marks">
-            <EntityTypeMapping TypeName="IsTypeOf(UniversityDBModel.Mark)">
+            <EntityTypeMapping TypeName="IsTypeOf(UniversityDBModel.Mark)" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
               <MappingFragment StoreEntitySet="Mark">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Value" ColumnName="Mark" />
                 <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="MarkValue" ColumnName="Mark" />
               </MappingFragment>
             </EntityTypeMapping>
-            <EntityTypeMapping TypeName="IsTypeOf(UniversityDBModel.LectureControlMark)">
+            <EntityTypeMapping TypeName="IsTypeOf(UniversityDBModel.LectureControlMark)" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
               <MappingFragment StoreEntitySet="LectureControlMark">
                 <ScalarProperty Name="ID" ColumnName="MarkID" />
                 <ScalarProperty Name="LectureControlID" ColumnName="LectureControlID" />
               </MappingFragment>
             </EntityTypeMapping>
-            <EntityTypeMapping TypeName="IsTypeOf(UniversityDBModel.PracticeControlMark)">
+            <EntityTypeMapping TypeName="IsTypeOf(UniversityDBModel.PracticeControlMark)" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
               <MappingFragment StoreEntitySet="PracticeControlMark">
                 <ScalarProperty Name="ID" ColumnName="MarkID" />
                 <ScalarProperty Name="PracticeControlID" ColumnName="PracticeControlID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
@@ -1633,7 +1633,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="StudyingControllerEntityModel" ZoomLevel="100">
+      <Diagram Name="StudyingControllerEntityModel" ZoomLevel="86">
         <EntityTypeShape EntityType="UniversityDBModel.SystemUser" Width="1.5" PointX="3.5" PointY="0.5" Height="0.4" IsExpanded="false" />
         <EntityTypeShape EntityType="UniversityDBModel.FacultyAdmin" Width="1.5" PointX="4.25" PointY="1.75" Height="0.4" IsExpanded="false" />
         <InheritanceConnector EntityType="UniversityDBModel.FacultyAdmin" ManuallyRouted="false">
@@ -1646,11 +1646,13 @@
         <EntityTypeShape EntityType="UniversityDBModel.Institute" Width="3.5" PointX="8.5" PointY="3.125" Height="0.4" IsExpanded="false" />
         <AssociationConnector Association="UniversityDBModel.FK_Faculty_Institute" >
           <ConnectorPoint PointX="8.5" PointY="3.325" />
+          <ConnectorPoint PointX="8.2083333333333339" PointY="3.3249999999999997" />
+          <ConnectorPoint PointX="8.0416666666666661" PointY="3.325" />
           <ConnectorPoint PointX="7.75" PointY="3.325" />
         </AssociationConnector>
         <AssociationConnector Association="UniversityDBModel.FK_FacultyAdmin_Faculty" >
-          <ConnectorPoint PointX="5.40625" PointY="3.125" />
-          <ConnectorPoint PointX="5.40625" PointY="2.15" />
+          <ConnectorPoint PointX="5" PointY="3.125" />
+          <ConnectorPoint PointX="5" PointY="2.15" />
         </AssociationConnector>
         <EntityTypeShape EntityType="UniversityDBModel.UserInformation" Width="1.5" PointX="0.5" PointY="0.5" Height="0.4" IsExpanded="false" />
         <AssociationConnector Association="UniversityDBModel.FK_UserInformation_SystemUser" >
@@ -1693,16 +1695,18 @@
         <EntityTypeShape EntityType="UniversityDBModel.Cathedra" Width="1.5" PointX="0.5" PointY="3.125" Height="0.4" IsExpanded="false" />
         <EntityTypeShape EntityType="UniversityDBModel.Teacher" Width="1.5" PointX="0.5" PointY="1.75" Height="0.4" IsExpanded="false" />
         <AssociationConnector Association="UniversityDBModel.FK_Cathedra_Faculty" >
-          <ConnectorPoint PointX="4.25" PointY="3.325" />
-          <ConnectorPoint PointX="3.4212245833333337" PointY="3.3249999999999997" />
-          <ConnectorPoint PointX="3.2545579166666667" PointY="3.325" />
-          <ConnectorPoint PointX="3.1966158333333334" PointY="3.3249999999999997" />
-          <ConnectorPoint PointX="3.0299491666666665" PointY="3.325" />
-          <ConnectorPoint PointX="2.8098933333333336" PointY="3.3249999999999997" />
-          <ConnectorPoint PointX="2.6432266666666666" PointY="3.325" />
-          <ConnectorPoint PointX="2.6145833333333335" PointY="3.3249999999999988" />
-          <ConnectorPoint PointX="2.2916666666666665" PointY="3.325" />
-          <ConnectorPoint PointX="2" PointY="3.325" />
+          <ConnectorPoint PointX="4.25" PointY="3.525" />
+          <ConnectorPoint PointX="3.875" PointY="3.9000000000000004" />
+          <ConnectorPoint PointX="3.7426396254006411" PointY="3.9" />
+          <ConnectorPoint PointX="3.5759729587339741" PointY="3.9000000000000004" />
+          <ConnectorPoint PointX="3.4644419174679491" PointY="3.9" />
+          <ConnectorPoint PointX="3.2977752508012821" PointY="3.9000000000000004" />
+          <ConnectorPoint PointX="2.9080555016025644" PointY="3.9" />
+          <ConnectorPoint PointX="2.7413888349358975" PointY="3.9000000000000004" />
+          <ConnectorPoint PointX="2.6145833333333335" PointY="3.9" />
+          <ConnectorPoint PointX="2.4479166666666665" PointY="3.9000000000000004" />
+          <ConnectorPoint PointX="2.375" PointY="3.9000000000000004" />
+          <ConnectorPoint PointX="1.9999999999999996" PointY="3.525" />
         </AssociationConnector>
         <AssociationConnector Association="UniversityDBModel.FK_Teacher_Cathedra" >
           <ConnectorPoint PointX="1.4375002500000003" PointY="3.125" />
@@ -1714,80 +1718,86 @@
           <ConnectorPoint PointX="1.25" PointY="1.375" />
           <ConnectorPoint PointX="1.25" PointY="1.75" />
         </InheritanceConnector>
-        <EntityTypeShape EntityType="UniversityDBModel.Group" Width="1.5" PointX="4.25" PointY="4.25" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="UniversityDBModel.Group" Width="1.5" PointX="4.25" PointY="4.125" Height="0.4" IsExpanded="false" />
         <EntityTypeShape EntityType="UniversityDBModel.Specialization" Width="1.5" PointX="6.25" PointY="4.25" Height="0.4" IsExpanded="false" />
         <AssociationConnector Association="UniversityDBModel.FK_Group_Cathedra" >
           <ConnectorPoint PointX="1.0624975" PointY="3.525" />
-          <ConnectorPoint PointX="1.0624975" PointY="4.45" />
-          <ConnectorPoint PointX="1.6041666666666667" PointY="4.4499999999999993" />
-          <ConnectorPoint PointX="1.7708333333333333" PointY="4.45" />
-          <ConnectorPoint PointX="2.2916666666666665" PointY="4.4499999999999993" />
-          <ConnectorPoint PointX="2.6145833333333335" PointY="4.45" />
-          <ConnectorPoint PointX="2.6432266666666666" PointY="4.4499999999999993" />
-          <ConnectorPoint PointX="2.8098933333333336" PointY="4.45" />
-          <ConnectorPoint PointX="3.2545579166666667" PointY="4.4499999999999993" />
-          <ConnectorPoint PointX="3.4212245833333337" PointY="4.45" />
-          <ConnectorPoint PointX="4.25" PointY="4.45" />
+          <ConnectorPoint PointX="1.0624975" PointY="4.325" />
+          <ConnectorPoint PointX="1.6041666666666667" PointY="4.3249999999999993" />
+          <ConnectorPoint PointX="1.7708333333333333" PointY="4.325" />
+          <ConnectorPoint PointX="2.2293781762385159" PointY="4.3249999999999993" />
+          <ConnectorPoint PointX="2.2916666666666665" PointY="4.3249999999999984" />
+          <ConnectorPoint PointX="2.4583333333333335" PointY="4.3249999999999993" />
+          <ConnectorPoint PointX="2.4583333333333339" PointY="4.325" />
+          <ConnectorPoint PointX="3.2545579166666667" PointY="4.3249999999999993" />
+          <ConnectorPoint PointX="3.4212245833333337" PointY="4.325" />
+          <ConnectorPoint PointX="3.5759729587339741" PointY="4.3249999999999993" />
+          <ConnectorPoint PointX="3.7426396254006411" PointY="4.325" />
+          <ConnectorPoint PointX="4.25" PointY="4.325" />
         </AssociationConnector>
         <AssociationConnector Association="UniversityDBModel.FK_Specialization_Faculty" >
           <ConnectorPoint PointX="7" PointY="3.525" />
           <ConnectorPoint PointX="7" PointY="4.25" />
         </AssociationConnector>
         <AssociationConnector Association="UniversityDBModel.FK_Group_Specialization" >
-          <ConnectorPoint PointX="6.25" PointY="4.45" />
-          <ConnectorPoint PointX="5.75" PointY="4.45" />
+          <ConnectorPoint PointX="6.25" PointY="4.3875000000000011" />
+          <ConnectorPoint PointX="5.75" PointY="4.3875000000000011" />
         </AssociationConnector>
         <EntityTypeShape EntityType="UniversityDBModel.Student" Width="1.5" PointX="2.375" PointY="1.75" Height="0.4" IsExpanded="false" />
         <AssociationConnector Association="UniversityDBModel.FK_Student_Group" >
-          <ConnectorPoint PointX="4.25" PointY="4.3187475" />
-          <ConnectorPoint PointX="3.4212245833333337" PointY="4.3187474999999989" />
-          <ConnectorPoint PointX="3.2545579166666667" PointY="4.3187475" />
-          <ConnectorPoint PointX="3.1132825" PointY="4.3187475" />
-          <ConnectorPoint PointX="3.1132825" PointY="2.15" />
+          <ConnectorPoint PointX="4.25" PointY="4.1937475" />
+          <ConnectorPoint PointX="3.7426396254006411" PointY="4.1937474999999989" />
+          <ConnectorPoint PointX="3.5759729587339741" PointY="4.1937475" />
+          <ConnectorPoint PointX="3.4644419174679491" PointY="4.1937474999999989" />
+          <ConnectorPoint PointX="3.2977752508012821" PointY="4.1937475" />
+          <ConnectorPoint PointX="2.8247221682692309" PointY="4.1937475" />
+          <ConnectorPoint PointX="2.8247221682692309" PointY="2.15" />
         </AssociationConnector>
         <InheritanceConnector EntityType="UniversityDBModel.Student" ManuallyRouted="false">
           <ConnectorPoint PointX="4.25" PointY="0.9" />
-          <ConnectorPoint PointX="4.25" PointY="1.3750000000000009" />
-          <ConnectorPoint PointX="3.125" PointY="1.3750000000000009" />
+          <ConnectorPoint PointX="4.25" PointY="1.375" />
+          <ConnectorPoint PointX="3.125" PointY="1.375" />
           <ConnectorPoint PointX="3.125" PointY="1.75" />
         </InheritanceConnector>
-        <EntityTypeShape EntityType="UniversityDBModel.Lecture" Width="1.5" PointX="0.625" PointY="6.5" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="UniversityDBModel.Lecture" Width="1.5" PointX="0.625" PointY="6.625" Height="0.4" IsExpanded="false" />
         <EntityTypeShape EntityType="UniversityDBModel.Practice" Width="1.5" PointX="4.625" PointY="6.125" Height="0.4" IsExpanded="false" />
         <EntityTypeShape EntityType="UniversityDBModel.Subject" Width="1.5" PointX="0.5" PointY="5.125" Height="0.4" IsExpanded="false" />
         <AssociationConnector Association="UniversityDBModel.FK_Subject_Cathedra" >
-          <ConnectorPoint PointX="1.6875" PointY="3.525" />
-          <ConnectorPoint PointX="1.6875" PointY="5.125" />
+          <ConnectorPoint PointX="1.56249625" PointY="3.525" />
+          <ConnectorPoint PointX="1.56249625" PointY="5.125" />
         </AssociationConnector>
         <AssociationConnector Association="UniversityDBModel.FK_Lecture_Subject" >
-          <ConnectorPoint PointX="0.74999999999999845" PointY="5.525" />
-          <ConnectorPoint PointX="0.74999999999999845" PointY="6.5" />
+          <ConnectorPoint PointX="1.125001" PointY="5.525" />
+          <ConnectorPoint PointX="1.125001" PointY="6.625" />
         </AssociationConnector>
         <AssociationConnector Association="UniversityDBModel.FK_Lecture_Teacher" >
-          <ConnectorPoint PointX="0.93749812500000007" PointY="2.15" />
-          <ConnectorPoint PointX="0.93749812500000007" PointY="2.875" />
+          <ConnectorPoint PointX="1.25" PointY="2.15" />
+          <ConnectorPoint PointX="1.25" PointY="2.875" />
           <ConnectorPoint PointX="1.354166916666667" PointY="2.8749999999999996" />
           <ConnectorPoint PointX="1.5208335833333335" PointY="2.875" />
           <ConnectorPoint PointX="2.375" PointY="2.875" />
-          <ConnectorPoint PointX="2.375" PointY="6.7" />
-          <ConnectorPoint PointX="2.125" PointY="6.7" />
+          <ConnectorPoint PointX="2.375" PointY="6.89062575" />
+          <ConnectorPoint PointX="2.125" PointY="6.89062575" />
         </AssociationConnector>
         <AssociationConnector Association="UniversityDBModel.FK_Practice_Subject" >
-          <ConnectorPoint PointX="0.53125" PointY="5.525" />
-          <ConnectorPoint PointX="0.53125" PointY="6.2812500000000009" />
-          <ConnectorPoint PointX="0.66666666666666508" PointY="6.28125" />
-          <ConnectorPoint PointX="0.83333333333333182" PointY="6.2812500000000009" />
-          <ConnectorPoint PointX="2.2916666666666665" PointY="6.28125" />
-          <ConnectorPoint PointX="2.4583333333333335" PointY="6.2812500000000009" />
-          <ConnectorPoint PointX="4.625" PointY="6.2812500000000009" />
+          <ConnectorPoint PointX="1.593753" PointY="5.525" />
+          <ConnectorPoint PointX="1.593753" PointY="6.3562525" />
+          <ConnectorPoint PointX="2.2916666666666665" PointY="6.3562524999999992" />
+          <ConnectorPoint PointX="2.4583333333333335" PointY="6.3562525" />
+          <ConnectorPoint PointX="4.322916666666667" PointY="6.3562524999999992" />
+          <ConnectorPoint PointX="4.489583333333333" PointY="6.3562525" />
+          <ConnectorPoint PointX="4.625" PointY="6.3562525" />
         </AssociationConnector>
         <EntityTypeShape EntityType="UniversityDBModel.PracticeTeacher" Width="1.5" PointX="2.625" PointY="5.125" Height="0.4" IsExpanded="false" />
         <AssociationConnector Association="UniversityDBModel.FK_Practice_Teacher_Practice" >
           <ConnectorPoint PointX="4.6249999999999991" PointY="6.125" />
+          <ConnectorPoint PointX="4.45959869997204" PointY="5.9265184399664488" />
+          <ConnectorPoint PointX="4.35290130002796" PointY="5.7984815600335526" />
           <ConnectorPoint PointX="4.125" PointY="5.525" />
         </AssociationConnector>
         <AssociationConnector Association="UniversityDBModel.FK_Practice_Teacher_Teacher" >
-          <ConnectorPoint PointX="2" PointY="2.1303066923076921" />
-          <ConnectorPoint PointX="2.53125" PointY="2.6615566923076921" />
+          <ConnectorPoint PointX="2" PointY="2.1303066923076925" />
+          <ConnectorPoint PointX="2.53125" PointY="2.6615566923076925" />
           <ConnectorPoint PointX="2.53125" PointY="4.7500000000000009" />
           <ConnectorPoint PointX="2.4583333333333335" PointY="4.75" />
           <ConnectorPoint PointX="2.2916666666666665" PointY="4.7500000000000009" />
@@ -1797,73 +1807,76 @@
           <ConnectorPoint PointX="2.6253066923076909" PointY="5.125" />
         </AssociationConnector>
         <AssociationConnector Association="UniversityDBModel.Practice_Teacher_Student" >
-          <ConnectorPoint PointX="3.33789125" PointY="5.125" />
-          <ConnectorPoint PointX="3.33789125" PointY="2.15" />
+          <ConnectorPoint PointX="3.3811085841346156" PointY="5.125" />
+          <ConnectorPoint PointX="3.3811085841346156" PointY="2.15" />
         </AssociationConnector>
-        <AssociationConnector Association="UniversityDBModel.Lecture_Specialization" >
-          <ConnectorPoint PointX="2.125" PointY="6.8312525000000006" />
-          <ConnectorPoint PointX="4.900611151452873" PointY="6.8312525" />
-          <ConnectorPoint PointX="5.067277818119539" PointY="6.8312525000000006" />
-          <ConnectorPoint PointX="6.291666666666667" PointY="6.8312525" />
-          <ConnectorPoint PointX="6.458333333333333" PointY="6.8312525000000006" />
-          <ConnectorPoint PointX="7" PointY="6.8312525000000006" />
-          <ConnectorPoint PointX="7" PointY="4.65" />
-        </AssociationConnector>
-        <EntityTypeShape EntityType="UniversityDBModel.LectureControl" Width="1.75" PointX="0.875" PointY="9" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="UniversityDBModel.LectureControl" Width="1.75" PointX="0.875" PointY="9" Height="1.5956835937499996" IsExpanded="true" />
         <AssociationConnector Association="UniversityDBModel.FK_LectureControl_Lecture" >
-          <ConnectorPoint PointX="1.25" PointY="6.9" />
+          <ConnectorPoint PointX="1.25" PointY="7.025" />
           <ConnectorPoint PointX="1.25" PointY="9" />
         </AssociationConnector>
         <EntityTypeShape EntityType="UniversityDBModel.Control" Width="1.5" PointX="2.5" PointY="7.625" Height="0.4" IsExpanded="false" />
-        <EntityTypeShape EntityType="UniversityDBModel.PracticeControl" Width="1.5" PointX="3.75" PointY="9" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="UniversityDBModel.PracticeControl" Width="1.5" PointX="3.375" PointY="8.5" Height="1.5956835937499996" IsExpanded="true" />
         <AssociationConnector Association="UniversityDBModel.FK_PracticeControl_Practice" >
-          <ConnectorPoint PointX="4.983944484786206" PointY="6.525" />
-          <ConnectorPoint PointX="4.983944484786206" PointY="8.9999999999999947" />
+          <ConnectorPoint PointX="4.75" PointY="6.525" />
+          <ConnectorPoint PointX="4.75" PointY="8.5" />
         </AssociationConnector>
-        <InheritanceConnector EntityType="UniversityDBModel.LectureControl">
+        <InheritanceConnector EntityType="UniversityDBModel.LectureControl" ManuallyRouted="false">
           <ConnectorPoint PointX="3.25" PointY="8.025" />
-          <ConnectorPoint PointX="3.25" PointY="8.625" />
-          <ConnectorPoint PointX="1.75" PointY="8.625" />
+          <ConnectorPoint PointX="3.25" PointY="8.265" />
+          <ConnectorPoint PointX="1.75" PointY="8.265" />
           <ConnectorPoint PointX="1.75" PointY="9" />
         </InheritanceConnector>
-        <InheritanceConnector EntityType="UniversityDBModel.PracticeControl">
+        <InheritanceConnector EntityType="UniversityDBModel.PracticeControl" ManuallyRouted="false">
           <ConnectorPoint PointX="3.25" PointY="8.025" />
-          <ConnectorPoint PointX="3.25" PointY="8.625" />
-          <ConnectorPoint PointX="4.5" PointY="8.625" />
-          <ConnectorPoint PointX="4.5" PointY="9" />
+          <ConnectorPoint PointX="3.25" PointY="8.26" />
+          <ConnectorPoint PointX="4.125" PointY="8.26" />
+          <ConnectorPoint PointX="4.125" PointY="8.5" />
         </InheritanceConnector>
-        <EntityTypeShape EntityType="UniversityDBModel.Mark" Width="1.875" PointX="7.375" PointY="9" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="UniversityDBModel.LectureControlMark" Width="2" PointX="3.25" PointY="12.25" Height="1.4033821614583317" IsExpanded="true" />
+        <AssociationConnector Association="UniversityDBModel.Lecture_Group" >
+          <ConnectorPoint PointX="4.40625" PointY="4.525" />
+          <ConnectorPoint PointX="4.40625" PointY="6.6937475" />
+          <ConnectorPoint PointX="2.4583333333333335" PointY="6.6937474999999989" />
+          <ConnectorPoint PointX="2.2916666666666665" PointY="6.6937475" />
+          <ConnectorPoint PointX="2.125" PointY="6.6937475" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="UniversityDBModel.PracticeControlMark" Width="1.5" PointX="5.375" PointY="10.5" Height="1.4033821614583317" />
+        <EntityTypeShape EntityType="UniversityDBModel.Mark" Width="1.5" PointX="7.625" PointY="8.625" Height="2.1725878906250102" />
         <AssociationConnector Association="UniversityDBModel.FK_Mark_Student" >
-          <ConnectorPoint PointX="2.72656" PointY="2.15" />
-          <ConnectorPoint PointX="2.72656" PointY="4.8999999999999995" />
-          <ConnectorPoint PointX="3.2545579166666667" PointY="4.8999999999999986" />
-          <ConnectorPoint PointX="3.4212245833333337" PointY="4.8999999999999995" />
-          <ConnectorPoint PointX="6.375" PointY="4.8999999999999995" />
-          <ConnectorPoint PointX="6.375" PointY="9.2" />
-          <ConnectorPoint PointX="7.375" PointY="9.2" />
-        </AssociationConnector>
-        <EntityTypeShape EntityType="UniversityDBModel.LectureControlMark" Width="2" PointX="3.625" PointY="11.375" Height="0.4" IsExpanded="false" />
-        <EntityTypeShape EntityType="UniversityDBModel.PracticeControlMark" Width="2" PointX="3.625" PointY="10.125" Height="0.4" IsExpanded="false" />
-        <AssociationConnector Association="UniversityDBModel.FK_LectureControlMark_LectureControl1" >
-          <ConnectorPoint PointX="1.75" PointY="9.4" />
-          <ConnectorPoint PointX="1.75" PointY="11.575" />
-          <ConnectorPoint PointX="3.625" PointY="11.575" />
-        </AssociationConnector>
-        <AssociationConnector Association="UniversityDBModel.FK_PracticeControlMark_PracticeControl" >
-          <ConnectorPoint PointX="3.9970930232558177" PointY="9.4" />
-          <ConnectorPoint PointX="3.9970930232558177" PointY="10.125" />
+          <ConnectorPoint PointX="3.6593062920673076" PointY="2.15" />
+          <ConnectorPoint PointX="3.6593062920673076" PointY="4.8750000000000009" />
+          <ConnectorPoint PointX="4.322916666666667" PointY="4.875" />
+          <ConnectorPoint PointX="4.489583333333333" PointY="4.8750000000000009" />
+          <ConnectorPoint PointX="6.375" PointY="4.8750000000000009" />
+          <ConnectorPoint PointX="6.375" PointY="9.3750004999999987" />
+          <ConnectorPoint PointX="7.625" PointY="9.3750004999999987" />
         </AssociationConnector>
         <InheritanceConnector EntityType="UniversityDBModel.LectureControlMark">
-          <ConnectorPoint PointX="8.3125" PointY="9.4" />
-          <ConnectorPoint PointX="8.3125" PointY="11" />
-          <ConnectorPoint PointX="4.625" PointY="11" />
-          <ConnectorPoint PointX="4.625" PointY="11.375" />
+          <ConnectorPoint PointX="8.375" PointY="10.412985026041666" />
+          <ConnectorPoint PointX="8.375" PointY="12.153382161458332" />
+          <ConnectorPoint PointX="5.5" PointY="12.153382161458332" />
+          <ConnectorPoint PointX="5.5" PointY="12" />
+          <ConnectorPoint PointX="4.25" PointY="12" />
+          <ConnectorPoint PointX="4.25" PointY="12.25" />
         </InheritanceConnector>
+        <AssociationConnector Association="UniversityDBModel.PracticeControlPracticeControlMark">
+          <ConnectorPoint PointX="4.125" PointY="10.09568359375" />
+          <ConnectorPoint PointX="4.125" PointY="10.928573443777838" />
+          <ConnectorPoint PointX="5.375" PointY="10.928573443777838" />
+        </AssociationConnector>
+        <AssociationConnector Association="UniversityDBModel.LectureControlLectureControlMark">
+          <ConnectorPoint PointX="1.75" PointY="10.59568359375" />
+          <ConnectorPoint PointX="1.75" PointY="12.951691080729166" />
+          <ConnectorPoint PointX="3.25" PointY="12.951691080729166" />
+        </AssociationConnector>
         <InheritanceConnector EntityType="UniversityDBModel.PracticeControlMark">
-          <ConnectorPoint PointX="8.3125" PointY="9.4" />
-          <ConnectorPoint PointX="8.3125" PointY="9.75" />
-          <ConnectorPoint PointX="4.625" PointY="9.75" />
-          <ConnectorPoint PointX="4.625" PointY="10.125" />
+          <ConnectorPoint PointX="8.375" PointY="10.412985026041666" />
+          <ConnectorPoint PointX="8.375" PointY="10.662985026041667" />
+          <ConnectorPoint PointX="7.375" PointY="10.662985026041667" />
+          <ConnectorPoint PointX="7.375" PointY="10.125" />
+          <ConnectorPoint PointX="6.125" PointY="10.125" />
+          <ConnectorPoint PointX="6.125" PointY="10.5" />
         </InheritanceConnector>
       </Diagram>
     </Diagrams>

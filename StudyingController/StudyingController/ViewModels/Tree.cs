@@ -70,15 +70,29 @@ namespace StudyingController.ViewModels
 
         public void ApplyOldState()
         {
-            string s = "";
+            TreeNode newNode = null;
             foreach (TreeNode node in ToList())
             {
-                s += node.ImageIndex + ", " + node.Index + '\n';
                 TreeNodeState data = states.Find(state => state.ImageIndex == node.ImageIndex && state.Index == node.Index);
                 if (data != null)
                 {
                     node.IsSelected = data.IsSelected;
                     node.IsExpanded = data.IsExpanded;
+                }
+                else
+                    newNode = node;
+            }
+
+            if (newNode != null)
+            {
+                foreach (TreeNode node in ToList())
+                    node.IsSelected = false;
+
+                newNode.IsSelected = true;
+                while (newNode.ParentNode != null)
+                {
+                    newNode.ParentNode.IsExpanded = true;
+                    newNode = newNode.ParentNode;
                 }
             }
         }

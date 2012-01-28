@@ -6,7 +6,7 @@ using EntitiesDTO;
 
 namespace StudyingControllerEntityModel
 {
-    partial class Student : IDTOable<StudentDTO>
+    public partial class Student : IDTOable<StudentDTO>
     {
         #region Constructors
 

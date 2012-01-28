@@ -37,12 +37,12 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_Practice_Teacher_Practice", "Practice", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.Practice), "Practice_Teacher", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.PracticeTeacher), true)]
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_Practice_Teacher_Teacher", "Teacher", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.Teacher), "Practice_Teacher", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.PracticeTeacher), true)]
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "Practice_Teacher_Student", "Practice_Teacher", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.PracticeTeacher), "Student", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Student))]
-[assembly: EdmRelationshipAttribute("UniversityDBModel", "Lecture_Specialization", "Lecture", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Lecture), "Specialization", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Specialization))]
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_LectureControl_Lecture", "Lecture", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.Lecture), "LectureControl", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.LectureControl), true)]
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_PracticeControl_Practice", "Practice", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.Practice), "PracticeControl", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.PracticeControl), true)]
+[assembly: EdmRelationshipAttribute("UniversityDBModel", "Lecture_Group", "Group", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Group), "Lecture", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Lecture))]
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_Mark_Student", "Student", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.Student), "Mark", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Mark), true)]
-[assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_LectureControlMark_LectureControl1", "LectureControl", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.LectureControl), "LectureControlMark", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.LectureControlMark), true)]
-[assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_PracticeControlMark_PracticeControl", "PracticeControl", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.PracticeControl), "PracticeControlMark", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.PracticeControlMark), true)]
+[assembly: EdmRelationshipAttribute("UniversityDBModel", "PracticeControlPracticeControlMark", "PracticeControl", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.PracticeControl), "PracticeControlMark", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.PracticeControlMark), true)]
+[assembly: EdmRelationshipAttribute("UniversityDBModel", "LectureControlLectureControlMark", "LectureControl", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.LectureControl), "LectureControlMark", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.LectureControlMark), true)]
 
 #endregion
 
@@ -1458,6 +1458,28 @@ namespace StudyingControllerEntityModel
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "Lecture_Group", "Lecture")]
+        public EntityCollection<Lecture> Lectures
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Lecture>("UniversityDBModel.Lecture_Group", "Lecture");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Lecture>("UniversityDBModel.Lecture_Group", "Lecture", value);
+                }
+            }
+        }
 
         #endregion
     }
@@ -1999,28 +2021,6 @@ namespace StudyingControllerEntityModel
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "Lecture_Specialization", "Specialization")]
-        public EntityCollection<Specialization> Specializations
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Specialization>("UniversityDBModel.Lecture_Specialization", "Specialization");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Specialization>("UniversityDBModel.Lecture_Specialization", "Specialization", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "FK_LectureControl_Lecture", "LectureControl")]
         public EntityCollection<LectureControl> LectureControls
         {
@@ -2033,6 +2033,28 @@ namespace StudyingControllerEntityModel
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<LectureControl>("UniversityDBModel.FK_LectureControl_Lecture", "LectureControl", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "Lecture_Group", "Group")]
+        public EntityCollection<Group> Groups
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Group>("UniversityDBModel.Lecture_Group", "Group");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Group>("UniversityDBModel.Lecture_Group", "Group", value);
                 }
             }
         }
@@ -2144,18 +2166,18 @@ namespace StudyingControllerEntityModel
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "FK_LectureControlMark_LectureControl1", "LectureControlMark")]
+        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "LectureControlLectureControlMark", "LectureControlMark")]
         public EntityCollection<LectureControlMark> LectureControlMarks
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<LectureControlMark>("UniversityDBModel.FK_LectureControlMark_LectureControl1", "LectureControlMark");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<LectureControlMark>("UniversityDBModel.LectureControlLectureControlMark", "LectureControlMark");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<LectureControlMark>("UniversityDBModel.FK_LectureControlMark_LectureControl1", "LectureControlMark", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<LectureControlMark>("UniversityDBModel.LectureControlLectureControlMark", "LectureControlMark", value);
                 }
             }
         }
@@ -2178,14 +2200,14 @@ namespace StudyingControllerEntityModel
         /// </summary>
         /// <param name="id">Initial value of the ID property.</param>
         /// <param name="studentID">Initial value of the StudentID property.</param>
-        /// <param name="value">Initial value of the Value property.</param>
+        /// <param name="markValue">Initial value of the MarkValue property.</param>
         /// <param name="lectureControlID">Initial value of the LectureControlID property.</param>
-        public static LectureControlMark CreateLectureControlMark(global::System.Int32 id, global::System.Int32 studentID, global::System.Decimal value, global::System.Int32 lectureControlID)
+        public static LectureControlMark CreateLectureControlMark(global::System.Int32 id, global::System.Int32 studentID, global::System.Decimal markValue, global::System.Int32 lectureControlID)
         {
             LectureControlMark lectureControlMark = new LectureControlMark();
             lectureControlMark.ID = id;
             lectureControlMark.StudentID = studentID;
-            lectureControlMark.Value = value;
+            lectureControlMark.MarkValue = markValue;
             lectureControlMark.LectureControlID = lectureControlID;
             return lectureControlMark;
         }
@@ -2227,16 +2249,16 @@ namespace StudyingControllerEntityModel
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "FK_LectureControlMark_LectureControl1", "LectureControl")]
+        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "LectureControlLectureControlMark", "LectureControl")]
         public LectureControl LectureControl
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<LectureControl>("UniversityDBModel.FK_LectureControlMark_LectureControl1", "LectureControl").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<LectureControl>("UniversityDBModel.LectureControlLectureControlMark", "LectureControl").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<LectureControl>("UniversityDBModel.FK_LectureControlMark_LectureControl1", "LectureControl").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<LectureControl>("UniversityDBModel.LectureControlLectureControlMark", "LectureControl").Value = value;
             }
         }
         /// <summary>
@@ -2248,13 +2270,13 @@ namespace StudyingControllerEntityModel
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<LectureControl>("UniversityDBModel.FK_LectureControlMark_LectureControl1", "LectureControl");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<LectureControl>("UniversityDBModel.LectureControlLectureControlMark", "LectureControl");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<LectureControl>("UniversityDBModel.FK_LectureControlMark_LectureControl1", "LectureControl", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<LectureControl>("UniversityDBModel.LectureControlLectureControlMark", "LectureControl", value);
                 }
             }
         }
@@ -2268,10 +2290,28 @@ namespace StudyingControllerEntityModel
     [EdmEntityTypeAttribute(NamespaceName="UniversityDBModel", Name="Mark")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    [KnownTypeAttribute(typeof(LectureControlMark))]
     [KnownTypeAttribute(typeof(PracticeControlMark))]
-    public abstract partial class Mark : EntityObject
+    [KnownTypeAttribute(typeof(LectureControlMark))]
+    public partial class Mark : EntityObject
     {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Mark object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="studentID">Initial value of the StudentID property.</param>
+        /// <param name="markValue">Initial value of the MarkValue property.</param>
+        public static Mark CreateMark(global::System.Int32 id, global::System.Int32 studentID, global::System.Decimal markValue)
+        {
+            Mark mark = new Mark();
+            mark.ID = id;
+            mark.StudentID = studentID;
+            mark.MarkValue = markValue;
+            return mark;
+        }
+
+        #endregion
         #region Primitive Properties
     
         /// <summary>
@@ -2330,24 +2370,24 @@ namespace StudyingControllerEntityModel
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Decimal Value
+        public global::System.Decimal MarkValue
         {
             get
             {
-                return _Value;
+                return _MarkValue;
             }
             set
             {
-                OnValueChanging(value);
-                ReportPropertyChanging("Value");
-                _Value = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("Value");
-                OnValueChanged();
+                OnMarkValueChanging(value);
+                ReportPropertyChanging("MarkValue");
+                _MarkValue = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MarkValue");
+                OnMarkValueChanged();
             }
         }
-        private global::System.Decimal _Value;
-        partial void OnValueChanging(global::System.Decimal value);
-        partial void OnValueChanged();
+        private global::System.Decimal _MarkValue;
+        partial void OnMarkValueChanging(global::System.Decimal value);
+        partial void OnMarkValueChanged();
 
         #endregion
     
@@ -2664,18 +2704,18 @@ namespace StudyingControllerEntityModel
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "FK_PracticeControlMark_PracticeControl", "PracticeControlMark")]
+        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "PracticeControlPracticeControlMark", "PracticeControlMark")]
         public EntityCollection<PracticeControlMark> PracticeControlMarks
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<PracticeControlMark>("UniversityDBModel.FK_PracticeControlMark_PracticeControl", "PracticeControlMark");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<PracticeControlMark>("UniversityDBModel.PracticeControlPracticeControlMark", "PracticeControlMark");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PracticeControlMark>("UniversityDBModel.FK_PracticeControlMark_PracticeControl", "PracticeControlMark", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PracticeControlMark>("UniversityDBModel.PracticeControlPracticeControlMark", "PracticeControlMark", value);
                 }
             }
         }
@@ -2698,14 +2738,14 @@ namespace StudyingControllerEntityModel
         /// </summary>
         /// <param name="id">Initial value of the ID property.</param>
         /// <param name="studentID">Initial value of the StudentID property.</param>
-        /// <param name="value">Initial value of the Value property.</param>
+        /// <param name="markValue">Initial value of the MarkValue property.</param>
         /// <param name="practiceControlID">Initial value of the PracticeControlID property.</param>
-        public static PracticeControlMark CreatePracticeControlMark(global::System.Int32 id, global::System.Int32 studentID, global::System.Decimal value, global::System.Int32 practiceControlID)
+        public static PracticeControlMark CreatePracticeControlMark(global::System.Int32 id, global::System.Int32 studentID, global::System.Decimal markValue, global::System.Int32 practiceControlID)
         {
             PracticeControlMark practiceControlMark = new PracticeControlMark();
             practiceControlMark.ID = id;
             practiceControlMark.StudentID = studentID;
-            practiceControlMark.Value = value;
+            practiceControlMark.MarkValue = markValue;
             practiceControlMark.PracticeControlID = practiceControlID;
             return practiceControlMark;
         }
@@ -2747,16 +2787,16 @@ namespace StudyingControllerEntityModel
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "FK_PracticeControlMark_PracticeControl", "PracticeControl")]
+        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "PracticeControlPracticeControlMark", "PracticeControl")]
         public PracticeControl PracticeControl
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PracticeControl>("UniversityDBModel.FK_PracticeControlMark_PracticeControl", "PracticeControl").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PracticeControl>("UniversityDBModel.PracticeControlPracticeControlMark", "PracticeControl").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PracticeControl>("UniversityDBModel.FK_PracticeControlMark_PracticeControl", "PracticeControl").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PracticeControl>("UniversityDBModel.PracticeControlPracticeControlMark", "PracticeControl").Value = value;
             }
         }
         /// <summary>
@@ -2768,13 +2808,13 @@ namespace StudyingControllerEntityModel
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PracticeControl>("UniversityDBModel.FK_PracticeControlMark_PracticeControl", "PracticeControl");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PracticeControl>("UniversityDBModel.PracticeControlPracticeControlMark", "PracticeControl");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<PracticeControl>("UniversityDBModel.FK_PracticeControlMark_PracticeControl", "PracticeControl", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<PracticeControl>("UniversityDBModel.PracticeControlPracticeControlMark", "PracticeControl", value);
                 }
             }
         }
@@ -3153,28 +3193,6 @@ namespace StudyingControllerEntityModel
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Group>("UniversityDBModel.FK_Group_Specialization", "Group", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "Lecture_Specialization", "Lecture")]
-        public EntityCollection<Lecture> Lectures
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Lecture>("UniversityDBModel.Lecture_Specialization", "Lecture");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Lecture>("UniversityDBModel.Lecture_Specialization", "Lecture", value);
                 }
             }
         }

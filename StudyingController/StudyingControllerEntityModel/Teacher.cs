@@ -24,7 +24,7 @@ namespace StudyingControllerEntityModel
 
         #endregion
 
-        public TeacherDTO ToDTO()
+        public new TeacherDTO ToDTO()
         {
             return new TeacherDTO
             {
