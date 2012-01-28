@@ -38,7 +38,9 @@ namespace StudyingControllerEntityModel
 
         public void UpdateData(InstituteSecretaryDTO entity)
         {
-            throw new NotImplementedException();
+            base.UpdateData(entity);
+
+            InstituteID = entity.InstituteID;
         }
     }
 }

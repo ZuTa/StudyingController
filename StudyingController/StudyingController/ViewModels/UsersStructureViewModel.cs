@@ -108,7 +108,7 @@ namespace StudyingController.ViewModels
             get
             {
                 if (addStudentCommand == null)
-                    addStudentCommand = new RelayCommand(param => ChangeCurrentWorkspace(new InstituteViewModel(UserInterop, ControllerInterop, Dispatcher)));
+                    addStudentCommand = new RelayCommand(param => ChangeCurrentWorkspace(new StudentViewModel(UserInterop, ControllerInterop, Dispatcher)));
 
                 return addStudentCommand;
             }
@@ -217,6 +217,8 @@ namespace StudyingController.ViewModels
                         return new FacultySecretaryViewModel(UserInterop, ControllerInterop, Dispatcher, user as FacultySecretaryDTO);
                     case UserRoles.Teacher:
                         return new TeacherViewModel(UserInterop, ControllerInterop, Dispatcher, user as TeacherDTO);
+                    case UserRoles.Student:
+                        return new StudentViewModel(UserInterop, ControllerInterop, Dispatcher, user as StudentDTO);
                     default:
                         throw new NotImplementedException();
                 }

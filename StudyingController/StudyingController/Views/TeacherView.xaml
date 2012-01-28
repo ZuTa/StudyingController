@@ -19,14 +19,19 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Row="0" Grid.Column="0" Text="Логін :" Style="{StaticResource TextBlockStyle}"/>
-        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=Teacher.Login, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=Teacher.Login, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
+                 Style="{StaticResource ValidationTextBoxToolTipStyle}"/>
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Ім'я :" Style="{StaticResource TextBlockStyle}"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=Teacher.UserInformation.FirstName, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=Teacher.UserInformation.FirstName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
+                 Style="{StaticResource ValidationTextBoxToolTipStyle}"/>
         <TextBlock Grid.Row="2" Grid.Column="0" Text="Прізвище :" Style="{StaticResource TextBlockStyle}"/>
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=Teacher.UserInformation.LastName, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=Teacher.UserInformation.LastName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
+                 Style="{StaticResource ValidationTextBoxToolTipStyle}"/>
         <TextBlock Grid.Row="3" Grid.Column="0" Text="E-mail :" Style="{StaticResource TextBlockStyle}"/>
-        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Path=Teacher.UserInformation.Email, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Path=Teacher.UserInformation.Email, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
+                 Style="{StaticResource ValidationTextBoxToolTipStyle}"/>
         <TextBlock Grid.Row="4" Grid.Column="0" Text="Кафедра :" Style="{StaticResource TextBlockStyle}"/>
-        <ComboBox Grid.Row="4" Grid.Column="1" ItemsSource="{Binding Cathedras}" SelectedValue="{Binding Teacher.Cathedra}"/>
+        <ComboBox Grid.Row="4" Grid.Column="1" ItemsSource="{Binding Cathedras}" SelectedValue="{Binding Teacher.Cathedra, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
+                 Style="{StaticResource ValidationComboBoxToolTipStyle}"/>
     </Grid>
 </UserControl>

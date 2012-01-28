@@ -8,6 +8,23 @@ namespace StudyingControllerEntityModel
 {
     partial class Student : IDTOable<StudentDTO>
     {
+        #region Constructors
+
+        public Student()
+        {
+ 
+        }
+
+        public Student(SystemUserDTO user)
+            :base(user)
+        {
+            StudentDTO student = user as StudentDTO;
+
+            this.GroupID = student.GroupID;
+        }
+
+        #endregion
+        
         public new StudentDTO ToDTO()
         {
             return new StudentDTO
@@ -22,7 +39,9 @@ namespace StudyingControllerEntityModel
 
         public void UpdateData(StudentDTO entity)
         {
-            throw new NotImplementedException();
+            base.UpdateData(entity);
+
+            GroupID = entity.GroupID;
         }
     }
 }

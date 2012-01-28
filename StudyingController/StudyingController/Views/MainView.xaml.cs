@@ -24,5 +24,11 @@ namespace StudyingController.Views
             InitializeComponent();
         }
 
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            cmAdd.PlacementTarget = this;
+            cmAdd.IsOpen = true;
+        }
+
     }
 }

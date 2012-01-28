@@ -24,7 +24,7 @@ namespace StudyingControllerEntityModel
 
         #endregion
 
-        public new TeacherDTO ToDTO()
+        public TeacherDTO ToDTO()
         {
             return new TeacherDTO
             {
@@ -38,7 +38,9 @@ namespace StudyingControllerEntityModel
 
         public void UpdateData(TeacherDTO entity)
         {
-            throw new NotImplementedException();
+            base.UpdateData(entity);
+
+            CathedraID = entity.CathedraID;
         }
     }
 }

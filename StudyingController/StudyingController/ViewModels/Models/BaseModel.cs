@@ -48,10 +48,15 @@ namespace StudyingController.ViewModels.Models
             Type type = this.GetType();
             foreach (PropertyInfo propertyInfo in type.GetProperties())
             {
-                if (propertyInfo.GetCustomAttributes(typeof(ValidateableAttribute), false).Length > 0 && Validate(propertyInfo.Name) != null)
+                if (propertyInfo.GetCustomAttributes(typeof(ValidateableAttribute), false).Length > 0)
                 {
-                    result = false;
-                    break;
+                    BaseModel model = propertyInfo.GetValue(this, null) as BaseModel;
+                    if (model == null)
+                        result = Validate(propertyInfo.Name) == null;
+                    else
+                        result = model.ValidateProperties();
+                    if (!result)
+                        break;
                 }
             }
 

@@ -18,13 +18,17 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Row="0" Grid.Column="0" Text="Логін :" Style="{StaticResource TextBlockStyle}"/>
-        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=MainAdmin.Login, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=MainAdmin.Login, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
+                 Style="{StaticResource ValidationTextBoxToolTipStyle}"/>
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Ім'я :" Style="{StaticResource TextBlockStyle}"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=MainAdmin.UserInformation.FirstName, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=MainAdmin.UserInformation.FirstName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
+                 Style="{StaticResource ValidationTextBoxToolTipStyle}"/>
         <TextBlock Grid.Row="2" Grid.Column="0" Text="Прізвище :" Style="{StaticResource TextBlockStyle}"/>
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=MainAdmin.UserInformation.LastName, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=MainAdmin.UserInformation.LastName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
+                 Style="{StaticResource ValidationTextBoxToolTipStyle}"/>
         <TextBlock Grid.Row="3" Grid.Column="0" Text="E-mail :" Style="{StaticResource TextBlockStyle}"/>
-        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Path=MainAdmin.UserInformation.Email, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Path=MainAdmin.UserInformation.Email, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
+                 Style="{StaticResource ValidationTextBoxToolTipStyle}"/>
     </Grid>
 
 </UserControl>

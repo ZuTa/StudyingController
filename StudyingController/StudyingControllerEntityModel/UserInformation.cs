@@ -39,7 +39,10 @@ namespace StudyingControllerEntityModel
 
         public void UpdateData(UserInformationDTO entity)
         {
-            throw new NotImplementedException();
+            SystemUserID = entity.ID;
+            FirstName = entity.FirstName;
+            LastName = entity.LastName;
+            Email = entity.Email;
         }
     }
 }

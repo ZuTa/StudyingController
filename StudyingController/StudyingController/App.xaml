@@ -65,6 +65,10 @@
                 <v:TeacherView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type vm:StudentViewModel}">
+                <v:StudentView/>
+            </DataTemplate>
+
             <DataTemplate DataType="{x:Type vm:MainAdminViewModel}">
                 <v:MainAdminView/>
             </DataTemplate>

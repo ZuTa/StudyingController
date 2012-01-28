@@ -8,7 +8,6 @@ namespace StudyingControllerEntityModel
 {
     public interface IDTOable<T> where T : BaseEntityDTO
     {
-
         T ToDTO();
 
         void UpdateData(T entity);

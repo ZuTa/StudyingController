@@ -39,10 +39,39 @@ namespace StudyingController.ViewModels.Models
             {
                 ID = this.ID,
                 Login = this.Login,
+                Password = this.Password,
                 Role = this.Role,
                 UserInformation = this.UserInformation.ToDTO(),
                 FacultyID = Faculty.ID
             };
+        }
+
+        private bool IsFacultyValid(out string error)
+        {
+            error = null;
+            if (faculty == null)
+            {
+                error = Properties.Resources.ErrorStructureNotFound;
+                return false;
+            }
+            return true;
+        }
+
+        protected override string Validate(string property)
+        {
+            string error = base.Validate(property);
+            if (error == null)
+            {
+                switch (property)
+                {
+                    case "Faculty":
+                        IsFacultyValid(out error);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            return error;
         }
     }
 }

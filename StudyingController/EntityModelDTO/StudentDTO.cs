@@ -8,6 +8,13 @@ namespace EntitiesDTO
 {
     public class StudentDTO : SystemUserDTO, IGroupable
     {
+        private GroupDTO group;
+        public GroupDTO Group
+        {
+            get { return group; }
+            set { group = value; }
+        }
+
         private int groupID;
         [DataMember]
         public int GroupID

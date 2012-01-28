@@ -6,18 +6,18 @@ using EntitiesDTO;
 
 namespace StudyingController.ViewModels.Models
 {
-    public class TeacherModel : SystemUserModel, IDTOable<TeacherDTO>
+    public class StudentModel : SystemUserModel, IDTOable<StudentDTO>
     {
         #region Fields & Properties
 
-        private CathedraDTO cathedra;
-        public CathedraDTO Cathedra
+        private GroupDTO group;
+        public GroupDTO Group
         {
-            get { return cathedra; }
-            set
-            {
-                cathedra = value;
-                OnPropertyChanged("Cathedra");
+            get { return group; }
+            set 
+            { 
+                group = value;
+                OnPropertyChanged("Group");
             }
         }
 
@@ -25,10 +25,10 @@ namespace StudyingController.ViewModels.Models
 
         #region Constructors
 
-        public TeacherModel(TeacherDTO teacher)
-            : base(teacher)
+        public StudentModel(StudentDTO student)
+            : base(student)
         {
-            this.Cathedra = teacher.Cathedra;
+            this.group = student.Group;
         }
 
         #endregion
@@ -39,27 +39,27 @@ namespace StudyingController.ViewModels.Models
         {
             base.Assign(entity);
 
-            TeacherDTO teacher = entity as TeacherDTO;
-            this.Cathedra = teacher.Cathedra;
+            StudentDTO student = entity as StudentDTO;
+            this.Group = student.Group;
         }
 
-        public TeacherDTO ToDTO()
+        public StudentDTO ToDTO()
         {
-            return new TeacherDTO
+            return new StudentDTO
             {
                 ID = this.ID,
                 Login = this.Login,
                 Password = this.Password,
                 Role = this.Role,
                 UserInformation = this.UserInformation.ToDTO(),
-                CathedraID = this.Cathedra.ID
+                GroupID = this.Group.ID
             };
         }
 
-        private bool IsCathedraValid(out string error)
+        private bool IsGroupValid(out string error)
         {
             error = null;
-            if (cathedra == null)
+            if (group == null)
             {
                 error = Properties.Resources.ErrorStructureNotFound;
                 return false;
@@ -74,8 +74,8 @@ namespace StudyingController.ViewModels.Models
             {
                 switch (property)
                 {
-                    case "Cathedra":
-                        IsCathedraValid(out error);
+                    case "Group":
+                        IsGroupValid(out error);
                         break;
                     default:
                         break;

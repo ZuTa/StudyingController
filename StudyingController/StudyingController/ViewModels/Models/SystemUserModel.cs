@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using EntitiesDTO;
+using System.Text.RegularExpressions;
+using StudyingController.Common;
 
 namespace StudyingController.ViewModels.Models
 {
     public class SystemUserModel : BaseModel, IDTOable<SystemUserDTO>
     {
         private string login;
+        [Validateable]
         public string Login
         {
             get { return login; }
@@ -16,6 +19,17 @@ namespace StudyingController.ViewModels.Models
             { 
                 login = value;
                 OnPropertyChanged("Login");
+            }
+        }
+
+        private string password;
+        public string Password
+        {
+            get { return password; }
+            set
+            {
+                password = value;
+                OnPropertyChanged("Password");
             }
         }
 
@@ -27,10 +41,14 @@ namespace StudyingController.ViewModels.Models
         }
 
         private UserInformationModel userInformation;
+        [Validateable]
         public UserInformationModel UserInformation
         {
             get { return userInformation; }
-            set { userInformation = value; }
+            set 
+            { 
+                userInformation = value;
+            }
         }
 
         public SystemUserModel(SystemUserDTO user)
@@ -38,7 +56,15 @@ namespace StudyingController.ViewModels.Models
         {
             this.login = user.Login;
             this.role = user.Role;
+            this.password = user.Password;
             this.userInformation = new UserInformationModel(user.UserInformation);
+
+            userInformation.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(userInformation_PropertyChanged);
+        }
+
+        void userInformation_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            OnPropertyChanged("UserInformation");
         }
 
         public override void Assign(BaseEntityDTO entity)
@@ -47,6 +73,8 @@ namespace StudyingController.ViewModels.Models
 
             SystemUserDTO user = entity as SystemUserDTO;
             this.Login = user.Login;
+            this.Role = user.Role;
+            this.Password = user.Password;
             this.UserInformation.Assign(user.UserInformation);
         }
 
@@ -56,9 +84,43 @@ namespace StudyingController.ViewModels.Models
             {
                 ID = this.ID,
                 Login = this.Login,
+                Password = this.Password,
                 Role = this.Role,
                 UserInformation = this.UserInformation.ToDTO()
             };
+        }
+
+        private bool IsLoginValid(out string error)
+        {
+            error = null;
+            if (login == null || login.Length == 0)
+            {
+                error = Properties.Resources.ErrorFieldEmpty;
+                return false;
+            }
+            if (!Regex.IsMatch(login, "^[a-zA-Z0-9_\\-]+$"))
+            {
+                error = Properties.Resources.ErrorBadCharsUsed;
+                return false;
+            }
+            return true;
+        }
+
+        protected override string Validate(string property)
+        {
+            string error = base.Validate(property);
+            if (error == null)
+            {
+                switch (property)
+                {
+                    case "Login":
+                        IsLoginValid(out error);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            return error;
         }
     }
 }

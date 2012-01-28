@@ -25,7 +25,7 @@ namespace StudyingController.ViewModels
 
         #endregion
 
-                #region Constructors
+        #region Constructors
 
         public MainAdminViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)

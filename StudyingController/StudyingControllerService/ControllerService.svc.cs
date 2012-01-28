@@ -137,6 +137,7 @@ namespace StudyingControllerService
                 case UserRoles.FacultySecretary:
                     return new FacultySecretary(user);
                 case UserRoles.Student:
+                    //return new Student(user);
                 case UserRoles.Teacher:
                     return new Teacher(user);
                 default:
@@ -396,12 +397,37 @@ namespace StudyingControllerService
 
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    var item = context.SystemUsers.FirstOrDefault(gr => gr.ID == user.ID);
+                    var item = context.SystemUsers.Include("UserInformation").FirstOrDefault(gr => gr.ID == user.ID);
 
                     if (item == null)
                         context.AddToSystemUsers(GetSystemUser(user));
                     else
-                        item.UpdateData(user);
+                    {
+                        switch (item.Role)
+                        {
+                            case UserRoles.InstituteAdmin:
+                                (item as IDTOable<InstituteAdminDTO>).UpdateData(user as InstituteAdminDTO);
+                                break;
+                            case UserRoles.FacultyAdmin:
+                                (item as IDTOable<FacultyAdminDTO>).UpdateData(user as FacultyAdminDTO);
+                                break;
+                            case UserRoles.InstituteSecretary:
+                                (item as IDTOable<InstituteSecretaryDTO>).UpdateData(user as InstituteSecretaryDTO);
+                                break;
+                            case UserRoles.FacultySecretary:
+                                (item as IDTOable<FacultySecretaryDTO>).UpdateData(user as FacultySecretaryDTO);
+                                break;
+                            case UserRoles.Teacher:
+                                (item as IDTOable<TeacherDTO>).UpdateData(user as TeacherDTO);
+                                break;
+                            case UserRoles.Student:
+                                (item as IDTOable<StudentDTO>).UpdateData(user as StudentDTO);
+                                break;
+                            default:
+                                item.UpdateData(user);
+                                break;
+                        }
+                    }
 
                     context.SaveChanges();
                 }

@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using EntitiesDTO;
+using StudyingController.Common;
+using System.Text.RegularExpressions;
+using System.Reflection;
 
 namespace StudyingController.ViewModels.Models
 {
     public class UserInformationModel : BaseModel, IDTOable<UserInformationDTO>
     {
         private string firstName;
+        [Validateable]
         public string FirstName
         {
             get { return firstName; }
@@ -20,6 +24,7 @@ namespace StudyingController.ViewModels.Models
         }
 
         private string lastName;
+        [Validateable]
         public string LastName
         {
             get { return lastName; }
@@ -31,6 +36,7 @@ namespace StudyingController.ViewModels.Models
         }
 
         private string email;
+        [Validateable]
         public string Email
         {
             get { return email; }
@@ -69,5 +75,77 @@ namespace StudyingController.ViewModels.Models
                 Email = this.Email
             };
         }
+
+        private bool IsFirstNameValid(out string error)
+        {
+            error = null;
+            if (firstName == null || firstName.Length == 0)
+            {
+                error = Properties.Resources.ErrorFieldEmpty;
+                return false;
+            }
+            if (!Regex.IsMatch(firstName, "^[а-яА-ЯіІїЇa-zA-Z\\- ]+$"))
+            {
+                error = Properties.Resources.ErrorBadCharsUsed;
+                return false;
+            }
+            return true;
+        }
+
+        private bool IsLastNameValid(out string error)
+        {
+            error = null;
+            if (lastName == null || lastName.Length == 0)
+            {
+                error = Properties.Resources.ErrorFieldEmpty;
+                return false;
+            }
+            if (!Regex.IsMatch(lastName, "^[а-яА-ЯіІїЇa-zA-Z\\- ]+$"))
+            {
+                error = Properties.Resources.ErrorBadCharsUsed;
+                return false;
+            }
+            return true;
+        }
+
+        private bool IsEmailValid(out string error)
+        {
+            error = null;
+            if (email == null || email.Length == 0)
+            {
+                error = Properties.Resources.ErrorFieldEmpty;
+                return false;
+            }
+            if (!Regex.IsMatch(email, "^[a-z\\-\\.]+@[a-z\\-]+\\.[a-z]{2,3}$"))
+            {
+                error = Properties.Resources.ErrorBadCharsUsed;
+                return false;
+            }
+            return true;
+        }
+
+        protected override string Validate(string property)
+        {
+            string error = base.Validate(property);
+            if (error == null)
+            {
+                switch (property)
+                {
+                    case "FirstName":
+                        IsFirstNameValid(out error);
+                        break;
+                    case "LastName":
+                        IsLastNameValid(out error);
+                        break;
+                    case "Email":
+                        IsEmailValid(out error);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            return error;
+        }
+
     }
 }

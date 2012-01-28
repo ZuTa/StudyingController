@@ -55,7 +55,11 @@ namespace StudyingControllerEntityModel
 
         public void UpdateData(SystemUserDTO entity)
         {
-            throw new NotImplementedException();
+            ID = entity.ID;
+            Role = entity.Role;
+            Login = entity.Login;
+            Password = Encoding.UTF8.GetBytes(entity.Password);
+            UserInformation.UpdateData(entity.UserInformation);
         }
     }
 }
