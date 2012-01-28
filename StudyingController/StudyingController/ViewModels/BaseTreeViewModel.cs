@@ -83,6 +83,19 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
+        protected IEnumerable<BaseEntityDTO> EnumerateEntities()
+        {
+            foreach (TreeNode node in tree.Enumerate())
+            {
+                yield return node.Tag as BaseEntityDTO;
+            }
+        }
+
+        protected BaseEntityDTO GetActualEntity(BaseEntityDTO entity)
+        {
+            return EnumerateEntities().FirstOrDefault(e => e.IsSameDatabaseObject(entity));
+        }
+
         public void Refresh()
         {
             Load();

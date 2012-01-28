@@ -37,40 +37,85 @@ namespace StudyingController.ViewModels
 
             BuildUniversityTree();
 
-            CurrentEntity = previousSelectedEntity;
+            CurrentEntity = GetActualEntity(previousSelectedEntity);
         }
 
         private void BuildUniversityTree()
         {
+            StartLoading();
+
             switch (ControllerInterop.Session.User.Role)
             {
                 case UserRoles.MainSecretary:
                 case UserRoles.MainAdmin:
-                    StartLoading();
-
-                    ControllerInterop.Service.BeginGetInstitutes(ControllerInterop.Session, OnGetInstisutesCompleted, null);
+                    LoadInstitutes();
+                    LoadFaculties(null, null);
                     break;
                 case UserRoles.InstituteAdmin:
                 case UserRoles.InstituteSecretary:
-                    StartLoading();
-
-                    ControllerInterop.Service.BeginGetFaculties(ControllerInterop.Session, (ControllerInterop.Session.User as IInstituteable).InstituteID, OnGetFacultiesCompleted, null);
+                    LoadFaculties(null, null);
+                    LoadFaculties((ControllerInterop.Session.User as IInstituteable).InstituteID, null);
                     break;
                 case UserRoles.FacultyAdmin:
                 case UserRoles.FacultySecretary:
-                    StartLoading();
-
-                    ControllerInterop.Service.BeginGetCathedras(ControllerInterop.Session, (ControllerInterop.Session.User as IFacultyable).FacultyID, OnGetCathedrasCompleted, null);
+                    LoadCathedras((ControllerInterop.Session.User as IFacultyable).FacultyID, null);
                     break;
                 default:
                     throw new NotImplementedException("Unknown user's role!");
             }
+
+            StopLoading();
         }
+
+        private void LoadInstitutes()
+        {
+            List<InstituteDTO> institutes = ControllerInterop.Service.GetInstitutes(ControllerInterop.Session);
+            foreach (var institute in institutes)
+            {
+                lock (Tree)
+                {
+                    TreeNode node = Tree.AppendNode(new TreeNode { Name = institute.Name, Tag = institute });
+
+                    LoadFaculties(institute.ID, node);
+                    
+                }
+            }
+        }
+
+        private void LoadFaculties(int? instituteID, TreeNode parentNode)
+        {
+            List<FacultyDTO> faculties;
+            if (instituteID.HasValue)
+                faculties = ControllerInterop.Service.GetFaculties(ControllerInterop.Session, instituteID.Value);
+            else
+                faculties = ControllerInterop.Service.GetFaculties(ControllerInterop.Session, null);
+
+            foreach (var faculty in faculties)
+            {
+                lock (Tree)
+                {
+                    TreeNode node = Tree.AppendNode(new TreeNode { Name = faculty.Name, Tag = faculty }, parentNode);
+
+                    LoadCathedras(faculty.ID, node);
+                  
+                }
+            }
+        }
+
+        private void LoadCathedras(int facultyID, TreeNode parentNode)
+        {
+            List<CathedraDTO> cathedras = ControllerInterop.Service.GetCathedras(ControllerInterop.Session, facultyID);
+            foreach (var cathedra in cathedras)
+            {
+                TreeNode node = Tree.AppendNode(new TreeNode { Name = cathedra.Name, Tag = cathedra }, parentNode);
+            }
+        }
+
 
         #endregion
 
         #region Callbacks
-
+        /*
         private void OnGetInstisutesCompleted(IAsyncResult ar)
         {
             Dispatcher.Invoke(
@@ -163,7 +208,7 @@ namespace StudyingController.ViewModels
                }), ar);
         }
 
-
+        */
 
         #endregion
 
