@@ -18,12 +18,15 @@ namespace StudyingController.ViewModels
             get { return nodesRO; }
         }
 
+        private List<TreeNodeState> states = new List<TreeNodeState>();
+
         #endregion
 
         #region Constructors
 
         public Tree()
         {
+            states = new List<TreeNodeState>();
             nodes = new ObservableCollection<TreeNode>();
             nodesRO = new ReadOnlyObservableCollection<TreeNode>(nodes);
 
@@ -49,6 +52,37 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
+        public void SaveState()
+        {
+            states.Clear();
+
+            foreach (TreeNode node in nodes)
+                SaveState(node);
+        }
+
+        private void SaveState(TreeNode node)
+        {
+            states.Add(new TreeNodeState(node.ImageIndex, node.Index, node.IsSelected, node.IsExpanded));
+
+            foreach (TreeNode n in node.Children)
+                SaveState(n);
+        }
+
+        public void ApplyOldState()
+        {
+            string s = "";
+            foreach (TreeNode node in ToList())
+            {
+                s += node.ImageIndex + ", " + node.Index + '\n';
+                TreeNodeState data = states.Find(state => state.ImageIndex == node.ImageIndex && state.Index == node.Index);
+                if (data != null)
+                {
+                    node.IsSelected = data.IsSelected;
+                    node.IsExpanded = data.IsExpanded;
+                }
+            }
+        }
+
         public TreeNode AppendNode(TreeNode node, TreeNode parentNode = null)
         {
             node.Changed += new EventHandler(node_Changed);
@@ -68,23 +102,58 @@ namespace StudyingController.ViewModels
             this.nodes.Clear();
         }
 
-        public IEnumerable<TreeNode> Enumerate()
+        public List<TreeNode> ToList()
         {
+            List<TreeNode> result = new List<TreeNode>();
             foreach (TreeNode node in nodes)
-            {
-                List<TreeNode> result = new List<TreeNode>();
                 EnumerateNode(node, result);
-                foreach (TreeNode n in result)
-                    yield return n;
-            }
+
+            return result;
         }
 
-        private  void EnumerateNode(TreeNode node, List<TreeNode> result)
+        private void EnumerateNode(TreeNode node, List<TreeNode> result)
         {
             result.Add(node);
-            foreach (TreeNode n in node.Childs)
-            {                
+            foreach (TreeNode n in node.Children)
                 EnumerateNode(n, result);
+        }
+
+        #endregion
+
+        #region Subclasess
+
+        public class TreeNodeState
+        {
+            private int imageIndex;
+            public int ImageIndex
+            {
+                get { return imageIndex; }
+            }
+
+            private int index;
+            public int Index
+            {
+                get { return index; }
+            }
+
+            private bool isSelected;
+            public bool IsSelected
+            {
+                get { return isSelected; }
+            }
+
+            private bool isExpanded;
+            public bool IsExpanded
+            {
+                get { return isExpanded; }
+            }
+
+            public TreeNodeState(int imageIndex, int index, bool isSelected, bool isExpanded)
+            {
+                this.imageIndex = imageIndex;
+                this.index = index;
+                this.isSelected = isSelected;
+                this.isExpanded = isExpanded;
             }
         }
 

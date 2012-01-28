@@ -36,8 +36,6 @@ namespace StudyingController.ViewModels
             base.LoadData();
 
             BuildUniversityTree();
-
-            CurrentEntity = GetActualEntity(previousSelectedEntity);
         }
 
         private void BuildUniversityTree()
@@ -74,7 +72,7 @@ namespace StudyingController.ViewModels
             {
                 lock (Tree)
                 {
-                    TreeNode node = Tree.AppendNode(new TreeNode { Name = institute.Name, Tag = institute });
+                    TreeNode node = Tree.AppendNode(new TreeNode(institute.Name, institute, institute.ID, 0));
 
                     LoadFaculties(institute.ID, node);
                     
@@ -94,7 +92,7 @@ namespace StudyingController.ViewModels
             {
                 lock (Tree)
                 {
-                    TreeNode node = Tree.AppendNode(new TreeNode { Name = faculty.Name, Tag = faculty }, parentNode);
+                    TreeNode node = Tree.AppendNode(new TreeNode(faculty.Name, faculty, faculty.ID, 1), parentNode);
 
                     LoadCathedras(faculty.ID, node);
                   
@@ -107,7 +105,7 @@ namespace StudyingController.ViewModels
             List<CathedraDTO> cathedras = ControllerInterop.Service.GetCathedras(ControllerInterop.Session, facultyID);
             foreach (var cathedra in cathedras)
             {
-                TreeNode node = Tree.AppendNode(new TreeNode { Name = cathedra.Name, Tag = cathedra }, parentNode);
+                TreeNode node = Tree.AppendNode(new TreeNode(cathedra.Name, cathedra, cathedra.ID, 2), parentNode);
             }
         }
 

@@ -24,7 +24,7 @@
             <DataTemplate DataType="{x:Type vm:UniversityTreeViewModel}">
                 <v:UniversityTreeView/>
             </DataTemplate>
-
+            
             <DataTemplate DataType="{x:Type vm:UsersTreeViewModel}">
                 <v:UsersTreeView/>
             </DataTemplate>

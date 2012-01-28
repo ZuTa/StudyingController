@@ -85,20 +85,19 @@ namespace StudyingController.ViewModels
 
         protected IEnumerable<BaseEntityDTO> EnumerateEntities()
         {
-            foreach (TreeNode node in tree.Enumerate())
+            foreach (TreeNode node in tree.ToList())
             {
                 yield return node.Tag as BaseEntityDTO;
             }
         }
 
-        protected BaseEntityDTO GetActualEntity(BaseEntityDTO entity)
-        {
-            return EnumerateEntities().FirstOrDefault(e => e.IsSameDatabaseObject(entity));
-        }
-
         public void Refresh()
         {
+            tree.SaveState();
+
             Load();
+
+            tree.ApplyOldState();
         }
 
         protected virtual void OnSelectedEntityChanged(BaseEntityDTO entity)

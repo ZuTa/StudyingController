@@ -115,7 +115,7 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
-    <Compile Include="ViewModels\UniversityTreeViewModel.cs.cs" />
+    <Compile Include="ViewModels\UniversityTreeViewModel.cs" />
     <Compile Include="ViewModels\EditableViewModel.cs" />
     <Compile Include="ViewModels\UniversityStructureViewModel.cs" />
     <Compile Include="ViewModels\UserInformationViewModel.cs" />
@@ -365,6 +365,21 @@
     <Resource Include="Images\1327612523_Add.png" />
     <Resource Include="Images\1327612550_delete.png" />
     <Resource Include="Images\refresh_blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\gnome_go_home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\board.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\user_group.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\user.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
