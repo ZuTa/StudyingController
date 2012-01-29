@@ -60,6 +60,14 @@ namespace StudyingController.ViewModels
             }
         }
 
+        public bool CanRefresh
+        {
+            get
+            {
+                return !IsModified;
+            }
+        }
+
         public abstract IProviderable EntitiesProvider { get; set; }
 
         private SaveableViewModel currentWorkspace;
@@ -125,7 +133,7 @@ namespace StudyingController.ViewModels
                 if (updateCommand == null)
                     updateCommand = new RelayCommand(param =>
                         {
-                            throw new NotImplementedException();
+                            EntitiesProvider.Refresh();
                         });
                 return updateCommand; 
             }
@@ -156,11 +164,13 @@ namespace StudyingController.ViewModels
             OnPropertyChanged("IsEnabled");
             OnPropertyChanged("CanAdd");
             OnPropertyChanged("CanRemove");
+            OnPropertyChanged("CanRefresh");
         }
 
         private void ViewModelUnModified(object sender, EventArgs e)
         {
             UpdateProperties();
+
             EntitiesProvider.Refresh();
         }
 

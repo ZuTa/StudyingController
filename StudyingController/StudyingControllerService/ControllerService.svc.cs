@@ -452,5 +452,30 @@ namespace StudyingControllerService
                 throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
             }
         }
+
+        public List<SpecializationDTO> GetSpecializations(Session session, int facultyID)
+        {
+            try
+            {
+                CheckSession(session);
+
+                List<SpecializationDTO> result = new List<SpecializationDTO>();
+
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var items = from s in context.Specializations
+                                where s.FacultyID == facultyID
+                                select s;
+                    foreach (var specialition in items)
+                        result.Add(specialition.ToDTO());
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
     }
 }

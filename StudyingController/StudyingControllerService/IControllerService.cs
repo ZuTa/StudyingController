@@ -63,5 +63,9 @@ namespace StudyingControllerService
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
         void SaveUser(Session session, SystemUserDTO user);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        List<SpecializationDTO> GetSpecializations(Session session, int facultyID);
     }
 }

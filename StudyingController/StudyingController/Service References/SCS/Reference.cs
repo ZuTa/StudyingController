@@ -258,6 +258,16 @@ namespace StudyingController.SCS {
         System.IAsyncResult BeginSaveUser(StudyingController.SCS.Session session, EntitiesDTO.SystemUserDTO user, System.AsyncCallback callback, object asyncState);
         
         void EndSaveUser(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/GetSpecializations", ReplyAction="http://tempuri.org/IControllerService/GetSpecializationsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/GetSpecializationsControllerServiceExceptio" +
+            "nFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        System.Collections.Generic.List<EntitiesDTO.SpecializationDTO> GetSpecializations(StudyingController.SCS.Session session, int facultyID);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/GetSpecializations", ReplyAction="http://tempuri.org/IControllerService/GetSpecializationsResponse")]
+        System.IAsyncResult BeginGetSpecializations(StudyingController.SCS.Session session, int facultyID, System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.Generic.List<EntitiesDTO.SpecializationDTO> EndGetSpecializations(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -418,6 +428,25 @@ namespace StudyingController.SCS {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetSpecializationsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetSpecializationsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.Generic.List<EntitiesDTO.SpecializationDTO> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.Generic.List<EntitiesDTO.SpecializationDTO>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class ControllerServiceClient : System.ServiceModel.ClientBase<StudyingController.SCS.IControllerService>, StudyingController.SCS.IControllerService {
         
         private BeginOperationDelegate onBeginLoginDelegate;
@@ -498,6 +527,12 @@ namespace StudyingController.SCS {
         
         private System.Threading.SendOrPostCallback onSaveUserCompletedDelegate;
         
+        private BeginOperationDelegate onBeginGetSpecializationsDelegate;
+        
+        private EndOperationDelegate onEndGetSpecializationsDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetSpecializationsCompletedDelegate;
+        
         public ControllerServiceClient() {
         }
         
@@ -542,6 +577,8 @@ namespace StudyingController.SCS {
         public event System.EventHandler<GetUsersCompletedEventArgs> GetUsersCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> SaveUserCompleted;
+        
+        public event System.EventHandler<GetSpecializationsCompletedEventArgs> GetSpecializationsCompleted;
         
         public StudyingController.SCS.Session Login(string login1, string password) {
             return base.Channel.Login(login1, password);
@@ -1206,6 +1243,58 @@ namespace StudyingController.SCS {
             base.InvokeAsync(this.onBeginSaveUserDelegate, new object[] {
                         session,
                         user}, this.onEndSaveUserDelegate, this.onSaveUserCompletedDelegate, userState);
+        }
+        
+        public System.Collections.Generic.List<EntitiesDTO.SpecializationDTO> GetSpecializations(StudyingController.SCS.Session session, int facultyID) {
+            return base.Channel.GetSpecializations(session, facultyID);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetSpecializations(StudyingController.SCS.Session session, int facultyID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetSpecializations(session, facultyID, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.Collections.Generic.List<EntitiesDTO.SpecializationDTO> EndGetSpecializations(System.IAsyncResult result) {
+            return base.Channel.EndGetSpecializations(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetSpecializations(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            StudyingController.SCS.Session session = ((StudyingController.SCS.Session)(inValues[0]));
+            int facultyID = ((int)(inValues[1]));
+            return this.BeginGetSpecializations(session, facultyID, callback, asyncState);
+        }
+        
+        private object[] OnEndGetSpecializations(System.IAsyncResult result) {
+            System.Collections.Generic.List<EntitiesDTO.SpecializationDTO> retVal = this.EndGetSpecializations(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetSpecializationsCompleted(object state) {
+            if ((this.GetSpecializationsCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetSpecializationsCompleted(this, new GetSpecializationsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetSpecializationsAsync(StudyingController.SCS.Session session, int facultyID) {
+            this.GetSpecializationsAsync(session, facultyID, null);
+        }
+        
+        public void GetSpecializationsAsync(StudyingController.SCS.Session session, int facultyID, object userState) {
+            if ((this.onBeginGetSpecializationsDelegate == null)) {
+                this.onBeginGetSpecializationsDelegate = new BeginOperationDelegate(this.OnBeginGetSpecializations);
+            }
+            if ((this.onEndGetSpecializationsDelegate == null)) {
+                this.onEndGetSpecializationsDelegate = new EndOperationDelegate(this.OnEndGetSpecializations);
+            }
+            if ((this.onGetSpecializationsCompletedDelegate == null)) {
+                this.onGetSpecializationsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetSpecializationsCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetSpecializationsDelegate, new object[] {
+                        session,
+                        facultyID}, this.onEndGetSpecializationsDelegate, this.onGetSpecializationsCompletedDelegate, userState);
         }
     }
 }
