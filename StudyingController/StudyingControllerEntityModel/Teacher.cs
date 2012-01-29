@@ -17,9 +17,7 @@ namespace StudyingControllerEntityModel
         public Teacher(SystemUserDTO user)
             : base(user)
         {
-            TeacherDTO teacher = user as TeacherDTO;
-
-            this.CathedraID = teacher.CathedraID;
+            Assign(user as TeacherDTO);
         }
 
         #endregion
@@ -36,9 +34,9 @@ namespace StudyingControllerEntityModel
             };
         }
 
-        public void UpdateData(TeacherDTO entity)
+        public void Assign(TeacherDTO entity)
         {
-            base.UpdateData(entity);
+            base.Assign(entity);
 
             CathedraID = entity.CathedraID;
         }

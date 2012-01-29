@@ -22,6 +22,10 @@ namespace StudyingController.ViewModels.Models
             }
         }
 
+        public NamedModel()
+        {
+        }
+
         public NamedModel(NamedEntityDTO entity)
             : base(entity)
         {            

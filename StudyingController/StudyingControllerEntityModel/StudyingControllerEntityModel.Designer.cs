@@ -3869,13 +3869,13 @@ namespace StudyingControllerEntityModel
         /// <summary>
         /// Create a new UserInformation object.
         /// </summary>
-        /// <param name="systemUserID">Initial value of the SystemUserID property.</param>
+        /// <param name="id">Initial value of the ID property.</param>
         /// <param name="firstName">Initial value of the FirstName property.</param>
         /// <param name="lastName">Initial value of the LastName property.</param>
-        public static UserInformation CreateUserInformation(global::System.Int32 systemUserID, global::System.String firstName, global::System.String lastName)
+        public static UserInformation CreateUserInformation(global::System.Int32 id, global::System.String firstName, global::System.String lastName)
         {
             UserInformation userInformation = new UserInformation();
-            userInformation.SystemUserID = systemUserID;
+            userInformation.ID = id;
             userInformation.FirstName = firstName;
             userInformation.LastName = lastName;
             return userInformation;
@@ -3889,27 +3889,27 @@ namespace StudyingControllerEntityModel
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 SystemUserID
+        public global::System.Int32 ID
         {
             get
             {
-                return _SystemUserID;
+                return _ID;
             }
             set
             {
-                if (_SystemUserID != value)
+                if (_ID != value)
                 {
-                    OnSystemUserIDChanging(value);
-                    ReportPropertyChanging("SystemUserID");
-                    _SystemUserID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("SystemUserID");
-                    OnSystemUserIDChanged();
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
                 }
             }
         }
-        private global::System.Int32 _SystemUserID;
-        partial void OnSystemUserIDChanging(global::System.Int32 value);
-        partial void OnSystemUserIDChanged();
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
     
         /// <summary>
         /// No Metadata Documentation available.

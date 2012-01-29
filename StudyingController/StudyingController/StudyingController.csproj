@@ -60,6 +60,7 @@
     </ApplicationDefinition>
     <Compile Include="Common\EnumLocalizeHelper.cs" />
     <Compile Include="Common\TreeViewHelper.cs" />
+    <Compile Include="Common\ViewHelper.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="ViewModels\BaseTreeViewModel.cs" />
     <Compile Include="ViewModels\CathedraViewModel.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="ViewModels\MainSecretaryViewModel.cs" />
     <Compile Include="ViewModels\Models\BaseModel.cs" />
     <Compile Include="ViewModels\Models\CathedraModel.cs" />
+    <Compile Include="ViewModels\Models\ExtenstionsHelper.cs" />
     <Compile Include="ViewModels\Models\FacultyAdminModel.cs" />
     <Compile Include="ViewModels\Models\FacultyModel.cs" />
     <Compile Include="ViewModels\Models\FacultySecretaryModel.cs" />
@@ -86,6 +88,7 @@
     <Compile Include="ViewModels\Models\InstituteModel.cs" />
     <Compile Include="ViewModels\Models\InstituteSecretaryModel.cs" />
     <Compile Include="ViewModels\Models\NamedModel.cs" />
+    <Compile Include="ViewModels\Models\SpecializationModel.cs" />
     <Compile Include="ViewModels\Models\StudentModel.cs" />
     <Compile Include="ViewModels\Models\SystemUserModel.cs" />
     <Compile Include="ViewModels\Models\TeacherModel.cs" />

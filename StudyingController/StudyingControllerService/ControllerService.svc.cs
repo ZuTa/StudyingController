@@ -176,7 +176,7 @@ namespace StudyingControllerService
                 List<FacultyDTO> result = new List<FacultyDTO>();
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    var query = from f in context.Faculties
+                    var query = from f in context.Faculties.Include("Specializations")
                                 where f.InstituteID == instituteID || (instituteID == null && f.InstituteID == null)
                                 select f;
                     foreach (var faculty in query)
@@ -289,7 +289,7 @@ namespace StudyingControllerService
                     if (item == null)
                         context.AddToInstitutes(new Institute(institute));
                     else
-                        item.UpdateData(institute);
+                        item.Assign(institute);
 
                     context.SaveChanges();
                 }
@@ -307,11 +307,24 @@ namespace StudyingControllerService
                  CheckSession(session);
                  using (UniversityEntities context = new UniversityEntities())
                  {
-                     var item = context.Faculties.FirstOrDefault(fac => fac.ID == faculty.ID);
+                     var item = context.Faculties.Include("Specializations").FirstOrDefault(fac => fac.ID == faculty.ID);
                      if (item == null)
                          context.AddToFaculties(new Faculty(faculty));
                      else
-                         item.UpdateData(faculty);
+                         item.Assign(faculty);
+
+                     #region Removing
+
+                     var removed =
+                            (from entity in item.Specializations
+                             where
+                                 faculty.Specializations.Find(it => it.ID == entity.ID) == null
+                             select entity).ToList();
+
+                     foreach (Specialization entity in removed)
+                         context.Specializations.DeleteObject(entity);
+
+                     #endregion
 
                      context.SaveChanges();
                  }
@@ -333,7 +346,7 @@ namespace StudyingControllerService
                      if (item == null)
                          context.AddToCathedras(new Cathedra(cathedra));
                      else
-                         item.UpdateData(cathedra);
+                         item.Assign(cathedra);
 
                      context.SaveChanges();
                  }
@@ -355,7 +368,7 @@ namespace StudyingControllerService
                     if (item == null)
                         context.AddToGroups(new Group(group));
                     else
-                        item.UpdateData(group);
+                        item.Assign(group);
 
                     context.SaveChanges();
                 }
@@ -406,25 +419,25 @@ namespace StudyingControllerService
                         switch (item.Role)
                         {
                             case UserRoles.InstituteAdmin:
-                                (item as IDTOable<InstituteAdminDTO>).UpdateData(user as InstituteAdminDTO);
+                                (item as IDTOable<InstituteAdminDTO>).Assign(user as InstituteAdminDTO);
                                 break;
                             case UserRoles.FacultyAdmin:
-                                (item as IDTOable<FacultyAdminDTO>).UpdateData(user as FacultyAdminDTO);
+                                (item as IDTOable<FacultyAdminDTO>).Assign(user as FacultyAdminDTO);
                                 break;
                             case UserRoles.InstituteSecretary:
-                                (item as IDTOable<InstituteSecretaryDTO>).UpdateData(user as InstituteSecretaryDTO);
+                                (item as IDTOable<InstituteSecretaryDTO>).Assign(user as InstituteSecretaryDTO);
                                 break;
                             case UserRoles.FacultySecretary:
-                                (item as IDTOable<FacultySecretaryDTO>).UpdateData(user as FacultySecretaryDTO);
+                                (item as IDTOable<FacultySecretaryDTO>).Assign(user as FacultySecretaryDTO);
                                 break;
                             case UserRoles.Teacher:
-                                (item as IDTOable<TeacherDTO>).UpdateData(user as TeacherDTO);
+                                (item as IDTOable<TeacherDTO>).Assign(user as TeacherDTO);
                                 break;
                             case UserRoles.Student:
-                                (item as IDTOable<StudentDTO>).UpdateData(user as StudentDTO);
+                                (item as IDTOable<StudentDTO>).Assign(user as StudentDTO);
                                 break;
                             default:
-                                item.UpdateData(user);
+                                item.Assign(user);
                                 break;
                         }
                     }

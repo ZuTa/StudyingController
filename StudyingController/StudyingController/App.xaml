@@ -76,8 +76,6 @@
             <DataTemplate DataType="{x:Type vm:MainSecretaryViewModel}">
                 <v:MainSecretaryView/>
             </DataTemplate>
-
-            
             
             <DataTemplate DataType="{x:Type vm:UserInformationViewModel}">
                 <v:UserInformationView/>

@@ -95,7 +95,6 @@ namespace StudyingController.ViewModels
                     TreeNode node = Tree.AppendNode(new TreeNode(faculty.Name, faculty, faculty.ID, 1), parentNode);
 
                     LoadCathedras(faculty.ID, node);
-                  
                 }
             }
         }

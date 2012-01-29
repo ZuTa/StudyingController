@@ -6,7 +6,7 @@ using EntitiesDTO;
 
 namespace StudyingControllerEntityModel
 {
-    public partial class Group : IDTOable<GroupDTO>
+    public partial class Group : IDTOable<GroupDTO>, IDataBase
     {
         #region Constructors
 
@@ -16,8 +16,7 @@ namespace StudyingControllerEntityModel
 
         public Group(GroupDTO group)
         {
-            this.ID = group.ID;
-            UpdateData(group);
+            Assign(group);
         }
 
         #endregion
@@ -34,8 +33,9 @@ namespace StudyingControllerEntityModel
             };
         }
 
-        public void UpdateData(GroupDTO entity)
+        public void Assign(GroupDTO entity)
         {
+            this.ID = entity.ID;
             this.Name = entity.Name;
             this.CathedraID = entity.CathedraID;
         }

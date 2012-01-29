@@ -33,7 +33,7 @@ namespace StudyingController.ViewModels
                 institutes = value;
                 OnPropertyChanged("Institutes");
             }
-        }
+        }  
 
         #endregion
 
@@ -55,6 +55,7 @@ namespace StudyingController.ViewModels
         {
             institutes = new List<InstituteDTO>();
             Load();
+
             originalEntity = faculty;
             faculty.Institute = (from institute in institutes
                                  where institute.ID == OriginalFaculty.InstituteID
@@ -66,8 +67,34 @@ namespace StudyingController.ViewModels
 
         #endregion
 
+        #region Commands
+
+        private RelayCommand addSpecializationCommand;
+        public RelayCommand AddSpecializationCommand
+        {
+            get
+            {
+                if (addSpecializationCommand == null)
+                    addSpecializationCommand = new RelayCommand(param => Faculty.Specializations.Add(new SpecializationModel { Name = string.Empty, FacultyID = Faculty.ID }));
+                return addSpecializationCommand; 
+            }
+        }
+
+        private RelayCommand removeSpecializationCommand;
+        public RelayCommand RemoveSpecializationCommand
+        {
+            get
+            {
+                if (removeSpecializationCommand == null)
+                    removeSpecializationCommand = new RelayCommand(param => Faculty.Specializations.Remove(param as SpecializationModel));
+                return removeSpecializationCommand; 
+            }
+        }
+
+        #endregion
+
         #region Methods
-        
+
         public override void Rollback()
         {
             Faculty.Assign(OriginalFaculty);
@@ -89,6 +116,11 @@ namespace StudyingController.ViewModels
         #endregion
 
         #region Callbacks
+
+        private void specializationListViewModel_ViewModified(object sender, EventArgs e)
+        {
+            SetModified();
+        }
 
         #endregion
     }

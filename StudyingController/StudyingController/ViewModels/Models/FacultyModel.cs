@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using EntitiesDTO;
 using StudyingController.Common;
+using System.Collections.ObjectModel;
 
 namespace StudyingController.ViewModels.Models
 {
@@ -17,9 +18,26 @@ namespace StudyingController.ViewModels.Models
         {
             get { return institute; }
             set 
-            { 
-                institute = value;
-                OnPropertyChanged("Institute");
+            {
+                if (institute != value)
+                {
+                    institute = value;
+                    OnPropertyChanged("Institute");
+                }
+            }
+        }
+
+        private ObservableCollection<SpecializationModel> specializations;
+        public ObservableCollection<SpecializationModel> Specializations
+        {
+            get { return specializations; }
+            set 
+            {
+                if (specializations != value)
+                {
+                    specializations = value;
+                    OnPropertyChanged("Specializations");
+                }
             }
         }
 
@@ -29,6 +47,10 @@ namespace StudyingController.ViewModels.Models
             : base(faculty)
         {
             institute = faculty.Institute;
+            specializations = faculty.Specializations.ToModelList<SpecializationModel, SpecializationDTO>();
+            specializations.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(specializations_CollectionChanged);
+            foreach(SpecializationModel model in specializations)
+                model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(model_PropertyChanged);
         }
 
         public override void Assign(BaseEntityDTO entity)
@@ -37,6 +59,7 @@ namespace StudyingController.ViewModels.Models
 
             FacultyDTO faculty = entity as FacultyDTO;
             this.Institute = faculty.Institute;
+            this.specializations = faculty.Specializations.ToModelList<SpecializationModel, SpecializationDTO>();
         }
 
         public FacultyDTO ToDTO()
@@ -45,7 +68,8 @@ namespace StudyingController.ViewModels.Models
             {
                 ID = this.ID,
                 Name = this.Name,
-                InstituteID = Institute == null ? (int?)null : Institute.ID
+                InstituteID = Institute == null ? (int?)null : Institute.ID,
+                Specializations = this.specializations.ToDTOList<SpecializationDTO, SpecializationModel>()
             };
         }
 
@@ -53,5 +77,20 @@ namespace StudyingController.ViewModels.Models
         {
             return base.Validate(property);
         }
+
+        #region Callbacks
+
+        private void model_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            OnPropertyChanged("Specializations");
+        }
+
+        private void specializations_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            OnPropertyChanged("Specializations");
+        }
+
+
+        #endregion
     }
 }

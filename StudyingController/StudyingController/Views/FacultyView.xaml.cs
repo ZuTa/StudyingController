@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using StudyingController.Common;
 
 namespace StudyingController.Views
 {
@@ -22,6 +23,22 @@ namespace StudyingController.Views
         public FacultyView()
         {
             InitializeComponent();
+        }
+
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ListBoxItem item = ViewHelper.FindAnchestor<ListBoxItem>(sender as DependencyObject);
+            item.IsSelected = true;
+        }
+
+        private void lbSpecializations_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            VerifyActions();
+        }
+
+        private void VerifyActions()
+        {
+            btnAdd.IsEnabled = btnRemove.IsEnabled = lbSpecializations.SelectedItem != null;
         }
     }
 }
