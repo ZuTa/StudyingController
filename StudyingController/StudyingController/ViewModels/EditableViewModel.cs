@@ -48,7 +48,7 @@ namespace StudyingController.ViewModels
         {
             get
             {
-                return !IsModified;
+                return !IsModified && CurrentWorkspace != null;
             }
         }
 
@@ -119,7 +119,11 @@ namespace StudyingController.ViewModels
                 if (removeCommand == null)
                     removeCommand = new RelayCommand(param =>
                         {
-                            throw new NotImplementedException();
+                            if (UserInterop.ShowMessage(Properties.Resources.RemoveEntityTxt, Properties.Resources.DefaultMessageText, MessageButtons.YesNo, MessageTypes.Question) == MessageResults.Yes)
+                            {
+                                CurrentWorkspace.Remove();
+                                EntitiesProvider.Refresh();
+                            }
                         });
                 return removeCommand; 
             }

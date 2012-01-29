@@ -30,6 +30,7 @@ namespace StudyingControllerEntityModel
 
         public SystemUser(SystemUserDTO user)
         {
+            UserInformation = new StudyingControllerEntityModel.UserInformation();
             Assign(user);
         }        
 

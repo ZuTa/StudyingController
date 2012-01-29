@@ -68,6 +68,11 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
+        public override void Remove()
+        {
+            ControllerInterop.Service.DeleteUser(ControllerInterop.Session, InstituteAdmin.ID);
+        }
+
         public override void Rollback()
         {
             InstituteAdmin.Assign(OriginalInstituteAdmin);

@@ -95,6 +95,11 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
+        public override void Remove()
+        {
+            ControllerInterop.Service.DeleteFaculty(ControllerInterop.Session, Faculty.ID); 
+        }
+
         public override void Rollback()
         {
             Faculty.Assign(OriginalFaculty);

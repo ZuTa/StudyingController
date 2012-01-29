@@ -85,6 +85,11 @@ namespace StudyingController.ViewModels
             SetUnModified();
         }
 
+        public override void Remove()
+        {
+            throw new NotImplementedException();
+        }
+
         private void Load()
         {
             Faculties.AddRange(ControllerInterop.Service.GetAllFaculties(ControllerInterop.Session));

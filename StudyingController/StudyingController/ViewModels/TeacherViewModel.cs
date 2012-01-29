@@ -68,6 +68,11 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
+        public override void Remove()
+        {
+            throw new NotImplementedException();
+        }
+
         public override void Rollback()
         {
             Teacher.Assign(OriginalTeacher);

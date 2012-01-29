@@ -46,6 +46,8 @@ namespace StudyingController.ViewModels
 
         public abstract void Rollback();
 
+        public abstract void Remove();
+
         protected virtual void SetModified()
         {
             isModified = true;

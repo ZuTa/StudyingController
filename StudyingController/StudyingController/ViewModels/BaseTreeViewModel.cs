@@ -42,13 +42,6 @@ namespace StudyingController.ViewModels
             }
         }
 
-        private TreeNode selectedNode;
-        public TreeNode SelectedNode
-        {
-            get { return selectedNode; }
-            set { selectedNode = value; }
-        }
-
         protected BaseEntityDTO previousSelectedEntity;
 
         #endregion

@@ -47,6 +47,11 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
+        public override void Remove()
+        {
+            throw new NotImplementedException();
+        }
+
         public override void Rollback()
         {
             MainAdmin.Assign(OriginalMainAdmin);

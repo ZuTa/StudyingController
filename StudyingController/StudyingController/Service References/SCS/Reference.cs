@@ -268,6 +268,54 @@ namespace StudyingController.SCS {
         System.IAsyncResult BeginGetSpecializations(StudyingController.SCS.Session session, int facultyID, System.AsyncCallback callback, object asyncState);
         
         System.Collections.Generic.List<EntitiesDTO.SpecializationDTO> EndGetSpecializations(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/DeleteInstitute", ReplyAction="http://tempuri.org/IControllerService/DeleteInstituteResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/DeleteInstituteControllerServiceExceptionFa" +
+            "ult", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        void DeleteInstitute(StudyingController.SCS.Session session, int instituteID);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/DeleteInstitute", ReplyAction="http://tempuri.org/IControllerService/DeleteInstituteResponse")]
+        System.IAsyncResult BeginDeleteInstitute(StudyingController.SCS.Session session, int instituteID, System.AsyncCallback callback, object asyncState);
+        
+        void EndDeleteInstitute(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/DeleteFaculty", ReplyAction="http://tempuri.org/IControllerService/DeleteFacultyResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/DeleteFacultyControllerServiceExceptionFaul" +
+            "t", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        void DeleteFaculty(StudyingController.SCS.Session session, int facultyID);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/DeleteFaculty", ReplyAction="http://tempuri.org/IControllerService/DeleteFacultyResponse")]
+        System.IAsyncResult BeginDeleteFaculty(StudyingController.SCS.Session session, int facultyID, System.AsyncCallback callback, object asyncState);
+        
+        void EndDeleteFaculty(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/DeleteCathedra", ReplyAction="http://tempuri.org/IControllerService/DeleteCathedraResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/DeleteCathedraControllerServiceExceptionFau" +
+            "lt", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        void DeleteCathedra(StudyingController.SCS.Session session, int cathedraID);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/DeleteCathedra", ReplyAction="http://tempuri.org/IControllerService/DeleteCathedraResponse")]
+        System.IAsyncResult BeginDeleteCathedra(StudyingController.SCS.Session session, int cathedraID, System.AsyncCallback callback, object asyncState);
+        
+        void EndDeleteCathedra(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/DeleteGroup", ReplyAction="http://tempuri.org/IControllerService/DeleteGroupResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/DeleteGroupControllerServiceExceptionFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        void DeleteGroup(StudyingController.SCS.Session session, int groupID);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/DeleteGroup", ReplyAction="http://tempuri.org/IControllerService/DeleteGroupResponse")]
+        System.IAsyncResult BeginDeleteGroup(StudyingController.SCS.Session session, int groupID, System.AsyncCallback callback, object asyncState);
+        
+        void EndDeleteGroup(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/DeleteUser", ReplyAction="http://tempuri.org/IControllerService/DeleteUserResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/DeleteUserControllerServiceExceptionFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        void DeleteUser(StudyingController.SCS.Session session, int userID);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/DeleteUser", ReplyAction="http://tempuri.org/IControllerService/DeleteUserResponse")]
+        System.IAsyncResult BeginDeleteUser(StudyingController.SCS.Session session, int userID, System.AsyncCallback callback, object asyncState);
+        
+        void EndDeleteUser(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -533,6 +581,36 @@ namespace StudyingController.SCS {
         
         private System.Threading.SendOrPostCallback onGetSpecializationsCompletedDelegate;
         
+        private BeginOperationDelegate onBeginDeleteInstituteDelegate;
+        
+        private EndOperationDelegate onEndDeleteInstituteDelegate;
+        
+        private System.Threading.SendOrPostCallback onDeleteInstituteCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginDeleteFacultyDelegate;
+        
+        private EndOperationDelegate onEndDeleteFacultyDelegate;
+        
+        private System.Threading.SendOrPostCallback onDeleteFacultyCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginDeleteCathedraDelegate;
+        
+        private EndOperationDelegate onEndDeleteCathedraDelegate;
+        
+        private System.Threading.SendOrPostCallback onDeleteCathedraCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginDeleteGroupDelegate;
+        
+        private EndOperationDelegate onEndDeleteGroupDelegate;
+        
+        private System.Threading.SendOrPostCallback onDeleteGroupCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginDeleteUserDelegate;
+        
+        private EndOperationDelegate onEndDeleteUserDelegate;
+        
+        private System.Threading.SendOrPostCallback onDeleteUserCompletedDelegate;
+        
         public ControllerServiceClient() {
         }
         
@@ -579,6 +657,16 @@ namespace StudyingController.SCS {
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> SaveUserCompleted;
         
         public event System.EventHandler<GetSpecializationsCompletedEventArgs> GetSpecializationsCompleted;
+        
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> DeleteInstituteCompleted;
+        
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> DeleteFacultyCompleted;
+        
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> DeleteCathedraCompleted;
+        
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> DeleteGroupCompleted;
+        
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> DeleteUserCompleted;
         
         public StudyingController.SCS.Session Login(string login1, string password) {
             return base.Channel.Login(login1, password);
@@ -1295,6 +1383,261 @@ namespace StudyingController.SCS {
             base.InvokeAsync(this.onBeginGetSpecializationsDelegate, new object[] {
                         session,
                         facultyID}, this.onEndGetSpecializationsDelegate, this.onGetSpecializationsCompletedDelegate, userState);
+        }
+        
+        public void DeleteInstitute(StudyingController.SCS.Session session, int instituteID) {
+            base.Channel.DeleteInstitute(session, instituteID);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginDeleteInstitute(StudyingController.SCS.Session session, int instituteID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginDeleteInstitute(session, instituteID, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public void EndDeleteInstitute(System.IAsyncResult result) {
+            base.Channel.EndDeleteInstitute(result);
+        }
+        
+        private System.IAsyncResult OnBeginDeleteInstitute(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            StudyingController.SCS.Session session = ((StudyingController.SCS.Session)(inValues[0]));
+            int instituteID = ((int)(inValues[1]));
+            return this.BeginDeleteInstitute(session, instituteID, callback, asyncState);
+        }
+        
+        private object[] OnEndDeleteInstitute(System.IAsyncResult result) {
+            this.EndDeleteInstitute(result);
+            return null;
+        }
+        
+        private void OnDeleteInstituteCompleted(object state) {
+            if ((this.DeleteInstituteCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.DeleteInstituteCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void DeleteInstituteAsync(StudyingController.SCS.Session session, int instituteID) {
+            this.DeleteInstituteAsync(session, instituteID, null);
+        }
+        
+        public void DeleteInstituteAsync(StudyingController.SCS.Session session, int instituteID, object userState) {
+            if ((this.onBeginDeleteInstituteDelegate == null)) {
+                this.onBeginDeleteInstituteDelegate = new BeginOperationDelegate(this.OnBeginDeleteInstitute);
+            }
+            if ((this.onEndDeleteInstituteDelegate == null)) {
+                this.onEndDeleteInstituteDelegate = new EndOperationDelegate(this.OnEndDeleteInstitute);
+            }
+            if ((this.onDeleteInstituteCompletedDelegate == null)) {
+                this.onDeleteInstituteCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnDeleteInstituteCompleted);
+            }
+            base.InvokeAsync(this.onBeginDeleteInstituteDelegate, new object[] {
+                        session,
+                        instituteID}, this.onEndDeleteInstituteDelegate, this.onDeleteInstituteCompletedDelegate, userState);
+        }
+        
+        public void DeleteFaculty(StudyingController.SCS.Session session, int facultyID) {
+            base.Channel.DeleteFaculty(session, facultyID);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginDeleteFaculty(StudyingController.SCS.Session session, int facultyID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginDeleteFaculty(session, facultyID, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public void EndDeleteFaculty(System.IAsyncResult result) {
+            base.Channel.EndDeleteFaculty(result);
+        }
+        
+        private System.IAsyncResult OnBeginDeleteFaculty(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            StudyingController.SCS.Session session = ((StudyingController.SCS.Session)(inValues[0]));
+            int facultyID = ((int)(inValues[1]));
+            return this.BeginDeleteFaculty(session, facultyID, callback, asyncState);
+        }
+        
+        private object[] OnEndDeleteFaculty(System.IAsyncResult result) {
+            this.EndDeleteFaculty(result);
+            return null;
+        }
+        
+        private void OnDeleteFacultyCompleted(object state) {
+            if ((this.DeleteFacultyCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.DeleteFacultyCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void DeleteFacultyAsync(StudyingController.SCS.Session session, int facultyID) {
+            this.DeleteFacultyAsync(session, facultyID, null);
+        }
+        
+        public void DeleteFacultyAsync(StudyingController.SCS.Session session, int facultyID, object userState) {
+            if ((this.onBeginDeleteFacultyDelegate == null)) {
+                this.onBeginDeleteFacultyDelegate = new BeginOperationDelegate(this.OnBeginDeleteFaculty);
+            }
+            if ((this.onEndDeleteFacultyDelegate == null)) {
+                this.onEndDeleteFacultyDelegate = new EndOperationDelegate(this.OnEndDeleteFaculty);
+            }
+            if ((this.onDeleteFacultyCompletedDelegate == null)) {
+                this.onDeleteFacultyCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnDeleteFacultyCompleted);
+            }
+            base.InvokeAsync(this.onBeginDeleteFacultyDelegate, new object[] {
+                        session,
+                        facultyID}, this.onEndDeleteFacultyDelegate, this.onDeleteFacultyCompletedDelegate, userState);
+        }
+        
+        public void DeleteCathedra(StudyingController.SCS.Session session, int cathedraID) {
+            base.Channel.DeleteCathedra(session, cathedraID);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginDeleteCathedra(StudyingController.SCS.Session session, int cathedraID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginDeleteCathedra(session, cathedraID, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public void EndDeleteCathedra(System.IAsyncResult result) {
+            base.Channel.EndDeleteCathedra(result);
+        }
+        
+        private System.IAsyncResult OnBeginDeleteCathedra(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            StudyingController.SCS.Session session = ((StudyingController.SCS.Session)(inValues[0]));
+            int cathedraID = ((int)(inValues[1]));
+            return this.BeginDeleteCathedra(session, cathedraID, callback, asyncState);
+        }
+        
+        private object[] OnEndDeleteCathedra(System.IAsyncResult result) {
+            this.EndDeleteCathedra(result);
+            return null;
+        }
+        
+        private void OnDeleteCathedraCompleted(object state) {
+            if ((this.DeleteCathedraCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.DeleteCathedraCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void DeleteCathedraAsync(StudyingController.SCS.Session session, int cathedraID) {
+            this.DeleteCathedraAsync(session, cathedraID, null);
+        }
+        
+        public void DeleteCathedraAsync(StudyingController.SCS.Session session, int cathedraID, object userState) {
+            if ((this.onBeginDeleteCathedraDelegate == null)) {
+                this.onBeginDeleteCathedraDelegate = new BeginOperationDelegate(this.OnBeginDeleteCathedra);
+            }
+            if ((this.onEndDeleteCathedraDelegate == null)) {
+                this.onEndDeleteCathedraDelegate = new EndOperationDelegate(this.OnEndDeleteCathedra);
+            }
+            if ((this.onDeleteCathedraCompletedDelegate == null)) {
+                this.onDeleteCathedraCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnDeleteCathedraCompleted);
+            }
+            base.InvokeAsync(this.onBeginDeleteCathedraDelegate, new object[] {
+                        session,
+                        cathedraID}, this.onEndDeleteCathedraDelegate, this.onDeleteCathedraCompletedDelegate, userState);
+        }
+        
+        public void DeleteGroup(StudyingController.SCS.Session session, int groupID) {
+            base.Channel.DeleteGroup(session, groupID);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginDeleteGroup(StudyingController.SCS.Session session, int groupID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginDeleteGroup(session, groupID, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public void EndDeleteGroup(System.IAsyncResult result) {
+            base.Channel.EndDeleteGroup(result);
+        }
+        
+        private System.IAsyncResult OnBeginDeleteGroup(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            StudyingController.SCS.Session session = ((StudyingController.SCS.Session)(inValues[0]));
+            int groupID = ((int)(inValues[1]));
+            return this.BeginDeleteGroup(session, groupID, callback, asyncState);
+        }
+        
+        private object[] OnEndDeleteGroup(System.IAsyncResult result) {
+            this.EndDeleteGroup(result);
+            return null;
+        }
+        
+        private void OnDeleteGroupCompleted(object state) {
+            if ((this.DeleteGroupCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.DeleteGroupCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void DeleteGroupAsync(StudyingController.SCS.Session session, int groupID) {
+            this.DeleteGroupAsync(session, groupID, null);
+        }
+        
+        public void DeleteGroupAsync(StudyingController.SCS.Session session, int groupID, object userState) {
+            if ((this.onBeginDeleteGroupDelegate == null)) {
+                this.onBeginDeleteGroupDelegate = new BeginOperationDelegate(this.OnBeginDeleteGroup);
+            }
+            if ((this.onEndDeleteGroupDelegate == null)) {
+                this.onEndDeleteGroupDelegate = new EndOperationDelegate(this.OnEndDeleteGroup);
+            }
+            if ((this.onDeleteGroupCompletedDelegate == null)) {
+                this.onDeleteGroupCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnDeleteGroupCompleted);
+            }
+            base.InvokeAsync(this.onBeginDeleteGroupDelegate, new object[] {
+                        session,
+                        groupID}, this.onEndDeleteGroupDelegate, this.onDeleteGroupCompletedDelegate, userState);
+        }
+        
+        public void DeleteUser(StudyingController.SCS.Session session, int userID) {
+            base.Channel.DeleteUser(session, userID);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginDeleteUser(StudyingController.SCS.Session session, int userID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginDeleteUser(session, userID, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public void EndDeleteUser(System.IAsyncResult result) {
+            base.Channel.EndDeleteUser(result);
+        }
+        
+        private System.IAsyncResult OnBeginDeleteUser(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            StudyingController.SCS.Session session = ((StudyingController.SCS.Session)(inValues[0]));
+            int userID = ((int)(inValues[1]));
+            return this.BeginDeleteUser(session, userID, callback, asyncState);
+        }
+        
+        private object[] OnEndDeleteUser(System.IAsyncResult result) {
+            this.EndDeleteUser(result);
+            return null;
+        }
+        
+        private void OnDeleteUserCompleted(object state) {
+            if ((this.DeleteUserCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.DeleteUserCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void DeleteUserAsync(StudyingController.SCS.Session session, int userID) {
+            this.DeleteUserAsync(session, userID, null);
+        }
+        
+        public void DeleteUserAsync(StudyingController.SCS.Session session, int userID, object userState) {
+            if ((this.onBeginDeleteUserDelegate == null)) {
+                this.onBeginDeleteUserDelegate = new BeginOperationDelegate(this.OnBeginDeleteUser);
+            }
+            if ((this.onEndDeleteUserDelegate == null)) {
+                this.onEndDeleteUserDelegate = new EndOperationDelegate(this.OnEndDeleteUser);
+            }
+            if ((this.onDeleteUserCompletedDelegate == null)) {
+                this.onDeleteUserCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnDeleteUserCompleted);
+            }
+            base.InvokeAsync(this.onBeginDeleteUserDelegate, new object[] {
+                        session,
+                        userID}, this.onEndDeleteUserDelegate, this.onDeleteUserCompletedDelegate, userState);
         }
     }
 }

@@ -477,5 +477,120 @@ namespace StudyingControllerService
                 throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
             }
         }
+
+        public void DeleteFaculty(Session session, int facultyID)
+        {
+            try
+            {
+                CheckSession(session);
+
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var item = (from f in context.Faculties
+                                where f.ID == facultyID
+                                select f).FirstOrDefault();
+                    if (item != null)
+                        context.Faculties.DeleteObject(item);
+
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public void DeleteInstitute(Session session, int instituteID)
+        {
+            try
+            {
+                CheckSession(session);
+
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var item = (from f in context.Institutes
+                                where f.ID == instituteID
+                                select f).FirstOrDefault();
+                    if (item != null)
+                        context.Institutes.DeleteObject(item);
+
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public void DeleteCathedra(Session session, int cathedraID)
+        {
+            try
+            {
+                CheckSession(session);
+
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var item = (from f in context.Cathedras
+                                where f.ID == cathedraID
+                                select f).FirstOrDefault();
+                    if (item != null)
+                        context.Cathedras.DeleteObject(item);
+
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public void DeleteGroup(Session session, int groupID)
+        {
+            try
+            {
+                CheckSession(session);
+
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var item = (from f in context.Groups
+                                where f.ID == groupID
+                                select f).FirstOrDefault();
+                    if (item != null)
+                        context.Groups.DeleteObject(item);
+
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public void DeleteUser(Session session, int userID)
+        {
+            try
+            {
+                CheckSession(session);
+
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var item = (from f in context.SystemUsers
+                                where f.ID == userID
+                                select f).FirstOrDefault();
+                    if (item != null)
+                        context.SystemUsers.DeleteObject(item);
+
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
     }
 }
