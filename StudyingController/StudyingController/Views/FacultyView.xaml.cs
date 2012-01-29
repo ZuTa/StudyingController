@@ -36,9 +36,15 @@ namespace StudyingController.Views
             VerifyActions();
         }
 
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            VerifyActions();
+        }
+
         private void VerifyActions()
         {
-            btnAdd.IsEnabled = btnRemove.IsEnabled = lbSpecializations.SelectedItem != null;
+            btnRemove.IsEnabled = lbSpecializations.SelectedItem != null;
         }
+
     }
 }

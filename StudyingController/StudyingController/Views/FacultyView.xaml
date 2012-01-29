@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:v="clr-namespace:StudyingController.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300" Loaded="UserControl_Loaded" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -41,8 +41,12 @@
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
 
-                <Button x:Name="btnAdd" Grid.Row="0" Grid.Column="1" Command="{Binding AddSpecializationCommand}" Content="Додати" Margin="3" />
-                <Button x:Name="btnRemove" Grid.Row="1" Grid.Column="1" Command="{Binding RemoveSpecializationCommand}" CommandParameter="{Binding ElementName=lbSpecializations, Path=SelectedItem}" Content="Видалити" Margin="3"/>
+                <Button x:Name="btnAdd" Grid.Row="0" Grid.Column="1" Command="{Binding AddSpecializationCommand}" ToolTip="Додати" Style="{StaticResource EditableButtonStyle}">
+                    <Image Source="/StudyingController;component/Images/1327612523_Add.png" Stretch="Fill" />
+                </Button>
+                <Button x:Name="btnRemove" Grid.Row="1" Grid.Column="1" Command="{Binding RemoveSpecializationCommand}" CommandParameter="{Binding ElementName=lbSpecializations, Path=SelectedItem}" ToolTip="Видалити" Style="{StaticResource EditableButtonStyle}">
+                    <Image Source="/StudyingController;component/Images/1327612550_delete.png" Stretch="Fill" />
+                </Button>
 
                 <ListBox HorizontalContentAlignment="Stretch" x:Name="lbSpecializations" Grid.RowSpan="3" ItemsSource="{Binding Faculty.Specializations}" SelectionChanged="lbSpecializations_SelectionChanged">
                     <ListBox.ItemTemplate>

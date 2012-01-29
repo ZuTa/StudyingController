@@ -311,20 +311,22 @@ namespace StudyingControllerService
                      if (item == null)
                          context.AddToFaculties(new Faculty(faculty));
                      else
+                     {
                          item.Assign(faculty);
 
-                     #region Removing
+                         #region Removing
 
-                     var removed =
-                            (from entity in item.Specializations
-                             where
-                                 faculty.Specializations.Find(it => it.ID == entity.ID) == null
-                             select entity).ToList();
+                         var removed =
+                                (from entity in item.Specializations
+                                 where
+                                     faculty.Specializations.Find(it => it.ID == entity.ID) == null
+                                 select entity).ToList();
 
-                     foreach (Specialization entity in removed)
-                         context.Specializations.DeleteObject(entity);
+                         foreach (Specialization entity in removed)
+                             context.Specializations.DeleteObject(entity);
 
-                     #endregion
+                         #endregion
+                     }
 
                      context.SaveChanges();
                  }
