@@ -72,6 +72,11 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
+        public override void Remove()
+        {
+            throw new NotImplementedException();
+        }
+
         private void Load()
         {
             Cathedras.AddRange(ControllerInterop.Service.GetAllCathedras(ControllerInterop.Session));

@@ -27,7 +27,7 @@
                 </Button>
             </ToolBar>
             <ToolBar Visibility="{Binding Path=IsManipulateable, Converter={StaticResource B2V}}">
-                <Button Margin="3" ToolTip="Оновити" Width="32" Height="32" Style="{StaticResource MenuButtonStyle}">
+                <Button Margin="3" ToolTip="Оновити" Width="32" Height="32" Style="{StaticResource MenuButtonStyle}" Command="{Binding Path=CurrentWorkspace.UpdateCommand}" IsEnabled="{Binding CurrentWorkspace.CanRefresh}">
                     <Image Source="/StudyingController;component/Images/refresh_blue.png" Stretch="Fill" />
                 </Button>
                 <Button x:Name="btnAdd" Click="btnAdd_Click" Margin="3" ToolTip="Додати" Width="32" Height="32" IsEnabled="{Binding CurrentWorkspace.CanAdd}" Style="{StaticResource MenuButtonStyle}">

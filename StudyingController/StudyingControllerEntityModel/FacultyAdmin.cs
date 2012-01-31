@@ -18,9 +18,7 @@ namespace StudyingControllerEntityModel
         public FacultyAdmin(SystemUserDTO user)
             : base(user)
         {
-            FacultyAdminDTO admin = user as FacultyAdminDTO;
-
-            this.FacultyID = admin.FacultyID;
+            Assign(user as FacultyAdminDTO);
         }
 
         #endregion
@@ -37,9 +35,9 @@ namespace StudyingControllerEntityModel
             };
         }
 
-        public void UpdateData(FacultyAdminDTO entity)
+        public void Assign(FacultyAdminDTO entity)
         {
-            base.UpdateData(entity);
+            base.Assign(entity);
 
             FacultyID = entity.FacultyID;
         }

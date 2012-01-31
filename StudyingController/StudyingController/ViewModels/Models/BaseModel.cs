@@ -31,6 +31,9 @@ namespace StudyingController.ViewModels.Models
             }
         }
 
+        public BaseModel()
+        { }
+
         public BaseModel(BaseEntityDTO entity)
         {
             this.id = entity.ID;

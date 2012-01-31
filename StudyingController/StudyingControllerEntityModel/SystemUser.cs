@@ -7,7 +7,7 @@ using EntitiesDTO;
 
 namespace StudyingControllerEntityModel
 {
-    public partial class SystemUser : IDTOable<SystemUserDTO>
+    public partial class SystemUser : IDTOable<SystemUserDTO>, IDataBase
     {
         [DataMember]
         public UserRoles Role
@@ -30,11 +30,8 @@ namespace StudyingControllerEntityModel
 
         public SystemUser(SystemUserDTO user)
         {
-            this.ID = user.ID;
-            this.Login = user.Login;
-            this.Password = Encoding.UTF8.GetBytes(user.Password);
-            this.Role = user.Role;
-            this.UserInformation = new UserInformation(user.UserInformation);
+            UserInformation = new StudyingControllerEntityModel.UserInformation();
+            Assign(user);
         }        
 
         #endregion
@@ -53,13 +50,13 @@ namespace StudyingControllerEntityModel
             return user;
         }
 
-        public void UpdateData(SystemUserDTO entity)
+        public void Assign(SystemUserDTO entity)
         {
             ID = entity.ID;
             Role = entity.Role;
             Login = entity.Login;
             Password = Encoding.UTF8.GetBytes(entity.Password);
-            UserInformation.UpdateData(entity.UserInformation);
+            UserInformation.Assign(entity.UserInformation);
         }
     }
 }

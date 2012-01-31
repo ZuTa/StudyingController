@@ -2,17 +2,46 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:common="clr-namespace:StudyingController.Common"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <TreeView IsEnabled="{Binding IsNotBusy}" ItemsSource="{Binding Tree.Nodes}" common:TreeViewHelper.SelectedEntityChangedCommand="{Binding SelectedEntityChangedCommand}" common:TreeViewHelper.SelectedEntity="{Binding CurrentEntity}">
-            <TreeView.ItemTemplate>
-                <HierarchicalDataTemplate ItemsSource = "{Binding Path=Childs}">
+    <TreeView IsEnabled="{Binding IsNotBusy}" ItemsSource="{Binding Tree.Nodes}" common:TreeViewHelper.SelectedEntityChangedCommand="{Binding SelectedEntityChangedCommand}" common:TreeViewHelper.SelectedEntity="{Binding CurrentEntity}">
+        <TreeView.ItemTemplate>
+            <HierarchicalDataTemplate ItemsSource = "{Binding Path=Children}">
+                <StackPanel Orientation="Horizontal">
+
+                    <Image Width="16" Height="16" Margin="0,0,5,0">
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ImageIndex}" Value="0">
+                                        <Setter Property="Source" Value="/StudyingController;component/Images/user_group.png"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ImageIndex}" Value="1">
+                                        <Setter Property="Source" Value="/StudyingController;component/Images/user.png"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+
                     <TextBlock Text="{Binding Path=Name}"/>
-                </HierarchicalDataTemplate>
-            </TreeView.ItemTemplate>
-        </TreeView>
-    </Grid>
+                </StackPanel>
+            </HierarchicalDataTemplate>
+        </TreeView.ItemTemplate>
+
+        <TreeView.ItemContainerStyle>
+            <Style TargetType="{x:Type TreeViewItem}">
+                <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+                <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+                <Setter Property="FontWeight" Value="Normal" />
+                <Style.Triggers>
+                    <Trigger Property="IsSelected" Value="True">
+                        <Setter Property="FontWeight" Value="Bold" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </TreeView.ItemContainerStyle>
+    </TreeView>
 </UserControl>

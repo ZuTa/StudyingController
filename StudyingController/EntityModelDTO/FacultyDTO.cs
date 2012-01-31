@@ -22,5 +22,19 @@ namespace EntitiesDTO
             get { return instituteID; }
             set { instituteID = value; }
         }
+
+        private List<SpecializationDTO> specializations;
+        [DataMember]
+        public List<SpecializationDTO> Specializations
+        {
+            get { return specializations; }
+            set { specializations = value; }
+        }
+
+        public FacultyDTO()
+            : base()
+        {
+            specializations = new List<SpecializationDTO>();
+        }
     }
 }

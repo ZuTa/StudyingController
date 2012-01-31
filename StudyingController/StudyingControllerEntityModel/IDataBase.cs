@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using EntitiesDTO;
 
 namespace StudyingControllerEntityModel
 {
-    public interface IDTOable<T> where T : BaseEntityDTO
+    public interface IDataBase
     {
-        T ToDTO();
 
-        void Assign(T entity);
+        int ID { get; set; }
+
     }
 }

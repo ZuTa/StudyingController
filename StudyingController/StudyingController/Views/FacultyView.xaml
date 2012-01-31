@@ -3,12 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:v="clr-namespace:StudyingController.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300" Loaded="UserControl_Loaded" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -21,5 +23,39 @@
                  Style="{StaticResource ValidationTextBoxToolTipStyle}" />
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Інститут :" Style="{StaticResource TextBlockStyle}"/>
         <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Institutes}" SelectedValue="{Binding Faculty.Institute}" Style="{StaticResource ValidationComboBoxToolTipStyle}"/>
+        <Grid Grid.Row="2" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <TextBlock Grid.Row="0" Text="Напрямки :" Style="{StaticResource TextBlockStyle}"/>
+            <Grid Grid.Row="1" Margin="5,0" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="btnAdd" Grid.Row="0" Grid.Column="1" Command="{Binding AddSpecializationCommand}" ToolTip="Додати" Style="{StaticResource EditableButtonStyle}">
+                    <Image Source="/StudyingController;component/Images/1327612523_Add.png" Stretch="Fill" />
+                </Button>
+                <Button x:Name="btnRemove" Grid.Row="1" Grid.Column="1" Command="{Binding RemoveSpecializationCommand}" CommandParameter="{Binding ElementName=lbSpecializations, Path=SelectedItem}" ToolTip="Видалити" Style="{StaticResource EditableButtonStyle}">
+                    <Image Source="/StudyingController;component/Images/1327612550_delete.png" Stretch="Fill" />
+                </Button>
+
+                <ListBox HorizontalContentAlignment="Stretch" x:Name="lbSpecializations" Grid.RowSpan="3" ItemsSource="{Binding Faculty.Specializations}" SelectionChanged="lbSpecializations_SelectionChanged">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Style="{StaticResource ValidationTextBoxToolTipStyle}" GotFocus="TextBox_GotFocus" />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>

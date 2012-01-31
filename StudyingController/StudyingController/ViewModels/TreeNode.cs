@@ -6,20 +6,52 @@ using System.Collections.ObjectModel;
 
 namespace StudyingController.ViewModels
 {
-    public class TreeNode
+    public class TreeNode : BaseViewModel
     {
         #region Fields & Properties
+
+        private int imageIndex;
+        public int ImageIndex
+        {
+            get { return imageIndex; }
+            set 
+            {
+                if (imageIndex != value)
+                {
+                    imageIndex = value;
+                    OnPropertyChanged("ImageIndex");
+                }
+            }
+        }
+
+        private int index;
+        public int Index
+        {
+            get { return index; }
+            set
+            {
+                if (index != value)
+                {
+                    index = value;
+                    OnPropertyChanged("Index");
+                }
+            }
+        }
 
         private string name;
         public string Name
         {
             get { return name; }
-            set { name = value; }
+            set
+            {
+                name = value;
+                OnPropertyChanged("Name");
+            }
         }
 
         private ObservableCollection<TreeNode> childs;
         private ReadOnlyObservableCollection<TreeNode> childsRO;
-        public ReadOnlyObservableCollection<TreeNode> Childs
+        public ReadOnlyObservableCollection<TreeNode> Children
         {
             get { return childsRO; }
             set { childsRO = value; }
@@ -36,15 +68,55 @@ namespace StudyingController.ViewModels
         public TreeNode ParentNode
         {
             get { return parentNode; }
-            set { parentNode = value; }
+            set
+            {
+                if (parentNode != value)
+                {
+                    parentNode = value;
+                    OnPropertyChanged("ParentNode");
+                }
+            }
+        }
+
+        private bool isExpanded;
+        public bool IsExpanded
+        {
+            get { return isExpanded; }
+            set
+            {
+                if (isExpanded != value)
+                {
+                    isExpanded = value;
+                    OnPropertyChanged("IsExpanded");
+                }
+            }
+        }
+
+        private bool isSelected;
+        public bool IsSelected
+        {
+            get { return isSelected; }
+            set
+            {
+                if (isSelected != value)
+                {
+                    isSelected = value;
+                    OnPropertyChanged("IsSelected");
+                }
+            }
         }
 
         #endregion
 
         #region Constructors
 
-        public TreeNode()
+        public TreeNode(string name, object tag, int index, int imageIndex)
         {
+            this.name = name;
+            this.tag = tag;
+            this.index = index;
+            this.imageIndex = imageIndex;
+
             childs = new ObservableCollection<TreeNode>();
             childsRO = new ReadOnlyObservableCollection<TreeNode>(childs);
 
@@ -82,4 +154,5 @@ namespace StudyingController.ViewModels
 
         #endregion
     }
+
 }

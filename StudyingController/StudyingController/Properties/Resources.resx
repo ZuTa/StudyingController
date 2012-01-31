@@ -120,6 +120,9 @@
   <data name="AppDataFolderName" xml:space="preserve">
     <value>StudyingController</value>
   </data>
+  <data name="DefaultMessageText" xml:space="preserve">
+    <value>Увага</value>
+  </data>
   <data name="ErrorBadCharsUsed" xml:space="preserve">
     <value>Використовуються недопустимі символи</value>
   </data>
@@ -182,6 +185,9 @@
   </data>
   <data name="MainSecretariesTxt" xml:space="preserve">
     <value>Головні секретарі</value>
+  </data>
+  <data name="RemoveEntityTxt" xml:space="preserve">
+    <value>Ви дійсно хочете видалити?</value>
   </data>
   <data name="Service" xml:space="preserve">
     <value>ControllerService.svc</value>

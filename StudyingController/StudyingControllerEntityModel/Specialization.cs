@@ -6,43 +6,37 @@ using EntitiesDTO;
 
 namespace StudyingControllerEntityModel
 {
-    public partial class Cathedra : IDTOable<CathedraDTO>, IDataBase
+    public partial class Specialization : IDTOable<SpecializationDTO>, IDataBase
     {
+
         #region Constructors
 
-        public Cathedra()
+        public Specialization()
         {
         }
 
-        public Cathedra(CathedraDTO cathedra)
+        public Specialization(SpecializationDTO entity)
         {
-            Assign(cathedra);
+            Assign(entity);
         }
 
         #endregion
 
-        #region Methods
-
-        public CathedraDTO ToDTO()
+        public SpecializationDTO ToDTO()
         {
-            CathedraDTO cathedra = new CathedraDTO
+            return new SpecializationDTO
             {
                 ID = this.ID,
                 Name = this.Name,
                 FacultyID = this.FacultyID
             };
-
-            return cathedra;
         }
 
-
-        public void Assign(CathedraDTO entity)
+        public void Assign(SpecializationDTO entity)
         {
             this.ID = entity.ID;
             this.Name = entity.Name;
             this.FacultyID = entity.FacultyID;
         }
-
-        #endregion
     }
 }

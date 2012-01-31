@@ -48,7 +48,7 @@ namespace StudyingController.ViewModels
         {
             get
             {
-                return !IsModified;
+                return !IsModified && CurrentWorkspace != null;
             }
         }
 
@@ -57,6 +57,14 @@ namespace StudyingController.ViewModels
             get 
             {
                 return IsModified && (CurrentWorkspace == null ? false : CurrentWorkspace.IsValid); 
+            }
+        }
+
+        public bool CanRefresh
+        {
+            get
+            {
+                return !IsModified;
             }
         }
 
@@ -111,7 +119,11 @@ namespace StudyingController.ViewModels
                 if (removeCommand == null)
                     removeCommand = new RelayCommand(param =>
                         {
-                            throw new NotImplementedException();
+                            if (UserInterop.ShowMessage(Properties.Resources.RemoveEntityTxt, Properties.Resources.DefaultMessageText, MessageButtons.YesNo, MessageTypes.Question) == MessageResults.Yes)
+                            {
+                                CurrentWorkspace.Remove();
+                                EntitiesProvider.Refresh();
+                            }
                         });
                 return removeCommand; 
             }
@@ -125,7 +137,7 @@ namespace StudyingController.ViewModels
                 if (updateCommand == null)
                     updateCommand = new RelayCommand(param =>
                         {
-                            throw new NotImplementedException();
+                            EntitiesProvider.Refresh();
                         });
                 return updateCommand; 
             }
@@ -156,11 +168,13 @@ namespace StudyingController.ViewModels
             OnPropertyChanged("IsEnabled");
             OnPropertyChanged("CanAdd");
             OnPropertyChanged("CanRemove");
+            OnPropertyChanged("CanRefresh");
         }
 
         private void ViewModelUnModified(object sender, EventArgs e)
         {
             UpdateProperties();
+
             EntitiesProvider.Refresh();
         }
 

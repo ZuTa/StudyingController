@@ -8,9 +8,43 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <TreeView IsEnabled="{Binding IsNotBusy}" ItemsSource="{Binding Tree.Nodes}" common:TreeViewHelper.SelectedEntityChangedCommand="{Binding SelectedEntityChangedCommand}" common:TreeViewHelper.SelectedEntity="{Binding CurrentEntity}">
         <TreeView.ItemTemplate>
-            <HierarchicalDataTemplate ItemsSource = "{Binding Path=Childs}">
-                <TextBlock Text="{Binding Path=Name}"/>
+            <HierarchicalDataTemplate ItemsSource = "{Binding Path=Children}">
+                <StackPanel Orientation="Horizontal">
+
+                    <Image Width="16" Height="16" Margin="0,0,5,0">
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ImageIndex}" Value="0">
+                                        <Setter Property="Source" Value="/StudyingController;component/Images/home.png"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ImageIndex}" Value="1">
+                                        <Setter Property="Source" Value="/StudyingController;component/Images/gnome_go_home.png"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ImageIndex}" Value="2">
+                                        <Setter Property="Source" Value="/StudyingController;component/Images/board.png"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+
+                    <TextBlock Text="{Binding Path=Name}"/>
+                </StackPanel>
             </HierarchicalDataTemplate>
         </TreeView.ItemTemplate>
+
+        <TreeView.ItemContainerStyle>
+            <Style TargetType="{x:Type TreeViewItem}">
+                <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+                <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+                <Setter Property="FontWeight" Value="Normal" />
+                <Style.Triggers>
+                    <Trigger Property="IsSelected" Value="True">
+                        <Setter Property="FontWeight" Value="Bold" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </TreeView.ItemContainerStyle>
     </TreeView>
 </UserControl>

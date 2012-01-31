@@ -17,9 +17,7 @@ namespace StudyingControllerEntityModel
         public InstituteSecretary(SystemUserDTO user)
             : base(user)
         {
-            InstituteSecretaryDTO secretary = user as InstituteSecretaryDTO;
-
-            this.InstituteID = secretary.InstituteID;
+            Assign(user as InstituteSecretaryDTO);
         }
 
         #endregion
@@ -36,9 +34,9 @@ namespace StudyingControllerEntityModel
             };
         }
 
-        public void UpdateData(InstituteSecretaryDTO entity)
+        public void Assign(InstituteSecretaryDTO entity)
         {
-            base.UpdateData(entity);
+            base.Assign(entity);
 
             InstituteID = entity.InstituteID;
         }

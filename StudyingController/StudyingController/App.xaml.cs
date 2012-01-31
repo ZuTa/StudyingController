@@ -69,9 +69,9 @@ namespace StudyingController
                 ex = ex.InnerException;
 
             if (ex is FaultException<SCS.ControllerServiceException>)
-                ShowError((ex as FaultException<SCS.ControllerServiceException>).Detail.Reason);
+                ShowMessage((ex as FaultException<SCS.ControllerServiceException>).Detail.Reason);
             else
-                ShowError(ex.Message);
+                ShowMessage(ex.Message);
 
             e.Handled = true;
 
@@ -145,9 +145,58 @@ namespace StudyingController
             MessageBox.Show(text);
         }
 
-        public void ShowError(string text)
+        public MessageResults ShowMessage(string message, string caption, MessageButtons buttons, MessageTypes type)
         {
-            MessageBox.Show(text, StudyingController.Properties.Resources.ErrorTxt, MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBoxImage image = MessageBoxImage.None;
+
+            switch (type)
+            {
+                case MessageTypes.Error:
+                    image = MessageBoxImage.Error;
+                    break;
+                case MessageTypes.Information:
+                    image = MessageBoxImage.Information;
+                    break;
+                case MessageTypes.Question:
+                    image = MessageBoxImage.Question;
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+
+            MessageBoxButton button = MessageBoxButton.OK;
+
+            switch (buttons)
+            {
+                case MessageButtons.OK:
+                    button = MessageBoxButton.OK;
+                    break;
+                case MessageButtons.YesNo:
+                    button = MessageBoxButton.YesNo;
+                    break;
+                case MessageButtons.OKCancel:
+                    button = MessageBoxButton.OKCancel;
+                    break;
+                case MessageButtons.YesNoCancel:
+                    button = MessageBoxButton.YesNoCancel;
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+
+            switch (MessageBox.Show(message, caption, button, image))
+            {
+                case MessageBoxResult.OK:
+                    return MessageResults.OK;
+                case MessageBoxResult.Cancel:
+                    return MessageResults.Cancel;
+                case MessageBoxResult.Yes:
+                    return MessageResults.Yes;
+                case MessageBoxResult.No:
+                    return MessageResults.No;
+                default:
+                    throw new NotImplementedException();
+            }
         }
 
         #endregion

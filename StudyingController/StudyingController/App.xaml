@@ -24,7 +24,7 @@
             <DataTemplate DataType="{x:Type vm:UniversityTreeViewModel}">
                 <v:UniversityTreeView/>
             </DataTemplate>
-
+            
             <DataTemplate DataType="{x:Type vm:UsersTreeViewModel}">
                 <v:UsersTreeView/>
             </DataTemplate>
@@ -76,8 +76,6 @@
             <DataTemplate DataType="{x:Type vm:MainSecretaryViewModel}">
                 <v:MainSecretaryView/>
             </DataTemplate>
-
-            
             
             <DataTemplate DataType="{x:Type vm:UserInformationViewModel}">
                 <v:UserInformationView/>

@@ -30,8 +30,6 @@ namespace StudyingController.ViewModels
             base.LoadData();
 
             BuildUsersTree();
-
-            CurrentEntity = GetActualEntity(previousSelectedEntity);
         }
 
         private void BuildUsersTree()
@@ -63,46 +61,37 @@ namespace StudyingController.ViewModels
             }
 
             StartLoading();
-            ControllerInterop.Service.BeginGetUsers(ControllerInterop.Session, roles, OnGetUsersCompleted, null);
+
+            List<SystemUserDTO> users = ControllerInterop.Service.GetUsers(ControllerInterop.Session, roles);
+
+            Dictionary<UserRoles, List<SystemUserDTO>> groups = new Dictionary<UserRoles, List<SystemUserDTO>>();
+            foreach (SystemUserDTO user in users)
+            {
+                if (!groups.ContainsKey(user.Role))
+                    groups.Add(user.Role, new List<SystemUserDTO>());
+                groups[user.Role].Add(user);
+            }
+
+            foreach (UserRoles role in Enum.GetValues(typeof(UserRoles)))
+            {
+                if (role != UserRoles.None)
+                {
+                    TreeNode parentNode = Tree.AppendNode(new TreeNode(EnumLocalizeHelper.GetText<PluralizeNameAttribute>(role), role, (int)role, 0));
+
+                    if (groups.ContainsKey(role))
+                    {
+                        foreach (SystemUserDTO user in groups[role])
+                            Tree.AppendNode(new TreeNode(user.UserInformation.ToString(), user, user.ID, 1), parentNode);
+                    }
+                }
+            }
+
+            StopLoading();
         }
 
         #endregion
 
         #region Callbacks
-
-        private void OnGetUsersCompleted(IAsyncResult ar)
-        {
-            Dispatcher.Invoke(
-               new Action<IAsyncResult>(iar =>
-               {
-                   List<SystemUserDTO> users = ControllerInterop.Service.EndGetUsers(iar);
-
-                   Dictionary<UserRoles, List<SystemUserDTO>> groups = new Dictionary<UserRoles, List<SystemUserDTO>>();
-                   foreach (SystemUserDTO user in users)
-                   {
-                       if (!groups.ContainsKey(user.Role))
-                           groups.Add(user.Role, new List<SystemUserDTO>());
-                       groups[user.Role].Add(user);
-                   }
-
-                   foreach (UserRoles role in Enum.GetValues(typeof(UserRoles)))
-                   {
-                       if (role != UserRoles.None)
-                       {
-                           TreeNode parentNode = Tree.AppendNode(new TreeNode { Name = EnumLocalizeHelper.GetText<PluralizeNameAttribute>(role), Tag = role });
-
-                           if (groups.ContainsKey(role))
-                           {
-                               foreach (SystemUserDTO user in groups[role])
-                                   Tree.AppendNode(new TreeNode { Name = user.UserInformation.ToString(), Tag = user }, parentNode);
-                           }
-                       }
-                   }
-
-                   StopLoading();
-               }), ar);
-        }
-
         #endregion
     }
 }

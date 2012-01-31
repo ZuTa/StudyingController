@@ -7,7 +7,7 @@ using EntitiesDTO;
 
 namespace StudyingControllerEntityModel
 {
-    public partial class UserInformation : IDTOable<UserInformationDTO>
+    public partial class UserInformation : IDTOable<UserInformationDTO>, IDataBase
     {
         #region Constructors
 
@@ -17,10 +17,7 @@ namespace StudyingControllerEntityModel
 
         public UserInformation(UserInformationDTO info)
         {
-            this.SystemUserID = info.ID;
-            this.FirstName = info.FirstName;
-            this.LastName = info.LastName;
-            this.Email = info.Email;
+            Assign(info);
         }
 
         #endregion
@@ -29,7 +26,7 @@ namespace StudyingControllerEntityModel
         {
             return new UserInformationDTO
             {
-                ID = this.SystemUserID,
+                ID = this.ID,
                 FirstName = this.FirstName,
                 LastName = this.LastName,
                 Email = this.Email,
@@ -37,9 +34,9 @@ namespace StudyingControllerEntityModel
         }
 
 
-        public void UpdateData(UserInformationDTO entity)
+        public void Assign(UserInformationDTO entity)
         {
-            SystemUserID = entity.ID;
+            ID = entity.ID;
             FirstName = entity.FirstName;
             LastName = entity.LastName;
             Email = entity.Email;

@@ -47,6 +47,11 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
+        public override void Remove()
+        {
+            ControllerInterop.Service.DeleteInstitute(ControllerInterop.Session, Institute.ID);
+        }
+
         public override void Rollback()
         {
             Institute.Assign(OriginalInstitute);

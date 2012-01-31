@@ -63,5 +63,29 @@ namespace StudyingControllerService
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
         void SaveUser(Session session, SystemUserDTO user);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        List<SpecializationDTO> GetSpecializations(Session session, int facultyID);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        void DeleteInstitute(Session session, int instituteID);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        void DeleteFaculty(Session session, int facultyID);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        void DeleteCathedra(Session session, int cathedraID);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        void DeleteGroup(Session session, int groupID);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        void DeleteUser(Session session, int userID);
     }
 }

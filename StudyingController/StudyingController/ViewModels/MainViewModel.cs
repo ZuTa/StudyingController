@@ -155,7 +155,7 @@ namespace StudyingController.ViewModels
         #endregion
 
         #region Constructors
-        
+
         public MainViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)
         {

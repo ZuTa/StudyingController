@@ -6,7 +6,7 @@ using EntitiesDTO;
 
 namespace StudyingControllerEntityModel
 {
-    public partial class Institute : IDTOable<InstituteDTO>
+    public partial class Institute : IDTOable<InstituteDTO>, IDataBase
     {
         #region Constructors
 
@@ -16,8 +16,7 @@ namespace StudyingControllerEntityModel
 
         public Institute(InstituteDTO institute)
         {
-            this.ID = institute.ID;
-            UpdateData(institute);
+            Assign(institute);
         }
 
         #endregion
@@ -33,8 +32,9 @@ namespace StudyingControllerEntityModel
             return institute;
         }
 
-        public void UpdateData(InstituteDTO institute)
+        public void Assign(InstituteDTO institute)
         {
+            this.ID = institute.ID;
             this.Name = institute.Name;
         }
     }

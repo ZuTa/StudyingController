@@ -6,7 +6,7 @@ using EntitiesDTO;
 
 namespace StudyingControllerEntityModel
 {
-    partial class Student : IDTOable<StudentDTO>
+    public partial class Student : IDTOable<StudentDTO>
     {
         #region Constructors
 
@@ -18,9 +18,7 @@ namespace StudyingControllerEntityModel
         public Student(SystemUserDTO user)
             :base(user)
         {
-            StudentDTO student = user as StudentDTO;
-
-            this.GroupID = student.GroupID;
+            Assign(user as StudentDTO);
         }
 
         #endregion
@@ -37,9 +35,9 @@ namespace StudyingControllerEntityModel
             };
         }
 
-        public void UpdateData(StudentDTO entity)
+        public void Assign(StudentDTO entity)
         {
-            base.UpdateData(entity);
+            base.Assign(entity);
 
             GroupID = entity.GroupID;
         }
