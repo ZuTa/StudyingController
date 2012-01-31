@@ -486,11 +486,7 @@ namespace StudyingControllerService
 
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    var item = (from f in context.Faculties
-                                where f.ID == facultyID
-                                select f).FirstOrDefault();
-                    if (item != null)
-                        context.Faculties.DeleteObject(item);
+                    DeleteFaculty(context, facultyID);
 
                     context.SaveChanges();
                 }
@@ -509,11 +505,22 @@ namespace StudyingControllerService
 
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    var item = (from f in context.Institutes
+                    var item = (from f in context.Institutes.Include("Faculties").Include("InstituteAdmins").Include("InstituteSecretaries")
                                 where f.ID == instituteID
                                 select f).FirstOrDefault();
+
                     if (item != null)
+                    {
+                        foreach (var faculty in item.Faculties.ToList())
+                            DeleteFaculty(context, faculty.ID);
+
+                        foreach (var user in item.InstituteAdmins.ToList())
+                            context.SystemUsers.DeleteObject(user);
+                        foreach (var user in item.InstituteSecretaries.ToList())
+                            context.SystemUsers.DeleteObject(user);
+
                         context.Institutes.DeleteObject(item);
+                    }
 
                     context.SaveChanges();
                 }
@@ -521,6 +528,25 @@ namespace StudyingControllerService
             catch (Exception ex)
             {
                 throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        private void DeleteFaculty(UniversityEntities context, int facultyID)
+        {
+            var item = (from f in context.Faculties.Include("Cathedras").Include("FacultyAdmins").Include("FacultySecretaries")
+                        where f.ID == facultyID
+                        select f).FirstOrDefault();
+            if (item != null)
+            {
+                foreach (var cathedra in item.Cathedras.ToList())
+                    DeleteCathedra(context, cathedra.ID);
+
+                foreach (var user in item.FacultyAdmins.ToList())
+                    context.SystemUsers.DeleteObject(user);
+                foreach (var user in item.FacultySecretaries.ToList())
+                    context.SystemUsers.DeleteObject(user);
+
+                context.Faculties.DeleteObject(item);
             }
         }
 
@@ -532,11 +558,7 @@ namespace StudyingControllerService
 
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    var item = (from f in context.Cathedras
-                                where f.ID == cathedraID
-                                select f).FirstOrDefault();
-                    if (item != null)
-                        context.Cathedras.DeleteObject(item);
+                    DeleteCathedra(context, cathedraID);
 
                     context.SaveChanges();
                 }
@@ -544,6 +566,23 @@ namespace StudyingControllerService
             catch (Exception ex)
             {
                 throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        private void DeleteCathedra(UniversityEntities context, int cathedraID)
+        {
+            var item = (from f in context.Cathedras.Include("Teachers").Include("Groups")
+                        where f.ID == cathedraID
+                        select f).FirstOrDefault();
+            if (item != null)
+            {
+                foreach (var group in item.Groups.ToList())
+                    DeleteCathedra(context, group.ID);
+
+                foreach (var user in item.Teachers.ToList())
+                    context.SystemUsers.DeleteObject(user);
+
+                context.Cathedras.DeleteObject(item);
             }
         }
 
@@ -555,11 +594,7 @@ namespace StudyingControllerService
 
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    var item = (from f in context.Groups
-                                where f.ID == groupID
-                                select f).FirstOrDefault();
-                    if (item != null)
-                        context.Groups.DeleteObject(item);
+                    DeleteGroup(context, groupID);
 
                     context.SaveChanges();
                 }
@@ -567,6 +602,20 @@ namespace StudyingControllerService
             catch (Exception ex)
             {
                 throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        private void DeleteGroup(UniversityEntities context, int groupID)
+        {
+            var item = (from f in context.Groups.Include("Students")
+                        where f.ID == groupID
+                        select f).FirstOrDefault();
+            if (item != null)
+            {
+                foreach (var user in item.Students.ToList())
+                    context.SystemUsers.DeleteObject(user);
+                
+                context.Groups.DeleteObject(item);
             }
         }
 
