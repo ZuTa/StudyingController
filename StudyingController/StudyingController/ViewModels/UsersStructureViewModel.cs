@@ -158,7 +158,7 @@ namespace StudyingController.ViewModels
                     {
                         string oldPassword = (CurrentWorkspace.Model as SystemUserModel).Password;
                         (CurrentWorkspace.Model as SystemUserModel).Password = PasswordGenerator.Generate();
-                        MailSender mail = MailSender.Instance();
+                        MailSender mail = MailSender.GetInstance();
                         MailMessage message = new MailMessage(Properties.Resources.EmailOwner, (CurrentWorkspace.Model as SystemUserModel).UserInformation.Email, Properties.Resources.EmailSubject, Properties.Resources.EmailText + (CurrentWorkspace.Model as SystemUserModel).Password);
                         if (mail.SendMessage(message))
                         {

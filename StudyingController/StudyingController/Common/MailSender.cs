@@ -33,7 +33,7 @@ namespace StudyingController.Common
             client = new SmtpClient(host, port);
         }
 
-        public static MailSender Instance()
+        public static MailSender GetInstance()
         {
             if (instance == null)
                 instance = new MailSender();

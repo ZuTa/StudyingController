@@ -32,7 +32,6 @@ namespace StudyingController.ViewModels
 
         internal void UpdateActivity()
         {
-            //isEnabled = 
             OnIsEnabledChanged(null);
             OnPropertyChanged("IsEnabled");
         }
@@ -42,7 +41,6 @@ namespace StudyingController.ViewModels
 
         private void OnIsEnabledChanged(EventArgs e)
         {
-            //IsEnableChangedEventHandler handler = IsEnableChanged;
             if (IsEnabledChanged != null)
                 IsEnabledChanged(this, e);
         }
