@@ -9,19 +9,36 @@ using System.Net.Mime;
 
 namespace StudyingController.Common
 {
-    static class MailSender
-    {
-       // private string smtpHost;// = "smtp.gmail.com";
-       // private int smtpPort;// = 587;
-       // private string login;// = "maksim.pizhov";
-       // private string password;// = "maksim17111991pizhov";
-        static private SmtpClient client;
-        static public bool SendMessage(string host, int port, string login, string password,string from, string to, string subject, string text)
+    class MailSender
+    {  
+        
+        private static MailSender instance;
+
+        private readonly string host;
+
+        private readonly int port;
+
+        private static SmtpClient client;
+
+        private MailSender() 
         {
+            host = Properties.Resources.SmtpServer;
+            port = 587;
             client = new SmtpClient(host, port);
+        }
+
+        public static MailSender Instance()
+        {
+            if (instance == null)
+                instance = new MailSender();
+
+            return instance;
+        }
+
+        public bool SendMessage(string login, string password, MailMessage message)
+        {
             client.EnableSsl = true;
             client.Credentials = new NetworkCredential(login, password);
-            MailMessage message = new MailMessage(from, to, subject, text);
             try
             {
                 client.Send(message);

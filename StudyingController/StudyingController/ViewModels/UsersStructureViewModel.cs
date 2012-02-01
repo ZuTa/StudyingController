@@ -7,6 +7,7 @@ using System.Windows.Threading;
 using EntitiesDTO;
 using System.Collections.ObjectModel;
 using StudyingController.ViewModels.Models;
+using System.Net.Mail;
 
 namespace StudyingController.ViewModels
 {
@@ -157,7 +158,9 @@ namespace StudyingController.ViewModels
                     {
                         string oldPassword = (CurrentWorkspace.Model as SystemUserModel).Password;
                         (CurrentWorkspace.Model as SystemUserModel).Password = PasswordGenerator.Generate();
-                        if (MailSender.SendMessage(Properties.Resources.SmtpServer, Int32.Parse(Properties.Resources.SmtpPort), Properties.Resources.EmailLogin, Properties.Resources.EmailPassword, Properties.Resources.EmailOwner, (CurrentWorkspace.Model as SystemUserModel).UserInformation.Email, Properties.Resources.EmailSubject, Properties.Resources.EmailText + (CurrentWorkspace.Model as SystemUserModel).Password))
+                        MailSender mail = MailSender.Instance();
+                        MailMessage message = new MailMessage(Properties.Resources.EmailOwner, (CurrentWorkspace.Model as SystemUserModel).UserInformation.Email, Properties.Resources.EmailSubject, Properties.Resources.EmailText + (CurrentWorkspace.Model as SystemUserModel).Password);
+                        if (mail.SendMessage(Properties.Resources.EmailLogin, Properties.Resources.EmailPassword, message))
                         {
                             UserInterop.ShowMessage(String.Format(Properties.Resources.SuccessSendEmail, (CurrentWorkspace.Model as SystemUserModel).Login, (CurrentWorkspace.Model as SystemUserModel).UserInformation.Email));
                             (CurrentWorkspace as SaveableViewModel).Save();
