@@ -340,15 +340,6 @@ namespace StudyingController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 587.
-        /// </summary>
-        internal static string SmtpPort {
-            get {
-                return ResourceManager.GetString("SmtpPort", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to smtp.gmail.com.
         /// </summary>
         internal static string SmtpServer {

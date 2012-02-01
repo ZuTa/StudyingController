@@ -210,9 +210,6 @@
   <data name="Service" xml:space="preserve">
     <value>ControllerService.svc</value>
   </data>
-  <data name="SmtpPort" xml:space="preserve">
-    <value>587</value>
-  </data>
   <data name="SmtpServer" xml:space="preserve">
     <value>smtp.gmail.com</value>
   </data>
