@@ -20,7 +20,7 @@ namespace StudyingController.ViewModels
 
         public SystemUserModel MainAdmin
         {
-            get { return model as SystemUserModel; }
+            get { return Model as SystemUserModel; }
         }
 
         #endregion
@@ -31,16 +31,16 @@ namespace StudyingController.ViewModels
             : base(userInterop, controllerInterop, dispatcher)
         {
             originalEntity = new SystemUserDTO();
-            model = new SystemUserModel(originalEntity as SystemUserDTO) { Role = UserRoles.MainAdmin };
-            this.model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+            Model = new SystemUserModel(originalEntity as SystemUserDTO) { Role = UserRoles.MainAdmin };
+            this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         public MainAdminViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, SystemUserDTO mainAdmin)
             : base(userInterop, controllerInterop, dispatcher)
         {
             originalEntity = mainAdmin;
-            model = new SystemUserModel(mainAdmin);
-            model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+            Model = new SystemUserModel(mainAdmin);
+            Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         #endregion
@@ -61,7 +61,10 @@ namespace StudyingController.ViewModels
         public override void Save()
         {
             SystemUserDTO mainAdminDTO = MainAdmin.ToDTO();
-            mainAdminDTO.Password = HashHelper.ComputeHash((model as SystemUserModel).Login);
+            if(mainAdminDTO.Password == null)
+                mainAdminDTO.Password = HashHelper.ComputeHash((Model as SystemUserModel).Login);
+            else
+                mainAdminDTO.Password = HashHelper.ComputeHash((Model as SystemUserModel).Password);
             ControllerInterop.Service.SaveUser(ControllerInterop.Session, mainAdminDTO);
             SetUnModified();
         }

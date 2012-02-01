@@ -20,7 +20,7 @@ namespace StudyingController.ViewModels
 
         public StudentModel Student
         {
-            get { return model as StudentModel; }
+            get { return Model as StudentModel; }
         }
 
         private List<GroupDTO> groups;
@@ -45,8 +45,8 @@ namespace StudyingController.ViewModels
             Load();
 
             originalEntity = new StudentDTO();
-            model = new StudentModel(originalEntity as StudentDTO) { Role = UserRoles.Student };
-            this.model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+            Model = new StudentModel(originalEntity as StudentDTO) { Role = UserRoles.Student };
+            this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         public StudentViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, StudentDTO student)
@@ -60,8 +60,8 @@ namespace StudyingController.ViewModels
                                 where g.ID == OriginalStudent.GroupID
                                 select g).FirstOrDefault();
 
-            model = new StudentModel(student);
-            model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+            Model = new StudentModel(student);
+            Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         #endregion
@@ -82,7 +82,10 @@ namespace StudyingController.ViewModels
         public override void Save()
         {
             StudentDTO groupAdminDTO = Student.ToDTO();
-            groupAdminDTO.Password = HashHelper.ComputeHash((model as SystemUserModel).Login);
+            if(groupAdminDTO.Password == null)
+                groupAdminDTO.Password = HashHelper.ComputeHash((Model as SystemUserModel).Login);
+            else
+                groupAdminDTO.Password = HashHelper.ComputeHash((Model as SystemUserModel).Password);
             ControllerInterop.Service.SaveUser(ControllerInterop.Session, groupAdminDTO);
             SetUnModified();
         }

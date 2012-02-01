@@ -20,7 +20,7 @@ namespace StudyingController.ViewModels
 
         public InstituteSecretaryModel InstituteSecretary
         {
-            get { return model as InstituteSecretaryModel; }
+            get { return Model as InstituteSecretaryModel; }
         }
 
         private List<InstituteDTO> institutes;
@@ -45,8 +45,8 @@ namespace StudyingController.ViewModels
             Load();
 
             originalEntity = new InstituteSecretaryDTO();
-            model = new InstituteSecretaryModel(originalEntity as InstituteSecretaryDTO) { Role = UserRoles.InstituteSecretary };
-            this.model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+            Model = new InstituteSecretaryModel(originalEntity as InstituteSecretaryDTO) { Role = UserRoles.InstituteSecretary };
+            this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         public InstituteSecretaryViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, InstituteSecretaryDTO instituteSecretary)
@@ -60,8 +60,8 @@ namespace StudyingController.ViewModels
                                         where institute.ID == OriginalInstituteSecretary.InstituteID
                                         select institute).FirstOrDefault();
 
-            model = new InstituteSecretaryModel(instituteSecretary);
-            model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+            Model = new InstituteSecretaryModel(instituteSecretary);
+            Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         #endregion
@@ -82,7 +82,10 @@ namespace StudyingController.ViewModels
         public override void Save()
         {
             InstituteSecretaryDTO instituteSecretaryDTO = InstituteSecretary.ToDTO();
-            instituteSecretaryDTO.Password = HashHelper.ComputeHash((model as SystemUserModel).Login);
+            if(instituteSecretaryDTO.Password == null)
+                instituteSecretaryDTO.Password = HashHelper.ComputeHash((Model as SystemUserModel).Login);
+            else
+                instituteSecretaryDTO.Password = HashHelper.ComputeHash((Model as SystemUserModel).Password);
             ControllerInterop.Service.SaveUser(ControllerInterop.Session, instituteSecretaryDTO);
             SetUnModified();
         }
