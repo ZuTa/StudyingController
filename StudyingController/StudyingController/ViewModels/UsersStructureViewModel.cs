@@ -168,8 +168,7 @@ namespace StudyingController.ViewModels
                         else
                         {
                             UserInterop.ShowMessage(Properties.Resources.ErrorSendEmail);
-                            (CurrentWorkspace.Model as SystemUserModel).Password = oldPassword;
-                            (CurrentWorkspace as SaveableViewModel).Save();
+                            (CurrentWorkspace as SaveableViewModel).Rollback();
                         }
                     });
                 return generatePasswordCommand;
