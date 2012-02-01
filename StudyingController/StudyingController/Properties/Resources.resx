@@ -123,6 +123,21 @@
   <data name="DefaultMessageText" xml:space="preserve">
     <value>Увага</value>
   </data>
+  <data name="EmailLogin" xml:space="preserve">
+    <value>studying.controller</value>
+  </data>
+  <data name="EmailOwner" xml:space="preserve">
+    <value>studying.controller@gmail.com</value>
+  </data>
+  <data name="EmailPassword" xml:space="preserve">
+    <value>studying.controller</value>
+  </data>
+  <data name="EmailSubject" xml:space="preserve">
+    <value>Generated Password</value>
+  </data>
+  <data name="EmailText" xml:space="preserve">
+    <value>Your new password is: </value>
+  </data>
   <data name="ErrorBadCharsUsed" xml:space="preserve">
     <value>Використовуються недопустимі символи</value>
   </data>
@@ -146,6 +161,9 @@
   </data>
   <data name="ErrorPortNotInt" xml:space="preserve">
     <value>Порт повинен бути цілим числом</value>
+  </data>
+  <data name="ErrorSendEmail" xml:space="preserve">
+    <value>Не вдалось надіслати лист з новим паролем. Відновлено попередній пароль.</value>
   </data>
   <data name="ErrorServerBadChars" xml:space="preserve">
     <value>Використано неприпустимі символи для сервера</value>
@@ -192,8 +210,17 @@
   <data name="Service" xml:space="preserve">
     <value>ControllerService.svc</value>
   </data>
+  <data name="SmtpPort" xml:space="preserve">
+    <value>587</value>
+  </data>
+  <data name="SmtpServer" xml:space="preserve">
+    <value>smtp.gmail.com</value>
+  </data>
   <data name="StudentsTxt" xml:space="preserve">
     <value>Студенти</value>
+  </data>
+  <data name="SuccessSendEmail" xml:space="preserve">
+    <value>Новий пароль для {0} надіслано. Перевірте свою електронну скриньку {1}</value>
   </data>
   <data name="TeachersTxt" xml:space="preserve">
     <value>Викладачі</value>

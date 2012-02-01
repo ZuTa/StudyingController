@@ -23,7 +23,7 @@ namespace StudyingController.ViewModels
 
         public CathedraModel Cathedra
         {
-            get { return model as CathedraModel; }         
+            get { return Model as CathedraModel; }         
         }
 
 
@@ -49,8 +49,8 @@ namespace StudyingController.ViewModels
             Load();
 
             originalEntity = new CathedraDTO();
-            model = new CathedraModel(originalEntity as CathedraDTO);
-            model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+            Model = new CathedraModel(originalEntity as CathedraDTO);
+            Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         public CathedraViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, CathedraDTO cathedra)
@@ -64,8 +64,8 @@ namespace StudyingController.ViewModels
                                 where faculty.ID == OriginalCathedra.FacultyID
                                 select faculty).FirstOrDefault();
 
-            model = new CathedraModel(cathedra);
-            model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+            Model = new CathedraModel(cathedra);
+            Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         #endregion

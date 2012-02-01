@@ -21,7 +21,7 @@ namespace StudyingController.ViewModels
       
         public FacultyModel Faculty
         {
-            get { return model as FacultyModel; }
+            get { return Model as FacultyModel; }
         }
 
         private List<InstituteDTO> institutes;
@@ -46,8 +46,8 @@ namespace StudyingController.ViewModels
             Load();
 
             originalEntity = new FacultyDTO();
-            model = new FacultyModel(originalEntity as FacultyDTO);
-            model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+            Model = new FacultyModel(originalEntity as FacultyDTO);
+            Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         public FacultyViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, FacultyDTO faculty)
@@ -61,8 +61,8 @@ namespace StudyingController.ViewModels
                                  where institute.ID == OriginalFaculty.InstituteID
                                  select institute).FirstOrDefault();
 
-            model = new FacultyModel(faculty);
-            model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+            Model = new FacultyModel(faculty);
+            Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         #endregion

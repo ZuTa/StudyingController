@@ -20,7 +20,7 @@ namespace StudyingController.ViewModels
 
         public SystemUserModel MainSecretary
         {
-            get { return model as SystemUserModel; }
+            get { return Model as SystemUserModel; }
         }
 
         #endregion
@@ -31,16 +31,16 @@ namespace StudyingController.ViewModels
             : base(userInterop, controllerInterop, dispatcher)
         {
             originalEntity = new SystemUserDTO();
-            model = new SystemUserModel(originalEntity as SystemUserDTO) { Role = UserRoles.MainSecretary };
-            this.model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+            Model = new SystemUserModel(originalEntity as SystemUserDTO) { Role = UserRoles.MainSecretary };
+            this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         public MainSecretaryViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, SystemUserDTO mainSecretary)
             : base(userInterop, controllerInterop, dispatcher)
         {
             originalEntity = mainSecretary;
-            model = new SystemUserModel(mainSecretary);
-            model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+            Model = new SystemUserModel(mainSecretary);
+            Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         #endregion
@@ -61,7 +61,10 @@ namespace StudyingController.ViewModels
         public override void Save()
         {
             SystemUserDTO mainSecretaryDTO = MainSecretary.ToDTO();
-            mainSecretaryDTO.Password = HashHelper.ComputeHash((model as SystemUserModel).Login);
+            if(mainSecretaryDTO.Password == null)
+                mainSecretaryDTO.Password = HashHelper.ComputeHash((Model as SystemUserModel).Login);
+            else
+                mainSecretaryDTO.Password = HashHelper.ComputeHash((Model as SystemUserModel).Password);
             ControllerInterop.Service.SaveUser(ControllerInterop.Session, mainSecretaryDTO);
             SetUnModified();
         }
