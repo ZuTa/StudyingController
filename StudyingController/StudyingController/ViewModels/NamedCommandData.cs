@@ -7,7 +7,7 @@ using StudyingController.ViewModels;
 
 namespace StudyingController.ViewModels
 {
-    public class NamedCommandData 
+    public class NamedCommandData : BaseViewModel
     {
         private string name;
         public string Name
@@ -21,6 +21,28 @@ namespace StudyingController.ViewModels
         {
             get { return command; }
             set { command = value; }
+        }
+
+        private bool isEnabled;
+        public bool IsEnabled
+        {
+            get { return isEnabled; }
+            set { isEnabled = value; }
+        } 
+
+        internal void UpdateActivity()
+        {
+            OnIsEnabledChanged(null);
+            OnPropertyChanged("IsEnabled");
+        }
+
+        public delegate void IsEnabledChangedEventHandler(object sender, EventArgs e);
+        public event IsEnabledChangedEventHandler IsEnabledChanged;
+
+        private void OnIsEnabledChanged(EventArgs e)
+        {
+            if (IsEnabledChanged != null)
+                IsEnabledChanged(this, e);
         }
     }
 }

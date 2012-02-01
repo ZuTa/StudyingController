@@ -20,7 +20,7 @@ namespace StudyingController.ViewModels
 
         public InstituteModel Institute
         {
-            get { return model as InstituteModel; }
+            get { return Model as InstituteModel; }
         }
 
         #endregion
@@ -31,16 +31,16 @@ namespace StudyingController.ViewModels
             : base(userInterop, controllerInterop, dispatcher)
         {
             originalEntity = new InstituteDTO();
-            model = new InstituteModel(originalEntity as InstituteDTO);
-            this.model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+            Model = new InstituteModel(originalEntity as InstituteDTO);
+            this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         public InstituteViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, InstituteDTO institute)
             : base(userInterop, controllerInterop, dispatcher)
         {
             this.originalEntity = institute;
-            this.model = new InstituteModel(institute);
-            this.model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+            this.Model = new InstituteModel(institute);
+            this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         #endregion

@@ -6,10 +6,12 @@ using StudyingController.Common;
 using System.Windows.Threading;
 using EntitiesDTO;
 using System.Collections.ObjectModel;
+using StudyingController.ViewModels.Models;
+using System.Net.Mail;
 
 namespace StudyingController.ViewModels
 {
-    public class UsersStructureViewModel : EditableViewModel
+    public class UsersStructureViewModel : EditableViewModel, IAdditionalCommands
     { 
         #region Fields & Properties
 
@@ -26,7 +28,15 @@ namespace StudyingController.ViewModels
                 }
             }
         }
-        
+
+        public bool CanGeneratePassword
+        {
+            get
+            {
+                return CurrentWorkspace == null ? false : CurrentWorkspace.Model is SystemUserModel;
+            }
+        }
+
         #endregion
 
         #region Constructors
@@ -138,6 +148,34 @@ namespace StudyingController.ViewModels
             }
         }
 
+        private RelayCommand generatePasswordCommand;
+        public RelayCommand GeneratePasswordCommand
+        {
+            get
+            {
+                if (generatePasswordCommand == null)
+                    generatePasswordCommand = new RelayCommand(param =>
+                    {
+                        string oldPassword = (CurrentWorkspace.Model as SystemUserModel).Password;
+                        (CurrentWorkspace.Model as SystemUserModel).Password = PasswordGenerator.Generate();
+                        MailSender mail = MailSender.GetInstance();
+                        MailMessage message = new MailMessage(Properties.Resources.EmailOwner, (CurrentWorkspace.Model as SystemUserModel).UserInformation.Email, Properties.Resources.EmailSubject, Properties.Resources.EmailText + (CurrentWorkspace.Model as SystemUserModel).Password);
+                        if (mail.SendMessage(message))
+                        {
+                            UserInterop.ShowMessage(String.Format(Properties.Resources.SuccessSendEmail, (CurrentWorkspace.Model as SystemUserModel).Login, (CurrentWorkspace.Model as SystemUserModel).UserInformation.Email));
+                            (CurrentWorkspace as SaveableViewModel).Save();
+                        }
+                        else
+                        {
+                            UserInterop.ShowMessage(Properties.Resources.ErrorSendEmail);
+                            (CurrentWorkspace.Model as SystemUserModel).Password = oldPassword;
+                            (CurrentWorkspace as SaveableViewModel).Save();
+                        }
+                    });
+                return generatePasswordCommand;
+            }
+        }
+        
         #endregion
 
         #region Methods
@@ -232,5 +270,37 @@ namespace StudyingController.ViewModels
 
         #endregion
 
+        private void HandleIsEnabledChanged(object sender, EventArgs e)
+        {
+            NamedCommandData namedCommandData = (NamedCommandData)sender;
+            namedCommandData.IsEnabled = CanGeneratePassword;
+        }
+
+        #region IAdditionalCommands
+
+        private ObservableCollection<NamedCommandData> additionalCommands;
+        public ObservableCollection<NamedCommandData> AdditionalCommands
+        {
+            get
+            {
+                if (additionalCommands == null)
+                {
+                    additionalCommands = new ObservableCollection<NamedCommandData>();
+                    additionalCommands.Add(new NamedCommandData { Command = GeneratePasswordCommand, Name = "Генерувати пароль", IsEnabled = CanGeneratePassword });
+                    additionalCommands[additionalCommands.Count - 1].IsEnabledChanged += HandleIsEnabledChanged;
+                }
+                return additionalCommands;
+            }
+        }
+
+        public void UpdateCommandsActivity()
+        {
+            foreach (var nc in additionalCommands)
+                nc.UpdateActivity();
+        }
+
+        #endregion
+
+        
     }
 }

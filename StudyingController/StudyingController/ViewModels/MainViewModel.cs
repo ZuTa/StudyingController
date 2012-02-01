@@ -100,6 +100,14 @@ namespace StudyingController.ViewModels
             }
         }
 
+        public bool HasAdditionalCommands
+        {
+            get
+            {
+                return CurrentWorkspace is IAdditionalCommands;
+            }
+        }
+
         public bool IsSaveable
         {
             get
@@ -222,6 +230,8 @@ namespace StudyingController.ViewModels
             }
         }
 
+        
+
         #endregion
 
         #region Methods
@@ -286,6 +296,7 @@ namespace StudyingController.ViewModels
             OnPropertyChanged("HasWorkspaces");
             OnPropertyChanged("IsSaveable");
             OnPropertyChanged("IsManipulateable");
+            OnPropertyChanged("HasAdditionalCommands");
         }
 
         private void SaveCurrentWorkspace()

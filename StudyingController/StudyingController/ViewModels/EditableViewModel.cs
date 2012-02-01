@@ -169,6 +169,9 @@ namespace StudyingController.ViewModels
             OnPropertyChanged("CanAdd");
             OnPropertyChanged("CanRemove");
             OnPropertyChanged("CanRefresh");
+
+            if (this is IAdditionalCommands)
+                (this as IAdditionalCommands).UpdateCommandsActivity();
         }
 
         private void ViewModelUnModified(object sender, EventArgs e)

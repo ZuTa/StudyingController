@@ -20,7 +20,7 @@ namespace StudyingController.ViewModels
 
         public TeacherModel Teacher
         {
-            get { return model as TeacherModel; }
+            get { return Model as TeacherModel; }
         }
 
         private List<CathedraDTO> cathedras;
@@ -45,8 +45,8 @@ namespace StudyingController.ViewModels
             Load();
 
             originalEntity = new TeacherDTO();
-            model = new TeacherModel(originalEntity as TeacherDTO) { Role = UserRoles.Teacher };
-            this.model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+            Model = new TeacherModel(originalEntity as TeacherDTO) { Role = UserRoles.Teacher };
+            this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         public TeacherViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, TeacherDTO teacher)
@@ -60,8 +60,8 @@ namespace StudyingController.ViewModels
                                         where cathedra.ID == OriginalTeacher.CathedraID
                                         select cathedra).FirstOrDefault();
 
-            model = new TeacherModel(teacher);
-            model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+            Model = new TeacherModel(teacher);
+            Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         #endregion
@@ -82,7 +82,10 @@ namespace StudyingController.ViewModels
         public override void Save()
         {
             TeacherDTO cathedraAdminDTO = Teacher.ToDTO();
-            cathedraAdminDTO.Password = HashHelper.ComputeHash((model as SystemUserModel).Login);
+            if(cathedraAdminDTO.Password == null)
+                cathedraAdminDTO.Password = HashHelper.ComputeHash((Model as SystemUserModel).Login);
+            else
+                cathedraAdminDTO.Password = HashHelper.ComputeHash((Model as SystemUserModel).Password);
             ControllerInterop.Service.SaveUser(ControllerInterop.Session, cathedraAdminDTO);
             SetUnModified();
         }

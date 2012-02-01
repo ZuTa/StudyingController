@@ -36,14 +36,14 @@
   <Class Name="StudyingController.ViewModels.MainViewModel" Collapsed="true">
     <Position X="5.75" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EYCIhAAhgggAAACAARAOQCKgAdAgDYBUAAAAAAAAApg=</HashCode>
+      <HashCode>EYCIhAAhgggAAACAARAuQCKgAdAgDYBUAAAAAAAAApg=</HashCode>
       <FileName>ViewModels\MainViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="StudyingController.ViewModels.EditableViewModel" Collapsed="true">
     <Position X="4" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AKAAAsCAEAJABAADQEEASIAiAgAAAUAAQEAAAQAEJAA=</HashCode>
+      <HashCode>AKAAQsCAEAJABAADQEEASIAiAgAAAUAAQEAAAQAEJAA=</HashCode>
       <FileName>ViewModels\EditableViewModel.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -66,7 +66,7 @@
   <Class Name="StudyingController.ViewModels.InstituteViewModel" Collapsed="true">
     <Position X="7.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAIAAAAAAAAACAIAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAIAAAAAAAAACAIAABCAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ViewModels\InstituteViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -80,7 +80,7 @@
   <Class Name="StudyingController.ViewModels.SaveableViewModel" Collapsed="true">
     <Position X="9.5" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAYCAAAEAAAADAAgAAAAAQBAAAAAACAAAAAAKAIA=</HashCode>
+      <HashCode>AAACAYCAAAEAAAADAAgABAAAQBAAAAAACAAAAAAKAIA=</HashCode>
       <FileName>ViewModels\SaveableViewModel.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -88,21 +88,21 @@
   <Class Name="StudyingController.ViewModels.CathedraViewModel" Collapsed="true">
     <Position X="9.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAAgIEAAAAAIAACEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AQAAgIEAAAAAIAACEAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ViewModels\CathedraViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="StudyingController.ViewModels.FacultyViewModel" Collapsed="true">
     <Position X="11.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAgIAAAAAAAIACAAAAAAAQAABAEAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AQAAgIAAAAACAICCAAAABAAQAABAEAAAAAAAAAEAAIA=</HashCode>
       <FileName>ViewModels\FacultyViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="StudyingController.ViewModels.GroupViewModel" Collapsed="true">
     <Position X="13" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgAAgMAAAAAAAAACEAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AgAAgMAAAAAAAAACEAAABBAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ViewModels\GroupViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -116,9 +116,10 @@
   <Class Name="StudyingController.ViewModels.UsersStructureViewModel" Collapsed="true">
     <Position X="5.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IQAAADWAEAAQgBCEAAAABAAAAAAAAUAAAhEAAAAAAEA=</HashCode>
+      <HashCode>IQAAADWAEEAQgBCEAAAABAAAAAAAAUAAAhEAAAAAAEA=</HashCode>
       <FileName>ViewModels\UsersStructureViewModel.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Interface Name="StudyingController.ViewModels.IEditable" Collapsed="true">
     <Position X="7.5" Y="1" Width="1.5" />

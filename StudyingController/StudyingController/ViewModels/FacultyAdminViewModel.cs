@@ -20,7 +20,7 @@ namespace StudyingController.ViewModels
 
         public FacultyAdminModel FacultyAdmin
         {
-            get { return model as FacultyAdminModel; }
+            get { return Model as FacultyAdminModel; }
         }
 
         private List<FacultyDTO> faculties;
@@ -45,8 +45,8 @@ namespace StudyingController.ViewModels
             Load();
 
             originalEntity = new FacultyAdminDTO();
-            model = new FacultyAdminModel(originalEntity as FacultyAdminDTO) { Role = UserRoles.FacultyAdmin };
-            this.model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+            Model = new FacultyAdminModel(originalEntity as FacultyAdminDTO) { Role = UserRoles.FacultyAdmin };
+            this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         public FacultyAdminViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, FacultyAdminDTO facultyAdmin)
@@ -60,8 +60,8 @@ namespace StudyingController.ViewModels
                                         where faculty.ID == OriginalFacultyAdmin.FacultyID
                                         select faculty).FirstOrDefault();
 
-            model = new FacultyAdminModel(facultyAdmin);
-            model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+            Model = new FacultyAdminModel(facultyAdmin);
+            Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         #endregion
@@ -82,7 +82,10 @@ namespace StudyingController.ViewModels
         public override void Save()
         {
             FacultyAdminDTO facultyAdminDTO = FacultyAdmin.ToDTO();
-            facultyAdminDTO.Password = HashHelper.ComputeHash((model as SystemUserModel).Login);
+            if(facultyAdminDTO.Password == null)
+                facultyAdminDTO.Password = HashHelper.ComputeHash((Model as SystemUserModel).Login);
+            else
+                facultyAdminDTO.Password = HashHelper.ComputeHash((Model as SystemUserModel).Password);
             ControllerInterop.Service.SaveUser(ControllerInterop.Session, facultyAdminDTO);
             SetUnModified();
         }
