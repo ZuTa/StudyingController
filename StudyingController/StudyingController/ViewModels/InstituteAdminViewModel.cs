@@ -6,6 +6,7 @@ using EntitiesDTO;
 using StudyingController.ViewModels.Models;
 using StudyingController.Common;
 using System.Windows.Threading;
+using System.Collections.ObjectModel;
 
 namespace StudyingController.ViewModels
 {
@@ -20,7 +21,7 @@ namespace StudyingController.ViewModels
 
         public InstituteAdminModel InstituteAdmin
         {
-            get { return model as InstituteAdminModel; }
+            get { return Model as InstituteAdminModel; }
         }
 
         private List<InstituteDTO> institutes;
@@ -45,8 +46,8 @@ namespace StudyingController.ViewModels
             Load();
 
             originalEntity = new InstituteAdminDTO();
-            model = new InstituteAdminModel(originalEntity as InstituteAdminDTO) { Role = UserRoles.InstituteAdmin };
-            this.model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+            Model = new InstituteAdminModel(originalEntity as InstituteAdminDTO) { Role = UserRoles.InstituteAdmin };
+            this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         public InstituteAdminViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, InstituteAdminDTO instituteAdmin)
@@ -60,8 +61,8 @@ namespace StudyingController.ViewModels
                                         where institute.ID == OriginalInstituteAdmin.InstituteID
                                         select institute).FirstOrDefault();
 
-            model = new InstituteAdminModel(instituteAdmin);
-            model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+            Model = new InstituteAdminModel(instituteAdmin);
+            Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         #endregion
@@ -82,7 +83,10 @@ namespace StudyingController.ViewModels
         public override void Save()
         {
             InstituteAdminDTO instituteAdminDTO = InstituteAdmin.ToDTO();
-            instituteAdminDTO.Password = HashHelper.ComputeHash((model as SystemUserModel).Login);
+            if(instituteAdminDTO.Password == null)
+                instituteAdminDTO.Password = HashHelper.ComputeHash((Model as SystemUserModel).Login);
+            else
+                instituteAdminDTO.Password = HashHelper.ComputeHash((Model as SystemUserModel).Password);
             ControllerInterop.Service.SaveUser(ControllerInterop.Session, instituteAdminDTO);
             SetUnModified();
         }

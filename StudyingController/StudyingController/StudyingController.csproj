@@ -59,6 +59,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common\EnumLocalizeHelper.cs" />
+    <Compile Include="Common\MailSender.cs" />
+    <Compile Include="Common\PasswordGenerator.cs" />
     <Compile Include="Common\TreeViewHelper.cs" />
     <Compile Include="Common\ViewHelper.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
@@ -68,6 +70,7 @@
     <Compile Include="ViewModels\FacultySecretaryViewModel.cs" />
     <Compile Include="ViewModels\FacultyViewModel.cs" />
     <Compile Include="ViewModels\GroupViewModel.cs" />
+    <Compile Include="ViewModels\IAdditionalCommands.cs" />
     <Compile Include="ViewModels\IEditable.cs" />
     <Compile Include="ViewModels\IManipulateable.cs" />
     <Compile Include="ViewModels\InstituteAdminViewModel.cs" />
@@ -384,6 +387,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\genPass.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -28,6 +28,11 @@ namespace StudyingController.ViewModels
         protected BaseEntityDTO originalEntity;
 
         protected BaseModel model;
+        public BaseModel Model
+        {
+            get { return model; }
+            set { model = value; }
+        }
         
         #endregion
 

@@ -23,7 +23,7 @@ namespace StudyingController.ViewModels
 
         public GroupModel Group
         {
-            get { return model as GroupModel; }
+            get { return Model as GroupModel; }
         }
 
 
@@ -49,8 +49,8 @@ namespace StudyingController.ViewModels
             Load();
 
             originalEntity = new GroupDTO();
-            model = new GroupModel(originalEntity as GroupDTO);
-            model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+            Model = new GroupModel(originalEntity as GroupDTO);
+            Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         public GroupViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, GroupDTO group)
@@ -64,8 +64,8 @@ namespace StudyingController.ViewModels
                                 where cathedra.ID == OriginalGroup.CathedraID
                                 select cathedra).FirstOrDefault();
 
-            model = new GroupModel(group);
-            model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+            Model = new GroupModel(group);
+            Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         #endregion
