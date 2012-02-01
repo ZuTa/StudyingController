@@ -160,7 +160,7 @@ namespace StudyingController.ViewModels
                         (CurrentWorkspace.Model as SystemUserModel).Password = PasswordGenerator.Generate();
                         MailSender mail = MailSender.Instance();
                         MailMessage message = new MailMessage(Properties.Resources.EmailOwner, (CurrentWorkspace.Model as SystemUserModel).UserInformation.Email, Properties.Resources.EmailSubject, Properties.Resources.EmailText + (CurrentWorkspace.Model as SystemUserModel).Password);
-                        if (mail.SendMessage(Properties.Resources.EmailLogin, Properties.Resources.EmailPassword, message))
+                        if (mail.SendMessage(message))
                         {
                             UserInterop.ShowMessage(String.Format(Properties.Resources.SuccessSendEmail, (CurrentWorkspace.Model as SystemUserModel).Login, (CurrentWorkspace.Model as SystemUserModel).UserInformation.Email));
                             (CurrentWorkspace as SaveableViewModel).Save();
