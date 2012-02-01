@@ -18,12 +18,18 @@ namespace StudyingController.Common
 
         private readonly int port;
 
+        private readonly string login;
+
+        private readonly string password;
+
         private static SmtpClient client;
 
         private MailSender() 
         {
             host = Properties.Resources.SmtpServer;
             port = 587;
+            login = Properties.Resources.EmailLogin;
+            password = Properties.Resources.EmailPassword;
             client = new SmtpClient(host, port);
         }
 
@@ -35,7 +41,7 @@ namespace StudyingController.Common
             return instance;
         }
 
-        public bool SendMessage(string login, string password, MailMessage message)
+        public bool SendMessage(MailMessage message)
         {
             client.EnableSsl = true;
             client.Credentials = new NetworkCredential(login, password);
