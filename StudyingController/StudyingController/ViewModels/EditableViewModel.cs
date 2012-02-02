@@ -171,7 +171,7 @@ namespace StudyingController.ViewModels
             OnPropertyChanged("CanRefresh");
 
             if (this is IAdditionalCommands)
-                (this as IAdditionalCommands).UpdateCommandsActivity();
+                (this as IAdditionalCommands).UpdateCommandsEnabledState();
         }
 
         private void ViewModelUnModified(object sender, EventArgs e)

@@ -33,7 +33,7 @@ namespace StudyingController.ViewModels
         {
             get
             {
-                return CurrentWorkspace == null ? false : CurrentWorkspace.Model is SystemUserModel;
+                return CurrentWorkspace == null ? false : CurrentWorkspace.Model is SystemUserModel && CurrentWorkspace.Model.Exists();
             }
         }
 
@@ -168,8 +168,7 @@ namespace StudyingController.ViewModels
                         else
                         {
                             UserInterop.ShowMessage(Properties.Resources.ErrorSendEmail);
-                            (CurrentWorkspace.Model as SystemUserModel).Password = oldPassword;
-                            (CurrentWorkspace as SaveableViewModel).Save();
+                            (CurrentWorkspace as SaveableViewModel).Rollback();
                         }
                     });
                 return generatePasswordCommand;
@@ -264,17 +263,18 @@ namespace StudyingController.ViewModels
             return null;
         }
 
+        public void UpdateCommandsEnabledState()
+        {
+            foreach (NamedCommandData ncd in additionalCommands)
+                if (ncd.UpdateEnabledState != null)
+                    ncd.UpdateEnabledState();
+        }
+
         #endregion
 
         #region Callbacks
 
         #endregion
-
-        private void HandleIsEnabledChanged(object sender, EventArgs e)
-        {
-            NamedCommandData namedCommandData = (NamedCommandData)sender;
-            namedCommandData.IsEnabled = CanGeneratePassword;
-        }
 
         #region IAdditionalCommands
 
@@ -286,17 +286,14 @@ namespace StudyingController.ViewModels
                 if (additionalCommands == null)
                 {
                     additionalCommands = new ObservableCollection<NamedCommandData>();
-                    additionalCommands.Add(new NamedCommandData { Command = GeneratePasswordCommand, Name = "Генерувати пароль", IsEnabled = CanGeneratePassword });
-                    additionalCommands[additionalCommands.Count - 1].IsEnabledChanged += HandleIsEnabledChanged;
+
+                    NamedCommandData generatePassword = new NamedCommandData { Command = GeneratePasswordCommand, Name = "Генерувати пароль", IsEnabled = CanGeneratePassword};
+                    generatePassword.UpdateEnabledState = () => generatePassword.IsEnabled = CanGeneratePassword;
+
+                    additionalCommands.Add(generatePassword);
                 }
                 return additionalCommands;
             }
-        }
-
-        public void UpdateCommandsActivity()
-        {
-            foreach (var nc in additionalCommands)
-                nc.UpdateActivity();
         }
 
         #endregion

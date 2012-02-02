@@ -66,6 +66,11 @@ namespace StudyingController.ViewModels.Models
             return result;
         }
 
+        public bool Exists()
+        {
+            return this.ID > 0;
+        }
+
         protected void OnPropertyChanged(string propertyName)
         {
             Common.Checks.CheckPropertyExists(this, propertyName);
