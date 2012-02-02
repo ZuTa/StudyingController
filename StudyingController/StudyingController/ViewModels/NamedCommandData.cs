@@ -27,22 +27,21 @@ namespace StudyingController.ViewModels
         public bool IsEnabled
         {
             get { return isEnabled; }
-            set { isEnabled = value; }
-        } 
-
-        internal void UpdateActivity()
-        {
-            OnIsEnabledChanged(null);
-            OnPropertyChanged("IsEnabled");
+            set 
+            {
+                if (isEnabled != value)
+                {
+                    isEnabled = value;
+                    OnPropertyChanged("IsEnabled");
+                }
+            }
         }
 
-        public delegate void IsEnabledChangedEventHandler(object sender, EventArgs e);
-        public event IsEnabledChangedEventHandler IsEnabledChanged;
-
-        private void OnIsEnabledChanged(EventArgs e)
+        private Action updateEnabledState;
+        public Action UpdateEnabledState
         {
-            if (IsEnabledChanged != null)
-                IsEnabledChanged(this, e);
+            get { return updateEnabledState; }
+            set { updateEnabledState = value; }
         }
     }
 }

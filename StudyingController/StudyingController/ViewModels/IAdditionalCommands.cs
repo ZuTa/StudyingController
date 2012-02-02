@@ -10,6 +10,6 @@ namespace StudyingController.ViewModels
     {
         ObservableCollection<NamedCommandData> AdditionalCommands { get; }
 
-        void UpdateCommandsActivity();
+        void UpdateCommandsEnabledState();
     }
 }

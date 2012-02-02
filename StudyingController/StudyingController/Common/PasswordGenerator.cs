@@ -15,14 +15,20 @@ namespace StudyingController.Common
             for (int i = 0; i != 8; i++)
             {
                 symbType = rand.Next(0, 3);
-                if (symbType == 0)
-                    generatedPass += Convert.ToChar(rand.Next(65, 90));
-                else
-                    if (symbType == 1)
+                switch(symbType)
+                {
+                    case 0:
+                        generatedPass += Convert.ToChar(rand.Next(65, 90));
+                        break;
+                    case 1:
                         generatedPass += Convert.ToChar(rand.Next(97, 122));
-                    else
-                        if (symbType == 2)
-                            generatedPass += Convert.ToChar(rand.Next(48, 57));
+                        break;
+                    case 2:
+                        generatedPass += Convert.ToChar(rand.Next(48, 57));
+                        break;
+                    default:
+                        break;
+                }   
             }
             return generatedPass;
         }
