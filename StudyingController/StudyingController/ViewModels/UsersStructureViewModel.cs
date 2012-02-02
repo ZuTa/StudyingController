@@ -156,21 +156,25 @@ namespace StudyingController.ViewModels
                 if (generatePasswordCommand == null)
                     generatePasswordCommand = new RelayCommand(param =>
                     {
-                        string oldPassword = (CurrentWorkspace.Model as SystemUserModel).Password;
-                        (CurrentWorkspace.Model as SystemUserModel).Password = PasswordGenerator.Generate();
+                        SystemUserModel user = CurrentWorkspace.Model as SystemUserModel;
+                        user.Password = PasswordGenerator.Generate();
+
                         MailSender mail = MailSender.GetInstance();
-                        MailMessage message = new MailMessage(Properties.Resources.EmailOwner, (CurrentWorkspace.Model as SystemUserModel).UserInformation.Email, Properties.Resources.EmailSubject, Properties.Resources.EmailText + (CurrentWorkspace.Model as SystemUserModel).Password);
+
+                        MailMessage message = new MailMessage(Properties.Resources.EmailOwner, user.UserInformation.Email, Properties.Resources.EmailSubject, Properties.Resources.EmailText + user.Password);
+
                         if (mail.SendMessage(message))
                         {
-                            UserInterop.ShowMessage(String.Format(Properties.Resources.SuccessSendEmail, (CurrentWorkspace.Model as SystemUserModel).Login, (CurrentWorkspace.Model as SystemUserModel).UserInformation.Email));
-                            (CurrentWorkspace as SaveableViewModel).Save();
+                            UserInterop.ShowMessage(String.Format(Properties.Resources.SuccessSendEmail, user.Login, user.UserInformation.Email));
+                            CurrentWorkspace.Save();
                         }
                         else
                         {
                             UserInterop.ShowMessage(Properties.Resources.ErrorSendEmail);
-                            (CurrentWorkspace as SaveableViewModel).Rollback();
+                            CurrentWorkspace.Rollback();
                         }
                     });
+
                 return generatePasswordCommand;
             }
         }
