@@ -125,7 +125,7 @@ namespace StudyingController.ClientData
         private string IsLoginValid()
         {
             List<string> errors = new List<string>();
-            if (login.Length == 0)
+            if (login == null || login.Length == 0)
                 errors.Add(Properties.Resources.ErrorPortEmpty);
             else
             {
@@ -140,7 +140,7 @@ namespace StudyingController.ClientData
         private string IsPasswordValid()
         {
             List<string> errors = new List<string>();
-            if (password.Length < 4)
+            if (password == null || password.Length < 4)
                 errors.Add("");
             return string.Join(Environment.NewLine, errors);
         }
@@ -148,7 +148,7 @@ namespace StudyingController.ClientData
         private string IsServerValid()
         {
             List<string> errors = new List<string>();
-            if (server.Length == 0)
+            if (server == null || server.Length == 0)
                 errors.Add(Properties.Resources.ErrorServerEmpty);
             else
             {
@@ -162,7 +162,7 @@ namespace StudyingController.ClientData
         {
             List<string> errors = new List<string>();
             int currPort;
-            if (port.Length == 0)
+            if (port == null || port.Length == 0)
                 errors.Add(Properties.Resources.ErrorPortEmpty);
             else
             {
