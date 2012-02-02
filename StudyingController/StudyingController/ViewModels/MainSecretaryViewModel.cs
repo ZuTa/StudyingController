@@ -49,7 +49,7 @@ namespace StudyingController.ViewModels
 
         public override void Remove()
         {
-            throw new NotImplementedException();
+            ControllerInterop.Service.DeleteUser(ControllerInterop.Session, MainSecretary.ID);
         }
 
         public override void Rollback()

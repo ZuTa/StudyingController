@@ -70,7 +70,7 @@ namespace StudyingController.ViewModels
 
         public override void Remove()
         {
-            throw new NotImplementedException();
+            ControllerInterop.Service.DeleteUser(ControllerInterop.Session, Teacher.ID);
         }
 
         public override void Rollback()
@@ -81,12 +81,12 @@ namespace StudyingController.ViewModels
 
         public override void Save()
         {
-            TeacherDTO cathedraAdminDTO = Teacher.ToDTO();
-            if(cathedraAdminDTO.Password == null)
-                cathedraAdminDTO.Password = HashHelper.ComputeHash((Model as SystemUserModel).Login);
+            TeacherDTO teacherDTO = Teacher.ToDTO();
+            if(teacherDTO.Password == null)
+                teacherDTO.Password = HashHelper.ComputeHash((Model as SystemUserModel).Login);
             else
-                cathedraAdminDTO.Password = HashHelper.ComputeHash((Model as SystemUserModel).Password);
-            ControllerInterop.Service.SaveUser(ControllerInterop.Session, cathedraAdminDTO);
+                teacherDTO.Password = HashHelper.ComputeHash((Model as SystemUserModel).Password);
+            ControllerInterop.Service.SaveUser(ControllerInterop.Session, teacherDTO);
             SetUnModified();
         }
 

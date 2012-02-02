@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using EntitiesDTO;
+using StudyingController.Common;
 
 namespace StudyingController.ViewModels.Models
 {
@@ -11,6 +12,7 @@ namespace StudyingController.ViewModels.Models
         #region Fields & Properties
 
         private GroupDTO group;
+        [Validateable]
         public GroupDTO Group
         {
             get { return group; }

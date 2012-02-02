@@ -87,5 +87,13 @@ namespace StudyingControllerService
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
         void DeleteUser(Session session, int userID);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        GroupDTO GetGroupByID(Session session, int? groupID);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        SpecializationDTO GetSpecializationByID(Session session, int? specializationID);
     }
 }

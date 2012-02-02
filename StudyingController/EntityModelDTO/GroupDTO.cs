@@ -15,6 +15,21 @@ namespace EntitiesDTO
             set { cathedra = value; }
         }
 
+        private SpecializationDTO specialization;
+        public SpecializationDTO Specialization
+        {
+            get { return specialization; }
+            set { specialization = value; }
+        }
+
+        private int specializationID;
+        [DataMember]
+        public int SpecializationID
+        {
+            get { return specializationID; }
+            set { specializationID = value; }
+        }
+
         private int cathedraID;
         [DataMember]
         public int CathedraID

@@ -104,10 +104,23 @@ namespace StudyingController.ViewModels
             List<CathedraDTO> cathedras = ControllerInterop.Service.GetCathedras(ControllerInterop.Session, facultyID);
             foreach (var cathedra in cathedras)
             {
-                TreeNode node = Tree.AppendNode(new TreeNode(cathedra.Name, cathedra, cathedra.ID, 2), parentNode);
+                lock (Tree)
+                {
+                    TreeNode node = Tree.AppendNode(new TreeNode(cathedra.Name, cathedra, cathedra.ID, 2), parentNode);
+
+                    LoadGroups(cathedra.ID, node);
+                }
             }
         }
 
+        private void LoadGroups(int cathedraID, TreeNode parentNode)
+        {
+            List<GroupDTO> groups = ControllerInterop.Service.GetGroups(ControllerInterop.Session, cathedraID);
+            foreach (var group in groups)
+            {
+                TreeNode node = Tree.AppendNode(new TreeNode(group.Name, group, group.ID, 3), parentNode);
+            }
+        }
 
         #endregion
 

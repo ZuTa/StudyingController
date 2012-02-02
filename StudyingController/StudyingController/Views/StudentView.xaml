@@ -12,6 +12,8 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -30,8 +32,14 @@
         <TextBlock Grid.Row="3" Grid.Column="0" Text="E-mail :" Style="{StaticResource TextBlockStyle}"/>
         <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Path=Student.UserInformation.Email, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
                  Style="{StaticResource ValidationTextBoxToolTipStyle}"/>
-        <TextBlock Grid.Row="4" Grid.Column="0" Text="Група :" Style="{StaticResource TextBlockStyle}"/>
-        <ComboBox Grid.Row="4" Grid.Column="1" ItemsSource="{Binding Groups}" SelectedValue="{Binding Student.Group, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="Факультет :" Style="{StaticResource TextBlockStyle}"/>
+        <ComboBox Grid.Row="4" Grid.Column="1" ItemsSource="{Binding Faculties}" SelectedValue="{Binding Faculty, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
+                 Style="{StaticResource ValidationComboBoxToolTipStyle}"/>
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="Кафедра :" Style="{StaticResource TextBlockStyle}"/>
+        <ComboBox Grid.Row="5" Grid.Column="1" ItemsSource="{Binding Cathedras}" SelectedValue="{Binding Cathedra, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
+                 Style="{StaticResource ValidationComboBoxToolTipStyle}"/>
+        <TextBlock Grid.Row="6" Grid.Column="0" Text="Група :" Style="{StaticResource TextBlockStyle}"/>
+        <ComboBox Grid.Row="6" Grid.Column="1" ItemsSource="{Binding Groups}" SelectedValue="{Binding Student.Group, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
                  Style="{StaticResource ValidationComboBoxToolTipStyle}"/>
     </Grid>
 </UserControl>

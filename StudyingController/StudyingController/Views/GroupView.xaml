@@ -9,6 +9,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -19,8 +21,15 @@
         <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=Group.Name, UpdateSourceTrigger=PropertyChanged,
                                                             ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
                  Style="{StaticResource ValidationTextBoxToolTipStyle}" />
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="Кафедра :" Style="{StaticResource TextBlockStyle}"/>
-        <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Cathedras}" SelectedValue="{Binding Group.Cathedra, UpdateSourceTrigger=PropertyChanged,
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Факультет :" Style="{StaticResource TextBlockStyle}"/>
+        <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Faculties}" SelectedValue="{Binding Faculty, UpdateSourceTrigger=PropertyChanged,
+                                                            ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" Style="{StaticResource ValidationComboBoxToolTipStyle}"/>
+
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Кафедра :" Style="{StaticResource TextBlockStyle}"/>
+        <ComboBox Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Cathedras}" SelectedValue="{Binding Group.Cathedra, UpdateSourceTrigger=PropertyChanged,
+                                                            ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" Style="{StaticResource ValidationComboBoxToolTipStyle}"/>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Напрямок :" Style="{StaticResource TextBlockStyle}"/>
+        <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding Specializations}" SelectedValue="{Binding Group.Specialization, UpdateSourceTrigger=PropertyChanged,
                                                             ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" Style="{StaticResource ValidationComboBoxToolTipStyle}"/>
     </Grid>
 </UserControl>

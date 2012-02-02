@@ -137,7 +137,7 @@ namespace StudyingControllerService
                 case UserRoles.FacultySecretary:
                     return new FacultySecretary(user);
                 case UserRoles.Student:
-                    //return new Student(user);
+                    return new Student(user);
                 case UserRoles.Teacher:
                     return new Teacher(user);
                 default:
@@ -254,6 +254,31 @@ namespace StudyingControllerService
             }
         }
 
+        public GroupDTO GetGroupByID(Session session, int? groupID)
+        {
+            try
+            {
+                CheckSession(session);
+                GroupDTO result = new GroupDTO();
+
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    Group group = (from g in context.Groups
+                              where g.ID == groupID
+                              select g).FirstOrDefault();
+                    
+                    result = GetDTO<GroupDTO>(group);
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+
+        }
+
         public List<GroupDTO> GetGroups(Session session, int cathedraID)
         {
             try
@@ -263,7 +288,7 @@ namespace StudyingControllerService
 
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    var query = from g in context.Groups
+                    var query = from g in context.Groups.Include("Specialization")
                                 where g.CathedraID== cathedraID
                                 select g;
                     foreach (var group in query)
@@ -366,7 +391,7 @@ namespace StudyingControllerService
                 CheckSession(session);
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    var item = context.Groups.FirstOrDefault(gr => gr.ID == group.ID);
+                    var item = context.Groups.Include("Specialization").FirstOrDefault(gr => gr.ID == group.ID);
                     if (item == null)
                         context.AddToGroups(new Group(group));
                     else
@@ -468,6 +493,32 @@ namespace StudyingControllerService
                                 select s;
                     foreach (var specialition in items)
                         result.Add(specialition.ToDTO());
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+
+
+        public SpecializationDTO GetSpecializationByID(Session session, int? specializationID)
+        {
+            try
+            {
+                CheckSession(session);
+                SpecializationDTO result = new SpecializationDTO();
+
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    Specialization specialization = (from s in context.Specializations
+                                                     where s.ID == specializationID
+                                                     select s).FirstOrDefault();
+                    
+                    result = GetDTO<SpecializationDTO>(specialization);
                 }
 
                 return result;

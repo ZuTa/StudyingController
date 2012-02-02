@@ -29,7 +29,8 @@ namespace StudyingControllerEntityModel
             {
                 ID = this.ID,
                 CathedraID = this.CathedraID,
-                Name = this.Name
+                Name = this.Name,
+                SpecializationID = this.SpecializationID            
             };
         }
 
@@ -38,6 +39,7 @@ namespace StudyingControllerEntityModel
             this.ID = entity.ID;
             this.Name = entity.Name;
             this.CathedraID = entity.CathedraID;
+            this.SpecializationID = entity.SpecializationID;
         }
 
         #endregion

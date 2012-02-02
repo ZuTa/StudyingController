@@ -23,6 +23,54 @@ namespace StudyingController.ViewModels
             get { return Model as StudentModel; }
         }
 
+        private FacultyDTO faculty;
+        public FacultyDTO Faculty
+        {
+            get { return faculty; }
+            set 
+            { 
+                faculty = value;
+                UpdateCathedras();
+                OnPropertyChanged("Faculty");
+            }
+        }
+
+        private List<FacultyDTO> faculties;
+        public List<FacultyDTO> Faculties
+        {
+            get { return faculties; }
+            set 
+            { 
+                faculties = value;
+                UpdateCathedras();
+                OnPropertyChanged("Faculties");
+            }
+        }
+
+
+        private CathedraDTO cathedra;
+        public CathedraDTO Cathedra
+        {
+            get { return cathedra; }
+            set 
+            { 
+                cathedra = value;
+                UpdateGroups();
+                OnPropertyChanged("Cathedra");
+            }
+        }
+
+        private List<CathedraDTO> cathedras;
+        public List<CathedraDTO> Cathedras
+        {
+            get { return cathedras; }
+            set
+            {
+                cathedras = value;
+                OnPropertyChanged("Cathedras");
+            }
+        }
+
         private List<GroupDTO> groups;
         public List<GroupDTO> Groups
         {
@@ -56,11 +104,19 @@ namespace StudyingController.ViewModels
             Load();
 
             originalEntity = student;
-            student.Group = (from g in groups
-                                where g.ID == OriginalStudent.GroupID
-                                select g).FirstOrDefault();
+            
+            student.Group = ControllerInterop.Service.GetGroupByID(ControllerInterop.Session, student.GroupID);
 
             Model = new StudentModel(student);
+
+            Cathedra = (from cathedra in ControllerInterop.Service.GetAllCathedras(ControllerInterop.Session)
+                        where cathedra.ID == Student.Group.CathedraID
+                        select cathedra).FirstOrDefault();
+
+            Faculty = (from faculty in Faculties
+                       where faculty.ID == Cathedra.FacultyID
+                       select faculty).FirstOrDefault();
+
             Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
@@ -70,7 +126,7 @@ namespace StudyingController.ViewModels
 
         public override void Remove()
         {
-            throw new NotImplementedException();
+            ControllerInterop.Service.DeleteUser(ControllerInterop.Session, Student.ID);
         }
 
         public override void Rollback()
@@ -81,18 +137,43 @@ namespace StudyingController.ViewModels
 
         public override void Save()
         {
-            StudentDTO groupAdminDTO = Student.ToDTO();
-            if(groupAdminDTO.Password == null)
-                groupAdminDTO.Password = HashHelper.ComputeHash((Model as SystemUserModel).Login);
+            StudentDTO studentDTO = Student.ToDTO();
+            if(studentDTO.Password == null)
+                studentDTO.Password = HashHelper.ComputeHash((Model as SystemUserModel).Login);
             else
-                groupAdminDTO.Password = HashHelper.ComputeHash((Model as SystemUserModel).Password);
-            ControllerInterop.Service.SaveUser(ControllerInterop.Session, groupAdminDTO);
+                studentDTO.Password = HashHelper.ComputeHash((Model as SystemUserModel).Password);
+            ControllerInterop.Service.SaveUser(ControllerInterop.Session, studentDTO);
             SetUnModified();
         }
 
-        public void Load()
+        private void UpdateCathedras()
         {
-            //Groups = ControllerInterop.Service.get(ControllerInterop.Session);
+            if (Faculty != null)
+            {
+                Cathedras = ControllerInterop.Service.GetCathedras(ControllerInterop.Session, Faculty.ID);
+                Groups = new List<GroupDTO>();
+                
+                if (Student.Group != null) Cathedra = (from cathedra in Cathedras
+                            where cathedra.ID == Student.Group.CathedraID
+                            select cathedra).FirstOrDefault();
+            }
+        }
+
+        private void UpdateGroups()
+        {
+            if (Cathedra != null)
+            {
+                Groups = ControllerInterop.Service.GetGroups(ControllerInterop.Session, Cathedra.ID);
+                
+                if (Student.Group != null) Student.Group = (from gr in Groups
+                                                            where gr.ID == Student.Group.ID
+                                                            select gr).FirstOrDefault();
+            }
+        }
+
+        private void Load()
+        {
+            Faculties = ControllerInterop.Service.GetAllFaculties(ControllerInterop.Session);
         }
 
         #endregion

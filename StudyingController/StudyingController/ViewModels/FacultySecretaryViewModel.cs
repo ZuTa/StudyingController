@@ -70,7 +70,7 @@ namespace StudyingController.ViewModels
 
         public override void Remove()
         {
-            throw new NotImplementedException();
+            ControllerInterop.Service.DeleteUser(ControllerInterop.Session, FacultySecretary.ID);
         }
 
         public override void Rollback()

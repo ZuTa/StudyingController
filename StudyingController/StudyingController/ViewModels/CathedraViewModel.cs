@@ -87,12 +87,12 @@ namespace StudyingController.ViewModels
 
         public override void Remove()
         {
-            throw new NotImplementedException();
+            ControllerInterop.Service.DeleteCathedra(ControllerInterop.Session, Cathedra.ID);
         }
 
         private void Load()
         {
-            Faculties.AddRange(ControllerInterop.Service.GetAllFaculties(ControllerInterop.Session));
+            Faculties = ControllerInterop.Service.GetAllFaculties(ControllerInterop.Session);
         }
 
         #endregion

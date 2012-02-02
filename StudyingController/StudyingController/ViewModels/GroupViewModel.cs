@@ -26,6 +26,39 @@ namespace StudyingController.ViewModels
             get { return Model as GroupModel; }
         }
 
+        private FacultyDTO faculty;
+        public FacultyDTO Faculty
+        {
+            get { return faculty; }
+            set
+            {
+                faculty = value;
+                UpdateProperties();
+                OnPropertyChanged("Faculty");
+            }
+        }
+
+        private List<FacultyDTO> faculties;
+        public List<FacultyDTO> Faculties
+        {
+            get { return faculties; }
+            set 
+            { 
+                faculties = value;
+                OnPropertyChanged("Faculties");
+            }
+        }
+
+        private List<SpecializationDTO> specializations;
+        public List<SpecializationDTO> Specializations
+        {
+            get { return specializations; }
+            set 
+            { 
+                specializations = value;
+                OnPropertyChanged("Specializations");
+            }
+        }
 
         private List<CathedraDTO> cathedras;
         public List<CathedraDTO> Cathedras
@@ -45,6 +78,7 @@ namespace StudyingController.ViewModels
         public GroupViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)
         {
+            faculties = new List<FacultyDTO>();
             cathedras = new List<CathedraDTO>();
             Load();
 
@@ -56,15 +90,24 @@ namespace StudyingController.ViewModels
         public GroupViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, GroupDTO group)
             : base(userInterop, controllerInterop, dispatcher)
         {
+            faculties = new List<FacultyDTO>();
             cathedras = new List<CathedraDTO>();
             Load();
 
             originalEntity = group;
-            group.Cathedra = (from cathedra in cathedras
+
+            group.Cathedra = (from cathedra in ControllerInterop.Service.GetAllCathedras(ControllerInterop.Session)
                                 where cathedra.ID == OriginalGroup.CathedraID
                                 select cathedra).FirstOrDefault();
 
+            group.Specialization = ControllerInterop.Service.GetSpecializationByID(ControllerInterop.Session, group.SpecializationID);
+            
             Model = new GroupModel(group);
+
+            Faculty = (from faculty in faculties
+                       where faculty.ID == OriginalGroup.Cathedra.FacultyID
+                       select faculty).FirstOrDefault();
+
             Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
@@ -74,12 +117,28 @@ namespace StudyingController.ViewModels
 
         public override void Remove()
         {
-            throw new NotImplementedException();
+            ControllerInterop.Service.DeleteGroup(ControllerInterop.Session, Group.ID);
+        }
+
+        private void UpdateProperties()
+        {
+            if (Faculty != null)
+            {
+                Cathedras = ControllerInterop.Service.GetCathedras(ControllerInterop.Session, Faculty.ID);
+                if (Group.Cathedra != null) Group.Cathedra = (from cathedra in Cathedras
+                                                              where cathedra.ID == Group.Cathedra.ID
+                                                              select cathedra).FirstOrDefault();
+
+                Specializations = ControllerInterop.Service.GetSpecializations(ControllerInterop.Session, Faculty.ID);
+                if (Group.Specialization != null) Group.Specialization = (from specialization in Specializations
+                                                                          where specialization.ID == Group.Specialization.ID
+                                                                          select specialization).FirstOrDefault();
+            }
         }
 
         private void Load()
         {
-            Cathedras.AddRange(ControllerInterop.Service.GetAllCathedras(ControllerInterop.Session));
+            Faculties = ControllerInterop.Service.GetAllFaculties(ControllerInterop.Session);
         }
 
         public override void Save()
