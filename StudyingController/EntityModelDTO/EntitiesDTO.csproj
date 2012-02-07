@@ -57,11 +57,13 @@
     <Compile Include="InstituteDTO.cs" />
     <Compile Include="InstituteSecretaryDTO.cs" />
     <Compile Include="ITextable.cs" />
+    <Compile Include="LectureDTO.cs" />
     <Compile Include="NamedEntityDTO.cs" />
     <Compile Include="PluralizeNameAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpecializationDTO.cs" />
     <Compile Include="StudentDTO.cs" />
+    <Compile Include="SubjectDTO.cs" />
     <Compile Include="SystemUserDTO.cs" />
     <Compile Include="TeacherDTO.cs" />
     <Compile Include="UserInformationDTO.cs" />

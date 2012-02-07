@@ -14,23 +14,24 @@ namespace StudyingController.Common
         
         private static MailSender instance;
 
-        private readonly string host;
-
-        private readonly int port;
-
-        private readonly string login;
-
-        private readonly string password;
-
         private static SmtpClient client;
 
         private MailSender() 
         {
-            host = Properties.Resources.SmtpServer;
+            client = new SmtpClient
+            {
+                Host = Properties.Resources.SmtpServer,
+                Port = 587,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(Properties.Resources.EmailLogin, Properties.Resources.EmailPassword),
+                EnableSsl = true,
+                Timeout = 1
+            };
+            /*host = Properties.Resources.SmtpServer;
             port = 587;
             login = Properties.Resources.EmailLogin;
             password = Properties.Resources.EmailPassword;
-            client = new SmtpClient(host, port);
+            client = new SmtpClient(host, port);*/
         }
 
         public static MailSender GetInstance()
@@ -43,8 +44,6 @@ namespace StudyingController.Common
 
         public bool SendMessage(MailMessage message)
         {
-            client.EnableSsl = true;
-            client.Credentials = new NetworkCredential(login, password);
             try
             {
                 client.Send(message);

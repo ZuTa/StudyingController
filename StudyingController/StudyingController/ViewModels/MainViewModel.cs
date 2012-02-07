@@ -124,6 +124,21 @@ namespace StudyingController.ViewModels
             }
         }
 
+        private bool isNotBusy;
+        public bool IsNotBusy
+        {
+            get { return isNotBusy; }
+            
+            set
+            {
+                if (isNotBusy != value)
+                {
+                    isNotBusy = value;
+                    OnPropertyChanged("IsNotBusy");
+                }
+            }
+        }
+
         private Stack<BaseApplicationViewModel> workspaces;
 
         public BaseApplicationViewModel CurrentWorkspace
@@ -169,6 +184,7 @@ namespace StudyingController.ViewModels
         {
             workspaces = new Stack<BaseApplicationViewModel>();
             UserInformationViewModel = new UserInformationViewModel(userInterop, controllerInterop, dispatcher, controllerInterop.User.UserInformation);
+            isNotBusy = true;
         }
 
         #endregion
@@ -230,8 +246,6 @@ namespace StudyingController.ViewModels
             }
         }
 
-        
-
         #endregion
 
         #region Methods
@@ -255,10 +269,14 @@ namespace StudyingController.ViewModels
 
         private void SubscribeToEvents(BaseApplicationViewModel workspace)
         {
+            if (workspace is UsersStructureViewModel)
+                (workspace as UsersStructureViewModel).IsSendingMessageChanged += UsersStructureViewModel_IsSendingMessageChanged;
         }
 
         private void UnsubscribeFromEvents(BaseApplicationViewModel workspace)
         {
+            if (workspace is UsersStructureViewModel)
+                (workspace as UsersStructureViewModel).IsSendingMessageChanged -= UsersStructureViewModel_IsSendingMessageChanged;
         }
 
         protected virtual void OnLogout()
@@ -311,6 +329,11 @@ namespace StudyingController.ViewModels
         #endregion
 
         #region Callbacks
+
+        private void UsersStructureViewModel_IsSendingMessageChanged(object sender, EventArgs e)
+        {
+            IsNotBusy = !(sender as UsersStructureViewModel).IsSendingMessage;
+        }
 
         #endregion
 

@@ -11,6 +11,18 @@ namespace StudyingController.ViewModels.Models
     {
         #region Fields & Properties
 
+        private SpecializationDTO specialization;
+        [Validateable]
+        public SpecializationDTO Specialization
+        {
+            get { return specialization; }
+            set 
+            { 
+                specialization = value;
+                OnPropertyChanged("Specialization");
+            }
+        }
+
         private CathedraDTO cathedra;
         [Validateable]
         public CathedraDTO Cathedra
@@ -29,7 +41,8 @@ namespace StudyingController.ViewModels.Models
         public GroupModel(GroupDTO group)
             : base(group)
         {
-            cathedra = group.Cathedra;
+            this.cathedra = group.Cathedra;
+            this.specialization = group.Specialization;
         }
 
         #endregion
@@ -42,6 +55,7 @@ namespace StudyingController.ViewModels.Models
 
             GroupDTO group = entity as GroupDTO;
             this.Cathedra = group.Cathedra;
+            this.Specialization = group.Specialization;
         }
 
         public GroupDTO ToDTO()
@@ -50,7 +64,8 @@ namespace StudyingController.ViewModels.Models
             {
                 ID = this.ID,
                 Name = this.Name,
-                CathedraID = cathedra.ID
+                CathedraID = this.cathedra.ID,
+                SpecializationID = this.specialization.ID
             };
         }
 
@@ -58,6 +73,17 @@ namespace StudyingController.ViewModels.Models
         {
             error = null;
             if (cathedra == null)
+            {
+                error = Properties.Resources.ErrorStructureNotFound;
+                return false;
+            }
+            return true;
+        }
+
+        private bool IsSpecializationValid(out string error)
+        {
+            error = null;
+            if (specialization == null)
             {
                 error = Properties.Resources.ErrorStructureNotFound;
                 return false;
@@ -74,6 +100,9 @@ namespace StudyingController.ViewModels.Models
                 {
                     case "Cathedra":
                         IsCathedraValid(out error);
+                        break;
+                    case "Specialization":
+                        IsSpecializationValid(out error);
                         break;
                     default:
                         break;

@@ -6,28 +6,13 @@ using System.Runtime.Serialization;
 
 namespace EntitiesDTO
 {
-    public class GroupDTO : NamedEntityDTO
+    public class SubjectDTO : NamedEntityDTO
     {
         private CathedraDTO cathedra;
         public CathedraDTO Cathedra
         {
             get { return cathedra; }
             set { cathedra = value; }
-        }
-
-        private SpecializationDTO specialization;
-        public SpecializationDTO Specialization
-        {
-            get { return specialization; }
-            set { specialization = value; }
-        }
-
-        private int specializationID;
-        [DataMember]
-        public int SpecializationID
-        {
-            get { return specializationID; }
-            set { specializationID = value; }
         }
 
         private int cathedraID;
@@ -37,6 +22,5 @@ namespace EntitiesDTO
             get { return cathedraID; }
             set { cathedraID = value; }
         }
-
     }
 }

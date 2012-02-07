@@ -93,7 +93,7 @@ namespace StudyingController.ViewModels.Models
         private bool IsLoginValid(out string error)
         {
             error = null;
-            if (login == null || login.Length == 0)
+            if (login == null || login.Length < 3)
             {
                 error = Properties.Resources.ErrorFieldEmpty;
                 return false;

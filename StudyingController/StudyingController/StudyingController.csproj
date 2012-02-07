@@ -93,6 +93,7 @@
     <Compile Include="ViewModels\Models\NamedModel.cs" />
     <Compile Include="ViewModels\Models\SpecializationModel.cs" />
     <Compile Include="ViewModels\Models\StudentModel.cs" />
+    <Compile Include="ViewModels\Models\SubjectModel.cs" />
     <Compile Include="ViewModels\Models\SystemUserModel.cs" />
     <Compile Include="ViewModels\Models\TeacherModel.cs" />
     <Compile Include="ViewModels\Models\UserInformationModel.cs" />
@@ -295,6 +296,7 @@
     <None Include="Properties\DataSources\EntitiesDTO.FacultyDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.GroupDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.InstituteDTO.datasource" />
+    <None Include="Properties\DataSources\EntitiesDTO.LectureDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.SpecializationDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.SystemUserDTO.datasource" />
     <None Include="Properties\Settings.settings">

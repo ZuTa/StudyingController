@@ -17,12 +17,12 @@ namespace StudyingController.SCS {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Session", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.InstituteSecretaryDTO))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.StudentDTO))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.FacultyAdminDTO))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.FacultySecretaryDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.TeacherDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.FacultySecretaryDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.StudentDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.InstituteSecretaryDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.FacultyAdminDTO))]
     public partial class Session : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -246,12 +246,12 @@ namespace StudyingController.SCS {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/SaveUser", ReplyAction="http://tempuri.org/IControllerService/SaveUserResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/SaveUserControllerServiceExceptionFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteSecretaryDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.StudentDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultyAdminDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultySecretaryDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.TeacherDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultySecretaryDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.StudentDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteSecretaryDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultyAdminDTO))]
         void SaveUser(StudyingController.SCS.Session session, EntitiesDTO.SystemUserDTO user);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/SaveUser", ReplyAction="http://tempuri.org/IControllerService/SaveUserResponse")]
@@ -316,6 +316,45 @@ namespace StudyingController.SCS {
         System.IAsyncResult BeginDeleteUser(StudyingController.SCS.Session session, int userID, System.AsyncCallback callback, object asyncState);
         
         void EndDeleteUser(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/GetGroupByID", ReplyAction="http://tempuri.org/IControllerService/GetGroupByIDResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/GetGroupByIDControllerServiceExceptionFault" +
+            "", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        EntitiesDTO.GroupDTO GetGroupByID(StudyingController.SCS.Session session, System.Nullable<int> groupID);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/GetGroupByID", ReplyAction="http://tempuri.org/IControllerService/GetGroupByIDResponse")]
+        System.IAsyncResult BeginGetGroupByID(StudyingController.SCS.Session session, System.Nullable<int> groupID, System.AsyncCallback callback, object asyncState);
+        
+        EntitiesDTO.GroupDTO EndGetGroupByID(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/GetSpecializationByID", ReplyAction="http://tempuri.org/IControllerService/GetSpecializationByIDResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/GetSpecializationByIDControllerServiceExcep" +
+            "tionFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        EntitiesDTO.SpecializationDTO GetSpecializationByID(StudyingController.SCS.Session session, System.Nullable<int> specializationID);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/GetSpecializationByID", ReplyAction="http://tempuri.org/IControllerService/GetSpecializationByIDResponse")]
+        System.IAsyncResult BeginGetSpecializationByID(StudyingController.SCS.Session session, System.Nullable<int> specializationID, System.AsyncCallback callback, object asyncState);
+        
+        EntitiesDTO.SpecializationDTO EndGetSpecializationByID(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/GetLectures", ReplyAction="http://tempuri.org/IControllerService/GetLecturesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/GetLecturesControllerServiceExceptionFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        System.Collections.Generic.List<EntitiesDTO.LectureDTO> GetLectures(StudyingController.SCS.Session session, int teacherID);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/GetLectures", ReplyAction="http://tempuri.org/IControllerService/GetLecturesResponse")]
+        System.IAsyncResult BeginGetLectures(StudyingController.SCS.Session session, int teacherID, System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.Generic.List<EntitiesDTO.LectureDTO> EndGetLectures(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/GetLectureGroups", ReplyAction="http://tempuri.org/IControllerService/GetLectureGroupsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/GetLectureGroupsControllerServiceExceptionF" +
+            "ault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        System.Collections.Generic.List<EntitiesDTO.GroupDTO> GetLectureGroups(StudyingController.SCS.Session session, int lectureID);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/GetLectureGroups", ReplyAction="http://tempuri.org/IControllerService/GetLectureGroupsResponse")]
+        System.IAsyncResult BeginGetLectureGroups(StudyingController.SCS.Session session, int lectureID, System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.Generic.List<EntitiesDTO.GroupDTO> EndGetLectureGroups(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -495,6 +534,82 @@ namespace StudyingController.SCS {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetGroupByIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetGroupByIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public EntitiesDTO.GroupDTO Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((EntitiesDTO.GroupDTO)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetSpecializationByIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetSpecializationByIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public EntitiesDTO.SpecializationDTO Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((EntitiesDTO.SpecializationDTO)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetLecturesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetLecturesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.Generic.List<EntitiesDTO.LectureDTO> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.Generic.List<EntitiesDTO.LectureDTO>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetLectureGroupsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetLectureGroupsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.Generic.List<EntitiesDTO.GroupDTO> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.Generic.List<EntitiesDTO.GroupDTO>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class ControllerServiceClient : System.ServiceModel.ClientBase<StudyingController.SCS.IControllerService>, StudyingController.SCS.IControllerService {
         
         private BeginOperationDelegate onBeginLoginDelegate;
@@ -611,6 +726,30 @@ namespace StudyingController.SCS {
         
         private System.Threading.SendOrPostCallback onDeleteUserCompletedDelegate;
         
+        private BeginOperationDelegate onBeginGetGroupByIDDelegate;
+        
+        private EndOperationDelegate onEndGetGroupByIDDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetGroupByIDCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetSpecializationByIDDelegate;
+        
+        private EndOperationDelegate onEndGetSpecializationByIDDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetSpecializationByIDCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetLecturesDelegate;
+        
+        private EndOperationDelegate onEndGetLecturesDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetLecturesCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetLectureGroupsDelegate;
+        
+        private EndOperationDelegate onEndGetLectureGroupsDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetLectureGroupsCompletedDelegate;
+        
         public ControllerServiceClient() {
         }
         
@@ -667,6 +806,14 @@ namespace StudyingController.SCS {
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> DeleteGroupCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> DeleteUserCompleted;
+        
+        public event System.EventHandler<GetGroupByIDCompletedEventArgs> GetGroupByIDCompleted;
+        
+        public event System.EventHandler<GetSpecializationByIDCompletedEventArgs> GetSpecializationByIDCompleted;
+        
+        public event System.EventHandler<GetLecturesCompletedEventArgs> GetLecturesCompleted;
+        
+        public event System.EventHandler<GetLectureGroupsCompletedEventArgs> GetLectureGroupsCompleted;
         
         public StudyingController.SCS.Session Login(string login1, string password) {
             return base.Channel.Login(login1, password);
@@ -1638,6 +1785,214 @@ namespace StudyingController.SCS {
             base.InvokeAsync(this.onBeginDeleteUserDelegate, new object[] {
                         session,
                         userID}, this.onEndDeleteUserDelegate, this.onDeleteUserCompletedDelegate, userState);
+        }
+        
+        public EntitiesDTO.GroupDTO GetGroupByID(StudyingController.SCS.Session session, System.Nullable<int> groupID) {
+            return base.Channel.GetGroupByID(session, groupID);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetGroupByID(StudyingController.SCS.Session session, System.Nullable<int> groupID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetGroupByID(session, groupID, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public EntitiesDTO.GroupDTO EndGetGroupByID(System.IAsyncResult result) {
+            return base.Channel.EndGetGroupByID(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetGroupByID(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            StudyingController.SCS.Session session = ((StudyingController.SCS.Session)(inValues[0]));
+            System.Nullable<int> groupID = ((System.Nullable<int>)(inValues[1]));
+            return this.BeginGetGroupByID(session, groupID, callback, asyncState);
+        }
+        
+        private object[] OnEndGetGroupByID(System.IAsyncResult result) {
+            EntitiesDTO.GroupDTO retVal = this.EndGetGroupByID(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetGroupByIDCompleted(object state) {
+            if ((this.GetGroupByIDCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetGroupByIDCompleted(this, new GetGroupByIDCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetGroupByIDAsync(StudyingController.SCS.Session session, System.Nullable<int> groupID) {
+            this.GetGroupByIDAsync(session, groupID, null);
+        }
+        
+        public void GetGroupByIDAsync(StudyingController.SCS.Session session, System.Nullable<int> groupID, object userState) {
+            if ((this.onBeginGetGroupByIDDelegate == null)) {
+                this.onBeginGetGroupByIDDelegate = new BeginOperationDelegate(this.OnBeginGetGroupByID);
+            }
+            if ((this.onEndGetGroupByIDDelegate == null)) {
+                this.onEndGetGroupByIDDelegate = new EndOperationDelegate(this.OnEndGetGroupByID);
+            }
+            if ((this.onGetGroupByIDCompletedDelegate == null)) {
+                this.onGetGroupByIDCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetGroupByIDCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetGroupByIDDelegate, new object[] {
+                        session,
+                        groupID}, this.onEndGetGroupByIDDelegate, this.onGetGroupByIDCompletedDelegate, userState);
+        }
+        
+        public EntitiesDTO.SpecializationDTO GetSpecializationByID(StudyingController.SCS.Session session, System.Nullable<int> specializationID) {
+            return base.Channel.GetSpecializationByID(session, specializationID);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetSpecializationByID(StudyingController.SCS.Session session, System.Nullable<int> specializationID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetSpecializationByID(session, specializationID, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public EntitiesDTO.SpecializationDTO EndGetSpecializationByID(System.IAsyncResult result) {
+            return base.Channel.EndGetSpecializationByID(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetSpecializationByID(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            StudyingController.SCS.Session session = ((StudyingController.SCS.Session)(inValues[0]));
+            System.Nullable<int> specializationID = ((System.Nullable<int>)(inValues[1]));
+            return this.BeginGetSpecializationByID(session, specializationID, callback, asyncState);
+        }
+        
+        private object[] OnEndGetSpecializationByID(System.IAsyncResult result) {
+            EntitiesDTO.SpecializationDTO retVal = this.EndGetSpecializationByID(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetSpecializationByIDCompleted(object state) {
+            if ((this.GetSpecializationByIDCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetSpecializationByIDCompleted(this, new GetSpecializationByIDCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetSpecializationByIDAsync(StudyingController.SCS.Session session, System.Nullable<int> specializationID) {
+            this.GetSpecializationByIDAsync(session, specializationID, null);
+        }
+        
+        public void GetSpecializationByIDAsync(StudyingController.SCS.Session session, System.Nullable<int> specializationID, object userState) {
+            if ((this.onBeginGetSpecializationByIDDelegate == null)) {
+                this.onBeginGetSpecializationByIDDelegate = new BeginOperationDelegate(this.OnBeginGetSpecializationByID);
+            }
+            if ((this.onEndGetSpecializationByIDDelegate == null)) {
+                this.onEndGetSpecializationByIDDelegate = new EndOperationDelegate(this.OnEndGetSpecializationByID);
+            }
+            if ((this.onGetSpecializationByIDCompletedDelegate == null)) {
+                this.onGetSpecializationByIDCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetSpecializationByIDCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetSpecializationByIDDelegate, new object[] {
+                        session,
+                        specializationID}, this.onEndGetSpecializationByIDDelegate, this.onGetSpecializationByIDCompletedDelegate, userState);
+        }
+        
+        public System.Collections.Generic.List<EntitiesDTO.LectureDTO> GetLectures(StudyingController.SCS.Session session, int teacherID) {
+            return base.Channel.GetLectures(session, teacherID);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetLectures(StudyingController.SCS.Session session, int teacherID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetLectures(session, teacherID, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.Collections.Generic.List<EntitiesDTO.LectureDTO> EndGetLectures(System.IAsyncResult result) {
+            return base.Channel.EndGetLectures(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetLectures(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            StudyingController.SCS.Session session = ((StudyingController.SCS.Session)(inValues[0]));
+            int teacherID = ((int)(inValues[1]));
+            return this.BeginGetLectures(session, teacherID, callback, asyncState);
+        }
+        
+        private object[] OnEndGetLectures(System.IAsyncResult result) {
+            System.Collections.Generic.List<EntitiesDTO.LectureDTO> retVal = this.EndGetLectures(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetLecturesCompleted(object state) {
+            if ((this.GetLecturesCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetLecturesCompleted(this, new GetLecturesCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetLecturesAsync(StudyingController.SCS.Session session, int teacherID) {
+            this.GetLecturesAsync(session, teacherID, null);
+        }
+        
+        public void GetLecturesAsync(StudyingController.SCS.Session session, int teacherID, object userState) {
+            if ((this.onBeginGetLecturesDelegate == null)) {
+                this.onBeginGetLecturesDelegate = new BeginOperationDelegate(this.OnBeginGetLectures);
+            }
+            if ((this.onEndGetLecturesDelegate == null)) {
+                this.onEndGetLecturesDelegate = new EndOperationDelegate(this.OnEndGetLectures);
+            }
+            if ((this.onGetLecturesCompletedDelegate == null)) {
+                this.onGetLecturesCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetLecturesCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetLecturesDelegate, new object[] {
+                        session,
+                        teacherID}, this.onEndGetLecturesDelegate, this.onGetLecturesCompletedDelegate, userState);
+        }
+        
+        public System.Collections.Generic.List<EntitiesDTO.GroupDTO> GetLectureGroups(StudyingController.SCS.Session session, int lectureID) {
+            return base.Channel.GetLectureGroups(session, lectureID);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetLectureGroups(StudyingController.SCS.Session session, int lectureID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetLectureGroups(session, lectureID, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.Collections.Generic.List<EntitiesDTO.GroupDTO> EndGetLectureGroups(System.IAsyncResult result) {
+            return base.Channel.EndGetLectureGroups(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetLectureGroups(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            StudyingController.SCS.Session session = ((StudyingController.SCS.Session)(inValues[0]));
+            int lectureID = ((int)(inValues[1]));
+            return this.BeginGetLectureGroups(session, lectureID, callback, asyncState);
+        }
+        
+        private object[] OnEndGetLectureGroups(System.IAsyncResult result) {
+            System.Collections.Generic.List<EntitiesDTO.GroupDTO> retVal = this.EndGetLectureGroups(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetLectureGroupsCompleted(object state) {
+            if ((this.GetLectureGroupsCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetLectureGroupsCompleted(this, new GetLectureGroupsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetLectureGroupsAsync(StudyingController.SCS.Session session, int lectureID) {
+            this.GetLectureGroupsAsync(session, lectureID, null);
+        }
+        
+        public void GetLectureGroupsAsync(StudyingController.SCS.Session session, int lectureID, object userState) {
+            if ((this.onBeginGetLectureGroupsDelegate == null)) {
+                this.onBeginGetLectureGroupsDelegate = new BeginOperationDelegate(this.OnBeginGetLectureGroups);
+            }
+            if ((this.onEndGetLectureGroupsDelegate == null)) {
+                this.onEndGetLectureGroupsDelegate = new EndOperationDelegate(this.OnEndGetLectureGroups);
+            }
+            if ((this.onGetLectureGroupsCompletedDelegate == null)) {
+                this.onGetLectureGroupsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetLectureGroupsCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetLectureGroupsDelegate, new object[] {
+                        session,
+                        lectureID}, this.onEndGetLectureGroupsDelegate, this.onGetLectureGroupsCompletedDelegate, userState);
         }
     }
 }
