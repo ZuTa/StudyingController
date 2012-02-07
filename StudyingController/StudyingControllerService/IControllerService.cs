@@ -103,5 +103,10 @@ namespace StudyingControllerService
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
         List<GroupDTO> GetLectureGroups(Session session, int lectureID);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        List<TeacherDTO> GetTeachers(Session session, int cathedraID);
+
     }
 }
