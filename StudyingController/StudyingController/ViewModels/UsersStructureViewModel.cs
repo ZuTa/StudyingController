@@ -8,6 +8,7 @@ using EntitiesDTO;
 using System.Collections.ObjectModel;
 using StudyingController.ViewModels.Models;
 using System.Net.Mail;
+using System.Threading.Tasks;
 
 namespace StudyingController.ViewModels
 {
@@ -37,6 +38,21 @@ namespace StudyingController.ViewModels
             }
         }
 
+        private bool isSendingMessage;
+        public bool IsSendingMessage
+        {
+            get { return isSendingMessage; }
+
+            set
+            {
+                if (isSendingMessage != value)
+                {
+                    isSendingMessage = value;
+                    OnIsSendingMessageChanged();
+                }
+            }
+        }
+       
         #endregion
 
         #region Constructors
@@ -156,6 +172,30 @@ namespace StudyingController.ViewModels
                 if (generatePasswordCommand == null)
                     generatePasswordCommand = new RelayCommand(param =>
                     {
+                        lock (locker)
+                            IsSendingMessage = true;
+
+                        Task.Factory.StartNew(()=>
+                            {
+                                (CurrentWorkspace.Model as SystemUserModel).Password = PasswordGenerator.Generate();
+                                MailMessage message = new MailMessage(Properties.Resources.EmailOwner,(CurrentWorkspace.Model as SystemUserModel).UserInformation.Email, Properties.Resources.EmailSubject, Properties.Resources.EmailText + (CurrentWorkspace.Model as SystemUserModel).Password);
+                                MailSender mail = MailSender.GetInstance();
+                                if(mail.SendMessage(message))
+                                {
+                                    UserInterop.ShowMessage(String.Format(Properties.Resources.SuccessSendEmail, (CurrentWorkspace.Model as SystemUserModel).Login, (CurrentWorkspace.Model as SystemUserModel).UserInformation.Email));
+                                    Dispatcher.Invoke(new Action(()=>
+                                        (CurrentWorkspace as SaveableViewModel).Save()));
+                                }
+                                else
+                                {
+                                    UserInterop.ShowMessage(Properties.Resources.ErrorSendEmail);
+                                    Dispatcher.Invoke(new Action(()=>
+                                        (CurrentWorkspace as SaveableViewModel).Rollback()));
+                                }
+                                lock(locker)
+                                    IsSendingMessage = false;
+                            });
+                        /*
                         SystemUserModel user = CurrentWorkspace.Model as SystemUserModel;
                         user.Password = PasswordGenerator.Generate();
 
@@ -172,7 +212,7 @@ namespace StudyingController.ViewModels
                         {
                             UserInterop.ShowMessage(Properties.Resources.ErrorSendEmail);
                             CurrentWorkspace.Rollback();
-                        }
+                        }*/
                     });
 
                 return generatePasswordCommand;
@@ -182,6 +222,12 @@ namespace StudyingController.ViewModels
         #endregion
 
         #region Methods
+
+        private void OnIsSendingMessageChanged()
+        {
+            if (IsSendingMessageChanged != null)
+                IsSendingMessageChanged(this, null);
+        }
 
         protected override void DefineAddCommands()
         {
@@ -276,6 +322,12 @@ namespace StudyingController.ViewModels
 
         #endregion
 
+        #region Event
+
+        public EventHandler IsSendingMessageChanged;
+
+        #endregion
+
         #region Callbacks
 
         #endregion
@@ -290,10 +342,8 @@ namespace StudyingController.ViewModels
                 if (additionalCommands == null)
                 {
                     additionalCommands = new ObservableCollection<NamedCommandData>();
-
                     NamedCommandData generatePassword = new NamedCommandData { Command = GeneratePasswordCommand, Name = "Генерувати пароль", IsEnabled = CanGeneratePassword};
                     generatePassword.UpdateEnabledState = () => generatePassword.IsEnabled = CanGeneratePassword;
-
                     additionalCommands.Add(generatePassword);
                 }
                 return additionalCommands;
