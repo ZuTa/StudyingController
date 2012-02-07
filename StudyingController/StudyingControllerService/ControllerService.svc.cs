@@ -758,12 +758,15 @@ namespace StudyingControllerService
 
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    var cathedra = context.Cathedras.Include("Teachers").Where(c => c.ID == cathedraID).FirstOrDefault();
+                    var query = context.Cathedras.Include("Teachers").Where(c => c.ID == cathedraID).Select(c => c.Teachers).FirstOrDefault();
 
-                    if (cathedra != null)
+                    if (query != null)
                     {
-                        foreach (var item in cathedra.Teachers)
+                        foreach (var item in query)
+                        {
+                            context.LoadProperty(item, "UserInformation");
                             result.Add(item.ToDTO());
+                        }
                     }
 
                 }

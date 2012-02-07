@@ -111,16 +111,28 @@ namespace StudyingController.ViewModels
 
         private void LoadLectureTeachers(int cathedraID, TreeNode parentNode)
         {
-            //List<TeacherDTO> teachers = ControllerInterop.Service.GetTeachers(ControllerInterop.Session, cathedraID);
+            List<TeacherDTO> teachers = ControllerInterop.Service.GetTeachers(ControllerInterop.Session, cathedraID);
 
-            /*foreach (var teacher in teachers)   
+            foreach (var teacher in teachers)   
             {
                 lock (Tree)
                 {
                     TreeNode node = Tree.AppendNode(new TreeNode(teacher.UserInformation.LastName, teacher, teacher.ID, 3), parentNode);
-                    //LoadLectures(teacher.ID, node);
+                    LoadLectures(teacher.ID, node);
                 }
-            }*/
+            }
+        }
+
+        private void LoadLectures(int teacherID, TreeNode parentNode)
+        {
+            List<LectureDTO> lectures = ControllerInterop.Service.GetLectures(ControllerInterop.Session, teacherID);
+            foreach (var lecture in lectures)
+            {
+                lock (Tree)
+                {
+                    TreeNode node = Tree.AppendNode(new TreeNode(lecture.Subject.Name, lecture, lecture.ID, 4), parentNode);
+                }
+            }
         }
 
 
