@@ -93,6 +93,7 @@
     <Compile Include="ViewModels\Models\NamedModel.cs" />
     <Compile Include="ViewModels\Models\SpecializationModel.cs" />
     <Compile Include="ViewModels\Models\StudentModel.cs" />
+    <Compile Include="ViewModels\Models\SubjectModel.cs" />
     <Compile Include="ViewModels\Models\SystemUserModel.cs" />
     <Compile Include="ViewModels\Models\TeacherModel.cs" />
     <Compile Include="ViewModels\Models\UserInformationModel.cs" />

@@ -17,7 +17,6 @@ namespace StudyingController.ClientData
         #region Fields & Properties
 
         private static readonly string DEFAULT_FOLDER_PATH = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), StudyingController.Properties.Resources.AppDataFolderName);
-
         public bool IsValid
         {
             get 
