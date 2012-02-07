@@ -758,7 +758,7 @@ namespace StudyingControllerService
 
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    var cathedra = context.Cathedras.Where(c => c.ID == cathedraID).FirstOrDefault();
+                    var cathedra = context.Cathedras.Include("Teachers").Where(c => c.ID == cathedraID).FirstOrDefault();
 
                     if (cathedra != null)
                     {
