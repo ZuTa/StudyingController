@@ -708,7 +708,10 @@ namespace StudyingControllerService
                                 select l;
 
                     foreach (var lecture in query)
+                    {
+                        context.LoadProperty(lecture, "Subject");
                         result.Add(lecture.ToDTO());
+                    }
 
                 }
 
