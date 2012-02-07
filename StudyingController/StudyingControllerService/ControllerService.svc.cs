@@ -628,7 +628,7 @@ namespace StudyingControllerService
             if (item != null)
             {
                 foreach (var group in item.Groups.ToList())
-                    DeleteCathedra(context, group.ID);
+                    DeleteGroup(context, group.ID);
 
                 foreach (var user in item.Teachers.ToList())
                     context.SystemUsers.DeleteObject(user);
