@@ -122,10 +122,7 @@ namespace StudyingController.ViewModels
 
         #region Callbacks
 
-        private void specializationListViewModel_ViewModified(object sender, EventArgs e)
-        {
-            SetModified();
-        }
+
 
         #endregion
     }

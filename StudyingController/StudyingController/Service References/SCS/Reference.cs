@@ -317,6 +317,16 @@ namespace StudyingController.SCS {
         
         void EndDeleteUser(System.IAsyncResult result);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/DeleteSubject", ReplyAction="http://tempuri.org/IControllerService/DeleteSubjectResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/DeleteSubjectControllerServiceExceptionFaul" +
+            "t", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        void DeleteSubject(StudyingController.SCS.Session session, int subjectID);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/DeleteSubject", ReplyAction="http://tempuri.org/IControllerService/DeleteSubjectResponse")]
+        System.IAsyncResult BeginDeleteSubject(StudyingController.SCS.Session session, int subjectID, System.AsyncCallback callback, object asyncState);
+        
+        void EndDeleteSubject(System.IAsyncResult result);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/GetGroupByID", ReplyAction="http://tempuri.org/IControllerService/GetGroupByIDResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/GetGroupByIDControllerServiceExceptionFault" +
             "", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
@@ -669,6 +679,12 @@ namespace StudyingController.SCS {
         
         private System.Threading.SendOrPostCallback onDeleteUserCompletedDelegate;
         
+        private BeginOperationDelegate onBeginDeleteSubjectDelegate;
+        
+        private EndOperationDelegate onEndDeleteSubjectDelegate;
+        
+        private System.Threading.SendOrPostCallback onDeleteSubjectCompletedDelegate;
+        
         private BeginOperationDelegate onBeginGetGroupByIDDelegate;
         
         private EndOperationDelegate onEndGetGroupByIDDelegate;
@@ -737,6 +753,8 @@ namespace StudyingController.SCS {
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> DeleteGroupCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> DeleteUserCompleted;
+        
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> DeleteSubjectCompleted;
         
         public event System.EventHandler<GetGroupByIDCompletedEventArgs> GetGroupByIDCompleted;
         
@@ -1712,6 +1730,57 @@ namespace StudyingController.SCS {
             base.InvokeAsync(this.onBeginDeleteUserDelegate, new object[] {
                         session,
                         userID}, this.onEndDeleteUserDelegate, this.onDeleteUserCompletedDelegate, userState);
+        }
+        
+        public void DeleteSubject(StudyingController.SCS.Session session, int subjectID) {
+            base.Channel.DeleteSubject(session, subjectID);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginDeleteSubject(StudyingController.SCS.Session session, int subjectID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginDeleteSubject(session, subjectID, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public void EndDeleteSubject(System.IAsyncResult result) {
+            base.Channel.EndDeleteSubject(result);
+        }
+        
+        private System.IAsyncResult OnBeginDeleteSubject(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            StudyingController.SCS.Session session = ((StudyingController.SCS.Session)(inValues[0]));
+            int subjectID = ((int)(inValues[1]));
+            return this.BeginDeleteSubject(session, subjectID, callback, asyncState);
+        }
+        
+        private object[] OnEndDeleteSubject(System.IAsyncResult result) {
+            this.EndDeleteSubject(result);
+            return null;
+        }
+        
+        private void OnDeleteSubjectCompleted(object state) {
+            if ((this.DeleteSubjectCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.DeleteSubjectCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void DeleteSubjectAsync(StudyingController.SCS.Session session, int subjectID) {
+            this.DeleteSubjectAsync(session, subjectID, null);
+        }
+        
+        public void DeleteSubjectAsync(StudyingController.SCS.Session session, int subjectID, object userState) {
+            if ((this.onBeginDeleteSubjectDelegate == null)) {
+                this.onBeginDeleteSubjectDelegate = new BeginOperationDelegate(this.OnBeginDeleteSubject);
+            }
+            if ((this.onEndDeleteSubjectDelegate == null)) {
+                this.onEndDeleteSubjectDelegate = new EndOperationDelegate(this.OnEndDeleteSubject);
+            }
+            if ((this.onDeleteSubjectCompletedDelegate == null)) {
+                this.onDeleteSubjectCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnDeleteSubjectCompleted);
+            }
+            base.InvokeAsync(this.onBeginDeleteSubjectDelegate, new object[] {
+                        session,
+                        subjectID}, this.onEndDeleteSubjectDelegate, this.onDeleteSubjectCompletedDelegate, userState);
         }
         
         public EntitiesDTO.GroupDTO GetGroupByID(StudyingController.SCS.Session session, System.Nullable<int> groupID) {

@@ -6,7 +6,7 @@ using EntitiesDTO;
 
 namespace StudyingControllerEntityModel
 {
-    public partial class Subject : IDTOable<SubjectDTO>
+    public partial class Subject : IDTOable<SubjectDTO>, IDataBase
     {
         #region Constructors
 

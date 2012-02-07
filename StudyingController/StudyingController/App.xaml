@@ -28,7 +28,7 @@
             <DataTemplate DataType="{x:Type vm:UsersTreeViewModel}">
                 <v:UsersTreeView/>
             </DataTemplate>
-
+            
             <DataTemplate DataType="{x:Type vm:InstituteViewModel}">
                 <v:InstituteView/>
             </DataTemplate>

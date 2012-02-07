@@ -11,7 +11,7 @@ using System.Net.Mail;
 
 namespace StudyingController.ViewModels
 {
-    public class UsersStructureViewModel : EditableViewModel, IAdditionalCommands
+    public class UsersStructureViewModel : EditableViewModel, IAdditionalCommands, IManipulateable
     { 
         #region Fields & Properties
 
@@ -29,6 +29,13 @@ namespace StudyingController.ViewModels
             }
         }
 
+        protected ObservableCollection<NamedCommandData> addCommands;
+        private ReadOnlyObservableCollection<NamedCommandData> addCommandsRO;
+        public ReadOnlyObservableCollection<NamedCommandData> AddCommands
+        {
+            get { return addCommandsRO; }
+        }
+
         public bool CanGeneratePassword
         {
             get
@@ -44,13 +51,49 @@ namespace StudyingController.ViewModels
         public UsersStructureViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)
         {
+            addCommands = new ObservableCollection<NamedCommandData>();
+            addCommandsRO = new ReadOnlyObservableCollection<NamedCommandData>(addCommands);
+
             entitiesProvider = new UsersTreeViewModel(userInterop, controllerInterop, dispatcher);
             entitiesProvider.SelectedEntityChangedEvent += new SelectedEntityChangedHandler(EntitesProvider_SelectedEntityChangedEvent);
+            DefineAddCommands();
         }
 
         #endregion
 
         #region Commands
+
+        private RelayCommand removeCommand;
+        public RelayCommand RemoveCommand
+        {
+            get
+            {
+                if (removeCommand == null)
+                    removeCommand = new RelayCommand(param =>
+                    {
+                        if (UserInterop.ShowMessage(Properties.Resources.RemoveEntityTxt, Properties.Resources.DefaultMessageText, MessageButtons.YesNo, MessageTypes.Question) == MessageResults.Yes)
+                        {
+                            CurrentWorkspace.Remove();
+                            EntitiesProvider.Refresh();
+                        }
+                    });
+                return removeCommand;
+            }
+        }
+
+        private RelayCommand updateCommand;
+        public RelayCommand UpdateCommand
+        {
+            get
+            {
+                if (updateCommand == null)
+                    updateCommand = new RelayCommand(param =>
+                    {
+                        EntitiesProvider.Refresh();
+                    });
+                return updateCommand;
+            }
+        }
 
         private RelayCommand addInstituteAdminCommand;
         public RelayCommand AddInstituteAdminCommand
@@ -183,7 +226,7 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
-        protected override void DefineAddCommands()
+        protected void DefineAddCommands()
         {
             switch (ControllerInterop.User.Role)
             {
