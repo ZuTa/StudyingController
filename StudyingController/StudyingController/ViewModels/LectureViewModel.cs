@@ -2,52 +2,64 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using EntitiesDTO;
+using StudyingController.ViewModels.Models;
 using StudyingController.Common;
 using System.Windows.Threading;
 
 namespace StudyingController.ViewModels
 {
-    class LectureViewModel:EditableViewModel
+    class LectureViewModel : SaveableViewModel
     {
         #region Fields & Properties
 
-        private IProviderable entitiesProvider;
-        public override IProviderable EntitiesProvider
+        public LectureDTO OriginalLecture
         {
-            get { return entitiesProvider; }
-            set
-            {
-                if (entitiesProvider != value)
-                {
-                    entitiesProvider = value;
-                    OnPropertyChanged("EntitiesProvider");
-                }
-            }
+            get { return originalEntity as LectureDTO; }
+        }
+
+        public LectureModel Lecture
+        {
+            get { return Model as LectureModel; }
         }
 
         #endregion
 
-        #region Constuctors
+        #region Constructors
 
-        public LectureViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
+         public LectureViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)
         {
-            entitiesProvider = new LectureTreeViewModel(userInterop, controllerInterop, dispatcher);
-            entitiesProvider.SelectedEntityChangedEvent += new SelectedEntityChangedHandler(EntitesProvider_SelectedEntityChangedEvent);
+            originalEntity = new LectureDTO();
+            Model = new LectureModel(originalEntity as LectureDTO);
+            this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+        }
+
+        public LectureViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, LectureDTO lecture)
+            : base(userInterop, controllerInterop, dispatcher)
+        {
+            this.originalEntity = lecture;
+            this.Model = new LectureModel(lecture);
+            this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         #endregion
 
         #region Methods
 
-        protected override SaveableViewModel GetViewModel(EntitiesDTO.BaseEntityDTO entity)
+        public override void Remove()
         {
-            return null;
+            
         }
 
-        protected override void DefineAddCommands()
+        public override void Rollback()
         {
-           
+            
+        }
+
+        public override void Save()
+        {
+            
         }
 
         #endregion

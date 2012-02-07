@@ -264,7 +264,7 @@ namespace StudyingController.ViewModels
 
         private void OpenLessonsStructure()
         {
-            ChangeCurrentWorkspace(new LectureViewModel(UserInterop, ControllerInterop, Dispatcher));
+            ChangeCurrentWorkspace(new LectureStuctureViewModel(UserInterop, ControllerInterop, Dispatcher));
         }
 
         private void OpenUniversityStructure()

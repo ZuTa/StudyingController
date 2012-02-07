@@ -81,8 +81,16 @@
                 <v:UserInformationView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type vm:LectureViewModel}">
+                <v:LectureView/>
+            </DataTemplate>
+            
             <DataTemplate DataType="{x:Type vm:LectureTreeViewModel}">
                 <v:LectureTreeView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:TeacherLecturesViewModel}">
+                <v:TeacherLecturesView/>
             </DataTemplate>
 
         </ResourceDictionary>

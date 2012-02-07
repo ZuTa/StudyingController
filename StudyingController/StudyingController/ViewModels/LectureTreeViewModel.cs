@@ -72,7 +72,6 @@ namespace StudyingController.ViewModels
                     TreeNode node = Tree.AppendNode(new TreeNode(institute.Name, institute, institute.ID, 0));
 
                     LoadFaculties(institute.ID, node);
-
                 }
             }
         }
@@ -134,7 +133,6 @@ namespace StudyingController.ViewModels
                 }
             }
         }
-
 
         #endregion
 
