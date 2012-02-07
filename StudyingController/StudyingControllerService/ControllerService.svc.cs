@@ -644,7 +644,7 @@ namespace StudyingControllerService
             if (item != null)
             {
                 foreach (var group in item.Groups.ToList())
-                    DeleteCathedra(context, group.ID);
+                    DeleteGroup(context, group.ID);
 
                 foreach (var user in item.Teachers.ToList())
                     context.SystemUsers.DeleteObject(user);
@@ -709,22 +709,29 @@ namespace StudyingControllerService
             }
         }
 
-        public void DeleteSubject(Session session, int subjectID)
+        public List<LectureDTO> GetLectures(Session session, int teacherID)
         {
             try
             {
                 CheckSession(session);
 
+                List<LectureDTO> result = new List<LectureDTO>();
+
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    var item = (from f in context.Subjects
-                                where f.ID == subjectID
-                                select f).FirstOrDefault();
-                    if (item != null)
-                        context.Subjects.DeleteObject(item);
+                    var query = from l in context.Lectures
+                                where l.TeacherID == teacherID
+                                select l;
 
-                    context.SaveChanges();
+                    foreach (var lecture in query)
+                    {
+                        context.LoadProperty(lecture, "Subject");
+                        result.Add(lecture.ToDTO());
+                    }
+
                 }
+
+                return result;
             }
             catch (Exception ex)
             {
@@ -732,5 +739,92 @@ namespace StudyingControllerService
             }
         }
 
+        public List<GroupDTO> GetLectureGroups(Session session, int lectureID)
+        {
+            try
+            {
+                CheckSession(session);
+
+                List<GroupDTO> result = new List<GroupDTO>();
+
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var lecture = context.Lectures.Where(l => l.ID == lectureID).FirstOrDefault();
+
+                    if (lecture != null)
+                    {
+                        foreach (var item in lecture.Groups)
+                            result.Add(item.ToDTO());
+                    }
+
+                }
+
+                return result;
+
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public List<TeacherDTO> GetTeachers(Session session, int cathedraID)
+        {
+            try
+            {
+                CheckSession(session);
+
+                List<TeacherDTO> result = new List<TeacherDTO>();
+
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var query = context.Cathedras.Include("Teachers").Where(c => c.ID == cathedraID).Select(c => c.Teachers).FirstOrDefault();
+
+                    if (query != null)
+                    {
+                        foreach (var item in query)
+                        {
+                            context.LoadProperty(item, "UserInformation");
+                            result.Add(item.ToDTO());
+                        }
+                    }
+
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public List<SubjectDTO> GetSubjects(Session session, int cathedraID)
+        {
+            try
+            {
+                CheckSession(session);
+
+                List<SubjectDTO> result = new List<SubjectDTO>();
+
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var query = context.Subjects.Where(s => s.CathedraID == cathedraID);
+
+                    if (query != null)
+                    {
+                        foreach (var item in query)
+                            result.Add(item.ToDTO());
+                    }
+
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
     }
 }

@@ -99,5 +99,22 @@ namespace StudyingControllerService
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
         SpecializationDTO GetSpecializationByID(Session session, int? specializationID);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        List<LectureDTO> GetLectures(Session session, int teacherID);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        List<GroupDTO> GetLectureGroups(Session session, int lectureID);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        List<TeacherDTO> GetTeachers(Session session, int cathedraID);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        List<SubjectDTO> GetSubjects(Session session, int cathedraID);
+
     }
 }

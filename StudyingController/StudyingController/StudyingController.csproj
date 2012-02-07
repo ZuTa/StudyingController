@@ -296,8 +296,11 @@
     <None Include="Properties\DataSources\EntitiesDTO.FacultyDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.GroupDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.InstituteDTO.datasource" />
+    <None Include="Properties\DataSources\EntitiesDTO.LectureDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.SpecializationDTO.datasource" />
+    <None Include="Properties\DataSources\EntitiesDTO.SubjectDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.SystemUserDTO.datasource" />
+    <None Include="Properties\DataSources\EntitiesDTO.TeacherDTO.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

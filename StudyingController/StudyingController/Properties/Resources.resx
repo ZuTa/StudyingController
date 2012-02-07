@@ -163,7 +163,7 @@
     <value>Порт повинен бути цілим числом</value>
   </data>
   <data name="ErrorSendEmail" xml:space="preserve">
-    <value>Не вдалось надіслати лист з новим паролем. Відновлено попередній пароль.</value>
+    <value>Не вдалось надіслати лист з новим паролем.</value>
   </data>
   <data name="ErrorServerBadChars" xml:space="preserve">
     <value>Використано неприпустимі символи для сервера</value>

@@ -13,6 +13,8 @@ namespace StudyingController.ViewModels
     {
         #region Fields & Properties
 
+        protected object locker = new object();
+
         private ObservableCollection<NamedCommandData> commands;
         private ReadOnlyObservableCollection<NamedCommandData> commandsRO;
         public ReadOnlyObservableCollection<NamedCommandData> Commands

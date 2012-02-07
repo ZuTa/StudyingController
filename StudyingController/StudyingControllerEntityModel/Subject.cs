@@ -12,7 +12,7 @@ namespace StudyingControllerEntityModel
 
         public Subject()
         {
- 
+
         }
 
         public Subject(SubjectDTO subject)
@@ -33,14 +33,15 @@ namespace StudyingControllerEntityModel
                 CathedraID = this.CathedraID
             };
         }
-
-        #endregion
-
         public void Assign(SubjectDTO entity)
         {
             this.ID = entity.ID;
             this.Name = entity.Name;
             this.CathedraID = entity.CathedraID;
         }
-}
+
+
+        #endregion
+
+    }
 }
