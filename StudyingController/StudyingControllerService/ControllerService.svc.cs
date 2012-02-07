@@ -781,5 +781,33 @@ namespace StudyingControllerService
                 throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
             }
         }
+
+        public List<SubjectDTO> GetSubjects(Session session, int cathedraID)
+        {
+            try
+            {
+                CheckSession(session);
+
+                List<SubjectDTO> result = new List<SubjectDTO>();
+
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var query = context.Subjects.Where(s => s.CathedraID == cathedraID);
+
+                    if (query != null)
+                    {
+                        foreach (var item in query)
+                            result.Add(item.ToDTO());
+                    }
+
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
     }
 }
