@@ -77,6 +77,8 @@
     <Compile Include="ViewModels\InstituteSecretaryViewModel.cs" />
     <Compile Include="ViewModels\InstituteViewModel.cs" />
     <Compile Include="ViewModels\IProviderable.cs" />
+    <Compile Include="ViewModels\LectureTreeViewModel.cs" />
+    <Compile Include="ViewModels\LectureViewModel.cs" />
     <Compile Include="ViewModels\MainAdminViewModel.cs" />
     <Compile Include="ViewModels\MainSecretaryViewModel.cs" />
     <Compile Include="ViewModels\Models\BaseModel.cs" />
@@ -152,6 +154,9 @@
     <Compile Include="Views\InstituteView.xaml.cs">
       <DependentUpon>InstituteView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\LectureTreeView.xaml.cs">
+      <DependentUpon>LectureTreeView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
@@ -223,6 +228,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\InstituteView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LectureTreeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

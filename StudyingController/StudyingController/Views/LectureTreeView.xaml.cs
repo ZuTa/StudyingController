@@ -15,26 +15,13 @@ using System.Windows.Shapes;
 namespace StudyingController.Views
 {
     /// <summary>
-    /// Interaction logic for MainView.xaml
+    /// Interaction logic for LectureTreeView.xaml
     /// </summary>
-    public partial class MainView : UserControl
+    public partial class LectureTreeView : UserControl
     {
-        public MainView()
+        public LectureTreeView()
         {
             InitializeComponent();
         }
-
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
-        {
-            cmAdd.PlacementTarget = this;
-            cmAdd.IsOpen = true;
-        }
-
-        private void btn_Lessons_Click(object sender, RoutedEventArgs e)
-        {
-            cmLessons.PlacementTarget = this;
-            cmLessons.IsOpen = true;
-        }
-
     }
 }

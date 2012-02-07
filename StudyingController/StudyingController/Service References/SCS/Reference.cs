@@ -18,11 +18,11 @@ namespace StudyingController.SCS {
     [System.Runtime.Serialization.DataContractAttribute(Name="Session", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.TeacherDTO))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.FacultySecretaryDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.StudentDTO))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.InstituteSecretaryDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.FacultyAdminDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.InstituteSecretaryDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.FacultySecretaryDTO))]
     public partial class Session : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -247,11 +247,11 @@ namespace StudyingController.SCS {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/SaveUser", ReplyAction="http://tempuri.org/IControllerService/SaveUserResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/SaveUserControllerServiceExceptionFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.TeacherDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultySecretaryDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.StudentDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteSecretaryDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultyAdminDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteSecretaryDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultySecretaryDTO))]
         void SaveUser(StudyingController.SCS.Session session, EntitiesDTO.SystemUserDTO user);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/SaveUser", ReplyAction="http://tempuri.org/IControllerService/SaveUserResponse")]

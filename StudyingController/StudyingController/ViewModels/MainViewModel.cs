@@ -246,9 +246,26 @@ namespace StudyingController.ViewModels
             }
         }
 
+        private RelayCommand lectureCommand;
+        public RelayCommand LectureCommand
+        {
+            get 
+            { 
+                if(lectureCommand == null)
+                    lectureCommand = new RelayCommand(param => OpenLessonsStructure());
+                return lectureCommand;
+            }
+        }
+
+
         #endregion
 
         #region Methods
+
+        private void OpenLessonsStructure()
+        {
+            ChangeCurrentWorkspace(new LectureViewModel(UserInterop, ControllerInterop, Dispatcher));
+        }
 
         private void OpenUniversityStructure()
         {
