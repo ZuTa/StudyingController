@@ -111,16 +111,16 @@ namespace StudyingController.ViewModels
 
         private void LoadLectureTeachers(int cathedraID, TreeNode parentNode)
         {
-            List<TeacherDTO> teachers = ControllerInterop.Service.GetTeachers(ControllerInterop.Session, cathedraID);
+            //List<TeacherDTO> teachers = ControllerInterop.Service.GetTeachers(ControllerInterop.Session, cathedraID);
 
-            foreach (var teacher in teachers)   
+            /*foreach (var teacher in teachers)   
             {
                 lock (Tree)
                 {
                     TreeNode node = Tree.AppendNode(new TreeNode(teacher.UserInformation.LastName, teacher, teacher.ID, 3), parentNode);
                     //LoadLectures(teacher.ID, node);
                 }
-            }
+            }*/
         }
 
 
