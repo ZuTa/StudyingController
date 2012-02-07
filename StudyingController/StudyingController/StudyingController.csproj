@@ -299,6 +299,7 @@
     <None Include="Properties\DataSources\EntitiesDTO.LectureDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.SpecializationDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.SystemUserDTO.datasource" />
+    <None Include="Properties\DataSources\EntitiesDTO.TeacherDTO.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
