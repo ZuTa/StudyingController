@@ -90,10 +90,6 @@ namespace StudyingControllerService
 
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
-        void DeleteSubject(Session session, int subjectID);
-
-        [OperationContract]
-        [FaultContract(typeof(ControllerServiceException))]
         GroupDTO GetGroupByID(Session session, int? groupID);
 
         [OperationContract]
