@@ -10,7 +10,7 @@ using EntitiesDTO;
 namespace StudyingControllerService
 {
     [ServiceContract]
-    interface IControllerService
+    public interface IControllerService
     {
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
