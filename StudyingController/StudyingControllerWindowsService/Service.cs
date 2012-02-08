@@ -27,19 +27,19 @@ namespace StudyingControllerWindowsService
             if (host != null)
                 host.Close();
 
-            var uri = new Uri("http://localhost:37207/");
+            //var uri = new Uri("http://localhost:37207/");
             
-            host = new ServiceHost(typeof(ControllerService), new[] { uri });
+            host = new ServiceHost(typeof(ControllerService));
             
-            ServiceMetadataBehavior smb = new ServiceMetadataBehavior();
-            smb.HttpGetEnabled = true;
-            host.Description.Behaviors.Add(smb);
+            //ServiceMetadataBehavior smb = new ServiceMetadataBehavior();
+            //smb.HttpGetEnabled = true;
+            //host.Description.Behaviors.Add(smb);
 
-            ContractDescription cd = ContractDescription.GetContract(typeof(IControllerService));
-            BasicHttpBinding bnd = new BasicHttpBinding(BasicHttpSecurityMode.None);
-            bnd.Security.Transport.ClientCredentialType = HttpClientCredentialType.None;
-            bnd.Security.Transport.ProxyCredentialType = HttpProxyCredentialType.None;
-            host.AddServiceEndpoint(typeof(IControllerService), bnd, "ControllerService");
+            //ContractDescription cd = ContractDescription.GetContract(typeof(IControllerService));
+            //BasicHttpBinding bnd = new BasicHttpBinding(BasicHttpSecurityMode.None);
+            //bnd.Security.Transport.ClientCredentialType = HttpClientCredentialType.None;
+            //bnd.Security.Transport.ProxyCredentialType = HttpProxyCredentialType.None;
+            //host.AddServiceEndpoint(typeof(IControllerService), bnd, "ControllerService");
 
             host.Open();
         }

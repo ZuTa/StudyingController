@@ -142,7 +142,6 @@ namespace StudyingController.ViewModels
                     //if (!LoginConfig.IsAutologin)
                     if (passwordSource != null)
                         LoginConfig.Password = passwordSource.GetPassword();
-                    
                     ControllerInterop.Service = new SCS.ControllerServiceClient("BasicHttpBinding_IControllerService", GetServiceEndPoint());
                     this.ControllerInterop.Service.BeginLogin(LoginConfig.Login, HashHelper.ComputeHash(LoginConfig.Password), OnLoginCompleted, null);
                 }

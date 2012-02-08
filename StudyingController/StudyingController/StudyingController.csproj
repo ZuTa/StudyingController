@@ -64,6 +64,11 @@
     <Compile Include="Common\TreeViewHelper.cs" />
     <Compile Include="Common\ViewHelper.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Service References\SCS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\BaseTreeViewModel.cs" />
     <Compile Include="ViewModels\CathedraViewModel.cs" />
     <Compile Include="ViewModels\FacultyAdminViewModel.cs" />
@@ -112,11 +117,6 @@
     <Compile Include="Common\IPasswordSource.cs" />
     <Compile Include="Common\IUserInterop.cs" />
     <Compile Include="ClientData\LoginConfig.cs" />
-    <Compile Include="Service References\SCS\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\BaseApplicationViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
@@ -306,17 +306,17 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Service References\SCS\ControllerService1.wsdl" />
-    <None Include="Service References\SCS\ControllerService4.xsd">
+    <None Include="Service References\SCS\ControllerService.wsdl" />
+    <None Include="Service References\SCS\ControllerService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SCS\ControllerService41.xsd">
+    <None Include="Service References\SCS\ControllerService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SCS\ControllerService42.xsd">
+    <None Include="Service References\SCS\ControllerService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SCS\ControllerService43.xsd">
+    <None Include="Service References\SCS\ControllerService3.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\SCS\StudyingController.SCS.Session.datasource">
@@ -329,24 +329,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\SCS\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\SCS\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\SCS\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\SCS\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\SCS\ControllerService1.disco" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EntityModelDTO\EntitiesDTO.csproj">
@@ -394,6 +376,24 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\genPass.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\SCS\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SCS\ControllerService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SCS\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SCS\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SCS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
