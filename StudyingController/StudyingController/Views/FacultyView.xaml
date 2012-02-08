@@ -51,7 +51,7 @@
                 <ListBox HorizontalContentAlignment="Stretch" x:Name="lbSpecializations" Grid.RowSpan="3" ItemsSource="{Binding Faculty.Specializations}" SelectionChanged="lbSpecializations_SelectionChanged">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <TextBox Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Style="{StaticResource ValidationTextBoxToolTipStyle}" GotFocus="TextBox_GotFocus" />
+                            <TextBox Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" Style="{StaticResource ValidationTextBoxToolTipStyle}" GotFocus="TextBox_GotFocus" />
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>

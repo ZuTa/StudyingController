@@ -29,7 +29,8 @@ namespace StudyingControllerEntityModel
             {
                 ID = this.ID,
                 Name = this.Name,
-                FacultyID = this.FacultyID
+                FacultyID = this.FacultyID,
+                Subjects = this.Subjects.ToDTOList<SubjectDTO, Subject>()
             };
 
             return cathedra;
@@ -41,6 +42,7 @@ namespace StudyingControllerEntityModel
             this.ID = entity.ID;
             this.Name = entity.Name;
             this.FacultyID = entity.FacultyID;
+            this.Subjects.Update<Subject, SubjectDTO>(entity.Subjects);
         }
 
         #endregion

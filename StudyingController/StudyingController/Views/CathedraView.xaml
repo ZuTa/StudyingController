@@ -9,6 +9,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -22,5 +24,35 @@
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Факультет :" Style="{StaticResource TextBlockStyle}"/>
         <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Faculties}" SelectedValue="{Binding Cathedra.Faculty, UpdateSourceTrigger=PropertyChanged,
                                                             ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" Style="{StaticResource ValidationComboBoxToolTipStyle}"/>
+        
+        <TextBlock Grid.Row="2" Grid.ColumnSpan="2" Text="Предмети :" Style="{StaticResource TextBlockStyle}"/>
+
+        <Grid Grid.Row="3" Grid.ColumnSpan="2" Margin="5,0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="btnAdd" Grid.Row="0" Grid.Column="1" Command="{Binding AddSubjectCommand}" ToolTip="Додати" Style="{StaticResource EditableButtonStyle}">
+                <Image Source="/StudyingController;component/Images/1327612523_Add.png" Stretch="Fill" />
+            </Button>
+            <Button x:Name="btnRemove" Grid.Row="1" Grid.Column="1" Command="{Binding RemoveSubjectCommand}" CommandParameter="{Binding ElementName=lbSubjects, Path=SelectedItem}" ToolTip="Видалити" Style="{StaticResource EditableButtonStyle}">
+                <Image Source="/StudyingController;component/Images/1327612550_delete.png" Stretch="Fill" />
+            </Button>
+
+            <ListBox HorizontalContentAlignment="Stretch" x:Name="lbSubjects" Grid.RowSpan="3" ItemsSource="{Binding Cathedra.Subjects}" SelectionChanged="lbSubjects_SelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBox Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" Style="{StaticResource ValidationTextBoxToolTipStyle}" GotFocus="TextBox_GotFocus"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+
     </Grid>
 </UserControl>

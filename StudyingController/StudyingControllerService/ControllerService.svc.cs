@@ -218,7 +218,7 @@ namespace StudyingControllerService
 
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    var query = from c in context.Cathedras
+                    var query = from c in context.Cathedras.Include("Subjects")
                                 where c.FacultyID == facultyID 
                                 select c;
                     foreach (var c in query)
@@ -242,7 +242,7 @@ namespace StudyingControllerService
 
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    foreach (var cathedra in context.Cathedras)
+                    foreach (var cathedra in context.Cathedras.Include("Subjects"))
                         result.Add(GetDTO<CathedraDTO>(cathedra));
                 }
 
@@ -369,11 +369,27 @@ namespace StudyingControllerService
                  CheckSession(session);
                  using (UniversityEntities context = new UniversityEntities())
                  {
-                     var item = context.Cathedras.FirstOrDefault(cath => cath.ID == cathedra.ID);
+                     var item = context.Cathedras.Include("Subjects").FirstOrDefault(cath => cath.ID == cathedra.ID);
                      if (item == null)
                          context.AddToCathedras(new Cathedra(cathedra));
                      else
+                     {
                          item.Assign(cathedra);
+
+                         #region Removing
+
+                         var removed =
+                                (from entity in item.Subjects
+                                 where
+                                     cathedra.Subjects.Find(it => it.ID == entity.ID) == null
+                                 select entity).ToList();
+
+                         foreach (Subject entity in removed)
+                             context.Subjects.DeleteObject(entity);
+
+                         #endregion
+
+                     }
 
                      context.SaveChanges();
                  }
@@ -744,6 +760,7 @@ namespace StudyingControllerService
                 }
 
                 return result;
+
             }
             catch (Exception ex)
             {
@@ -809,6 +826,5 @@ namespace StudyingControllerService
                 throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
             }
         }
-
     }
 }

@@ -9,7 +9,7 @@ using EntitiesDTO;
 
 namespace StudyingController.ViewModels
 {
-    public abstract class EditableViewModel : BaseApplicationViewModel, IManipulateable
+    public abstract class EditableViewModel : BaseApplicationViewModel
     {
         #region Fields & Properties
 
@@ -89,13 +89,6 @@ namespace StudyingController.ViewModels
             }
         }
 
-        protected ObservableCollection<NamedCommandData> addCommands;
-        private ReadOnlyObservableCollection<NamedCommandData> addCommandsRO;
-        public ReadOnlyObservableCollection<NamedCommandData> AddCommands
-        {
-            get { return addCommandsRO; }
-        }
-
         #endregion
 
         #region Constructors
@@ -103,47 +96,13 @@ namespace StudyingController.ViewModels
         public EditableViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)
         {
-            addCommands = new ObservableCollection<NamedCommandData>();
-            addCommandsRO = new ReadOnlyObservableCollection<NamedCommandData>(addCommands);
-
-            DefineAddCommands();
         }
 
         #endregion
 
         #region Commands
 
-        private RelayCommand removeCommand;
-        public RelayCommand RemoveCommand
-        {
-            get
-            {
-                if (removeCommand == null)
-                    removeCommand = new RelayCommand(param =>
-                        {
-                            if (UserInterop.ShowMessage(Properties.Resources.RemoveEntityTxt, Properties.Resources.DefaultMessageText, MessageButtons.YesNo, MessageTypes.Question) == MessageResults.Yes)
-                            {
-                                CurrentWorkspace.Remove();
-                                EntitiesProvider.Refresh();
-                            }
-                        });
-                return removeCommand; 
-            }
-        }
 
-        private RelayCommand updateCommand;
-        public RelayCommand UpdateCommand
-        {
-            get 
-            {
-                if (updateCommand == null)
-                    updateCommand = new RelayCommand(param =>
-                        {
-                            EntitiesProvider.Refresh();
-                        });
-                return updateCommand; 
-            }
-        }
 
         #endregion
 
@@ -160,8 +119,6 @@ namespace StudyingController.ViewModels
         }
 
         protected abstract SaveableViewModel GetViewModel(BaseEntityDTO entity);
-
-        protected abstract void DefineAddCommands();
 
         protected virtual void UpdateProperties()
         {

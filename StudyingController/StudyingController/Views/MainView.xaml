@@ -25,6 +25,7 @@
                 <Button Margin="3" ToolTip="Лекції" Width="32" Height="32" Command="{Binding Path=UsersStructureCommand}" Visibility="{Binding Path=IsUserTeacher, Converter={StaticResource B2V}}" Style="{StaticResource MenuButtonStyle}">
                     <Image Source="/StudyingController;component/Images/book_cd_vide.png" Stretch="Fill" />
                 </Button>
+
             </ToolBar>
             <ToolBar Visibility="{Binding Path=IsManipulateable, Converter={StaticResource B2V}}">
                 <Button Margin="3" ToolTip="Оновити" Width="32" Height="32" Style="{StaticResource MenuButtonStyle}" Command="{Binding Path=CurrentWorkspace.UpdateCommand}" IsEnabled="{Binding CurrentWorkspace.CanRefresh}">

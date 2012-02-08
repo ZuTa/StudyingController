@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using EntitiesDTO;
 using StudyingController.Common;
+using System.Collections.ObjectModel;
 
 namespace StudyingController.ViewModels.Models
 {
@@ -23,13 +24,38 @@ namespace StudyingController.ViewModels.Models
             }
         }
 
+        private ObservableCollection<SubjectModel> subjects;
+        public ObservableCollection<SubjectModel> Subjects
+        {
+            get { return subjects; }
+            set
+            {
+                if (subjects != value)
+                {
+                    subjects = value;
+                    OnPropertyChanged("Subjects");
+                }
+            }
+        }
         #endregion
 
+
+
+        #region Constructors
+        
         public CathedraModel(CathedraDTO cathedra)
             : base(cathedra)
         {
             this.faculty = cathedra.Faculty;
+            subjects = cathedra.Subjects.ToModelList<SubjectModel, SubjectDTO>();
+            subjects.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(subjects_CollectionChanged);
+            foreach(SubjectModel model in subjects)
+                model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(model_PropertyChanged);
         }
+
+        #endregion
+
+        #region Methods
 
         public override void Assign(BaseEntityDTO entity)
         {
@@ -48,7 +74,8 @@ namespace StudyingController.ViewModels.Models
             {
                 ID = this.ID,
                 Name = this.Name,
-                FacultyID = Faculty.ID
+                FacultyID = Faculty.ID,
+                Subjects = this.Subjects.ToDTOList<SubjectDTO, SubjectModel>()
             };
         }
 
@@ -80,5 +107,20 @@ namespace StudyingController.ViewModels.Models
             return error;
         }
 
+        #endregion
+
+        #region Callbacks
+
+        void model_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            OnPropertyChanged("Subjects");
+        }
+
+        void subjects_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            OnPropertyChanged("Subjects");
+        }
+
+        #endregion
     }
 }

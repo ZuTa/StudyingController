@@ -70,6 +70,33 @@ namespace StudyingController.ViewModels
 
         #endregion
 
+        #region Commands
+
+        private RelayCommand addSubjectCommand;
+        public RelayCommand AddSubjectCommand
+        {
+            get
+            {
+                if (addSubjectCommand == null)
+                    addSubjectCommand = new RelayCommand(param => Cathedra.Subjects.Add(new SubjectModel { Name = string.Empty, CathedraID = Cathedra.ID }));
+                return addSubjectCommand;
+            }
+        }
+
+        private RelayCommand removeSubjectCommand;
+        public RelayCommand RemoveSubjectCommand
+        {
+            get
+            {
+                if (removeSubjectCommand == null)
+                    removeSubjectCommand = new RelayCommand(param => Cathedra.Subjects.Remove(param as SubjectModel));
+                return removeSubjectCommand;
+            }
+        }
+
+        #endregion
+
+
         #region Methods
 
         public override void Rollback()
