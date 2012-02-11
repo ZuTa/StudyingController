@@ -3,12 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using EntitiesDTO;
+using System.Collections.ObjectModel;
 
 namespace StudyingController.ViewModels.Models
 {
     public class TeacherModel : SystemUserModel, IDTOable<TeacherDTO>
     {
         #region Fields & Properties
+
+        private List<LectureDTO> lectures;
+        public List<LectureDTO> Lectures
+        {
+            get { return lectures; }
+            set { lectures = value; }
+        }
 
         private CathedraDTO cathedra;
         public CathedraDTO Cathedra
@@ -28,7 +36,7 @@ namespace StudyingController.ViewModels.Models
         public TeacherModel(TeacherDTO teacher)
             : base(teacher)
         {
-            this.Cathedra = teacher.Cathedra;
+            Assign(teacher);
         }
 
         #endregion

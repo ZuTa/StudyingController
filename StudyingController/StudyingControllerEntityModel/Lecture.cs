@@ -29,7 +29,8 @@ namespace StudyingControllerEntityModel
             {
                 ID = this.ID,
                 Subject = this.Subject.ToDTO(),
-                TeacherID = this.TeacherID
+                TeacherID = this.TeacherID,
+                Groups = this.Groups.ToDTOList<GroupDTO, Group>()
             };
         }
 

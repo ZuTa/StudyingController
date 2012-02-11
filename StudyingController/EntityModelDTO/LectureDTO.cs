@@ -30,5 +30,13 @@ namespace EntitiesDTO
             get { return teacherID; }
             set { teacherID = value; }
         }
+
+        private List<GroupDTO> groups;
+        [DataMember]
+        public List<GroupDTO> Groups
+        {
+            get { return groups; }
+            set { groups = value; }
+        }
     }
 }

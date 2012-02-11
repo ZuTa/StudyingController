@@ -246,14 +246,14 @@ namespace StudyingController.ViewModels
             }
         }
 
-        private RelayCommand lectureCommand;
-        public RelayCommand LectureCommand
+        private RelayCommand lessonCommand;
+        public RelayCommand LessonCommand
         {
             get 
             { 
-                if(lectureCommand == null)
-                    lectureCommand = new RelayCommand(param => OpenLessonsStructure());
-                return lectureCommand;
+                if(lessonCommand == null)
+                    lessonCommand = new RelayCommand(param => OpenLessonsStructure());
+                return lessonCommand;
             }
         }
 

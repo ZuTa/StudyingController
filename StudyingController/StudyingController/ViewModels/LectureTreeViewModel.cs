@@ -118,6 +118,7 @@ namespace StudyingController.ViewModels
                 {
                     TreeNode node = Tree.AppendNode(new TreeNode(teacher.UserInformation.LastName, teacher, teacher.ID, 3), parentNode);
                     LoadLectures(teacher.ID, node);
+                    LoadPractices(teacher.ID, node);
                 }
             }
         }
@@ -132,6 +133,32 @@ namespace StudyingController.ViewModels
                     TreeNode node = Tree.AppendNode(new TreeNode(lecture.Subject.Name, lecture, lecture.ID, 4), parentNode);
                 }
             }
+        }
+
+        private void LoadPractices(int teacherID, TreeNode parentNode)
+        {
+            List<PracticeTeacherDTO> practicesTeacher = ControllerInterop.Service.GetPracticesTeacher(ControllerInterop.Session, teacherID);
+            foreach (var practice in practicesTeacher)
+            {
+                lock (Tree)
+                {
+                    TreeNode node = Tree.AppendNode(new TreeNode(practice.Practice.Subject.Name, practice, practice.PracticeID, 5), parentNode);
+                    LoadGroups(practice.PracticeID, node);
+                }
+            }
+        }
+
+        private void LoadGroups(int practiceID, TreeNode parentNode)
+        {
+            List<GroupDTO> groups = ControllerInterop.Service.GetGroupsPractice(ControllerInterop.Session, practiceID);
+            foreach (var group in groups)
+            {
+                lock (Tree)
+                {
+                    TreeNode node = Tree.AppendNode(new TreeNode(group.Name, group, group.ID, 6), parentNode);
+                }
+            }
+
         }
 
         #endregion

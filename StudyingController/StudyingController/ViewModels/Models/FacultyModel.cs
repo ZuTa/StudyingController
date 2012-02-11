@@ -48,6 +48,7 @@ namespace StudyingController.ViewModels.Models
         {
             institute = faculty.Institute;
             specializations = faculty.Specializations.ToModelList<SpecializationModel, SpecializationDTO>();
+
             specializations.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(specializations_CollectionChanged);
             foreach(SpecializationModel model in specializations)
                 model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(model_PropertyChanged);

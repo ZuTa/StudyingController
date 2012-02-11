@@ -6,6 +6,7 @@ using EntitiesDTO;
 using StudyingController.Common;
 using System.Windows.Threading;
 using StudyingController.ViewModels.Models;
+using System.Collections.ObjectModel;
 
 namespace StudyingController.ViewModels
 {
@@ -13,40 +14,28 @@ namespace StudyingController.ViewModels
     {
         #region Fields & Properties
 
-        public TeacherDTO OriginalTeacherLecture
+        public TeacherDTO OriginalTeacher
         {
             get { return originalEntity as TeacherDTO; }
         }
 
-        public TeacherLecturesModel TeacherLecture
+        public TeacherModel Teacher
         {
-            get { return Model as TeacherLecturesModel; }
+            get { return Model as TeacherModel; }
         }
 
-        private List<LectureDTO> allLectures;
-
-        public List<LectureDTO> FreeLectures
+        private ObservableCollection<SubjectDTO> usedSubjects;
+        public ObservableCollection<SubjectDTO> UsedSubjects
         {
-            get { return GetFreeLectures(UsedLectures); }
+            get { return usedSubjects; }
+            set { usedSubjects = value; }
         }
 
-        private List<LectureDTO> usedLecture;
-        public List<LectureDTO> UsedLectures
+        private ObservableCollection<SubjectDTO> unusedSubjects;
+        public ObservableCollection<SubjectDTO> UnusedSubjects
         {
-            get
-            {
-                return usedLecture;
-            }
-
-            set
-            {
-                if (!usedLecture.Equals(value))
-                {
-                    usedLecture = value;
-                    OnPropertyChanged("UsedLectures");
-                    OnPropertyChanged("FreeLectures");
-                }
-            }
+            get { return unusedSubjects; }
+            set { unusedSubjects = value; }
         }
 
         #endregion
@@ -56,33 +45,41 @@ namespace StudyingController.ViewModels
          public TeacherLecturesViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)
         {
-            originalEntity = new TeacherDTO();
-            Model = new TeacherLecturesModel(originalEntity as TeacherDTO);
+            this.originalEntity = new TeacherDTO();
+            this.Model = new TeacherModel(originalEntity as TeacherDTO);
             this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
-            usedLecture = ControllerInterop.Service.GetLectures(ControllerInterop.Session, OriginalTeacherLecture.ID);
-            //allLectures = 
+            InitializeSubjects();
+            UsedSubjects.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(usedSubjects_CollectionChanged);
         }
 
         public TeacherLecturesViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, TeacherDTO teacher)
             : base(userInterop, controllerInterop, dispatcher)
         {
             this.originalEntity = teacher;
-            this.Model = new TeacherLecturesModel(teacher);
+            this.Model = new TeacherModel(teacher);
             this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
-            usedLecture = ControllerInterop.Service.GetLectures(ControllerInterop.Session, OriginalTeacherLecture.ID);
+            InitializeSubjects();
+            UsedSubjects.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(usedSubjects_CollectionChanged);
         }
 
         #endregion
 
         #region Methods
 
-        private List<LectureDTO> GetFreeLectures(List<LectureDTO> used)
+        private void InitializeSubjects()
         {
-            List<LectureDTO> free = new List<LectureDTO>();
-            foreach (LectureDTO lecture in allLectures)
-                if (!used.Contains(lecture))
-                    free.Add(lecture);
-            return free;
+            unusedSubjects = new ObservableCollection<SubjectDTO>();
+            usedSubjects = new ObservableCollection<SubjectDTO>();
+            
+            List<SubjectDTO> subjects = ControllerInterop.Service.GetSubjects(ControllerInterop.Session, OriginalTeacher.CathedraID);
+
+            foreach (SubjectDTO subject in subjects)
+            {
+                if (OriginalTeacher.Lectures.Find(g => g.Subject.ID == subject.ID) == null)
+                    unusedSubjects.Add(subject);
+                else
+                    usedSubjects.Add(subject);
+            }
         }
 
         public override void Remove()
@@ -92,14 +89,23 @@ namespace StudyingController.ViewModels
 
         public override void Rollback()
         {
-            
+            Teacher.Assign(OriginalTeacher);
+            SetUnModified();
         }
 
         public override void Save()
         {
-            
+            ControllerInterop.Service.SaveTeacherSubjects(ControllerInterop.Session, OriginalTeacher.ID, usedSubjects.ToList());
+            SetUnModified();
         }
 
+
+        void usedSubjects_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            SetModified();
+            OnPropertyChanged("UsedSubjects");
+            OnPropertyChanged("UnusedSubjects");
+        }
         #endregion
     }
 }

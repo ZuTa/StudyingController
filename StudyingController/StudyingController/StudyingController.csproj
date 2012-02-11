@@ -58,6 +58,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Common\DragDropHelper.cs" />
+    <Compile Include="Common\DraggedAdorner.cs" />
     <Compile Include="Common\EnumLocalizeHelper.cs" />
     <Compile Include="Common\MailSender.cs" />
     <Compile Include="Common\PasswordGenerator.cs" />
@@ -100,7 +102,6 @@
     <Compile Include="ViewModels\Models\SubjectModel.cs" />
     <Compile Include="ViewModels\Models\SystemUserModel.cs" />
     <Compile Include="ViewModels\Models\TeacherModel.cs" />
-    <Compile Include="ViewModels\Models\TeacherLecturesModel.cs" />
     <Compile Include="ViewModels\Models\UserInformationModel.cs" />
     <Compile Include="Common\ValidateableAttribute.cs" />
     <Compile Include="ViewModels\SaveableViewModel.cs" />
@@ -324,7 +325,9 @@
     <None Include="Properties\DataSources\EntitiesDTO.GroupDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.InstituteDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.LectureDTO.datasource" />
+    <None Include="Properties\DataSources\EntitiesDTO.PracticeTeacherDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.SpecializationDTO.datasource" />
+    <None Include="Properties\DataSources\EntitiesDTO.SubjectDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.SystemUserDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.TeacherDTO.datasource" />
     <None Include="Properties\Settings.settings">
@@ -420,6 +423,13 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\genPass.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Learn_Lesson-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\lect.png" />
+    <Resource Include="Images\pract.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

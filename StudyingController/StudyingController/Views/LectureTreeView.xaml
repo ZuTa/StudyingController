@@ -24,6 +24,18 @@
                                     <DataTrigger Binding="{Binding ImageIndex}" Value="2">
                                         <Setter Property="Source" Value="/StudyingController;component/Images/board.png"/>
                                     </DataTrigger>
+                                    <DataTrigger Binding="{Binding ImageIndex}" Value="3">
+                                        <Setter Property="Source" Value="/StudyingController;component/Images/people.png"></Setter>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ImageIndex}" Value="4">
+                                        <Setter Property="Source" Value="/StudyingController;component/Images/lect.png"></Setter>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ImageIndex}" Value="5">
+                                        <Setter Property="Source" Value="/StudyingController;component/Images/pract.png"></Setter>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ImageIndex}" Value="6">
+                                        <Setter Property="Source" Value="/StudyingController;component/Images/lect.png"></Setter>
+                                    </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </Image.Style>

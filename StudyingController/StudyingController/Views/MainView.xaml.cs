@@ -29,12 +29,5 @@ namespace StudyingController.Views
             cmAdd.PlacementTarget = this;
             cmAdd.IsOpen = true;
         }
-
-        private void btn_Lessons_Click(object sender, RoutedEventArgs e)
-        {
-            cmLessons.PlacementTarget = this;
-            cmLessons.IsOpen = true;
-        }
-
     }
 }

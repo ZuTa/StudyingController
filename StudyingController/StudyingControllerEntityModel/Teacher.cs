@@ -6,7 +6,7 @@ using EntitiesDTO;
 
 namespace StudyingControllerEntityModel
 {
-    partial class Teacher : IDTOable<TeacherDTO>
+    public partial class Teacher : IDTOable<TeacherDTO>
     {
         #region Constructors
 
@@ -30,7 +30,8 @@ namespace StudyingControllerEntityModel
                 Login = this.Login,
                 UserInformation = (this.UserInformation as IDTOable<UserInformationDTO>).ToDTO(),
                 Role = this.Role,
-                CathedraID = this.CathedraID
+                CathedraID = this.CathedraID,
+                Lectures = this.Lectures.ToDTOList<LectureDTO, Lecture>()
             };
         }
 

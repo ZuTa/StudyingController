@@ -22,5 +22,13 @@ namespace EntitiesDTO
             get { return cathedraID; }
             set { cathedraID = value; }
         }
+
+        private List<LectureDTO> lectures;
+        [DataMember]
+        public List<LectureDTO> Lectures
+        {
+            get { return lectures; }
+            set { lectures = value; }
+        }
     }
 }

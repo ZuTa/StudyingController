@@ -25,18 +25,10 @@
                 <Button Margin="3" ToolTip="Лекції" Width="32" Height="32" Command="{Binding Path=UsersStructureCommand}" Visibility="{Binding Path=IsUserTeacher, Converter={StaticResource B2V}}" Style="{StaticResource MenuButtonStyle}">
                     <Image Source="/StudyingController;component/Images/book_cd_vide.png" Stretch="Fill" />
                 </Button>
-                <Button x:Name="btn_Lessons"  Margin="3" ToolTip="Пари" Width="32" Height="32" Visibility="{Binding Path=IsUserAdminOrSecretary, Converter={StaticResource B2V}}" Style="{StaticResource MenuButtonStyle}" Click="btn_Lessons_Click">
+                <Button x:Name="btn_Lessons"  Margin="3" ToolTip="Пари" Width="32" Height="32" Visibility="{Binding Path=IsUserAdminOrSecretary, Converter={StaticResource B2V}}" Command="{Binding Path=LessonCommand}" Style="{StaticResource MenuButtonStyle}">
                     <Button.Content>
-                        <Image>
-                        
-                        </Image>
+                        <Image Source="/StudyingController;component/Images/Learn_Lesson-icon.png" Stretch="Fill" />
                     </Button.Content>
-                    <Button.ContextMenu>
-                        <ContextMenu x:Name="cmLessons">
-                            <MenuItem Header="Лекції" Command="{Binding Path=LectureCommand}"></MenuItem>
-                            <MenuItem Header="Практика"></MenuItem>
-                        </ContextMenu>
-                    </Button.ContextMenu>
                 </Button>
             </ToolBar>
             <ToolBar Visibility="{Binding Path=IsManipulateable, Converter={StaticResource B2V}}">

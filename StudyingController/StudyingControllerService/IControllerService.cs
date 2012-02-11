@@ -40,6 +40,10 @@ namespace StudyingControllerService
         [FaultContract(typeof(ControllerServiceException))]
         List<GroupDTO> GetGroups(Session session, int cathedraID);
 
+        [OperationContract(Name="GetAllGroups")]
+        [FaultContract(typeof(ControllerServiceException))]
+        List<GroupDTO> GetGroups(Session session);
+
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
         void SaveInstitute(Session session, InstituteDTO institute);
@@ -108,5 +112,24 @@ namespace StudyingControllerService
         [FaultContract(typeof(ControllerServiceException))]
         List<TeacherDTO> GetTeachers(Session session, int cathedraID);
 
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        List<SubjectDTO> GetSubjects(Session session, int cathedraID);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        void SaveLecture(Session session, LectureDTO lecture);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        void SaveTeacherSubjects(Session session, int teacherID, List<SubjectDTO> subjects);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        List<PracticeTeacherDTO> GetPracticesTeacher(Session session, int teacherID);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        List<GroupDTO> GetGroupsPractice(Session session, int practiceTeacherID);
     }
 }

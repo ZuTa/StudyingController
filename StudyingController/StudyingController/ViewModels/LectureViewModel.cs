@@ -6,6 +6,7 @@ using EntitiesDTO;
 using StudyingController.ViewModels.Models;
 using StudyingController.Common;
 using System.Windows.Threading;
+using System.Collections.ObjectModel;
 
 namespace StudyingController.ViewModels
 {
@@ -23,6 +24,13 @@ namespace StudyingController.ViewModels
             get { return Model as LectureModel; }
         }
 
+        private ObservableCollection<GroupDTO> unusedGroups;
+        public ObservableCollection<GroupDTO> UnusedGroups
+        {
+            get { return unusedGroups; }
+            set { unusedGroups = value; }
+        }
+
         #endregion
 
         #region Constructors
@@ -30,9 +38,11 @@ namespace StudyingController.ViewModels
          public LectureViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)
         {
-            originalEntity = new LectureDTO();
-            Model = new LectureModel(originalEntity as LectureDTO);
+            this.originalEntity = new LectureDTO();
+            this.Model = new LectureModel(originalEntity as LectureDTO);
             this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+
+             InitializeGroups();
         }
 
         public LectureViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, LectureDTO lecture)
@@ -41,11 +51,26 @@ namespace StudyingController.ViewModels
             this.originalEntity = lecture;
             this.Model = new LectureModel(lecture);
             this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+
+            InitializeGroups();
         }
 
         #endregion
 
         #region Methods
+
+        private void InitializeGroups()
+        {
+            unusedGroups = new ObservableCollection<GroupDTO>();
+
+            List<GroupDTO> groups = ControllerInterop.Service.GetAllGroups(ControllerInterop.Session);
+
+            foreach (GroupDTO group in groups)
+            {
+                if (OriginalLecture.Groups.Find(g => g.IsSameDatabaseObject(group)) == null)
+                    unusedGroups.Add(group);
+            }
+        }
 
         public override void Remove()
         {
@@ -54,13 +79,18 @@ namespace StudyingController.ViewModels
 
         public override void Rollback()
         {
-            
+            Lecture.Assign(OriginalLecture);
+            SetUnModified();
         }
 
         public override void Save()
         {
-            
+            ControllerInterop.Service.SaveLecture(ControllerInterop.Session, Lecture.ToDTO());
+            SetUnModified();
         }
+        #endregion
+
+        #region Callbacks
 
         #endregion
     }
