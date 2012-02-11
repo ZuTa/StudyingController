@@ -58,17 +58,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Common\DragDropHelper.cs" />
+    <Compile Include="Common\DraggedAdorner.cs" />
     <Compile Include="Common\EnumLocalizeHelper.cs" />
     <Compile Include="Common\MailSender.cs" />
     <Compile Include="Common\PasswordGenerator.cs" />
     <Compile Include="Common\TreeViewHelper.cs" />
     <Compile Include="Common\ViewHelper.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
-    <Compile Include="Service References\SCS\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\BaseTreeViewModel.cs" />
     <Compile Include="ViewModels\CathedraViewModel.cs" />
     <Compile Include="ViewModels\FacultyAdminViewModel.cs" />
@@ -82,6 +79,9 @@
     <Compile Include="ViewModels\InstituteSecretaryViewModel.cs" />
     <Compile Include="ViewModels\InstituteViewModel.cs" />
     <Compile Include="ViewModels\IProviderable.cs" />
+    <Compile Include="ViewModels\LectureTreeViewModel.cs" />
+    <Compile Include="ViewModels\LectureStructureViewModel.cs" />
+    <Compile Include="ViewModels\LectureViewModel.cs" />
     <Compile Include="ViewModels\MainAdminViewModel.cs" />
     <Compile Include="ViewModels\MainSecretaryViewModel.cs" />
     <Compile Include="ViewModels\Models\BaseModel.cs" />
@@ -95,6 +95,7 @@
     <Compile Include="ViewModels\Models\InstituteAdminModel.cs" />
     <Compile Include="ViewModels\Models\InstituteModel.cs" />
     <Compile Include="ViewModels\Models\InstituteSecretaryModel.cs" />
+    <Compile Include="ViewModels\Models\LectureModel.cs" />
     <Compile Include="ViewModels\Models\NamedModel.cs" />
     <Compile Include="ViewModels\Models\SpecializationModel.cs" />
     <Compile Include="ViewModels\Models\StudentModel.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="Common\ValidateableAttribute.cs" />
     <Compile Include="ViewModels\SaveableViewModel.cs" />
     <Compile Include="ViewModels\StudentViewModel.cs" />
+    <Compile Include="ViewModels\TeacherLecturesViewModel.cs" />
     <Compile Include="ViewModels\TeacherViewModel.cs" />
     <Compile Include="ViewModels\Tree.cs" />
     <Compile Include="ViewModels\TreeNode.cs" />
@@ -117,6 +119,11 @@
     <Compile Include="Common\IPasswordSource.cs" />
     <Compile Include="Common\IUserInterop.cs" />
     <Compile Include="ClientData\LoginConfig.cs" />
+    <Compile Include="Service References\SCS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\BaseApplicationViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
@@ -152,6 +159,12 @@
     <Compile Include="Views\InstituteView.xaml.cs">
       <DependentUpon>InstituteView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\LectureTreeView.xaml.cs">
+      <DependentUpon>LectureTreeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LectureView.xaml.cs">
+      <DependentUpon>LectureView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
@@ -169,6 +182,9 @@
     </Compile>
     <Compile Include="Views\StudentView.xaml.cs">
       <DependentUpon>StudentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TeacherLecturesView.xaml.cs">
+      <DependentUpon>TeacherLecturesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TeacherView.xaml.cs">
       <DependentUpon>TeacherView.xaml</DependentUpon>
@@ -226,6 +242,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\LectureTreeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LectureView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\LoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -251,6 +275,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\EditableView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TeacherLecturesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -297,6 +325,7 @@
     <None Include="Properties\DataSources\EntitiesDTO.GroupDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.InstituteDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.LectureDTO.datasource" />
+    <None Include="Properties\DataSources\EntitiesDTO.PracticeTeacherDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.SpecializationDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.SubjectDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.SystemUserDTO.datasource" />
@@ -310,6 +339,7 @@
     <None Include="Service References\SCS\ControllerService.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\SCS\ControllerService1.wsdl" />
     <None Include="Service References\SCS\ControllerService1.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -317,6 +347,18 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\SCS\ControllerService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SCS\ControllerService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SCS\ControllerService41.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SCS\ControllerService42.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SCS\ControllerService43.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\SCS\StudyingController.SCS.Session.datasource">
@@ -329,6 +371,24 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\SCS\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SCS\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SCS\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SCS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SCS\ControllerService1.disco" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EntityModelDTO\EntitiesDTO.csproj">
@@ -378,22 +438,14 @@
     <Resource Include="Images\genPass.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\SCS\" />
+    <Resource Include="Images\Learn_Lesson-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\lect.png" />
+    <Resource Include="Images\pract.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\SCS\ControllerService.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\SCS\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\SCS\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\SCS\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -5,6 +5,12 @@
 
     <converters:BoolToVisibilityConverter x:Key="B2V"/>
     
+    <DataTemplate x:Key="ListBoxItemTemplate">
+        <DataTemplate.Resources>
+            
+        </DataTemplate.Resources>
+    </DataTemplate>
+    
     <Style TargetType="{x:Type FrameworkElement}" x:Key="DefaultTextStyle">
         <Setter Property="Margin" Value="5"/>
     </Style>

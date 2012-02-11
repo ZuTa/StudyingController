@@ -303,6 +303,27 @@ namespace StudyingControllerService
             }
         }
 
+        public List<GroupDTO> GetGroups(Session session)
+        {
+            try
+            {
+                CheckSession(session);
+                List<GroupDTO> result = new List<GroupDTO>();
+
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    foreach (var group in context.Groups)
+                        result.Add(GetDTO<GroupDTO>(group));
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
         public void SaveInstitute(Session session, InstituteDTO institute)
         {
             try
@@ -719,7 +740,7 @@ namespace StudyingControllerService
 
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    var query = from l in context.Lectures
+                    var query = from l in context.Lectures.Include("Groups")
                                 where l.TeacherID == teacherID
                                 select l;
 
@@ -785,6 +806,10 @@ namespace StudyingControllerService
                         foreach (var item in query)
                         {
                             context.LoadProperty(item, "UserInformation");
+                            context.LoadProperty(item, "Lectures");
+                            foreach (var lecture in item.Lectures)
+                                context.LoadProperty(lecture, "Subject");
+
                             result.Add(item.ToDTO());
                         }
                     }
@@ -817,6 +842,142 @@ namespace StudyingControllerService
                             result.Add(item.ToDTO());
                     }
 
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public void SaveLecture(Session session, LectureDTO lecture)
+        {
+            try
+            {
+                CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var item = context.Lectures.Include("Groups").FirstOrDefault(l => l.ID == lecture.ID);
+                    if (item == null)
+                    {
+                        context.AddToLectures(new Lecture(lecture));
+                        item = context.Lectures.Include("Groups").FirstOrDefault(l => l.ID == lecture.ID);
+                    }
+                    else
+                        item.Assign(lecture);
+
+                    if (lecture.Groups != null)
+                    {
+                        foreach (GroupDTO group in lecture.Groups)
+                            if (item.Groups.FirstOrDefault(g => g.ID == group.ID) == null)
+                            {
+                                var g = context.Groups.FirstOrDefault(gr => gr.ID == group.ID);
+                                if (g != null)
+                                    item.Groups.Add(g);
+                            }
+                                
+                        List<Group> removed = new List<Group>();
+                        foreach (Group group in item.Groups)
+                            if (lecture.Groups.Find(g => g.ID == group.ID) == null)
+                                removed.Add(group);
+
+                        foreach (Group group in removed)
+                            item.Groups.Remove(group);
+                    }
+
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public void SaveTeacherSubjects(Session session, int teacherID, List<SubjectDTO> subjects)
+        {
+            try
+            {
+                CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var lectures = context.Lectures.Where(l=>l.TeacherID==teacherID).ToList();
+                    var query = lectures.Where(l => subjects.Find(s => s.ID == l.SubjectID) == null);
+                    
+                    foreach (var lecture in query)
+                        context.DeleteObject(lecture);
+
+                    var toAdd = subjects.Where(s => lectures.Find(l => l.SubjectID == s.ID) == null);
+
+                    foreach (var subject in toAdd)
+                    {
+                        var s = context.Subjects.Where(subj => subj.ID == subject.ID).FirstOrDefault();
+                        if (s == null)
+                            throw new NullReferenceException();
+
+                        context.Lectures.AddObject(new Lecture { Subject = s, TeacherID = teacherID });
+                    }
+
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public List<PracticeTeacherDTO> GetPracticesTeacher(Session session, int teacherID)
+        {
+            try
+            {
+                CheckSession(session);
+
+                List<PracticeTeacherDTO> result = new List<PracticeTeacherDTO>();
+
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var query = from pt in context.PracticeTeachers.Include("Practice")//.Include("Students")
+                                where pt.TeacherID == teacherID
+                                select pt;
+                    foreach (var practiceTeacher in query)
+                    {
+                        context.LoadProperty(practiceTeacher.Practice, "Subject");
+                        result.Add(practiceTeacher.ToDTO());
+                    }
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public List<GroupDTO> GetGroupsPractice(Session session, int practiceTeacherID)
+        {
+            try
+            {
+                CheckSession(session);
+                List<GroupDTO> result = new List<GroupDTO>();
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var query = from pt in context.PracticeTeachers
+                                where pt.TeacherID == practiceTeacherID
+                                select pt.Students;
+
+                    foreach (IEnumerable<Student> students in query.ToList())
+                    {
+                        foreach (Student student in students)
+                        {
+                            context.LoadProperty(student, "Group");
+                            if (result.Find(g => g.ID == student.GroupID) == null)
+                                result.Add(student.Group.ToDTO());
+                        }
+                    }
                 }
 
                 return result;
