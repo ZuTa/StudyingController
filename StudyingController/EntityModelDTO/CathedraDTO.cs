@@ -24,5 +24,18 @@ namespace EntitiesDTO
             set { facultyID = value; }
         }
 
+        private List<SubjectDTO> subjects;
+        [DataMember]
+        public List<SubjectDTO> Subjects
+        {
+            get { return subjects; }
+            set { subjects = value; }
+        }
+
+        public CathedraDTO()
+            : base()
+        {
+            subjects = new List<SubjectDTO>();
+        }
     }
 }

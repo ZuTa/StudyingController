@@ -5,10 +5,11 @@ using System.Text;
 using StudyingController.Common;
 using System.Windows.Threading;
 using EntitiesDTO;
+using System.Collections.ObjectModel;
 
 namespace StudyingController.ViewModels
 {
-    public class UniversityStructureViewModel : EditableViewModel
+    public class UniversityStructureViewModel : EditableViewModel, IManipulateable
     {
         #region Fields & Properties
 
@@ -26,6 +27,13 @@ namespace StudyingController.ViewModels
             }
         }
 
+        protected ObservableCollection<NamedCommandData> addCommands;
+        private ReadOnlyObservableCollection<NamedCommandData> addCommandsRO;
+        public ReadOnlyObservableCollection<NamedCommandData> AddCommands
+        {
+            get { return addCommandsRO; }
+        }
+
         #endregion
 
         #region Constructors
@@ -33,13 +41,50 @@ namespace StudyingController.ViewModels
         public UniversityStructureViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)
         {
+            addCommands = new ObservableCollection<NamedCommandData>();
+            addCommandsRO = new ReadOnlyObservableCollection<NamedCommandData>(addCommands);
+
             entitiesProvider = new UniversityTreeViewModel(userInterop, controllerInterop, dispatcher);
             entitiesProvider.SelectedEntityChangedEvent += new SelectedEntityChangedHandler(EntitesProvider_SelectedEntityChangedEvent);
+
+            DefineAddCommands();
         }
 
         #endregion
 
         #region Commands
+
+        private RelayCommand removeCommand;
+        public RelayCommand RemoveCommand
+        {
+            get
+            {
+                if (removeCommand == null)
+                    removeCommand = new RelayCommand(param =>
+                    {
+                        if (UserInterop.ShowMessage(Properties.Resources.RemoveEntityTxt, Properties.Resources.DefaultMessageText, MessageButtons.YesNo, MessageTypes.Question) == MessageResults.Yes)
+                        {
+                            CurrentWorkspace.Remove();
+                            EntitiesProvider.Refresh();
+                        }
+                    });
+                return removeCommand;
+            }
+        }
+
+        private RelayCommand updateCommand;
+        public RelayCommand UpdateCommand
+        {
+            get
+            {
+                if (updateCommand == null)
+                    updateCommand = new RelayCommand(param =>
+                    {
+                        EntitiesProvider.Refresh();
+                    });
+                return updateCommand;
+            }
+        }
 
         private RelayCommand addInstituteCommand;
         public RelayCommand AddInstituteCommand
@@ -101,7 +146,7 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
-        protected override void DefineAddCommands()
+        protected void DefineAddCommands()
         {
             addCommands.Clear();
 

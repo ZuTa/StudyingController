@@ -451,9 +451,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Group_Cathedra">
-          <End Role="Cathedra" Type="UniversityDBModel.Store.Cathedra" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="Cathedra" Type="UniversityDBModel.Store.Cathedra" Multiplicity="1" />
           <End Role="Group" Type="UniversityDBModel.Store.Group" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cathedra">
@@ -811,9 +809,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Teacher_Cathedra">
-          <End Role="Cathedra" Type="UniversityDBModel.Store.Cathedra" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="Cathedra" Type="UniversityDBModel.Store.Cathedra" Multiplicity="1" />
           <End Role="Teacher" Type="UniversityDBModel.Store.Teacher" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cathedra">

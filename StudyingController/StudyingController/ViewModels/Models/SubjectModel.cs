@@ -6,28 +6,37 @@ using EntitiesDTO;
 
 namespace StudyingController.ViewModels.Models
 {
-    public class SubjectModel : NamedModel
+    public class SubjectModel : NamedModel, IDTOable<SubjectDTO>
     {
         #region Fields & Properties
 
-        private CathedraDTO cathedra;
-        public CathedraDTO Cathedra
+        private int cathedraID;
+        public int CathedraID
         {
-            get { return cathedra; }
-            set 
-            { 
-                cathedra = value;
-                OnPropertyChanged("Cathedra");
+            get { return cathedraID; }
+            set
+            {
+                if (cathedraID != value)
+                {
+                    cathedraID = value;
+                    OnPropertyChanged("CathedraID");
+                }
             }
         }
+
         #endregion
 
         #region Constructors
 
+        public SubjectModel()
+        {
+
+        }
+
         public SubjectModel(SubjectDTO subject)
             : base(subject)
         {
-            this.cathedra = subject.Cathedra;
+            this.cathedraID = subject.Cathedra.ID;
         }
 
         #endregion
@@ -39,7 +48,7 @@ namespace StudyingController.ViewModels.Models
             base.Assign(entity);
 
             SubjectDTO subject = entity as SubjectDTO;
-            this.Cathedra = subject.Cathedra;
+            this.CathedraID = subject.CathedraID;
         }
 
         public SubjectDTO ToDTO()
@@ -48,7 +57,7 @@ namespace StudyingController.ViewModels.Models
             {
                 ID = this.ID,
                 Name = this.Name,
-                CathedraID = this.cathedra.ID,
+                CathedraID = this.CathedraID,
             };
         }
         #endregion

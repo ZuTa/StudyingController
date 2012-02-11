@@ -142,7 +142,6 @@ namespace StudyingController.ViewModels
                     //if (!LoginConfig.IsAutologin)
                     if (passwordSource != null)
                         LoginConfig.Password = passwordSource.GetPassword();
-
                     ControllerInterop.Service = new SCS.ControllerServiceClient("BasicHttpBinding_IControllerService", GetServiceEndPoint());
                     this.ControllerInterop.Service.BeginLogin(LoginConfig.Login, HashHelper.ComputeHash(LoginConfig.Password), OnLoginCompleted, null);
                 }
@@ -168,7 +167,7 @@ namespace StudyingController.ViewModels
             
             uri.Insert(uri.ToString().IndexOf('/', 7), ":" + LoginConfig.Port);
             uri.Append(StudyingController.Properties.Resources.Service);
-            
+
             return new EndpointAddress(uri.ToString());
         }
 
