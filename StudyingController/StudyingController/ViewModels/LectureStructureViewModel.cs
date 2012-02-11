@@ -59,11 +59,6 @@ namespace StudyingController.ViewModels
             return viewModel;
         }
 
-        protected override void DefineAddCommands()
-        {
-           
-        }
-
         #endregion
     }
 }
