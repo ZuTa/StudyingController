@@ -10,6 +10,9 @@ using System.ServiceModel;
 using StudyingControllerService;
 using System.ServiceModel.Description;
 using System.IO;
+using System.Data.SqlClient;
+using System.Data.EntityClient;
+using System.Configuration;
 
 namespace StudyingControllerWindowsService
 {
@@ -28,7 +31,21 @@ namespace StudyingControllerWindowsService
                 host.Close();
 
             //var uri = new Uri("http://localhost:37207/");
+
+            //ControllerService service = new ControllerService();
+
+            //SqlConnectionStringBuilder connectionStringBuilder = new SqlConnectionStringBuilder();
+            //connectionStringBuilder.DataSource = "195.68.211.25";
+            //connectionStringBuilder.InitialCatalog = "UniversityDB";
+            //connectionStringBuilder.IntegratedSecurity = true;
+
+            //Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             
+            //ConnectionStringsSection connectionStringsSection = (ConnectionStringsSection)config.GetSection("connectionStrings");
+            //connectionStringsSection.ConnectionStrings["UniversityEntities"].ConnectionString = "";// connectionStringBuilder.ToString();
+
+            //config.Save(ConfigurationSaveMode.Modified);
+
             host = new ServiceHost(typeof(ControllerService));
             
             //ServiceMetadataBehavior smb = new ServiceMetadataBehavior();
