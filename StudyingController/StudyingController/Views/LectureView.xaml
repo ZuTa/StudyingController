@@ -10,22 +10,82 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <ListBox Grid.Column="0" Margin="5,0,5,0" ItemsSource="{Binding Path=Lecture.Groups}" dd:DragDropHelper.IsDragSource ="true" dd:DragDropHelper.IsDropTarget ="true" dd:DragDropHelper.DragDropTemplate="{StaticResource ListBoxItemTemplate}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Path=Name}" ></TextBlock>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        <ListBox Grid.Column="2" Margin="5,0,5,0" ItemsSource="{Binding Path=UnusedGroups}" dd:DragDropHelper.IsDragSource ="true" dd:DragDropHelper.IsDropTarget ="true" dd:DragDropHelper.DragDropTemplate="{StaticResource ListBoxItemTemplate}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Path=Name}"></TextBlock>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        <GridSplitter Grid.Column="1" Background="Gray" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="3"></GridSplitter>
+        <Grid Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <ListBox Grid.Column="0" Margin="5,0,5,0" ItemsSource="{Binding Path=UsedGroups}" dd:DragDropHelper.IsDragSource ="true" dd:DragDropHelper.IsDropTarget ="true" dd:DragDropHelper.DragDropTemplate="{StaticResource ListBoxItemTemplate}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Path=Name}" ></TextBlock>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <ListBox Grid.Column="2" Margin="5,0,5,0" ItemsSource="{Binding Path=UnusedGroups}" dd:DragDropHelper.IsDragSource ="true" dd:DragDropHelper.IsDropTarget ="true" dd:DragDropHelper.DragDropTemplate="{StaticResource ListBoxItemTemplate}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Path=Name}"></TextBlock>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <GridSplitter Grid.Column="1" Background="Gray" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="3"></GridSplitter>
+        </Grid>
+            <TreeView MinWidth="150" Grid.Column="1" IsEnabled="{Binding UniversityTree.IsNotChanged}" ItemsSource="{Binding UniversityTree.Tree.Nodes}" dd:TreeViewHelper.SelectedEntityChangedCommand="{Binding UniversityTree.SelectedEntityChangedCommand}">
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate ItemsSource = "{Binding Path=Children}">
+                        <StackPanel Orientation="Horizontal">
+
+                            <Image Width="16" Height="16" Margin="0,0,5,0">
+                                <Image.Style>
+                                    <Style TargetType="{x:Type Image}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ImageIndex}" Value="0">
+                                                <Setter Property="Source" Value="/StudyingController;component/Images/home.png"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ImageIndex}" Value="1">
+                                                <Setter Property="Source" Value="/StudyingController;component/Images/gnome_go_home.png"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ImageIndex}" Value="2">
+                                                <Setter Property="Source" Value="/StudyingController;component/Images/board.png"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ImageIndex}" Value="3">
+                                                <Setter Property="Source" Value="/StudyingController;component/Images/people.png"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ImageIndex}" Value="4">
+                                                <Setter Property="Source" Value="/StudyingController;component/Images/lect.png"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ImageIndex}" Value="5">
+                                                <Setter Property="Source" Value="/StudyingController;component/Images/pract.png"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ImageIndex}" Value="6">
+                                                <Setter Property="Source" Value="/StudyingController;component/Images/lect.png"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Image.Style>
+                            </Image>
+
+                            <TextBlock Text="{Binding Path=Name}"/>
+                        </StackPanel>
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+
+                <TreeView.ItemContainerStyle>
+                    <Style TargetType="{x:Type TreeViewItem}">
+                        <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+                        <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+                        <Setter Property="FontWeight" Value="Normal" />
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="FontWeight" Value="Bold" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TreeView.ItemContainerStyle>
+            </TreeView>
     </Grid>
+
 </UserControl>

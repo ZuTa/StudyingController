@@ -85,12 +85,20 @@
                 <v:LectureView/>
             </DataTemplate>
             
-            <DataTemplate DataType="{x:Type vm:LectureTreeViewModel}">
-                <v:LectureTreeView/>
+            <DataTemplate DataType="{x:Type vm:LessonTreeViewModel}">
+                <v:LessonTreeView/>
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type vm:TeacherLecturesViewModel}">
                 <v:TeacherLecturesView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:TeacherPracticesViewModel}">
+                <v:TeacherPracticesView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:PracticeTeacherViewModel}">
+                <v:PracticeTeacherView/>
             </DataTemplate>
 
         </ResourceDictionary>

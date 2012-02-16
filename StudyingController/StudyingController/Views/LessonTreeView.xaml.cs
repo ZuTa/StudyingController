@@ -17,9 +17,9 @@ namespace StudyingController.Views
     /// <summary>
     /// Interaction logic for LectureTreeView.xaml
     /// </summary>
-    public partial class LectureTreeView : UserControl
+    public partial class LessonTreeView : UserControl
     {
-        public LectureTreeView()
+        public LessonTreeView()
         {
             InitializeComponent();
         }

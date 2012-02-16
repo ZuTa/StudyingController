@@ -64,6 +64,7 @@
     <Compile Include="Common\MailSender.cs" />
     <Compile Include="Common\PasswordGenerator.cs" />
     <Compile Include="Common\TreeViewHelper.cs" />
+    <Compile Include="Common\UniversityTree.cs" />
     <Compile Include="Common\ViewHelper.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="ViewModels\BaseTreeViewModel.cs" />
@@ -79,8 +80,8 @@
     <Compile Include="ViewModels\InstituteSecretaryViewModel.cs" />
     <Compile Include="ViewModels\InstituteViewModel.cs" />
     <Compile Include="ViewModels\IProviderable.cs" />
-    <Compile Include="ViewModels\LectureTreeViewModel.cs" />
-    <Compile Include="ViewModels\LectureStructureViewModel.cs" />
+    <Compile Include="ViewModels\LessonTreeViewModel.cs" />
+    <Compile Include="ViewModels\LessonStructureViewModel.cs" />
     <Compile Include="ViewModels\LectureViewModel.cs" />
     <Compile Include="ViewModels\MainAdminViewModel.cs" />
     <Compile Include="ViewModels\MainSecretaryViewModel.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="ViewModels\Models\InstituteSecretaryModel.cs" />
     <Compile Include="ViewModels\Models\LectureModel.cs" />
     <Compile Include="ViewModels\Models\NamedModel.cs" />
+    <Compile Include="ViewModels\Models\PracticeTeacherModel.cs" />
     <Compile Include="ViewModels\Models\SpecializationModel.cs" />
     <Compile Include="ViewModels\Models\StudentModel.cs" />
     <Compile Include="ViewModels\Models\SubjectModel.cs" />
@@ -104,9 +106,11 @@
     <Compile Include="ViewModels\Models\TeacherModel.cs" />
     <Compile Include="ViewModels\Models\UserInformationModel.cs" />
     <Compile Include="Common\ValidateableAttribute.cs" />
+    <Compile Include="ViewModels\TeacherPracticesViewModel.cs" />
     <Compile Include="ViewModels\SaveableViewModel.cs" />
     <Compile Include="ViewModels\StudentViewModel.cs" />
     <Compile Include="ViewModels\TeacherLecturesViewModel.cs" />
+    <Compile Include="ViewModels\PracticeTeacherViewModel.cs" />
     <Compile Include="ViewModels\TeacherViewModel.cs" />
     <Compile Include="ViewModels\Tree.cs" />
     <Compile Include="ViewModels\TreeNode.cs" />
@@ -159,8 +163,8 @@
     <Compile Include="Views\InstituteView.xaml.cs">
       <DependentUpon>InstituteView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\LectureTreeView.xaml.cs">
-      <DependentUpon>LectureTreeView.xaml</DependentUpon>
+    <Compile Include="Views\LessonTreeView.xaml.cs">
+      <DependentUpon>LessonTreeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LectureView.xaml.cs">
       <DependentUpon>LectureView.xaml</DependentUpon>
@@ -180,11 +184,17 @@
     <Compile Include="Views\EditableView.xaml.cs">
       <DependentUpon>EditableView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PracticeTeacherView.xaml.cs">
+      <DependentUpon>PracticeTeacherView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\StudentView.xaml.cs">
       <DependentUpon>StudentView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TeacherLecturesView.xaml.cs">
       <DependentUpon>TeacherLecturesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TeacherPracticesView.xaml.cs">
+      <DependentUpon>TeacherPracticesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TeacherView.xaml.cs">
       <DependentUpon>TeacherView.xaml</DependentUpon>
@@ -242,7 +252,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\LectureTreeView.xaml">
+    <Page Include="Views\LessonTreeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -266,6 +276,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\PracticeTeacherView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\StudentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -279,6 +293,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\TeacherLecturesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TeacherPracticesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -327,6 +345,7 @@
     <None Include="Properties\DataSources\EntitiesDTO.LectureDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.PracticeTeacherDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.SpecializationDTO.datasource" />
+    <None Include="Properties\DataSources\EntitiesDTO.StudentDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.SubjectDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.SystemUserDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.TeacherDTO.datasource" />

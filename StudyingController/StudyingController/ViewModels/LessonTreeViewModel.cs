@@ -8,7 +8,7 @@ using EntitiesDTO;
 
 namespace StudyingController.ViewModels
 {
-    class LectureTreeViewModel : BaseTreeViewModel
+    class LessonTreeViewModel : BaseTreeViewModel
     {
         #region Fields & Properties
 
@@ -16,7 +16,7 @@ namespace StudyingController.ViewModels
 
         #region Constructors
 
-        public LectureTreeViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
+        public LessonTreeViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)
         {
 
@@ -143,22 +143,8 @@ namespace StudyingController.ViewModels
                 lock (Tree)
                 {
                     TreeNode node = Tree.AppendNode(new TreeNode(practice.Practice.Subject.Name, practice, practice.PracticeID, 5), parentNode);
-                    LoadGroups(practice.PracticeID, node);
                 }
             }
-        }
-
-        private void LoadGroups(int practiceID, TreeNode parentNode)
-        {
-            List<GroupDTO> groups = ControllerInterop.Service.GetGroupsPractice(ControllerInterop.Session, practiceID);
-            foreach (var group in groups)
-            {
-                lock (Tree)
-                {
-                    TreeNode node = Tree.AppendNode(new TreeNode(group.Name, group, group.ID, 6), parentNode);
-                }
-            }
-
         }
 
         #endregion

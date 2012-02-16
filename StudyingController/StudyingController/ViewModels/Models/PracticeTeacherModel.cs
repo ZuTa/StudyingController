@@ -4,33 +4,25 @@ using System.Linq;
 using System.Text;
 using EntitiesDTO;
 using System.Collections.ObjectModel;
-using StudyingController.Common;
 
 namespace StudyingController.ViewModels.Models
 {
-    class LectureModel : BaseModel, IDTOable<LectureDTO>
+    class PracticeTeacherModel:BaseModel, IDTOable<PracticeTeacherDTO>
     {
         #region Fields & Properties
 
-        private List<GroupDTO> groups;
-        public List<GroupDTO> Groups
+        private List<StudentDTO> students;
+        public List<StudentDTO> Students
         {
             get
             {
-                return groups;
+                return students;
             }
 
             set
             {
-                groups = value;
+                students = value;
             }
-        }
-
-        private TeacherDTO teacher;
-        public TeacherDTO Teacher
-        {
-            get { return teacher; }
-            set { teacher = value; }
         }
 
         private int teacherID;
@@ -40,21 +32,21 @@ namespace StudyingController.ViewModels.Models
             set { teacherID = value; }
         }
 
-        private SubjectDTO subject;
-        public SubjectDTO Subject
+        private PracticeDTO practice;
+        public PracticeDTO Practice
         {
-            get { return subject; }
-            set { subject = value; }
+            get { return practice; }
+            set { practice = value; }
         }
 
         #endregion
 
         #region Constructors
 
-        public LectureModel(LectureDTO lecture)
-            :base(lecture)
+        public PracticeTeacherModel(PracticeTeacherDTO pract)
+            :base(pract)
         {
-            Assign(lecture);
+            Assign(pract);
         }
 
         #endregion
@@ -65,22 +57,21 @@ namespace StudyingController.ViewModels.Models
         {
             base.Assign(entity);
 
-            LectureDTO lecture = entity as LectureDTO;
-            this.groups = lecture.Groups;
-            this.teacher = lecture.Teacher;
-            this.teacherID = lecture.TeacherID;
-            this.subject = lecture.Subject;
+            PracticeTeacherDTO pract = entity as PracticeTeacherDTO;
+            this.students = pract.Students;
+            this.teacherID = pract.TeacherID;
+            this.practice = pract.Practice;
         }
 
-        public LectureDTO ToDTO()
+        public PracticeTeacherDTO ToDTO()
         {
-            return new LectureDTO() 
+            return new PracticeTeacherDTO() 
             { 
                 ID = this.ID ,
-                Teacher = this.Teacher,
+                Practice = this.practice,
+                PracticeID = this.practice.ID,
                 TeacherID = this.TeacherID,
-                Subject = this.Subject,
-                Groups = this.Groups.ToList()
+                Students = this.students.ToList()
             };
         }
 

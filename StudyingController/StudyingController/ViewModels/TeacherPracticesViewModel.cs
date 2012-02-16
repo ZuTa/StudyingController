@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using EntitiesDTO;
-using StudyingController.Common;
-using System.Windows.Threading;
 using StudyingController.ViewModels.Models;
 using System.Collections.ObjectModel;
+using StudyingController.Common;
+using System.Windows.Threading;
 
 namespace StudyingController.ViewModels
 {
-    class TeacherLecturesViewModel : SaveableViewModel
+    class TeacherPracticesViewModel:SaveableViewModel
     {
-        #region Fields & Properties
+         #region Fields & Properties
 
         public TeacherDTO OriginalTeacher
         {
@@ -42,17 +42,17 @@ namespace StudyingController.ViewModels
 
         #region Constructors
 
-         public TeacherLecturesViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
+         public TeacherPracticesViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)
         {
-            this.originalEntity = new TeacherDTO();
+            this.originalEntity = new PracticeTeacherDTO();
             this.Model = new TeacherModel(originalEntity as TeacherDTO);
             this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
             InitializeSubjects();
             UsedSubjects.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(usedSubjects_CollectionChanged);
         }
 
-        public TeacherLecturesViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, TeacherDTO teacher)
+        public TeacherPracticesViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, TeacherDTO teacher)
             : base(userInterop, controllerInterop, dispatcher)
         {
             this.originalEntity = teacher;
@@ -69,17 +69,15 @@ namespace StudyingController.ViewModels
         private void InitializeSubjects()
         {
             unusedSubjects = new ObservableCollection<SubjectDTO>();
-            usedSubjects = new ObservableCollection<SubjectDTO>();
             
             List<SubjectDTO> subjects = ControllerInterop.Service.GetSubjects(ControllerInterop.Session, OriginalTeacher.CathedraID);
-
+            List<SubjectDTO> used =  ControllerInterop.Service.GetTeacherPracticeSubjects(ControllerInterop.Session, OriginalTeacher.ID);
             foreach (SubjectDTO subject in subjects)
             {
-                if (OriginalTeacher.Lectures.Find(g => g.Subject.ID == subject.ID) == null)
-                    unusedSubjects.Add(subject);
-                else
-                    usedSubjects.Add(subject);
+                if (used.Find(s => s.ID == subject.ID) == null)
+                    unusedSubjects.Add(subject); 
             }
+            usedSubjects = new ObservableCollection<SubjectDTO>(used);
         }
 
         public override void Remove()
@@ -95,7 +93,7 @@ namespace StudyingController.ViewModels
 
         public override void Save()
         {
-            ControllerInterop.Service.SaveTeacherSubjects(ControllerInterop.Session, OriginalTeacher.ID, usedSubjects.ToList());
+            ControllerInterop.Service.SavePracticeTeacherSubjects(ControllerInterop.Session, OriginalTeacher.ID, usedSubjects.ToList());
             SetUnModified();
         }
 
@@ -103,10 +101,10 @@ namespace StudyingController.ViewModels
         void usedSubjects_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             SetModified();
-            
             OnPropertyChanged("UsedSubjects");
             OnPropertyChanged("UnusedSubjects");
         }
         #endregion
     }
+    
 }

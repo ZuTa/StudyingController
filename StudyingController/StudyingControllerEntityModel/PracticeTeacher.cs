@@ -40,6 +40,7 @@ namespace StudyingControllerEntityModel
             this.ID = entity.ID;
             this.PracticeID = entity.PracticeID;
             this.TeacherID = entity.TeacherID;
+            this.Students.Update<Student, StudentDTO>(entity.Students);
         }
 
         #endregion
