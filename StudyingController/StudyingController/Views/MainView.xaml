@@ -105,8 +105,7 @@
                 </Expander>-->
             </Grid>
             <ContentControl Margin="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding CurrentWorkspace}"/>
-            <!--<Grid Grid.Column="1">
-                <ScrollViewer Grid.Row="0" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Left" >
+            <!--    <ScrollViewer Grid.Row="0" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Left" >
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                         <ItemsControl ItemsSource="{Binding PathCommands}" Width="Auto" >
                             <ItemsControl.ItemsPanel>
