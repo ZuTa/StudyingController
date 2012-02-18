@@ -61,7 +61,7 @@
                     <Image Source="/StudyingController;component/Images/cancel_dv.png" Stretch="Fill" />
                 </Button>
             </ToolBar>
-            <ToolBar Visibility="{Binding Path=HasAdditionalCommands, Converter={StaticResource B2V}}" ItemsSource="{Binding CurrentWorkspace.AdditionalCommands}">
+            <ToolBar IsEnabled="{Binding Path=CurrentWorkspace.IsEnabled}" Visibility="{Binding Path=HasAdditionalCommands, Converter={StaticResource B2V}}" ItemsSource="{Binding CurrentWorkspace.AdditionalCommands}">
                 <ToolBar.ItemTemplate>
                     <DataTemplate>
                         <Button ToolTip="{Binding Path=Name}" Command="{Binding Path=Command}" IsEnabled="{Binding Path=IsEnabled}" Width="32" Height="32"  Style="{StaticResource MenuButtonStyle}"/>

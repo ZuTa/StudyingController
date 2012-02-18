@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="StudyingController.Views.LectureTreeView"
+﻿<UserControl x:Class="StudyingController.Views.LessonTreeView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -32,9 +32,6 @@
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding ImageIndex}" Value="5">
                                         <Setter Property="Source" Value="/StudyingController;component/Images/pract.png"></Setter>
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding ImageIndex}" Value="6">
-                                        <Setter Property="Source" Value="/StudyingController;component/Images/lect.png"></Setter>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>

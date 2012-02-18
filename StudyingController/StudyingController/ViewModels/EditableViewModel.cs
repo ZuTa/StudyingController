@@ -149,6 +149,7 @@ namespace StudyingController.ViewModels
         {
             UnsubscribeFromEvrents();
             CurrentWorkspace = viewModel;
+            UpdateProperties();
             SubscribeToEvents();
         }
 
@@ -178,7 +179,7 @@ namespace StudyingController.ViewModels
         {
             ChangeCurrentWorkspace(GetViewModel(EntitiesProvider.CurrentEntity));
 
-            UpdateProperties();
+            //UpdateProperties();
         }
 
 

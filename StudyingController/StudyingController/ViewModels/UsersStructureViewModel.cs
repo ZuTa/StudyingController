@@ -238,24 +238,6 @@ namespace StudyingController.ViewModels
                                 lock(locker)
                                     IsSendingMessage = false;
                             });
-                        /*
-                        SystemUserModel user = CurrentWorkspace.Model as SystemUserModel;
-                        user.Password = PasswordGenerator.Generate();
-
-                        MailSender mail = MailSender.GetInstance();
-
-                        MailMessage message = new MailMessage(Properties.Resources.EmailOwner, user.UserInformation.Email, Properties.Resources.EmailSubject, Properties.Resources.EmailText + user.Password);
-
-                        if (mail.SendMessage(message))
-                        {
-                            UserInterop.ShowMessage(String.Format(Properties.Resources.SuccessSendEmail, user.Login, user.UserInformation.Email));
-                            CurrentWorkspace.Save();
-                        }
-                        else
-                        {
-                            UserInterop.ShowMessage(Properties.Resources.ErrorSendEmail);
-                            CurrentWorkspace.Rollback();
-                        }*/
                     });
 
                 return generatePasswordCommand;

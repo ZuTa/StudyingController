@@ -8,6 +8,11 @@ namespace EntitiesDTO
 {
     public class StudentDTO : SystemUserDTO, IGroupable
     {
+        public string Name
+        {
+            get { return string.Format("{0} {1}", UserInformation.LastName, UserInformation.FirstName); }
+        }
+
         private GroupDTO group;
         public GroupDTO Group
         {

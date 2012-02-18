@@ -30,7 +30,7 @@ namespace StudyingControllerEntityModel
                 ID = this.ID,
                 CathedraID = this.CathedraID,
                 Name = this.Name,
-                SpecializationID = this.SpecializationID            
+                SpecializationID = this.SpecializationID 
             };
         }
 
