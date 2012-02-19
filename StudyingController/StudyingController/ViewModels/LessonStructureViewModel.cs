@@ -140,7 +140,7 @@ namespace StudyingController.ViewModels
                         Command =  LoadLecturesViewModel,
                         IsEnabled = !IsLecturesViewed && isLessonsSelect,
                         Name="Лекції",
-                        Image = PictureEnum.Lecture
+                        Type = CommandTypes.Lecture
                     };
                     lectureNamedCommand.UpdateEnabledState = () => lectureNamedCommand.IsEnabled = !IsLecturesViewed && isLessonsSelect;
                     NamedCommandData practiceNamedCommand = new NamedCommandData 
@@ -148,7 +148,7 @@ namespace StudyingController.ViewModels
                         Command = LoadPracticesViewModel,
                         IsEnabled = IsLecturesViewed && isLessonsSelect,
                         Name = "Практика",
-                        Image = PictureEnum.Practice
+                        Type = CommandTypes.Practice
                     };
                     practiceNamedCommand.UpdateEnabledState = () => practiceNamedCommand.IsEnabled = IsLecturesViewed && isLessonsSelect;
                     additionalCommands.Add(lectureNamedCommand);

@@ -367,7 +367,7 @@ namespace StudyingController.ViewModels
                 if (additionalCommands == null)
                 {
                     additionalCommands = new ObservableCollection<NamedCommandData>();
-                    NamedCommandData generatePassword = new NamedCommandData { Command = GeneratePasswordCommand, Name = "Генерувати пароль", IsEnabled = CanGeneratePassword,Image = PictureEnum.GeneratePassword};
+                    NamedCommandData generatePassword = new NamedCommandData { Command = GeneratePasswordCommand, Name = "Генерувати пароль", IsEnabled = CanGeneratePassword,Type = CommandTypes.GeneratePassword};
                     generatePassword.UpdateEnabledState = () => generatePassword.IsEnabled = CanGeneratePassword;
                     additionalCommands.Add(generatePassword);
                 }

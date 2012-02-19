@@ -64,7 +64,6 @@
     <Compile Include="Common\EnumLocalizeHelper.cs" />
     <Compile Include="Common\MailSender.cs" />
     <Compile Include="Common\PasswordGenerator.cs" />
-    <Compile Include="Common\PictureEnum.cs" />
     <Compile Include="Common\TreeViewHelper.cs" />
     <Compile Include="Common\ViewHelper.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />

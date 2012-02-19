@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Data;
-using StudyingController.Common;
+using StudyingController.ViewModels;
 
 namespace StudyingController.Converters
 {
@@ -11,7 +11,7 @@ namespace StudyingController.Converters
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            switch((int)((PictureEnum)value))
+            switch((int)((CommandTypes)value))
             {
                 case 1:
                     return Properties.Resources.GeneratePassword;
