@@ -1299,5 +1299,34 @@ namespace StudyingControllerService
                 throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
             }
         }
+
+        public TeacherDTO GetTeacher(Session session, int teacherID)
+        {
+            try
+            {
+                CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var query = context.Cathedras.Include("Teachers");
+                    foreach (var cathedra in query)
+                    {
+                        var item = cathedra.Teachers.Where(t => t.ID == teacherID).FirstOrDefault();
+                        if (item != null)
+                        {
+                            context.LoadProperty(item, "UserInformation");
+                            context.LoadProperty(item, "Cathedra");
+                            context.LoadProperty(item.Cathedra, "Faculty");
+                            context.LoadProperty(item.Cathedra.Faculty, "Institute");
+                            return item.ToDTO();
+                        }
+                    }
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
     }
 }

@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace StudyingController.ViewModels
 {
-    public class UsersStructureViewModel : EditableViewModel, IAdditionalCommands, IManipulateable
+    public class UsersStructureViewModel : EditableViewModel, IAdditionalCommands, IManipulateable, IRefreshable
     { 
         #region Fields & Properties
 
@@ -367,7 +367,7 @@ namespace StudyingController.ViewModels
                 if (additionalCommands == null)
                 {
                     additionalCommands = new ObservableCollection<NamedCommandData>();
-                    NamedCommandData generatePassword = new NamedCommandData { Command = GeneratePasswordCommand, Name = "Генерувати пароль", IsEnabled = CanGeneratePassword};
+                    NamedCommandData generatePassword = new NamedCommandData { Command = GeneratePasswordCommand, Name = "Генерувати пароль", IsEnabled = CanGeneratePassword,Image = PictureEnum.GeneratePassword};
                     generatePassword.UpdateEnabledState = () => generatePassword.IsEnabled = CanGeneratePassword;
                     additionalCommands.Add(generatePassword);
                 }

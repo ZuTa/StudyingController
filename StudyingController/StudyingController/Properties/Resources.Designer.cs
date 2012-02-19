@@ -259,6 +259,15 @@ namespace StudyingController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to /StudyingController;component/Images/genPass.jpg.
+        /// </summary>
+        internal static string GeneratePassword {
+            get {
+                return ResourceManager.GetString("GeneratePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Адміністратори інститутів.
         /// </summary>
         internal static string InstituteAdminsTxt {
@@ -282,6 +291,15 @@ namespace StudyingController.Properties {
         internal static string InstituteViewHeaderText {
             get {
                 return ResourceManager.GetString("InstituteViewHeaderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /StudyingController;component/Images/lect.png.
+        /// </summary>
+        internal static string Lecture {
+            get {
+                return ResourceManager.GetString("Lecture", resourceCulture);
             }
         }
         
@@ -318,6 +336,15 @@ namespace StudyingController.Properties {
         internal static string MainSecretariesTxt {
             get {
                 return ResourceManager.GetString("MainSecretariesTxt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /StudyingController;component/Images/pract.png.
+        /// </summary>
+        internal static string Practice {
+            get {
+                return ResourceManager.GetString("Practice", resourceCulture);
             }
         }
         

@@ -30,6 +30,10 @@ namespace StudyingControllerEntityModel
                 InstituteID = this.InstituteID,
                 Specializations = this.Specializations.ToDTOList<SpecializationDTO, Specialization>()
             };
+            if (this.Institute != null)
+            {
+                faculty.Institute = this.Institute.ToDTO();
+            }
             return faculty;            
         }
 

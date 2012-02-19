@@ -9,7 +9,7 @@ using System.Collections.ObjectModel;
 
 namespace StudyingController.ViewModels
 {
-    public class UniversityStructureViewModel : EditableViewModel, IManipulateable
+    public class UniversityStructureViewModel : EditableViewModel, IManipulateable,IRefreshable
     {
         #region Fields & Properties
 

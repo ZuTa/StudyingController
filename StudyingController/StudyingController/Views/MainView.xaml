@@ -31,11 +31,11 @@
                     </Button.Content>
                 </Button>
             </ToolBar>
-            <ToolBar Visibility="{Binding Path=IsManipulateable, Converter={StaticResource B2V}}">
-                <Button Margin="3" ToolTip="Оновити" Width="32" Height="32" Style="{StaticResource MenuButtonStyle}" Command="{Binding Path=CurrentWorkspace.UpdateCommand}" IsEnabled="{Binding CurrentWorkspace.CanRefresh}">
+            <ToolBar Visibility="{Binding Path=IsManipulateableOrRefreshable, Converter={StaticResource B2V}}">
+                <Button Margin="3" ToolTip="Оновити" Visibility="{Binding Path=IsRefreshable, Converter={StaticResource B2V}}" Width="32" Height="32" Style="{StaticResource MenuButtonStyle}" Command="{Binding Path=CurrentWorkspace.UpdateCommand}" IsEnabled="{Binding CurrentWorkspace.CanRefresh}">
                     <Image Source="/StudyingController;component/Images/refresh_blue.png" Stretch="Fill" />
                 </Button>
-                <Button x:Name="btnAdd" Click="btnAdd_Click" Margin="3" ToolTip="Додати" Width="32" Height="32" IsEnabled="{Binding CurrentWorkspace.CanAdd}" Style="{StaticResource MenuButtonStyle}">
+                <Button x:Name="btnAdd" Visibility="{Binding Path=IsManipulateable, Converter={StaticResource B2V}}" Click="btnAdd_Click" Margin="3" ToolTip="Додати" Width="32" Height="32" IsEnabled="{Binding CurrentWorkspace.CanAdd}" Style="{StaticResource MenuButtonStyle}">
                     <Button.ContextMenu>
                         <ContextMenu x:Name="cmAdd" ItemsSource="{Binding CurrentWorkspace.AddCommands}">
                             <ContextMenu.ItemTemplate>
@@ -49,7 +49,7 @@
                         <Image Source="/StudyingController;component/Images/1327612523_Add.png" Stretch="Fill" />
                     </Button.Content>
                 </Button>
-                <Button Margin="3" ToolTip="Видалити" Width="32" Height="32" Command="{Binding Path=CurrentWorkspace.RemoveCommand}" IsEnabled="{Binding CurrentWorkspace.CanRemove}" Style="{StaticResource MenuButtonStyle}">
+                <Button Margin="3" ToolTip="Видалити" Visibility="{Binding Path=IsManipulateable, Converter={StaticResource B2V}}" Width="32" Height="32" Command="{Binding Path=CurrentWorkspace.RemoveCommand}" IsEnabled="{Binding CurrentWorkspace.CanRemove}" Style="{StaticResource MenuButtonStyle}">
                     <Image Source="/StudyingController;component/Images/1327612550_delete.png" Stretch="Fill" />
                 </Button>
             </ToolBar>
@@ -64,7 +64,11 @@
             <ToolBar IsEnabled="{Binding Path=CurrentWorkspace.IsEnabled}" Visibility="{Binding Path=HasAdditionalCommands, Converter={StaticResource B2V}}" ItemsSource="{Binding CurrentWorkspace.AdditionalCommands}">
                 <ToolBar.ItemTemplate>
                     <DataTemplate>
-                        <Button ToolTip="{Binding Path=Name}" Command="{Binding Path=Command}" IsEnabled="{Binding Path=IsEnabled}" Width="32" Height="32"  Style="{StaticResource MenuButtonStyle}"/>
+                        <Button ToolTip="{Binding Path=Name}" Command="{Binding Path=Command}" IsEnabled="{Binding Path=IsEnabled}" Width="32" Height="32"  Style="{StaticResource MenuButtonStyle}">
+                            <Button.Content>
+                                <Image Source="{Binding Image,Converter={StaticResource E2P}}"></Image>
+                            </Button.Content>
+                        </Button>
                     </DataTemplate>
                 </ToolBar.ItemTemplate>
             </ToolBar>
@@ -105,8 +109,7 @@
                 </Expander>-->
             </Grid>
             <ContentControl Margin="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding CurrentWorkspace}"/>
-            <!--<Grid Grid.Column="1">
-                <ScrollViewer Grid.Row="0" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Left" >
+            <!--    <ScrollViewer Grid.Row="0" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Left" >
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                         <ItemsControl ItemsSource="{Binding PathCommands}" Width="Auto" >
                             <ItemsControl.ItemsPanel>

@@ -51,18 +51,126 @@ namespace StudyingController.ViewModels
             }
         }
 
-        private UniversityTree universityTree;
-        public UniversityTree UniversityTree
+        private InstituteDTO institute;
+        public InstituteDTO Institute
         {
-            get { return universityTree; }
-            set 
+            get { return institute; }
+            set
             {
-                if (universityTree != value)
+                if (institute != value)
                 {
-                    universityTree = value;
-                    OnPropertyChanged("UniversityTree");
+                    institute = value;
+                    OnPropertyChanged("Institute");
+                }
+                UpdateProperties(institute,false);
+            }
+        }
+
+        private FacultyDTO faculty;
+        public FacultyDTO Faculty
+        {
+            get { return faculty; }
+            set
+            {
+                if (faculty != value)
+                {
+                    faculty = value;
+                    OnPropertyChanged("Faculty");
+                }
+                UpdateProperties(faculty, false);
+            }
+        }
+
+        private CathedraDTO cathedra;
+        public CathedraDTO Cathedra
+        {
+            get { return cathedra; }
+            set
+            {
+                if (cathedra != value)
+                {
+                    cathedra = value;
+                    OnPropertyChanged("Cathedra");
+                }
+                UpdateProperties(cathedra, false);
+            }
+        }
+
+        private GroupDTO group;
+        public GroupDTO Group
+        {
+            get { return group; }
+            set
+            {
+                if (group != value)
+                {
+                    group = value;
+                    OnPropertyChanged("Group");
+                }
+                UpdateProperties(group, false);
+            }
+        }
+
+        private List<InstituteDTO> institutes;
+        public List<InstituteDTO> Institutes
+        {
+            get { return institutes; }
+            set
+            {
+                if (institutes != value)
+                {
+                    institutes = value;
+                    OnPropertyChanged("Institutes");
                 }
             }
+        }
+
+        private List<FacultyDTO> faculties;
+        public List<FacultyDTO> Faculties
+        {
+            get { return faculties; }
+            set
+            {
+                if (faculties != value)
+                {
+                    faculties = value;
+                    OnPropertyChanged("Faculties");
+                }
+            }
+        }
+
+        private List<CathedraDTO> cathedras;
+        public List<CathedraDTO> Cathedras
+        {
+            get { return cathedras; }
+            set
+            {
+                if (cathedras != value)
+                {
+                    cathedras = value;
+                    OnPropertyChanged("Cathedras");
+                }
+            }
+        }
+
+        private List<GroupDTO> groups;
+        public List<GroupDTO> Groups
+        {
+            get { return groups; }
+            set 
+            {
+                if (groups != value)
+                {
+                    groups = value;
+                    OnPropertyChanged("Groups");
+                }
+            }
+        }
+
+
+        public bool IsEnabled
+        {
+            get { return !this.IsModified; }
         }
 
         #endregion
@@ -75,9 +183,7 @@ namespace StudyingController.ViewModels
             this.originalEntity = new PracticeTeacherDTO();
             this.Model = new PracticeTeacherModel(originalEntity as PracticeTeacherDTO);
             this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
-            this.UniversityTree = UniversityTree.GetInstance(UserInterop, ControllerInterop, dispatcher, true); //new UniversityTree(UserInterop, ControllerInterop, dispatcher, true);
-            UniversityTree.SelectedEntityChangedEvent += new SelectedEntityChangedHandler(UniversityTree_SelectedEntityChangedEvent);
-            InitializeSubjects(null);
+            UpdateProperties(null, false);
         }
 
         public PracticeTeacherViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, PracticeTeacherDTO practiceTeacher)
@@ -86,9 +192,9 @@ namespace StudyingController.ViewModels
             this.originalEntity = practiceTeacher;
             this.Model = new PracticeTeacherModel(practiceTeacher);
             this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
-            this.UniversityTree = UniversityTree.GetInstance(UserInterop, ControllerInterop, dispatcher, true);
-            UniversityTree.SelectedEntityChangedEvent += new SelectedEntityChangedHandler(UniversityTree_SelectedEntityChangedEvent);
-            InitializeSubjects(null);
+            LoadDefaultInstitutes();
+            Faculties = ControllerInterop.Service.GetFaculties(ControllerInterop.Session, null);
+            UpdateProperties(ControllerInterop.Service.GetTeacher(ControllerInterop.Session, OriginalPracticeTeacher.TeacherID).Cathedra.Faculty, false);
         }
 
         #endregion
@@ -148,6 +254,71 @@ namespace StudyingController.ViewModels
             UnusedStudents.CollectionChanged+=new System.Collections.Specialized.NotifyCollectionChangedEventHandler(UsedStudents_CollectionChanged);
         }
 
+        private void UpdateProperties(BaseEntityDTO entity, bool isSubjectsInitialized)
+        {
+            if (entity is InstituteDTO)
+            {
+                if (entity == null || entity.ID == -1)
+                {
+                    Faculties = ControllerInterop.Service.GetFaculties(ControllerInterop.Session, null);
+                    Cathedras = null;
+                    Groups = null;
+                    institute = (from i in Institutes
+                                 where i.ID == -1
+                                 select i).FirstOrDefault();
+                }
+                else
+                {
+                    Faculties = ControllerInterop.Service.GetFaculties(ControllerInterop.Session, entity.ID);
+                    Cathedras = null;
+                    Groups = null;
+                    institute = (from i in Institutes
+                                 where i.ID == entity.ID
+                                 select i).FirstOrDefault();
+                }
+                OnPropertyChanged("Institute");
+            }
+            else if (entity is FacultyDTO)
+            {
+                if (Faculties.Find(f => f.ID == entity.ID) == null)
+                    UpdateProperties((entity as FacultyDTO).Institute, true);
+                Cathedras = ControllerInterop.Service.GetCathedras(ControllerInterop.Session, entity.ID);
+                Groups = null;
+                faculty = (from f in Faculties
+                           where f.ID == entity.ID
+                           select f).FirstOrDefault();
+                OnPropertyChanged("Faculty");
+            }
+            else if (entity is CathedraDTO)
+            {
+                if (Cathedras.Find(c => c.ID == entity.ID) == null)
+                    UpdateProperties((entity as CathedraDTO).Faculty, true);
+                Groups = ControllerInterop.Service.GetGroups(ControllerInterop.Session, entity.ID);
+                cathedra = (from c in Cathedras
+                            where c.ID == entity.ID
+                            select c).FirstOrDefault();
+                OnPropertyChanged("Cathedra");
+            }
+            else if (entity is GroupDTO)
+            {
+                if (Cathedras.Find(c => c.ID == entity.ID) == null)
+                    UpdateProperties((entity as GroupDTO).Cathedra, true);
+                group = (from g in Groups
+                         where g.ID == entity.ID
+                         select g).FirstOrDefault();
+                OnPropertyChanged("Group");
+            }
+            if(!isSubjectsInitialized)
+                InitializeSubjects(entity);
+        }
+
+        private void LoadDefaultInstitutes()
+        {
+            Institutes = new List<InstituteDTO>();
+            Institutes.Add(new InstituteDTO { ID = -1, Name = "---Без інституту---" });
+            Institutes.AddRange(ControllerInterop.Service.GetInstitutes(ControllerInterop.Session));
+        }
+
         public override void Remove()
         {
             
@@ -157,8 +328,7 @@ namespace StudyingController.ViewModels
         {
             PracticeTeacher.Assign(OriginalPracticeTeacher);
             SetUnModified();
-            UniversityTree.IsUseful = true;
-            UniversityTree.IsNotChanged = true;
+            OnPropertyChanged("IsEnabled");
         }
 
         public override void Save()
@@ -175,24 +345,16 @@ namespace StudyingController.ViewModels
             }
             ControllerInterop.Service.SavePracticeTeacher(ControllerInterop.Session, PracticeTeacher.ToDTO());
             SetUnModified();
-            UniversityTree.IsUseful = true;
-            UniversityTree.IsNotChanged = true;
+            OnPropertyChanged("IsEnabled");
         }
         #endregion
 
         #region Callbacks
 
-        private void UniversityTree_SelectedEntityChangedEvent(object sender, SelectedEntityChangedArgs e)
-        {
-            UsedStudents.CollectionChanged -= new System.Collections.Specialized.NotifyCollectionChangedEventHandler(UsedStudents_CollectionChanged);
-            UnusedStudents.CollectionChanged -= new System.Collections.Specialized.NotifyCollectionChangedEventHandler(UsedStudents_CollectionChanged);
-            InitializeSubjects(e.Value);
-        }
-
         private void UsedStudents_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             SetModified();
-            UniversityTree.IsNotChanged = false;
+            OnPropertyChanged("IsEnabled");
             OnPropertyChanged("UsedStudents");
             OnPropertyChanged("UnusedStudents");
         }

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using StudyingController.SCS;
 using StudyingController.ViewModels;
+using System.Drawing;
+using StudyingController.Common;
 
 namespace StudyingController.ViewModels
 {
@@ -36,6 +38,14 @@ namespace StudyingController.ViewModels
                 }
             }
         }
+
+        private PictureEnum image;
+        public PictureEnum Image
+        {
+            get { return image; }
+            set { image = value; }
+        }
+
 
         private Action updateEnabledState;
         public Action UpdateEnabledState
