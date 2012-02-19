@@ -9,6 +9,14 @@ using StudyingController.Common;
 
 namespace StudyingController.ViewModels
 {
+    public enum CommandTypes
+    {
+        None = 0,
+        GeneratePassword = 1,
+        Lecture = 2,
+        Practice = 3
+    }
+
     public class NamedCommandData : BaseViewModel
     {
         private string name;
@@ -39,11 +47,11 @@ namespace StudyingController.ViewModels
             }
         }
 
-        private PictureEnum image;
-        public PictureEnum Image
+        private CommandTypes type;
+        public CommandTypes Type
         {
-            get { return image; }
-            set { image = value; }
+            get { return type; }
+            set { type = value; }
         }
 
 

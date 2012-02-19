@@ -189,7 +189,10 @@ namespace StudyingController.ViewModels
         {
             get { return currentCommandsRO; }
         }//Collection for toolbar
-        
+
+        private LectureStuctureViewModel lectureStructureViewModel;
+        private UniversityStructureViewModel universityStructureViewModel;
+        private UsersStructureViewModel usersStructureViewModel;
 
         #endregion
 
@@ -280,17 +283,24 @@ namespace StudyingController.ViewModels
 
         private void OpenLessonsStructure()
         {
-            ChangeCurrentWorkspace(new LectureStuctureViewModel(UserInterop, ControllerInterop, Dispatcher));
+            if (lectureStructureViewModel == null)
+                lectureStructureViewModel = new LectureStuctureViewModel(UserInterop, ControllerInterop, Dispatcher);
+
+            ChangeCurrentWorkspace(lectureStructureViewModel);
         }
 
         private void OpenUniversityStructure()
         {
-            ChangeCurrentWorkspace(new UniversityStructureViewModel(UserInterop, ControllerInterop, Dispatcher));
+            if (universityStructureViewModel == null)
+                universityStructureViewModel = new UniversityStructureViewModel(UserInterop, ControllerInterop, Dispatcher);
+            ChangeCurrentWorkspace(universityStructureViewModel);
         }
 
         private void OpenUsersStructure()
         {
-            ChangeCurrentWorkspace(new UsersStructureViewModel(UserInterop, ControllerInterop, Dispatcher));
+            if (usersStructureViewModel == null)
+                usersStructureViewModel = new UsersStructureViewModel(UserInterop, ControllerInterop, Dispatcher);
+            ChangeCurrentWorkspace(usersStructureViewModel);
         }
 
         private void ChangeCurrentWorkspace(BaseApplicationViewModel viewModel)

@@ -51,7 +51,10 @@
         </Style.Triggers>
     </Style>
     
-    <Style TargetType="{x:Type Button}" x:Key="MenuButtonStyle">
+    <Style TargetType="{x:Type Button}" x:Key="OverridenDefaultButtonStyle">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Margin" Value="2"/>
         <Style.Triggers>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Opacity" Value="0.4"/>
@@ -59,12 +62,9 @@
         </Style.Triggers>
     </Style>
 
-    <Style TargetType="{x:Type Button}" x:Key="EditableButtonStyle">
-        <Setter Property="Height" Value="20"/>
-        <Setter Property="Width" Value="20"/>
-        <Setter Property="Margin" Value="2"/>
-        <Setter Property="OverridesDefaultStyle" Value="True"/>
-        <Setter Property="Background" Value="Transparent" />
+    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource OverridenDefaultButtonStyle}" x:Key="MenuButtonStyle">
+        <Setter Property="Width" Value="32"/>
+        <Setter Property="Height" Value="32"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -92,12 +92,40 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
 
-        <Style.Triggers>
-            <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Opacity" Value="0.4"/>
-            </Trigger>
-        </Style.Triggers>
+    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource OverridenDefaultButtonStyle}" x:Key="EditableButtonStyle">
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="Width" Value="20"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Name="border" Padding="1" BorderThickness="1" CornerRadius="3">
+                        <ContentPresenter Content="{TemplateBinding Property=ContentControl.Content}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="DodgerBlue" />
+                            <Setter TargetName="border" Property="Background">
+                                <Setter.Value>
+                                    <SolidColorBrush>
+                                        <SolidColorBrush.Color>
+                                            <Color A="200" R="194" G="224" B="255" />
+                                        </SolidColorBrush.Color>
+                                    </SolidColorBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="DodgerBlue" />
+                            <Setter TargetName="border" Property="Background" Value="LightSkyBlue" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 </ResourceDictionary>
 
