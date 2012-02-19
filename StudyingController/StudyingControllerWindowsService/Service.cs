@@ -17,9 +17,9 @@ using System.Net;
 
 namespace StudyingControllerWindowsService
 {
-    public partial class Service : ServiceBase
+    public partial class Service : ServiceBase, ILogger
     {
-        public const string SERVICE_NAME = "Studying Controller Service";
+        public const int DEFAULT_SERVICE_PORT = 37207;
 
         private ServiceHost host;
 
@@ -30,23 +30,23 @@ namespace StudyingControllerWindowsService
 
         protected override void OnStart(string[] args)
         {
-            this.ServiceName = SERVICE_NAME;
-
             if (host != null)
                 host.Close();
 
             IPHostEntry ipHost;
-            string localIP = "";
-            string publicIP = "";
             ipHost = Dns.GetHostEntry(Dns.GetHostName());
             Uri uri = null;
             foreach (var ip in ipHost.AddressList)
             {
                 if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
-                    localIP = ip.ToString();
+                {
+                    uri = new Uri(string.Format("http://{0}:{1}/", ip.ToString(), DEFAULT_SERVICE_PORT));
+                    break;
+                }
             }
 
-            //var uri = new Uri("http://localhost:37207/");
+            if (uri == null)
+                uri = new Uri(string.Format("{0}:{1}", @"http://localhost", DEFAULT_SERVICE_PORT));
 
             //ControllerService service = new ControllerService();
 
@@ -63,6 +63,7 @@ namespace StudyingControllerWindowsService
             //config.Save(ConfigurationSaveMode.Modified);
 
             host = new ServiceHost(typeof(ControllerService));
+            host.Description.Endpoints[0].ListenUri = uri;
                         
             //ServiceMetadataBehavior smb = new ServiceMetadataBehavior();
             //smb.HttpGetEnabled = true;
@@ -86,6 +87,11 @@ namespace StudyingControllerWindowsService
 
                 host = null;
             }
+        }
+
+        public void Write(string message, EventLogEntryType messageType)
+        {
+            eventLogger.WriteEntry(message, messageType);
         }
     }
 }
