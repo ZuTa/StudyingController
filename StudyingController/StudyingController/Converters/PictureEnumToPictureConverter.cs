@@ -7,21 +7,26 @@ using StudyingController.ViewModels;
 
 namespace StudyingController.Converters
 {
-    class PictureEnumToPictureConverter : IValueConverter
+    public class PictureEnumToPictureConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            switch((int)((CommandTypes)value))
+            if (value is CommandTypes)
             {
-                case 1:
-                    return Properties.Resources.GeneratePassword;
-                case 2:
-                    return Properties.Resources.Lecture;
-                case 3:
-                    return Properties.Resources.Practice;
-                default:
-                    break;
+                CommandTypes type = (CommandTypes)value;
+                switch (type)
+                {
+                    case CommandTypes.GeneratePassword:
+                        return Properties.Resources.GeneratePassword;
+                    case CommandTypes.Lecture:
+                        return Properties.Resources.Lecture;
+                    case CommandTypes.Practice:
+                        return Properties.Resources.Practice;
+                    default:
+                        throw new NotImplementedException();
+                }
             }
+
             return null;
         }
 
