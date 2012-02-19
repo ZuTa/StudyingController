@@ -4,6 +4,7 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <converters:BoolToVisibilityConverter x:Key="B2V"/>
+    <converters:PictureEnumToPictureConverter x:Key="E2P"/>
     
     <DataTemplate x:Key="ListBoxItemTemplate">
         <DataTemplate.Resources>

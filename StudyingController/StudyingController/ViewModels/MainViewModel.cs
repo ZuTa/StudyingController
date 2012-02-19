@@ -124,6 +124,22 @@ namespace StudyingController.ViewModels
             }
         }
 
+        public bool IsRefreshable
+        {
+            get
+            {
+                return CurrentWorkspace is IRefreshable;
+            }
+        }
+
+        public bool IsManipulateableOrRefreshable
+        {
+            get
+            {
+                return IsRefreshable || IsManipulateable;
+            }
+        }
+
         private bool isNotBusy;
         public bool IsNotBusy
         {
@@ -332,6 +348,8 @@ namespace StudyingController.ViewModels
             OnPropertyChanged("IsSaveable");
             OnPropertyChanged("IsManipulateable");
             OnPropertyChanged("HasAdditionalCommands");
+            OnPropertyChanged("IsManipulateableOrRefreshable");
+            OnPropertyChanged("IsRefreshable");
         }
 
         private void SaveCurrentWorkspace()

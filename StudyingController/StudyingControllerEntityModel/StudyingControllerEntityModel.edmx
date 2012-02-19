@@ -123,7 +123,7 @@
             <End Role="Practice" EntitySet="Practice" />
             <End Role="Practice_Teacher" EntitySet="Practice_Teacher" />
           </AssociationSet>
-          <AssociationSet Name="FK_Practice_Teacher_Student_Practice_Teacher" Association="UniversityDBModel.Store.FK_Practice_Teacher_Student_Practice_Teacher">
+          <AssociationSet Name="FK_Practice_Teacher_Student_Practice_Teacher1" Association="UniversityDBModel.Store.FK_Practice_Teacher_Student_Practice_Teacher1">
             <End Role="Practice_Teacher" EntitySet="Practice_Teacher" />
             <End Role="Practice_Teacher_Student" EntitySet="Practice_Teacher_Student" />
           </AssociationSet>
@@ -653,7 +653,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Practice_Teacher_Practice">
-          <End Role="Practice" Type="UniversityDBModel.Store.Practice" Multiplicity="1" />
+          <End Role="Practice" Type="UniversityDBModel.Store.Practice" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Practice_Teacher" Type="UniversityDBModel.Store.Practice_Teacher" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Practice">
@@ -664,7 +666,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Practice_Teacher_Student_Practice_Teacher">
+        <Association Name="FK_Practice_Teacher_Student_Practice_Teacher1">
           <End Role="Practice_Teacher" Type="UniversityDBModel.Store.Practice_Teacher" Multiplicity="1" />
           <End Role="Practice_Teacher_Student" Type="UniversityDBModel.Store.Practice_Teacher_Student" Multiplicity="*" />
           <ReferentialConstraint>

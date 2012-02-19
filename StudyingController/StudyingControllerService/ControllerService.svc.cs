@@ -1256,7 +1256,8 @@ namespace StudyingControllerService
                 CheckSession(session);
                 using(UniversityEntities context = new UniversityEntities())
                 {
-                    var teacherPractices = context.PracticeTeachers.Include("Practice").Where(p => p.TeacherID == teacherID);
+                    var teacherPractices = context.PracticeTeachers.Include("Practice").Include("Students").Where(p => p.TeacherID == teacherID);
+                    
                     var toAdd = from s in subjects
                                 where teacherPractices.ToList().Find(t => t.Practice.SubjectID == s.ID) == null
                                 select s;
@@ -1279,10 +1280,48 @@ namespace StudyingControllerService
                     foreach (var pract in toRemove.ToList())
                     {
                         var item = teacherPractices.ToList().Where(t=>t.ID == pract.ID).FirstOrDefault();
+                        
+                        //List<Student> toRemoveStudent = new List<Student>();
+                        
+                        //foreach (var student in item.Students)
+                        //    toRemoveStudent.Add(student);
+
+                        //foreach (var student in toRemoveStudent)
+                        //    item.Students.Remove(student);
+
                         context.PracticeTeachers.DeleteObject(item);
                     }
                     context.SaveChanges();
                 } 
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public TeacherDTO GetTeacher(Session session, int teacherID)
+        {
+            try
+            {
+                CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var query = context.Cathedras.Include("Teachers");
+                    foreach (var cathedra in query)
+                    {
+                        var item = cathedra.Teachers.Where(t => t.ID == teacherID).FirstOrDefault();
+                        if (item != null)
+                        {
+                            context.LoadProperty(item, "UserInformation");
+                            context.LoadProperty(item, "Cathedra");
+                            context.LoadProperty(item.Cathedra, "Faculty");
+                            context.LoadProperty(item.Cathedra.Faculty, "Institute");
+                            return item.ToDTO();
+                        }
+                    }
+                    return null;
+                }
             }
             catch (Exception ex)
             {

@@ -33,6 +33,9 @@ namespace StudyingControllerEntityModel
                 Subjects = this.Subjects.ToDTOList<SubjectDTO, Subject>()
             };
 
+            if (this.Faculty != null)
+                cathedra.Faculty = this.Faculty.ToDTO();
+
             return cathedra;
         }
 

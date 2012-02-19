@@ -10,7 +10,7 @@ using System.Collections.ObjectModel;
 
 namespace StudyingController.ViewModels
 {
-    class LectureStuctureViewModel:EditableViewModel,IAdditionalCommands
+    class LectureStuctureViewModel:EditableViewModel,IAdditionalCommands,IRefreshable
     {
         #region Fields & Properties
 
@@ -59,6 +59,20 @@ namespace StudyingController.ViewModels
         #endregion
 
         #region Commands
+
+        private RelayCommand updateCommand;
+        public RelayCommand UpdateCommand
+        {
+            get
+            {
+                if (updateCommand == null)
+                    updateCommand = new RelayCommand(param =>
+                    {
+                        EntitiesProvider.Refresh();
+                    });
+                return updateCommand;
+            }
+        }
 
         private RelayCommand loadLecturesViewModel;
         public RelayCommand LoadLecturesViewModel
@@ -126,13 +140,15 @@ namespace StudyingController.ViewModels
                         Command =  LoadLecturesViewModel,
                         IsEnabled = !IsLecturesViewed && isLessonsSelect,
                         Name="Лекції",
+                        Image = PictureEnum.Lecture
                     };
                     lectureNamedCommand.UpdateEnabledState = () => lectureNamedCommand.IsEnabled = !IsLecturesViewed && isLessonsSelect;
                     NamedCommandData practiceNamedCommand = new NamedCommandData 
                     {
                         Command = LoadPracticesViewModel,
                         IsEnabled = IsLecturesViewed && isLessonsSelect,
-                        Name = "Практика"
+                        Name = "Практика",
+                        Image = PictureEnum.Practice
                     };
                     practiceNamedCommand.UpdateEnabledState = () => practiceNamedCommand.IsEnabled = IsLecturesViewed && isLessonsSelect;
                     additionalCommands.Add(lectureNamedCommand);
@@ -148,5 +164,11 @@ namespace StudyingController.ViewModels
                 if (ncd.UpdateEnabledState != null)
                     ncd.UpdateEnabledState();
         }
+
+        public ReadOnlyObservableCollection<NamedCommandData> AddCommands
+        {
+            get { throw new NotImplementedException(); }
+        }
+
     }
 }

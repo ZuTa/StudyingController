@@ -24,7 +24,7 @@ namespace StudyingControllerEntityModel
 
         public new TeacherDTO ToDTO()
         {
-            return new TeacherDTO
+            TeacherDTO teacher = new TeacherDTO
             {
                 ID = this.ID,
                 Login = this.Login,
@@ -33,6 +33,9 @@ namespace StudyingControllerEntityModel
                 CathedraID = this.CathedraID,
                 Lectures = this.Lectures.ToDTOList<LectureDTO, Lecture>()
             };
+            if (this.Cathedra != null)
+                teacher.Cathedra = this.Cathedra.ToDTO();
+            return teacher;
         }
 
         public void Assign(TeacherDTO entity)

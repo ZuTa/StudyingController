@@ -112,23 +112,40 @@ namespace StudyingController.Common
 
         private void dropTarget_PreviewDragOver(object sender, DragEventArgs e)
         {
+            if (targetItemsControl != sourceItemsControl)
+            {
             object draggedItem = e.Data.GetData(dataFormat.Name);
 
             if (draggedItem != null)
             {
                 ShowDraggedAdorner(e.GetPosition(topWindow)); 
             }
+            }
+            else
+            {
+                ShowDraggedAdorner(e.GetPosition(topWindow));
+                e.Effects = DragDropEffects.None;
+            }
             e.Handled = true;
         }
 
         private void dropTarget_PreviewDragEnter(object sender, DragEventArgs e)
         {
+            
             targetItemsControl = (ItemsControl)sender;
-            object draggedItem = e.Data.GetData(dataFormat.Name);
+            if (targetItemsControl != sourceItemsControl)
+            {
+                object draggedItem = e.Data.GetData(dataFormat.Name);
 
-            if (draggedItem != null)
+                if (draggedItem != null)
+                {
+                    ShowDraggedAdorner(e.GetPosition(topWindow));
+                }
+            }
+            else
             {
                 ShowDraggedAdorner(e.GetPosition(topWindow));
+                e.Effects = DragDropEffects.None;
             }
             e.Handled = true;
         }
@@ -136,7 +153,6 @@ namespace StudyingController.Common
         private void dropTarget_PreviewDrop(object sender, DragEventArgs e)
         {
             object draggedItem = e.Data.GetData(dataFormat.Name);
-            //int indexRemoved = -1;
             if (draggedItem != null)
             {
                 if ((e.Effects & DragDropEffects.Move) != 0)
@@ -145,8 +161,6 @@ namespace StudyingController.Common
                 }
 
                 InsertItemInItemsControl(targetItemsControl, draggedItem);
- //               if (ItemsChanged != null)
- //                   ItemsChanged(this, null);
                 RemoveDraggedAdorner();
             }
             e.Handled = true;

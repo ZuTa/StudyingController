@@ -39,6 +39,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
@@ -63,10 +64,11 @@
     <Compile Include="Common\EnumLocalizeHelper.cs" />
     <Compile Include="Common\MailSender.cs" />
     <Compile Include="Common\PasswordGenerator.cs" />
+    <Compile Include="Common\PictureEnum.cs" />
     <Compile Include="Common\TreeViewHelper.cs" />
-    <Compile Include="Common\UniversityTree.cs" />
     <Compile Include="Common\ViewHelper.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Converters\PictureEnumToPictureConverter.cs" />
     <Compile Include="ViewModels\BaseTreeViewModel.cs" />
     <Compile Include="ViewModels\CathedraViewModel.cs" />
     <Compile Include="ViewModels\FacultyAdminViewModel.cs" />
@@ -80,6 +82,7 @@
     <Compile Include="ViewModels\InstituteSecretaryViewModel.cs" />
     <Compile Include="ViewModels\InstituteViewModel.cs" />
     <Compile Include="ViewModels\IProviderable.cs" />
+    <Compile Include="ViewModels\IRefreshable.cs" />
     <Compile Include="ViewModels\LessonTreeViewModel.cs" />
     <Compile Include="ViewModels\LessonStructureViewModel.cs" />
     <Compile Include="ViewModels\LectureViewModel.cs" />

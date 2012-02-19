@@ -249,6 +249,15 @@ namespace StudyingController.SCS {
         
         void EndSavePracticeTeacherSubjects(System.IAsyncResult result);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/GetTeacher", ReplyAction="http://tempuri.org/IControllerService/GetTeacherResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/GetTeacherControllerServiceExceptionFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        EntitiesDTO.TeacherDTO GetTeacher(StudyingController.SCS.Session session, int teacherID);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/GetTeacher", ReplyAction="http://tempuri.org/IControllerService/GetTeacherResponse")]
+        System.IAsyncResult BeginGetTeacher(StudyingController.SCS.Session session, int teacherID, System.AsyncCallback callback, object asyncState);
+        
+        EntitiesDTO.TeacherDTO EndGetTeacher(System.IAsyncResult result);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/Login", ReplyAction="http://tempuri.org/IControllerService/LoginResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/LoginControllerServiceExceptionFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
         StudyingController.SCS.Session Login([System.ServiceModel.MessageParameterAttribute(Name="login")] string login1, string password);
@@ -720,6 +729,25 @@ namespace StudyingController.SCS {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetTeacherCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetTeacherCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public EntitiesDTO.TeacherDTO Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((EntitiesDTO.TeacherDTO)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class LoginCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
@@ -1098,6 +1126,12 @@ namespace StudyingController.SCS {
         
         private System.Threading.SendOrPostCallback onSavePracticeTeacherSubjectsCompletedDelegate;
         
+        private BeginOperationDelegate onBeginGetTeacherDelegate;
+        
+        private EndOperationDelegate onEndGetTeacherDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetTeacherCompletedDelegate;
+        
         private BeginOperationDelegate onBeginLoginDelegate;
         
         private EndOperationDelegate onEndLoginDelegate;
@@ -1308,6 +1342,8 @@ namespace StudyingController.SCS {
         public event System.EventHandler<GetInstituteGroupsCompletedEventArgs> GetInstituteGroupsCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> SavePracticeTeacherSubjectsCompleted;
+        
+        public event System.EventHandler<GetTeacherCompletedEventArgs> GetTeacherCompleted;
         
         public event System.EventHandler<LoginCompletedEventArgs> LoginCompleted;
         
@@ -1985,6 +2021,58 @@ namespace StudyingController.SCS {
                         session,
                         teacherID,
                         subjects}, this.onEndSavePracticeTeacherSubjectsDelegate, this.onSavePracticeTeacherSubjectsCompletedDelegate, userState);
+        }
+        
+        public EntitiesDTO.TeacherDTO GetTeacher(StudyingController.SCS.Session session, int teacherID) {
+            return base.Channel.GetTeacher(session, teacherID);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetTeacher(StudyingController.SCS.Session session, int teacherID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetTeacher(session, teacherID, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public EntitiesDTO.TeacherDTO EndGetTeacher(System.IAsyncResult result) {
+            return base.Channel.EndGetTeacher(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetTeacher(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            StudyingController.SCS.Session session = ((StudyingController.SCS.Session)(inValues[0]));
+            int teacherID = ((int)(inValues[1]));
+            return this.BeginGetTeacher(session, teacherID, callback, asyncState);
+        }
+        
+        private object[] OnEndGetTeacher(System.IAsyncResult result) {
+            EntitiesDTO.TeacherDTO retVal = this.EndGetTeacher(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetTeacherCompleted(object state) {
+            if ((this.GetTeacherCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetTeacherCompleted(this, new GetTeacherCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetTeacherAsync(StudyingController.SCS.Session session, int teacherID) {
+            this.GetTeacherAsync(session, teacherID, null);
+        }
+        
+        public void GetTeacherAsync(StudyingController.SCS.Session session, int teacherID, object userState) {
+            if ((this.onBeginGetTeacherDelegate == null)) {
+                this.onBeginGetTeacherDelegate = new BeginOperationDelegate(this.OnBeginGetTeacher);
+            }
+            if ((this.onEndGetTeacherDelegate == null)) {
+                this.onEndGetTeacherDelegate = new EndOperationDelegate(this.OnEndGetTeacher);
+            }
+            if ((this.onGetTeacherCompletedDelegate == null)) {
+                this.onGetTeacherCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetTeacherCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetTeacherDelegate, new object[] {
+                        session,
+                        teacherID}, this.onEndGetTeacherDelegate, this.onGetTeacherCompletedDelegate, userState);
         }
         
         public StudyingController.SCS.Session Login(string login1, string password) {

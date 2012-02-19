@@ -171,5 +171,10 @@ namespace StudyingControllerService
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
         void SavePracticeTeacherSubjects (Session session, int teacherID, List<SubjectDTO> subjects);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        TeacherDTO GetTeacher (Session session, int teacherID);
+
     }
 }
