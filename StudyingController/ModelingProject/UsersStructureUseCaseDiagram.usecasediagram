@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" dslVersion="1.0.0.0" Id="4010df09-1597-4908-95c9-e3023ca43161" name="Користувачі" linkedPackageId="b292ee95-7c48-458f-b524-d311bca30066" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="7785e485-b3c9-4bb1-b4cd-9ae188079f31" name="Головний адміністратор" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="c87cdfde-7405-4eeb-95a0-ad30359fc8d5" />
+        <generalsInternal>
+          <generalization Id="8b7efb55-9570-4082-b496-84684cf73bcd" isSubstitutable="false">
+            <actorMoniker Id="c6ff62bd-74a7-41d7-9188-5ed0152f3e9b" LastKnownName="Головний секретар" />
+            <elementDefinition Id="e992eabc-0066-400f-8273-5fe367a34396" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association Id="e59f8c97-1b0f-4539-9841-299319b8a589" isDerived="false" sourceEndRoleName="Головний адміністратор" targetEndRoleName="Маніпулювати головними адміністраторами" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="1427f3b3-5794-44e4-b5a8-7540059c74b8" LastKnownName="Маніпулювати головними адміністраторами" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8ccf1eda-d8fc-4cb3-80f8-4df7484931f3" name="Головний адміністратор" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="468f7cf7-62f1-495d-8319-a357db8458a6" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9ed09645-768e-4e43-b0ec-483dc87bac3b" name="Маніпулювати головними адміністраторами" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="e8ff15bb-f2b0-4366-808b-95b101f58243" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="07822823-371b-4436-b74e-77f954a8c9a1" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="c6ff62bd-74a7-41d7-9188-5ed0152f3e9b" name="Головний секретар" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e13d53db-38a3-4033-b5e9-3d5657b177a9" />
+        <targetEnds>
+          <association Id="6cc83f41-3d6f-4ff8-b70c-9068ab9b6b86" isDerived="false" sourceEndRoleName="Головний секретар" targetEndRoleName="Маніпулювати головними секретарями" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="b46359dc-285c-4ee4-9ae3-aae65e361c9c" LastKnownName="Маніпулює головними секретарями" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="bbc17698-aaf9-4e1d-9728-fdf06250bb77" name="Головний секретар" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="f4a95acd-0d7b-4e79-a3cf-ead6184a7ef9" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="452a47c2-c6a0-4d3d-8552-174fd1e508c0" name="Маніпулювати головними секретарями" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="608cc7ae-e0bb-4bd6-a745-ccf7d37ba3cf" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="e1ffd58d-88d0-45b3-b3c1-0e9965fd22be" />
+          </association>
+          <association Id="9dff7186-e587-4ce9-bb66-6f9dd9f3d567" isDerived="false" sourceEndRoleName="Головний секретар" targetEndRoleName="Маніпулює секретарями інститутів" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="ab872543-1fbf-4457-925a-812261f6e34d" LastKnownName="Маніпулює секретарями інститутів" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="6b3bdb04-ae20-4685-94bb-08bc252675f2" name="Головний секретар" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="34ece6cd-665b-4069-b972-bde43a6a299a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ea482e34-2c62-4924-8d6b-282611d3739e" name="Маніпулює секретарями інститутів" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="2f405725-2eac-4e05-8e77-cab5b47b9d05" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="aa54d4e4-bf3d-489a-8fc6-fa4bc9409876" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="1427f3b3-5794-44e4-b5a8-7540059c74b8" name="Маніпулювати головними адміністраторами" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="81ece29e-49a6-41dd-afbd-1c0d10101701" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="b46359dc-285c-4ee4-9ae3-aae65e361c9c" name="Маніпулює головними секретарями" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="06510108-23ff-4dea-91a8-24cbbef4662d" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="ab872543-1fbf-4457-925a-812261f6e34d" name="Маніпулює секретарями інститутів" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b76f0b3d-531e-4f42-a102-2bf2c87da3b2" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="cb496099-36bf-4f15-82af-a5351e5d74e4" name="Маніпулює адміністраторами інститутів" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="2ab0c294-0f7c-4642-8c85-97fbf4b6c437" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="7fd9b039-c0fd-4680-803d-1b1b4b1fc8e8" name="Маніпулює секретарями факультетів" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="903f3bff-f86d-4156-92b4-197753428aa0" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="e9581bfb-af06-435f-bdec-086031cdb394" name="Маніпулює адміністраторами факультетів" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="9414bdb7-8fa1-4440-a638-ca909b96211e" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="ab981abe-272d-463f-9f8d-66549a9c39e3" name="Маніпулює викладачами" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="7712af7b-9052-484f-ade6-6c1f8b8aa2b5" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="2435b3fc-1f35-4bd2-af70-7015df96b7fa" name="Маніпулює студентами" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="094cdcbd-7c1e-467a-a6a6-b0f75836f02d" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="b292ee95-7c48-458f-b524-d311bca30066" name="ModelingProject">
+    <elementDefinition Id="6126932b-a0fc-4c12-819c-d94f72bd991f" />
+    <profileInstances>
+      <packageHasProfileInstances Id="9cee4b8d-d0aa-4977-b96b-a17b098cd18b">
+        <profileInstance Id="617a3273-2864-452d-80a9-23e74cefc075" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="5249f55f-17da-431d-a6a2-0b47d64bda70">
+        <profileInstance Id="d5ffe71a-0538-4807-aa48-5239f14617b6" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

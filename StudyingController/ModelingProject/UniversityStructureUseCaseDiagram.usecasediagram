@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" dslVersion="1.0.0.0" Id="2ff5a089-73a3-4cbf-8f48-fd3d1c7281b6" name="Структура університету" linkedPackageId="4b081483-1044-4cdd-85de-5322dd23c673" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <ownedCommentsInternal>
+    <comment Id="cd8f403a-488b-45fa-9188-f1f339d3cc02">
+      <elementDefinition Id="32964765-777c-445b-8580-9fe3c2a5af5a" />
+      <body>CRUD — 4 базові функції управління даними «створення, зчитування, зміна і видалення».</body>
+      <annotatedElements>
+        <useCaseMoniker Id="429b58f1-e559-4f0e-a78e-a18ef7d4edee" LastKnownName="CRUD" />
+      </annotatedElements>
+    </comment>
+    <comment Id="8cb0ecd9-3494-4d38-ba7f-7378bb48c8d2">
+      <elementDefinition Id="26546f6e-dbc8-45d4-918f-d88b2911517d" />
+      <body>Відпочиває</body>
+      <annotatedElements>
+        <actorMoniker Id="d42f7b6d-ecd3-4332-a184-2169affdec87" LastKnownName="Викладач" />
+        <actorMoniker Id="d97f663a-2493-40a1-ae42-a3ad62c66e68" LastKnownName="Студент" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="24fc4ffb-efde-4137-91ec-b8a28faa818b" name="Головний адміністратор" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="c87cdfde-7405-4eeb-95a0-ad30359fc8d5" />
+        <generalsInternal>
+          <generalization Id="3ef9d06e-5c47-436e-b078-b1c996741299" isSubstitutable="false">
+            <actorMoniker Id="a24be112-0915-4f36-8492-fee2486804ab" LastKnownName="Адміністратор інституту" />
+            <elementDefinition Id="be2178d4-3609-495d-930d-35c93264b88e" />
+          </generalization>
+          <generalization Id="4faec99a-0f84-4e88-bcd1-009747e8c096" isSubstitutable="false">
+            <actorMoniker Id="c496f75f-aac1-4051-9b05-e358bd42d57a" LastKnownName="Головний секретар" />
+            <elementDefinition Id="e992eabc-0066-400f-8273-5fe367a34396" />
+          </generalization>
+        </generalsInternal>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="c496f75f-aac1-4051-9b05-e358bd42d57a" name="Головний секретар" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e13d53db-38a3-4033-b5e9-3d5657b177a9" />
+        <generalsInternal>
+          <generalization Id="6bb29742-c95b-45e8-813a-4ce8ea912f3c" isSubstitutable="false">
+            <actorMoniker Id="c425201c-abc3-439a-bc83-54d9c44cb502" LastKnownName="Секретар інституту" />
+            <elementDefinition Id="260a4434-057e-4e08-9dc1-36c97e141a0f" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association Id="a9da6739-2a96-46c7-8a18-a07326fc56a4" isDerived="false" sourceEndRoleName="Головний секретар" targetEndRoleName="Модифікувати структуру університету" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="fbe07d07-fd7c-4276-a64f-bd5b02ea7f76" LastKnownName="Маніпулює структурою університету" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="55e6d3f2-0cdd-40c8-ad1a-2443e6a864b8" name="Головний секретар" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="a8ea459c-b84b-45fa-a014-f71a918d4700" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c1e17c63-fa31-4373-8537-6bc83f08d604" name="Модифікувати структуру університету" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="7ba86e3b-6588-4f52-8f3d-2af7db509a6c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="80911e87-23bb-49e8-9c92-e1e0857e4e58" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="a24be112-0915-4f36-8492-fee2486804ab" name="Адміністратор інституту" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="1cc9c6d2-8883-4173-8a97-4d505f633434" />
+        <generalsInternal>
+          <generalization Id="483308ee-7503-40f4-b4fa-df83069d2b9a" isSubstitutable="false">
+            <actorMoniker Id="13e2864e-3ee8-4878-84ea-60225c4f1653" LastKnownName="Адміністратор факультету" />
+            <elementDefinition Id="d59db387-176d-40ea-b831-41e73764138d" />
+          </generalization>
+          <generalization Id="cd81f80f-bcc8-4627-b738-3fce6b13fec3" isSubstitutable="false">
+            <actorMoniker Id="c425201c-abc3-439a-bc83-54d9c44cb502" LastKnownName="Секретар інституту" />
+            <elementDefinition Id="5761e825-a4bf-44c8-825b-b233ffd56a84" />
+          </generalization>
+        </generalsInternal>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="13e2864e-3ee8-4878-84ea-60225c4f1653" name="Адміністратор факультету" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f5f8e292-2b06-44a7-b763-64ca16efc632" />
+        <generalsInternal>
+          <generalization Id="002b5e1d-40f4-400d-9ad1-bc89afac4b48" isSubstitutable="false">
+            <actorMoniker Id="a5a0ea10-a945-4a23-bad3-970e125e75bd" LastKnownName="Секретар факультету" />
+            <elementDefinition Id="14cc209d-9a28-4582-9608-36c520887888" />
+          </generalization>
+        </generalsInternal>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="c425201c-abc3-439a-bc83-54d9c44cb502" name="Секретар інституту" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="4204e043-4044-4dde-94ae-5bbf8941989b" />
+        <generalsInternal>
+          <generalization Id="a1cb54b9-9835-478e-8fd3-63749bead605" isSubstitutable="false">
+            <actorMoniker Id="a5a0ea10-a945-4a23-bad3-970e125e75bd" LastKnownName="Секретар факультету" />
+            <elementDefinition Id="5d922c6d-6462-48c6-a1cd-51c824ccca19" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association Id="c33a92e9-0606-4a54-8e28-a27b53256bef" isDerived="false" sourceEndRoleName="Секретар інституту" targetEndRoleName="Маніпулювати інститутами" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="b1ca2a53-f41b-4ed4-9b49-e574a0b7424d" LastKnownName="Маніпулює інститутом" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e8d82006-a89a-4599-ace3-f71fc03543b3" name="Секретар інституту" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="b20ef600-74d3-4813-915d-23c5e96a6eb3" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="04a86212-475e-4cf1-81e0-173e35948951" name="Маніпулювати інститутами" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="6cc0b55f-80b7-4954-afb0-e54a3504ad14" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="389ac411-6d91-44a1-8c42-1f54ea892d1f" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="d42f7b6d-ecd3-4332-a184-2169affdec87" name="Викладач" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="06ac9795-1ab5-49a9-aa0e-8db874fec384" />
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="a5a0ea10-a945-4a23-bad3-970e125e75bd" name="Секретар факультету" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="0ba6352a-735b-4562-b43b-4e45b4bca574" />
+        <targetEnds>
+          <association Id="ef946b9f-e28b-47a0-9d0c-a2a05db6740e" isDerived="false" sourceEndRoleName="Секретар факультету" targetEndRoleName="Маніпулювати факультетами" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="2c17d344-23b9-4e3f-9777-624f3c22994a" LastKnownName="Маніпулює факультетом" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1080f641-5de9-42aa-813c-96e2ed8af9ee" name="Секретар факультету" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="56c24fa2-12fe-4816-a7eb-f4ff0ada48a1" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4705e7f5-d912-4d56-afb0-47c682ddedf5" name="Маніпулювати факультетами" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="34bc52bd-c40c-4483-8e4d-4fd7b46a0f37" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="bc9c736b-1a1c-4227-a8f2-bef29b6eacbc" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="d97f663a-2493-40a1-ae42-a3ad62c66e68" name="Студент" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="402df5a8-de78-4933-baa2-f231c14e0d35" />
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="fbe07d07-fd7c-4276-a64f-bd5b02ea7f76" name="Маніпулює структурою університету" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a8bc8ab6-1d95-4ae0-9cf7-67ef83a619e1" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="b1ca2a53-f41b-4ed4-9b49-e574a0b7424d" name="Маніпулює інститутом" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="6cb0f3b2-671f-4973-8457-50123f5af057" />
+        <additions>
+          <include Id="b141fbe9-02c4-415f-a6a6-b1508074d197">
+            <useCaseMoniker Id="429b58f1-e559-4f0e-a78e-a18ef7d4edee" LastKnownName="CRUD" />
+            <elementDefinition Id="40b8dd70-d4b9-4102-bfb8-a7aad0660431" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="2c17d344-23b9-4e3f-9777-624f3c22994a" name="Маніпулює факультетом" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="c7a54510-0eea-48f9-932f-24f896c71ecb" />
+        <additions>
+          <include Id="7295ea20-0b1e-4e87-9d61-80e6697f8028">
+            <useCaseMoniker Id="429b58f1-e559-4f0e-a78e-a18ef7d4edee" LastKnownName="CRUD" />
+            <elementDefinition Id="3a433757-2cc7-4de1-bc17-2da8bae43e09" />
+          </include>
+          <include Id="60cbc8fa-c856-4de6-8c75-c86688c53f45">
+            <useCaseMoniker Id="d2f5578e-72c2-4720-997f-527a7a80479f" LastKnownName="Маніпулює кафедрами" />
+            <elementDefinition Id="e728de44-b8fc-4c22-b018-350085176ad6" />
+          </include>
+          <include Id="41915d13-5ba9-4bad-8f82-05aab8d37a19">
+            <useCaseMoniker Id="45baff45-193e-47c4-b93f-e290e9da1757" LastKnownName="Маніпулює напрямками" />
+            <elementDefinition Id="708b37d7-46fd-4d13-8503-c290aff8c13d" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="d2f5578e-72c2-4720-997f-527a7a80479f" name="Маніпулює кафедрами" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="362a1508-fc1d-44bc-8517-fc952161faa4" />
+        <additions>
+          <include Id="fcf0949b-5b74-413c-84ca-5c6d4f852173">
+            <useCaseMoniker Id="429b58f1-e559-4f0e-a78e-a18ef7d4edee" LastKnownName="CRUD" />
+            <elementDefinition Id="84f36481-318c-43a8-888b-f5cf55bf4742" />
+          </include>
+          <include Id="d7dba441-7def-44a0-b6de-e5e78b045961">
+            <useCaseMoniker Id="5c62b52f-576d-4f9e-9080-5ef45f18ded8" LastKnownName="Маніпулює групами" />
+            <elementDefinition Id="5d5f92e2-b36c-481e-b744-004d750ce567" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="429b58f1-e559-4f0e-a78e-a18ef7d4edee" name="CRUD" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="20a8a107-120e-4225-8eca-e4530d8dd1ab" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="5c62b52f-576d-4f9e-9080-5ef45f18ded8" name="Маніпулює групами" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="9d4f5adb-1c6d-47f5-9cc1-b6ee49b7e6da" />
+        <additions>
+          <include Id="9ed2f625-187a-48cb-b531-0bb80b3f84f8">
+            <useCaseMoniker Id="429b58f1-e559-4f0e-a78e-a18ef7d4edee" LastKnownName="CRUD" />
+            <elementDefinition Id="a1697f34-f5b7-4eb3-a5d5-7f297f97863a" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="45baff45-193e-47c4-b93f-e290e9da1757" name="Маніпулює напрямками" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="418e40c7-f0a4-4e7e-a046-2db861851263" />
+        <additions>
+          <include Id="99ec33d5-ee98-49bd-a502-64321b918cbb">
+            <useCaseMoniker Id="429b58f1-e559-4f0e-a78e-a18ef7d4edee" LastKnownName="CRUD" />
+            <elementDefinition Id="f7bd6b24-bce9-4515-84ed-9b0cfe05be09" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="4b081483-1044-4cdd-85de-5322dd23c673" name="ModelingProject">
+    <elementDefinition Id="6126932b-a0fc-4c12-819c-d94f72bd991f" />
+    <profileInstances>
+      <packageHasProfileInstances Id="8d8c1b8f-5097-404c-90da-e377ec8e579a">
+        <profileInstance Id="f9d5a127-7deb-4a9c-8fc8-e655b90eca50" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="4a6f1a09-af74-403a-ac27-630cac65f081">
+        <profileInstance Id="705b7239-3db2-40fc-b79e-0744374675db" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>
