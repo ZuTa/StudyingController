@@ -142,7 +142,7 @@ namespace StudyingController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Поле містить більше 250 символів.
+        ///   Looks up a localized string similar to Занадто багато символів.
         /// </summary>
         internal static string ErrorFieldGreater {
             get {

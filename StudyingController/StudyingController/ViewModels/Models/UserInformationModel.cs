@@ -84,7 +84,12 @@ namespace StudyingController.ViewModels.Models
                 error = Properties.Resources.ErrorFieldEmpty;
                 return false;
             }
-            if (!Regex.IsMatch(firstName, "^[а-яА-ЯіІїЇa-zA-Z\\- ]+$"))
+            if (firstName.Length > 250)
+            {
+                error = Properties.Resources.ErrorFieldGreater;
+                return false;
+            }
+            if (!Regex.IsMatch(firstName, "^([а-яА-ЯіІїЇa-zA-Z]\\-?)*[а-яА-ЯіІїЇa-zA-Z]$"))
             {
                 error = Properties.Resources.ErrorBadCharsUsed;
                 return false;
@@ -100,7 +105,12 @@ namespace StudyingController.ViewModels.Models
                 error = Properties.Resources.ErrorFieldEmpty;
                 return false;
             }
-            if (!Regex.IsMatch(lastName, "^[а-яА-ЯіІїЇa-zA-Z\\- ]+$"))
+            if (lastName.Length > 250)
+            {
+                error = Properties.Resources.ErrorFieldGreater;
+                return false;
+            }
+            if (!Regex.IsMatch(lastName, "^([а-яА-ЯіІїЇa-zA-Z]\\-?)*[а-яА-ЯіІїЇa-zA-Z]$"))
             {
                 error = Properties.Resources.ErrorBadCharsUsed;
                 return false;
