@@ -52,96 +52,11 @@ namespace StudyingController.ViewModels
             }
         }
 
-        private InstituteDTO institute;
-        public InstituteDTO Institute
+        private SelectorViewModel selector;
+        public SelectorViewModel Selector
         {
-            get { return institute; }
-            set 
-            {
-                if (institute != value)
-                {
-                    institute = value;
-                    UpdateProperties(institute,false);
-                    OnPropertyChanged("Institute");
-                }
-            }
-        }
-
-        private FacultyDTO faculty;
-        public FacultyDTO Faculty
-        {
-            get { return faculty; }
-            set 
-            {
-                if (faculty != value)
-                {
-                    faculty = value;
-                    UpdateProperties(faculty, false);
-                    OnPropertyChanged("Faculty");
-                }
-            }
-        }
-
-        private CathedraDTO cathedra;
-        public CathedraDTO Cathedra
-        {
-            get { return cathedra; }
-            set 
-            {
-                if (cathedra != value)
-                {
-                    cathedra = value;
-                    UpdateProperties(cathedra, false);
-                    OnPropertyChanged("Cathedra");
-                }
-            }
-        }
-
-        private List<InstituteDTO> institutes;
-        public List<InstituteDTO> Institutes
-        {
-            get { return institutes; }
-            set
-            {
-                if (institutes != value)
-                {
-                    institutes = value;
-                    OnPropertyChanged("Institutes");
-                }
-            }
-        }
-
-        private List<FacultyDTO> faculties;
-        public List<FacultyDTO> Faculties
-        {
-            get { return faculties; }
-            set 
-            {
-                if (faculties != value)
-                {
-                    faculties = value;
-                    OnPropertyChanged("Faculties");
-                }
-            }
-        }
-
-        private List<CathedraDTO> cathedras;
-        public List<CathedraDTO> Cathedras
-        {
-            get { return cathedras; }
-            set
-            {
-                if (cathedras != value)
-                {
-                    cathedras = value;
-                    OnPropertyChanged("Cathedras");
-                }
-            }
-        }
-
-        public bool IsEnabled
-        {
-            get { return !IsModified; }
+            get { return selector; }
+            set { selector = value; }
         }
 
         #endregion
@@ -154,7 +69,8 @@ namespace StudyingController.ViewModels
             this.originalEntity = new LectureDTO();
             this.Model = new LectureModel(originalEntity as LectureDTO);
             this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
-            UpdateProperties(null, false);
+            selector = new SelectorViewModel(userInterop, controllerInterop, dispatcher, false);
+            selector.SelectorItemChanged += new EventHandler(selector_SelectorItemChanged);
         }
 
         public LectureViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, LectureDTO lecture)
@@ -163,9 +79,7 @@ namespace StudyingController.ViewModels
             this.originalEntity = lecture;
             this.Model = new LectureModel(lecture);
             this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
-            LoadDefaultInstitutes();
-            Faculties = ControllerInterop.Service.GetFaculties(ControllerInterop.Session, null);
-            UpdateProperties(ControllerInterop.Service.GetTeacher(ControllerInterop.Session, OriginalLecture.TeacherID).Cathedra.Faculty, false);
+            selector = new SelectorViewModel(userInterop, controllerInterop, dispatcher, ControllerInterop.Service.GetTeacher(ControllerInterop.Session, Lecture.TeacherID).Cathedra.Faculty, selector_SelectorItemChanged, false);
         }
 
         #endregion
@@ -214,59 +128,7 @@ namespace StudyingController.ViewModels
             UsedGroups.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(UsedGroups_CollectionChanged);
             UnusedGroups.CollectionChanged +=new System.Collections.Specialized.NotifyCollectionChangedEventHandler(UsedGroups_CollectionChanged);
         }
-
-        private void UpdateProperties(BaseEntityDTO entity,bool isGroupsInitialized)
-        {
-            if (entity is InstituteDTO)
-            {
-                if (entity == null || entity.ID == -1)
-                {
-                    Faculties = ControllerInterop.Service.GetFaculties(ControllerInterop.Session, null);
-                    Cathedras = null;
-                    institute = (from i in Institutes
-                                 where i.ID == -1
-                                 select i).FirstOrDefault();
-                }
-                else
-                {
-                    Faculties = ControllerInterop.Service.GetFaculties(ControllerInterop.Session, entity.ID);
-                    Cathedras = null;
-                    institute = (from i in Institutes
-                                 where i.ID == entity.ID
-                                 select i).FirstOrDefault();
-                }
-                OnPropertyChanged("Institute");
-            }
-            else if (entity is FacultyDTO)
-            {
-                if (Faculties.Find(f => f.ID == entity.ID) == null)
-                    UpdateProperties((entity as FacultyDTO).Institute, true);
-                Cathedras = ControllerInterop.Service.GetCathedras(ControllerInterop.Session, entity.ID);
-                faculty = (from f in Faculties
-                           where f.ID == entity.ID
-                           select f).FirstOrDefault();
-                OnPropertyChanged("Faculty");
-            }
-            else if (entity is CathedraDTO)
-            {
-                if (Cathedras.Find(c => c.ID == entity.ID) == null)
-                    UpdateProperties((entity as CathedraDTO).Faculty, true);
-                cathedra = (from c in Cathedras
-                            where c.ID == entity.ID
-                            select c).FirstOrDefault();
-                OnPropertyChanged("Cathedra");
-            }
-            if (!isGroupsInitialized)
-                InitializeGroups(entity);
-        }
-
-        private void LoadDefaultInstitutes()
-        {
-            Institutes = new List<InstituteDTO>();
-            Institutes.Add(new InstituteDTO { ID = -1, Name = "---Без інституту---" });
-            Institutes.AddRange(ControllerInterop.Service.GetInstitutes(ControllerInterop.Session));
-        }
-
+       
         public override void Remove()
         {
             
@@ -276,7 +138,7 @@ namespace StudyingController.ViewModels
         {
             Lecture.Assign(OriginalLecture);
             SetUnModified();
-            OnPropertyChanged("IsEnabled");
+            Selector.Helper.Entity = Selector.CurrentEntity;
         }
 
         public override void Save()
@@ -293,7 +155,7 @@ namespace StudyingController.ViewModels
             }
             ControllerInterop.Service.SaveLecture(ControllerInterop.Session, Lecture.ToDTO());
             SetUnModified();
-            OnPropertyChanged("IsEnabled");
+            Selector.Helper.Entity = Selector.CurrentEntity;
         }
         #endregion
 
@@ -302,12 +164,18 @@ namespace StudyingController.ViewModels
         private void UsedGroups_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             SetModified();
-            OnPropertyChanged("IsEnabled");
+            Selector.IsEnabled = false;
             OnPropertyChanged("UsedGroups");
             OnPropertyChanged("UnusedGroups");
         }
 
-
+        private void selector_SelectorItemChanged(object sender, EventArgs e)
+        {
+            if (e is StudyingController.ViewModels.SelectorViewModel.SelectorItemChangedEventArgs)
+                InitializeGroups((e as StudyingController.ViewModels.SelectorViewModel.SelectorItemChangedEventArgs).Entity);
+            else
+                throw new Exception("Not StudyingController.ViewModels.SelectorViewModel.SelectorItemChangedEventArgs");
+        }
         #endregion
     }
 }

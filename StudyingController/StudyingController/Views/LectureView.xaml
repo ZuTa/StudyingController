@@ -30,28 +30,7 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <Border BorderBrush="Gray" BorderThickness="1" Margin="5,0,5,5">
-                    <Expander Grid.Row="0" IsExpanded="True">
-                        <Grid IsEnabled="{Binding IsEnabled}">
-                            <Grid.RowDefinitions>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Row="0" Text="Інститут:" Margin="3"></TextBlock>
-                            <TextBlock Grid.Row="1" Text="Факультет:" Margin="3"></TextBlock>
-                            <TextBlock Grid.Row="2" Text="Кафедра:" Margin="3"></TextBlock>
-                            <ComboBox Grid.Row="0" Grid.Column="1" Margin="3" ItemsSource="{Binding Institutes}" SelectedItem="{Binding Institute, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></ComboBox>
-                            <ComboBox Grid.Row="1" Grid.Column="1" Margin="3" ItemsSource="{Binding Faculties}" SelectedItem="{Binding Faculty, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></ComboBox>
-                            <ComboBox Grid.Row="2" Grid.Column="1" Margin="3" ItemsSource="{Binding Cathedras}" SelectedItem="{Binding Cathedra,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></ComboBox>
-                            
-                        </Grid>
-                    </Expander>
-                </Border>
+                <ContentControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding Selector}"/>
                 <ListBox Grid.Row="1" Margin="5,0,5,0" ItemsSource="{Binding Path=UnusedGroups}" dd:DragDropHelper.IsDragSource ="true" dd:DragDropHelper.IsDropTarget ="true" dd:DragDropHelper.DragDropTemplate="{StaticResource ListBoxItemTemplate}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
