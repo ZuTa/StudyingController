@@ -237,6 +237,45 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
+          <association
+            Id="aa54d4e4-bf3d-489a-8fc6-fa4bc9409876"
+            isDerived="false"
+            sourceEndRoleName="Головний секретар"
+            targetEndRoleName="Маніпулює секретарями інститутів"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="b76f0b3d-531e-4f42-a102-2bf2c87da3b2"
+              LastKnownName="Маніпулює секретарями інститутів"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="34ece6cd-665b-4069-b972-bde43a6a299a"
+                  name="Головний секретар"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2f405725-2eac-4e05-8e77-cab5b47b9d05"
+                  name="Маніпулює секретарями інститутів"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
         </targetEnds>
       </actor>
     </packageHasNamedElement>
@@ -320,22 +359,6 @@
             <actorMoniker
               Id="0ba6352a-735b-4562-b43b-4e45b4bca574"
               LastKnownName="Секретар факультету"
-              LastKnownLocation="ModelingProject.uml" />
-          </generalization>
-          <generalization
-            Id="6b4c57b3-2779-4802-a891-48ef022eb4e7"
-            isSubstitutable="false">
-            <actorMoniker
-              Id="06ac9795-1ab5-49a9-aa0e-8db874fec384"
-              LastKnownName="Викладач"
-              LastKnownLocation="ModelingProject.uml" />
-          </generalization>
-          <generalization
-            Id="943ee457-8857-4215-9603-5259ef979205"
-            isSubstitutable="false">
-            <actorMoniker
-              Id="402df5a8-de78-4933-baa2-f231c14e0d35"
-              LastKnownName="Студент"
               LastKnownLocation="ModelingProject.uml" />
           </generalization>
         </generalsInternal>
@@ -439,20 +462,20 @@
             </relationshipOwnedElementsInternal>
           </association>
           <association
-            Id="a2240860-5c7d-4c5b-b5ad-1de83e5410cb"
+            Id="771f1b4b-4a9f-4a93-adce-b749d0411f56"
             isDerived="false"
             sourceEndRoleName="Секретар інституту"
-            targetEndRoleName="Маніпулювати секретарями інститутів"
+            targetEndRoleName="Маніпулює секретарями факультетів"
             isLeaf="false"
             isAbstract="false">
             <useCaseMoniker
-              Id="b76f0b3d-531e-4f42-a102-2bf2c87da3b2"
-              LastKnownName="Маніпулює секретарями інститутів"
+              Id="903f3bff-f86d-4156-92b4-197753428aa0"
+              LastKnownName="Маніпулює секретарями факультетів"
               LastKnownLocation="ModelingProject.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="3ea85e96-b2bd-4f2f-8e32-a102e046188f"
+                  Id="eaa25035-efa3-4a37-bff2-702821b58839"
                   name="Секретар інституту"
                   isLeaf="false"
                   isStatic="false"
@@ -465,8 +488,8 @@
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="8cbfe9d7-4113-4a4b-879d-959c0686c792"
-                  name="Маніпулювати секретарями інститутів"
+                  Id="6565b1aa-bc6a-40f3-b523-7ae9003c30e9"
+                  name="Маніпулює секретарями факультетів"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -732,20 +755,20 @@
             </relationshipOwnedElementsInternal>
           </association>
           <association
-            Id="e345a954-6b69-4e19-9551-ea74c1e5ccb1"
+            Id="38eaabf2-e759-4338-ad59-edda43d824a5"
             isDerived="false"
             sourceEndRoleName="Секретар факультету"
-            targetEndRoleName="Маніпулює секретарями факультетів"
+            targetEndRoleName="Генерує пароль"
             isLeaf="false"
             isAbstract="false">
             <useCaseMoniker
-              Id="903f3bff-f86d-4156-92b4-197753428aa0"
-              LastKnownName="Маніпулює секретарями факультетів"
+              Id="ecdafa19-3060-4518-802b-a009454029a6"
+              LastKnownName="Генерує пароль"
               LastKnownLocation="ModelingProject.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="fb228227-7e46-46d0-9b3d-a3f5f15bfcc9"
+                  Id="803247e4-0881-4ded-ad69-f23d40fe1233"
                   name="Секретар факультету"
                   isLeaf="false"
                   isStatic="false"
@@ -758,8 +781,8 @@
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="05b9028d-21c3-4b7e-9c76-499a078f7180"
-                  name="Маніпулює секретарями факультетів"
+                  Id="d042992e-7da5-4091-83d7-b7cb1356a036"
+                  name="Генерує пароль"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -1160,6 +1183,15 @@
         name="Створює контролі"
         isAbstract="false"
         isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="0b5fff2f-86ac-4937-b7f3-9d2e01c39c65">
+            <useCaseMoniker
+              Id="1be54bd1-9b09-4bb4-8f9a-d47fc18ad97d"
+              LastKnownName="Маніпулює контролями"
+              LastKnownLocation="ModelingProject.uml" />
+          </extend>
+        </extendedCases>
         <additions>
           <include
             Id="e07816ae-f19f-4d36-9926-7b07d27220a3">
@@ -1197,45 +1229,41 @@
         Id="1be54bd1-9b09-4bb4-8f9a-d47fc18ad97d"
         name="Маніпулює контролями"
         isAbstract="false"
-        isLeaf="false">
-        <additions>
-          <include
-            Id="c6127f7c-dc83-444a-948b-26eaef74a6cf">
-            <useCaseMoniker
-              Id="fe52f8b4-5bcd-40d9-97e1-295c7fbdee9f"
-              LastKnownName="Створює контролі"
-              LastKnownLocation="ModelingProject.uml" />
-          </include>
-          <include
-            Id="c43f12bc-540a-40ee-9733-a5b00e92fd8e">
-            <useCaseMoniker
-              Id="81e99ca4-f4a1-4049-8556-7f6579328c7b"
-              LastKnownName="Оцінює"
-              LastKnownLocation="ModelingProject.uml" />
-          </include>
-          <include
-            Id="0eabe0d3-a82d-4d65-b7ad-b0003399f5e5">
-            <useCaseMoniker
-              Id="022d861f-0c96-464d-9d6e-36e02fe1a20b"
-              LastKnownName="Відповідає на запитання"
-              LastKnownLocation="ModelingProject.uml" />
-          </include>
-        </additions>
-      </useCase>
+        isLeaf="false" />
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
         Id="81e99ca4-f4a1-4049-8556-7f6579328c7b"
         name="Оцінює"
         isAbstract="false"
-        isLeaf="false" />
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="094979e1-c54b-4b51-bf14-5d4f1c10cf80">
+            <useCaseMoniker
+              Id="1be54bd1-9b09-4bb4-8f9a-d47fc18ad97d"
+              LastKnownName="Маніпулює контролями"
+              LastKnownLocation="ModelingProject.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
         Id="022d861f-0c96-464d-9d6e-36e02fe1a20b"
         name="Відповідає на запитання"
         isAbstract="false"
-        isLeaf="false" />
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="248c6d76-e2f8-41db-b0af-6a36acd7c2ab">
+            <useCaseMoniker
+              Id="1be54bd1-9b09-4bb4-8f9a-d47fc18ad97d"
+              LastKnownName="Маніпулює контролями"
+              LastKnownLocation="ModelingProject.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
@@ -1243,6 +1271,98 @@
         name="Завантажує файли"
         isAbstract="false"
         isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="0d415d78-2c12-4065-a8b5-04a64f3dd218"
+        name="Створює"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="286ad31f-be61-4faa-a866-d1fe07caf515">
+            <useCaseMoniker
+              Id="20a8a107-120e-4225-8eca-e4530d8dd1ab"
+              LastKnownName="CRUD"
+              LastKnownLocation="ModelingProject.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="ee7b8b6e-4844-4cad-ba47-8eeab05c6f9b"
+        name="Редагує"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="3d90df87-02e3-4fb4-9523-dfb9776679ef">
+            <useCaseMoniker
+              Id="20a8a107-120e-4225-8eca-e4530d8dd1ab"
+              LastKnownName="CRUD"
+              LastKnownLocation="ModelingProject.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="ea54b024-edb6-46f8-a2aa-9fed4dc9db50"
+        name="Видаляє"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="23d9c082-0987-4a14-9ed4-cbd78bb3c219">
+            <useCaseMoniker
+              Id="20a8a107-120e-4225-8eca-e4530d8dd1ab"
+              LastKnownName="CRUD"
+              LastKnownLocation="ModelingProject.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="9fdecf9f-902d-4d66-ad7d-6ccc9e640d7b"
+        name="Читає"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="ae375e76-cddc-4210-b601-960dfb90eab7">
+            <useCaseMoniker
+              Id="20a8a107-120e-4225-8eca-e4530d8dd1ab"
+              LastKnownName="CRUD"
+              LastKnownLocation="ModelingProject.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="ecdafa19-3060-4518-802b-a009454029a6"
+        name="Генерує пароль"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="747f072b-ad24-46ca-bd66-efaaa272bc4b"
+        name="Відправляє на e-mail"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="85436b9d-cf9d-43c2-8c86-ded7950db02b">
+            <useCaseMoniker
+              Id="ecdafa19-3060-4518-802b-a009454029a6"
+              LastKnownName="Генерує пароль"
+              LastKnownLocation="ModelingProject.uml" />
+          </include>
+        </additions>
+      </useCase>
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

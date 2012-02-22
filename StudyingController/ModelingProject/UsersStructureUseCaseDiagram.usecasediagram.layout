@@ -46,6 +46,14 @@
       <useCaseMoniker Id="ab872543-1fbf-4457-925a-812261f6e34d" LastKnownName="Маніпулює секретарями інститутів" />
       <relativeChildShapes />
     </useCaseShape>
+    <useCaseAssociationConnector edgePoints="[(6.234375 : 1.625); (6.60973366960154 : 3.12643467840616)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="9dff7186-e587-4ce9-bb66-6f9dd9f3d567" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="877ee826-c9a6-4a97-b768-f74db3377a77" />
+        <useCaseShapeMoniker Id="be4cbf3d-9adc-4eab-b994-fa5d3ac8e66d" />
+      </nodes>
+    </useCaseAssociationConnector>
     <useCaseShape Id="996bb7a7-33e7-4368-9666-4497a567f9db" absoluteBounds="4.125, 3.125, 1.625, 0.625" customColor="238, 237, 131" heightOffset="0">
       <useCaseMoniker Id="cb496099-36bf-4f15-82af-a5351e5d74e4" LastKnownName="Маніпулює адміністраторами інститутів" />
       <relativeChildShapes />

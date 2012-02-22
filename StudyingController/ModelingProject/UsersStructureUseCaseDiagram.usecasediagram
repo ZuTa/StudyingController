@@ -50,6 +50,22 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="e1ffd58d-88d0-45b3-b3c1-0e9965fd22be" />
           </association>
+          <association Id="9dff7186-e587-4ce9-bb66-6f9dd9f3d567" isDerived="false" sourceEndRoleName="Головний секретар" targetEndRoleName="Маніпулює секретарями інститутів" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="ab872543-1fbf-4457-925a-812261f6e34d" LastKnownName="Маніпулює секретарями інститутів" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="6b3bdb04-ae20-4685-94bb-08bc252675f2" name="Головний секретар" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="34ece6cd-665b-4069-b972-bde43a6a299a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ea482e34-2c62-4924-8d6b-282611d3739e" name="Маніпулює секретарями інститутів" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="2f405725-2eac-4e05-8e77-cab5b47b9d05" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="aa54d4e4-bf3d-489a-8fc6-fa4bc9409876" />
+          </association>
         </targetEnds>
       </actor>
     </useCaseModelRootHasTypes>

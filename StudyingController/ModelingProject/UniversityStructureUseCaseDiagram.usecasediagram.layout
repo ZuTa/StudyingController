@@ -66,14 +66,6 @@
       <actorMoniker Id="d42f7b6d-ecd3-4332-a184-2169affdec87" LastKnownName="Викладач" />
       <relativeChildShapes />
     </actorShape>
-    <useCaseGeneralizationConnector edgePoints="[(7.84259259259259 : 2.625); (3.90740740740741 : 8.875)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110">
-      <generalizationMoniker Id="4a787fd6-3335-41da-9a1b-d17c25f8de74" />
-      <relativeChildShapes />
-      <nodes>
-        <actorShapeMoniker Id="6237eb82-84f2-4bbd-b2b9-3797b101904c" />
-        <actorShapeMoniker Id="8e4fba8a-580e-4d34-a0d9-dee1b52110c5" />
-      </nodes>
-    </useCaseGeneralizationConnector>
     <actorShape Id="2470c2d3-00dc-41e1-a142-1fc58e070c1b" absoluteBounds="8.75, 3.125, 0.5, 0.5" isReference="false" heightOffset="0">
       <actorMoniker Id="a5a0ea10-a945-4a23-bad3-970e125e75bd" LastKnownName="Секретар факультету" />
       <relativeChildShapes />
@@ -98,14 +90,6 @@
       <actorMoniker Id="d97f663a-2493-40a1-ae42-a3ad62c66e68" LastKnownName="Студент" />
       <relativeChildShapes />
     </actorShape>
-    <useCaseGeneralizationConnector edgePoints="[(7.91666666666667 : 2.625); (5.83333333333333 : 8.875)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110">
-      <generalizationMoniker Id="6781eb4a-bae0-4acd-9c9c-0c9f5345208d" />
-      <relativeChildShapes />
-      <nodes>
-        <actorShapeMoniker Id="6237eb82-84f2-4bbd-b2b9-3797b101904c" />
-        <actorShapeMoniker Id="006188c4-5083-4b14-92c2-c79a928b48c9" />
-      </nodes>
-    </useCaseGeneralizationConnector>
     <useCaseShape Id="10746aa3-65c0-4de7-88e4-83290967314b" absoluteBounds="5, 2.5, 1.375, 0.75" customColor="238, 237, 131" heightOffset="0">
       <useCaseMoniker Id="fbe07d07-fd7c-4276-a64f-bd5b02ea7f76" LastKnownName="Маніпулює структурою університету" />
       <relativeChildShapes />

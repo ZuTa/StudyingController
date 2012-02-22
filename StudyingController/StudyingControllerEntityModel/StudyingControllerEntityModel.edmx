@@ -27,6 +27,7 @@
           <EntitySet Name="PracticeControlMark" EntityType="UniversityDBModel.Store.PracticeControlMark" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Specialization" EntityType="UniversityDBModel.Store.Specialization" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Student" EntityType="UniversityDBModel.Store.Student" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StudyRange" EntityType="UniversityDBModel.Store.StudyRange" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Subject" EntityType="UniversityDBModel.Store.Subject" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SystemUser" EntityType="UniversityDBModel.Store.SystemUser" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Teacher" EntityType="UniversityDBModel.Store.Teacher" store:Type="Tables" Schema="dbo" />
@@ -340,6 +341,14 @@
           </Key>
           <Property Name="SystemUserID" Type="int" Nullable="false" />
           <Property Name="GroupID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudyRange">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="Part" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Subject">
           <Key>
@@ -968,6 +977,7 @@
             <End Role="LectureControl" EntitySet="Controls" />
             <End Role="LectureControlMark" EntitySet="Marks" />
           </AssociationSet>
+          <EntitySet Name="StudyRanges" EntityType="UniversityDBModel.StudyRange" />
           </EntityContainer>
         <EntityType Name="SystemUser" Abstract="false">
           <Key>
@@ -1441,6 +1451,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="StudyRange">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Year" Nullable="false" />
+          <Property Type="Int32" Name="Part" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1641,6 +1659,15 @@
               <MappingFragment StoreEntitySet="PracticeControlMark">
                 <ScalarProperty Name="ID" ColumnName="MarkID" />
                 <ScalarProperty Name="PracticeControlID" ColumnName="PracticeControlID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudyRanges">
+            <EntityTypeMapping TypeName="UniversityDBModel.StudyRange">
+              <MappingFragment StoreEntitySet="StudyRange">
+                <ScalarProperty Name="Part" ColumnName="Part" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1906,6 +1933,7 @@
           <ConnectorPoint PointX="6.125" PointY="10.125" />
           <ConnectorPoint PointX="6.125" PointY="10.5" />
         </InheritanceConnector>
+        <EntityTypeShape EntityType="UniversityDBModel.StudyRange" Width="1.5" PointX="8.375" PointY="5.125" Height="1.5956835937500102" />
       </Diagram>
     </Diagrams>
   </Designer>
