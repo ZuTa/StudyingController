@@ -691,7 +691,21 @@ namespace StudyingControllerService
                 }
 
                 foreach (var user in item.Teachers.ToList())
-                    context.SystemUsers.DeleteObject(user);                    
+                {
+                    context.LoadProperty(user, "PracticeTeacher");
+                    context.LoadProperty(user, "Lectures");
+                    foreach (var pt in user.PracticeTeacher.ToList())
+                    {
+                        context.LoadProperty(pt, "Students");
+                        context.PracticeTeachers.DeleteObject(pt);
+                    }
+                    foreach (var lecture in user.Lectures.ToList())
+                    {
+                        context.LoadProperty(lecture, "Groups");
+                        context.Lectures.DeleteObject(lecture);
+                    }
+                    context.SystemUsers.DeleteObject(user);
+                }
                 context.Cathedras.DeleteObject(item);
             }
         }
