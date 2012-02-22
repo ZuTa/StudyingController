@@ -1813,7 +1813,7 @@
           <ConnectorPoint PointX="3.125" PointY="1.75" />
         </InheritanceConnector>
         <EntityTypeShape EntityType="UniversityDBModel.Lecture" Width="1.5" PointX="0.625" PointY="6.625" Height="2.3648893229166656" IsExpanded="true" />
-        <EntityTypeShape EntityType="UniversityDBModel.Practice" Width="1.5" PointX="4.625" PointY="6.125" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.Practice" Width="1.5" PointX="5" PointY="5.75" Height="1.9802864583333335" IsExpanded="true" />
         <EntityTypeShape EntityType="UniversityDBModel.Subject" Width="1.5" PointX="0.5" PointY="5.125" Height="0.4" IsExpanded="false" />
         <AssociationConnector Association="UniversityDBModel.FK_Subject_Cathedra" >
           <ConnectorPoint PointX="0.8125" PointY="3.525" />
@@ -1842,13 +1842,15 @@
           <ConnectorPoint PointX="3.612359877804487" PointY="4.875" />
           <ConnectorPoint PointX="3.9479166666666665" PointY="4.8749999999999991" />
           <ConnectorPoint PointX="4.114583333333333" PointY="4.875" />
-          <ConnectorPoint PointX="5.375" PointY="4.875" />
-          <ConnectorPoint PointX="5.375" PointY="6.125" />
+          <ConnectorPoint PointX="5.75" PointY="4.875" />
+          <ConnectorPoint PointX="5.75" PointY="5.75" />
         </AssociationConnector>
         <EntityTypeShape EntityType="UniversityDBModel.PracticeTeacher" Width="1.5" PointX="2.625" PointY="5.125" Height="2.1725878906249996" IsExpanded="true" />
         <AssociationConnector Association="UniversityDBModel.FK_Practice_Teacher_Practice" >
-          <ConnectorPoint PointX="4.625" PointY="6.7112939453125" />
-          <ConnectorPoint PointX="4.125" PointY="6.7112939453125" />
+          <ConnectorPoint PointX="5" PointY="6.5237939453125" />
+          <ConnectorPoint PointX="4.458333333333333" PointY="6.5237939453124989" />
+          <ConnectorPoint PointX="4.291666666666667" PointY="6.5237939453125" />
+          <ConnectorPoint PointX="4.125" PointY="6.5237939453125" />
         </AssociationConnector>
         <AssociationConnector Association="UniversityDBModel.FK_Practice_Teacher_Teacher" >
           <ConnectorPoint PointX="2" PointY="2.7733650412132844" />
@@ -1873,8 +1875,8 @@
         <EntityTypeShape EntityType="UniversityDBModel.Control" Width="1.5" PointX="2.5" PointY="7.625" Height="0.4" IsExpanded="false" />
         <EntityTypeShape EntityType="UniversityDBModel.PracticeControl" Width="1.5" PointX="3.375" PointY="8.5" Height="0.4" IsExpanded="false" />
         <AssociationConnector Association="UniversityDBModel.FK_PracticeControl_Practice" >
-          <ConnectorPoint PointX="4.75" PointY="8.1052864583333335" />
-          <ConnectorPoint PointX="4.75" PointY="8.5" />
+          <ConnectorPoint PointX="5" PointY="7.7302864583333335" />
+          <ConnectorPoint PointX="4.875" PointY="8.5" />
         </AssociationConnector>
         <InheritanceConnector EntityType="UniversityDBModel.LectureControl" ManuallyRouted="false">
           <ConnectorPoint PointX="3.25" PointY="8.025" />
@@ -1907,8 +1909,12 @@
           <ConnectorPoint PointX="3.531252" PointY="4.859375" />
           <ConnectorPoint PointX="3.9479166666666665" PointY="4.8593749999999991" />
           <ConnectorPoint PointX="4.114583333333333" PointY="4.859375" />
-          <ConnectorPoint PointX="6.375" PointY="4.859375" />
-          <ConnectorPoint PointX="6.375" PointY="8.825" />
+          <ConnectorPoint PointX="4.375" PointY="4.859375" />
+          <ConnectorPoint PointX="4.375" PointY="8.25" />
+          <ConnectorPoint PointX="4.8322661862390186" PointY="8.25" />
+          <ConnectorPoint PointX="4.9989328529056847" PointY="8.25" />
+          <ConnectorPoint PointX="5.125" PointY="8.25" />
+          <ConnectorPoint PointX="5.125" PointY="8.825" />
           <ConnectorPoint PointX="7.625" PointY="8.825" />
         </AssociationConnector>
         <InheritanceConnector EntityType="UniversityDBModel.LectureControlMark" ManuallyRouted="false">

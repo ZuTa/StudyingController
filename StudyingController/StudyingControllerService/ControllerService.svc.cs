@@ -609,10 +609,8 @@ namespace StudyingControllerService
                             context.SystemUsers.DeleteObject(user);
                         foreach (var user in item.InstituteSecretaries.ToList())
                             context.SystemUsers.DeleteObject(user);
-
                         context.Institutes.DeleteObject(item);
                     }
-
                     context.SaveChanges();
                 }
             }
@@ -662,7 +660,7 @@ namespace StudyingControllerService
 
         private void DeleteCathedra(UniversityEntities context, int cathedraID)
         {
-            var item = (from f in context.Cathedras.Include("Teachers").Include("Groups")
+            var item = (from f in context.Cathedras.Include("Teachers").Include("Groups").Include("Subjects")
                         where f.ID == cathedraID
                         select f).FirstOrDefault();
             if (item != null)
@@ -670,9 +668,30 @@ namespace StudyingControllerService
                 foreach (var group in item.Groups.ToList())
                     DeleteGroup(context, group.ID);
 
-                foreach (var user in item.Teachers.ToList())
-                    context.SystemUsers.DeleteObject(user);
+                foreach (var subject in item.Subjects.ToList())
+                {
+                    context.LoadProperty(subject, "Practices");
+                    context.LoadProperty(subject, "Lectures");
+                    foreach (var pr in subject.Practices.ToList())
+                    {
+                        context.LoadProperty(pr, "PracticeTeacher");
+                        foreach (var pt in pr.PracticeTeacher.ToList())
+                        {
+                            context.LoadProperty(pt, "Students");
+                            context.PracticeTeachers.DeleteObject(pt);
+                        }
+                        context.Practices.DeleteObject(pr);
+                    }
+                    foreach (var lecture in subject.Lectures.ToList())
+                    {
+                        context.LoadProperty(lecture, "Groups");
+                        context.Lectures.DeleteObject(lecture);
+                    }
+                    context.DeleteObject(subject);
+                }
 
+                foreach (var user in item.Teachers.ToList())
+                    context.SystemUsers.DeleteObject(user);                    
                 context.Cathedras.DeleteObject(item);
             }
         }
