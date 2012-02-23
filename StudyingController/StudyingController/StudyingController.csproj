@@ -108,6 +108,7 @@
     <Compile Include="ViewModels\Models\TeacherModel.cs" />
     <Compile Include="ViewModels\Models\UserInformationModel.cs" />
     <Compile Include="Common\ValidateableAttribute.cs" />
+    <Compile Include="ViewModels\SelectorViewModel.cs" />
     <Compile Include="ViewModels\TeacherPracticesViewModel.cs" />
     <Compile Include="ViewModels\SaveableViewModel.cs" />
     <Compile Include="ViewModels\StudentViewModel.cs" />
@@ -188,6 +189,9 @@
     </Compile>
     <Compile Include="Views\PracticeTeacherView.xaml.cs">
       <DependentUpon>PracticeTeacherView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SelectorView.xaml.cs">
+      <DependentUpon>SelectorView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\StudentView.xaml.cs">
       <DependentUpon>StudentView.xaml</DependentUpon>
@@ -279,6 +283,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PracticeTeacherView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SelectorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

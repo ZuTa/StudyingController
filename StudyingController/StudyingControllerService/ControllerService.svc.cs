@@ -180,7 +180,10 @@ namespace StudyingControllerService
                                 where f.InstituteID == instituteID || (instituteID == null && f.InstituteID == null)
                                 select f;
                     foreach (var faculty in query)
+                    {
+                        context.LoadProperty(faculty, "Institute");
                         result.Add(GetDTO<FacultyDTO>(faculty));
+                    }
                 }
                 return result;
             }
@@ -218,7 +221,7 @@ namespace StudyingControllerService
 
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    var query = from c in context.Cathedras.Include("Subjects")
+                    var query = from c in context.Cathedras.Include("Subjects").Include("Faculty")
                                 where c.FacultyID == facultyID 
                                 select c;
                     foreach (var c in query)
@@ -288,7 +291,7 @@ namespace StudyingControllerService
 
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    var query = from g in context.Groups.Include("Specialization")
+                    var query = from g in context.Groups.Include("Specialization").Include("Cathedra")
                                 where g.CathedraID== cathedraID
                                 select g;
                     foreach (var group in query)
@@ -606,10 +609,8 @@ namespace StudyingControllerService
                             context.SystemUsers.DeleteObject(user);
                         foreach (var user in item.InstituteSecretaries.ToList())
                             context.SystemUsers.DeleteObject(user);
-
                         context.Institutes.DeleteObject(item);
                     }
-
                     context.SaveChanges();
                 }
             }
@@ -659,7 +660,7 @@ namespace StudyingControllerService
 
         private void DeleteCathedra(UniversityEntities context, int cathedraID)
         {
-            var item = (from f in context.Cathedras.Include("Teachers").Include("Groups")
+            var item = (from f in context.Cathedras.Include("Teachers").Include("Groups").Include("Subjects")
                         where f.ID == cathedraID
                         select f).FirstOrDefault();
             if (item != null)
@@ -667,9 +668,44 @@ namespace StudyingControllerService
                 foreach (var group in item.Groups.ToList())
                     DeleteGroup(context, group.ID);
 
-                foreach (var user in item.Teachers.ToList())
-                    context.SystemUsers.DeleteObject(user);
+                foreach (var subject in item.Subjects.ToList())
+                {
+                    context.LoadProperty(subject, "Practices");
+                    context.LoadProperty(subject, "Lectures");
+                    foreach (var pr in subject.Practices.ToList())
+                    {
+                        context.LoadProperty(pr, "PracticeTeacher");
+                        foreach (var pt in pr.PracticeTeacher.ToList())
+                        {
+                            context.LoadProperty(pt, "Students");
+                            context.PracticeTeachers.DeleteObject(pt);
+                        }
+                        context.Practices.DeleteObject(pr);
+                    }
+                    foreach (var lecture in subject.Lectures.ToList())
+                    {
+                        context.LoadProperty(lecture, "Groups");
+                        context.Lectures.DeleteObject(lecture);
+                    }
+                    context.DeleteObject(subject);
+                }
 
+                foreach (var user in item.Teachers.ToList())
+                {
+                    context.LoadProperty(user, "PracticeTeacher");
+                    context.LoadProperty(user, "Lectures");
+                    foreach (var pt in user.PracticeTeacher.ToList())
+                    {
+                        context.LoadProperty(pt, "Students");
+                        context.PracticeTeachers.DeleteObject(pt);
+                    }
+                    foreach (var lecture in user.Lectures.ToList())
+                    {
+                        context.LoadProperty(lecture, "Groups");
+                        context.Lectures.DeleteObject(lecture);
+                    }
+                    context.SystemUsers.DeleteObject(user);
+                }
                 context.Cathedras.DeleteObject(item);
             }
         }
@@ -1321,6 +1357,61 @@ namespace StudyingControllerService
                         }
                     }
                     return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public InstituteDTO GetInstituteByID(Session session, int? instituteID)
+        {
+            try
+            {
+                CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    if (instituteID != null)
+                    {
+                        var query = context.Institutes.Where(i => i.ID == instituteID).FirstOrDefault();
+                        return query.ToDTO();
+                    }
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public FacultyDTO GetFacultyByID(Session session, int facultyID)
+        {
+            try
+            {
+                CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var query = context.Faculties.Where(f => f.ID == facultyID).FirstOrDefault();
+                    return query.ToDTO();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public CathedraDTO GetCathedraByID(Session session, int cathedraID)
+        {
+            try
+            {
+                CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var query = context.Cathedras.Where(c => c.ID == cathedraID).FirstOrDefault();
+                    return query.ToDTO();
                 }
             }
             catch (Exception ex)

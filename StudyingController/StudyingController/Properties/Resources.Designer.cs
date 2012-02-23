@@ -142,6 +142,15 @@ namespace StudyingController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Поле містить більше 250 символів.
+        /// </summary>
+        internal static string ErrorFieldGreater {
+            get {
+                return ResourceManager.GetString("ErrorFieldGreater", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Логін повинен складатись лише з символів a-z(A-Z)0-9_.
         /// </summary>
         internal static string ErrorLoginBadChars {
