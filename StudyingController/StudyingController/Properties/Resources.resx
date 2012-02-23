@@ -232,6 +232,6 @@
     <value>/StudyingController;component/Images/pract.png</value>
   </data>
   <data name="ErrorFieldGreater" xml:space="preserve">
-    <value>Поле містить більше 250 символів</value>
+    <value>Занадто багато символів</value>
   </data>
 </root>
