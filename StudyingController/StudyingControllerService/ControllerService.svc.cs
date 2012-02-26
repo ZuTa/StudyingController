@@ -1419,5 +1419,114 @@ namespace StudyingControllerService
                 throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
             }
         }
+
+        public List<ControlDTO> GetLectureControls(Session session, int lectureID)
+        {
+            try
+            {
+                CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var query = context.Lectures.Include("LectureControls").FirstOrDefault(l => l.ID == lectureID);
+                    return (query as Lecture).LectureControls.ToDTOList<ControlDTO, LectureControl>();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public void SaveLectureControls(Session session, int lectureID, List<ControlDTO> controls)
+        {
+            try
+            {
+                CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    Lecture lecture = context.Lectures.Include("LectureControls").FirstOrDefault(l => l.ID == lectureID);
+
+                    foreach (ControlDTO control in controls)
+                        if (lecture.LectureControls.FirstOrDefault(lc => lc.ID == control.ID) == null) context.AddToControls(new LectureControl(control) { LectureID = lectureID });
+                        else 
+                        {
+                            var query = context.Controls.FirstOrDefault(c => c.ID == control.ID);
+                            if (query != null) (query as Control).Assign(control);
+                        }
+
+                    List<LectureControl> toRemove = new List<LectureControl>();
+
+                    foreach (var lectureControl in lecture.LectureControls)
+                        if (controls.Find(c => c.ID == lectureControl.ID) == null) toRemove.Add(lectureControl);
+
+                    foreach (var lc in toRemove)
+                    {
+                        lecture.LectureControls.Remove(lc);
+                        context.Controls.DeleteObject(lc);
+                    }
+
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public List<ControlDTO> GetPracticeControls(Session session, int practiceID)
+        {
+            try
+            {
+                CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var query = context.Practices.Include("PracticeControls").Where(p => p.ID == practiceID).FirstOrDefault();
+                    return (query as Practice).PracticeControls.ToDTOList<ControlDTO, PracticeControl>();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public void SavePracticeControls(Session session, int practiceID, List<ControlDTO> controls)
+        {
+            try
+            {
+                CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    Practice practice = context.Practices.Include("PracticeControls").FirstOrDefault(p => p.ID == practiceID);
+
+                    foreach (ControlDTO control in controls)
+                        if (practice.PracticeControls.FirstOrDefault(pc => pc.ID == control.ID) == null) context.AddToControls(new PracticeControl(control) { PracticeID = practiceID });
+                        else
+                        {
+                            var query = context.Controls.FirstOrDefault(c => c.ID == control.ID);
+                            if (query != null) (query as Control).Assign(control);
+                        }
+
+                    List<PracticeControl> toRemove = new List<PracticeControl>();
+
+                    foreach (var practiceControl in practice.PracticeControls)
+                        if (controls.Find(c => c.ID == practiceControl.ID) == null) toRemove.Add(practiceControl);
+
+                    foreach (var pc in toRemove)
+                    {
+                        practice.PracticeControls.Remove(pc);
+                        context.Controls.DeleteObject(pc);
+                    }
+
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
     }
 }

@@ -55,6 +55,10 @@ namespace StudyingController.ViewModels
                 case UserRoles.FacultySecretary:
                     LoadCathedras((ControllerInterop.Session.User as IFacultyable).FacultyID, null);
                     break;
+                case UserRoles.Teacher:
+                    LoadLectures(ControllerInterop.User.ID, Tree.AppendNode(new TreeNode("Лекції", null, -1, 4)));
+                    LoadPractices(ControllerInterop.User.ID, Tree.AppendNode(new TreeNode("Семінари", null, -1, 5)));
+                    break;
                 default:
                     throw new NotImplementedException("Unknown user's role!");
             }

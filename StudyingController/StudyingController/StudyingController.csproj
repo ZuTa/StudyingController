@@ -70,6 +70,8 @@
     <Compile Include="Converters\PictureEnumToPictureConverter.cs" />
     <Compile Include="ViewModels\BaseTreeViewModel.cs" />
     <Compile Include="ViewModels\CathedraViewModel.cs" />
+    <Compile Include="ViewModels\ControlStructureViewModel.cs" />
+    <Compile Include="ViewModels\LessonControlsViewModel.cs" />
     <Compile Include="ViewModels\FacultyAdminViewModel.cs" />
     <Compile Include="ViewModels\FacultySecretaryViewModel.cs" />
     <Compile Include="ViewModels\FacultyViewModel.cs" />
@@ -89,6 +91,7 @@
     <Compile Include="ViewModels\MainSecretaryViewModel.cs" />
     <Compile Include="ViewModels\Models\BaseModel.cs" />
     <Compile Include="ViewModels\Models\CathedraModel.cs" />
+    <Compile Include="ViewModels\Models\ControlModel.cs" />
     <Compile Include="ViewModels\Models\ExtenstionsHelper.cs" />
     <Compile Include="ViewModels\Models\FacultyAdminModel.cs" />
     <Compile Include="ViewModels\Models\FacultyModel.cs" />
@@ -144,6 +147,9 @@
     <Compile Include="ViewModels\UsersTreeViewModel.cs" />
     <Compile Include="Views\CathedraView.xaml.cs">
       <DependentUpon>CathedraView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LessonControlsView.xaml.cs">
+      <DependentUpon>LessonControlsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\FacultyAdminView.xaml.cs">
       <DependentUpon>FacultyAdminView.xaml</DependentUpon>
@@ -227,6 +233,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\CathedraView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LessonControlsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -349,6 +359,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\DataSources\EntitiesDTO.CathedraDTO.datasource" />
+    <None Include="Properties\DataSources\EntitiesDTO.ControlDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.FacultyDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.GroupDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.InstituteDTO.datasource" />
@@ -475,6 +486,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\SCS\ControllerService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\edit.png" />
+    <Resource Include="Images\add.png" />
+    <Resource Include="Images\remove.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

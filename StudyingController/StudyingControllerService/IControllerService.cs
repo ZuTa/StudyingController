@@ -188,5 +188,21 @@ namespace StudyingControllerService
         [FaultContract(typeof(ControllerServiceException))]
         CathedraDTO GetCathedraByID(Session session, int cathedraID);
 
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        List<ControlDTO> GetLectureControls(Session session, int lectureID);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        void SaveLectureControls(Session session, int lectureID, List<ControlDTO> controls);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        List<ControlDTO> GetPracticeControls(Session session, int practiceID);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        void SavePracticeControls(Session session, int practiceID, List<ControlDTO> controls);
+
     }
 }

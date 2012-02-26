@@ -39,8 +39,6 @@ namespace StudyingController.ViewModels.Models
         }
         #endregion
 
-
-
         #region Constructors
         
         public CathedraModel(CathedraDTO cathedra)
