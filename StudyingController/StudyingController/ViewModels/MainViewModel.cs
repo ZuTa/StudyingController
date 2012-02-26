@@ -100,6 +100,14 @@ namespace StudyingController.ViewModels
             }
         }
 
+        public bool IsUserAdminOrTeacher
+        {
+            get 
+            {
+                return IsUserMainAdmin || IsUserInstituteAdmin || IsUserFacultyAdmin || IsUserTeacher;
+            }
+        }
+
         public bool HasAdditionalCommands
         {
             get
@@ -190,6 +198,7 @@ namespace StudyingController.ViewModels
             get { return currentCommandsRO; }
         }//Collection for toolbar
 
+        private ControlStructureViewModel controlStructureViewModel;
         private LectureStuctureViewModel lectureStructureViewModel;
         private UniversityStructureViewModel universityStructureViewModel;
         private UsersStructureViewModel usersStructureViewModel;
@@ -276,10 +285,27 @@ namespace StudyingController.ViewModels
             }
         }
 
-
+        private RelayCommand controlStructureCommand;
+        public RelayCommand ControlStructureCommand
+        {
+            get
+            {
+                if (controlStructureCommand == null)
+                    controlStructureCommand = new RelayCommand(param => OpenControlsStructure());
+                return controlStructureCommand;
+            }
+        }
         #endregion
 
         #region Methods
+
+        private void OpenControlsStructure()
+        {
+            if (controlStructureViewModel == null)
+                controlStructureViewModel = new ControlStructureViewModel(UserInterop, ControllerInterop, Dispatcher);
+
+            ChangeCurrentWorkspace(controlStructureViewModel);
+        }
 
         private void OpenLessonsStructure()
         {
