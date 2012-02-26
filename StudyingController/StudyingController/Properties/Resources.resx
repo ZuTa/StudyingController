@@ -231,4 +231,7 @@
   <data name="Practice" xml:space="preserve">
     <value>/StudyingController;component/Images/pract.png</value>
   </data>
+  <data name="ErrorFieldGreater" xml:space="preserve">
+    <value>Занадто багато символів</value>
+  </data>
 </root>

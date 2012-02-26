@@ -43,6 +43,7 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_Mark_Student", "Student", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.Student), "Mark", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Mark), true)]
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "PracticeControlPracticeControlMark", "PracticeControl", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.PracticeControl), "PracticeControlMark", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.PracticeControlMark), true)]
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "LectureControlLectureControlMark", "LectureControl", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.LectureControl), "LectureControlMark", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.LectureControlMark), true)]
+[assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_Attachment_Teacher", "Teacher", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.Teacher), "Attachment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Attachment), true)]
 
 #endregion
 
@@ -317,6 +318,22 @@ namespace StudyingControllerEntityModel
             }
         }
         private ObjectSet<StudyRange> _StudyRanges;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Attachment> Attachments
+        {
+            get
+            {
+                if ((_Attachments == null))
+                {
+                    _Attachments = base.CreateObjectSet<Attachment>("Attachments");
+                }
+                return _Attachments;
+            }
+        }
+        private ObjectSet<Attachment> _Attachments;
 
         #endregion
         #region AddTo Methods
@@ -432,6 +449,14 @@ namespace StudyingControllerEntityModel
         {
             base.AddObject("StudyRanges", studyRange);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Attachments EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToAttachments(Attachment attachment)
+        {
+            base.AddObject("Attachments", attachment);
+        }
 
         #endregion
     }
@@ -440,6 +465,230 @@ namespace StudyingControllerEntityModel
     #endregion
     
     #region Entities
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="UniversityDBModel", Name="Attachment")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Attachment : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Attachment object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="dateAdded">Initial value of the DateAdded property.</param>
+        /// <param name="data">Initial value of the Data property.</param>
+        /// <param name="teacherID">Initial value of the TeacherID property.</param>
+        public static Attachment CreateAttachment(global::System.Int32 id, global::System.String name, global::System.DateTime dateAdded, global::System.Byte[] data, global::System.Int32 teacherID)
+        {
+            Attachment attachment = new Attachment();
+            attachment.ID = id;
+            attachment.Name = name;
+            attachment.DateAdded = dateAdded;
+            attachment.Data = data;
+            attachment.TeacherID = teacherID;
+            return attachment;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
+            }
+        }
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime DateAdded
+        {
+            get
+            {
+                return _DateAdded;
+            }
+            set
+            {
+                OnDateAddedChanging(value);
+                ReportPropertyChanging("DateAdded");
+                _DateAdded = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DateAdded");
+                OnDateAddedChanged();
+            }
+        }
+        private global::System.DateTime _DateAdded;
+        partial void OnDateAddedChanging(global::System.DateTime value);
+        partial void OnDateAddedChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Byte[] Data
+        {
+            get
+            {
+                return StructuralObject.GetValidValue(_Data);
+            }
+            set
+            {
+                OnDataChanging(value);
+                ReportPropertyChanging("Data");
+                _Data = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Data");
+                OnDataChanged();
+            }
+        }
+        private global::System.Byte[] _Data;
+        partial void OnDataChanging(global::System.Byte[] value);
+        partial void OnDataChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 TeacherID
+        {
+            get
+            {
+                return _TeacherID;
+            }
+            set
+            {
+                OnTeacherIDChanging(value);
+                ReportPropertyChanging("TeacherID");
+                _TeacherID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TeacherID");
+                OnTeacherIDChanged();
+            }
+        }
+        private global::System.Int32 _TeacherID;
+        partial void OnTeacherIDChanging(global::System.Int32 value);
+        partial void OnTeacherIDChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "FK_Attachment_Teacher", "Teacher")]
+        public Teacher Teacher
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Teacher>("UniversityDBModel.FK_Attachment_Teacher", "Teacher").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Teacher>("UniversityDBModel.FK_Attachment_Teacher", "Teacher").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Teacher> TeacherReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Teacher>("UniversityDBModel.FK_Attachment_Teacher", "Teacher");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Teacher>("UniversityDBModel.FK_Attachment_Teacher", "Teacher", value);
+                }
+            }
+        }
+
+        #endregion
+    }
     
     /// <summary>
     /// No Metadata Documentation available.
@@ -3980,6 +4229,28 @@ namespace StudyingControllerEntityModel
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PracticeTeacher>("UniversityDBModel.FK_Practice_Teacher_Teacher", "Practice_Teacher", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "FK_Attachment_Teacher", "Attachment")]
+        public EntityCollection<Attachment> Attachments
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Attachment>("UniversityDBModel.FK_Attachment_Teacher", "Attachment");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Attachment>("UniversityDBModel.FK_Attachment_Teacher", "Attachment", value);
                 }
             }
         }

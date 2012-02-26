@@ -97,7 +97,12 @@ namespace StudyingController.ViewModels
 
             if (entity is InstituteDTO)
             {
-                List<GroupDTO> instituteGroups = ControllerInterop.Service.GetInstituteGroups(ControllerInterop.Session, entity.ID);
+                
+                List<GroupDTO> instituteGroups;
+                if (entity.ID > 0)
+                    instituteGroups = ControllerInterop.Service.GetInstituteGroups(ControllerInterop.Session, entity.ID);
+                else
+                    instituteGroups = ControllerInterop.Service.GetAllGroups(ControllerInterop.Session);
                 UsedGroups = new ObservableCollection<GroupDTO>((from g in usedGroups
                                                                      where instituteGroups.Find(st => st.ID == g.ID) != null
                                                                      select g).ToList());

@@ -98,7 +98,11 @@ namespace StudyingController.ViewModels
 
             if (entity is InstituteDTO)
             {
-                List<StudentDTO> instituteStudents = ControllerInterop.Service.GetInstituteStudents(ControllerInterop.Session, entity.ID); 
+                List<StudentDTO> instituteStudents;
+                if (entity.ID > 0)
+                    instituteStudents = ControllerInterop.Service.GetInstituteStudents(ControllerInterop.Session, entity.ID);
+                else
+                    instituteStudents = ControllerInterop.Service.GetAllStudents(ControllerInterop.Session);
                    UsedStudents = new ObservableCollection<StudentDTO>((from s in usedStudents
                                                                          where instituteStudents.Find(st=> st.ID == s.ID) != null
                                                                          select s).ToList());
