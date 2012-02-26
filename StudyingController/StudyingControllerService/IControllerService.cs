@@ -176,5 +176,17 @@ namespace StudyingControllerService
         [FaultContract(typeof(ControllerServiceException))]
         TeacherDTO GetTeacher (Session session, int teacherID);
 
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        InstituteDTO GetInstituteByID(Session session, int? instituteID);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        FacultyDTO GetFacultyByID(Session session, int facultyID);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        CathedraDTO GetCathedraByID(Session session, int cathedraID);
+
     }
 }

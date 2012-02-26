@@ -10,6 +10,7 @@ namespace EntitiesDTO
     {
 
         private FacultyDTO faculty;
+        [DataMember]
         public FacultyDTO Faculty
         {
             get { return faculty; }

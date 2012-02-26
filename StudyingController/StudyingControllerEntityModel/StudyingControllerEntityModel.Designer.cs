@@ -301,6 +301,22 @@ namespace StudyingControllerEntityModel
             }
         }
         private ObjectSet<Mark> _Marks;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<StudyRange> StudyRanges
+        {
+            get
+            {
+                if ((_StudyRanges == null))
+                {
+                    _StudyRanges = base.CreateObjectSet<StudyRange>("StudyRanges");
+                }
+                return _StudyRanges;
+            }
+        }
+        private ObjectSet<StudyRange> _StudyRanges;
 
         #endregion
         #region AddTo Methods
@@ -407,6 +423,14 @@ namespace StudyingControllerEntityModel
         public void AddToMarks(Mark mark)
         {
             base.AddObject("Marks", mark);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the StudyRanges EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToStudyRanges(StudyRange studyRange)
+        {
+            base.AddObject("StudyRanges", studyRange);
         }
 
         #endregion
@@ -3341,6 +3365,113 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="UniversityDBModel", Name="StudyRange")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class StudyRange : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new StudyRange object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="year">Initial value of the Year property.</param>
+        /// <param name="part">Initial value of the Part property.</param>
+        public static StudyRange CreateStudyRange(global::System.Int32 id, global::System.Int32 year, global::System.Int32 part)
+        {
+            StudyRange studyRange = new StudyRange();
+            studyRange.ID = id;
+            studyRange.Year = year;
+            studyRange.Part = part;
+            return studyRange;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Year
+        {
+            get
+            {
+                return _Year;
+            }
+            set
+            {
+                OnYearChanging(value);
+                ReportPropertyChanging("Year");
+                _Year = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Year");
+                OnYearChanged();
+            }
+        }
+        private global::System.Int32 _Year;
+        partial void OnYearChanging(global::System.Int32 value);
+        partial void OnYearChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Part
+        {
+            get
+            {
+                return _Part;
+            }
+            set
+            {
+                OnPartChanging(value);
+                ReportPropertyChanging("Part");
+                _Part = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Part");
+                OnPartChanged();
+            }
+        }
+        private global::System.Int32 _Part;
+        partial void OnPartChanging(global::System.Int32 value);
+        partial void OnPartChanged();
+
+        #endregion
+    
     }
     
     /// <summary>

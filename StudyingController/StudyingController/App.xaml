@@ -101,6 +101,10 @@
                 <v:PracticeTeacherView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type vm:SelectorViewModel}">
+                <v:SelectorView/>
+            </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>
