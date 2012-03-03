@@ -19,10 +19,10 @@ namespace StudyingController.SCS {
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.TeacherDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.StudentDTO))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.InstituteSecretaryDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.FacultyAdminDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.InstituteSecretaryDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.FacultySecretaryDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
     public partial class Session : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -328,6 +328,32 @@ namespace StudyingController.SCS {
         
         void EndSavePracticeControls(System.IAsyncResult result);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/GetControlMessages", ReplyAction="http://tempuri.org/IControllerService/GetControlMessagesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/GetControlMessagesControllerServiceExceptio" +
+            "nFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        System.Collections.Generic.List<EntitiesDTO.ControlMessageDTO> GetControlMessages(StudyingController.SCS.Session session, int controlID);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/GetControlMessages", ReplyAction="http://tempuri.org/IControllerService/GetControlMessagesResponse")]
+        System.IAsyncResult BeginGetControlMessages(StudyingController.SCS.Session session, int controlID, System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.Generic.List<EntitiesDTO.ControlMessageDTO> EndGetControlMessages(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/SaveControlMessage", ReplyAction="http://tempuri.org/IControllerService/SaveControlMessageResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/SaveControlMessageControllerServiceExceptio" +
+            "nFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.TeacherDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.StudentDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultyAdminDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteSecretaryDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultySecretaryDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
+        void SaveControlMessage(StudyingController.SCS.Session session, EntitiesDTO.ControlMessageDTO message);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/SaveControlMessage", ReplyAction="http://tempuri.org/IControllerService/SaveControlMessageResponse")]
+        System.IAsyncResult BeginSaveControlMessage(StudyingController.SCS.Session session, EntitiesDTO.ControlMessageDTO message, System.AsyncCallback callback, object asyncState);
+        
+        void EndSaveControlMessage(System.IAsyncResult result);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/Login", ReplyAction="http://tempuri.org/IControllerService/LoginResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/LoginControllerServiceExceptionFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
         StudyingController.SCS.Session Login([System.ServiceModel.MessageParameterAttribute(Name="login")] string login1, string password);
@@ -457,10 +483,10 @@ namespace StudyingController.SCS {
         [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/SaveUserControllerServiceExceptionFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.TeacherDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.StudentDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteSecretaryDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultyAdminDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteSecretaryDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultySecretaryDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
         void SaveUser(StudyingController.SCS.Session session, EntitiesDTO.SystemUserDTO user);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/SaveUser", ReplyAction="http://tempuri.org/IControllerService/SaveUserResponse")]
@@ -913,6 +939,25 @@ namespace StudyingController.SCS {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetControlMessagesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetControlMessagesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.Generic.List<EntitiesDTO.ControlMessageDTO> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.Generic.List<EntitiesDTO.ControlMessageDTO>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class LoginCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
@@ -1339,6 +1384,18 @@ namespace StudyingController.SCS {
         
         private System.Threading.SendOrPostCallback onSavePracticeControlsCompletedDelegate;
         
+        private BeginOperationDelegate onBeginGetControlMessagesDelegate;
+        
+        private EndOperationDelegate onEndGetControlMessagesDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetControlMessagesCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginSaveControlMessageDelegate;
+        
+        private EndOperationDelegate onEndSaveControlMessageDelegate;
+        
+        private System.Threading.SendOrPostCallback onSaveControlMessageCompletedDelegate;
+        
         private BeginOperationDelegate onBeginLoginDelegate;
         
         private EndOperationDelegate onEndLoginDelegate;
@@ -1565,6 +1622,10 @@ namespace StudyingController.SCS {
         public event System.EventHandler<GetPracticeControlsCompletedEventArgs> GetPracticeControlsCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> SavePracticeControlsCompleted;
+        
+        public event System.EventHandler<GetControlMessagesCompletedEventArgs> GetControlMessagesCompleted;
+        
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> SaveControlMessageCompleted;
         
         public event System.EventHandler<LoginCompletedEventArgs> LoginCompleted;
         
@@ -2660,6 +2721,109 @@ namespace StudyingController.SCS {
                         session,
                         practiceID,
                         controls}, this.onEndSavePracticeControlsDelegate, this.onSavePracticeControlsCompletedDelegate, userState);
+        }
+        
+        public System.Collections.Generic.List<EntitiesDTO.ControlMessageDTO> GetControlMessages(StudyingController.SCS.Session session, int controlID) {
+            return base.Channel.GetControlMessages(session, controlID);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetControlMessages(StudyingController.SCS.Session session, int controlID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetControlMessages(session, controlID, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.Collections.Generic.List<EntitiesDTO.ControlMessageDTO> EndGetControlMessages(System.IAsyncResult result) {
+            return base.Channel.EndGetControlMessages(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetControlMessages(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            StudyingController.SCS.Session session = ((StudyingController.SCS.Session)(inValues[0]));
+            int controlID = ((int)(inValues[1]));
+            return this.BeginGetControlMessages(session, controlID, callback, asyncState);
+        }
+        
+        private object[] OnEndGetControlMessages(System.IAsyncResult result) {
+            System.Collections.Generic.List<EntitiesDTO.ControlMessageDTO> retVal = this.EndGetControlMessages(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetControlMessagesCompleted(object state) {
+            if ((this.GetControlMessagesCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetControlMessagesCompleted(this, new GetControlMessagesCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetControlMessagesAsync(StudyingController.SCS.Session session, int controlID) {
+            this.GetControlMessagesAsync(session, controlID, null);
+        }
+        
+        public void GetControlMessagesAsync(StudyingController.SCS.Session session, int controlID, object userState) {
+            if ((this.onBeginGetControlMessagesDelegate == null)) {
+                this.onBeginGetControlMessagesDelegate = new BeginOperationDelegate(this.OnBeginGetControlMessages);
+            }
+            if ((this.onEndGetControlMessagesDelegate == null)) {
+                this.onEndGetControlMessagesDelegate = new EndOperationDelegate(this.OnEndGetControlMessages);
+            }
+            if ((this.onGetControlMessagesCompletedDelegate == null)) {
+                this.onGetControlMessagesCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetControlMessagesCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetControlMessagesDelegate, new object[] {
+                        session,
+                        controlID}, this.onEndGetControlMessagesDelegate, this.onGetControlMessagesCompletedDelegate, userState);
+        }
+        
+        public void SaveControlMessage(StudyingController.SCS.Session session, EntitiesDTO.ControlMessageDTO message) {
+            base.Channel.SaveControlMessage(session, message);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginSaveControlMessage(StudyingController.SCS.Session session, EntitiesDTO.ControlMessageDTO message, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginSaveControlMessage(session, message, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public void EndSaveControlMessage(System.IAsyncResult result) {
+            base.Channel.EndSaveControlMessage(result);
+        }
+        
+        private System.IAsyncResult OnBeginSaveControlMessage(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            StudyingController.SCS.Session session = ((StudyingController.SCS.Session)(inValues[0]));
+            EntitiesDTO.ControlMessageDTO message = ((EntitiesDTO.ControlMessageDTO)(inValues[1]));
+            return this.BeginSaveControlMessage(session, message, callback, asyncState);
+        }
+        
+        private object[] OnEndSaveControlMessage(System.IAsyncResult result) {
+            this.EndSaveControlMessage(result);
+            return null;
+        }
+        
+        private void OnSaveControlMessageCompleted(object state) {
+            if ((this.SaveControlMessageCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.SaveControlMessageCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void SaveControlMessageAsync(StudyingController.SCS.Session session, EntitiesDTO.ControlMessageDTO message) {
+            this.SaveControlMessageAsync(session, message, null);
+        }
+        
+        public void SaveControlMessageAsync(StudyingController.SCS.Session session, EntitiesDTO.ControlMessageDTO message, object userState) {
+            if ((this.onBeginSaveControlMessageDelegate == null)) {
+                this.onBeginSaveControlMessageDelegate = new BeginOperationDelegate(this.OnBeginSaveControlMessage);
+            }
+            if ((this.onEndSaveControlMessageDelegate == null)) {
+                this.onEndSaveControlMessageDelegate = new EndOperationDelegate(this.OnEndSaveControlMessage);
+            }
+            if ((this.onSaveControlMessageCompletedDelegate == null)) {
+                this.onSaveControlMessageCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnSaveControlMessageCompleted);
+            }
+            base.InvokeAsync(this.onBeginSaveControlMessageDelegate, new object[] {
+                        session,
+                        message}, this.onEndSaveControlMessageDelegate, this.onSaveControlMessageCompletedDelegate, userState);
         }
         
         public StudyingController.SCS.Session Login(string login1, string password) {

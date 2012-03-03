@@ -46,6 +46,7 @@
     <Compile Include="BaseNameAttribute.cs" />
     <Compile Include="CathedraDTO.cs" />
     <Compile Include="ControlDTO.cs" />
+    <Compile Include="ControlMessageDTO.cs" />
     <Compile Include="FacultyAdminDTO.cs" />
     <Compile Include="FacultyDTO.cs" />
     <Compile Include="FacultySecretaryDTO.cs" />

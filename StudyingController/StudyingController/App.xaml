@@ -109,6 +109,9 @@
                 <v:SelectorView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type vm:ControlChatViewModel}">
+                <v:ControlChatView/>
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

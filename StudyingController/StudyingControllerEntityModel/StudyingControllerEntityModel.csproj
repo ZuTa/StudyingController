@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Cathedra.cs" />
     <Compile Include="Control.cs" />
+    <Compile Include="ControlMessage.cs" />
     <Compile Include="ExtensionsHelper.cs" />
     <Compile Include="Faculty.cs" />
     <Compile Include="FacultyAdmin.cs" />

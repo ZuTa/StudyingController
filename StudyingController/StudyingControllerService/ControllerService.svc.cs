@@ -1528,5 +1528,50 @@ namespace StudyingControllerService
             }
         }
 
+        public List<ControlMessageDTO> GetControlMessages(Session session, int controlID)
+        {
+            try
+            {
+                CheckSession(session);
+
+                List<ControlMessageDTO> result = new List<ControlMessageDTO>();
+
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var query = context.ControlMessages.Include("SystemUser.UserInformation").Include("Control").Where(cm => cm.ControlID == controlID);
+                    foreach (var item in query)
+                        result.Add(item.ToDTO());
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+
+        public void SaveControlMessage(Session session, ControlMessageDTO message)
+        {
+            try
+            {
+                CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var item = context.ControlMessages.FirstOrDefault(cm => cm.ID == message.ID);
+                    if (item == null)
+                        context.ControlMessages.AddObject(new ControlMessage(message));
+                    else
+                        item.Assign(message);
+
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
     }
 }

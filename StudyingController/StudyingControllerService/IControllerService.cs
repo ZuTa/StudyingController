@@ -204,5 +204,12 @@ namespace StudyingControllerService
         [FaultContract(typeof(ControllerServiceException))]
         void SavePracticeControls(Session session, int practiceID, List<ControlDTO> controls);
 
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        List<ControlMessageDTO> GetControlMessages(Session session, int controlID);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        void SaveControlMessage(Session session, ControlMessageDTO message);
     }
 }
