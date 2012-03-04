@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="StudyingController.Views.LessonControlsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        
+        <ListView Grid.Row="0" Grid.Column="0" ItemsSource="{Binding Controls}" SelectedValue="{Binding CurrentControl}" SelectionMode="Single">
+            <ListView.View>
+                <GridView AllowsColumnReorder="False">
+                    <GridViewColumn Header="Назва" DisplayMemberBinding="{Binding Name}" Width="auto"/>
+                    <GridViewColumn Header="Дата" DisplayMemberBinding="{Binding Date}" Width="auto"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Top">
+            <Button Command="{Binding AddCommand}" ToolTip="Додати" Style="{StaticResource EditableButtonStyle}">
+                <Image Source="/StudyingController;component/Images/add.png" Stretch="Fill" />
+            </Button>
+            <Button Command="{Binding EditCommand}" ToolTip="Редагувати" Style="{StaticResource EditableButtonStyle}">
+                <Image Source="/StudyingController;component/Images/edit.png" Stretch="Fill"/>
+            </Button>
+            <Button Command="{Binding RemoveCommand}" ToolTip="Видалити" Style="{StaticResource EditableButtonStyle}">
+                <Image Source="/StudyingController;component/Images/remove.png" Stretch="Fill" />
+            </Button>
+        </StackPanel>
+        
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>    
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Назва:" Style="{StaticResource TextBlockStyle}"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding CurrentControl.Name, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}"/>
+            
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Дата:" Style="{StaticResource TextBlockStyle}"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding CurrentControl.Date, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}"/>
+            
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Опис:" Style="{StaticResource TextBlockStyle}"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding CurrentControl.Description, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}"/>
+
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Максимальний бал:" Style="{StaticResource TextBlockStyle}"/>
+            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding CurrentControl.MaxMark, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}"/>
+        </Grid>
+    </Grid>
+</UserControl>

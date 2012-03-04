@@ -112,5 +112,10 @@ namespace EntitiesDTO
         {
             userInformation = new UserInformationDTO();
         }
+
+        public override string ToString()
+        {
+            return UserInformation.ToString();
+        }
     }
 }

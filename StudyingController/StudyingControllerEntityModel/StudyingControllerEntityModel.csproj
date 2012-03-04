@@ -45,6 +45,8 @@
   <ItemGroup>
     <Compile Include="Attachment.cs" />
     <Compile Include="Cathedra.cs" />
+    <Compile Include="Control.cs" />
+    <Compile Include="ControlMessage.cs" />
     <Compile Include="ExtensionsHelper.cs" />
     <Compile Include="Faculty.cs" />
     <Compile Include="FacultyAdmin.cs" />
@@ -56,7 +58,9 @@
     <Compile Include="InstituteAdmin.cs" />
     <Compile Include="InstituteSecretary.cs" />
     <Compile Include="Lecture.cs" />
+    <Compile Include="LectureControl.cs" />
     <Compile Include="Practice.cs" />
+    <Compile Include="PracticeControl.cs" />
     <Compile Include="PracticeTeacher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Specialization.cs" />
