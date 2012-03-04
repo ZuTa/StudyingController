@@ -14,7 +14,12 @@ namespace StudyingController.ViewModels
         None = 0,
         GeneratePassword = 1,
         Lecture = 2,
-        Practice = 3
+        Practice = 3,
+        Add = 4,
+        Remove = 5,
+        Update = 6,
+        Download = 7,
+        Open = 8
     }
 
     public class NamedCommandData : BaseViewModel

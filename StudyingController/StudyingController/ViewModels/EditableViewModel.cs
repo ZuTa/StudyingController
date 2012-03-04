@@ -182,7 +182,6 @@ namespace StudyingController.ViewModels
             //UpdateProperties();
         }
 
-
         #endregion
 
         #region Events

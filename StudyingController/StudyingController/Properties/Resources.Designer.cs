@@ -61,6 +61,15 @@ namespace StudyingController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to /StudyingController;component/Images/1327612523_Add.png.
+        /// </summary>
+        internal static string Add {
+            get {
+                return ResourceManager.GetString("Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to StudyingController.
         /// </summary>
         internal static string AppDataFolderName {
@@ -75,6 +84,15 @@ namespace StudyingController.Properties {
         internal static string DefaultMessageText {
             get {
                 return ResourceManager.GetString("DefaultMessageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /StudyingController;component/Images/Download.png.
+        /// </summary>
+        internal static string Download {
+            get {
+                return ResourceManager.GetString("Download", resourceCulture);
             }
         }
         
@@ -120,6 +138,15 @@ namespace StudyingController.Properties {
         internal static string EmailText {
             get {
                 return ResourceManager.GetString("EmailText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Файл завеликий.
+        /// </summary>
+        internal static string ErrorAttachmentIsTooLarge {
+            get {
+                return ResourceManager.GetString("ErrorAttachmentIsTooLarge", resourceCulture);
             }
         }
         
@@ -349,11 +376,29 @@ namespace StudyingController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to /StudyingController;component/Images/File-Open-icon.png.
+        /// </summary>
+        internal static string OpenFile {
+            get {
+                return ResourceManager.GetString("OpenFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to /StudyingController;component/Images/pract.png.
         /// </summary>
         internal static string Practice {
             get {
                 return ResourceManager.GetString("Practice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /StudyingController;component/Images/1327612550_delete.png.
+        /// </summary>
+        internal static string Remove {
+            get {
+                return ResourceManager.GetString("Remove", resourceCulture);
             }
         }
         
@@ -408,6 +453,15 @@ namespace StudyingController.Properties {
         internal static string TeachersTxt {
             get {
                 return ResourceManager.GetString("TeachersTxt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /StudyingController;component/Images/Edit.png.
+        /// </summary>
+        internal static string Update {
+            get {
+                return ResourceManager.GetString("Update", resourceCulture);
             }
         }
     }

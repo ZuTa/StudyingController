@@ -10,7 +10,7 @@ using System.Collections.ObjectModel;
 
 namespace StudyingController.ViewModels
 {
-    class LectureViewModel : SaveableViewModel
+    public class LectureViewModel : SaveableViewModel
     {
         #region Fields & Properties
 

@@ -58,7 +58,7 @@ namespace StudyingController.ViewModels.Models
                 error = Properties.Resources.ErrorFieldGreater;
                 return false;
             }
-            if (!Regex.IsMatch(name, "^([а-яА-ЯіІїЇa-zA-Z0-9][\\- ]?)*[а-яА-ЯіІїЇa-zA-Z0-9]$"))
+            if (!Regex.IsMatch(name, "^([а-яА-ЯіІїЇa-zA-Z0-9][\\- \\._]?)*[а-яА-ЯіІїЇa-zA-Z0-9]$"))
             {
                 error = Properties.Resources.ErrorBadCharsUsed;
                 return false;

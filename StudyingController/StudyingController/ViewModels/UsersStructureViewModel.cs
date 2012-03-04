@@ -376,7 +376,5 @@ namespace StudyingController.ViewModels
         }
 
         #endregion
-
-        
     }
 }

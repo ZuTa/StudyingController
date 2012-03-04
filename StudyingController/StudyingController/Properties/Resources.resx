@@ -234,4 +234,22 @@
   <data name="ErrorFieldGreater" xml:space="preserve">
     <value>Занадто багато символів</value>
   </data>
+  <data name="Add" xml:space="preserve">
+    <value>/StudyingController;component/Images/1327612523_Add.png</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>/StudyingController;component/Images/1327612550_delete.png</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>/StudyingController;component/Images/Edit.png</value>
+  </data>
+  <data name="ErrorAttachmentIsTooLarge" xml:space="preserve">
+    <value>Файл завеликий</value>
+  </data>
+  <data name="Download" xml:space="preserve">
+    <value>/StudyingController;component/Images/Download.png</value>
+  </data>
+  <data name="OpenFile" xml:space="preserve">
+    <value>/StudyingController;component/Images/File-Open-icon.png</value>
+  </data>
 </root>

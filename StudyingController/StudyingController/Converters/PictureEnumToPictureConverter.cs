@@ -22,6 +22,16 @@ namespace StudyingController.Converters
                         return Properties.Resources.Lecture;
                     case CommandTypes.Practice:
                         return Properties.Resources.Practice;
+                    case CommandTypes.Add:
+                        return Properties.Resources.Add;
+                    case CommandTypes.Remove:
+                        return Properties.Resources.Remove;
+                    case CommandTypes.Update:
+                        return Properties.Resources.Update;
+                    case CommandTypes.Download:
+                        return Properties.Resources.Download;
+                    case CommandTypes.Open:
+                        return Properties.Resources.OpenFile;
                     default:
                         throw new NotImplementedException();
                 }

@@ -105,6 +105,14 @@
                 <v:SelectorView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type vm:AttachmentsViewModel}">
+                <v:AttachmentsView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:AttachmentViewModel}">
+                <v:AttachmentView/>
+            </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

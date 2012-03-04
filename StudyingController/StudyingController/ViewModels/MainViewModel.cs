@@ -9,7 +9,7 @@ using System.Collections.ObjectModel;
 using EntitiesDTO;
 
 namespace StudyingController.ViewModels
-{   
+{
     public class MainViewModel : BaseApplicationViewModel
     {
         #region Fields & Properties
@@ -144,7 +144,7 @@ namespace StudyingController.ViewModels
         public bool IsNotBusy
         {
             get { return isNotBusy; }
-            
+
             set
             {
                 if (isNotBusy != value)
@@ -159,14 +159,14 @@ namespace StudyingController.ViewModels
 
         public BaseApplicationViewModel CurrentWorkspace
         {
-            get 
+            get
             {
                 if (workspaces.Count == 0)
                     return null;
 
                 return workspaces.Peek();
             }
-        }        
+        }
 
         public bool HasWorkspaces
         {
@@ -190,9 +190,10 @@ namespace StudyingController.ViewModels
             get { return currentCommandsRO; }
         }//Collection for toolbar
 
-        private LectureStuctureViewModel lectureStructureViewModel;
+        private LessonStuctureViewModel lectureStructureViewModel;
         private UniversityStructureViewModel universityStructureViewModel;
         private UsersStructureViewModel usersStructureViewModel;
+        private AttachmentsStructureViewModel attachmentsStructureViewModel;
 
         #endregion
 
@@ -213,9 +214,9 @@ namespace StudyingController.ViewModels
         private RelayCommand universityStructureCommand;
         public RelayCommand UniversityStructureCommand
         {
-            get 
+            get
             {
-                if (universityStructureCommand == null) 
+                if (universityStructureCommand == null)
                     universityStructureCommand = new RelayCommand((param) => OpenUniversityStructure());
                 return universityStructureCommand;
             }
@@ -224,22 +225,22 @@ namespace StudyingController.ViewModels
         private RelayCommand usersStructureCommand;
         public RelayCommand UsersStructureCommand
         {
-            get 
+            get
             {
                 if (usersStructureCommand == null)
                     usersStructureCommand = new RelayCommand(param => OpenUsersStructure());
-                return usersStructureCommand; 
+                return usersStructureCommand;
             }
         }
 
         private RelayCommand logoutCommand;
         public RelayCommand LogoutCommand
         {
-            get 
+            get
             {
                 if (logoutCommand == null)
                     logoutCommand = new RelayCommand(param => OnLogout());
-                return logoutCommand; 
+                return logoutCommand;
             }
         }
 
@@ -268,23 +269,41 @@ namespace StudyingController.ViewModels
         private RelayCommand lessonCommand;
         public RelayCommand LessonCommand
         {
-            get 
-            { 
-                if(lessonCommand == null)
+            get
+            {
+                if (lessonCommand == null)
                     lessonCommand = new RelayCommand(param => OpenLessonsStructure());
                 return lessonCommand;
             }
         }
 
+        private RelayCommand attachmentCommand;
+        public RelayCommand AttachmentCommand
+        {
+            get
+            {
+                if (attachmentCommand == null)
+                    attachmentCommand = new RelayCommand(param => OpenAttachments());
+                return attachmentCommand;
+            }
+        }
 
         #endregion
 
         #region Methods
 
+        private void OpenAttachments()
+        {
+            if (attachmentsStructureViewModel == null)
+                attachmentsStructureViewModel = new AttachmentsStructureViewModel(UserInterop, ControllerInterop, Dispatcher);
+
+            ChangeCurrentWorkspace(attachmentsStructureViewModel);
+        }
+
         private void OpenLessonsStructure()
         {
             if (lectureStructureViewModel == null)
-                lectureStructureViewModel = new LectureStuctureViewModel(UserInterop, ControllerInterop, Dispatcher);
+                lectureStructureViewModel = new LessonStuctureViewModel(UserInterop, ControllerInterop, Dispatcher);
 
             ChangeCurrentWorkspace(lectureStructureViewModel);
         }

@@ -10,7 +10,7 @@ using System.Collections.ObjectModel;
 
 namespace StudyingController.ViewModels
 {
-    class LectureStuctureViewModel:EditableViewModel,IAdditionalCommands,IRefreshable
+    class LessonStuctureViewModel:EditableViewModel,IAdditionalCommands,IRefreshable
     {
         #region Fields & Properties
 
@@ -49,7 +49,7 @@ namespace StudyingController.ViewModels
 
         #region Constuctors
 
-        public LectureStuctureViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
+        public LessonStuctureViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)
         {
             entitiesProvider = new LessonTreeViewModel(userInterop, controllerInterop, dispatcher);
@@ -123,7 +123,6 @@ namespace StudyingController.ViewModels
                 viewModel = null;
             return viewModel;
         }
-
 
         #endregion
 

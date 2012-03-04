@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attachment.cs" />
     <Compile Include="Cathedra.cs" />
     <Compile Include="ExtensionsHelper.cs" />
     <Compile Include="Faculty.cs" />

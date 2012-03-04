@@ -20,7 +20,7 @@ namespace StudyingController.ViewModels
             get { return isModified; }
         }
 
-        public bool IsValid
+        public virtual bool IsValid
         {
             get { return model.IsValid; }
         }        

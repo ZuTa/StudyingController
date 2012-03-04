@@ -188,5 +188,21 @@ namespace StudyingControllerService
         [FaultContract(typeof(ControllerServiceException))]
         CathedraDTO GetCathedraByID(Session session, int cathedraID);
 
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        List<AttachmentDTO> GetAttachments(Session session, int teacherID);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        void SaveAttachment(Session session, AttachmentDTO attachment);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        void EditAttachment(Session session, AttachmentDTO attachment);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        void DeleteAttachment(Session session, int attachmentID);
+
     }
 }
