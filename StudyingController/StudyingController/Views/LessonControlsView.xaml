@@ -34,30 +34,6 @@
             <Button Command="{Binding RemoveCommand}" ToolTip="Видалити" Style="{StaticResource EditableButtonStyle}">
                 <Image Source="/StudyingController;component/Images/remove.png" Stretch="Fill" />
             </Button>
-        </StackPanel>
-        
-        <Grid Grid.Row="1" Grid.ColumnSpan="2">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>    
-            <TextBlock Grid.Row="0" Grid.Column="0" Text="Назва:" Style="{StaticResource TextBlockStyle}"/>
-            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding CurrentControl.Name, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}"/>
-            
-            <TextBlock Grid.Row="1" Grid.Column="0" Text="Дата:" Style="{StaticResource TextBlockStyle}"/>
-            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding CurrentControl.Date, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}"/>
-            
-            <TextBlock Grid.Row="2" Grid.Column="0" Text="Опис:" Style="{StaticResource TextBlockStyle}"/>
-            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding CurrentControl.Description, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}"/>
-
-            <TextBlock Grid.Row="3" Grid.Column="0" Text="Максимальний бал:" Style="{StaticResource TextBlockStyle}"/>
-            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding CurrentControl.MaxMark, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}"/>
-        </Grid>
+        </StackPanel>        
     </Grid>
 </UserControl>

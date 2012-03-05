@@ -71,6 +71,7 @@
     <Compile Include="ViewModels\BaseTreeViewModel.cs" />
     <Compile Include="ViewModels\CathedraViewModel.cs" />
     <Compile Include="ViewModels\ControlStructureViewModel.cs" />
+    <Compile Include="ViewModels\LectureControlViewModel.cs" />
     <Compile Include="ViewModels\LessonControlsViewModel.cs" />
     <Compile Include="ViewModels\FacultyAdminViewModel.cs" />
     <Compile Include="ViewModels\FacultySecretaryViewModel.cs" />
@@ -147,6 +148,9 @@
     <Compile Include="ViewModels\UsersTreeViewModel.cs" />
     <Compile Include="Views\CathedraView.xaml.cs">
       <DependentUpon>CathedraView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LectureControlView.xaml.cs">
+      <DependentUpon>LectureControlView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LessonControlsView.xaml.cs">
       <DependentUpon>LessonControlsView.xaml</DependentUpon>
@@ -233,6 +237,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\CathedraView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LectureControlView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -186,6 +186,8 @@ namespace StudyingController.ViewModels
         #endregion
 
         #region Events
+
+        
         #endregion
 
     }

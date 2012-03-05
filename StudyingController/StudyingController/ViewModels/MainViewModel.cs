@@ -305,6 +305,12 @@ namespace StudyingController.ViewModels
                 controlStructureViewModel = new ControlStructureViewModel(UserInterop, ControllerInterop, Dispatcher);
 
             ChangeCurrentWorkspace(controlStructureViewModel);
+            controlStructureViewModel.WorkspaceChanged += new ControlStructureViewModel.ChangeWorkspaceHandler(controlStructureViewModel_WorkspaceChanged);
+        }
+
+        void controlStructureViewModel_WorkspaceChanged(BaseApplicationViewModel viewModel)
+        {
+            ChangeCurrentWorkspace(viewModel);
         }
 
         private void OpenLessonsStructure()

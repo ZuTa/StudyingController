@@ -109,6 +109,10 @@
                 <v:SelectorView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type vm:LectureControlViewModel}">
+                <v:LectureControlView/>
+            </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

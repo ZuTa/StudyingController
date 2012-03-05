@@ -138,7 +138,8 @@ namespace StudyingController.ViewModels
 
         private void EditControl()
         {
-            throw new NotImplementedException();
+            if (WorkspaceChanged != null)
+                WorkspaceChanged(currentControl);
         }
 
         private void AddControl()
@@ -167,5 +168,13 @@ namespace StudyingController.ViewModels
         }
 
         #endregion
+
+        #region Events
+
+        public delegate void ChangeWorkspaceHandler(BaseModel model); 
+        public event ChangeWorkspaceHandler WorkspaceChanged;
+
+        #endregion
+
     }
 }
