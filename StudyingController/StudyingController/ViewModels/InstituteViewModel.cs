@@ -47,6 +47,11 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
+        protected override void DoRefresh()
+        {
+            throw new NotImplementedException();
+        }
+
         public override void Remove()
         {
             ControllerInterop.Service.DeleteInstitute(ControllerInterop.Session, Institute.ID);

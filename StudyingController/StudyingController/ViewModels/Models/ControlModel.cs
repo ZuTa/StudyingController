@@ -87,6 +87,39 @@ namespace StudyingController.ViewModels.Models
             };
         }
 
+        private bool IsDescriptionValid(out string error)
+        {
+            error = null;
+            if (Description == null ||  Description.Length > 300)
+            {
+                error = Properties.Resources.ErrorFieldGreater;
+                return false;
+            }
+            return true;
+        }
+
+        private bool IsMarkValid(out string error)
+        {
+            error = null;
+            if (!(MaxMark <= 100 && MaxMark > 0))
+            {
+                error = Properties.Resources.ErrorMark;
+                return false;
+            }
+            return true;
+        }
+
+        private bool IsDateValid(out string error)
+        {
+            error = null;
+            if (!(Date.Year >= 2000))
+            {
+                error = Properties.Resources.ErrorDate;
+                return false;
+            }
+            return true;
+        }
+
         protected override string Validate(string property)
         {
             string error = base.Validate(property);
@@ -95,10 +128,13 @@ namespace StudyingController.ViewModels.Models
                 switch (property)
                 {
                     case "Date":
+                        IsDateValid(out error);
                         break;
                     case "Description":
+                        IsDescriptionValid(out error);
                         break;
                     case "MaxMark":
+                        IsMarkValid(out error);
                         break;
                     default:
                         break;

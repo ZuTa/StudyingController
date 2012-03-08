@@ -6,11 +6,9 @@ using EntitiesDTO;
 
 namespace StudyingController.ViewModels
 {
-    public interface IProviderable
+    public interface IProviderable : IRefreshable
     {
         BaseEntityDTO CurrentEntity { get; set; }
-
-        void Refresh();
 
         event SelectedEntityChangedHandler SelectedEntityChangedEvent;
     }

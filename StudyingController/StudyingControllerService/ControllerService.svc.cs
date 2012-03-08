@@ -1420,6 +1420,84 @@ namespace StudyingControllerService
             }
         }
 
+        public List<AttachmentDTO> GetAttachments(Session session, int teacherID)
+        {
+            try
+            {
+                CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var query = context.Attachments.Where(a => a.TeacherID == teacherID);
+                    List<AttachmentDTO> result = new List<AttachmentDTO>();
+                    foreach (var att in query.ToList())
+                        result.Add(att.ToDTO());
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public void SaveAttachment(Session session, AttachmentDTO attachment)
+        {
+            try
+            {
+                CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    context.Attachments.AddObject(new Attachment(attachment));
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public void EditAttachment(Session session, AttachmentDTO attachment)
+        {
+            try
+            {
+                CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var query = (from a in context.Attachments
+                                 where a.ID == attachment.ID
+                                 select a).FirstOrDefault();
+                    query.Description = attachment.Description;
+                    query.Name = attachment.Name;
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public void DeleteAttachment(Session session, int attachmentID)
+        {
+            try
+            {
+                CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var query = (from a in context.Attachments
+                                 where a.ID == attachmentID
+                                 select a).FirstOrDefault();
+                    context.DeleteObject(query);
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
         public List<ControlDTO> GetLectureControls(Session session, int lectureID)
         {
             try
@@ -1446,16 +1524,16 @@ namespace StudyingControllerService
                 {
                     Lecture lecture = context.Lectures.Include("LectureControls").FirstOrDefault(l => l.ID == lectureID);
 
+
                     foreach (ControlDTO control in controls)
-                        if (lecture.LectureControls.FirstOrDefault(lc => lc.ID == control.ID) == null) context.AddToControls(new LectureControl(control) { LectureID = lectureID });
-                        else 
+                        if (lecture.LectureControls.FirstOrDefault(lc => lc.ID == control.ID) == null) context.AddToControls(new LectureControl(lectureID, control));
+                        else
                         {
                             var query = context.Controls.FirstOrDefault(c => c.ID == control.ID);
                             if (query != null) (query as Control).Assign(control);
                         }
 
                     List<LectureControl> toRemove = new List<LectureControl>();
-
                     foreach (var lectureControl in lecture.LectureControls)
                         if (controls.Find(c => c.ID == lectureControl.ID) == null) toRemove.Add(lectureControl);
 
@@ -1464,7 +1542,6 @@ namespace StudyingControllerService
                         lecture.LectureControls.Remove(lc);
                         context.Controls.DeleteObject(lc);
                     }
-
                     context.SaveChanges();
                 }
             }
@@ -1499,7 +1576,7 @@ namespace StudyingControllerService
                 using (UniversityEntities context = new UniversityEntities())
                 {
                     Practice practice = context.Practices.Include("PracticeControls").FirstOrDefault(p => p.ID == practiceID);
-
+                    
                     foreach (ControlDTO control in controls)
                         if (practice.PracticeControls.FirstOrDefault(pc => pc.ID == control.ID) == null) context.AddToControls(new PracticeControl(control) { PracticeID = practiceID });
                         else
@@ -1527,6 +1604,100 @@ namespace StudyingControllerService
                 throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
             }
         }
+
+        public List<ControlMessageDTO> GetControlMessages(Session session, int controlID)
+        {
+            try
+            {
+                CheckSession(session);
+
+                List<ControlMessageDTO> result = new List<ControlMessageDTO>();
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var query = context.ControlMessages.Include("SystemUser.UserInformation").Include("Control").Where(cm => cm.ControlID == controlID);
+                    foreach (var item in query)
+                        result.Add(item.ToDTO());
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+
+       public void SaveControlMessage(Session session, ControlMessageDTO message)
+       {
+           try
+           {
+               CheckSession(session);
+               using (UniversityEntities context = new UniversityEntities())
+               {
+                   var item = context.ControlMessages.FirstOrDefault(cm => cm.ID == message.ID);
+                   if (item == null)
+                       context.ControlMessages.AddObject(new ControlMessage(message));
+                   else
+                       item.Assign(message);
+
+                   context.SaveChanges();
+               }
+           }
+           catch (Exception ex)
+           {
+               throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+           }
+       }
+
+       public void SaveLectureControl(Session session, ControlDTO control, int lectureID)
+       {
+           try
+           {
+               CheckSession(session);
+               using (UniversityEntities context = new UniversityEntities())
+               {
+                   var item = context.Controls.FirstOrDefault(c => c.ID == control.ID);
+                   if (item == null)
+                       context.AddToControls(new LectureControl(lectureID, control));
+                   else
+                       item.Assign(control);
+
+                   context.SaveChanges();
+               }
+           }
+           catch (Exception ex)
+           {
+               throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+           }
+       }
+
+       public List<LectureDTO> GetStudentLectures(Session session, int studentID)
+       {
+           try
+           {
+               CheckSession(session);
+               using (UniversityEntities context = new UniversityEntities())
+               {
+                   List<LectureDTO> result = new List<LectureDTO>();
+
+                   Student student = context.SystemUsers.FirstOrDefault(u => u.ID == studentID) as Student;
+                   Group group = context.Groups.Include("Lectures").FirstOrDefault(g => g.ID == student.GroupID);
+
+                   foreach (var lecture in group.Lectures)
+                   {
+                       context.LoadProperty(lecture, "Subject");
+                       result.Add(lecture.ToDTO());
+                   }
+
+                   return result;
+               }
+           }
+           catch (Exception ex)
+           {
+               throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+           }
+       }
 
     }
 }

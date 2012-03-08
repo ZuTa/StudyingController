@@ -99,6 +99,11 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
+        protected override void DoRefresh()
+        {
+            throw new NotImplementedException();
+        }
+
         public override void Rollback()
         {
             Cathedra.Assign(OriginalCathedra);

@@ -44,6 +44,8 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "PracticeControlPracticeControlMark", "PracticeControl", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.PracticeControl), "PracticeControlMark", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.PracticeControlMark), true)]
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "LectureControlLectureControlMark", "LectureControl", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.LectureControl), "LectureControlMark", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.LectureControlMark), true)]
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_Attachment_Teacher", "Teacher", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.Teacher), "Attachment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Attachment), true)]
+[assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_ControlMessage_Control", "Control", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.Control), "ControlMessage", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.ControlMessage), true)]
+[assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_ControlMessage_SystemUser", "SystemUser", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.SystemUser), "ControlMessage", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.ControlMessage), true)]
 
 #endregion
 
@@ -334,6 +336,22 @@ namespace StudyingControllerEntityModel
             }
         }
         private ObjectSet<Attachment> _Attachments;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ControlMessage> ControlMessages
+        {
+            get
+            {
+                if ((_ControlMessages == null))
+                {
+                    _ControlMessages = base.CreateObjectSet<ControlMessage>("ControlMessages");
+                }
+                return _ControlMessages;
+            }
+        }
+        private ObjectSet<ControlMessage> _ControlMessages;
 
         #endregion
         #region AddTo Methods
@@ -456,6 +474,14 @@ namespace StudyingControllerEntityModel
         public void AddToAttachments(Attachment attachment)
         {
             base.AddObject("Attachments", attachment);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ControlMessages EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToControlMessages(ControlMessage controlMessage)
+        {
+            base.AddObject("ControlMessages", controlMessage);
         }
 
         #endregion
@@ -1041,6 +1067,267 @@ namespace StudyingControllerEntityModel
 
         #endregion
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "FK_ControlMessage_Control", "ControlMessage")]
+        public EntityCollection<ControlMessage> ControlMessages
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ControlMessage>("UniversityDBModel.FK_ControlMessage_Control", "ControlMessage");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ControlMessage>("UniversityDBModel.FK_ControlMessage_Control", "ControlMessage", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="UniversityDBModel", Name="ControlMessage")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ControlMessage : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ControlMessage object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="date">Initial value of the Date property.</param>
+        /// <param name="controlID">Initial value of the ControlID property.</param>
+        /// <param name="systemUserID">Initial value of the SystemUserID property.</param>
+        public static ControlMessage CreateControlMessage(global::System.Int32 id, global::System.DateTime date, global::System.Int32 controlID, global::System.Int32 systemUserID)
+        {
+            ControlMessage controlMessage = new ControlMessage();
+            controlMessage.ID = id;
+            controlMessage.Date = date;
+            controlMessage.ControlID = controlID;
+            controlMessage.SystemUserID = systemUserID;
+            return controlMessage;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Text
+        {
+            get
+            {
+                return _Text;
+            }
+            set
+            {
+                OnTextChanging(value);
+                ReportPropertyChanging("Text");
+                _Text = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Text");
+                OnTextChanged();
+            }
+        }
+        private global::System.String _Text;
+        partial void OnTextChanging(global::System.String value);
+        partial void OnTextChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime Date
+        {
+            get
+            {
+                return _Date;
+            }
+            set
+            {
+                OnDateChanging(value);
+                ReportPropertyChanging("Date");
+                _Date = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Date");
+                OnDateChanged();
+            }
+        }
+        private global::System.DateTime _Date;
+        partial void OnDateChanging(global::System.DateTime value);
+        partial void OnDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ControlID
+        {
+            get
+            {
+                return _ControlID;
+            }
+            set
+            {
+                OnControlIDChanging(value);
+                ReportPropertyChanging("ControlID");
+                _ControlID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ControlID");
+                OnControlIDChanged();
+            }
+        }
+        private global::System.Int32 _ControlID;
+        partial void OnControlIDChanging(global::System.Int32 value);
+        partial void OnControlIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SystemUserID
+        {
+            get
+            {
+                return _SystemUserID;
+            }
+            set
+            {
+                OnSystemUserIDChanging(value);
+                ReportPropertyChanging("SystemUserID");
+                _SystemUserID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SystemUserID");
+                OnSystemUserIDChanged();
+            }
+        }
+        private global::System.Int32 _SystemUserID;
+        partial void OnSystemUserIDChanging(global::System.Int32 value);
+        partial void OnSystemUserIDChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "FK_ControlMessage_Control", "Control")]
+        public Control Control
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Control>("UniversityDBModel.FK_ControlMessage_Control", "Control").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Control>("UniversityDBModel.FK_ControlMessage_Control", "Control").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Control> ControlReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Control>("UniversityDBModel.FK_ControlMessage_Control", "Control");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Control>("UniversityDBModel.FK_ControlMessage_Control", "Control", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "FK_ControlMessage_SystemUser", "SystemUser")]
+        public SystemUser SystemUser
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SystemUser>("UniversityDBModel.FK_ControlMessage_SystemUser", "SystemUser").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SystemUser>("UniversityDBModel.FK_ControlMessage_SystemUser", "SystemUser").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<SystemUser> SystemUserReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SystemUser>("UniversityDBModel.FK_ControlMessage_SystemUser", "SystemUser");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SystemUser>("UniversityDBModel.FK_ControlMessage_SystemUser", "SystemUser", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>
@@ -4086,6 +4373,28 @@ namespace StudyingControllerEntityModel
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<UserInformation>("UniversityDBModel.FK_UserInformation_SystemUser", "UserInformation", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "FK_ControlMessage_SystemUser", "ControlMessage")]
+        public EntityCollection<ControlMessage> ControlMessages
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ControlMessage>("UniversityDBModel.FK_ControlMessage_SystemUser", "ControlMessage");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ControlMessage>("UniversityDBModel.FK_ControlMessage_SystemUser", "ControlMessage", value);
                 }
             }
         }

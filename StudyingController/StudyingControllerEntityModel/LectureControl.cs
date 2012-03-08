@@ -10,10 +10,10 @@ namespace StudyingControllerEntityModel
     {
         #region Constructors
         
-        public LectureControl(ControlDTO control)
+        public LectureControl(int lectureID, ControlDTO control)
             :base(control)
         {
- 
+            LectureID = lectureID;
         }
 
         public LectureControl()

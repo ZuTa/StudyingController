@@ -25,13 +25,13 @@
             </ListView.View>
         </ListView>
         <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Top">
-            <Button Command="{Binding AddCommand}" ToolTip="Додати" Style="{StaticResource EditableButtonStyle}">
+            <Button Command="{Binding AddCommand}" ToolTip="Додати" Style="{StaticResource EditableButtonStyle}" Visibility="{Binding Path=EditMode, Converter={StaticResource ResourceKey=EM2V}}">
                 <Image Source="/StudyingController;component/Images/add.png" Stretch="Fill" />
             </Button>
             <Button Command="{Binding EditCommand}" ToolTip="Редагувати" Style="{StaticResource EditableButtonStyle}">
                 <Image Source="/StudyingController;component/Images/edit.png" Stretch="Fill"/>
             </Button>
-            <Button Command="{Binding RemoveCommand}" ToolTip="Видалити" Style="{StaticResource EditableButtonStyle}">
+            <Button Command="{Binding RemoveCommand}" ToolTip="Видалити" Style="{StaticResource EditableButtonStyle}" Visibility="{Binding Path=EditMode, Converter={StaticResource ResourceKey=EM2V}}">
                 <Image Source="/StudyingController;component/Images/remove.png" Stretch="Fill" />
             </Button>
         </StackPanel>        

@@ -42,6 +42,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -67,12 +68,17 @@
     <Compile Include="Common\TreeViewHelper.cs" />
     <Compile Include="Common\ViewHelper.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Converters\EditModeToVisibilityConverter.cs" />
+    <Compile Include="Converters\ReadOnlyModeToBoolConverter.cs" />
     <Compile Include="Converters\PictureEnumToPictureConverter.cs" />
+    <Compile Include="Converters\UniversalToLocalDateConverter.cs" />
+    <Compile Include="ViewModels\AttachmentsStructureViewModel.cs" />
+    <Compile Include="ViewModels\AttachmentsViewModel.cs" />
+    <Compile Include="ViewModels\AttachmentViewModel.cs" />
     <Compile Include="ViewModels\BaseTreeViewModel.cs" />
     <Compile Include="ViewModels\CathedraViewModel.cs" />
+    <Compile Include="ViewModels\ControlChatViewModel.cs" />
     <Compile Include="ViewModels\ControlStructureViewModel.cs" />
-    <Compile Include="ViewModels\LectureControlViewModel.cs" />
-    <Compile Include="ViewModels\LessonControlsViewModel.cs" />
     <Compile Include="ViewModels\FacultyAdminViewModel.cs" />
     <Compile Include="ViewModels\FacultySecretaryViewModel.cs" />
     <Compile Include="ViewModels\FacultyViewModel.cs" />
@@ -85,11 +91,14 @@
     <Compile Include="ViewModels\InstituteViewModel.cs" />
     <Compile Include="ViewModels\IProviderable.cs" />
     <Compile Include="ViewModels\IRefreshable.cs" />
+    <Compile Include="ViewModels\LectureControlViewModel.cs" />
+    <Compile Include="ViewModels\LessonControlsViewModel.cs" />
     <Compile Include="ViewModels\LessonTreeViewModel.cs" />
     <Compile Include="ViewModels\LessonStructureViewModel.cs" />
     <Compile Include="ViewModels\LectureViewModel.cs" />
     <Compile Include="ViewModels\MainAdminViewModel.cs" />
     <Compile Include="ViewModels\MainSecretaryViewModel.cs" />
+    <Compile Include="ViewModels\Models\AttachmentModel.cs" />
     <Compile Include="ViewModels\Models\BaseModel.cs" />
     <Compile Include="ViewModels\Models\CathedraModel.cs" />
     <Compile Include="ViewModels\Models\ControlModel.cs" />
@@ -146,14 +155,17 @@
     <Compile Include="ViewModels\UserInformationViewModel.cs" />
     <Compile Include="ViewModels\UsersStructureViewModel.cs" />
     <Compile Include="ViewModels\UsersTreeViewModel.cs" />
+    <Compile Include="Views\AttachmentsView.xaml.cs">
+      <DependentUpon>AttachmentsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AttachmentView.xaml.cs">
+      <DependentUpon>AttachmentView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CathedraView.xaml.cs">
       <DependentUpon>CathedraView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\LectureControlView.xaml.cs">
-      <DependentUpon>LectureControlView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\LessonControlsView.xaml.cs">
-      <DependentUpon>LessonControlsView.xaml</DependentUpon>
+    <Compile Include="Views\ControlChatView.xaml.cs">
+      <DependentUpon>ControlChatView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\FacultyAdminView.xaml.cs">
       <DependentUpon>FacultyAdminView.xaml</DependentUpon>
@@ -176,6 +188,12 @@
     <Compile Include="Views\InstituteView.xaml.cs">
       <DependentUpon>InstituteView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\LectureControlView.xaml.cs">
+      <DependentUpon>LectureControlView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LessonControlsView.xaml.cs">
+      <DependentUpon>LessonControlsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LessonTreeView.xaml.cs">
       <DependentUpon>LessonTreeView.xaml</DependentUpon>
     </Compile>
@@ -190,6 +208,9 @@
     </Compile>
     <Compile Include="Views\MainSecretaryView.xaml.cs">
       <DependentUpon>MainSecretaryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainSystemUserView.xaml.cs">
+      <DependentUpon>MainSystemUserView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
@@ -236,17 +257,21 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\AttachmentsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AttachmentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\CathedraView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\LectureControlView.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Views\ControlChatView.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\LessonControlsView.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\FacultyAdminView.xaml">
       <SubType>Designer</SubType>
@@ -276,6 +301,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\LectureControlView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\LessonControlsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\LessonTreeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -295,6 +328,10 @@
     <Page Include="Views\MainSecretaryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainSystemUserView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\MainView.xaml">
       <SubType>Designer</SubType>
@@ -366,8 +403,10 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\DataSources\EntitiesDTO.AttachmentDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.CathedraDTO.datasource" />
-    <None Include="Properties\DataSources\EntitiesDTO.ControlDTO.datasource" />
+    <None Include="Properties\DataSources\EntitiesDTO.ControlDTO1.datasource" />
+    <None Include="Properties\DataSources\EntitiesDTO.ControlMessageDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.FacultyDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.GroupDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.InstituteDTO.datasource" />
@@ -496,8 +535,18 @@
     <None Include="Service References\SCS\ControllerService.disco" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\edit.png" />
+    <Resource Include="Images\attachment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Download.png" />
+    <Resource Include="Images\File-Open-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Images\add.png" />
+    <Resource Include="Images\mail2_send.png" />
     <Resource Include="Images\remove.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -7,5 +7,6 @@ namespace StudyingController.ViewModels
 {
     public interface IRefreshable
     {
+        void Refresh();
     }
 }

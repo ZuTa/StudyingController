@@ -55,6 +55,7 @@ namespace StudyingController.ViewModels
                 case UserRoles.FacultySecretary:
                     LoadCathedras((ControllerInterop.Session.User as IFacultyable).FacultyID, null);
                     break;
+                case UserRoles.Student:
                 case UserRoles.Teacher:
                     LoadLectures(ControllerInterop.User.ID, Tree.AppendNode(new TreeNode("Лекції", null, -1, 4)));
                     LoadPractices(ControllerInterop.User.ID, Tree.AppendNode(new TreeNode("Семінари", null, -1, 5)));
@@ -127,9 +128,12 @@ namespace StudyingController.ViewModels
             }
         }
 
-        private void LoadLectures(int teacherID, TreeNode parentNode)
+        private void LoadLectures(int userID, TreeNode parentNode)
         {
-            List<LectureDTO> lectures = ControllerInterop.Service.GetLectures(ControllerInterop.Session, teacherID);
+            List<LectureDTO> lectures;
+            if (ControllerInterop.User.Role == UserRoles.Student) lectures = ControllerInterop.Service.GetStudentLectures(ControllerInterop.Session, userID);
+            else lectures = ControllerInterop.Service.GetLectures(ControllerInterop.Session, userID);
+            
             foreach (var lecture in lectures)
             {
                 lock (Tree)
@@ -139,9 +143,9 @@ namespace StudyingController.ViewModels
             }
         }
 
-        private void LoadPractices(int teacherID, TreeNode parentNode)
+        private void LoadPractices(int userID, TreeNode parentNode)
         {
-            List<PracticeTeacherDTO> practicesTeacher = ControllerInterop.Service.GetPracticesTeacher(ControllerInterop.Session, teacherID);
+            List<PracticeTeacherDTO> practicesTeacher = ControllerInterop.Service.GetPracticesTeacher(ControllerInterop.Session, userID);
             foreach (var practice in practicesTeacher)
             {
                 lock (Tree)

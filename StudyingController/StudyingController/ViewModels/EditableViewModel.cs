@@ -9,7 +9,7 @@ using EntitiesDTO;
 
 namespace StudyingController.ViewModels
 {
-    public abstract class EditableViewModel : BaseApplicationViewModel
+    public abstract class EditableViewModel : BaseApplicationViewModel, IEditable, IRefreshable
     {
         #region Fields & Properties
 
@@ -70,6 +70,13 @@ namespace StudyingController.ViewModels
             }
         }
 
+        private EditModes editMode;
+        public EditModes EditMode
+        {
+            get { return editMode; }
+            set { editMode = value; }
+        }
+
         public abstract IProviderable EntitiesProvider { get; set; }
 
         private SaveableViewModel currentWorkspace;
@@ -111,6 +118,12 @@ namespace StudyingController.ViewModels
         public void Save()
         {
             CurrentWorkspace.Save();
+        }
+
+        public void Refresh()
+        {
+            EntitiesProvider.Refresh();
+            // CurreWorkspace.Refresh();
         }
 
         public void Rollback()
@@ -182,12 +195,14 @@ namespace StudyingController.ViewModels
             //UpdateProperties();
         }
 
-
         #endregion
 
         #region Events
 
-        
+        public event EventHandler ViewModified;
+
+        public event EventHandler ViewUnModified;
+
         #endregion
 
     }

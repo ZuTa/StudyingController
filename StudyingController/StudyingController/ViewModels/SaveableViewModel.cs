@@ -10,7 +10,7 @@ using System.ComponentModel;
 
 namespace StudyingController.ViewModels
 {
-    public abstract class SaveableViewModel : BaseApplicationViewModel, IEditable
+    public abstract class SaveableViewModel : BaseApplicationViewModel, IEditable, IRefreshable
     {
         #region Fields & Properties
 
@@ -20,10 +20,25 @@ namespace StudyingController.ViewModels
             get { return isModified; }
         }
 
-        public bool IsValid
+        public virtual bool IsValid
         {
             get { return model.IsValid; }
-        }        
+        }
+
+        public bool CanSave
+        {
+            get
+            {
+                return IsModified && IsValid;
+            }
+        }
+
+        private EditModes editMode;
+        public EditModes EditMode
+        {
+            get { return editMode; }
+            set { editMode = value; }
+        }
 
         protected BaseEntityDTO originalEntity;
 
@@ -53,23 +68,41 @@ namespace StudyingController.ViewModels
 
         public abstract void Remove();
 
+        protected abstract void DoRefresh();
+
+        public void Refresh()
+        {
+            DoRefresh();
+        }
+
         protected virtual void SetModified()
         {
             isModified = true;
-            OnViewModified();
+            OnViewModified(); 
         }
 
         protected virtual void SetUnModified()
         {
             isModified = false;
+            if (ViewUnModified != null) OnViewUnModified();
+            else UpdateProperties();
+        }
 
-            OnViewUnModified();
+        protected virtual void UpdateProperties()
+        {
+            OnPropertyChanged("IsModified");
+            OnPropertyChanged("CanSave");
+
+            if (this is IAdditionalCommands)
+                (this as IAdditionalCommands).UpdateCommandsEnabledState();
         }
 
         protected virtual void OnViewModified()
         {
             if (ViewModified != null)
                 ViewModified(this, EventArgs.Empty);
+            else
+                UpdateProperties();
         }
 
         protected virtual void OnViewUnModified()
@@ -77,6 +110,7 @@ namespace StudyingController.ViewModels
             if (ViewUnModified != null)
                 ViewUnModified(this, EventArgs.Empty);
         }
+
         #endregion
 
         #region Callbacks

@@ -101,16 +101,28 @@
                 <v:PracticeTeacherView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type vm:LessonControlsViewModel}">
-                <v:LessonControlsView/>
-            </DataTemplate>
-
             <DataTemplate DataType="{x:Type vm:SelectorViewModel}">
                 <v:SelectorView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type vm:LessonControlsViewModel}">
+                <v:LessonControlsView/>
+            </DataTemplate>
+
             <DataTemplate DataType="{x:Type vm:LectureControlViewModel}">
                 <v:LectureControlView/>
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type vm:AttachmentsViewModel}">
+                <v:AttachmentsView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:AttachmentViewModel}">
+                <v:AttachmentView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:ControlChatViewModel}">
+                <v:ControlChatView/>
             </DataTemplate>
 
         </ResourceDictionary>

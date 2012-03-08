@@ -33,7 +33,7 @@ namespace StudyingController.ViewModels
             set
             {
                 faculty = value;
-                UpdateProperties();
+                RefreshProperties();
                 OnPropertyChanged("Faculty");
             }
         }
@@ -115,12 +115,17 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
+        protected override void DoRefresh()
+        {
+            throw new NotImplementedException();
+        }
+
         public override void Remove()
         {
             ControllerInterop.Service.DeleteGroup(ControllerInterop.Session, Group.ID);
         }
 
-        private void UpdateProperties()
+        private void RefreshProperties()
         {
             if (Faculty != null)
             {

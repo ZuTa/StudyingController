@@ -10,7 +10,7 @@ using StudyingController.ViewModels.Models;
 
 namespace StudyingController.ViewModels
 {
-    public class ControlStructureViewModel : EditableViewModel, IRefreshable
+    public class ControlStructureViewModel : EditableViewModel
     {
         #region Fields & Properties
 
@@ -66,8 +66,8 @@ namespace StudyingController.ViewModels
         {
             if (entity is LectureDTO || entity is PracticeTeacherDTO)
             {
-                LessonControlsViewModel lessonControlsViewModel = new LessonControlsViewModel(UserInterop, ControllerInterop, Dispatcher, entity);
-                lessonControlsViewModel.WorkspaceChanged += new LessonControlsViewModel.ChangeWorkspaceHandler(lessonControlsViewModel_WorkspaceChanged);
+                LessonControlsViewModel lessonControlsViewModel = new LessonControlsViewModel(UserInterop, ControllerInterop, Dispatcher, entity) { EditMode = ControllerInterop.User.Role == UserRoles.Student ? EditModes.ReadOnly : EditModes.Editable };
+                lessonControlsViewModel.ControlOpened += new LessonControlsViewModel.ControlOpenedHandler(lessonControlsViewModel_WorkspaceChanged);
                 return lessonControlsViewModel;
 
             }
@@ -79,7 +79,7 @@ namespace StudyingController.ViewModels
         {
             if (WorkspaceChanged != null)
             {
-                if (entitiesProvider.CurrentEntity is LectureDTO && model is ControlModel) WorkspaceChanged(new LectureControlViewModel(UserInterop, ControllerInterop, Dispatcher, (model as ControlModel).ToDTO()));
+                if (entitiesProvider.CurrentEntity is LectureDTO && model is ControlModel) WorkspaceChanged(new LectureControlViewModel(UserInterop, ControllerInterop, Dispatcher, (model as ControlModel).ToDTO(), entitiesProvider.CurrentEntity.ID) { EditMode = ControllerInterop.User.Role == UserRoles.Student ? EditModes.ReadOnly : EditModes.Editable });
             }
         }
 

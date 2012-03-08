@@ -66,6 +66,11 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
+        protected override void DoRefresh()
+        {
+            throw new NotImplementedException();
+        }
+
         private void InitializeSubjects()
         {
             unusedSubjects = new ObservableCollection<SubjectDTO>();

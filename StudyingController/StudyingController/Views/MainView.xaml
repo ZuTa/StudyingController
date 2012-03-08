@@ -30,6 +30,11 @@
                         <Image Source="/StudyingController;component/Images/Learn_Lesson-icon.png" Stretch="Fill" />
                     </Button.Content>
                 </Button>
+                <Button Command="{Binding Path=AttachmentCommand}" Visibility="{Binding Path=IsUserTeacher, Converter={StaticResource B2V}}" Style="{StaticResource MenuButtonStyle}">
+                    <Button.Content>
+                        <Image Source="/StudyingController;component/Images/attachment.png" Stretch="Fill"/>
+                    </Button.Content>
+                </Button>
             </ToolBar>
             <ToolBar Visibility="{Binding Path=IsManipulateableOrRefreshable, Converter={StaticResource B2V}}">
                 <Button ToolTip="Оновити" Visibility="{Binding Path=IsRefreshable, Converter={StaticResource B2V}}" Style="{StaticResource MenuButtonStyle}" Command="{Binding Path=CurrentWorkspace.UpdateCommand}" IsEnabled="{Binding CurrentWorkspace.CanRefresh}">

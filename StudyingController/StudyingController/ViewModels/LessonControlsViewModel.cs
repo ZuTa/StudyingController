@@ -119,6 +119,11 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
+        protected override void DoRefresh()
+        {
+            throw new NotImplementedException();
+        }
+
         private void LoadData()
         {
             if (OriginalLesson is LectureDTO) Controls = ControllerInterop.Service.GetLectureControls(ControllerInterop.Session, OriginalLesson.ID).ToModelList<ControlModel, ControlDTO>();
@@ -138,15 +143,12 @@ namespace StudyingController.ViewModels
 
         private void EditControl()
         {
-            if (WorkspaceChanged != null)
-                WorkspaceChanged(currentControl);
+            OnControlOpened(currentControl);
         }
 
         private void AddControl()
         {
-            Controls.Add(new ControlModel() { Name = "Новий контроль", Date = DateTime.Today });
-            CurrentControl = Controls.Last();
-            SetModified();
+            OnControlOpened(new ControlModel());
         }
 
         public override void Save()
@@ -167,12 +169,17 @@ namespace StudyingController.ViewModels
             SetModified();
         }
 
+        protected virtual void OnControlOpened(ControlModel model)
+        {
+            if (ControlOpened != null)
+                ControlOpened(model);
+        }
         #endregion
 
         #region Events
 
-        public delegate void ChangeWorkspaceHandler(BaseModel model); 
-        public event ChangeWorkspaceHandler WorkspaceChanged;
+        public delegate void ControlOpenedHandler(BaseModel model); 
+        public event ControlOpenedHandler ControlOpened;
 
         #endregion
 

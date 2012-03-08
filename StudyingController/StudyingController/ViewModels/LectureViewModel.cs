@@ -10,7 +10,7 @@ using System.Collections.ObjectModel;
 
 namespace StudyingController.ViewModels
 {
-    class LectureViewModel : SaveableViewModel
+    public class LectureViewModel : SaveableViewModel
     {
         #region Fields & Properties
 
@@ -85,6 +85,11 @@ namespace StudyingController.ViewModels
         #endregion
 
         #region Methods
+
+        protected override void DoRefresh()
+        {
+            throw new NotImplementedException();
+        }
 
         private void InitializeGroups(BaseEntityDTO entity)
         {

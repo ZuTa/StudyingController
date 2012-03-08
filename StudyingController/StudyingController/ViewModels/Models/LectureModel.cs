@@ -8,7 +8,7 @@ using StudyingController.Common;
 
 namespace StudyingController.ViewModels.Models
 {
-    class LectureModel : BaseModel, IDTOable<LectureDTO>
+    public class LectureModel : BaseModel, IDTOable<LectureDTO>
     {
         #region Fields & Properties
 

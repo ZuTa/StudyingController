@@ -9,7 +9,7 @@ using System.Collections.ObjectModel;
 using EntitiesDTO;
 
 namespace StudyingController.ViewModels
-{   
+{
     public class MainViewModel : BaseApplicationViewModel
     {
         #region Fields & Properties
@@ -100,14 +100,6 @@ namespace StudyingController.ViewModels
             }
         }
 
-        public bool IsUserAdminOrTeacher
-        {
-            get 
-            {
-                return IsUserMainAdmin || IsUserInstituteAdmin || IsUserFacultyAdmin || IsUserTeacher;
-            }
-        }
-
         public bool HasAdditionalCommands
         {
             get
@@ -120,7 +112,7 @@ namespace StudyingController.ViewModels
         {
             get
             {
-                return CurrentWorkspace is EditableViewModel;
+                return CurrentWorkspace is IEditable && (CurrentWorkspace as IEditable).EditMode == EditModes.Editable;
             }
         }
 
@@ -152,7 +144,7 @@ namespace StudyingController.ViewModels
         public bool IsNotBusy
         {
             get { return isNotBusy; }
-            
+
             set
             {
                 if (isNotBusy != value)
@@ -164,17 +156,16 @@ namespace StudyingController.ViewModels
         }
 
         private Stack<BaseApplicationViewModel> workspaces;
-
         public BaseApplicationViewModel CurrentWorkspace
         {
-            get 
+            get
             {
                 if (workspaces.Count == 0)
                     return null;
 
                 return workspaces.Peek();
             }
-        }        
+        }
 
         public bool HasWorkspaces
         {
@@ -198,11 +189,11 @@ namespace StudyingController.ViewModels
             get { return currentCommandsRO; }
         }//Collection for toolbar
 
-        private ControlStructureViewModel controlStructureViewModel;
-        private LectureStuctureViewModel lectureStructureViewModel;
+        private LessonStuctureViewModel lectureStructureViewModel;
         private UniversityStructureViewModel universityStructureViewModel;
         private UsersStructureViewModel usersStructureViewModel;
-
+        private AttachmentsStructureViewModel attachmentsStructureViewModel;
+        private ControlStructureViewModel controlStructureViewModel;
         #endregion
 
         #region Constructors
@@ -222,9 +213,9 @@ namespace StudyingController.ViewModels
         private RelayCommand universityStructureCommand;
         public RelayCommand UniversityStructureCommand
         {
-            get 
+            get
             {
-                if (universityStructureCommand == null) 
+                if (universityStructureCommand == null)
                     universityStructureCommand = new RelayCommand((param) => OpenUniversityStructure());
                 return universityStructureCommand;
             }
@@ -233,22 +224,22 @@ namespace StudyingController.ViewModels
         private RelayCommand usersStructureCommand;
         public RelayCommand UsersStructureCommand
         {
-            get 
+            get
             {
                 if (usersStructureCommand == null)
                     usersStructureCommand = new RelayCommand(param => OpenUsersStructure());
-                return usersStructureCommand; 
+                return usersStructureCommand;
             }
         }
 
         private RelayCommand logoutCommand;
         public RelayCommand LogoutCommand
         {
-            get 
+            get
             {
                 if (logoutCommand == null)
                     logoutCommand = new RelayCommand(param => OnLogout());
-                return logoutCommand; 
+                return logoutCommand;
             }
         }
 
@@ -277,11 +268,22 @@ namespace StudyingController.ViewModels
         private RelayCommand lessonCommand;
         public RelayCommand LessonCommand
         {
-            get 
-            { 
-                if(lessonCommand == null)
+            get
+            {
+                if (lessonCommand == null)
                     lessonCommand = new RelayCommand(param => OpenLessonsStructure());
                 return lessonCommand;
+            }
+        }
+
+        private RelayCommand attachmentCommand;
+        public RelayCommand AttachmentCommand
+        {
+            get
+            {
+                if (attachmentCommand == null)
+                    attachmentCommand = new RelayCommand(param => OpenAttachments());
+                return attachmentCommand;
             }
         }
 
@@ -292,31 +294,38 @@ namespace StudyingController.ViewModels
             {
                 if (controlStructureCommand == null)
                     controlStructureCommand = new RelayCommand(param => OpenControlsStructure());
+
                 return controlStructureCommand;
             }
-        }
+        }
+
         #endregion
 
         #region Methods
 
-        private void OpenControlsStructure()
+        private void OpenAttachments()
         {
-            if (controlStructureViewModel == null)
-                controlStructureViewModel = new ControlStructureViewModel(UserInterop, ControllerInterop, Dispatcher);
+            if (attachmentsStructureViewModel == null)
+                attachmentsStructureViewModel = new AttachmentsStructureViewModel(UserInterop, ControllerInterop, Dispatcher);
+                        ChangeCurrentWorkspace(attachmentsStructureViewModel);
+        }
 
+        private void OpenControlsStructure()        {
+            if (controlStructureViewModel == null)
+                controlStructureViewModel = new ControlStructureViewModel(UserInterop, ControllerInterop, Dispatcher) { EditMode = ControllerInterop.User.Role == UserRoles.Student ? EditModes.ReadOnly : EditModes.Editable };
+            
             ChangeCurrentWorkspace(controlStructureViewModel);
-            controlStructureViewModel.WorkspaceChanged += new ControlStructureViewModel.ChangeWorkspaceHandler(controlStructureViewModel_WorkspaceChanged);
         }
 
         void controlStructureViewModel_WorkspaceChanged(BaseApplicationViewModel viewModel)
         {
-            ChangeCurrentWorkspace(viewModel);
+            PushWorkspace(viewModel);
         }
 
         private void OpenLessonsStructure()
         {
             if (lectureStructureViewModel == null)
-                lectureStructureViewModel = new LectureStuctureViewModel(UserInterop, ControllerInterop, Dispatcher);
+                lectureStructureViewModel = new LessonStuctureViewModel(UserInterop, ControllerInterop, Dispatcher);
 
             ChangeCurrentWorkspace(lectureStructureViewModel);
         }
@@ -346,12 +355,16 @@ namespace StudyingController.ViewModels
         {
             if (workspace is UsersStructureViewModel)
                 (workspace as UsersStructureViewModel).IsSendingMessageChanged += UsersStructureViewModel_IsSendingMessageChanged;
+            else if (workspace is ControlStructureViewModel)
+                controlStructureViewModel.WorkspaceChanged += new ControlStructureViewModel.ChangeWorkspaceHandler(controlStructureViewModel_WorkspaceChanged);
         }
 
         private void UnsubscribeFromEvents(BaseApplicationViewModel workspace)
         {
             if (workspace is UsersStructureViewModel)
                 (workspace as UsersStructureViewModel).IsSendingMessageChanged -= UsersStructureViewModel_IsSendingMessageChanged;
+            else if (workspace is ControlStructureViewModel)
+                controlStructureViewModel.WorkspaceChanged -= controlStructureViewModel_WorkspaceChanged;
         }
 
         protected virtual void OnLogout()
@@ -396,12 +409,12 @@ namespace StudyingController.ViewModels
 
         private void SaveCurrentWorkspace()
         {
-            (CurrentWorkspace as EditableViewModel).Save();
+            (CurrentWorkspace as IEditable).Save();
         }
 
         private void RollbackCurrentWorkspace()
         {
-            (CurrentWorkspace as EditableViewModel).Rollback();
+            (CurrentWorkspace as IEditable).Rollback();
         }
         #endregion
 

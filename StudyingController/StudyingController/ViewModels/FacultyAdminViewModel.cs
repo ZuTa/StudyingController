@@ -67,6 +67,11 @@ namespace StudyingController.ViewModels
         #endregion
 
         #region Methods
+        
+        protected override void DoRefresh()
+        {
+            throw new NotImplementedException();
+        }
 
         public override void Remove()
         {
