@@ -13,7 +13,7 @@ namespace EntitiesDTO
             get
             {
                 if (Data != null)
-                    return Math.Round(Data.Length / 1024.0, 3).ToString() + " kb";
+                    return String.Format("{0} kb",Math.Round(Data.Length / 1024.0, 3));
                 return "-";
             }
         }

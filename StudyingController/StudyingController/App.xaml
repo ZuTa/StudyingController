@@ -117,10 +117,6 @@
                 <v:AttachmentsView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type vm:AttachmentViewModel}">
-                <v:AttachmentView/>
-            </DataTemplate>
-
             <DataTemplate DataType="{x:Type vm:ControlChatViewModel}">
                 <v:ControlChatView/>
             </DataTemplate>

@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using StudyingController.Common;
 
 namespace StudyingController.Views
 {
@@ -22,6 +23,13 @@ namespace StudyingController.Views
         public AttachmentsView()
         {
             InitializeComponent();
+        }
+
+        private void GotFocus(object sender, RoutedEventArgs e)
+        {
+            ListViewItem item = ViewHelper.FindAnchestor<ListViewItem>(sender as DependencyObject);
+            ListView lv = ViewHelper.FindAnchestor<ListView>(sender as DependencyObject);
+            item.IsSelected = true;
         }
     }
 }

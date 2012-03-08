@@ -10,6 +10,8 @@ namespace StudyingController.ViewModels.Models
     {
         #region Fields & Properties
 
+        
+
         private string size;
         public string Size
         {
@@ -34,6 +36,7 @@ namespace StudyingController.ViewModels.Models
                 {
                     description = value;
                     OnPropertyChanged("Description");
+                    OnModelChanged();
                 }
             }
         }
@@ -71,7 +74,7 @@ namespace StudyingController.ViewModels.Models
 
         #endregion
 
-        #region Methods
+        #region Methods 
 
         public override void Assign(BaseEntityDTO entity)
         {
@@ -98,15 +101,15 @@ namespace StudyingController.ViewModels.Models
             };
         }
 
-       
-        
-
         #endregion
 
         #region Callbacks
         #endregion
 
+        #region Event
 
         
+
+        #endregion
     }
 }

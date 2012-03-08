@@ -6,14 +6,53 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <ListView ItemsSource="{Binding Path=Attachments}" SelectedItem="{Binding Path=CurrentEntity, Mode=TwoWay}">
+        <ListView ItemsSource="{Binding Path=Attachments}" HorizontalContentAlignment="Stretch" SelectedItem="{Binding Path=CurrentEntity, Mode=TwoWay}" SelectionMode="Single">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="VerticalContentAlignment" Value="Top" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn Header="Назва" Width="110" DisplayMemberBinding="{Binding Path=Name}"></GridViewColumn>
-                        <GridViewColumn Header="Опис" Width="110" DisplayMemberBinding="{Binding Path=Description}"></GridViewColumn>
-                        <GridViewColumn Header="Дата" Width="110" DisplayMemberBinding="{Binding Path=DateAdded}"></GridViewColumn>
-                        <GridViewColumn Header="Розмір" Width="110" DisplayMemberBinding="{Binding Path=Size}"></GridViewColumn>
+                        <GridViewColumn  Header="Назва" Width="180">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox GotFocus="GotFocus"
+                                        Text="{Binding Path=Name,  UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}"
+                                        Style="{StaticResource ValidationTextBoxToolTipStyle}">                                     
+                                    </TextBox>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Опис" Width="300">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox GotFocus="GotFocus" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Hidden" Text="{Binding Path=Description, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ValidationTextBoxToolTipStyle}">
+                                    </TextBox>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Дата" Width="150">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox GotFocus="GotFocus"
+                                        Text="{Binding Path=DateAdded, Mode=OneWay}" IsReadOnly="True" Style="{StaticResource ValidationTextBoxToolTipStyle}">
+                                    </TextBox>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Розмір" Width="100">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox GotFocus="GotFocus"
+                                        Text="{Binding Path=Size, Mode=OneWay}" IsReadOnly="True" Style="{StaticResource ValidationTextBoxToolTipStyle}">
+                                    </TextBox>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
