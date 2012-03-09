@@ -192,7 +192,7 @@ namespace StudyingController.ViewModels
         private LessonStuctureViewModel lectureStructureViewModel;
         private UniversityStructureViewModel universityStructureViewModel;
         private UsersStructureViewModel usersStructureViewModel;
-        private AttachmentsStructureViewModel attachmentsStructureViewModel;
+        private AttachmentsViewModel attachmentsViewModel;
         private ControlStructureViewModel controlStructureViewModel;
         #endregion
 
@@ -305,9 +305,10 @@ namespace StudyingController.ViewModels
 
         private void OpenAttachments()
         {
-            if (attachmentsStructureViewModel == null)
-                attachmentsStructureViewModel = new AttachmentsStructureViewModel(UserInterop, ControllerInterop, Dispatcher);
-                        ChangeCurrentWorkspace(attachmentsStructureViewModel);
+            if (attachmentsViewModel == null)
+                attachmentsViewModel = new AttachmentsViewModel(UserInterop, ControllerInterop, Dispatcher, ControllerInterop.Session.User);
+
+            ChangeCurrentWorkspace(attachmentsViewModel);
         }
 
         private void OpenControlsStructure()        {

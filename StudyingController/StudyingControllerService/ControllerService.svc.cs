@@ -1420,84 +1420,6 @@ namespace StudyingControllerService
             }
         }
 
-        public List<AttachmentDTO> GetAttachments(Session session, int teacherID)
-        {
-            try
-            {
-                CheckSession(session);
-                using (UniversityEntities context = new UniversityEntities())
-                {
-                    var query = context.Attachments.Where(a => a.TeacherID == teacherID);
-                    List<AttachmentDTO> result = new List<AttachmentDTO>();
-                    foreach (var att in query.ToList())
-                        result.Add(att.ToDTO());
-                    return result;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
-            }
-        }
-
-        public void SaveAttachment(Session session, AttachmentDTO attachment)
-        {
-            try
-            {
-                CheckSession(session);
-                using (UniversityEntities context = new UniversityEntities())
-                {
-                    context.Attachments.AddObject(new Attachment(attachment));
-                    context.SaveChanges();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
-            }
-        }
-
-        public void EditAttachment(Session session, AttachmentDTO attachment)
-        {
-            try
-            {
-                CheckSession(session);
-                using (UniversityEntities context = new UniversityEntities())
-                {
-                    var query = (from a in context.Attachments
-                                 where a.ID == attachment.ID
-                                 select a).FirstOrDefault();
-                    query.Description = attachment.Description;
-                    query.Name = attachment.Name;
-                    context.SaveChanges();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
-            }
-        }
-
-        public void DeleteAttachment(Session session, int attachmentID)
-        {
-            try
-            {
-                CheckSession(session);
-                using (UniversityEntities context = new UniversityEntities())
-                {
-                    var query = (from a in context.Attachments
-                                 where a.ID == attachmentID
-                                 select a).FirstOrDefault();
-                    context.DeleteObject(query);
-                    context.SaveChanges();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
-            }
-        }
-
         public List<ControlDTO> GetLectureControls(Session session, int lectureID)
         {
             try
@@ -1691,6 +1613,79 @@ namespace StudyingControllerService
                    }
 
                    return result;
+               }
+           }
+           catch (Exception ex)
+           {
+               throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+           }
+       }
+
+       public List<AttachmentDTO> GetAttachments(Session session, int teacherID)
+       {
+           try
+           {
+               CheckSession(session);
+               using (UniversityEntities context = new UniversityEntities())
+               {
+                   var query = context.Attachments.Where(a => a.TeacherID == teacherID);
+                   List<AttachmentDTO> result = new List<AttachmentDTO>();
+                   foreach (var att in query.ToList())
+                       result.Add(att.ToDTO());
+                   return result;
+               }
+           }
+           catch (Exception ex)
+           {
+               throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+           }
+       }
+
+       public void SaveAttachments(Session session, int userID, List<AttachmentDTO> attachments)
+       {
+           try
+           {
+               CheckSession(session);
+               using (UniversityEntities context = new UniversityEntities())
+               {
+
+                   var userAttachments = (from a in context.Attachments
+                                          where a.TeacherID == userID
+                                          select a).ToList();
+                   var toAdd = (from a in attachments
+                                where userAttachments.Find(ua => ua.ID == a.ID) == null
+                                select a).ToList();
+                   var toRemove = (from ua in userAttachments
+                                   where attachments.Find(a => a.ID == ua.ID) == null
+                                   select ua).ToList();
+                   foreach (var r in toRemove)
+                       context.DeleteObject(r);
+                   foreach (var a in toAdd)
+                       context.Attachments.AddObject(new Attachment(a));
+                   foreach (var at in userAttachments)
+                       if (attachments.Find(a => a.ID == at.ID) != null)
+                           at.Assign(attachments.Find(a => a.ID == at.ID));
+                   context.SaveChanges();
+               }
+           }
+           catch (Exception ex)
+           {
+               throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+           }
+       }
+
+       public void DeleteAttachment(Session session, int attachmentID)
+       {
+           try
+           {
+               CheckSession(session);
+               using (UniversityEntities context = new UniversityEntities())
+               {
+                   var query = (from a in context.Attachments
+                                where a.ID == attachmentID
+                                select a).FirstOrDefault();
+                   context.DeleteObject(query);
+                   context.SaveChanges();
                }
            }
            catch (Exception ex)

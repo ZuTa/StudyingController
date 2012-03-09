@@ -190,22 +190,6 @@ namespace StudyingControllerService
 
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
-        List<AttachmentDTO> GetAttachments(Session session, int teacherID);
-
-        [OperationContract]
-        [FaultContract(typeof(ControllerServiceException))]
-        void SaveAttachment(Session session, AttachmentDTO attachment);
-
-        [OperationContract]
-        [FaultContract(typeof(ControllerServiceException))]
-        void EditAttachment(Session session, AttachmentDTO attachment);
-
-        [OperationContract]
-        [FaultContract(typeof(ControllerServiceException))]
-        void DeleteAttachment(Session session, int attachmentID);
-
-        [OperationContract]
-        [FaultContract(typeof(ControllerServiceException))]
         List<ControlDTO> GetLectureControls(Session session, int lectureID);
 
         [OperationContract]
@@ -235,5 +219,17 @@ namespace StudyingControllerService
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
         List<LectureDTO> GetStudentLectures(Session session, int studentID);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        List<AttachmentDTO> GetAttachments(Session session, int teacherID);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        void SaveAttachments(Session session, int userID, List<AttachmentDTO> attachments);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        void DeleteAttachment(Session session, int attachmentID);
     }
 }

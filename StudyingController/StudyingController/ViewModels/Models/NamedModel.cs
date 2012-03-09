@@ -15,10 +15,11 @@ namespace StudyingController.ViewModels.Models
         public string Name
         {
             get { return name; }
-            set 
+            set
             {
                 name = value;
                 OnPropertyChanged("Name");
+                OnModelChanged();
             }
         }
 
@@ -28,7 +29,7 @@ namespace StudyingController.ViewModels.Models
 
         public NamedModel(NamedEntityDTO entity)
             : base(entity)
-        {            
+        {
             this.name = entity.Name;
         }
 
@@ -43,6 +44,12 @@ namespace StudyingController.ViewModels.Models
         public override string ToString()
         {
             return Name;
+        }
+
+        protected void OnModelChanged()
+        {
+            if (ModelChanged != null)
+                ModelChanged(this, null);
         }
 
         private bool IsNameValid(out string error)
@@ -76,5 +83,7 @@ namespace StudyingController.ViewModels.Models
             }
             return null;
         }
+
+        public event EventHandler ModelChanged;
     }
 }

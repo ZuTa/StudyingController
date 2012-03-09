@@ -72,9 +72,7 @@
     <Compile Include="Converters\ReadOnlyModeToBoolConverter.cs" />
     <Compile Include="Converters\PictureEnumToPictureConverter.cs" />
     <Compile Include="Converters\UniversalToLocalDateConverter.cs" />
-    <Compile Include="ViewModels\AttachmentsStructureViewModel.cs" />
     <Compile Include="ViewModels\AttachmentsViewModel.cs" />
-    <Compile Include="ViewModels\AttachmentViewModel.cs" />
     <Compile Include="ViewModels\BaseTreeViewModel.cs" />
     <Compile Include="ViewModels\CathedraViewModel.cs" />
     <Compile Include="ViewModels\ControlChatViewModel.cs" />
@@ -157,9 +155,6 @@
     <Compile Include="ViewModels\UsersTreeViewModel.cs" />
     <Compile Include="Views\AttachmentsView.xaml.cs">
       <DependentUpon>AttachmentsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\AttachmentView.xaml.cs">
-      <DependentUpon>AttachmentView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CathedraView.xaml.cs">
       <DependentUpon>CathedraView.xaml</DependentUpon>
@@ -260,10 +255,6 @@
     <Page Include="Views\AttachmentsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\AttachmentView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CathedraView.xaml">
       <SubType>Designer</SubType>
@@ -405,6 +396,7 @@
     </None>
     <None Include="Properties\DataSources\EntitiesDTO.AttachmentDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.CathedraDTO.datasource" />
+    <None Include="Properties\DataSources\EntitiesDTO.ControlDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.ControlDTO1.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.ControlMessageDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.FacultyDTO.datasource" />
