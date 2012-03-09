@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using EntitiesDTO;
 using System.Collections.ObjectModel;
+using StudyingController.Common;
 
 namespace StudyingController.ViewModels.Models
 {
@@ -19,6 +20,7 @@ namespace StudyingController.ViewModels.Models
         }
 
         private CathedraDTO cathedra;
+        [Validateable]
         public CathedraDTO Cathedra
         {
             get { return cathedra; }

@@ -7,8 +7,8 @@ namespace StudyingController.ViewModels
 {
     public enum EditModes
     {
-        ReadOnly,
-        Editable
+        Editable,
+        ReadOnly
     }
 
     public interface IEditable
