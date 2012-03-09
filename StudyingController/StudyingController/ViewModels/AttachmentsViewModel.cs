@@ -345,16 +345,28 @@ namespace StudyingController.ViewModels
             FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
             if (folderBrowser.ShowDialog() == DialogResult.OK)
             {
-                FileStream fStream = new FileStream(folderBrowser.SelectedPath + "\\" + (CurrentEntity as AttachmentModel).Name, FileMode.CreateNew, FileAccess.Write);
-                BinaryWriter bw = new BinaryWriter(fStream);
-                foreach (byte b in (CurrentEntity as AttachmentModel).Data)
+                if (File.Exists(folderBrowser.SelectedPath + "\\" + (CurrentEntity as AttachmentModel).Name))
                 {
-                    bw.Write(b);
-                    bw.Flush();
+                    if (UserInterop.ShowMessage("Файл уже існує, замінити?", "Файл існує", MessageButtons.YesNo, MessageTypes.Question) == MessageResults.Yes)
+                        WriteToFile(new FileStream(folderBrowser.SelectedPath + "\\" + (CurrentEntity as AttachmentModel).Name, FileMode.Create, FileAccess.Write));
+                    else
+                        return;
                 }
-                bw.Close();
-                fStream.Close();
+                else
+                    WriteToFile(new FileStream(folderBrowser.SelectedPath + "\\" + (CurrentEntity as AttachmentModel).Name, FileMode.CreateNew, FileAccess.Write));
             }
+        }
+
+        private void WriteToFile(FileStream fStream)
+        {
+            BinaryWriter bw = new BinaryWriter(fStream);
+            foreach (byte b in (CurrentEntity as AttachmentModel).Data)
+            {
+                bw.Write(b);
+                bw.Flush();
+            }
+            bw.Close();
+            fStream.Close();
         }
 
         private byte[] ReadFile(string sPath)
