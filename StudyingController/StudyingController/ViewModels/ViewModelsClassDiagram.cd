@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Comment CommentText="Interfaces">
-    <Position X="2.796" Y="1.998" Height="0.307" Width="0.859" />
+    <Position X="3.695" Y="0.5" Height="0.307" Width="0.859" />
   </Comment>
   <Comment CommentText="Enums">
-    <Position X="9.521" Y="1.384" Height="0.291" Width="0.7" />
+    <Position X="9.371" Y="0.5" Height="0.291" Width="0.7" />
   </Comment>
   <Class Name="StudyingController.ViewModels.BaseViewModel" Collapsed="true">
     <Position X="27" Y="0.5" Width="1.5" />
@@ -335,18 +335,18 @@
     </TypeIdentifier>
   </Class>
   <Interface Name="StudyingController.ViewModels.IEditable" Collapsed="true">
-    <Position X="2.5" Y="0.5" Width="1.5" />
+    <Position X="2.5" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAIAAAAAAAAADAAAAAAACQAAAAAAACAAAAAACAAA=</HashCode>
       <FileName>ViewModels\IEditable.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="StudyingController.ViewModels.IProviderable" Collapsed="true">
-    <Position X="0.5" Y="1.5" Width="1.5" />
+    <Position X="0.75" Y="2" Width="1.5" />
     <InheritanceLine Type="StudyingController.ViewModels.IRefreshable" ManuallyRouted="true">
       <Path>
-        <Point X="1.25" Y="1.062" />
-        <Point X="1.25" Y="1.5" />
+        <Point X="1.5" Y="1.562" />
+        <Point X="1.5" Y="2" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
@@ -355,35 +355,35 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="StudyingController.ViewModels.IAdditionalCommands" Collapsed="true">
-    <Position X="4.25" Y="0.5" Width="2.5" />
+    <Position X="4.25" Y="1" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
       <FileName>ViewModels\IAdditionalCommands.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="StudyingController.ViewModels.IManipulateable" Collapsed="true">
-    <Position X="4.25" Y="1.25" Width="2.5" />
+    <Position X="4.25" Y="1.75" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAEAAAABABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ViewModels\IManipulateable.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="StudyingController.ViewModels.IRefreshable" Collapsed="true">
-    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Position X="0.75" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ViewModels\IRefreshable.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Enum Name="StudyingController.ViewModels.EditModes" Collapsed="true">
-    <Position X="10" Y="0.5" Width="1.5" />
+    <Position X="10" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAAAAAAA=</HashCode>
       <FileName>ViewModels\IEditable.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="StudyingController.ViewModels.CommandTypes" Collapsed="true">
-    <Position X="8.25" Y="0.5" Width="1.5" />
+    <Position X="8" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAYAAQAAAAAAIAAAAAAABAAgAAAAAAAAAAEAAAMAAAA=</HashCode>
       <FileName>ViewModels\NamedCommandData.cs</FileName>
