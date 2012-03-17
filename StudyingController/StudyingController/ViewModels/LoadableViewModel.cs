@@ -37,7 +37,7 @@ namespace StudyingController.ViewModels
             }
         }
 
-        public bool IsNotBusy
+        public virtual bool IsNotBusy
         {
             get
             {

@@ -22,16 +22,16 @@
     </TypeIdentifier>
   </Class>
   <Class Name="StudyingController.ViewModels.LoadableViewModel" Collapsed="true">
-    <Position X="15" Y="1.5" Width="1.5" />
+    <Position X="16" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABgAgAAAAAAQAAAQAAAAAAAAAAAAAAAAIIAAACAAAAI=</HashCode>
       <FileName>ViewModels\LoadableViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="StudyingController.ViewModels.LoginViewModel" Collapsed="true">
-    <Position X="17.25" Y="3.25" Width="1.5" />
+    <Position X="17.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EQAAAgAAAAAEAAABAAAAAAAAAAAAAABBoIAAAKGAAEA=</HashCode>
+      <HashCode>EQAAAAAAAAAUAAARAAAAAAAAAAAAAABBoIAAAKGAAEA=</HashCode>
       <FileName>ViewModels\LoginViewModel.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -126,7 +126,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="StudyingController.ViewModels.AttachmentsViewModel" Collapsed="true">
-    <Position X="13.5" Y="5.5" Width="2" />
+    <Position X="13.25" Y="5" Width="2" />
     <TypeIdentifier>
       <HashCode>CAASAYRAAcFQRAkTCAUCAAgSQBAAQCAECIACACwOAQg=</HashCode>
       <FileName>ViewModels\AttachmentsViewModel.cs</FileName>
@@ -134,7 +134,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="StudyingController.ViewModels.BaseTreeViewModel" Collapsed="true">
-    <Position X="16" Y="5.5" Width="1.5" />
+    <Position X="16" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAADQBgAAgAQAAACAgBAAAAAAEIAAAAAEAAI=</HashCode>
       <FileName>ViewModels\BaseTreeViewModel.cs</FileName>

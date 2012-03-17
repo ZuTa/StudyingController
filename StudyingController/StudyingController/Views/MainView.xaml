@@ -84,9 +84,9 @@
                 <ColumnDefinition Width="3*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0" Margin="3">
-                <Expander IsExpanded="True" ExpandDirection="Right">
+                <!--<Expander IsExpanded="True" ExpandDirection="Right">
                     <ContentControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding UserInformationViewModel}"/>
-                </Expander>
+                </Expander>-->
                 <!--<Expander ExpandDirection="Right" Margin="2,0,5,2" IsExpanded="True" Background="Beige">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                         <Grid>
