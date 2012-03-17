@@ -5,7 +5,7 @@
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
             mc:Ignorable="d" 
             d:DesignHeight="300" d:DesignWidth="300" >
-    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MaxWidth="350" MinWidth="250" MaxHeight="400" MinHeight="320">
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MaxWidth="350" MinWidth="250" MaxHeight="400" MinHeight="320" IsEnabled="{Binding IsNotBusy}">
         <StackPanel Margin="40,20,40,20">
             <GroupBox Header="Користувач">
                 <Grid >
@@ -49,7 +49,9 @@
                                                                                     ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" IsEnabled="{Binding CanChange}"></TextBox>
                 </Grid>
             </GroupBox>
+            
             <Button MinHeight="20" MaxHeight="40" MinWidth="50" MaxWidth="100" Margin="0,5,0,0" IsDefault="True" Content="Увійти" Command="{Binding Path=LoginCommand}" IsEnabled="{Binding CanChange}"></Button>
+            
             <TextBlock MaxWidth="230" HorizontalAlignment="Center" Margin="5" TextWrapping="Wrap" Text="{Binding Path=LoginDataError, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
         </StackPanel>
     </Grid>

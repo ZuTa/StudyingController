@@ -22,7 +22,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="StudyingController.ViewModels.LoadableViewModel" Collapsed="true">
-    <Position X="15" Y="3.25" Width="1.5" />
+    <Position X="15" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABgAgAAAAAAQAAAQAAAAAAAAAAAAAAAAIIAAACAAAAI=</HashCode>
       <FileName>ViewModels\LoadableViewModel.cs</FileName>
@@ -45,14 +45,6 @@
   </Class>
   <Class Name="StudyingController.ViewModels.EditableViewModel" Collapsed="true">
     <Position X="9.25" Y="3.25" Width="1.5" />
-    <InheritanceLine Type="StudyingController.ViewModels.BaseApplicationViewModel" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="25.5" Y="2.441" />
-        <Point X="25.5" Y="2.714" />
-        <Point X="10.75" Y="2.714" />
-        <Point X="10.75" Y="3.25" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AIAAQoCAEAJAIAADAEEASIAiQgAAAQAACEAAAQgCJAA=</HashCode>
       <FileName>ViewModels\EditableViewModel.cs</FileName>
@@ -91,14 +83,6 @@
   </Class>
   <Class Name="StudyingController.ViewModels.SaveableViewModel" Collapsed="true">
     <Position X="26" Y="3.25" Width="1.5" />
-    <InheritanceLine Type="StudyingController.ViewModels.BaseApplicationViewModel" ManuallyRouted="true" FixedToPoint="true">
-      <Path>
-        <Point X="25.5" Y="2.441" />
-        <Point X="25.5" Y="2.714" />
-        <Point X="26" Y="2.714" />
-        <Point X="26" Y="3.312" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAACAYCAAAFAAAADAAgABAACQhAAAAAAGAgAAAgKAIA=</HashCode>
       <FileName>ViewModels\SaveableViewModel.cs</FileName>
@@ -135,14 +119,6 @@
   </Class>
   <Class Name="StudyingController.ViewModels.UsersStructureViewModel" Collapsed="true">
     <Position X="10.25" Y="5.5" Width="2" />
-    <InheritanceLine Type="StudyingController.ViewModels.EditableViewModel" FixedToPoint="true">
-      <Path>
-        <Point X="10" Y="3.941" />
-        <Point X="10" Y="5.125" />
-        <Point X="10.5" Y="5.125" />
-        <Point X="10.5" Y="5.5" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>ISAABHWAEEBQhBCEQBAgBAAAAAIAAUACQhEgAAQMAEA=</HashCode>
       <FileName>ViewModels\UsersStructureViewModel.cs</FileName>
@@ -150,14 +126,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="StudyingController.ViewModels.AttachmentsViewModel" Collapsed="true">
-    <Position X="13.75" Y="5.5" Width="1.5" />
-    <InheritanceLine Type="StudyingController.ViewModels.LoadableViewModel" FixedToPoint="true">
-      <Path>
-        <Point X="15.75" Y="3.941" />
-        <Point X="15.75" Y="5.625" />
-        <Point X="15.25" Y="5.625" />
-      </Path>
-    </InheritanceLine>
+    <Position X="13.5" Y="5.5" Width="2" />
     <TypeIdentifier>
       <HashCode>CAASAYRAAcFQRAkTCAUCAAgSQBAAQCAECIACACwOAQg=</HashCode>
       <FileName>ViewModels\AttachmentsViewModel.cs</FileName>
@@ -166,13 +135,6 @@
   </Class>
   <Class Name="StudyingController.ViewModels.BaseTreeViewModel" Collapsed="true">
     <Position X="16" Y="5.5" Width="1.5" />
-    <InheritanceLine Type="StudyingController.ViewModels.LoadableViewModel" FixedToPoint="true">
-      <Path>
-        <Point X="15.75" Y="3.941" />
-        <Point X="15.75" Y="5.625" />
-        <Point X="16" Y="5.625" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAADQBgAAgAQAAACAgBAAAAAAEIAAAAAEAAI=</HashCode>
       <FileName>ViewModels\BaseTreeViewModel.cs</FileName>
@@ -180,7 +142,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="StudyingController.ViewModels.ControlChatViewModel" Collapsed="true">
-    <Position X="30" Y="3.25" Width="1.5" />
+    <Position X="30.75" Y="3.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AQMAAAAEAABABCAAAAAAAEAAAABAAAABAIAEAwEAAAA=</HashCode>
       <FileName>ViewModels\ControlChatViewModel.cs</FileName>
@@ -286,7 +248,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="StudyingController.ViewModels.SelectorViewModel" Collapsed="true">
-    <Position X="20.75" Y="3.25" Width="1.5" />
+    <Position X="20.75" Y="3.25" Width="2" />
+    <NestedTypes>
+      <Class Name="StudyingController.ViewModels.SelectorViewModel.SelectorItemChangedEventArgs" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ViewModels\SelectorViewModel.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
     <TypeIdentifier>
       <HashCode>QQBAAUGAhAAABYABEAUAADAQAhAgEAAAAAAAAAEAAAE=</HashCode>
       <FileName>ViewModels\SelectorViewModel.cs</FileName>
@@ -328,7 +297,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="StudyingController.ViewModels.UserInformationViewModel" Collapsed="true">
-    <Position X="28" Y="3.25" Width="1.5" />
+    <Position X="28" Y="3.25" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAA=</HashCode>
       <FileName>ViewModels\UserInformationViewModel.cs</FileName>
@@ -343,12 +312,6 @@
   </Interface>
   <Interface Name="StudyingController.ViewModels.IProviderable" Collapsed="true">
     <Position X="0.75" Y="2" Width="1.5" />
-    <InheritanceLine Type="StudyingController.ViewModels.IRefreshable" ManuallyRouted="true">
-      <Path>
-        <Point X="1.5" Y="1.562" />
-        <Point X="1.5" Y="2" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
       <FileName>ViewModels\IProviderable.cs</FileName>

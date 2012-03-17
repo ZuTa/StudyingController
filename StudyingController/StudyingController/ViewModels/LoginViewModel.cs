@@ -11,14 +11,15 @@ using System.Text.RegularExpressions;
 using System.ServiceModel;
 using System.Data.SqlClient;
 using System.Data.EntityClient;
+using System.Threading.Tasks;
 
 namespace StudyingController.ViewModels
 {
-    public class LoginViewModel : BaseApplicationViewModel, IPasswordConsumer
+    public class LoginViewModel : LoadableViewModel, IPasswordConsumer
     {
         #region Fields & Properties
 
-        private object loggingInLock = new object();
+        private object lockObject = new object();
 
         public bool CanChange
         {
@@ -94,8 +95,6 @@ namespace StudyingController.ViewModels
         public LoginViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)
         {
-            LoginConfig = LoginConfig.Load();
-            if (loginConfig.IsAutologin) UserLogin(); 
         }
 
         #endregion
@@ -108,7 +107,12 @@ namespace StudyingController.ViewModels
             get 
             {
                 if (loginCommand == null)
-                    loginCommand = new RelayCommand((param) => UserLogin(), (param) => CanUserLogin()); 
+                    loginCommand = new RelayCommand(
+                        (param) =>
+                        {
+                            UserLogin();
+                        },
+                        (param) => CanUserLogin());
 
                 return loginCommand;
             }
@@ -117,6 +121,19 @@ namespace StudyingController.ViewModels
         #endregion
 
         #region Methods
+
+        protected override void LoadData()
+        {
+            LoginConfig = LoginConfig.Load();
+
+            if (loginConfig.IsAutologin)
+                UserLogin();
+        }
+
+        protected override void ClearData()
+        {
+            LoginConfig = null;
+        }
 
         private void StartLogging()
         {
@@ -130,26 +147,30 @@ namespace StudyingController.ViewModels
 
         private void UserLogin()
         {
-            lock (loggingInLock)
+            lock (lockObject)
             {
-                if (IsLoggingIn)
+                if (isLoggingIn)
                     return;
 
                 try
                 {
-                    StartLogging();
+                    Task.Factory.StartNew(() => StartLogging());
 
-                    //if (!LoginConfig.IsAutologin)
                     if (passwordSource != null)
                         LoginConfig.Password = passwordSource.GetPassword();
-                    ControllerInterop.Service = new SCS.ControllerServiceClient("BasicHttpBinding_IControllerService", GetServiceEndPoint());
-                    this.ControllerInterop.Service.BeginLogin(LoginConfig.Login, HashHelper.ComputeHash(LoginConfig.Password), OnLoginCompleted, null);
+
+                    Task.Factory.StartNew(() =>
+                        {
+                            ControllerInterop.Service = new SCS.ControllerServiceClient("BasicHttpBinding_IControllerService", GetServiceEndPoint());
+
+                            this.ControllerInterop.Service.BeginLogin(LoginConfig.Login, HashHelper.ComputeHash(LoginConfig.Password), OnLoginCompleted, null);
+                        });
                 }
                 catch (Exception ex)
                 {
                     LoginDataError = ex.Message;
                     StopLogging();
-                }             
+                }
             }
         }
 

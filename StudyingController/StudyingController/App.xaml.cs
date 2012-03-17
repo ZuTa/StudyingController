@@ -33,6 +33,7 @@ namespace StudyingController
             mainWindow = new MainWindow();
 
             loginViewModel = new LoginViewModel(this, this, mainWindow.Dispatcher);
+            loginViewModel.Load();
 
             mainWindow.DataContext = loginViewModel;
             

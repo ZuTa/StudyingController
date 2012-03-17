@@ -443,7 +443,7 @@
     <None Include="Service References\SCS\StudyingController.SCS.Session.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="ViewModels\ViewModelsDiagram.cd" />
+    <None Include="ViewModels\ViewModelsClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\person.png" />

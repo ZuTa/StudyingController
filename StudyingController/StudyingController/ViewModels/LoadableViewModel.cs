@@ -63,8 +63,12 @@ namespace StudyingController.ViewModels
 
         public void Load()
         {
+            StartLoading();
+
             ClearData();
             LoadData();
+
+            StopLoading();
         }
 
         protected virtual void StartLoading(int count = 1)
