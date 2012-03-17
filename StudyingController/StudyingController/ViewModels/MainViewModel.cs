@@ -10,23 +10,9 @@ using EntitiesDTO;
 
 namespace StudyingController.ViewModels
 {
-    public class MainViewModel : BaseApplicationViewModel
+    public class MainViewModel : LoadableViewModel
     {
         #region Fields & Properties
-
-        private UserInformationViewModel userInformationViewModel;
-        public UserInformationViewModel UserInformationViewModel
-        {
-            get { return userInformationViewModel; }
-            set
-            {
-                if (userInformationViewModel != value)
-                {
-                    userInformationViewModel = value;
-                    OnPropertyChanged("UserInformationViewModel");
-                }
-            }
-        }
 
         public bool IsUserMainAdmin
         {
@@ -140,7 +126,7 @@ namespace StudyingController.ViewModels
             }
         }
 
-        private bool isNotBusy;
+        private bool isNotBusy = true;
         public bool IsNotBusy
         {
             get { return isNotBusy; }
@@ -156,6 +142,7 @@ namespace StudyingController.ViewModels
         }
 
         private Stack<BaseApplicationViewModel> workspaces;
+
         public BaseApplicationViewModel CurrentWorkspace
         {
             get
@@ -194,6 +181,7 @@ namespace StudyingController.ViewModels
         private UsersStructureViewModel usersStructureViewModel;
         private AttachmentsViewModel attachmentsViewModel;
         private ControlStructureViewModel controlStructureViewModel;
+
         #endregion
 
         #region Constructors
@@ -202,8 +190,6 @@ namespace StudyingController.ViewModels
             : base(userInterop, controllerInterop, dispatcher)
         {
             workspaces = new Stack<BaseApplicationViewModel>();
-            UserInformationViewModel = new UserInformationViewModel(userInterop, controllerInterop, dispatcher, controllerInterop.User.UserInformation);
-            isNotBusy = true;
         }
 
         #endregion
@@ -303,6 +289,17 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
+        protected override void LoadData()
+        {
+            if (CurrentWorkspace is LoadableViewModel)
+                (CurrentWorkspace as LoadableViewModel).Load();
+        }
+
+        protected override void ClearData()
+        {
+            ClearWorkspaces();
+        }
+
         private void OpenAttachments()
         {
             if (attachmentsViewModel == null)
@@ -313,14 +310,12 @@ namespace StudyingController.ViewModels
 
         private void OpenControlsStructure()        {
             if (controlStructureViewModel == null)
-                controlStructureViewModel = new ControlStructureViewModel(UserInterop, ControllerInterop, Dispatcher) { EditMode = ControllerInterop.User.Role == UserRoles.Student ? EditModes.ReadOnly : EditModes.Editable };
+                controlStructureViewModel = new ControlStructureViewModel(UserInterop, ControllerInterop, Dispatcher)
+                    {
+                        EditMode = ControllerInterop.User.Role == UserRoles.Student ? EditModes.ReadOnly : EditModes.Editable
+                    };
             
             ChangeCurrentWorkspace(controlStructureViewModel);
-        }
-
-        void controlStructureViewModel_WorkspaceChanged(BaseApplicationViewModel viewModel)
-        {
-            PushWorkspace(viewModel);
         }
 
         private void OpenLessonsStructure()
@@ -335,6 +330,7 @@ namespace StudyingController.ViewModels
         {
             if (universityStructureViewModel == null)
                 universityStructureViewModel = new UniversityStructureViewModel(UserInterop, ControllerInterop, Dispatcher);
+
             ChangeCurrentWorkspace(universityStructureViewModel);
         }
 
@@ -342,6 +338,7 @@ namespace StudyingController.ViewModels
         {
             if (usersStructureViewModel == null)
                 usersStructureViewModel = new UsersStructureViewModel(UserInterop, ControllerInterop, Dispatcher);
+
             ChangeCurrentWorkspace(usersStructureViewModel);
         }
 
@@ -357,7 +354,7 @@ namespace StudyingController.ViewModels
             if (workspace is UsersStructureViewModel)
                 (workspace as UsersStructureViewModel).IsSendingMessageChanged += UsersStructureViewModel_IsSendingMessageChanged;
             else if (workspace is ControlStructureViewModel)
-                controlStructureViewModel.WorkspaceChanged += new ControlStructureViewModel.ChangeWorkspaceHandler(controlStructureViewModel_WorkspaceChanged);
+                (workspace as ControlStructureViewModel).WorkspaceChanged += ControlStructureViewModel_WorkspaceChanged;
         }
 
         private void UnsubscribeFromEvents(BaseApplicationViewModel workspace)
@@ -365,7 +362,7 @@ namespace StudyingController.ViewModels
             if (workspace is UsersStructureViewModel)
                 (workspace as UsersStructureViewModel).IsSendingMessageChanged -= UsersStructureViewModel_IsSendingMessageChanged;
             else if (workspace is ControlStructureViewModel)
-                controlStructureViewModel.WorkspaceChanged -= controlStructureViewModel_WorkspaceChanged;
+                (workspace as ControlStructureViewModel).WorkspaceChanged -= ControlStructureViewModel_WorkspaceChanged;
         }
 
         protected virtual void OnLogout()
@@ -392,9 +389,7 @@ namespace StudyingController.ViewModels
         private void ClearWorkspaces()
         {
             while (workspaces.Count > 0)
-            {
                 PopWorkspace();
-            }
         }
 
         private void OnCurrentWorkspaceChanged()
@@ -417,6 +412,7 @@ namespace StudyingController.ViewModels
         {
             (CurrentWorkspace as IEditable).Rollback();
         }
+
         #endregion
 
         #region Callbacks
@@ -424,6 +420,11 @@ namespace StudyingController.ViewModels
         private void UsersStructureViewModel_IsSendingMessageChanged(object sender, EventArgs e)
         {
             IsNotBusy = !(sender as UsersStructureViewModel).IsSendingMessage;
+        }
+
+        private void ControlStructureViewModel_WorkspaceChanged(BaseApplicationViewModel viewModel)
+        {
+            PushWorkspace(viewModel);
         }
 
         #endregion
