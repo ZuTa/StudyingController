@@ -27,5 +27,10 @@ namespace EntitiesDTO
 
             return this.GetType() == obj.GetType() && obj.ID == this.ID;
         }
+
+        public bool Exists()
+        {
+            return this.id > 0;
+        }
     }
 }

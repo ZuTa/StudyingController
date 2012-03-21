@@ -9,7 +9,6 @@ namespace StudyingController.ViewModels
 {
     public abstract class LoadableViewModel : BaseApplicationViewModel
     {
-
         #region Fields & Properties
 
         private object lockObject = new object();

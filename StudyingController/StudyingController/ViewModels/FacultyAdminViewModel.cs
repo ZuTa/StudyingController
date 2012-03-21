@@ -42,26 +42,15 @@ namespace StudyingController.ViewModels
             : base(userInterop, controllerInterop, dispatcher)
         {
             faculties = new List<FacultyDTO>();
-            Load();
-
-            originalEntity = new FacultyAdminDTO();
-            Model = new FacultyAdminModel(originalEntity as FacultyAdminDTO) { Role = UserRoles.FacultyAdmin };
-            this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+            originalEntity = new FacultyAdminDTO() { Role = UserRoles.FacultyAdmin };
         }
 
         public FacultyAdminViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, FacultyAdminDTO facultyAdmin)
             : base(userInterop, controllerInterop, dispatcher)
         {
             faculties = new List<FacultyDTO>();
-            Load();
 
             originalEntity = facultyAdmin;
-            facultyAdmin.Faculty = (from faculty in faculties
-                                        where faculty.ID == OriginalFacultyAdmin.FacultyID
-                                        select faculty).FirstOrDefault();
-
-            Model = new FacultyAdminModel(facultyAdmin);
-            Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         #endregion
@@ -95,9 +84,27 @@ namespace StudyingController.ViewModels
             SetUnModified();
         }
 
-        public void Load()
+        protected override void LoadData()
         {
             Faculties = ControllerInterop.Service.GetAllFaculties(ControllerInterop.Session);
+
+            FacultyAdminDTO admin = originalEntity as FacultyAdminDTO;
+
+            if (admin.Exists())
+            {
+                admin.Faculty = (from faculty in faculties
+                                        where faculty.ID == OriginalFacultyAdmin.FacultyID
+                                        select faculty).FirstOrDefault();
+            }
+
+            Model = new FacultyAdminModel(admin);
+            this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+        }
+
+        protected override void ClearData()
+        {
+            if (faculties != null)
+                faculties.Clear();
         }
 
         #endregion

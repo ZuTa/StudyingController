@@ -42,26 +42,16 @@ namespace StudyingController.ViewModels
             : base(userInterop, controllerInterop, dispatcher)
         {
             cathedras = new List<CathedraDTO>();
-            Load();
 
-            originalEntity = new TeacherDTO();
-            Model = new TeacherModel(originalEntity as TeacherDTO) { Role = UserRoles.Teacher };
-            this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+            originalEntity = new TeacherDTO(){ Role = UserRoles.Teacher };
         }
 
         public TeacherViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, TeacherDTO teacher)
             : base(userInterop, controllerInterop, dispatcher)
         {
             cathedras = new List<CathedraDTO>();
-            Load();
 
             originalEntity = teacher;
-            teacher.Cathedra = (from cathedra in cathedras
-                                        where cathedra.ID == OriginalTeacher.CathedraID
-                                        select cathedra).FirstOrDefault();
-
-            Model = new TeacherModel(teacher);
-            Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         #endregion
@@ -95,9 +85,27 @@ namespace StudyingController.ViewModels
             SetUnModified();
         }
 
-        public void Load()
+        protected override void LoadData()
         {
             Cathedras = ControllerInterop.Service.GetAllCathedras(ControllerInterop.Session);
+
+            TeacherDTO teacher = originalEntity as TeacherDTO;
+            if (teacher.Exists())
+            {
+                teacher.Cathedra = (from cathedra in cathedras
+                                    where cathedra.ID == OriginalTeacher.CathedraID
+                                    select cathedra).FirstOrDefault();
+            }
+
+            Model = new TeacherModel(teacher);
+            this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+
+        }
+
+        protected override void ClearData()
+        {
+            if (Cathedras != null)
+                Cathedras.Clear();
         }
 
         #endregion

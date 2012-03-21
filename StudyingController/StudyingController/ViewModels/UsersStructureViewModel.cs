@@ -72,6 +72,7 @@ namespace StudyingController.ViewModels
 
             entitiesProvider = new UsersTreeViewModel(userInterop, controllerInterop, dispatcher);
             entitiesProvider.SelectedEntityChangedEvent += new SelectedEntityChangedHandler(EntitesProvider_SelectedEntityChangedEvent);
+
             DefineAddCommands();
         }
 

@@ -31,6 +31,7 @@ namespace StudyingController.ViewModels
             : base(userInterop, controllerInterop, dispatcher)
         {
             originalEntity = new SystemUserDTO();
+
             Model = new SystemUserModel(originalEntity as SystemUserDTO) { Role = UserRoles.MainSecretary };
             this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
@@ -39,6 +40,7 @@ namespace StudyingController.ViewModels
             : base(userInterop, controllerInterop, dispatcher)
         {
             originalEntity = mainSecretary;
+
             Model = new SystemUserModel(mainSecretary);
             Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
@@ -74,7 +76,16 @@ namespace StudyingController.ViewModels
             SetUnModified();
         }
 
-        #endregion
+        protected override void LoadData()
+        {
+            // nothing
+        }
 
+        protected override void ClearData()
+        {
+            // nothing
+        }
+
+        #endregion
     }
 }

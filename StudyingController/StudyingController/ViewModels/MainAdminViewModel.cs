@@ -31,6 +31,7 @@ namespace StudyingController.ViewModels
             : base(userInterop, controllerInterop, dispatcher)
         {
             originalEntity = new SystemUserDTO();
+
             Model = new SystemUserModel(originalEntity as SystemUserDTO) { Role = UserRoles.MainAdmin };
             this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
@@ -39,6 +40,7 @@ namespace StudyingController.ViewModels
             : base(userInterop, controllerInterop, dispatcher)
         {
             originalEntity = mainAdmin;
+
             Model = new SystemUserModel(mainAdmin);
             Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
@@ -66,12 +68,25 @@ namespace StudyingController.ViewModels
         public override void Save()
         {
             SystemUserDTO mainAdminDTO = MainAdmin.ToDTO();
+
             if(mainAdminDTO.Password == null)
                 mainAdminDTO.Password = HashHelper.ComputeHash((Model as SystemUserModel).Login);
             else
                 mainAdminDTO.Password = HashHelper.ComputeHash((Model as SystemUserModel).Password);
+
             ControllerInterop.Service.SaveUser(ControllerInterop.Session, mainAdminDTO);
+
             SetUnModified();
+        }
+
+        protected override void LoadData()
+        {
+            // nothing
+        }
+
+        protected override void ClearData()
+        {
+            // nothing
         }
 
         #endregion

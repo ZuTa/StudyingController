@@ -31,6 +31,7 @@ namespace StudyingController.ViewModels
             : base(userInterop, controllerInterop, dispatcher)
         {
             originalEntity = new InstituteDTO();
+
             Model = new InstituteModel(originalEntity as InstituteDTO);
             this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
@@ -39,6 +40,7 @@ namespace StudyingController.ViewModels
             : base(userInterop, controllerInterop, dispatcher)
         {
             this.originalEntity = institute;
+
             this.Model = new InstituteModel(institute);
             this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
@@ -68,6 +70,14 @@ namespace StudyingController.ViewModels
             InstituteDTO instituteDTO = Institute.ToDTO();
             ControllerInterop.Service.SaveInstitute(ControllerInterop.Session, instituteDTO);
             SetUnModified();
+        }
+
+        protected override void LoadData()
+        {
+        }
+
+        protected override void ClearData()
+        {
         }
 
         #endregion

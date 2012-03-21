@@ -90,10 +90,11 @@ namespace StudyingController.ViewModels
             : base(userInterop, controllerInterop, dispatcher)
         {
             groups = new List<GroupDTO>();
-            Load();
 
             originalEntity = new StudentDTO();
+
             Model = new StudentModel(originalEntity as StudentDTO) { Role = UserRoles.Student };
+
             this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
@@ -101,23 +102,8 @@ namespace StudyingController.ViewModels
             : base(userInterop, controllerInterop, dispatcher)
         {
             groups = new List<GroupDTO>();
-            Load();
 
             originalEntity = student;
-            
-            student.Group = ControllerInterop.Service.GetGroupByID(ControllerInterop.Session, student.GroupID);
-
-            Model = new StudentModel(student);
-
-            Cathedra = (from cathedra in ControllerInterop.Service.GetAllCathedras(ControllerInterop.Session)
-                        where cathedra.ID == Student.Group.CathedraID
-                        select cathedra).FirstOrDefault();
-
-            Faculty = (from faculty in Faculties
-                       where faculty.ID == Cathedra.FacultyID
-                       select faculty).FirstOrDefault();
-
-            Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         #endregion
@@ -176,9 +162,40 @@ namespace StudyingController.ViewModels
             }
         }
 
-        private void Load()
+        protected override void LoadData()
         {
             Faculties = ControllerInterop.Service.GetAllFaculties(ControllerInterop.Session);
+
+            if (originalEntity.Exists())
+            {
+                StudentDTO student = originalEntity as StudentDTO;
+
+                student.Group = ControllerInterop.Service.GetGroupByID(ControllerInterop.Session, student.GroupID);
+
+                Model = new StudentModel(student);
+
+                Cathedra = (from cathedra in ControllerInterop.Service.GetAllCathedras(ControllerInterop.Session)
+                            where cathedra.ID == Student.Group.CathedraID
+                            select cathedra).FirstOrDefault();
+
+                Faculty = (from faculty in Faculties
+                           where faculty.ID == Cathedra.FacultyID
+                           select faculty).FirstOrDefault();
+
+                Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+            }
+        }
+
+        protected override void ClearData()
+        {
+            if (Faculties != null)
+                Faculties.Clear();
+
+            if (Groups != null)
+                Groups.Clear();
+
+            if (Cathedras != null)
+                Cathedras.Clear();
         }
 
         #endregion

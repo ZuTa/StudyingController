@@ -14,7 +14,7 @@ using System.Diagnostics;
 
 namespace StudyingController.ViewModels
 {
-    public class AttachmentsViewModel : LoadableViewModel, IEditable,IAdditionalCommands, IRefreshable
+    public class AttachmentsViewModel : BaseSaveableViewModel, IAdditionalCommands, IRefreshable
     {
         #region Fields & Properties
 
@@ -51,38 +51,40 @@ namespace StudyingController.ViewModels
         protected BaseModel previousSelectedEntity;
 
         private SystemUserDTO user;
+        public SystemUserDTO User
+        {
+            get { return user; }
+            private set 
+            {
+                if (!user.IsSameDatabaseObject(value))
+                {
+                    user = value;
+
+                    if (user.Role == UserRoles.Teacher)
+                        EditMode = EditModes.Editable;
+                    else
+                        EditMode = EditModes.ReadOnly;
+                }
+            }
+        }
 
         private bool CanManipulate
         {
             get { return CurrentEntity != null; }
         }
 
-        private EditModes editMode;
-        public EditModes EditMode
-        {
-            get { return editMode; }
-            set { editMode = value; }
-        }
-
-        public bool IsReadOnly
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public bool IsEditingAllowed
-        {
-            get { throw new NotImplementedException(); }
-        }
-
         private bool isModified;
-        public bool IsModified
+        public override bool IsModified
         {
             get { return isModified; }
         }
 
-        public bool CanSave
+        public override bool CanSave
         {
-            get { return IsModified && IsModelsValid(); }
+            get
+            {
+                return base.CanSave && IsModelsValid();
+            }
         }
 
         private ObservableCollection<NamedCommandData> additionalCommands;
@@ -128,6 +130,7 @@ namespace StudyingController.ViewModels
                     additionalCommands.Add(openAttachmentNamedCommand);
                     UpdateCommandsEnabledState();
                 }
+
                 return additionalCommands;
             }
         }
@@ -139,12 +142,7 @@ namespace StudyingController.ViewModels
         public AttachmentsViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, SystemUserDTO user)
             : base(userInterop, controllerInterop, dispatcher)
         {
-            this.user = user;
-            if (user.Role == UserRoles.Teacher)
-                EditMode = EditModes.Editable;
-            else
-                EditMode = EditModes.ReadOnly;
-            LoadData();
+            this.User = user;
         }
 
         #endregion
@@ -224,27 +222,23 @@ namespace StudyingController.ViewModels
             foreach (var model in Attachments)
                 if (!model.IsValid)
                     return false;
+
             return true;
         }
 
-        protected virtual void OnViewModified()
+        private void UpdateProperties()
         {
-            if (ViewModified != null)
-                ViewModified(this, EventArgs.Empty);
-        }
-
-        protected virtual void OnViewUnModified()
-        {
-            if (ViewUnModified != null)
-                ViewUnModified(this, EventArgs.Empty);
+            OnPropertyChanged("IsModified");
+            OnPropertyChanged("CanSave");
         }
 
         protected virtual void SetModified()
         {
             isModified = true;
+
             OnViewModified();
-            OnPropertyChanged("IsModified");
-            OnPropertyChanged("CanSave");
+
+            UpdateProperties();
         }
 
         protected virtual void SetUnModified()
@@ -252,21 +246,26 @@ namespace StudyingController.ViewModels
             isModified = false;
 
             OnViewUnModified();
-            OnPropertyChanged("IsModified");
-            OnPropertyChanged("CanSave");
+
+            UpdateProperties();
         }
 
         private void InitializeAttachments(int userID)
         {
             if (Attachments != null)
-            Attachments.CollectionChanged -= new System.Collections.Specialized.NotifyCollectionChangedEventHandler(Attachments_CollectionChanged);
+                Attachments.CollectionChanged -= new System.Collections.Specialized.NotifyCollectionChangedEventHandler(Attachments_CollectionChanged);
+
             Attachments = new ObservableCollection<AttachmentModel>();
-            foreach (var a in ControllerInterop.Service.GetAttachments(ControllerInterop.Session, userID))
+
+            foreach (var att in ControllerInterop.Service.GetAttachments(ControllerInterop.Session, userID))
             {
-                AttachmentModel attModel = new AttachmentModel(a);
-                attModel.ModelChanged += new EventHandler(attachmentModel_ModelChanged);
-                Attachments.Add(attModel);
+                AttachmentModel attachmentModel = new AttachmentModel(att);
+
+                attachmentModel.ModelChanged += new EventHandler(attachmentModel_ModelChanged);
+
+                Attachments.Add(attachmentModel);
             }
+
             Attachments.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(Attachments_CollectionChanged);
         }
 
@@ -279,6 +278,7 @@ namespace StudyingController.ViewModels
         {
             previousSelectedEntity = CurrentEntity;
             previousAttachments = Attachments;
+
             Attachments = new ObservableCollection<AttachmentModel>();
         }
 
@@ -385,17 +385,21 @@ namespace StudyingController.ViewModels
             return data;
         }
 
-        public void Save()
+        public override void Save()
         {
             List<AttachmentDTO> atts = new List<AttachmentDTO>();
-            foreach(var a in Attachments)
+
+            foreach (var a in Attachments)
                 atts.Add(a.ToDTO());
+
             ControllerInterop.Service.SaveAttachments(ControllerInterop.Session, user.ID, atts);
+
             SetUnModified();
+
             Refresh();
         }
 
-        public void Rollback()
+        public override void Rollback()
         {
             Refresh();
             SetUnModified();
@@ -425,14 +429,6 @@ namespace StudyingController.ViewModels
         #endregion
 
         #region Events
-
-        public event EventHandler ViewModified;
-
-        public event EventHandler ViewUnModified;
-
         #endregion
-
-        
-        
     }
 }

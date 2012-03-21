@@ -10,7 +10,7 @@ using System.Collections.ObjectModel;
 
 namespace StudyingController.ViewModels
 {
-    class TeacherLecturesViewModel : SaveableViewModel
+    public class TeacherLecturesViewModel : SaveableViewModel
     {
         #region Fields & Properties
 
@@ -46,20 +46,18 @@ namespace StudyingController.ViewModels
             : base(userInterop, controllerInterop, dispatcher)
         {
             this.originalEntity = new TeacherDTO();
+
             this.Model = new TeacherModel(originalEntity as TeacherDTO);
             this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
-            InitializeSubjects();
-            UsedSubjects.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(usedSubjects_CollectionChanged);
         }
 
         public TeacherLecturesViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, TeacherDTO teacher)
             : base(userInterop, controllerInterop, dispatcher)
         {
             this.originalEntity = teacher;
+
             this.Model = new TeacherModel(teacher);
             this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
-            InitializeSubjects();
-            UsedSubjects.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(usedSubjects_CollectionChanged);
         }
 
         #endregion
@@ -73,9 +71,13 @@ namespace StudyingController.ViewModels
 
         private void InitializeSubjects()
         {
+            if (UsedSubjects != null)
+                UsedSubjects.CollectionChanged -= usedSubjects_CollectionChanged;
+
+
             unusedSubjects = new ObservableCollection<SubjectDTO>();
             usedSubjects = new ObservableCollection<SubjectDTO>();
-            
+
             List<SubjectDTO> subjects = ControllerInterop.Service.GetSubjects(ControllerInterop.Session, OriginalTeacher.CathedraID);
 
             foreach (SubjectDTO subject in subjects)
@@ -85,6 +87,22 @@ namespace StudyingController.ViewModels
                 else
                     usedSubjects.Add(subject);
             }
+
+            UsedSubjects.CollectionChanged += usedSubjects_CollectionChanged;
+        }
+
+        protected override void LoadData()
+        {
+            InitializeSubjects();
+        }
+
+        protected override void ClearData()
+        {
+            if (UsedSubjects != null)
+                UsedSubjects.Clear();
+
+            if (UnusedSubjects != null)
+                UnusedSubjects.Clear();
         }
 
         public override void Remove()

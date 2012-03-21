@@ -42,26 +42,16 @@ namespace StudyingController.ViewModels
             : base(userInterop, controllerInterop, dispatcher)
         {
             faculties = new List<FacultyDTO>();
-            Load();
 
-            originalEntity = new FacultySecretaryDTO();
-            Model = new FacultySecretaryModel(originalEntity as FacultySecretaryDTO) { Role = UserRoles.FacultySecretary };
-            this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+            originalEntity = new FacultySecretaryDTO() { Role = UserRoles.FacultySecretary };
         }
 
         public FacultySecretaryViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, FacultySecretaryDTO facultySecretary)
             : base(userInterop, controllerInterop, dispatcher)
         {
             faculties = new List<FacultyDTO>();
-            Load();
 
             originalEntity = facultySecretary;
-            facultySecretary.Faculty = (from faculty in faculties
-                                    where faculty.ID == OriginalFacultySecretary.FacultyID
-                                    select faculty).FirstOrDefault();
-
-            Model = new FacultySecretaryModel(facultySecretary);
-            Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         #endregion
@@ -95,9 +85,27 @@ namespace StudyingController.ViewModels
             SetUnModified();
         }
 
-        public void Load()
+        protected override void LoadData()
         {
             Faculties = ControllerInterop.Service.GetAllFaculties(ControllerInterop.Session);
+
+            FacultySecretaryDTO secretary = originalEntity as FacultySecretaryDTO;
+
+            if (secretary.Exists())
+            {
+                secretary.Faculty = (from faculty in faculties
+                                            where faculty.ID == OriginalFacultySecretary.FacultyID
+                                            select faculty).FirstOrDefault();
+            }
+
+            Model = new FacultySecretaryModel(secretary);
+            this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+        }
+
+        protected override void ClearData()
+        {
+            if (faculties != null)
+                faculties.Clear();
         }
 
         #endregion

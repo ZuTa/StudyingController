@@ -80,11 +80,8 @@ namespace StudyingController.ViewModels
         {
             faculties = new List<FacultyDTO>();
             cathedras = new List<CathedraDTO>();
-            Load();
 
             originalEntity = new GroupDTO();
-            Model = new GroupModel(originalEntity as GroupDTO);
-            Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         public GroupViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, GroupDTO group)
@@ -92,23 +89,8 @@ namespace StudyingController.ViewModels
         {
             faculties = new List<FacultyDTO>();
             cathedras = new List<CathedraDTO>();
-            Load();
 
             originalEntity = group;
-
-            group.Cathedra = (from cathedra in ControllerInterop.Service.GetAllCathedras(ControllerInterop.Session)
-                                where cathedra.ID == OriginalGroup.CathedraID
-                                select cathedra).FirstOrDefault();
-
-            group.Specialization = ControllerInterop.Service.GetSpecializationByID(ControllerInterop.Session, group.SpecializationID);
-            
-            Model = new GroupModel(group);
-
-            Faculty = (from faculty in faculties
-                       where faculty.ID == OriginalGroup.Cathedra.FacultyID
-                       select faculty).FirstOrDefault();
-
-            Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         #endregion
@@ -127,7 +109,7 @@ namespace StudyingController.ViewModels
 
         private void RefreshProperties()
         {
-            if (Faculty != null)
+            if (Faculty != null && Group != null)
             {
                 Cathedras = ControllerInterop.Service.GetCathedras(ControllerInterop.Session, Faculty.ID);
                 if (Group.Cathedra != null) Group.Cathedra = (from cathedra in Cathedras
@@ -141,9 +123,41 @@ namespace StudyingController.ViewModels
             }
         }
 
-        private void Load()
+        protected override void ClearData()
+        {
+            if (faculties != null)
+                faculties.Clear();
+
+            if (cathedras != null)
+                cathedras.Clear();
+        }
+
+        protected override void LoadData()
         {
             Faculties = ControllerInterop.Service.GetAllFaculties(ControllerInterop.Session);
+
+            GroupDTO group = originalEntity as GroupDTO;
+
+            if (originalEntity.Exists())
+            {
+                group.Cathedra = (from cathedra in ControllerInterop.Service.GetAllCathedras(ControllerInterop.Session)
+                                  where cathedra.ID == OriginalGroup.CathedraID
+                                  select cathedra).FirstOrDefault();
+
+                group.Specialization = ControllerInterop.Service.GetSpecializationByID(ControllerInterop.Session, group.SpecializationID);
+
+            }
+
+            Model = new GroupModel(group);
+//TODO:CHANGE THIS FUCKING CODE
+            if (originalEntity.Exists())
+            {
+                Faculty = (from faculty in faculties
+                           where faculty.ID == OriginalGroup.Cathedra.FacultyID
+                           select faculty).FirstOrDefault();
+            }
+
+            Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         public override void Save()

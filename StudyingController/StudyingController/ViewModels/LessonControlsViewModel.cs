@@ -10,7 +10,7 @@ using System.Collections.ObjectModel;
 
 namespace StudyingController.ViewModels
 {
-    class LessonControlsViewModel : SaveableViewModel
+    public class LessonControlsViewModel : SaveableViewModel
     {
         #region Fields & Properties
 
@@ -51,12 +51,24 @@ namespace StudyingController.ViewModels
 
         #endregion
 
+        #region Constructors
+
+        public LessonControlsViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, BaseEntityDTO lesson)
+            : base(userInterop, controllerInterop, dispatcher)
+        {
+            controls = new ObservableCollection<ControlModel>();
+
+            originalEntity = lesson;
+        }
+
+        #endregion
+
         #region Commands
 
         private RelayCommand addCommand;
         public RelayCommand AddCommand
         {
-            get 
+            get
             {
                 if (addCommand == null)
                     addCommand = new RelayCommand((param) => AddControl());
@@ -88,33 +100,6 @@ namespace StudyingController.ViewModels
             }
         }
 
-
-        #endregion
-
-        #region Constructors
-
-        public LessonControlsViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, BaseEntityDTO lesson)
-            : base(userInterop, controllerInterop, dispatcher)
-        {
-            controls = new ObservableCollection<ControlModel>();
-
-            originalEntity = lesson;
-
-            if (lesson is LectureDTO)
-            {
-                LoadData();
-                Model = new LectureModel(lesson as LectureDTO);
-            }
-            else if (lesson is PracticeTeacherDTO)
-            {
-                LoadData();
-                Model = new PracticeTeacherModel(lesson as PracticeTeacherDTO);
-            }
-
-            foreach(ControlModel controlModel in Controls)
-                controlModel.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
-        }
-
         #endregion
 
         #region Methods
@@ -124,16 +109,35 @@ namespace StudyingController.ViewModels
             throw new NotImplementedException();
         }
 
-        private void LoadData()
+        protected override void LoadData()
         {
-            if (OriginalLesson is LectureDTO) Controls = ControllerInterop.Service.GetLectureControls(ControllerInterop.Session, OriginalLesson.ID).ToModelList<ControlModel, ControlDTO>();
-            if (OriginalLesson is PracticeTeacherDTO) Controls = ControllerInterop.Service.GetPracticeControls(ControllerInterop.Session, (OriginalLesson as PracticeTeacherDTO).PracticeID).ToModelList<ControlModel, ControlDTO>();
+            BaseEntityDTO lesson = originalEntity as BaseEntityDTO;
+
+            if (Controls != null)
+            {
+                foreach (ControlModel controlModel in Controls)
+                    controlModel.PropertyChanged -= ModelPropertyChanged;
+            }
+
+            if (OriginalLesson is LectureDTO)
+                Controls = ControllerInterop.Service.GetLectureControls(ControllerInterop.Session, OriginalLesson.ID).ToModelList<ControlModel, ControlDTO>();
+            else if (OriginalLesson is PracticeTeacherDTO)
+                Controls = ControllerInterop.Service.GetPracticeControls(ControllerInterop.Session, (OriginalLesson as PracticeTeacherDTO).PracticeID).ToModelList<ControlModel, ControlDTO>();
+
+            foreach (ControlModel controlModel in Controls)
+                controlModel.PropertyChanged += ModelPropertyChanged;
+
+            if (lesson is LectureDTO)
+                Model = new LectureModel(lesson as LectureDTO);
+            else if (lesson is PracticeTeacherDTO)
+                Model = new PracticeTeacherModel(lesson as PracticeTeacherDTO);
+
         }
 
-        private void ApplyChanges()
+        protected override void ClearData()
         {
-            if (OriginalLesson is LectureDTO) ControllerInterop.Service.SaveLectureControls(ControllerInterop.Session, OriginalLesson.ID, Controls.ToDTOList<ControlDTO, ControlModel>());
-            if (OriginalLesson is PracticeTeacherDTO) ControllerInterop.Service.SavePracticeControls(ControllerInterop.Session, (OriginalLesson as PracticeTeacherDTO).PracticeID, Controls.ToDTOList<ControlDTO, ControlModel>());
+            if (Controls != null)
+                Controls.Clear();
         }
 
         private bool IsControlSelected()
@@ -153,7 +157,11 @@ namespace StudyingController.ViewModels
 
         public override void Save()
         {
-            ApplyChanges();
+            if (OriginalLesson is LectureDTO)
+                ControllerInterop.Service.SaveLectureControls(ControllerInterop.Session, OriginalLesson.ID, Controls.ToDTOList<ControlDTO, ControlModel>());
+            else if (OriginalLesson is PracticeTeacherDTO)
+                ControllerInterop.Service.SavePracticeControls(ControllerInterop.Session, (OriginalLesson as PracticeTeacherDTO).PracticeID, Controls.ToDTOList<ControlDTO, ControlModel>());
+
             SetUnModified();
         }
 
@@ -174,14 +182,15 @@ namespace StudyingController.ViewModels
             if (ControlOpened != null)
                 ControlOpened(model);
         }
+
         #endregion
 
         #region Events
 
         public delegate void ControlOpenedHandler(BaseModel model); 
+
         public event ControlOpenedHandler ControlOpened;
 
         #endregion
-
     }
 }

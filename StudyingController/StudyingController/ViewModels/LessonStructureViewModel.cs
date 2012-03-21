@@ -10,7 +10,7 @@ using System.Collections.ObjectModel;
 
 namespace StudyingController.ViewModels
 {
-    class LessonStuctureViewModel:EditableViewModel,IAdditionalCommands,IRefreshable
+    public class LessonStuctureViewModel : EditableViewModel, IAdditionalCommands, IRefreshable
     {
         #region Fields & Properties
 
@@ -30,11 +30,11 @@ namespace StudyingController.ViewModels
 
         public bool IsLecturesViewed
         {
-            get 
+            get
             {
                 if (lastViewModel != CurrentWorkspace && CurrentWorkspace != null)
                     lastViewModel = CurrentWorkspace;
-                return CurrentWorkspace is TeacherLecturesViewModel; 
+                return CurrentWorkspace is TeacherLecturesViewModel;
             }
         }
 
@@ -82,7 +82,7 @@ namespace StudyingController.ViewModels
                 if (loadLecturesViewModel == null)
                 {
                     loadLecturesViewModel = new RelayCommand(param =>
-                        ChangeCurrentWorkspace(new TeacherLecturesViewModel(UserInterop, ControllerInterop, Dispatcher,(CurrentWorkspace as TeacherPracticesViewModel).OriginalTeacher)));
+                        ChangeCurrentWorkspace(new TeacherLecturesViewModel(UserInterop, ControllerInterop, Dispatcher, (CurrentWorkspace as TeacherPracticesViewModel).OriginalTeacher)));
                 }
                 return loadLecturesViewModel;
             }
@@ -119,7 +119,7 @@ namespace StudyingController.ViewModels
                 viewModel = new LectureViewModel(UserInterop, ControllerInterop, Dispatcher, entity as LectureDTO);
             else if (entity is PracticeTeacherDTO)
                 viewModel = new PracticeTeacherViewModel(UserInterop, ControllerInterop, Dispatcher, entity as PracticeTeacherDTO);
-            else 
+            else
                 viewModel = null;
             return viewModel;
         }
@@ -134,15 +134,15 @@ namespace StudyingController.ViewModels
                 if (additionalCommands == null)
                 {
                     additionalCommands = new ObservableCollection<NamedCommandData>();
-                    NamedCommandData lectureNamedCommand = new NamedCommandData 
+                    NamedCommandData lectureNamedCommand = new NamedCommandData
                     {
-                        Command =  LoadLecturesViewModel,
+                        Command = LoadLecturesViewModel,
                         IsEnabled = !IsLecturesViewed && isLessonsSelect,
-                        Name="Лекції",
+                        Name = "Лекції",
                         Type = CommandTypes.Lecture
                     };
                     lectureNamedCommand.UpdateEnabledState = () => lectureNamedCommand.IsEnabled = !IsLecturesViewed && isLessonsSelect;
-                    NamedCommandData practiceNamedCommand = new NamedCommandData 
+                    NamedCommandData practiceNamedCommand = new NamedCommandData
                     {
                         Command = LoadPracticesViewModel,
                         IsEnabled = IsLecturesViewed && isLessonsSelect,

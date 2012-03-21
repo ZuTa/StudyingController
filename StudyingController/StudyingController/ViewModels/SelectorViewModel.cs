@@ -293,6 +293,7 @@ namespace StudyingController.ViewModels
             {
                 if (SelectorItemChanged != null)
                     SelectorItemChanged(this, new SelectorItemChangedEventArgs(entity));
+
                 OnPropertyChanged("Institutes");
                 OnPropertyChanged("Faculties");
                 OnPropertyChanged("Cathedras");

@@ -9,7 +9,7 @@ using EntitiesDTO;
 
 namespace StudyingController.ViewModels
 {
-    public abstract class EditableViewModel : BaseApplicationViewModel, IEditable, IRefreshable
+    public abstract class EditableViewModel : BaseSaveableViewModel, IRefreshable
     {
         #region Fields & Properties
 
@@ -22,9 +22,9 @@ namespace StudyingController.ViewModels
             get { return commandsRO; }
         }
 
-        public bool IsModified
+        public override bool IsModified
         {
-            get
+            get 
             {
                 return (CurrentWorkspace == null) ? false : CurrentWorkspace.IsModified;
             }
@@ -54,11 +54,11 @@ namespace StudyingController.ViewModels
             }
         }
 
-        public bool CanSave
+        public override bool CanSave
         {
-            get 
+            get
             {
-                return IsModified && (CurrentWorkspace == null ? false : CurrentWorkspace.IsValid); 
+                return base.CanSave && (CurrentWorkspace == null ? false : CurrentWorkspace.IsValid);
             }
         }
 
@@ -68,13 +68,6 @@ namespace StudyingController.ViewModels
             {
                 return !IsModified;
             }
-        }
-
-        private EditModes editMode;
-        public EditModes EditMode
-        {
-            get { return editMode; }
-            set { editMode = value; }
         }
 
         public abstract IProviderable EntitiesProvider { get; set; }
@@ -109,26 +102,33 @@ namespace StudyingController.ViewModels
 
         #region Commands
 
-
-
         #endregion
 
         #region Methods
 
-        public void Save()
+        public override void Save()
         {
             CurrentWorkspace.Save();
+        }
+
+        public override void Rollback()
+        {
+            CurrentWorkspace.Rollback();
+        }
+
+        protected override void LoadData()
+        {
+            Refresh();
+        }
+
+        protected override void ClearData()
+        {
         }
 
         public void Refresh()
         {
             EntitiesProvider.Refresh();
             // CurreWorkspace.Refresh();
-        }
-
-        public void Rollback()
-        {
-            CurrentWorkspace.Rollback();
         }
 
         protected abstract SaveableViewModel GetViewModel(BaseEntityDTO entity);
@@ -160,10 +160,23 @@ namespace StudyingController.ViewModels
 
         public void ChangeCurrentWorkspace(SaveableViewModel viewModel)
         {
-            UnsubscribeFromEvrents();
-            CurrentWorkspace = viewModel;
-            UpdateProperties();
-            SubscribeToEvents();
+            if (viewModel != null)
+            {
+                viewModel.Load();
+
+                UnsubscribeFromEvrents();
+
+                CurrentWorkspace = viewModel;
+
+                UpdateProperties();
+
+                SubscribeToEvents();
+            }
+            else
+            {
+                CurrentWorkspace = null;
+                UpdateProperties();
+            }
         }
 
         private void SubscribeToEvents()
@@ -198,11 +211,6 @@ namespace StudyingController.ViewModels
         #endregion
 
         #region Events
-
-        public event EventHandler ViewModified;
-
-        public event EventHandler ViewUnModified;
-
         #endregion
 
     }

@@ -10,12 +10,12 @@ using System.ComponentModel;
 
 namespace StudyingController.ViewModels
 {
-    public abstract class SaveableViewModel : BaseApplicationViewModel, IEditable, IRefreshable
+    public abstract class SaveableViewModel : BaseSaveableViewModel, IRefreshable
     {
         #region Fields & Properties
 
         protected bool isModified;
-        public bool IsModified
+        public override bool IsModified
         {
             get { return isModified; }
         }
@@ -25,19 +25,12 @@ namespace StudyingController.ViewModels
             get { return model.IsValid; }
         }
 
-        public bool CanSave
+        public override bool CanSave
         {
             get
             {
-                return IsModified && IsValid;
+                return base.CanSave && IsValid;
             }
-        }
-
-        private EditModes editMode;
-        public EditModes EditMode
-        {
-            get { return editMode; }
-            set { editMode = value; }
         }
 
         protected BaseEntityDTO originalEntity;
@@ -62,10 +55,6 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
-        public abstract void Save();
-
-        public abstract void Rollback();
-
         public abstract void Remove();
 
         protected abstract void DoRefresh();
@@ -78,14 +67,15 @@ namespace StudyingController.ViewModels
         protected virtual void SetModified()
         {
             isModified = true;
+
             OnViewModified(); 
         }
 
         protected virtual void SetUnModified()
         {
             isModified = false;
-            if (ViewUnModified != null) OnViewUnModified();
-            else UpdateProperties();
+
+            OnViewUnModified();            
         }
 
         protected virtual void UpdateProperties()
@@ -97,18 +87,18 @@ namespace StudyingController.ViewModels
                 (this as IAdditionalCommands).UpdateCommandsEnabledState();
         }
 
-        protected virtual void OnViewModified()
+        protected override void OnViewModified()
         {
-            if (ViewModified != null)
-                ViewModified(this, EventArgs.Empty);
-            else
-                UpdateProperties();
+            base.OnViewModified();
+
+            UpdateProperties();
         }
 
-        protected virtual void OnViewUnModified()
+        protected override void OnViewUnModified()
         {
-            if (ViewUnModified != null)
-                ViewUnModified(this, EventArgs.Empty);
+            base.OnViewUnModified();
+
+            UpdateProperties();
         }
 
         #endregion
@@ -123,9 +113,6 @@ namespace StudyingController.ViewModels
         #endregion
 
         #region Events
-
-        public event EventHandler ViewModified;
-        public event EventHandler ViewUnModified;
 
         #endregion
 

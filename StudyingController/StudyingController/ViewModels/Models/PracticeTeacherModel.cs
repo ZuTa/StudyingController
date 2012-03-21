@@ -7,7 +7,7 @@ using System.Collections.ObjectModel;
 
 namespace StudyingController.ViewModels.Models
 {
-    class PracticeTeacherModel:BaseModel, IDTOable<PracticeTeacherDTO>
+    public class PracticeTeacherModel : BaseModel, IDTOable<PracticeTeacherDTO>
     {
         #region Fields & Properties
 
@@ -44,7 +44,7 @@ namespace StudyingController.ViewModels.Models
         #region Constructors
 
         public PracticeTeacherModel(PracticeTeacherDTO pract)
-            :base(pract)
+            : base(pract)
         {
             Assign(pract);
         }
@@ -65,9 +65,9 @@ namespace StudyingController.ViewModels.Models
 
         public PracticeTeacherDTO ToDTO()
         {
-            return new PracticeTeacherDTO() 
-            { 
-                ID = this.ID ,
+            return new PracticeTeacherDTO()
+            {
+                ID = this.ID,
                 Practice = this.practice,
                 PracticeID = this.practice.ID,
                 TeacherID = this.TeacherID,

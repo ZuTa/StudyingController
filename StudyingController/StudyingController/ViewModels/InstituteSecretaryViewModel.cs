@@ -42,26 +42,16 @@ namespace StudyingController.ViewModels
             : base(userInterop, controllerInterop, dispatcher)
         {
             institutes = new List<InstituteDTO>();
-            Load();
 
-            originalEntity = new InstituteSecretaryDTO();
-            Model = new InstituteSecretaryModel(originalEntity as InstituteSecretaryDTO) { Role = UserRoles.InstituteSecretary };
-            this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+            originalEntity = new InstituteSecretaryDTO() { Role = UserRoles.InstituteSecretary };
         }
 
         public InstituteSecretaryViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, InstituteSecretaryDTO instituteSecretary)
             : base(userInterop, controllerInterop, dispatcher)
         {
             institutes = new List<InstituteDTO>();
-            Load();
 
             originalEntity = instituteSecretary;
-            instituteSecretary.Institute = (from institute in institutes
-                                        where institute.ID == OriginalInstituteSecretary.InstituteID
-                                        select institute).FirstOrDefault();
-
-            Model = new InstituteSecretaryModel(instituteSecretary);
-            Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         #endregion
@@ -95,9 +85,26 @@ namespace StudyingController.ViewModels
             SetUnModified();
         }
 
-        public void Load()
+        protected override void LoadData()
         {
             Institutes = ControllerInterop.Service.GetInstitutes(ControllerInterop.Session);
+
+            InstituteSecretaryDTO instituteSecretary = originalEntity as InstituteSecretaryDTO;
+            if (originalEntity.Exists())
+            {
+                instituteSecretary.Institute = (from institute in institutes
+                                                where institute.ID == OriginalInstituteSecretary.InstituteID
+                                                select institute).FirstOrDefault();
+            }
+
+            Model = new InstituteSecretaryModel(instituteSecretary);
+            Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+        }
+
+        protected override void ClearData()
+        {
+            if (Institutes != null)
+                Institutes.Clear();
         }
 
         #endregion

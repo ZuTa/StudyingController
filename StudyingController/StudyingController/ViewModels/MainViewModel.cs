@@ -98,7 +98,7 @@ namespace StudyingController.ViewModels
         {
             get
             {
-                return CurrentWorkspace is IEditable && (CurrentWorkspace as IEditable).EditMode == EditModes.Editable;
+                return CurrentWorkspace is BaseSaveableViewModel && (CurrentWorkspace as BaseSaveableViewModel).EditMode == EditModes.Editable;
             }
         }
 
@@ -367,6 +367,9 @@ namespace StudyingController.ViewModels
 
         private void PushWorkspace(BaseApplicationViewModel viewModel)
         {
+            if (viewModel is LoadableViewModel)
+                (viewModel as LoadableViewModel).Load();
+
             workspaces.Push(viewModel);
             SubscribeToEvents(viewModel);
 
@@ -399,12 +402,12 @@ namespace StudyingController.ViewModels
 
         private void SaveCurrentWorkspace()
         {
-            (CurrentWorkspace as IEditable).Save();
+            (CurrentWorkspace as BaseSaveableViewModel).Save();
         }
 
         private void RollbackCurrentWorkspace()
         {
-            (CurrentWorkspace as IEditable).Rollback();
+            (CurrentWorkspace as BaseSaveableViewModel).Rollback();
         }
 
         #endregion

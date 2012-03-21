@@ -10,7 +10,7 @@ using System.Windows.Threading;
 
 namespace StudyingController.ViewModels
 {
-    class PracticeTeacherViewModel:SaveableViewModel
+    public class PracticeTeacherViewModel : SaveableViewModel
     {
         #region Fields & Properties
 
@@ -18,6 +18,7 @@ namespace StudyingController.ViewModels
         {
             get { return originalEntity as PracticeTeacherDTO; }
         }
+
         public PracticeTeacherModel PracticeTeacher
         {
             get { return Model as PracticeTeacherModel; }
@@ -27,7 +28,7 @@ namespace StudyingController.ViewModels
         public ObservableCollection<StudentDTO> UnusedStudents
         {
             get { return unusedStudents; }
-            set 
+            set
             {
                 if (unusedStudents != value)
                 {
@@ -41,7 +42,7 @@ namespace StudyingController.ViewModels
         public ObservableCollection<StudentDTO> UsedStudents
         {
             get { return usedStudents; }
-            set 
+            set
             {
                 if (usedStudents != value)
                 {
@@ -67,9 +68,11 @@ namespace StudyingController.ViewModels
             : base(userInterop, controllerInterop, dispatcher)
         {
             this.originalEntity = new PracticeTeacherDTO();
+
             this.Model = new PracticeTeacherModel(originalEntity as PracticeTeacherDTO);
             this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
-            selector = new SelectorViewModel(userInterop, controllerInterop, dispatcher,true);
+
+            selector = new SelectorViewModel(userInterop, controllerInterop, dispatcher, true);
             selector.SelectorItemChanged += new EventHandler(selector_SelectorItemChanged);
         }
 
@@ -77,8 +80,10 @@ namespace StudyingController.ViewModels
             : base(userInterop, controllerInterop, dispatcher)
         {
             this.originalEntity = practiceTeacher;
+
             this.Model = new PracticeTeacherModel(practiceTeacher);
             this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+
             selector = new SelectorViewModel(userInterop, controllerInterop, dispatcher, ControllerInterop.Service.GetTeacher(ControllerInterop.Session, PracticeTeacher.TeacherID).Cathedra.Faculty, selector_SelectorItemChanged, true);
             selector.SelectorItemChanged += new EventHandler(selector_SelectorItemChanged);
         }
@@ -95,8 +100,11 @@ namespace StudyingController.ViewModels
         private void InitializeSubjects(BaseEntityDTO entity)
         {
             unusedStudents = new ObservableCollection<StudentDTO>();
+
             List<StudentDTO> students = ControllerInterop.Service.GetAllStudents(ControllerInterop.Session);
+
             UsedStudents = new ObservableCollection<StudentDTO>(PracticeTeacher.Students);
+
             foreach (StudentDTO student in students)
                 if (PracticeTeacher.Students.Find(s => s.ID == student.ID) == null)
                     UnusedStudents.Add(student);
@@ -104,20 +112,23 @@ namespace StudyingController.ViewModels
             if (entity is InstituteDTO)
             {
                 List<StudentDTO> instituteStudents;
+
                 if (entity.ID > 0)
                     instituteStudents = ControllerInterop.Service.GetInstituteStudents(ControllerInterop.Session, entity.ID);
                 else
                     instituteStudents = ControllerInterop.Service.GetAllStudents(ControllerInterop.Session);
-                   UsedStudents = new ObservableCollection<StudentDTO>((from s in usedStudents
-                                                                         where instituteStudents.Find(st=> st.ID == s.ID) != null
-                                                                         select s).ToList());
-                    UnusedStudents = new ObservableCollection<StudentDTO>((from s in unusedStudents
-                                                                           where instituteStudents.Find(st => st.ID == s.ID) != null
-                                                                           select s).ToList());
+
+                UsedStudents = new ObservableCollection<StudentDTO>((from s in usedStudents
+                                                                     where instituteStudents.Find(st => st.ID == s.ID) != null
+                                                                     select s).ToList());
+                UnusedStudents = new ObservableCollection<StudentDTO>((from s in unusedStudents
+                                                                       where instituteStudents.Find(st => st.ID == s.ID) != null
+                                                                       select s).ToList());
             }
             else if (entity is FacultyDTO)
             {
                 List<StudentDTO> facultyStudents = ControllerInterop.Service.GetFacultyStudents(ControllerInterop.Session, entity.ID);
+
                 UsedStudents = new ObservableCollection<StudentDTO>((from s in usedStudents
                                                                      where facultyStudents.Find(st => st.ID == s.ID) != null
                                                                      select s).ToList());
@@ -128,6 +139,7 @@ namespace StudyingController.ViewModels
             else if (entity is CathedraDTO)
             {
                 List<StudentDTO> cathedraStudents = ControllerInterop.Service.GetCathedraStudents(ControllerInterop.Session, entity.ID);
+
                 UsedStudents = new ObservableCollection<StudentDTO>((from s in usedStudents
                                                                      where cathedraStudents.Find(st => st.ID == s.ID) != null
                                                                      select s).ToList());
@@ -138,6 +150,7 @@ namespace StudyingController.ViewModels
             else if (entity is GroupDTO)
             {
                 List<StudentDTO> groupStudents = ControllerInterop.Service.GetGroupStudents(ControllerInterop.Session, entity.ID);
+
                 UsedStudents = new ObservableCollection<StudentDTO>((from s in usedStudents
                                                                      where groupStudents.Find(st => st.ID == s.ID) != null
                                                                      select s).ToList());
@@ -145,13 +158,15 @@ namespace StudyingController.ViewModels
                                                                        where groupStudents.Find(st => st.ID == s.ID) != null
                                                                        select s).ToList());
             }
+
             UsedStudents.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(UsedStudents_CollectionChanged);
-            UnusedStudents.CollectionChanged+=new System.Collections.Specialized.NotifyCollectionChangedEventHandler(UsedStudents_CollectionChanged);
+
+            UnusedStudents.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(UsedStudents_CollectionChanged);
         }
 
         public override void Remove()
         {
-            
+
         }
 
         public override void Rollback()
@@ -177,6 +192,21 @@ namespace StudyingController.ViewModels
             SetUnModified();
             Selector.Helper.Entity = Selector.CurrentEntity;
         }
+
+        protected override void LoadData()
+        {
+            //TODO: 
+        }
+
+        protected override void ClearData()
+        {
+            if (UsedStudents != null)
+                UsedStudents.Clear();
+
+            if (UnusedStudents != null)
+                unusedStudents.Clear();
+        }
+
         #endregion
 
         #region Callbacks
@@ -184,7 +214,9 @@ namespace StudyingController.ViewModels
         private void UsedStudents_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             SetModified();
+
             Selector.IsEnabled = false;
+
             OnPropertyChanged("UsedStudents");
             OnPropertyChanged("UnusedStudents");
         }

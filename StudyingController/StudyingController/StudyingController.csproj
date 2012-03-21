@@ -73,6 +73,7 @@
     <Compile Include="Converters\PictureEnumToPictureConverter.cs" />
     <Compile Include="Converters\UniversalToLocalDateConverter.cs" />
     <Compile Include="ViewModels\AttachmentsViewModel.cs" />
+    <Compile Include="ViewModels\BaseSaveableViewModel.cs" />
     <Compile Include="ViewModels\BaseTreeViewModel.cs" />
     <Compile Include="ViewModels\CathedraViewModel.cs" />
     <Compile Include="ViewModels\ControlChatViewModel.cs" />
@@ -82,7 +83,6 @@
     <Compile Include="ViewModels\FacultyViewModel.cs" />
     <Compile Include="ViewModels\GroupViewModel.cs" />
     <Compile Include="ViewModels\IAdditionalCommands.cs" />
-    <Compile Include="ViewModels\IEditable.cs" />
     <Compile Include="ViewModels\IManipulateable.cs" />
     <Compile Include="ViewModels\InstituteAdminViewModel.cs" />
     <Compile Include="ViewModels\InstituteSecretaryViewModel.cs" />

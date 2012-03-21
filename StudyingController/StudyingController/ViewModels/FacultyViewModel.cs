@@ -43,26 +43,16 @@ namespace StudyingController.ViewModels
             : base(userInterop, controllerInterop, dispatcher)
         {
             institutes = new List<InstituteDTO>();
-            Load();
 
             originalEntity = new FacultyDTO();
-            Model = new FacultyModel(originalEntity as FacultyDTO);
-            Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         public FacultyViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, FacultyDTO faculty)
             : base(userInterop, controllerInterop, dispatcher)
         {
             institutes = new List<InstituteDTO>();
-            Load();
 
             originalEntity = faculty;
-            faculty.Institute = (from institute in institutes
-                                 where institute.ID == OriginalFaculty.InstituteID
-                                 select institute).FirstOrDefault();
-
-            Model = new FacultyModel(faculty);
-            Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         #endregion
@@ -111,9 +101,27 @@ namespace StudyingController.ViewModels
             SetUnModified();
         }
 
-        public void Load()
+        protected override void LoadData()
         {
             Institutes = ControllerInterop.Service.GetInstitutes(ControllerInterop.Session);
+
+            FacultyDTO faculty = originalEntity as FacultyDTO;
+
+            if (faculty.Exists())
+            {
+                faculty.Institute = (from institute in institutes
+                                     where institute.ID == OriginalFaculty.InstituteID
+                                     select institute).FirstOrDefault();
+            }
+
+            Model = new FacultyModel(faculty);
+            Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+        }
+
+        protected override void ClearData()
+        {
+            if (institutes != null)
+                institutes.Clear();
         }
 
         public override void Save()

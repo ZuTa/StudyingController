@@ -67,8 +67,10 @@ namespace StudyingController.ViewModels
             : base(userInterop, controllerInterop, dispatcher)
         {
             this.originalEntity = new LectureDTO();
+
             this.Model = new LectureModel(originalEntity as LectureDTO);
             this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+
             selector = new SelectorViewModel(userInterop, controllerInterop, dispatcher, false);
             selector.SelectorItemChanged += new EventHandler(selector_SelectorItemChanged);
         }
@@ -77,8 +79,10 @@ namespace StudyingController.ViewModels
             : base(userInterop, controllerInterop, dispatcher)
         {
             this.originalEntity = lecture;
+
             this.Model = new LectureModel(lecture);
             this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+
             selector = new SelectorViewModel(userInterop, controllerInterop, dispatcher, ControllerInterop.Service.GetTeacher(ControllerInterop.Session, Lecture.TeacherID).Cathedra.Faculty, selector_SelectorItemChanged, false);
         }
 
@@ -94,15 +98,17 @@ namespace StudyingController.ViewModels
         private void InitializeGroups(BaseEntityDTO entity)
         {
             unusedGroups = new ObservableCollection<GroupDTO>();
+
             List<GroupDTO> groups = ControllerInterop.Service.GetAllGroups(ControllerInterop.Session);
+
             UsedGroups = new ObservableCollection<GroupDTO>(Lecture.Groups);
+
             foreach (GroupDTO group in groups)
                 if (Lecture.Groups.Find(g => g.ID == group.ID) == null)
                     UnusedGroups.Add(group);
 
             if (entity is InstituteDTO)
             {
-                
                 List<GroupDTO> instituteGroups;
                 if (entity.ID > 0)
                     instituteGroups = ControllerInterop.Service.GetInstituteGroups(ControllerInterop.Session, entity.ID);
@@ -163,10 +169,21 @@ namespace StudyingController.ViewModels
                 if (Lecture.Groups.Find(g => g.ID == group.ID) != null)
                     Lecture.Groups.Remove(group);
             }
+
             ControllerInterop.Service.SaveLecture(ControllerInterop.Session, Lecture.ToDTO());
             SetUnModified();
+
             Selector.Helper.Entity = Selector.CurrentEntity;
         }
+
+        protected override void LoadData()
+        {
+        }
+
+        protected override void ClearData()
+        {
+        }
+
         #endregion
 
         #region Callbacks
@@ -174,7 +191,9 @@ namespace StudyingController.ViewModels
         private void UsedGroups_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             SetModified();
+
             Selector.IsEnabled = false;
+
             OnPropertyChanged("UsedGroups");
             OnPropertyChanged("UnusedGroups");
         }

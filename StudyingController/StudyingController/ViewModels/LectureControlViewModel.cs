@@ -87,6 +87,14 @@ namespace StudyingController.ViewModels
             throw new NotImplementedException();
         }
 
+        protected override void LoadData()
+        {
+        }
+
+        protected override void ClearData()
+        {
+        }
+
         #endregion
     }
 }

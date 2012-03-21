@@ -43,26 +43,16 @@ namespace StudyingController.ViewModels
             : base(userInterop, controllerInterop, dispatcher)
         {
             institutes = new List<InstituteDTO>();
-            Load();
 
-            originalEntity = new InstituteAdminDTO();
-            Model = new InstituteAdminModel(originalEntity as InstituteAdminDTO) { Role = UserRoles.InstituteAdmin };
-            this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+            originalEntity = new InstituteAdminDTO() { Role = UserRoles.InstituteAdmin };
         }
 
         public InstituteAdminViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, InstituteAdminDTO instituteAdmin)
             : base(userInterop, controllerInterop, dispatcher)
         {
             institutes = new List<InstituteDTO>();
-            Load();
 
             originalEntity = instituteAdmin;
-            instituteAdmin.Institute = (from institute in institutes
-                                        where institute.ID == OriginalInstituteAdmin.InstituteID
-                                        select institute).FirstOrDefault();
-
-            Model = new InstituteAdminModel(instituteAdmin);
-            Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
 
         #endregion
@@ -96,9 +86,27 @@ namespace StudyingController.ViewModels
             SetUnModified();
         }
 
-        public void Load()
+        protected override void LoadData()
         {
             Institutes = ControllerInterop.Service.GetInstitutes(ControllerInterop.Session);
+
+            InstituteAdminDTO instituteAdmin = originalEntity as InstituteAdminDTO;
+
+            if (originalEntity.Exists())
+            {
+                instituteAdmin.Institute = (from institute in institutes
+                                            where institute.ID == OriginalInstituteAdmin.InstituteID
+                                            select institute).FirstOrDefault();
+            }
+
+            Model = new InstituteAdminModel(instituteAdmin);
+            Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+        }
+
+        protected override void ClearData()
+        {
+            if (institutes != null)
+                Institutes.Clear();
         }
 
         #endregion

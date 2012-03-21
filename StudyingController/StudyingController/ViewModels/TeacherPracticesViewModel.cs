@@ -10,9 +10,9 @@ using System.Windows.Threading;
 
 namespace StudyingController.ViewModels
 {
-    class TeacherPracticesViewModel:SaveableViewModel
+    public class TeacherPracticesViewModel : SaveableViewModel
     {
-         #region Fields & Properties
+        #region Fields & Properties
 
         public TeacherDTO OriginalTeacher
         {
@@ -42,24 +42,22 @@ namespace StudyingController.ViewModels
 
         #region Constructors
 
-         public TeacherPracticesViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
+        public TeacherPracticesViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)
         {
             this.originalEntity = new PracticeTeacherDTO();
+
             this.Model = new TeacherModel(originalEntity as TeacherDTO);
             this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
-            InitializeSubjects();
-            UsedSubjects.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(usedSubjects_CollectionChanged);
         }
 
         public TeacherPracticesViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, TeacherDTO teacher)
             : base(userInterop, controllerInterop, dispatcher)
         {
             this.originalEntity = teacher;
+
             this.Model = new TeacherModel(teacher);
-            this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
-            InitializeSubjects();
-            UsedSubjects.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(usedSubjects_CollectionChanged);
+            this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);            
         }
 
         #endregion
@@ -73,21 +71,42 @@ namespace StudyingController.ViewModels
 
         private void InitializeSubjects()
         {
+            if (UsedSubjects != null)
+                UsedSubjects.CollectionChanged -= usedSubjects_CollectionChanged;
+
             unusedSubjects = new ObservableCollection<SubjectDTO>();
-            
+
             List<SubjectDTO> subjects = ControllerInterop.Service.GetSubjects(ControllerInterop.Session, OriginalTeacher.CathedraID);
-            List<SubjectDTO> used =  ControllerInterop.Service.GetTeacherPracticeSubjects(ControllerInterop.Session, OriginalTeacher.ID);
+            List<SubjectDTO> used = ControllerInterop.Service.GetTeacherPracticeSubjects(ControllerInterop.Session, OriginalTeacher.ID);
+
             foreach (SubjectDTO subject in subjects)
             {
                 if (used.Find(s => s.ID == subject.ID) == null)
-                    unusedSubjects.Add(subject); 
+                    unusedSubjects.Add(subject);
             }
-            usedSubjects = new ObservableCollection<SubjectDTO>(used);
+
+            UsedSubjects = new ObservableCollection<SubjectDTO>(used);
+
+            UsedSubjects.CollectionChanged += usedSubjects_CollectionChanged;
+        }
+
+        protected override void LoadData()
+        {
+            InitializeSubjects();
+        }
+
+        protected override void ClearData()
+        {
+            if (UsedSubjects != null)
+                UsedSubjects.Clear();
+
+            if (UnusedSubjects != null)
+                UnusedSubjects.Clear();
         }
 
         public override void Remove()
         {
-            
+
         }
 
         public override void Rollback()
@@ -102,14 +121,19 @@ namespace StudyingController.ViewModels
             SetUnModified();
         }
 
+        #endregion
 
-        void usedSubjects_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        #region Callbacks
+
+        private void usedSubjects_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             SetModified();
+
             OnPropertyChanged("UsedSubjects");
             OnPropertyChanged("UnusedSubjects");
         }
+
         #endregion
     }
-    
+
 }
