@@ -20,6 +20,21 @@ namespace StudyingController.ViewModels
             set { lectureID = value; }
         }
 
+        public bool IsUserStudent
+        {
+            get
+            {
+                return ControllerInterop.User.Role == UserRoles.Student;
+            }
+        }
+
+        private decimal mark;
+        public decimal Mark
+        {
+            get { return mark; }
+            set { mark = value; }
+        }
+
         private ControlChatViewModel chatViewModel;
         public ControlChatViewModel ChatViewModel
         {
@@ -53,7 +68,9 @@ namespace StudyingController.ViewModels
         {
             originalEntity = control;
             this.lectureID = lectureID;
-            
+
+            if (IsUserStudent) mark = ControllerInterop.Service.GetLectureMark(ControllerInterop.Session, ControllerInterop.User.ID, control.ID);
+
             Model = new ControlModel(control);
 
             ChatViewModel = new ControlChatViewModel(UserInterop, ControllerInterop, Dispatcher, control);

@@ -18,6 +18,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
@@ -39,10 +40,15 @@
             <TextBlock Grid.Row="3" Grid.Column="0" Text="Максимальний бал:" Style="{StaticResource TextBlockStyle}"/>
             <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Control.MaxMark, UpdateSourceTrigger=PropertyChanged,
                                                             ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" Style="{StaticResource ValidationTextBoxToolTipStyle}"/>
+            <StackPanel Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Center" Orientation="Horizontal" Visibility="{Binding Path=IsUserStudent, Converter={StaticResource B2V}}">
+                <TextBlock Text="Оцінка: "/>
+                <TextBlock Text="{Binding Mark}"/>
+            </StackPanel>
         </Grid>
 
         <Expander Grid.Column="1" ToolTip="Запитання-відповіді" ExpandDirection="Right" IsExpanded="True">
             <ContentControl Content="{Binding ChatViewModel}"/>
         </Expander>
+        
     </Grid>
 </UserControl>
