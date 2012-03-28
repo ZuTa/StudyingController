@@ -69,11 +69,8 @@ namespace StudyingController.ViewModels
         {
             this.originalEntity = new PracticeTeacherDTO();
 
-            this.Model = new PracticeTeacherModel(originalEntity as PracticeTeacherDTO);
-            this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
 
-            selector = new SelectorViewModel(userInterop, controllerInterop, dispatcher, true);
-            selector.SelectorItemChanged += new EventHandler(selector_SelectorItemChanged);
+            this.selector = new SelectorViewModel(UserInterop, ControllerInterop, Dispatcher, true);
         }
 
         public PracticeTeacherViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, PracticeTeacherDTO practiceTeacher)
@@ -81,11 +78,7 @@ namespace StudyingController.ViewModels
         {
             this.originalEntity = practiceTeacher;
 
-            this.Model = new PracticeTeacherModel(practiceTeacher);
-            this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
-
-            selector = new SelectorViewModel(userInterop, controllerInterop, dispatcher, ControllerInterop.Service.GetTeacher(ControllerInterop.Session, PracticeTeacher.TeacherID).Cathedra.Faculty, selector_SelectorItemChanged, true);
-            selector.SelectorItemChanged += new EventHandler(selector_SelectorItemChanged);
+            this.selector = new SelectorViewModel(userInterop, controllerInterop, dispatcher, ControllerInterop.Service.GetTeacher(ControllerInterop.Session, practiceTeacher.TeacherID).Cathedra.Faculty, selector_SelectorItemChanged, true);
         }
 
         #endregion
@@ -102,66 +95,68 @@ namespace StudyingController.ViewModels
             unusedStudents = new ObservableCollection<StudentDTO>();
 
             List<StudentDTO> students = ControllerInterop.Service.GetAllStudents(ControllerInterop.Session);
-
-            UsedStudents = new ObservableCollection<StudentDTO>(PracticeTeacher.Students);
-
-            foreach (StudentDTO student in students)
-                if (PracticeTeacher.Students.Find(s => s.ID == student.ID) == null)
-                    UnusedStudents.Add(student);
-
-            if (entity is InstituteDTO)
+            if (PracticeTeacher != null)
             {
-                List<StudentDTO> instituteStudents;
+                UsedStudents = new ObservableCollection<StudentDTO>(PracticeTeacher.Students);
 
-                if (entity.ID > 0)
-                    instituteStudents = ControllerInterop.Service.GetInstituteStudents(ControllerInterop.Session, entity.ID);
-                else
-                    instituteStudents = ControllerInterop.Service.GetAllStudents(ControllerInterop.Session);
+                foreach (StudentDTO student in students)
+                    if (PracticeTeacher.Students.Find(s => s.ID == student.ID) == null)
+                        UnusedStudents.Add(student);
 
-                UsedStudents = new ObservableCollection<StudentDTO>((from s in usedStudents
-                                                                     where instituteStudents.Find(st => st.ID == s.ID) != null
-                                                                     select s).ToList());
-                UnusedStudents = new ObservableCollection<StudentDTO>((from s in unusedStudents
-                                                                       where instituteStudents.Find(st => st.ID == s.ID) != null
-                                                                       select s).ToList());
+                if (entity is InstituteDTO)
+                {
+                    List<StudentDTO> instituteStudents;
+
+                    if (entity.ID > 0)
+                        instituteStudents = ControllerInterop.Service.GetInstituteStudents(ControllerInterop.Session, entity.ID);
+                    else
+                        instituteStudents = ControllerInterop.Service.GetAllStudents(ControllerInterop.Session);
+
+                    UsedStudents = new ObservableCollection<StudentDTO>((from s in usedStudents
+                                                                         where instituteStudents.Find(st => st.ID == s.ID) != null
+                                                                         select s).ToList());
+                    UnusedStudents = new ObservableCollection<StudentDTO>((from s in unusedStudents
+                                                                           where instituteStudents.Find(st => st.ID == s.ID) != null
+                                                                           select s).ToList());
+                }
+                else if (entity is FacultyDTO)
+                {
+                    List<StudentDTO> facultyStudents = ControllerInterop.Service.GetFacultyStudents(ControllerInterop.Session, entity.ID);
+
+                    UsedStudents = new ObservableCollection<StudentDTO>((from s in usedStudents
+                                                                         where facultyStudents.Find(st => st.ID == s.ID) != null
+                                                                         select s).ToList());
+                    UnusedStudents = new ObservableCollection<StudentDTO>((from s in unusedStudents
+                                                                           where facultyStudents.Find(st => st.ID == s.ID) != null
+                                                                           select s).ToList());
+                }
+                else if (entity is CathedraDTO)
+                {
+                    List<StudentDTO> cathedraStudents = ControllerInterop.Service.GetCathedraStudents(ControllerInterop.Session, entity.ID);
+
+                    UsedStudents = new ObservableCollection<StudentDTO>((from s in usedStudents
+                                                                         where cathedraStudents.Find(st => st.ID == s.ID) != null
+                                                                         select s).ToList());
+                    UnusedStudents = new ObservableCollection<StudentDTO>((from s in unusedStudents
+                                                                           where cathedraStudents.Find(st => st.ID == s.ID) != null
+                                                                           select s).ToList());
+                }
+                else if (entity is GroupDTO)
+                {
+                    List<StudentDTO> groupStudents = ControllerInterop.Service.GetGroupStudents(ControllerInterop.Session, entity.ID);
+
+                    UsedStudents = new ObservableCollection<StudentDTO>((from s in usedStudents
+                                                                         where groupStudents.Find(st => st.ID == s.ID) != null
+                                                                         select s).ToList());
+                    UnusedStudents = new ObservableCollection<StudentDTO>((from s in unusedStudents
+                                                                           where groupStudents.Find(st => st.ID == s.ID) != null
+                                                                           select s).ToList());
+                }
+
+                UsedStudents.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(UsedStudents_CollectionChanged);
+
+                UnusedStudents.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(UsedStudents_CollectionChanged);
             }
-            else if (entity is FacultyDTO)
-            {
-                List<StudentDTO> facultyStudents = ControllerInterop.Service.GetFacultyStudents(ControllerInterop.Session, entity.ID);
-
-                UsedStudents = new ObservableCollection<StudentDTO>((from s in usedStudents
-                                                                     where facultyStudents.Find(st => st.ID == s.ID) != null
-                                                                     select s).ToList());
-                UnusedStudents = new ObservableCollection<StudentDTO>((from s in unusedStudents
-                                                                       where facultyStudents.Find(st => st.ID == s.ID) != null
-                                                                       select s).ToList());
-            }
-            else if (entity is CathedraDTO)
-            {
-                List<StudentDTO> cathedraStudents = ControllerInterop.Service.GetCathedraStudents(ControllerInterop.Session, entity.ID);
-
-                UsedStudents = new ObservableCollection<StudentDTO>((from s in usedStudents
-                                                                     where cathedraStudents.Find(st => st.ID == s.ID) != null
-                                                                     select s).ToList());
-                UnusedStudents = new ObservableCollection<StudentDTO>((from s in unusedStudents
-                                                                       where cathedraStudents.Find(st => st.ID == s.ID) != null
-                                                                       select s).ToList());
-            }
-            else if (entity is GroupDTO)
-            {
-                List<StudentDTO> groupStudents = ControllerInterop.Service.GetGroupStudents(ControllerInterop.Session, entity.ID);
-
-                UsedStudents = new ObservableCollection<StudentDTO>((from s in usedStudents
-                                                                     where groupStudents.Find(st => st.ID == s.ID) != null
-                                                                     select s).ToList());
-                UnusedStudents = new ObservableCollection<StudentDTO>((from s in unusedStudents
-                                                                       where groupStudents.Find(st => st.ID == s.ID) != null
-                                                                       select s).ToList());
-            }
-
-            UsedStudents.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(UsedStudents_CollectionChanged);
-
-            UnusedStudents.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(UsedStudents_CollectionChanged);
         }
 
         public override void Remove()
@@ -195,16 +190,23 @@ namespace StudyingController.ViewModels
 
         protected override void LoadData()
         {
-            //TODO: 
+            Model = new PracticeTeacherModel(originalEntity as PracticeTeacherDTO);
+            Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+
+            selector.SelectorItemChanged += new EventHandler(selector_SelectorItemChanged);
+
+            selector.UpdateProperties(selector.Helper.Entity, false);
         }
 
         protected override void ClearData()
         {
-            if (UsedStudents != null)
-                UsedStudents.Clear();
+            if(selector!=null)
+                selector.SelectorItemChanged -= new EventHandler(selector_SelectorItemChanged);
 
+            if (UsedStudents != null)
+                UsedStudents = null;
             if (UnusedStudents != null)
-                unusedStudents.Clear();
+                UnusedStudents = null;
         }
 
         #endregion
