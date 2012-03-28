@@ -9,12 +9,13 @@ namespace StudyingControllerEntityModel
     public partial class PracticeControl
     {
         #region Constructors
-        
-        public PracticeControl(ControlDTO control)
-            :base(control)
+
+        public PracticeControl(int practiceID, ControlDTO control)
+            : base(control)
         {
- 
+            PracticeID = practiceID;
         }
+
 
         public PracticeControl()
             : base()

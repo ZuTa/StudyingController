@@ -145,7 +145,9 @@ namespace StudyingController.ViewModels
 
         private void LoadPractices(int userID, TreeNode parentNode)
         {
-            List<PracticeTeacherDTO> practicesTeacher = ControllerInterop.Service.GetPracticesTeacher(ControllerInterop.Session, userID);
+            List<PracticeTeacherDTO> practicesTeacher;
+            if (ControllerInterop.User.Role == UserRoles.Student) practicesTeacher = ControllerInterop.Service.GetStudentPractices(ControllerInterop.Session, userID);
+            else practicesTeacher = ControllerInterop.Service.GetPracticesTeacher(ControllerInterop.Session, userID);
             foreach (var practice in practicesTeacher)
             {
                 lock (Tree)

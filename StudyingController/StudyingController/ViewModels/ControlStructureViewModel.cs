@@ -80,6 +80,7 @@ namespace StudyingController.ViewModels
             if (WorkspaceChanged != null)
             {
                 if (entitiesProvider.CurrentEntity is LectureDTO && model is ControlModel) WorkspaceChanged(new LectureControlViewModel(UserInterop, ControllerInterop, Dispatcher, (model as ControlModel).ToDTO(), entitiesProvider.CurrentEntity.ID) { EditMode = ControllerInterop.User.Role == UserRoles.Student ? EditModes.ReadOnly : EditModes.Editable });
+                else if (entitiesProvider.CurrentEntity is PracticeTeacherDTO && model is ControlModel) WorkspaceChanged(new PracticeControlViewModel(UserInterop, ControllerInterop, Dispatcher, (model as ControlModel).ToDTO(), (entitiesProvider.CurrentEntity as PracticeTeacherDTO).PracticeID) { EditMode = ControllerInterop.User.Role == UserRoles.Student ? EditModes.ReadOnly : EditModes.Editable });
             }
         }
 

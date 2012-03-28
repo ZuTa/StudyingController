@@ -231,5 +231,22 @@ namespace StudyingControllerService
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
         void DeleteAttachment(Session session, int attachmentID);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        decimal GetLectureMark(Session session, int studentID, int controlID);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        decimal GetPracticeMark(Session session, int studentID, int controlID);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        void SavePracticeControl(Session session, ControlDTO control, int practiceID);
+       
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        List<PracticeTeacherDTO> GetStudentPractices(Session session, int studentID);
+
     }
 }

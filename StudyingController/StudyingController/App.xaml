@@ -120,7 +120,11 @@
             <DataTemplate DataType="{x:Type vm:ControlChatViewModel}">
                 <v:ControlChatView/>
             </DataTemplate>
-
+            
+            <DataTemplate DataType="{x:Type vm:PracticeControlViewModel}">
+                <v:PracticeControlView/>
+            </DataTemplate>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

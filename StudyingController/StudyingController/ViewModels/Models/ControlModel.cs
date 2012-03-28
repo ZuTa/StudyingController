@@ -90,11 +90,17 @@ namespace StudyingController.ViewModels.Models
         private bool IsDescriptionValid(out string error)
         {
             error = null;
-            if (Description == null ||  Description.Length > 300)
+            if (Description == null ||  Description.Length == 0)
+            {
+                error = Properties.Resources.ErrorFieldEmpty;
+                return false;
+            }
+            else if (Description.Length > 300)
             {
                 error = Properties.Resources.ErrorFieldGreater;
                 return false;
             }
+
             return true;
         }
 

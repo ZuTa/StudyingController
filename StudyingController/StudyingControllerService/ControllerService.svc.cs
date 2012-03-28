@@ -1500,7 +1500,7 @@ namespace StudyingControllerService
                     Practice practice = context.Practices.Include("PracticeControls").FirstOrDefault(p => p.ID == practiceID);
                     
                     foreach (ControlDTO control in controls)
-                        if (practice.PracticeControls.FirstOrDefault(pc => pc.ID == control.ID) == null) context.AddToControls(new PracticeControl(control) { PracticeID = practiceID });
+                        if (practice.PracticeControls.FirstOrDefault(pc => pc.ID == control.ID) == null) context.AddToControls(new PracticeControl(practiceID, control));
                         else
                         {
                             var query = context.Controls.FirstOrDefault(c => c.ID == control.ID);
@@ -1692,6 +1692,115 @@ namespace StudyingControllerService
            {
                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
            }
+       }
+
+       public decimal GetLectureMark(Session session, int studentID, int controlID)
+       {
+           try
+           {
+               CheckSession(session);
+               using (UniversityEntities context = new UniversityEntities())
+               {
+                   var query = context.Controls.FirstOrDefault(p => p.ID == controlID);
+                   if (query != null)
+                   {
+                       LectureControl control = query as LectureControl;
+                       context.LoadProperty(control, "LectureControlMarks");
+
+                       LectureControlMark mark = control.LectureControlMarks.FirstOrDefault(m => m.StudentID == studentID);
+
+                       if (mark != null) return mark.MarkValue;
+                   }
+               }
+
+               return 0;
+           }
+           catch (Exception ex)
+           {
+               throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+           }
+       }
+
+       public decimal GetPracticeMark(Session session, int studentID, int controlID)
+       {
+           try
+           {
+               CheckSession(session);
+               using (UniversityEntities context = new UniversityEntities())
+               {
+                   var query = context.Controls.FirstOrDefault(p => p.ID == controlID);
+                   if (query != null)
+                   {
+                       PracticeControl control = query as PracticeControl;
+                       context.LoadProperty(control, "PracticeControlMarks");
+
+                       PracticeControlMark mark = control.PracticeControlMarks.FirstOrDefault(m => m.StudentID == studentID);
+
+                       if (mark != null) return mark.MarkValue;
+                   }
+               }
+
+               return 0;
+           }
+           catch (Exception ex)
+           {
+               throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+           }
+
+       }
+
+       public void SavePracticeControl(Session session, ControlDTO control, int practiceID)
+       {
+           try
+           {
+               CheckSession(session);
+               using (UniversityEntities context = new UniversityEntities())
+               {
+                   var item = context.Controls.FirstOrDefault(c => c.ID == control.ID);
+                   if (item == null)
+                       context.AddToControls(new PracticeControl(practiceID, control));
+                   else
+                       item.Assign(control);
+
+                   context.SaveChanges();
+               }
+           }
+           catch (Exception ex)
+           {
+               throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+           }
+       }
+
+       public List<PracticeTeacherDTO> GetStudentPractices(Session session, int studentID)
+       {
+           try
+           {
+               CheckSession(session);
+               List<PracticeTeacherDTO> result = new List<PracticeTeacherDTO>();
+               using (UniversityEntities context = new UniversityEntities())
+               {
+                   foreach (var practice in context.PracticeTeachers.Include("Practice").Include("Students").Include("Teacher"))
+                       if (practice.Students.FirstOrDefault(s => s.ID == studentID) != null)
+                       {
+                           context.LoadProperty(practice.Practice, "Subject");
+
+                           foreach (var student in practice.Students)
+                           {
+                               context.LoadProperty(student, "UserInformation");
+                               context.LoadProperty(student, "Group");
+                           }
+
+                           result.Add(practice.ToDTO());
+                       }
+               }
+
+               return result;
+           }
+           catch (Exception ex)
+           {
+               throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+           }
+
        }
 
     }
