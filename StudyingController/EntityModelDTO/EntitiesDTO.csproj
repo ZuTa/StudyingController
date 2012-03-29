@@ -60,9 +60,11 @@
     <Compile Include="InstituteDTO.cs" />
     <Compile Include="InstituteSecretaryDTO.cs" />
     <Compile Include="ITextable.cs" />
+    <Compile Include="LectureControlDTO.cs" />
     <Compile Include="LectureDTO.cs" />
     <Compile Include="NamedEntityDTO.cs" />
     <Compile Include="PluralizeNameAttribute.cs" />
+    <Compile Include="PracticeControlDTO.cs" />
     <Compile Include="PracticeDTO.cs" />
     <Compile Include="PracticeTeacherDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

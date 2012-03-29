@@ -90,7 +90,7 @@
     <Compile Include="ViewModels\IProviderable.cs" />
     <Compile Include="ViewModels\IRefreshable.cs" />
     <Compile Include="ViewModels\LectureControlViewModel.cs" />
-    <Compile Include="ViewModels\LessonControlsViewModel.cs" />
+    <Compile Include="ViewModels\LectureControlsViewModel.cs" />
     <Compile Include="ViewModels\LessonTreeViewModel.cs" />
     <Compile Include="ViewModels\LessonStructureViewModel.cs" />
     <Compile Include="ViewModels\LectureViewModel.cs" />
@@ -109,8 +109,10 @@
     <Compile Include="ViewModels\Models\InstituteAdminModel.cs" />
     <Compile Include="ViewModels\Models\InstituteModel.cs" />
     <Compile Include="ViewModels\Models\InstituteSecretaryModel.cs" />
+    <Compile Include="ViewModels\Models\LectureControlModel.cs" />
     <Compile Include="ViewModels\Models\LectureModel.cs" />
     <Compile Include="ViewModels\Models\NamedModel.cs" />
+    <Compile Include="ViewModels\Models\PracticeControlModel.cs" />
     <Compile Include="ViewModels\Models\PracticeTeacherModel.cs" />
     <Compile Include="ViewModels\Models\SpecializationModel.cs" />
     <Compile Include="ViewModels\Models\StudentModel.cs" />
@@ -119,6 +121,7 @@
     <Compile Include="ViewModels\Models\TeacherModel.cs" />
     <Compile Include="ViewModels\Models\UserInformationModel.cs" />
     <Compile Include="Common\ValidateableAttribute.cs" />
+    <Compile Include="ViewModels\PracticeControlsViewModel.cs" />
     <Compile Include="ViewModels\PracticeControlViewModel.cs" />
     <Compile Include="ViewModels\SelectorViewModel.cs" />
     <Compile Include="ViewModels\TeacherPracticesViewModel.cs" />
@@ -410,7 +413,9 @@
     <None Include="Properties\DataSources\EntitiesDTO.FacultyDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.GroupDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.InstituteDTO.datasource" />
+    <None Include="Properties\DataSources\EntitiesDTO.LectureControlDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.LectureDTO.datasource" />
+    <None Include="Properties\DataSources\EntitiesDTO.PracticeControlDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.PracticeTeacherDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.SpecializationDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.StudentDTO.datasource" />

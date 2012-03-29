@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using StudyingController.ViewModels.Models;
 using EntitiesDTO;
+using System.Collections.ObjectModel;
 using StudyingController.Common;
 using System.Windows.Threading;
-using StudyingController.ViewModels.Models;
-using System.Collections.ObjectModel;
 
 namespace StudyingController.ViewModels
 {
-    public class LessonControlsViewModel : SaveableViewModel
+    public class PracticeControlsViewModel : SaveableViewModel
     {
         #region Fields & Properties
 
@@ -27,23 +27,23 @@ namespace StudyingController.ViewModels
             get { return Model; }
         }
 
-        private ControlModel currentControl;
-        public ControlModel CurrentControl
+        private PracticeControlModel currentControl;
+        public PracticeControlModel CurrentControl
         {
             get { return currentControl; }
-            set 
-            { 
+            set
+            {
                 currentControl = value;
                 OnPropertyChanged("CurrentControl");
             }
         }
 
-        private ObservableCollection<ControlModel> controls;
-        public ObservableCollection<ControlModel> Controls
+        private ObservableCollection<PracticeControlModel> controls;
+        public ObservableCollection<PracticeControlModel> Controls
         {
             get { return controls; }
-            set 
-            { 
+            set
+            {
                 controls = value;
                 OnPropertyChanged("Controls");
             }
@@ -53,10 +53,10 @@ namespace StudyingController.ViewModels
 
         #region Constructors
 
-        public LessonControlsViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, BaseEntityDTO lesson)
+        public PracticeControlsViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, BaseEntityDTO lesson)
             : base(userInterop, controllerInterop, dispatcher)
         {
-            controls = new ObservableCollection<ControlModel>();
+            controls = new ObservableCollection<PracticeControlModel>();
 
             originalEntity = lesson;
         }
@@ -119,10 +119,7 @@ namespace StudyingController.ViewModels
                     controlModel.PropertyChanged -= ModelPropertyChanged;
             }
 
-            if (OriginalLesson is LectureDTO)
-                Controls = ControllerInterop.Service.GetLectureControls(ControllerInterop.Session, OriginalLesson.ID).ToModelList<ControlModel, ControlDTO>();
-            else if (OriginalLesson is PracticeTeacherDTO)
-                Controls = ControllerInterop.Service.GetPracticeControls(ControllerInterop.Session, (OriginalLesson as PracticeTeacherDTO).PracticeID).ToModelList<ControlModel, ControlDTO>();
+            Controls = ControllerInterop.Service.GetPracticeControls(ControllerInterop.Session, (OriginalLesson as PracticeTeacherDTO).PracticeID).ToModelList<PracticeControlModel, PracticeControlDTO>();
 
             foreach (ControlModel controlModel in Controls)
                 controlModel.PropertyChanged += ModelPropertyChanged;
@@ -152,16 +149,12 @@ namespace StudyingController.ViewModels
 
         private void AddControl()
         {
-            OnControlOpened(new ControlModel());
+            OnControlOpened(new PracticeControlModel());
         }
 
         public override void Save()
         {
-            if (OriginalLesson is LectureDTO)
-                ControllerInterop.Service.SaveLectureControls(ControllerInterop.Session, OriginalLesson.ID, Controls.ToDTOList<ControlDTO, ControlModel>());
-            else if (OriginalLesson is PracticeTeacherDTO)
-                ControllerInterop.Service.SavePracticeControls(ControllerInterop.Session, (OriginalLesson as PracticeTeacherDTO).PracticeID, Controls.ToDTOList<ControlDTO, ControlModel>());
-
+            ControllerInterop.Service.SavePracticeControls(ControllerInterop.Session, (OriginalLesson as PracticeTeacherDTO).PracticeID, Controls.ToDTOList<PracticeControlDTO, PracticeControlModel>());
             SetUnModified();
         }
 
@@ -187,7 +180,7 @@ namespace StudyingController.ViewModels
 
         #region Events
 
-        public delegate void ControlOpenedHandler(BaseModel model); 
+        public delegate void ControlOpenedHandler(BaseModel model);
 
         public event ControlOpenedHandler ControlOpened;
 
