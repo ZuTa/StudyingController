@@ -13,13 +13,6 @@ namespace StudyingController.ViewModels
     {
         #region Fields & Properties
 
-        private int practiceID;
-        public int PracticeID
-        {
-            get { return practiceID; }
-            set { practiceID = value; }
-        }
-
         public bool IsUserStudent
         {
             get
@@ -56,22 +49,19 @@ namespace StudyingController.ViewModels
 
         public ControlModel Control
         {
-            get { return Model as ControlModel; }
+            get { return Model as PracticeControlModel; }
         }
 
         #endregion
 
         #region Constructors
 
-        public PracticeControlViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, ControlDTO control, int practiceID)
+        public PracticeControlViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, PracticeControlDTO control)
             : base(userInterop, controllerInterop, dispatcher)
         {
             originalEntity = control;
-            this.practiceID = practiceID;
 
-            if (IsUserStudent) mark = ControllerInterop.Service.GetPracticeMark(ControllerInterop.Session, ControllerInterop.User.ID, control.ID);
-
-            Model = new ControlModel(control);
+            Model = new PracticeControlModel(control);
 
             ChatViewModel = new ControlChatViewModel(UserInterop, ControllerInterop, Dispatcher, control);
 
@@ -89,7 +79,7 @@ namespace StudyingController.ViewModels
 
         public override void Save()
         {
-            ControllerInterop.Service.SavePracticeControl(ControllerInterop.Session, Control.ToDTO(), PracticeID);
+            ControllerInterop.Service.SavePracticeControl(ControllerInterop.Session, (Control as PracticeControlModel).ToDTO());
             SetUnModified();
         }
 
@@ -106,6 +96,7 @@ namespace StudyingController.ViewModels
 
         protected override void LoadData()
         {
+            if (IsUserStudent) mark = ControllerInterop.Service.GetPracticeMark(ControllerInterop.Session, ControllerInterop.User.ID, Model.ID);
         }
 
         protected override void ClearData()

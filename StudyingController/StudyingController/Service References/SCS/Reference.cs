@@ -142,10 +142,10 @@ namespace StudyingController.SCS {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/SavePracticeControl", ReplyAction="http://tempuri.org/IControllerService/SavePracticeControlResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/SavePracticeControlControllerServiceExcepti" +
             "onFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
-        void SavePracticeControl(StudyingController.SCS.Session session, EntitiesDTO.ControlDTO control, int practiceID);
+        void SavePracticeControl(StudyingController.SCS.Session session, EntitiesDTO.PracticeControlDTO control);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/SavePracticeControl", ReplyAction="http://tempuri.org/IControllerService/SavePracticeControlResponse")]
-        System.IAsyncResult BeginSavePracticeControl(StudyingController.SCS.Session session, EntitiesDTO.ControlDTO control, int practiceID, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginSavePracticeControl(StudyingController.SCS.Session session, EntitiesDTO.PracticeControlDTO control, System.AsyncCallback callback, object asyncState);
         
         void EndSavePracticeControl(System.IAsyncResult result);
         
@@ -321,40 +321,40 @@ namespace StudyingController.SCS {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/GetLectureControls", ReplyAction="http://tempuri.org/IControllerService/GetLectureControlsResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/GetLectureControlsControllerServiceExceptio" +
             "nFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
-        System.Collections.Generic.List<EntitiesDTO.ControlDTO> GetLectureControls(StudyingController.SCS.Session session, int lectureID);
+        System.Collections.Generic.List<EntitiesDTO.LectureControlDTO> GetLectureControls(StudyingController.SCS.Session session, int lectureID);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/GetLectureControls", ReplyAction="http://tempuri.org/IControllerService/GetLectureControlsResponse")]
         System.IAsyncResult BeginGetLectureControls(StudyingController.SCS.Session session, int lectureID, System.AsyncCallback callback, object asyncState);
         
-        System.Collections.Generic.List<EntitiesDTO.ControlDTO> EndGetLectureControls(System.IAsyncResult result);
+        System.Collections.Generic.List<EntitiesDTO.LectureControlDTO> EndGetLectureControls(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/SaveLectureControls", ReplyAction="http://tempuri.org/IControllerService/SaveLectureControlsResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/SaveLectureControlsControllerServiceExcepti" +
             "onFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
-        void SaveLectureControls(StudyingController.SCS.Session session, int lectureID, System.Collections.Generic.List<EntitiesDTO.ControlDTO> controls);
+        void SaveLectureControls(StudyingController.SCS.Session session, int lectureID, System.Collections.Generic.List<EntitiesDTO.LectureControlDTO> controls);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/SaveLectureControls", ReplyAction="http://tempuri.org/IControllerService/SaveLectureControlsResponse")]
-        System.IAsyncResult BeginSaveLectureControls(StudyingController.SCS.Session session, int lectureID, System.Collections.Generic.List<EntitiesDTO.ControlDTO> controls, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginSaveLectureControls(StudyingController.SCS.Session session, int lectureID, System.Collections.Generic.List<EntitiesDTO.LectureControlDTO> controls, System.AsyncCallback callback, object asyncState);
         
         void EndSaveLectureControls(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/GetPracticeControls", ReplyAction="http://tempuri.org/IControllerService/GetPracticeControlsResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/GetPracticeControlsControllerServiceExcepti" +
             "onFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
-        System.Collections.Generic.List<EntitiesDTO.ControlDTO> GetPracticeControls(StudyingController.SCS.Session session, int practiceID);
+        System.Collections.Generic.List<EntitiesDTO.PracticeControlDTO> GetPracticeControls(StudyingController.SCS.Session session, int practiceID);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/GetPracticeControls", ReplyAction="http://tempuri.org/IControllerService/GetPracticeControlsResponse")]
         System.IAsyncResult BeginGetPracticeControls(StudyingController.SCS.Session session, int practiceID, System.AsyncCallback callback, object asyncState);
         
-        System.Collections.Generic.List<EntitiesDTO.ControlDTO> EndGetPracticeControls(System.IAsyncResult result);
+        System.Collections.Generic.List<EntitiesDTO.PracticeControlDTO> EndGetPracticeControls(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/SavePracticeControls", ReplyAction="http://tempuri.org/IControllerService/SavePracticeControlsResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/SavePracticeControlsControllerServiceExcept" +
             "ionFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
-        void SavePracticeControls(StudyingController.SCS.Session session, int practiceID, System.Collections.Generic.List<EntitiesDTO.ControlDTO> controls);
+        void SavePracticeControls(StudyingController.SCS.Session session, int practiceID, System.Collections.Generic.List<EntitiesDTO.PracticeControlDTO> controls);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/SavePracticeControls", ReplyAction="http://tempuri.org/IControllerService/SavePracticeControlsResponse")]
-        System.IAsyncResult BeginSavePracticeControls(StudyingController.SCS.Session session, int practiceID, System.Collections.Generic.List<EntitiesDTO.ControlDTO> controls, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginSavePracticeControls(StudyingController.SCS.Session session, int practiceID, System.Collections.Generic.List<EntitiesDTO.PracticeControlDTO> controls, System.AsyncCallback callback, object asyncState);
         
         void EndSavePracticeControls(System.IAsyncResult result);
         
@@ -371,6 +371,8 @@ namespace StudyingController.SCS {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/SaveControlMessage", ReplyAction="http://tempuri.org/IControllerService/SaveControlMessageResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/SaveControlMessageControllerServiceExceptio" +
             "nFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.PracticeControlDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.LectureControlDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.TeacherDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.StudentDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultyAdminDTO))]
@@ -387,10 +389,10 @@ namespace StudyingController.SCS {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/SaveLectureControl", ReplyAction="http://tempuri.org/IControllerService/SaveLectureControlResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/SaveLectureControlControllerServiceExceptio" +
             "nFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
-        void SaveLectureControl(StudyingController.SCS.Session session, EntitiesDTO.ControlDTO control, int lectureID);
+        void SaveLectureControl(StudyingController.SCS.Session session, EntitiesDTO.LectureControlDTO control);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/SaveLectureControl", ReplyAction="http://tempuri.org/IControllerService/SaveLectureControlResponse")]
-        System.IAsyncResult BeginSaveLectureControl(StudyingController.SCS.Session session, EntitiesDTO.ControlDTO control, int lectureID, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginSaveLectureControl(StudyingController.SCS.Session session, EntitiesDTO.LectureControlDTO control, System.AsyncCallback callback, object asyncState);
         
         void EndSaveLectureControl(System.IAsyncResult result);
         
@@ -1038,10 +1040,10 @@ namespace StudyingController.SCS {
             this.results = results;
         }
         
-        public System.Collections.Generic.List<EntitiesDTO.ControlDTO> Result {
+        public System.Collections.Generic.List<EntitiesDTO.LectureControlDTO> Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((System.Collections.Generic.List<EntitiesDTO.ControlDTO>)(this.results[0]));
+                return ((System.Collections.Generic.List<EntitiesDTO.LectureControlDTO>)(this.results[0]));
             }
         }
     }
@@ -1057,10 +1059,10 @@ namespace StudyingController.SCS {
             this.results = results;
         }
         
-        public System.Collections.Generic.List<EntitiesDTO.ControlDTO> Result {
+        public System.Collections.Generic.List<EntitiesDTO.PracticeControlDTO> Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((System.Collections.Generic.List<EntitiesDTO.ControlDTO>)(this.results[0]));
+                return ((System.Collections.Generic.List<EntitiesDTO.PracticeControlDTO>)(this.results[0]));
             }
         }
     }
@@ -1994,13 +1996,13 @@ namespace StudyingController.SCS {
                         controlID}, this.onEndGetPracticeMarkDelegate, this.onGetPracticeMarkCompletedDelegate, userState);
         }
         
-        public void SavePracticeControl(StudyingController.SCS.Session session, EntitiesDTO.ControlDTO control, int practiceID) {
-            base.Channel.SavePracticeControl(session, control, practiceID);
+        public void SavePracticeControl(StudyingController.SCS.Session session, EntitiesDTO.PracticeControlDTO control) {
+            base.Channel.SavePracticeControl(session, control);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginSavePracticeControl(StudyingController.SCS.Session session, EntitiesDTO.ControlDTO control, int practiceID, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginSavePracticeControl(session, control, practiceID, callback, asyncState);
+        public System.IAsyncResult BeginSavePracticeControl(StudyingController.SCS.Session session, EntitiesDTO.PracticeControlDTO control, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginSavePracticeControl(session, control, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -2010,9 +2012,8 @@ namespace StudyingController.SCS {
         
         private System.IAsyncResult OnBeginSavePracticeControl(object[] inValues, System.AsyncCallback callback, object asyncState) {
             StudyingController.SCS.Session session = ((StudyingController.SCS.Session)(inValues[0]));
-            EntitiesDTO.ControlDTO control = ((EntitiesDTO.ControlDTO)(inValues[1]));
-            int practiceID = ((int)(inValues[2]));
-            return this.BeginSavePracticeControl(session, control, practiceID, callback, asyncState);
+            EntitiesDTO.PracticeControlDTO control = ((EntitiesDTO.PracticeControlDTO)(inValues[1]));
+            return this.BeginSavePracticeControl(session, control, callback, asyncState);
         }
         
         private object[] OnEndSavePracticeControl(System.IAsyncResult result) {
@@ -2027,11 +2028,11 @@ namespace StudyingController.SCS {
             }
         }
         
-        public void SavePracticeControlAsync(StudyingController.SCS.Session session, EntitiesDTO.ControlDTO control, int practiceID) {
-            this.SavePracticeControlAsync(session, control, practiceID, null);
+        public void SavePracticeControlAsync(StudyingController.SCS.Session session, EntitiesDTO.PracticeControlDTO control) {
+            this.SavePracticeControlAsync(session, control, null);
         }
         
-        public void SavePracticeControlAsync(StudyingController.SCS.Session session, EntitiesDTO.ControlDTO control, int practiceID, object userState) {
+        public void SavePracticeControlAsync(StudyingController.SCS.Session session, EntitiesDTO.PracticeControlDTO control, object userState) {
             if ((this.onBeginSavePracticeControlDelegate == null)) {
                 this.onBeginSavePracticeControlDelegate = new BeginOperationDelegate(this.OnBeginSavePracticeControl);
             }
@@ -2043,8 +2044,7 @@ namespace StudyingController.SCS {
             }
             base.InvokeAsync(this.onBeginSavePracticeControlDelegate, new object[] {
                         session,
-                        control,
-                        practiceID}, this.onEndSavePracticeControlDelegate, this.onSavePracticeControlCompletedDelegate, userState);
+                        control}, this.onEndSavePracticeControlDelegate, this.onSavePracticeControlCompletedDelegate, userState);
         }
         
         public System.Collections.Generic.List<EntitiesDTO.PracticeTeacherDTO> GetStudentPractices(StudyingController.SCS.Session session, int studentID) {
@@ -2929,7 +2929,7 @@ namespace StudyingController.SCS {
                         cathedraID}, this.onEndGetCathedraByIDDelegate, this.onGetCathedraByIDCompletedDelegate, userState);
         }
         
-        public System.Collections.Generic.List<EntitiesDTO.ControlDTO> GetLectureControls(StudyingController.SCS.Session session, int lectureID) {
+        public System.Collections.Generic.List<EntitiesDTO.LectureControlDTO> GetLectureControls(StudyingController.SCS.Session session, int lectureID) {
             return base.Channel.GetLectureControls(session, lectureID);
         }
         
@@ -2939,7 +2939,7 @@ namespace StudyingController.SCS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.Collections.Generic.List<EntitiesDTO.ControlDTO> EndGetLectureControls(System.IAsyncResult result) {
+        public System.Collections.Generic.List<EntitiesDTO.LectureControlDTO> EndGetLectureControls(System.IAsyncResult result) {
             return base.Channel.EndGetLectureControls(result);
         }
         
@@ -2950,7 +2950,7 @@ namespace StudyingController.SCS {
         }
         
         private object[] OnEndGetLectureControls(System.IAsyncResult result) {
-            System.Collections.Generic.List<EntitiesDTO.ControlDTO> retVal = this.EndGetLectureControls(result);
+            System.Collections.Generic.List<EntitiesDTO.LectureControlDTO> retVal = this.EndGetLectureControls(result);
             return new object[] {
                     retVal};
         }
@@ -2981,12 +2981,12 @@ namespace StudyingController.SCS {
                         lectureID}, this.onEndGetLectureControlsDelegate, this.onGetLectureControlsCompletedDelegate, userState);
         }
         
-        public void SaveLectureControls(StudyingController.SCS.Session session, int lectureID, System.Collections.Generic.List<EntitiesDTO.ControlDTO> controls) {
+        public void SaveLectureControls(StudyingController.SCS.Session session, int lectureID, System.Collections.Generic.List<EntitiesDTO.LectureControlDTO> controls) {
             base.Channel.SaveLectureControls(session, lectureID, controls);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginSaveLectureControls(StudyingController.SCS.Session session, int lectureID, System.Collections.Generic.List<EntitiesDTO.ControlDTO> controls, System.AsyncCallback callback, object asyncState) {
+        public System.IAsyncResult BeginSaveLectureControls(StudyingController.SCS.Session session, int lectureID, System.Collections.Generic.List<EntitiesDTO.LectureControlDTO> controls, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginSaveLectureControls(session, lectureID, controls, callback, asyncState);
         }
         
@@ -2998,7 +2998,7 @@ namespace StudyingController.SCS {
         private System.IAsyncResult OnBeginSaveLectureControls(object[] inValues, System.AsyncCallback callback, object asyncState) {
             StudyingController.SCS.Session session = ((StudyingController.SCS.Session)(inValues[0]));
             int lectureID = ((int)(inValues[1]));
-            System.Collections.Generic.List<EntitiesDTO.ControlDTO> controls = ((System.Collections.Generic.List<EntitiesDTO.ControlDTO>)(inValues[2]));
+            System.Collections.Generic.List<EntitiesDTO.LectureControlDTO> controls = ((System.Collections.Generic.List<EntitiesDTO.LectureControlDTO>)(inValues[2]));
             return this.BeginSaveLectureControls(session, lectureID, controls, callback, asyncState);
         }
         
@@ -3014,11 +3014,11 @@ namespace StudyingController.SCS {
             }
         }
         
-        public void SaveLectureControlsAsync(StudyingController.SCS.Session session, int lectureID, System.Collections.Generic.List<EntitiesDTO.ControlDTO> controls) {
+        public void SaveLectureControlsAsync(StudyingController.SCS.Session session, int lectureID, System.Collections.Generic.List<EntitiesDTO.LectureControlDTO> controls) {
             this.SaveLectureControlsAsync(session, lectureID, controls, null);
         }
         
-        public void SaveLectureControlsAsync(StudyingController.SCS.Session session, int lectureID, System.Collections.Generic.List<EntitiesDTO.ControlDTO> controls, object userState) {
+        public void SaveLectureControlsAsync(StudyingController.SCS.Session session, int lectureID, System.Collections.Generic.List<EntitiesDTO.LectureControlDTO> controls, object userState) {
             if ((this.onBeginSaveLectureControlsDelegate == null)) {
                 this.onBeginSaveLectureControlsDelegate = new BeginOperationDelegate(this.OnBeginSaveLectureControls);
             }
@@ -3034,7 +3034,7 @@ namespace StudyingController.SCS {
                         controls}, this.onEndSaveLectureControlsDelegate, this.onSaveLectureControlsCompletedDelegate, userState);
         }
         
-        public System.Collections.Generic.List<EntitiesDTO.ControlDTO> GetPracticeControls(StudyingController.SCS.Session session, int practiceID) {
+        public System.Collections.Generic.List<EntitiesDTO.PracticeControlDTO> GetPracticeControls(StudyingController.SCS.Session session, int practiceID) {
             return base.Channel.GetPracticeControls(session, practiceID);
         }
         
@@ -3044,7 +3044,7 @@ namespace StudyingController.SCS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.Collections.Generic.List<EntitiesDTO.ControlDTO> EndGetPracticeControls(System.IAsyncResult result) {
+        public System.Collections.Generic.List<EntitiesDTO.PracticeControlDTO> EndGetPracticeControls(System.IAsyncResult result) {
             return base.Channel.EndGetPracticeControls(result);
         }
         
@@ -3055,7 +3055,7 @@ namespace StudyingController.SCS {
         }
         
         private object[] OnEndGetPracticeControls(System.IAsyncResult result) {
-            System.Collections.Generic.List<EntitiesDTO.ControlDTO> retVal = this.EndGetPracticeControls(result);
+            System.Collections.Generic.List<EntitiesDTO.PracticeControlDTO> retVal = this.EndGetPracticeControls(result);
             return new object[] {
                     retVal};
         }
@@ -3086,12 +3086,12 @@ namespace StudyingController.SCS {
                         practiceID}, this.onEndGetPracticeControlsDelegate, this.onGetPracticeControlsCompletedDelegate, userState);
         }
         
-        public void SavePracticeControls(StudyingController.SCS.Session session, int practiceID, System.Collections.Generic.List<EntitiesDTO.ControlDTO> controls) {
+        public void SavePracticeControls(StudyingController.SCS.Session session, int practiceID, System.Collections.Generic.List<EntitiesDTO.PracticeControlDTO> controls) {
             base.Channel.SavePracticeControls(session, practiceID, controls);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginSavePracticeControls(StudyingController.SCS.Session session, int practiceID, System.Collections.Generic.List<EntitiesDTO.ControlDTO> controls, System.AsyncCallback callback, object asyncState) {
+        public System.IAsyncResult BeginSavePracticeControls(StudyingController.SCS.Session session, int practiceID, System.Collections.Generic.List<EntitiesDTO.PracticeControlDTO> controls, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginSavePracticeControls(session, practiceID, controls, callback, asyncState);
         }
         
@@ -3103,7 +3103,7 @@ namespace StudyingController.SCS {
         private System.IAsyncResult OnBeginSavePracticeControls(object[] inValues, System.AsyncCallback callback, object asyncState) {
             StudyingController.SCS.Session session = ((StudyingController.SCS.Session)(inValues[0]));
             int practiceID = ((int)(inValues[1]));
-            System.Collections.Generic.List<EntitiesDTO.ControlDTO> controls = ((System.Collections.Generic.List<EntitiesDTO.ControlDTO>)(inValues[2]));
+            System.Collections.Generic.List<EntitiesDTO.PracticeControlDTO> controls = ((System.Collections.Generic.List<EntitiesDTO.PracticeControlDTO>)(inValues[2]));
             return this.BeginSavePracticeControls(session, practiceID, controls, callback, asyncState);
         }
         
@@ -3119,11 +3119,11 @@ namespace StudyingController.SCS {
             }
         }
         
-        public void SavePracticeControlsAsync(StudyingController.SCS.Session session, int practiceID, System.Collections.Generic.List<EntitiesDTO.ControlDTO> controls) {
+        public void SavePracticeControlsAsync(StudyingController.SCS.Session session, int practiceID, System.Collections.Generic.List<EntitiesDTO.PracticeControlDTO> controls) {
             this.SavePracticeControlsAsync(session, practiceID, controls, null);
         }
         
-        public void SavePracticeControlsAsync(StudyingController.SCS.Session session, int practiceID, System.Collections.Generic.List<EntitiesDTO.ControlDTO> controls, object userState) {
+        public void SavePracticeControlsAsync(StudyingController.SCS.Session session, int practiceID, System.Collections.Generic.List<EntitiesDTO.PracticeControlDTO> controls, object userState) {
             if ((this.onBeginSavePracticeControlsDelegate == null)) {
                 this.onBeginSavePracticeControlsDelegate = new BeginOperationDelegate(this.OnBeginSavePracticeControls);
             }
@@ -3242,13 +3242,13 @@ namespace StudyingController.SCS {
                         message}, this.onEndSaveControlMessageDelegate, this.onSaveControlMessageCompletedDelegate, userState);
         }
         
-        public void SaveLectureControl(StudyingController.SCS.Session session, EntitiesDTO.ControlDTO control, int lectureID) {
-            base.Channel.SaveLectureControl(session, control, lectureID);
+        public void SaveLectureControl(StudyingController.SCS.Session session, EntitiesDTO.LectureControlDTO control) {
+            base.Channel.SaveLectureControl(session, control);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginSaveLectureControl(StudyingController.SCS.Session session, EntitiesDTO.ControlDTO control, int lectureID, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginSaveLectureControl(session, control, lectureID, callback, asyncState);
+        public System.IAsyncResult BeginSaveLectureControl(StudyingController.SCS.Session session, EntitiesDTO.LectureControlDTO control, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginSaveLectureControl(session, control, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -3258,9 +3258,8 @@ namespace StudyingController.SCS {
         
         private System.IAsyncResult OnBeginSaveLectureControl(object[] inValues, System.AsyncCallback callback, object asyncState) {
             StudyingController.SCS.Session session = ((StudyingController.SCS.Session)(inValues[0]));
-            EntitiesDTO.ControlDTO control = ((EntitiesDTO.ControlDTO)(inValues[1]));
-            int lectureID = ((int)(inValues[2]));
-            return this.BeginSaveLectureControl(session, control, lectureID, callback, asyncState);
+            EntitiesDTO.LectureControlDTO control = ((EntitiesDTO.LectureControlDTO)(inValues[1]));
+            return this.BeginSaveLectureControl(session, control, callback, asyncState);
         }
         
         private object[] OnEndSaveLectureControl(System.IAsyncResult result) {
@@ -3275,11 +3274,11 @@ namespace StudyingController.SCS {
             }
         }
         
-        public void SaveLectureControlAsync(StudyingController.SCS.Session session, EntitiesDTO.ControlDTO control, int lectureID) {
-            this.SaveLectureControlAsync(session, control, lectureID, null);
+        public void SaveLectureControlAsync(StudyingController.SCS.Session session, EntitiesDTO.LectureControlDTO control) {
+            this.SaveLectureControlAsync(session, control, null);
         }
         
-        public void SaveLectureControlAsync(StudyingController.SCS.Session session, EntitiesDTO.ControlDTO control, int lectureID, object userState) {
+        public void SaveLectureControlAsync(StudyingController.SCS.Session session, EntitiesDTO.LectureControlDTO control, object userState) {
             if ((this.onBeginSaveLectureControlDelegate == null)) {
                 this.onBeginSaveLectureControlDelegate = new BeginOperationDelegate(this.OnBeginSaveLectureControl);
             }
@@ -3291,8 +3290,7 @@ namespace StudyingController.SCS {
             }
             base.InvokeAsync(this.onBeginSaveLectureControlDelegate, new object[] {
                         session,
-                        control,
-                        lectureID}, this.onEndSaveLectureControlDelegate, this.onSaveLectureControlCompletedDelegate, userState);
+                        control}, this.onEndSaveLectureControlDelegate, this.onSaveLectureControlCompletedDelegate, userState);
         }
         
         public System.Collections.Generic.List<EntitiesDTO.LectureDTO> GetStudentLectures(StudyingController.SCS.Session session, int studentID) {

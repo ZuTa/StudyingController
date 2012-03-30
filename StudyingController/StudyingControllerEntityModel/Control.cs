@@ -6,7 +6,7 @@ using EntitiesDTO;
 
 namespace StudyingControllerEntityModel
 {
-    public partial class Control : IDTOable<ControlDTO>, IDataBase
+    public abstract partial class Control : IDataBase
     {
         #region Constructors
 
@@ -19,21 +19,7 @@ namespace StudyingControllerEntityModel
             Assign(control);
         }
 
-        #endregion
-
-        public ControlDTO ToDTO()
-        {
-            ControlDTO control = new ControlDTO()
-            {
-                ID = this.ID,
-                Name = this.Name,
-                Description = this.Description,
-                Date = this.Date,
-                MaxMark = this.MaxMark
-            };
-
-            return control;
-        }
+        #endregion 
 
         public void Assign(ControlDTO entity)
         {

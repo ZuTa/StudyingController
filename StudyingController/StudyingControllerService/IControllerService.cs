@@ -190,19 +190,19 @@ namespace StudyingControllerService
 
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
-        List<ControlDTO> GetLectureControls(Session session, int lectureID);
+        List<LectureControlDTO> GetLectureControls(Session session, int lectureID);
 
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
-        void SaveLectureControls(Session session, int lectureID, List<ControlDTO> controls);
+        void SaveLectureControls(Session session, int lectureID, List<LectureControlDTO> controls);
 
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
-        List<ControlDTO> GetPracticeControls(Session session, int practiceID);
+        List<PracticeControlDTO> GetPracticeControls(Session session, int practiceID);
 
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
-        void SavePracticeControls(Session session, int practiceID, List<ControlDTO> controls);
+        void SavePracticeControls(Session session, int practiceID, List<PracticeControlDTO> controls);
 
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
@@ -214,7 +214,7 @@ namespace StudyingControllerService
 
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
-        void SaveLectureControl(Session session, ControlDTO control, int lectureID);
+        void SaveLectureControl(Session session, LectureControlDTO control);
 
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
@@ -242,7 +242,7 @@ namespace StudyingControllerService
 
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
-        void SavePracticeControl(Session session, ControlDTO control, int practiceID);
+        void SavePracticeControl(Session session, PracticeControlDTO control);
        
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]

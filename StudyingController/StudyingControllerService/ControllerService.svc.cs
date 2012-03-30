@@ -1420,7 +1420,7 @@ namespace StudyingControllerService
             }
         }
 
-        public List<ControlDTO> GetLectureControls(Session session, int lectureID)
+        public List<LectureControlDTO> GetLectureControls(Session session, int lectureID)
         {
             try
             {
@@ -1428,7 +1428,7 @@ namespace StudyingControllerService
                 using (UniversityEntities context = new UniversityEntities())
                 {
                     var query = context.Lectures.Include("LectureControls").FirstOrDefault(l => l.ID == lectureID);
-                    return (query as Lecture).LectureControls.ToDTOList<ControlDTO, LectureControl>();
+                    return (query as Lecture).LectureControls.ToDTOList<LectureControlDTO, LectureControl>();
                 }
             }
             catch (Exception ex)
@@ -1437,7 +1437,7 @@ namespace StudyingControllerService
             }
         }
 
-        public void SaveLectureControls(Session session, int lectureID, List<ControlDTO> controls)
+        public void SaveLectureControls(Session session, int lectureID, List<LectureControlDTO> controls)
         {
             try
             {
@@ -1447,8 +1447,8 @@ namespace StudyingControllerService
                     Lecture lecture = context.Lectures.Include("LectureControls").FirstOrDefault(l => l.ID == lectureID);
 
 
-                    foreach (ControlDTO control in controls)
-                        if (lecture.LectureControls.FirstOrDefault(lc => lc.ID == control.ID) == null) context.AddToControls(new LectureControl(lectureID, control));
+                    foreach (LectureControlDTO control in controls)
+                        if (lecture.LectureControls.FirstOrDefault(lc => lc.ID == control.ID) == null) context.AddToControls(new LectureControl(control));
                         else
                         {
                             var query = context.Controls.FirstOrDefault(c => c.ID == control.ID);
@@ -1473,7 +1473,7 @@ namespace StudyingControllerService
             }
         }
 
-        public List<ControlDTO> GetPracticeControls(Session session, int practiceID)
+        public List<PracticeControlDTO> GetPracticeControls(Session session, int practiceID)
         {
             try
             {
@@ -1481,7 +1481,7 @@ namespace StudyingControllerService
                 using (UniversityEntities context = new UniversityEntities())
                 {
                     var query = context.Practices.Include("PracticeControls").Where(p => p.ID == practiceID).FirstOrDefault();
-                    return (query as Practice).PracticeControls.ToDTOList<ControlDTO, PracticeControl>();
+                    return (query as Practice).PracticeControls.ToDTOList<PracticeControlDTO, PracticeControl>();
                 }
             }
             catch (Exception ex)
@@ -1490,7 +1490,7 @@ namespace StudyingControllerService
             }
         }
 
-        public void SavePracticeControls(Session session, int practiceID, List<ControlDTO> controls)
+        public void SavePracticeControls(Session session, int practiceID, List<PracticeControlDTO> controls)
         {
             try
             {
@@ -1499,8 +1499,8 @@ namespace StudyingControllerService
                 {
                     Practice practice = context.Practices.Include("PracticeControls").FirstOrDefault(p => p.ID == practiceID);
                     
-                    foreach (ControlDTO control in controls)
-                        if (practice.PracticeControls.FirstOrDefault(pc => pc.ID == control.ID) == null) context.AddToControls(new PracticeControl(practiceID, control));
+                    foreach (PracticeControlDTO control in controls)
+                        if (practice.PracticeControls.FirstOrDefault(pc => pc.ID == control.ID) == null) context.AddToControls(new PracticeControl(control));
                         else
                         {
                             var query = context.Controls.FirstOrDefault(c => c.ID == control.ID);
@@ -1572,7 +1572,7 @@ namespace StudyingControllerService
            }
        }
 
-       public void SaveLectureControl(Session session, ControlDTO control, int lectureID)
+       public void SaveLectureControl(Session session, LectureControlDTO control)
        {
            try
            {
@@ -1581,7 +1581,7 @@ namespace StudyingControllerService
                {
                    var item = context.Controls.FirstOrDefault(c => c.ID == control.ID);
                    if (item == null)
-                       context.AddToControls(new LectureControl(lectureID, control));
+                       context.AddToControls(new LectureControl(control));
                    else
                        item.Assign(control);
 
@@ -1749,7 +1749,7 @@ namespace StudyingControllerService
 
        }
 
-       public void SavePracticeControl(Session session, ControlDTO control, int practiceID)
+       public void SavePracticeControl(Session session, PracticeControlDTO control)
        {
            try
            {
@@ -1758,7 +1758,7 @@ namespace StudyingControllerService
                {
                    var item = context.Controls.FirstOrDefault(c => c.ID == control.ID);
                    if (item == null)
-                       context.AddToControls(new PracticeControl(practiceID, control));
+                       context.AddToControls(new PracticeControl(control));
                    else
                        item.Assign(control);
 

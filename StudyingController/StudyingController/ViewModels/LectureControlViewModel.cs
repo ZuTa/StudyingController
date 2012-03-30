@@ -13,13 +13,6 @@ namespace StudyingController.ViewModels
     {
         #region Fields & Properties
 
-        private int lectureID;
-        public int LectureID
-        {
-            get { return lectureID; }
-            set { lectureID = value; }
-        }
-
         public bool IsUserStudent
         {
             get
@@ -56,22 +49,19 @@ namespace StudyingController.ViewModels
 
         public ControlModel Control
         {
-            get { return Model as ControlModel; }
+            get { return Model as LectureControlModel; }
         }
 
         #endregion
 
         #region Constructors
 
-        public LectureControlViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, ControlDTO control, int lectureID)
+        public LectureControlViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, LectureControlDTO control)
             : base(userInterop, controllerInterop, dispatcher)
         {
             originalEntity = control;
-            this.lectureID = lectureID;
 
-            if (IsUserStudent) mark = ControllerInterop.Service.GetLectureMark(ControllerInterop.Session, ControllerInterop.User.ID, control.ID);
-
-            Model = new ControlModel(control);
+            Model = new LectureControlModel(control);
 
             ChatViewModel = new ControlChatViewModel(UserInterop, ControllerInterop, Dispatcher, control);
 
@@ -89,7 +79,7 @@ namespace StudyingController.ViewModels
 
         public override void Save()
         {
-            ControllerInterop.Service.SaveLectureControl(ControllerInterop.Session, Control.ToDTO(), LectureID);
+            ControllerInterop.Service.SaveLectureControl(ControllerInterop.Session, (Control as LectureControlModel).ToDTO());
             SetUnModified();
         }
 
@@ -106,6 +96,7 @@ namespace StudyingController.ViewModels
 
         protected override void LoadData()
         {
+            if (IsUserStudent) mark = ControllerInterop.Service.GetLectureMark(ControllerInterop.Session, ControllerInterop.User.ID, Model.ID);
         }
 
         protected override void ClearData()
