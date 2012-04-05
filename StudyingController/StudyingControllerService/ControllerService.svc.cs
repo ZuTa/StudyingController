@@ -1820,8 +1820,6 @@ namespace StudyingControllerService
                        if (control is PracticeControlDTO)
                        {
                            PracticeControl pc = q as PracticeControl;
-
-                           //context.LoadProperty(pc, "Practice");
                            context.LoadProperty(pc, "Practice_Teacher");
                            context.LoadProperty(pc, "PracticeControlMarks");
                            foreach (var m in pc.PracticeControlMarks)
