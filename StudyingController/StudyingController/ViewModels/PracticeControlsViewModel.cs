@@ -119,7 +119,7 @@ namespace StudyingController.ViewModels
                     controlModel.PropertyChanged -= ModelPropertyChanged;
             }
 
-            Controls = ControllerInterop.Service.GetPracticeControls(ControllerInterop.Session, (OriginalLesson as PracticeTeacherDTO).PracticeID).ToModelList<PracticeControlModel, PracticeControlDTO>();
+            Controls = ControllerInterop.Service.GetPracticeControls(ControllerInterop.Session, OriginalLesson.ID).ToModelList<PracticeControlModel, PracticeControlDTO>();
 
             foreach (ControlModel controlModel in Controls)
                 controlModel.PropertyChanged += ModelPropertyChanged;
@@ -149,7 +149,7 @@ namespace StudyingController.ViewModels
 
         private void AddControl()
         {
-            OnControlOpened(new PracticeControlModel());
+            OnControlOpened(new PracticeControlModel(){ PracticeID = OriginalLesson.ID });
         }
 
         public override void Save()

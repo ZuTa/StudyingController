@@ -41,7 +41,7 @@ namespace StudyingControllerEntityModel
         public void Assign(PracticeControlDTO entity)
         {
             base.Assign(entity);
-            PracticeID = this.PracticeID;
+            PracticeID = entity.PracticeID;
         }
 
     }

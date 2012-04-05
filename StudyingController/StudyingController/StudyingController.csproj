@@ -77,6 +77,7 @@
     <Compile Include="ViewModels\BaseTreeViewModel.cs" />
     <Compile Include="ViewModels\CathedraViewModel.cs" />
     <Compile Include="ViewModels\ControlChatViewModel.cs" />
+    <Compile Include="ViewModels\ControlMarksViewModel.cs" />
     <Compile Include="ViewModels\ControlStructureViewModel.cs" />
     <Compile Include="ViewModels\FacultyAdminViewModel.cs" />
     <Compile Include="ViewModels\FacultySecretaryViewModel.cs" />
@@ -109,9 +110,12 @@
     <Compile Include="ViewModels\Models\InstituteAdminModel.cs" />
     <Compile Include="ViewModels\Models\InstituteModel.cs" />
     <Compile Include="ViewModels\Models\InstituteSecretaryModel.cs" />
+    <Compile Include="ViewModels\Models\LectureControlMarkModel.cs" />
     <Compile Include="ViewModels\Models\LectureControlModel.cs" />
     <Compile Include="ViewModels\Models\LectureModel.cs" />
+    <Compile Include="ViewModels\Models\MarkModel.cs" />
     <Compile Include="ViewModels\Models\NamedModel.cs" />
+    <Compile Include="ViewModels\Models\PracticeControlMarkModel.cs" />
     <Compile Include="ViewModels\Models\PracticeControlModel.cs" />
     <Compile Include="ViewModels\Models\PracticeTeacherModel.cs" />
     <Compile Include="ViewModels\Models\SpecializationModel.cs" />
@@ -165,6 +169,9 @@
     </Compile>
     <Compile Include="Views\ControlChatView.xaml.cs">
       <DependentUpon>ControlChatView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ControlMarksView.xaml.cs">
+      <DependentUpon>ControlMarksView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\FacultyAdminView.xaml.cs">
       <DependentUpon>FacultyAdminView.xaml</DependentUpon>
@@ -268,6 +275,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ControlChatView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ControlMarksView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -415,6 +426,7 @@
     <None Include="Properties\DataSources\EntitiesDTO.InstituteDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.LectureControlDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.LectureDTO.datasource" />
+    <None Include="Properties\DataSources\EntitiesDTO.MarkDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.PracticeControlDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.PracticeTeacherDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.SpecializationDTO.datasource" />

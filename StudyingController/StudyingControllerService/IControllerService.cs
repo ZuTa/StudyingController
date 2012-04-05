@@ -248,5 +248,12 @@ namespace StudyingControllerService
         [FaultContract(typeof(ControllerServiceException))]
         List<PracticeTeacherDTO> GetStudentPractices(Session session, int studentID);
 
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        List<MarkDTO> GetMarks(Session session, ControlDTO control);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        void SaveMarks(Session session, ControlDTO control, List<MarkDTO> marks);
     }
 }

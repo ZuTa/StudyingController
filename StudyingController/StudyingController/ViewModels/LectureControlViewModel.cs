@@ -13,6 +13,22 @@ namespace StudyingController.ViewModels
     {
         #region Fields & Properties
 
+        public override bool CanSave
+        {
+            get
+            {
+                return base.CanSave && MarksViewModel != null && MarksViewModel.CanSave || base.CanSave && MarksViewModel == null;
+            }
+        }
+
+        public override bool IsModified
+        {
+            get
+            {
+                return base.IsModified || (MarksViewModel != null && MarksViewModel.IsModified);
+            }
+        }
+
         public bool IsUserStudent
         {
             get
@@ -36,6 +52,17 @@ namespace StudyingController.ViewModels
             { 
                 chatViewModel = value;
                 OnPropertyChanged("ChatViewModel");
+            }
+        }
+
+        private ControlMarksViewModel marksViewModel;
+        public ControlMarksViewModel MarksViewModel
+        {
+            get { return marksViewModel; }
+            set 
+            { 
+                marksViewModel = value;
+                OnPropertyChanged("MarksViewModel");
             }
         }
 
@@ -65,7 +92,11 @@ namespace StudyingController.ViewModels
 
             ChatViewModel = new ControlChatViewModel(UserInterop, ControllerInterop, Dispatcher, control);
 
+            MarksViewModel = new ControlMarksViewModel(UserInterop, ControllerInterop, Dispatcher, control);
+
             Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+
+            MarksViewModel.ViewModelChanged += new EventHandler(MarksViewModel_ViewModelChanged);
         }
 
         #endregion
@@ -80,12 +111,14 @@ namespace StudyingController.ViewModels
         public override void Save()
         {
             ControllerInterop.Service.SaveLectureControl(ControllerInterop.Session, (Control as LectureControlModel).ToDTO());
+            MarksViewModel.Save();
             SetUnModified();
         }
 
         public override void Rollback()
         {
             Control.Assign(OriginalControl);
+            MarksViewModel.Rollback();
             SetUnModified();
         }
 
@@ -104,5 +137,12 @@ namespace StudyingController.ViewModels
         }
 
         #endregion
+        private void MarksViewModel_ViewModelChanged(object sender, EventArgs e)
+        {
+            if (MarksViewModel.IsModified)
+                SetModified();
+            else
+                SetUnModified();
+        }
     }
 }
