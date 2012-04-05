@@ -149,7 +149,7 @@ namespace StudyingController.ViewModels
 
         private void AddControl()
         {
-            OnControlOpened(new LectureControlModel());
+            OnControlOpened(new LectureControlModel(){LectureID = OriginalLesson.ID });
         }
 
         public override void Save()

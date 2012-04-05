@@ -46,6 +46,7 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_Attachment_Teacher", "Teacher", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.Teacher), "Attachment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Attachment), true)]
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_ControlMessage_Control", "Control", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.Control), "ControlMessage", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.ControlMessage), true)]
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_ControlMessage_SystemUser", "SystemUser", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.SystemUser), "ControlMessage", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.ControlMessage), true)]
+[assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_PracticeControl_Practice_Teacher", "PracticeTeacher", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.PracticeTeacher), "PracticeControl", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.PracticeControl), true)]
 
 #endregion
 
@@ -2852,26 +2853,8 @@ namespace StudyingControllerEntityModel
     [DataContractAttribute(IsReference=true)]
     [KnownTypeAttribute(typeof(PracticeControlMark))]
     [KnownTypeAttribute(typeof(LectureControlMark))]
-    public partial class Mark : EntityObject
+    public abstract partial class Mark : EntityObject
     {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new Mark object.
-        /// </summary>
-        /// <param name="id">Initial value of the ID property.</param>
-        /// <param name="studentID">Initial value of the StudentID property.</param>
-        /// <param name="markValue">Initial value of the MarkValue property.</param>
-        public static Mark CreateMark(global::System.Int32 id, global::System.Int32 studentID, global::System.Decimal markValue)
-        {
-            Mark mark = new Mark();
-            mark.ID = id;
-            mark.StudentID = studentID;
-            mark.MarkValue = markValue;
-            return mark;
-        }
-
-        #endregion
         #region Primitive Properties
     
         /// <summary>
@@ -3279,6 +3262,44 @@ namespace StudyingControllerEntityModel
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "FK_PracticeControl_Practice_Teacher", "PracticeTeacher")]
+        public PracticeTeacher Practice_Teacher
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PracticeTeacher>("UniversityDBModel.FK_PracticeControl_Practice_Teacher", "PracticeTeacher").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PracticeTeacher>("UniversityDBModel.FK_PracticeControl_Practice_Teacher", "PracticeTeacher").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<PracticeTeacher> Practice_TeacherReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PracticeTeacher>("UniversityDBModel.FK_PracticeControl_Practice_Teacher", "PracticeTeacher");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<PracticeTeacher>("UniversityDBModel.FK_PracticeControl_Practice_Teacher", "PracticeTeacher", value);
+                }
+            }
+        }
 
         #endregion
     }
@@ -3583,6 +3604,28 @@ namespace StudyingControllerEntityModel
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Student>("UniversityDBModel.Practice_Teacher_Student", "Student", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "FK_PracticeControl_Practice_Teacher", "PracticeControl")]
+        public EntityCollection<PracticeControl> PracticeControls
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<PracticeControl>("UniversityDBModel.FK_PracticeControl_Practice_Teacher", "PracticeControl");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PracticeControl>("UniversityDBModel.FK_PracticeControl_Practice_Teacher", "PracticeControl", value);
                 }
             }
         }
