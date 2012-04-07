@@ -25,10 +25,15 @@ namespace StudyingControllerEntityModel
 
         public ControlMessageDTO ToDTO()
         {
+            ControlDTO control;
+            if (Control is LectureControl) control = new LectureControlDTO();
+            else if (Control is PracticeControl) control = new LectureControlDTO();
+            else control = null; 
+
             return new ControlMessageDTO
             {
                 ID = this.ID,
-                Control = Control.ToDTO(),
+                Control = control,
                 ControlID = this.ControlID,
                 Date = this.Date,
                 Owner = SystemUser.ToDTO(),

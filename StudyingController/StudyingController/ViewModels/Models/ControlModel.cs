@@ -7,7 +7,7 @@ using StudyingController.Common;
 
 namespace StudyingController.ViewModels.Models
 {
-    public class ControlModel : NamedModel, IDTOable<ControlDTO>
+    public abstract class ControlModel : NamedModel
     {
         #region Fields & Properties
 
@@ -75,26 +75,20 @@ namespace StudyingController.ViewModels.Models
             MaxMark = control.MaxMark;
         }
 
-        public ControlDTO ToDTO()
-        {
-            return new ControlDTO() 
-            {
-                ID = this.ID,
-                Name = this.Name,
-                Date = this.Date,
-                Description = this.Description,
-                MaxMark = this.MaxMark
-            };
-        }
-
         private bool IsDescriptionValid(out string error)
         {
             error = null;
-            if (Description == null ||  Description.Length > 300)
+            if (Description == null ||  Description.Length == 0)
+            {
+                error = Properties.Resources.ErrorFieldEmpty;
+                return false;
+            }
+            else if (Description.Length > 300)
             {
                 error = Properties.Resources.ErrorFieldGreater;
                 return false;
             }
+
             return true;
         }
 

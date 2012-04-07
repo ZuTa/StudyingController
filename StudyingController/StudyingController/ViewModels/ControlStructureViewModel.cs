@@ -64,12 +64,19 @@ namespace StudyingController.ViewModels
 
         protected override SaveableViewModel GetViewModel(EntitiesDTO.BaseEntityDTO entity)
         {
-            if (entity is LectureDTO || entity is PracticeTeacherDTO)
+            if (entity is LectureDTO)
             {
-                LessonControlsViewModel lessonControlsViewModel = new LessonControlsViewModel(UserInterop, ControllerInterop, Dispatcher, entity) { EditMode = ControllerInterop.User.Role == UserRoles.Student ? EditModes.ReadOnly : EditModes.Editable };
-                lessonControlsViewModel.ControlOpened += new LessonControlsViewModel.ControlOpenedHandler(lessonControlsViewModel_WorkspaceChanged);
-                return lessonControlsViewModel;
+                LectureControlsViewModel lectureControlsViewModel = new LectureControlsViewModel(UserInterop, ControllerInterop, Dispatcher, entity) { EditMode = ControllerInterop.User.Role == UserRoles.Student ? EditModes.ReadOnly : EditModes.Editable };
+                lectureControlsViewModel.ControlOpened += new LectureControlsViewModel.ControlOpenedHandler(lessonControlsViewModel_WorkspaceChanged);
+                return lectureControlsViewModel;
 
+            }
+
+            if (entity is PracticeTeacherDTO)
+            {
+                PracticeControlsViewModel practiceControlsViewModel = new PracticeControlsViewModel(UserInterop, ControllerInterop, Dispatcher, entity) { EditMode = ControllerInterop.User.Role == UserRoles.Student ? EditModes.ReadOnly : EditModes.Editable };
+                practiceControlsViewModel.ControlOpened += new PracticeControlsViewModel.ControlOpenedHandler(lessonControlsViewModel_WorkspaceChanged);
+                return practiceControlsViewModel;
             }
             
             return null;
@@ -79,7 +86,8 @@ namespace StudyingController.ViewModels
         {
             if (WorkspaceChanged != null)
             {
-                if (entitiesProvider.CurrentEntity is LectureDTO && model is ControlModel) WorkspaceChanged(new LectureControlViewModel(UserInterop, ControllerInterop, Dispatcher, (model as ControlModel).ToDTO(), entitiesProvider.CurrentEntity.ID) { EditMode = ControllerInterop.User.Role == UserRoles.Student ? EditModes.ReadOnly : EditModes.Editable });
+                if (model is LectureControlModel) WorkspaceChanged(new LectureControlViewModel(UserInterop, ControllerInterop, Dispatcher, (model as LectureControlModel).ToDTO()) { EditMode = ControllerInterop.User.Role == UserRoles.Student ? EditModes.ReadOnly : EditModes.Editable });
+                else if (model is PracticeControlModel) WorkspaceChanged(new PracticeControlViewModel(UserInterop, ControllerInterop, Dispatcher, (model as PracticeControlModel).ToDTO()) { EditMode = ControllerInterop.User.Role == UserRoles.Student ? EditModes.ReadOnly : EditModes.Editable });
             }
         }
 

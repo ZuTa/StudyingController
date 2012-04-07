@@ -6,21 +6,44 @@ using EntitiesDTO;
 
 namespace StudyingControllerEntityModel
 {
-    public partial class LectureControl
+    public partial class LectureControl : IDTOable<LectureControlDTO>, IDataBase
     {
         #region Constructors
         
-        public LectureControl(int lectureID, ControlDTO control)
+        public LectureControl(LectureControlDTO control)
             :base(control)
         {
-            LectureID = lectureID;
+            Assign(control);
         }
 
         public LectureControl()
             : base()
         {
+
         }
 
         #endregion
+
+        public LectureControlDTO ToDTO()
+        {
+            LectureControlDTO control = new LectureControlDTO()
+            {
+                ID = this.ID,
+                Name = this.Name,
+                Description = this.Description,
+                Date = this.Date,
+                MaxMark = this.MaxMark,
+                LectureID = this.LectureID
+            };
+
+            return control;
+        }
+
+        public void Assign(LectureControlDTO entity)
+        {
+            base.Assign(entity);
+            LectureID = entity.LectureID;
+        }
+
     }
 }

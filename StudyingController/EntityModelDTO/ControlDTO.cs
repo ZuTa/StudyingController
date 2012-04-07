@@ -7,7 +7,9 @@ using System.Runtime.Serialization;
 namespace EntitiesDTO
 {
     [DataContract]
-    public class ControlDTO : NamedEntityDTO
+    [KnownType(typeof(LectureControlDTO))]
+    [KnownType(typeof(PracticeControlDTO))]
+    public abstract class ControlDTO : NamedEntityDTO
     {
         private DateTime date;
         [DataMember]

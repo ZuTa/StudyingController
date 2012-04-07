@@ -29,7 +29,7 @@
                 <Image Source="/StudyingController;component/Images/add.png" Stretch="Fill" />
             </Button>
             <Button Command="{Binding EditCommand}" ToolTip="Редагувати" Style="{StaticResource EditableButtonStyle}">
-                <Image Source="/StudyingController;component/Images/edit.png" Stretch="Fill"/>
+                <Image Source="/StudyingController;component/Images/open.png" Stretch="Fill"/>
             </Button>
             <Button Command="{Binding RemoveCommand}" ToolTip="Видалити" Style="{StaticResource EditableButtonStyle}" Visibility="{Binding Path=EditMode, Converter={StaticResource ResourceKey=EM2V}}">
                 <Image Source="/StudyingController;component/Images/remove.png" Stretch="Fill" />

@@ -10,7 +10,7 @@ using System.Collections.ObjectModel;
 
 namespace StudyingController.ViewModels
 {
-    public class LessonControlsViewModel : SaveableViewModel
+    public class LectureControlsViewModel : SaveableViewModel
     {
         #region Fields & Properties
 
@@ -27,8 +27,8 @@ namespace StudyingController.ViewModels
             get { return Model; }
         }
 
-        private ControlModel currentControl;
-        public ControlModel CurrentControl
+        private LectureControlModel currentControl;
+        public LectureControlModel CurrentControl
         {
             get { return currentControl; }
             set 
@@ -38,8 +38,8 @@ namespace StudyingController.ViewModels
             }
         }
 
-        private ObservableCollection<ControlModel> controls;
-        public ObservableCollection<ControlModel> Controls
+        private ObservableCollection<LectureControlModel> controls;
+        public ObservableCollection<LectureControlModel> Controls
         {
             get { return controls; }
             set 
@@ -53,10 +53,10 @@ namespace StudyingController.ViewModels
 
         #region Constructors
 
-        public LessonControlsViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, BaseEntityDTO lesson)
+        public LectureControlsViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, BaseEntityDTO lesson)
             : base(userInterop, controllerInterop, dispatcher)
         {
-            controls = new ObservableCollection<ControlModel>();
+            controls = new ObservableCollection<LectureControlModel>();
 
             originalEntity = lesson;
         }
@@ -119,10 +119,7 @@ namespace StudyingController.ViewModels
                     controlModel.PropertyChanged -= ModelPropertyChanged;
             }
 
-            if (OriginalLesson is LectureDTO)
-                Controls = ControllerInterop.Service.GetLectureControls(ControllerInterop.Session, OriginalLesson.ID).ToModelList<ControlModel, ControlDTO>();
-            else if (OriginalLesson is PracticeTeacherDTO)
-                Controls = ControllerInterop.Service.GetPracticeControls(ControllerInterop.Session, (OriginalLesson as PracticeTeacherDTO).PracticeID).ToModelList<ControlModel, ControlDTO>();
+            Controls = ControllerInterop.Service.GetLectureControls(ControllerInterop.Session, OriginalLesson.ID).ToModelList<LectureControlModel, LectureControlDTO>();
 
             foreach (ControlModel controlModel in Controls)
                 controlModel.PropertyChanged += ModelPropertyChanged;
@@ -152,16 +149,12 @@ namespace StudyingController.ViewModels
 
         private void AddControl()
         {
-            OnControlOpened(new ControlModel());
+            OnControlOpened(new LectureControlModel(){LectureID = OriginalLesson.ID });
         }
 
         public override void Save()
         {
-            if (OriginalLesson is LectureDTO)
-                ControllerInterop.Service.SaveLectureControls(ControllerInterop.Session, OriginalLesson.ID, Controls.ToDTOList<ControlDTO, ControlModel>());
-            else if (OriginalLesson is PracticeTeacherDTO)
-                ControllerInterop.Service.SavePracticeControls(ControllerInterop.Session, (OriginalLesson as PracticeTeacherDTO).PracticeID, Controls.ToDTOList<ControlDTO, ControlModel>());
-
+            ControllerInterop.Service.SaveLectureControls(ControllerInterop.Session, OriginalLesson.ID, Controls.ToDTOList<LectureControlDTO, LectureControlModel>());
             SetUnModified();
         }
 

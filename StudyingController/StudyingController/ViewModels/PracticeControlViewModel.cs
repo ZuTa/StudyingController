@@ -9,7 +9,7 @@ using System.Windows.Threading;
 
 namespace StudyingController.ViewModels
 {
-    public class LectureControlViewModel : SaveableViewModel
+    public class PracticeControlViewModel : SaveableViewModel
     {
         #region Fields & Properties
 
@@ -17,7 +17,7 @@ namespace StudyingController.ViewModels
         {
             get
             {
-                return base.CanSave && MarksViewModel != null && MarksViewModel.CanSave || base.CanSave && MarksViewModel == null;
+                return base.CanSave && MarksViewModel != null && MarksViewModel.CanSave || base.CanSave && MarksViewModel == null; ;
             }
         }
 
@@ -48,8 +48,8 @@ namespace StudyingController.ViewModels
         public ControlChatViewModel ChatViewModel
         {
             get { return chatViewModel; }
-            set 
-            { 
+            set
+            {
                 chatViewModel = value;
                 OnPropertyChanged("ChatViewModel");
             }
@@ -59,8 +59,8 @@ namespace StudyingController.ViewModels
         public ControlMarksViewModel MarksViewModel
         {
             get { return marksViewModel; }
-            set 
-            { 
+            set
+            {
                 marksViewModel = value;
                 OnPropertyChanged("MarksViewModel");
             }
@@ -76,19 +76,19 @@ namespace StudyingController.ViewModels
 
         public ControlModel Control
         {
-            get { return Model as LectureControlModel; }
+            get { return Model as PracticeControlModel; }
         }
 
         #endregion
 
         #region Constructors
 
-        public LectureControlViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, LectureControlDTO control)
+        public PracticeControlViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, PracticeControlDTO control)
             : base(userInterop, controllerInterop, dispatcher)
         {
             originalEntity = control;
 
-            Model = new LectureControlModel(control);
+            Model = new PracticeControlModel(control);
 
             ChatViewModel = new ControlChatViewModel(UserInterop, ControllerInterop, Dispatcher, control);
 
@@ -110,7 +110,7 @@ namespace StudyingController.ViewModels
 
         public override void Save()
         {
-            ControllerInterop.Service.SaveLectureControl(ControllerInterop.Session, (Control as LectureControlModel).ToDTO());
+            ControllerInterop.Service.SavePracticeControl(ControllerInterop.Session, (Control as PracticeControlModel).ToDTO());
             MarksViewModel.Save();
             SetUnModified();
         }
@@ -129,7 +129,7 @@ namespace StudyingController.ViewModels
 
         protected override void LoadData()
         {
-            if (IsUserStudent) mark = ControllerInterop.Service.GetLectureMark(ControllerInterop.Session, ControllerInterop.User.ID, Model.ID);
+            if (IsUserStudent) mark = ControllerInterop.Service.GetPracticeMark(ControllerInterop.Session, ControllerInterop.User.ID, Model.ID);
         }
 
         protected override void ClearData()
@@ -137,6 +137,7 @@ namespace StudyingController.ViewModels
         }
 
         #endregion
+
         private void MarksViewModel_ViewModelChanged(object sender, EventArgs e)
         {
             if (MarksViewModel.IsModified)

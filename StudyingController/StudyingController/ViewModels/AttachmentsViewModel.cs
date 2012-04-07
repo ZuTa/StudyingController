@@ -56,7 +56,7 @@ namespace StudyingController.ViewModels
             get { return user; }
             private set 
             {
-                if (!user.IsSameDatabaseObject(value))
+                if (user==null || !user.IsSameDatabaseObject(value))
                 {
                     user = value;
 

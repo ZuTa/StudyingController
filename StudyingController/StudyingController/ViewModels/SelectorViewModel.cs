@@ -201,11 +201,6 @@ namespace StudyingController.ViewModels
         public SelectorViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher,bool isContainsGroups)
             : base(userInterop, controllerInterop, dispatcher)
         {
-            /*LoadDefaultInstitutes();
-            UpdateProperties(null, false);
-            IsContainsGroups = isContainsGroups;
-            IsEnabled = true;
-            IsExpanded = Helper.IsExpanded;*/
         }
 
         public SelectorViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, BaseEntityDTO entity,EventHandler handler,bool isContainsGroups)
@@ -213,7 +208,6 @@ namespace StudyingController.ViewModels
         {
             LoadDefaultInstitutes();
             
-            //Faculties = ControllerInterop.Service.GetFaculties(ControllerInterop.Session, null);
             this.SelectorItemChanged += handler;
             IsContainsGroups = isContainsGroups;
             if (Helper.Entity == null || (isContainsGroups==Helper.IsLecture))
@@ -221,7 +215,6 @@ namespace StudyingController.ViewModels
             else
                 UpdateProperties(Helper.Entity, false);
             Helper.IsLecture = !isContainsGroups;
-            //Helper.Entity = null;
             IsEnabled = true;
             IsExpanded = Helper.IsExpanded;
         }
@@ -230,7 +223,7 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
-        private void UpdateProperties(BaseEntityDTO entity, bool isInitialized)
+        public void UpdateProperties(BaseEntityDTO entity, bool isInitialized)
         {
             if (entity == null || entity is InstituteDTO)
             {
