@@ -367,8 +367,9 @@ namespace StudyingController.ViewModels
 
         private void PushWorkspace(BaseApplicationViewModel viewModel)
         {
-            if (viewModel is LoadableViewModel)
-                (viewModel as LoadableViewModel).Load();
+            Load();
+            //if (viewModel is LoadableViewModel)
+            //    (viewModel as LoadableViewModel).Load();
 
             workspaces.Push(viewModel);
             SubscribeToEvents(viewModel);
