@@ -31,15 +31,12 @@ namespace StudyingControllerEntityModel
                 Login = this.Login,
                 UserInformation = (this.UserInformation as IDTOable<UserInformationDTO>).ToDTO(),
                 Role = this.Role,
-                GroupID = this.GroupID
             };
         }
 
         public void Assign(StudentDTO entity)
         {
             base.Assign(entity);
-
-            GroupID = entity.GroupID;
         }
     }
 }

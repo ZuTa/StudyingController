@@ -73,6 +73,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StudyingControllerEntityModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="StudyRange.cs" />
     <Compile Include="Subject.cs" />
     <Compile Include="SystemUser.cs" />
     <Compile Include="Teacher.cs" />
