@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using StudyingController.Common;
 using System.Windows.Threading;
+using System.Threading;
 
 namespace StudyingController.ViewModels
 {

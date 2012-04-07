@@ -4,90 +4,91 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" >
-    <Grid IsEnabled="{Binding Path=IsNotBusy}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition  Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <ToolBarTray>
-            <ToolBar>
-                <Button Command="{Binding LogoutCommand}" ToolTip="Вийти" Style="{StaticResource MenuButtonStyle}">
-                    <Image Source="/StudyingController;component/Images/application_exit.png" Stretch="Fill" />
-                </Button>
-            </ToolBar>
-            <ToolBar>
-                <Button ToolTip="Структура" Command="{Binding Path=UniversityStructureCommand}" Visibility="{Binding Path=IsUserAdminOrSecretary, Converter={StaticResource B2V}}" Style="{StaticResource MenuButtonStyle}">
-                    <Image Source="/StudyingController;component/Images/department.png" Stretch="Fill" />
-                </Button>
-                <Button Margin="3" ToolTip="Користувачі" Width="32" Height="32" Command="{Binding Path=UsersStructureCommand}" Visibility="{Binding Path=IsUserAdminOrSecretary, Converter={StaticResource B2V}}" Style="{StaticResource MenuButtonStyle}">
-                    <Image Source="/StudyingController;component/Images/people.png" Stretch="Fill" />
-                </Button>
-                <Button ToolTip="Контролі" Command="{Binding Path=ControlStructureCommand}" Visibility="{Binding Path=IsUserAdminOrTeacher, Converter={StaticResource B2V}}" Style="{StaticResource MenuButtonStyle}">
-                    <Image Source="/StudyingController;component/Images/book_cd_vide.png" Stretch="Fill" />
-                </Button>
-                <Button x:Name="btn_Lessons" ToolTip="Пари"  Visibility="{Binding Path=IsUserAdminOrSecretary, Converter={StaticResource B2V}}" Command="{Binding Path=LessonCommand}" Style="{StaticResource MenuButtonStyle}">
-                    <Button.Content>
-                        <Image Source="/StudyingController;component/Images/Learn_Lesson-icon.png" Stretch="Fill" />
-                    </Button.Content>
-                </Button>
-                <Button Command="{Binding Path=AttachmentCommand}" Visibility="{Binding Path=IsUserTeacher, Converter={StaticResource B2V}}" Style="{StaticResource MenuButtonStyle}">
-                    <Button.Content>
-                        <Image Source="/StudyingController;component/Images/attachment.png" Stretch="Fill"/>
-                    </Button.Content>
-                </Button>
-            </ToolBar>
-            <ToolBar Visibility="{Binding Path=IsManipulateableOrRefreshable, Converter={StaticResource B2V}}">
-                <Button ToolTip="Оновити" Visibility="{Binding Path=IsRefreshable, Converter={StaticResource B2V}}" Style="{StaticResource MenuButtonStyle}" Command="{Binding Path=CurrentWorkspace.UpdateCommand}" IsEnabled="{Binding CurrentWorkspace.CanRefresh}">
-                    <Image Source="/StudyingController;component/Images/refresh_blue.png" Stretch="Fill" />
-                </Button>
-                <Button x:Name="btnAdd" Visibility="{Binding Path=IsManipulateable, Converter={StaticResource B2V}}" Click="btnAdd_Click" ToolTip="Додати" IsEnabled="{Binding CurrentWorkspace.CanAdd}" Style="{StaticResource MenuButtonStyle}">
-                    <Button.ContextMenu>
-                        <ContextMenu x:Name="cmAdd" ItemsSource="{Binding CurrentWorkspace.AddCommands}">
-                            <ContextMenu.ItemTemplate>
-                                <DataTemplate>
-                                    <MenuItem Header="{Binding Name}" Command="{Binding Command}"/>
-                                </DataTemplate>
-                            </ContextMenu.ItemTemplate>
-                        </ContextMenu>
-                    </Button.ContextMenu>
-                    <Button.Content>
-                        <Image Source="/StudyingController;component/Images/1327612523_Add.png" Stretch="Fill" />
-                    </Button.Content>
-                </Button>
-                <Button ToolTip="Видалити" Visibility="{Binding Path=IsManipulateable, Converter={StaticResource B2V}}" Width="32" Height="32" Command="{Binding Path=CurrentWorkspace.RemoveCommand}" IsEnabled="{Binding CurrentWorkspace.CanRemove}" Style="{StaticResource MenuButtonStyle}">
-                    <Image Source="/StudyingController;component/Images/1327612550_delete.png" Stretch="Fill" />
-                </Button>
-            </ToolBar>
-            <ToolBar Visibility="{Binding Path=IsSaveable, Converter={StaticResource B2V}}">
-                <Button ToolTip="Зберегти" IsEnabled="{Binding CurrentWorkspace.CanSave}" Command="{Binding SaveCurrentWorkspaceCommand}" Style="{StaticResource MenuButtonStyle}">
-                    <Image x:Name="img" Source="/StudyingController;component/Images/floppy.png" Stretch="Fill" />
-                </Button>
-                <Button ToolTip="Відмінити" IsEnabled="{Binding CurrentWorkspace.IsModified}" Command="{Binding RollbackCurrentWorkspaceCommand}" Style="{StaticResource MenuButtonStyle}">
-                    <Image Source="/StudyingController;component/Images/cancel_dv.png" Stretch="Fill" />
-                </Button>
-            </ToolBar>
-            <ToolBar IsEnabled="{Binding Path=CurrentWorkspace.IsEnabled}" Visibility="{Binding Path=HasAdditionalCommands, Converter={StaticResource B2V}}" ItemsSource="{Binding CurrentWorkspace.AdditionalCommands}">
-                <ToolBar.ItemTemplate>
-                    <DataTemplate>
-                        <Button ToolTip="{Binding Path=Name}" Command="{Binding Path=Command}" IsEnabled="{Binding Path=IsEnabled}" Width="32" Height="32" Style="{StaticResource MenuButtonStyle}">
-                            <Button.Content>
-                                <Image Source="{Binding Path=Type, Converter={StaticResource E2P}}" Stretch="Fill"/>
-                            </Button.Content>
-                        </Button>
-                    </DataTemplate>
-                </ToolBar.ItemTemplate>
-            </ToolBar>
-        </ToolBarTray>
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="3*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0" Margin="3">
-                <!--<Expander IsExpanded="True" ExpandDirection="Right">
+    <Grid>
+        <Grid IsEnabled="{Binding Path=IsNotBusy}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition  Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <ToolBarTray>
+                <ToolBar>
+                    <Button Command="{Binding LogoutCommand}" ToolTip="Вийти" Style="{StaticResource MenuButtonStyle}">
+                        <Image Source="/StudyingController;component/Images/application_exit.png" Stretch="Fill" />
+                    </Button>
+                </ToolBar>
+                <ToolBar>
+                    <Button ToolTip="Структура" Command="{Binding Path=UniversityStructureCommand}" Visibility="{Binding Path=IsUserAdminOrSecretary, Converter={StaticResource B2V}}" Style="{StaticResource MenuButtonStyle}">
+                        <Image Source="/StudyingController;component/Images/department.png" Stretch="Fill" />
+                    </Button>
+                    <Button Margin="3" ToolTip="Користувачі" Width="32" Height="32" Command="{Binding Path=UsersStructureCommand}" Visibility="{Binding Path=IsUserAdminOrSecretary, Converter={StaticResource B2V}}" Style="{StaticResource MenuButtonStyle}">
+                        <Image Source="/StudyingController;component/Images/people.png" Stretch="Fill" />
+                    </Button>
+                    <Button ToolTip="Контролі" Command="{Binding Path=ControlStructureCommand}" Visibility="{Binding Path=IsUserAdminOrTeacher, Converter={StaticResource B2V}}" Style="{StaticResource MenuButtonStyle}">
+                        <Image Source="/StudyingController;component/Images/book_cd_vide.png" Stretch="Fill" />
+                    </Button>
+                    <Button x:Name="btn_Lessons" ToolTip="Пари"  Visibility="{Binding Path=IsUserAdminOrSecretary, Converter={StaticResource B2V}}" Command="{Binding Path=LessonCommand}" Style="{StaticResource MenuButtonStyle}">
+                        <Button.Content>
+                            <Image Source="/StudyingController;component/Images/Learn_Lesson-icon.png" Stretch="Fill" />
+                        </Button.Content>
+                    </Button>
+                    <Button Command="{Binding Path=AttachmentCommand}" Visibility="{Binding Path=IsUserTeacher, Converter={StaticResource B2V}}" Style="{StaticResource MenuButtonStyle}">
+                        <Button.Content>
+                            <Image Source="/StudyingController;component/Images/attachment.png" Stretch="Fill"/>
+                        </Button.Content>
+                    </Button>
+                </ToolBar>
+                <ToolBar Visibility="{Binding Path=IsManipulateableOrRefreshable, Converter={StaticResource B2V}}">
+                    <Button ToolTip="Оновити" Visibility="{Binding Path=IsRefreshable, Converter={StaticResource B2V}}" Style="{StaticResource MenuButtonStyle}" Command="{Binding Path=CurrentWorkspace.UpdateCommand}" IsEnabled="{Binding CurrentWorkspace.CanRefresh}">
+                        <Image Source="/StudyingController;component/Images/refresh_blue.png" Stretch="Fill" />
+                    </Button>
+                    <Button x:Name="btnAdd" Visibility="{Binding Path=IsManipulateable, Converter={StaticResource B2V}}" Click="btnAdd_Click" ToolTip="Додати" IsEnabled="{Binding CurrentWorkspace.CanAdd}" Style="{StaticResource MenuButtonStyle}">
+                        <Button.ContextMenu>
+                            <ContextMenu x:Name="cmAdd" ItemsSource="{Binding CurrentWorkspace.AddCommands}">
+                                <ContextMenu.ItemTemplate>
+                                    <DataTemplate>
+                                        <MenuItem Header="{Binding Name}" Command="{Binding Command}"/>
+                                    </DataTemplate>
+                                </ContextMenu.ItemTemplate>
+                            </ContextMenu>
+                        </Button.ContextMenu>
+                        <Button.Content>
+                            <Image Source="/StudyingController;component/Images/1327612523_Add.png" Stretch="Fill" />
+                        </Button.Content>
+                    </Button>
+                    <Button ToolTip="Видалити" Visibility="{Binding Path=IsManipulateable, Converter={StaticResource B2V}}" Width="32" Height="32" Command="{Binding Path=CurrentWorkspace.RemoveCommand}" IsEnabled="{Binding CurrentWorkspace.CanRemove}" Style="{StaticResource MenuButtonStyle}">
+                        <Image Source="/StudyingController;component/Images/1327612550_delete.png" Stretch="Fill" />
+                    </Button>
+                </ToolBar>
+                <ToolBar Visibility="{Binding Path=IsSaveable, Converter={StaticResource B2V}}">
+                    <Button ToolTip="Зберегти" IsEnabled="{Binding CurrentWorkspace.CanSave}" Command="{Binding SaveCurrentWorkspaceCommand}" Style="{StaticResource MenuButtonStyle}">
+                        <Image x:Name="img" Source="/StudyingController;component/Images/floppy.png" Stretch="Fill" />
+                    </Button>
+                    <Button ToolTip="Відмінити" IsEnabled="{Binding CurrentWorkspace.IsModified}" Command="{Binding RollbackCurrentWorkspaceCommand}" Style="{StaticResource MenuButtonStyle}">
+                        <Image Source="/StudyingController;component/Images/cancel_dv.png" Stretch="Fill" />
+                    </Button>
+                </ToolBar>
+                <ToolBar IsEnabled="{Binding Path=CurrentWorkspace.IsEnabled}" Visibility="{Binding Path=HasAdditionalCommands, Converter={StaticResource B2V}}" ItemsSource="{Binding CurrentWorkspace.AdditionalCommands}">
+                    <ToolBar.ItemTemplate>
+                        <DataTemplate>
+                            <Button ToolTip="{Binding Path=Name}" Command="{Binding Path=Command}" IsEnabled="{Binding Path=IsEnabled}" Width="32" Height="32" Style="{StaticResource MenuButtonStyle}">
+                                <Button.Content>
+                                    <Image Source="{Binding Path=Type, Converter={StaticResource E2P}}" Stretch="Fill"/>
+                                </Button.Content>
+                            </Button>
+                        </DataTemplate>
+                    </ToolBar.ItemTemplate>
+                </ToolBar>
+            </ToolBarTray>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" Margin="3">
+                    <!--<Expander IsExpanded="True" ExpandDirection="Right">
                     <ContentControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding UserInformationViewModel}"/>
                 </Expander>-->
-                <!--<Expander ExpandDirection="Right" Margin="2,0,5,2" IsExpanded="True" Background="Beige">
+                    <!--<Expander ExpandDirection="Right" Margin="2,0,5,2" IsExpanded="True" Background="Beige">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -112,9 +113,9 @@
                         </Grid>                        
                     </ScrollViewer>
                 </Expander>-->
-            </Grid>
-            <ContentControl Margin="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding CurrentWorkspace}"/>
-            <!--    <ScrollViewer Grid.Row="0" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Left" >
+                </Grid>
+                <ContentControl Margin="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding CurrentWorkspace}"/>
+                <!--    <ScrollViewer Grid.Row="0" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Left" >
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                         <ItemsControl ItemsSource="{Binding PathCommands}" Width="Auto" >
                             <ItemsControl.ItemsPanel>
@@ -137,6 +138,10 @@
                 
                 
             </Grid>-->
+            </Grid>
         </Grid>
+
+        <Control Style="{StaticResource BusyAnimationStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding IsLoading, Converter={StaticResource B2V}}"/>
     </Grid>
 </UserControl>
+    
