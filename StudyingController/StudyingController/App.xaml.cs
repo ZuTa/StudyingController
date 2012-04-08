@@ -126,6 +126,14 @@ namespace StudyingController
             }
         }
 
+        public EntitiesDTO.StudyRangeDTO StudyRange
+        {
+            get
+            {
+                return (Session == null) ? null : Session.StudyRange;
+            }
+        }
+
         private void OnSessionChanged()
         {
             if (SessionChanged != null)

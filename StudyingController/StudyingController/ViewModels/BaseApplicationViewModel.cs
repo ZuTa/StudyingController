@@ -4,12 +4,29 @@ using System.Linq;
 using System.Text;
 using StudyingController.Common;
 using System.Windows.Threading;
+using EntitiesDTO;
 
 namespace StudyingController.ViewModels
 {
     public abstract class BaseApplicationViewModel : BaseViewModel
     {
         #region Field & Properties
+
+        public SystemUserDTO LoggedUser
+        {
+            get
+            {
+                return ControllerInterop.User;
+            }
+        }
+
+        public StudyRangeDTO StudyRange
+        {
+            get
+            {
+                return ControllerInterop.StudyRange;
+            }
+        }
 
         private IUserInterop userInterop;
         protected IUserInterop UserInterop

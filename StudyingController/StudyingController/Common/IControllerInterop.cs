@@ -14,6 +14,8 @@ namespace StudyingController.Common
 
         SystemUserDTO User { get; }
 
+        StudyRangeDTO StudyRange { get; }
+
         event EventHandler SessionChanged;
     }
 }

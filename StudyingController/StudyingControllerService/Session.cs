@@ -8,8 +8,6 @@ using EntitiesDTO;
 namespace StudyingControllerService
 {
     [DataContract]
-    [KnownType(typeof(InstituteAdminDTO))]
-    [KnownType(typeof(FacultyAdminDTO))]
     public class Session
     {
         #region Fields & Properties
@@ -25,6 +23,14 @@ namespace StudyingControllerService
             set { user = value; }
         }
 
+        private StudyRangeDTO studyRange;
+        [DataMember]
+        public StudyRangeDTO StudyRange
+        {
+            get { return studyRange; }
+            set { studyRange = value; }
+        }
+
         public DateTime LastAccessTime { get; set; }
 
         [DataMember]
@@ -34,9 +40,10 @@ namespace StudyingControllerService
 
         #region Constructors
 
-        public Session(SystemUserDTO user)
+        public Session(SystemUserDTO user, StudyRangeDTO studyRange)
         {
             this.user = user;
+            this.studyRange = studyRange;
 
             SessionID = random.NextDouble();
             SessionID += System.Threading.Interlocked.Increment(ref counter);

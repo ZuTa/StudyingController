@@ -23,6 +23,33 @@ namespace StudyingControllerService
 
         private Dictionary<double, Session> sessions = new Dictionary<double, Session>();
 
+        private SystemConfiguration configuration;
+        public SystemConfiguration Configuration
+        {
+            get 
+            {
+                if (configuration == null)
+                {
+                    try
+                    {
+                        SystemConfiguration result = null;
+
+                        using (UniversityEntities context = new UniversityEntities())
+                        {
+                            result = context.SystemConfigurations.Include("StudyRange").FirstOrDefault();
+                        }
+
+                        return result;
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+                    }
+                }
+                return configuration; 
+            }
+        }
+
         #endregion
 
         #region Constructors
@@ -85,7 +112,7 @@ namespace StudyingControllerService
                     if (!(user != null && Encoding.UTF8.GetString(user.Password) == password))
                         throw new Exception("У доступі відмовлено!");
 
-                    session = new Session(GetSystemUserDTO(user));
+                    session = new Session(GetSystemUserDTO(user), Configuration.StudyRange.ToDTO());
 
                     lock (sessions)
                         sessions[session.SessionID] = session;
@@ -1013,12 +1040,12 @@ namespace StudyingControllerService
 
                     foreach (IEnumerable<Student> students in query.ToList())
                     {
-                        foreach (Student student in students)
-                        {
-                            context.LoadProperty(student, "Group");
-                            if (result.Find(g => g.ID == student.GroupID) == null)
-                                result.Add(student.Group.ToDTO());
-                        }
+                        //foreach (Student student in students)
+                        //{
+                        //    context.LoadProperty(student, "Group");
+                        //    if (result.Find(g => g.ID == student.GroupID) == null)
+                        //        result.Add(student.Group.ToDTO());
+                        //}
                     }
                 }
 
@@ -1604,13 +1631,13 @@ namespace StudyingControllerService
                    List<LectureDTO> result = new List<LectureDTO>();
 
                    Student student = context.SystemUsers.FirstOrDefault(u => u.ID == studentID) as Student;
-                   Group group = context.Groups.Include("Lectures").FirstOrDefault(g => g.ID == student.GroupID);
+                   //Group group = context.Groups.Include("Lectures").FirstOrDefault(g => g.ID == student.GroupID);
 
-                   foreach (var lecture in group.Lectures)
-                   {
-                       context.LoadProperty(lecture, "Subject");
-                       result.Add(lecture.ToDTO());
-                   }
+                   //foreach (var lecture in group.Lectures)
+                   //{
+                   //    context.LoadProperty(lecture, "Subject");
+                   //    result.Add(lecture.ToDTO());
+                   //}
 
                    return result;
                }
