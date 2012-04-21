@@ -18,6 +18,14 @@ namespace Splitter.ViewModels
             set { isUserRegistered = value; }
         }
 
+        public bool IsUserNotRegistered
+        {
+            get
+            {
+                return !IsUserRegistered;
+            }
+        }
+
         #endregion
 
         #region Constructors
