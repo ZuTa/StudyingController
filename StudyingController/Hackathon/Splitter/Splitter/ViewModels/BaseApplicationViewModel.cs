@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using StudyingController.Common;
 using System.Windows.Threading;
-using EntitiesDTO;
+using ModelDTO;
 
-namespace StudyingController.ViewModels
+namespace Splitter.ViewModels
 {
     public abstract class BaseApplicationViewModel : BaseViewModel
     {
@@ -16,15 +16,7 @@ namespace StudyingController.ViewModels
         {
             get
             {
-                return ControllerInterop.User;
-            }
-        }
-
-        public StudyRangeDTO StudyRange
-        {
-            get
-            {
-                return ControllerInterop.StudyRange;
+                return SplitterInterop.User;
             }
         }
 
@@ -34,10 +26,10 @@ namespace StudyingController.ViewModels
             get { return userInterop; }
         }
 
-        private IControllerInterop controllerInterop;
-        protected IControllerInterop ControllerInterop
+        private ISplitterInterop splitterInterop;
+        protected ISplitterInterop SplitterInterop
         {
-            get { return controllerInterop; }
+            get { return splitterInterop; }
         }
 
         private Dispatcher dispatcher;
@@ -50,14 +42,14 @@ namespace StudyingController.ViewModels
 
         #region Constructors
 
-        protected BaseApplicationViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
+        protected BaseApplicationViewModel(IUserInterop userInterop, ISplitterInterop controllerInterop, Dispatcher dispatcher)
             : base()
         {
             Common.Checks.AssertNotNull(dispatcher, "dispatcher");
             Common.Checks.AssertNotNull(userInterop, "userInterop");
 
             this.userInterop = userInterop;
-            this.controllerInterop = controllerInterop;
+            this.splitterInterop = controllerInterop;
             this.dispatcher = dispatcher;
         }
 

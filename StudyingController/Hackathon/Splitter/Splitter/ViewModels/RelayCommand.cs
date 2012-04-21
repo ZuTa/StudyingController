@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows.Input;
 using System.Diagnostics;
 
-namespace StudyingController.ViewModels
+namespace Splitter.ViewModels
 {
     public class RelayCommand : ICommand
     {

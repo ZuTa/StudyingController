@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel;
 
-namespace StudyingController.ViewModels
+namespace Splitter.ViewModels
 {
     public abstract class BaseViewModel : INotifyPropertyChanged
     {
