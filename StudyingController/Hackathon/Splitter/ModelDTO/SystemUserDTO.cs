@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 
 namespace ModelDTO
 {
+    [DataContract]
     public class SystemUserDTO : BaseDTO
     {
         private string login;

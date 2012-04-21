@@ -41,9 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArticleDTO.cs" />
     <Compile Include="BaseDTO.cs" />
+    <Compile Include="EventDTO.cs" />
     <Compile Include="GroupDTO.cs" />
+    <Compile Include="GroupMessageDTO.cs" />
     <Compile Include="GroupUserDTO.cs" />
+    <Compile Include="NotificationDTO.cs" />
     <Compile Include="RateDTO.cs" />
     <Compile Include="SkillDTO.cs" />
     <Compile Include="SystemUserDTO.cs" />

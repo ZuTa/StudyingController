@@ -693,7 +693,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="EntityModel">
-        <EntityTypeShape EntityType="SplitterModel.Article" Width="1.5" PointX="0.75" PointY="0.75" Height="1.787985026041667" IsExpanded="true" />
+        <EntityTypeShape EntityType="SplitterModel.Article" Width="1.5" PointX="1.75" PointY="1.125" Height="1.787985026041667" IsExpanded="true" />
         <EntityTypeShape EntityType="SplitterModel.Event" Width="1.5" PointX="7.625" PointY="2.875" Height="2.5571907552083317" IsExpanded="true" />
         <EntityTypeShape EntityType="SplitterModel.Group" Width="1.5" PointX="4" PointY="5.75" Height="2.7494921874999996" IsExpanded="true" />
         <EntityTypeShape EntityType="SplitterModel.GroupMessage" Width="1.5" PointX="4.875" PointY="10" Height="1.9802864583333317" IsExpanded="true" />

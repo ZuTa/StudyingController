@@ -8,13 +8,12 @@
 //------------------------------------------------------------------------------
 
 using System;
-using System.ComponentModel;
-using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Linq;
-using System.Runtime.Serialization;
+using System.Data.EntityClient;
+using System.ComponentModel;
 using System.Xml.Serialization;
+using System.Runtime.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -226,7 +225,6 @@ namespace EntityModel
         private ObjectSet<GroupUser> _GroupUsers;
 
         #endregion
-
         #region AddTo Methods
     
         /// <summary>
@@ -302,11 +300,11 @@ namespace EntityModel
         }
 
         #endregion
-
     }
+    
 
     #endregion
-
+    
     #region Entities
     
     /// <summary>
@@ -337,7 +335,6 @@ namespace EntityModel
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -440,7 +437,6 @@ namespace EntityModel
         partial void OnDateChanged();
 
         #endregion
-
     
     }
     
@@ -474,7 +470,6 @@ namespace EntityModel
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -625,7 +620,6 @@ namespace EntityModel
         partial void OnGroupIDChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -690,7 +684,6 @@ namespace EntityModel
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -719,7 +712,6 @@ namespace EntityModel
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -822,7 +814,6 @@ namespace EntityModel
         partial void OnCreatorIDChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -953,7 +944,6 @@ namespace EntityModel
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -984,7 +974,6 @@ namespace EntityModel
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1087,7 +1076,6 @@ namespace EntityModel
         partial void OnGroupUserIDChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -1130,7 +1118,6 @@ namespace EntityModel
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1161,7 +1148,6 @@ namespace EntityModel
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1264,7 +1250,6 @@ namespace EntityModel
         partial void OnGroupRoleChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -1389,7 +1374,6 @@ namespace EntityModel
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1422,7 +1406,6 @@ namespace EntityModel
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1597,7 +1580,6 @@ namespace EntityModel
         partial void OnEventIDChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -1716,7 +1698,6 @@ namespace EntityModel
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1747,7 +1728,6 @@ namespace EntityModel
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1850,7 +1830,6 @@ namespace EntityModel
         partial void OnGroupUserIDChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -1931,7 +1910,6 @@ namespace EntityModel
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1960,7 +1938,6 @@ namespace EntityModel
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -2039,7 +2016,6 @@ namespace EntityModel
         partial void OnGroupIDChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -2104,7 +2080,6 @@ namespace EntityModel
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -2133,7 +2108,6 @@ namespace EntityModel
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -2212,7 +2186,6 @@ namespace EntityModel
         partial void OnPasswordChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -2283,10 +2256,8 @@ namespace EntityModel
         }
 
         #endregion
-
     }
 
     #endregion
-
     
 }
