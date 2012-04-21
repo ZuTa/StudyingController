@@ -1,7 +1,13 @@
 ﻿<Application x:Class="Splitter.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:vm="clr-namespace:Splitter.ViewModels"
+             xmlns:v="clr-namespace:Splitter.Views"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <DataTemplate DataType="{x:Type vm:LoginViewModel}">
+                <v:HomeView/>
+            </DataTemplate>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
