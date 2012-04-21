@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using ModelDTO;
 
 namespace SplitterService
 {
@@ -14,6 +15,14 @@ namespace SplitterService
         [OperationContract]
         [FaultContract(typeof(SplitterServiceException))]
         Session Login(string login, string password);
+
+        [OperationContract]
+        [FaultContract(typeof(SplitterServiceException))]
+        bool CanRegister(SystemUserDTO user);
+
+        [OperationContract]
+        [FaultContract(typeof(SplitterServiceException))]
+        void Register(SystemUserDTO user);
 
     }
 }
