@@ -7,5 +7,10 @@ namespace Splitter.ViewModels
 {
     public class HomeViewModel
     {
+        #region Fields & Properties
+
+
+
+        #endregion
     }
 }
