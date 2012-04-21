@@ -18,13 +18,29 @@ namespace Splitter.ViewModels
             set { isUserRegistered = value; }
         }
 
+        public bool IsUserNotRegistered
+        {
+            get
+            {
+                return !IsUserRegistered;
+            }
+        }
+
+        private RegistrationViewModel registrationViewModel;
+        public RegistrationViewModel RegistrationViewModel
+        {
+            get { return registrationViewModel; }
+            set { registrationViewModel = value; }
+        }
+
         #endregion
 
         #region Constructors
 
-        public HomeViewModel(IUserInterop userInterop, ISplitterInterop controllerInterop, Dispatcher dispatcher)
-            :base(userInterop, controllerInterop, dispatcher)
+        public HomeViewModel(IUserInterop userInterop, ISplitterInterop splitterInterop, Dispatcher dispatcher)
+            :base(userInterop, splitterInterop, dispatcher)
         {
+            registrationViewModel = new RegistrationViewModel(userInterop, splitterInterop, dispatcher);
         }
 
         #endregion 
@@ -34,7 +50,7 @@ namespace Splitter.ViewModels
 
         protected override void LoadData()
         {
-            //throw new NotImplementedException();
+            
         }
 
         protected override void ClearData()

@@ -15,8 +15,8 @@
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <Grid Margin="10">
-                <Grid.ColumnDefinitions>
+            <Grid Margin="10" Visibility="{Binding Path=IsUserNotRegistered, Converter={StaticResource B2V}}">
+              <!--  <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
@@ -28,7 +28,8 @@
                 <TextBox Grid.ColumnSpan="2" MinWidth="100" Margin="5" ></TextBox>
                 <TextBox Grid.Row="1" Grid.ColumnSpan="2" Margin="5"></TextBox>
                 <TextBlock Grid.Row="2" Margin="5" Text="Registry"></TextBlock>
-                <Button Grid.Column="1" Grid.Row="2" Content="Login" Margin="4"></Button>
+                <Button Grid.Column="1" Grid.Row="2" Content="Login" Margin="4"></Button>-->
+                <ContentControl Focusable="False" Content="{Binding RegistrationViewModel}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
             </Grid>
             <Grid Grid.Row="1">
 
