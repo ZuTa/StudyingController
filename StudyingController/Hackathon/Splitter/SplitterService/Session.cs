@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Runtime.Serialization;
+using ModelDTO;
 
 namespace SplitterService
 {
@@ -13,6 +14,14 @@ namespace SplitterService
 
         private static Random random = new Random();
         private static int counter = 0;
+
+        private SystemUserDTO user;
+        [DataMember]
+        public SystemUserDTO User
+        {
+            get { return user; }
+            set { user = value; }
+        }
 
         public DateTime LastAccessTime { get; set; }
 

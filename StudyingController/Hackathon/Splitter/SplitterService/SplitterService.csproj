@@ -78,6 +78,10 @@
       <Project>{F0D79511-8DB6-4230-A9E0-F6C5E920453E}</Project>
       <Name>EntityModel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ModelDTO\ModelDTO.csproj">
+      <Project>{81A1B0E5-F08E-450C-8442-BAA1AD032220}</Project>
+      <Name>ModelDTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
