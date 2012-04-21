@@ -121,6 +121,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\" />
+    <Folder Include="Model\" />
+    <Folder Include="ViewModel\" />
+    <Folder Include="View\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ModelDTO\ModelDTO.csproj">
