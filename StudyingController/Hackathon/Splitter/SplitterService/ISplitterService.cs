@@ -11,5 +11,9 @@ namespace SplitterService
     [ServiceContract]
     public interface ISplitterService
     {
+        [OperationContract]
+        [FaultContract(typeof(SplitterServiceException))]
+        Session Login(string login, string password);
+
     }
 }
