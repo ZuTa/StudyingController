@@ -14,14 +14,7 @@ namespace SplitterService
         private static Random random = new Random();
         private static int counter = 0;
 
-        private SystemUserDTO user;
-        [DataMember]
-        public SystemUserDTO User
-        {
-            get { return user; }
-            set { user = value; }
-        }
-
+        
         public DateTime LastAccessTime { get; set; }
 
         [DataMember]
@@ -31,9 +24,9 @@ namespace SplitterService
 
         #region Constructors
 
-        public Session(SystemUserDTO user, StudyRangeDTO studyRange)
+        public Session()
         {
-            this.user = user;
+            
 
             SessionID = random.NextDouble();
             SessionID += System.Threading.Interlocked.Increment(ref counter);

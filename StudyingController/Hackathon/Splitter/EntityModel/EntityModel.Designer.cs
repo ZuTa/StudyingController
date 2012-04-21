@@ -22,14 +22,14 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("SplitterModel", "FK_Event_Group", "Group", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(EntityModel.Group), "Event", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(EntityModel.Event), true)]
 [assembly: EdmRelationshipAttribute("SplitterModel", "FK_Notification_Event", "Event", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(EntityModel.Event), "Notification", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(EntityModel.Notification), true)]
 [assembly: EdmRelationshipAttribute("SplitterModel", "FK_Group_SystemUser", "SystemUser", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(EntityModel.SystemUser), "Group", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(EntityModel.Group), true)]
-[assembly: EdmRelationshipAttribute("SplitterModel", "FK_GroupUsers_Group", "Group", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(EntityModel.Group), "GroupUsers", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(EntityModel.GroupUser), true)]
 [assembly: EdmRelationshipAttribute("SplitterModel", "FK_Notification_Group", "Group", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(EntityModel.Group), "Notification", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(EntityModel.Notification), true)]
 [assembly: EdmRelationshipAttribute("SplitterModel", "FK_Skill_Group", "Group", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(EntityModel.Group), "Skill", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(EntityModel.Skill), true)]
-[assembly: EdmRelationshipAttribute("SplitterModel", "FK_GroupMessage_GroupUsers", "GroupUsers", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(EntityModel.GroupUser), "GroupMessage", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(EntityModel.GroupMessage), true)]
-[assembly: EdmRelationshipAttribute("SplitterModel", "FK_GroupUsers_SystemUser", "SystemUser", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(EntityModel.SystemUser), "GroupUsers", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(EntityModel.GroupUser), true)]
 [assembly: EdmRelationshipAttribute("SplitterModel", "FK_Notification_SystemUser", "SystemUser", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(EntityModel.SystemUser), "Notification", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(EntityModel.Notification), true)]
-[assembly: EdmRelationshipAttribute("SplitterModel", "FK_Rate_GroupUsers", "GroupUser", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(EntityModel.GroupUser), "Rate", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(EntityModel.Rate), true)]
 [assembly: EdmRelationshipAttribute("SplitterModel", "FK_Rate_Skill", "Skill", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(EntityModel.Skill), "Rate", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(EntityModel.Rate), true)]
+[assembly: EdmRelationshipAttribute("SplitterModel", "FK_GroupUsers_Group", "Group", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(EntityModel.Group), "GroupUser", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(EntityModel.GroupUser), true)]
+[assembly: EdmRelationshipAttribute("SplitterModel", "FK_GroupMessage_GroupUsers", "GroupUser", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(EntityModel.GroupUser), "GroupMessage", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(EntityModel.GroupMessage), true)]
+[assembly: EdmRelationshipAttribute("SplitterModel", "FK_GroupUsers_SystemUser", "SystemUser", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(EntityModel.SystemUser), "GroupUser", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(EntityModel.GroupUser), true)]
+[assembly: EdmRelationshipAttribute("SplitterModel", "FK_Rate_GroupUsers", "GroupUser", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(EntityModel.GroupUser), "Rate", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(EntityModel.Rate), true)]
 
 #endregion
 
@@ -148,22 +148,6 @@ namespace EntityModel
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<GroupUser> GroupUsers
-        {
-            get
-            {
-                if ((_GroupUsers == null))
-                {
-                    _GroupUsers = base.CreateObjectSet<GroupUser>("GroupUsers");
-                }
-                return _GroupUsers;
-            }
-        }
-        private ObjectSet<GroupUser> _GroupUsers;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<Notification> Notifications
         {
             get
@@ -224,6 +208,22 @@ namespace EntityModel
             }
         }
         private ObjectSet<Rate> _Rates;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<GroupUser> GroupUsers
+        {
+            get
+            {
+                if ((_GroupUsers == null))
+                {
+                    _GroupUsers = base.CreateObjectSet<GroupUser>("GroupUsers");
+                }
+                return _GroupUsers;
+            }
+        }
+        private ObjectSet<GroupUser> _GroupUsers;
 
         #endregion
 
@@ -262,14 +262,6 @@ namespace EntityModel
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the GroupUsers EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToGroupUsers(GroupUser groupUser)
-        {
-            base.AddObject("GroupUsers", groupUser);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the Notifications EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToNotifications(Notification notification)
@@ -299,6 +291,14 @@ namespace EntityModel
         public void AddToRates(Rate rate)
         {
             base.AddObject("Rates", rate);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the GroupUsers EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToGroupUsers(GroupUser groupUser)
+        {
+            base.AddObject("GroupUsers", groupUser);
         }
 
         #endregion
@@ -892,28 +892,6 @@ namespace EntityModel
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SplitterModel", "FK_GroupUsers_Group", "GroupUsers")]
-        public EntityCollection<GroupUser> GroupUsers
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GroupUser>("SplitterModel.FK_GroupUsers_Group", "GroupUsers");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GroupUser>("SplitterModel.FK_GroupUsers_Group", "GroupUsers", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("SplitterModel", "FK_Notification_Group", "Notification")]
         public EntityCollection<Notification> Notifications
         {
@@ -948,6 +926,28 @@ namespace EntityModel
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Skill>("SplitterModel.FK_Skill_Group", "Skill", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SplitterModel", "FK_GroupUsers_Group", "GroupUser")]
+        public EntityCollection<GroupUser> GroupUsers
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GroupUser>("SplitterModel.FK_GroupUsers_Group", "GroupUser");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GroupUser>("SplitterModel.FK_GroupUsers_Group", "GroupUser", value);
                 }
             }
         }
@@ -1097,16 +1097,16 @@ namespace EntityModel
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SplitterModel", "FK_GroupMessage_GroupUsers", "GroupUsers")]
+        [EdmRelationshipNavigationPropertyAttribute("SplitterModel", "FK_GroupMessage_GroupUsers", "GroupUser")]
         public GroupUser GroupUser
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GroupUser>("SplitterModel.FK_GroupMessage_GroupUsers", "GroupUsers").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GroupUser>("SplitterModel.FK_GroupMessage_GroupUsers", "GroupUser").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GroupUser>("SplitterModel.FK_GroupMessage_GroupUsers", "GroupUsers").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GroupUser>("SplitterModel.FK_GroupMessage_GroupUsers", "GroupUser").Value = value;
             }
         }
         /// <summary>
@@ -1118,13 +1118,13 @@ namespace EntityModel
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GroupUser>("SplitterModel.FK_GroupMessage_GroupUsers", "GroupUsers");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GroupUser>("SplitterModel.FK_GroupMessage_GroupUsers", "GroupUser");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GroupUser>("SplitterModel.FK_GroupMessage_GroupUsers", "GroupUsers", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GroupUser>("SplitterModel.FK_GroupMessage_GroupUsers", "GroupUser", value);
                 }
             }
         }
@@ -1335,7 +1335,7 @@ namespace EntityModel
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("SplitterModel", "FK_GroupUsers_SystemUser", "SystemUser")]
-        public SystemUser User
+        public SystemUser SystemUser
         {
             get
             {
@@ -1351,7 +1351,7 @@ namespace EntityModel
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<SystemUser> UserReference
+        public EntityReference<SystemUser> SystemUserReference
         {
             get
             {
@@ -1860,44 +1860,6 @@ namespace EntityModel
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SplitterModel", "FK_Rate_GroupUsers", "GroupUser")]
-        public GroupUser GroupUser
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GroupUser>("SplitterModel.FK_Rate_GroupUsers", "GroupUser").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GroupUser>("SplitterModel.FK_Rate_GroupUsers", "GroupUser").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<GroupUser> GroupUserReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GroupUser>("SplitterModel.FK_Rate_GroupUsers", "GroupUser");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GroupUser>("SplitterModel.FK_Rate_GroupUsers", "GroupUser", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("SplitterModel", "FK_Rate_Skill", "Skill")]
         public Skill Skill
         {
@@ -1926,6 +1888,44 @@ namespace EntityModel
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Skill>("SplitterModel.FK_Rate_Skill", "Skill", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SplitterModel", "FK_Rate_GroupUsers", "GroupUser")]
+        public GroupUser GroupUser
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GroupUser>("SplitterModel.FK_Rate_GroupUsers", "GroupUser").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GroupUser>("SplitterModel.FK_Rate_GroupUsers", "GroupUser").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<GroupUser> GroupUserReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GroupUser>("SplitterModel.FK_Rate_GroupUsers", "GroupUser");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GroupUser>("SplitterModel.FK_Rate_GroupUsers", "GroupUser", value);
                 }
             }
         }
@@ -2244,28 +2244,6 @@ namespace EntityModel
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SplitterModel", "FK_GroupUsers_SystemUser", "GroupUsers")]
-        public EntityCollection<GroupUser> GroupUsers
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GroupUser>("SplitterModel.FK_GroupUsers_SystemUser", "GroupUsers");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GroupUser>("SplitterModel.FK_GroupUsers_SystemUser", "GroupUsers", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("SplitterModel", "FK_Notification_SystemUser", "Notification")]
         public EntityCollection<Notification> Notifications
         {
@@ -2278,6 +2256,28 @@ namespace EntityModel
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Notification>("SplitterModel.FK_Notification_SystemUser", "Notification", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SplitterModel", "FK_GroupUsers_SystemUser", "GroupUser")]
+        public EntityCollection<GroupUser> GroupUsers
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GroupUser>("SplitterModel.FK_GroupUsers_SystemUser", "GroupUser");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GroupUser>("SplitterModel.FK_GroupUsers_SystemUser", "GroupUser", value);
                 }
             }
         }
