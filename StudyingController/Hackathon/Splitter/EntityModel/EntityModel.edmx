@@ -1,0 +1,757 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SplitterModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="SplitterModelStoreContainer">
+          <EntitySet Name="Article" EntityType="SplitterModel.Store.Article" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Event" EntityType="SplitterModel.Store.Event" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Group" EntityType="SplitterModel.Store.Group" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GroupMessage" EntityType="SplitterModel.Store.GroupMessage" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GroupUsers" EntityType="SplitterModel.Store.GroupUsers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Notification" EntityType="SplitterModel.Store.Notification" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Rate" EntityType="SplitterModel.Store.Rate" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Skill" EntityType="SplitterModel.Store.Skill" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SystemUser" EntityType="SplitterModel.Store.SystemUser" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Event_Group" Association="SplitterModel.Store.FK_Event_Group">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Group_SystemUser" Association="SplitterModel.Store.FK_Group_SystemUser">
+            <End Role="SystemUser" EntitySet="SystemUser" />
+            <End Role="Group" EntitySet="Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupMessage_GroupUsers" Association="SplitterModel.Store.FK_GroupMessage_GroupUsers">
+            <End Role="GroupUsers" EntitySet="GroupUsers" />
+            <End Role="GroupMessage" EntitySet="GroupMessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupUsers_Group" Association="SplitterModel.Store.FK_GroupUsers_Group">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="GroupUsers" EntitySet="GroupUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupUsers_SystemUser" Association="SplitterModel.Store.FK_GroupUsers_SystemUser">
+            <End Role="SystemUser" EntitySet="SystemUser" />
+            <End Role="GroupUsers" EntitySet="GroupUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notification_Event" Association="SplitterModel.Store.FK_Notification_Event">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="Notification" EntitySet="Notification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notification_Group" Association="SplitterModel.Store.FK_Notification_Group">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="Notification" EntitySet="Notification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notification_SystemUser" Association="SplitterModel.Store.FK_Notification_SystemUser">
+            <End Role="SystemUser" EntitySet="SystemUser" />
+            <End Role="Notification" EntitySet="Notification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rate_GroupUsers" Association="SplitterModel.Store.FK_Rate_GroupUsers">
+            <End Role="GroupUsers" EntitySet="GroupUsers" />
+            <End Role="Rate" EntitySet="Rate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rate_Skill" Association="SplitterModel.Store.FK_Rate_Skill">
+            <End Role="Skill" EntitySet="Skill" />
+            <End Role="Rate" EntitySet="Rate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Skill_Group" Association="SplitterModel.Store.FK_Skill_Group">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="Skill" EntitySet="Skill" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="FinishDate" Type="datetime" Nullable="false" />
+          <Property Name="GroupID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroupMessage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="GroupUserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroupUsers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="GroupID" Type="int" Nullable="false" />
+          <Property Name="GroupRole" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="GroupID" Type="int" />
+          <Property Name="EventID" Type="int" />
+        </EntityType>
+        <EntityType Name="Rate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="int" Nullable="false" />
+          <Property Name="SkillID" Type="int" Nullable="false" />
+          <Property Name="GroupUserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Skill">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="GroupID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SystemUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Password" Type="binary" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Event_Group">
+          <End Role="Group" Type="SplitterModel.Store.Group" Multiplicity="1" />
+          <End Role="Event" Type="SplitterModel.Store.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Group_SystemUser">
+          <End Role="SystemUser" Type="SplitterModel.Store.SystemUser" Multiplicity="1" />
+          <End Role="Group" Type="SplitterModel.Store.Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="CreatorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupMessage_GroupUsers">
+          <End Role="GroupUsers" Type="SplitterModel.Store.GroupUsers" Multiplicity="1" />
+          <End Role="GroupMessage" Type="SplitterModel.Store.GroupMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupUsers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GroupMessage">
+              <PropertyRef Name="GroupUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupUsers_Group">
+          <End Role="Group" Type="SplitterModel.Store.Group" Multiplicity="1" />
+          <End Role="GroupUsers" Type="SplitterModel.Store.GroupUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GroupUsers">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupUsers_SystemUser">
+          <End Role="SystemUser" Type="SplitterModel.Store.SystemUser" Multiplicity="1" />
+          <End Role="GroupUsers" Type="SplitterModel.Store.GroupUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GroupUsers">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notification_Event">
+          <End Role="Event" Type="SplitterModel.Store.Event" Multiplicity="0..1" />
+          <End Role="Notification" Type="SplitterModel.Store.Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Notification">
+              <PropertyRef Name="EventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notification_Group">
+          <End Role="Group" Type="SplitterModel.Store.Group" Multiplicity="0..1" />
+          <End Role="Notification" Type="SplitterModel.Store.Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Notification">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notification_SystemUser">
+          <End Role="SystemUser" Type="SplitterModel.Store.SystemUser" Multiplicity="1" />
+          <End Role="Notification" Type="SplitterModel.Store.Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Notification">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rate_GroupUsers">
+          <End Role="GroupUsers" Type="SplitterModel.Store.GroupUsers" Multiplicity="1" />
+          <End Role="Rate" Type="SplitterModel.Store.Rate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupUsers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rate">
+              <PropertyRef Name="GroupUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rate_Skill">
+          <End Role="Skill" Type="SplitterModel.Store.Skill" Multiplicity="1" />
+          <End Role="Rate" Type="SplitterModel.Store.Rate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Skill">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rate">
+              <PropertyRef Name="SkillID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Skill_Group">
+          <End Role="Group" Type="SplitterModel.Store.Group" Multiplicity="1" />
+          <End Role="Skill" Type="SplitterModel.Store.Skill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Skill">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SplitterModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="SplitterDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Articles" EntityType="SplitterModel.Article" />
+          <EntitySet Name="Events" EntityType="SplitterModel.Event" />
+          <EntitySet Name="Groups" EntityType="SplitterModel.Group" />
+          <EntitySet Name="GroupMessages" EntityType="SplitterModel.GroupMessage" />
+          <EntitySet Name="GroupUsers" EntityType="SplitterModel.GroupUser" />
+          <EntitySet Name="Notifications" EntityType="SplitterModel.Notification" />
+          <EntitySet Name="Skills" EntityType="SplitterModel.Skill" />
+          <EntitySet Name="SystemUsers" EntityType="SplitterModel.SystemUser" />
+          <AssociationSet Name="FK_Event_Group" Association="SplitterModel.FK_Event_Group">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="Event" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notification_Event" Association="SplitterModel.FK_Notification_Event">
+            <End Role="Event" EntitySet="Events" />
+            <End Role="Notification" EntitySet="Notifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Group_SystemUser" Association="SplitterModel.FK_Group_SystemUser">
+            <End Role="SystemUser" EntitySet="SystemUsers" />
+            <End Role="Group" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupUsers_Group" Association="SplitterModel.FK_GroupUsers_Group">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="GroupUsers" EntitySet="GroupUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notification_Group" Association="SplitterModel.FK_Notification_Group">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="Notification" EntitySet="Notifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Skill_Group" Association="SplitterModel.FK_Skill_Group">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="Skill" EntitySet="Skills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupMessage_GroupUsers" Association="SplitterModel.FK_GroupMessage_GroupUsers">
+            <End Role="GroupUsers" EntitySet="GroupUsers" />
+            <End Role="GroupMessage" EntitySet="GroupMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupUsers_SystemUser" Association="SplitterModel.FK_GroupUsers_SystemUser">
+            <End Role="SystemUser" EntitySet="SystemUsers" />
+            <End Role="GroupUsers" EntitySet="GroupUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notification_SystemUser" Association="SplitterModel.FK_Notification_SystemUser">
+            <End Role="SystemUser" EntitySet="SystemUsers" />
+            <End Role="Notification" EntitySet="Notifications" />
+          </AssociationSet>
+          <EntitySet Name="Rates" EntityType="SplitterModel.Rate" />
+          <AssociationSet Name="FK_Rate_GroupUsers" Association="SplitterModel.FK_Rate_GroupUsers">
+            <End Role="GroupUser" EntitySet="GroupUsers" />
+            <End Role="Rate" EntitySet="Rates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rate_Skill" Association="SplitterModel.FK_Rate_Skill">
+            <End Role="Skill" EntitySet="Skills" />
+            <End Role="Rate" EntitySet="Rates" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Text" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" />
+          <Property Name="FinishDate" Type="DateTime" Nullable="false" />
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Group" Relationship="SplitterModel.FK_Event_Group" FromRole="Event" ToRole="Group" />
+          <NavigationProperty Name="Notifications" Relationship="SplitterModel.FK_Notification_Event" FromRole="Event" ToRole="Notification" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Events" Relationship="SplitterModel.FK_Event_Group" FromRole="Group" ToRole="Event" />
+          <NavigationProperty Name="Creator" Relationship="SplitterModel.FK_Group_SystemUser" FromRole="Group" ToRole="SystemUser" />
+          <NavigationProperty Name="GroupUsers" Relationship="SplitterModel.FK_GroupUsers_Group" FromRole="Group" ToRole="GroupUsers" />
+          <NavigationProperty Name="Notifications" Relationship="SplitterModel.FK_Notification_Group" FromRole="Group" ToRole="Notification" />
+          <NavigationProperty Name="Skills" Relationship="SplitterModel.FK_Skill_Group" FromRole="Group" ToRole="Skill" />
+        </EntityType>
+        <EntityType Name="GroupMessage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="GroupUserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="GroupUser" Relationship="SplitterModel.FK_GroupMessage_GroupUsers" FromRole="GroupMessage" ToRole="GroupUsers" />
+        </EntityType>
+        <EntityType Name="GroupUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+          <Property Name="GroupRole" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Group" Relationship="SplitterModel.FK_GroupUsers_Group" FromRole="GroupUsers" ToRole="Group" />
+          <NavigationProperty Name="GroupMessages" Relationship="SplitterModel.FK_GroupMessage_GroupUsers" FromRole="GroupUsers" ToRole="GroupMessage" />
+          <NavigationProperty Name="User" Relationship="SplitterModel.FK_GroupUsers_SystemUser" FromRole="GroupUsers" ToRole="SystemUser" />
+          <NavigationProperty Name="Rates" Relationship="SplitterModel.FK_Rate_GroupUsers" FromRole="GroupUser" ToRole="Rate" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="Text" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="GroupID" Type="Int32" />
+          <Property Name="EventID" Type="Int32" />
+          <NavigationProperty Name="Event" Relationship="SplitterModel.FK_Notification_Event" FromRole="Notification" ToRole="Event" />
+          <NavigationProperty Name="Group" Relationship="SplitterModel.FK_Notification_Group" FromRole="Notification" ToRole="Group" />
+          <NavigationProperty Name="User" Relationship="SplitterModel.FK_Notification_SystemUser" FromRole="Notification" ToRole="SystemUser" />
+        </EntityType>
+        <EntityType Name="Skill">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Group" Relationship="SplitterModel.FK_Skill_Group" FromRole="Skill" ToRole="Group" />
+          <NavigationProperty Name="Rates" Relationship="SplitterModel.FK_Rate_Skill" FromRole="Skill" ToRole="Rate" />
+        </EntityType>
+        <EntityType Name="SystemUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="Binary" Nullable="false" MaxLength="50" FixedLength="true" />
+          <NavigationProperty Name="Groups" Relationship="SplitterModel.FK_Group_SystemUser" FromRole="SystemUser" ToRole="Group" />
+          <NavigationProperty Name="GroupUsers" Relationship="SplitterModel.FK_GroupUsers_SystemUser" FromRole="SystemUser" ToRole="GroupUsers" />
+          <NavigationProperty Name="Notifications" Relationship="SplitterModel.FK_Notification_SystemUser" FromRole="SystemUser" ToRole="Notification" />
+        </EntityType>
+        <Association Name="FK_Event_Group">
+          <End Role="Group" Type="SplitterModel.Group" Multiplicity="1" />
+          <End Role="Event" Type="SplitterModel.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notification_Event">
+          <End Role="Event" Type="SplitterModel.Event" Multiplicity="0..1" />
+          <End Role="Notification" Type="SplitterModel.Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Notification">
+              <PropertyRef Name="EventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Group_SystemUser">
+          <End Role="SystemUser" Type="SplitterModel.SystemUser" Multiplicity="1" />
+          <End Role="Group" Type="SplitterModel.Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="CreatorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupUsers_Group">
+          <End Role="Group" Type="SplitterModel.Group" Multiplicity="1" />
+          <End Role="GroupUsers" Type="SplitterModel.GroupUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GroupUsers">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notification_Group">
+          <End Role="Group" Type="SplitterModel.Group" Multiplicity="0..1" />
+          <End Role="Notification" Type="SplitterModel.Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Notification">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Skill_Group">
+          <End Role="Group" Type="SplitterModel.Group" Multiplicity="1" />
+          <End Role="Skill" Type="SplitterModel.Skill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Skill">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupMessage_GroupUsers">
+          <End Role="GroupUsers" Type="SplitterModel.GroupUser" Multiplicity="1" />
+          <End Role="GroupMessage" Type="SplitterModel.GroupMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupUsers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GroupMessage">
+              <PropertyRef Name="GroupUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupUsers_SystemUser">
+          <End Role="SystemUser" Type="SplitterModel.SystemUser" Multiplicity="1" />
+          <End Role="GroupUsers" Type="SplitterModel.GroupUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GroupUsers">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notification_SystemUser">
+          <End Role="SystemUser" Type="SplitterModel.SystemUser" Multiplicity="1" />
+          <End Role="Notification" Type="SplitterModel.Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Notification">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Rate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Value" Nullable="false" />
+          <Property Type="Int32" Name="SkillID" Nullable="false" />
+          <Property Type="Int32" Name="GroupUserID" Nullable="false" />
+          <NavigationProperty Name="GroupUser" Relationship="SplitterModel.FK_Rate_GroupUsers" FromRole="Rate" ToRole="GroupUser" />
+          <NavigationProperty Name="Skill" Relationship="SplitterModel.FK_Rate_Skill" FromRole="Rate" ToRole="Skill" />
+        </EntityType>
+        <Association Name="FK_Rate_GroupUsers">
+          <End Type="SplitterModel.GroupUser" Role="GroupUser" Multiplicity="1" />
+          <End Type="SplitterModel.Rate" Role="Rate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupUser">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rate">
+              <PropertyRef Name="GroupUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rate_Skill">
+          <End Type="SplitterModel.Skill" Role="Skill" Multiplicity="1" />
+          <End Type="SplitterModel.Rate" Role="Rate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Skill">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rate">
+              <PropertyRef Name="SkillID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SplitterModelStoreContainer" CdmEntityContainer="SplitterDBEntities">
+          <EntitySetMapping Name="Articles">
+            <EntityTypeMapping TypeName="SplitterModel.Article">
+              <MappingFragment StoreEntitySet="Article">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Events">
+            <EntityTypeMapping TypeName="SplitterModel.Event">
+              <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="FinishDate" ColumnName="FinishDate" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Groups">
+            <EntityTypeMapping TypeName="SplitterModel.Group">
+              <MappingFragment StoreEntitySet="Group">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupMessages">
+            <EntityTypeMapping TypeName="SplitterModel.GroupMessage">
+              <MappingFragment StoreEntitySet="GroupMessage">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="GroupUserID" ColumnName="GroupUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupUsers">
+            <EntityTypeMapping TypeName="SplitterModel.GroupUser">
+              <MappingFragment StoreEntitySet="GroupUsers">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="GroupRole" ColumnName="GroupRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notifications">
+            <EntityTypeMapping TypeName="SplitterModel.Notification">
+              <MappingFragment StoreEntitySet="Notification">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Skills">
+            <EntityTypeMapping TypeName="SplitterModel.Skill">
+              <MappingFragment StoreEntitySet="Skill">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemUsers">
+            <EntityTypeMapping TypeName="SplitterModel.SystemUser">
+              <MappingFragment StoreEntitySet="SystemUser">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rates">
+            <EntityTypeMapping TypeName="SplitterModel.Rate">
+              <MappingFragment StoreEntitySet="Rate">
+                <ScalarProperty Name="GroupUserID" ColumnName="GroupUserID" />
+                <ScalarProperty Name="SkillID" ColumnName="SkillID" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="EntityModel">
+        <EntityTypeShape EntityType="SplitterModel.Article" Width="1.5" PointX="0.75" PointY="0.75" Height="1.787985026041667" IsExpanded="true" />
+        <EntityTypeShape EntityType="SplitterModel.Event" Width="1.5" PointX="7.625" PointY="2.875" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SplitterModel.Group" Width="1.5" PointX="4" PointY="5.75" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SplitterModel.GroupMessage" Width="1.5" PointX="4.875" PointY="10" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SplitterModel.GroupUser" Width="1.5" PointX="2.625" PointY="10.25" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SplitterModel.Notification" Width="1.5" PointX="4.75" PointY="1.875" Height="2.9417936197916656" IsExpanded="true" />
+        <EntityTypeShape EntityType="SplitterModel.Skill" Width="1.5" PointX="7.125" PointY="7.5" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="SplitterModel.SystemUser" Width="1.5" PointX="1" PointY="3.5" Height="2.1725878906249996" IsExpanded="true" />
+        <AssociationConnector Association="SplitterModel.FK_Event_Group" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.5" PointY="6.4061205468749991" />
+          <ConnectorPoint PointX="8.375" PointY="6.4061205468749991" />
+          <ConnectorPoint PointX="8.375" PointY="5.4321907552083317" />
+        </AssociationConnector>
+        <AssociationConnector Association="SplitterModel.FK_Notification_Event" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.625" PointY="3.8458968098958328" />
+          <ConnectorPoint PointX="6.25" PointY="3.8458968098958328" />
+        </AssociationConnector>
+        <AssociationConnector Association="SplitterModel.FK_Group_SystemUser" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.1562525" PointY="5.672587890625" />
+          <ConnectorPoint PointX="2.1562525" PointY="7.12474609375" />
+          <ConnectorPoint PointX="4" PointY="7.12474609375" />
+        </AssociationConnector>
+        <AssociationConnector Association="SplitterModel.FK_GroupUsers_Group" ManuallyRouted="false">
+          <ConnectorPoint PointX="4" PointY="7.8433716406250005" />
+          <ConnectorPoint PointX="3.375" PointY="7.8433716406250005" />
+          <ConnectorPoint PointX="3.375" PointY="10.25" />
+        </AssociationConnector>
+        <AssociationConnector Association="SplitterModel.FK_Notification_Group" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.125" PointY="5.75" />
+          <ConnectorPoint PointX="5.125" PointY="4.8167936197916656" />
+        </AssociationConnector>
+        <AssociationConnector Association="SplitterModel.FK_Skill_Group" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.5" PointY="7.99974609375" />
+          <ConnectorPoint PointX="7.125" PointY="7.99974609375" />
+        </AssociationConnector>
+        <AssociationConnector Association="SplitterModel.FK_GroupMessage_GroupUsers" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.125" PointY="11.115143229166666" />
+          <ConnectorPoint PointX="4.875" PointY="11.115143229166666" />
+        </AssociationConnector>
+        <AssociationConnector Association="SplitterModel.FK_GroupUsers_SystemUser" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.54687375" PointY="5.672587890625" />
+          <ConnectorPoint PointX="1.54687375" PointY="11.528595377604166" />
+          <ConnectorPoint PointX="2.625" PointY="11.528595377604166" />
+        </AssociationConnector>
+        <AssociationConnector Association="SplitterModel.FK_Notification_SystemUser" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.5" PointY="4.1583968098958328" />
+          <ConnectorPoint PointX="4.75" PointY="4.1583968098958328" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="SplitterModel.Rate" Width="1.5" PointX="8.75" PointY="11.5" Height="2.1725878906249996" />
+        <AssociationConnector Association="SplitterModel.FK_Rate_GroupUsers" >
+          <ConnectorPoint PointX="4.125" PointY="12.171387532552082" />
+          <ConnectorPoint PointX="8.75" PointY="12.171387532552082" />
+        </AssociationConnector>
+        <AssociationConnector Association="SplitterModel.FK_Rate_Skill" >
+          <ConnectorPoint PointX="8.625" PointY="8.4901432291666659" />
+          <ConnectorPoint PointX="9.1419356407194723" PointY="8.4901432291666659" />
+          <ConnectorPoint PointX="9.1419356407194723" PointY="11.5" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
