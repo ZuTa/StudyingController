@@ -11,11 +11,12 @@ namespace Splitter.ViewModels
     {
         #region Fields & Properties
 
-        private bool isUserRegistered;
         public bool IsUserRegistered
         {
-            get { return isUserRegistered; }
-            set { isUserRegistered = value; }
+            get 
+            {
+                return RegistrationViewModel.IsLoggedIn; 
+            }
         }
 
         public bool IsUserNotRegistered

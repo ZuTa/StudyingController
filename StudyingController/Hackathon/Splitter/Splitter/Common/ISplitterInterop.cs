@@ -8,7 +8,7 @@ namespace StudyingController.Common
 {
     public interface ISplitterInterop
     {
-        Splitter.SS.SplitterServiceClient Service { get; set; }
+        Splitter.SS.SplitterServiceClient Service { get; }
 
         Splitter.SS.Session Session { get; set; }
 

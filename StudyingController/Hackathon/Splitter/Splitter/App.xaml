@@ -16,6 +16,10 @@
             <DataTemplate DataType="{x:Type vm:FakeViewModel}">
                 <v:FakeView/>
             </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:RegistrationViewModel}">
+                <v:RegistrationView/>
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

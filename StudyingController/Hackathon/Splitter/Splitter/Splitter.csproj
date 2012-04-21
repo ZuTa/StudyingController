@@ -58,6 +58,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common\Checks.cs" />
+    <Compile Include="Common\HashHelper.cs" />
     <Compile Include="Common\ISplitterInterop.cs" />
     <Compile Include="Common\IPasswordConsumer.cs" />
     <Compile Include="Common\IPasswordSource.cs" />
