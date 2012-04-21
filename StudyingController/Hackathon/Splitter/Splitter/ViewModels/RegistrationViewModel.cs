@@ -56,7 +56,7 @@ namespace Splitter.ViewModels
         public RegistrationViewModel(IUserInterop userInterop,ISplitterInterop splitterInterop, Dispatcher dispatcher)
             : base(userInterop, splitterInterop, dispatcher)
         {
-            
+            user = new SystemUserDTO();
         }
 
         #endregion
@@ -65,7 +65,7 @@ namespace Splitter.ViewModels
 
         private void RegisterUser()
         {
- 
+            if (SplitterInterop.Service.CanRegister(user)) SplitterInterop.Service.Register(user);
         }
 
         protected override void LoadData()

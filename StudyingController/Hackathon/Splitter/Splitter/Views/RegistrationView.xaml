@@ -19,6 +19,9 @@
         <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=User.Login, UpdateSourceTrigger=PropertyChanged}"/>
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Password: "/>
         <PasswordBox Name="password" Grid.Row="1" Grid.Column="1"/>
-        <Button MinHeight="20" MaxHeight="40" MinWidth="50" MaxWidth="100" Grid.Row="2" Grid.ColumnSpan="2" IsDefault="True" Content="Register" Command="{Binding RegisterCommand}"/>
+        <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button MaxWidth="100" Grid.Row="2" Margin="4" Content="Register" Command="{Binding RegisterCommand}"/>
+            <Button Grid.Row="2" Margin="4" IsDefault="True" Content="Login" Command="{Binding RegisterCommand}"/>
+        </StackPanel>
     </Grid>
 </UserControl>
