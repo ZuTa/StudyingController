@@ -141,7 +141,20 @@ namespace StudyingControllerService
                 case UserRoles.FacultySecretary:
                     return GetDTO<FacultySecretaryDTO>(user);
                 case UserRoles.Student:
-                    return GetDTO<StudentDTO>(user);
+                    var student = (user as Student);
+
+                    using (UniversityEntities context = new UniversityEntities())
+                    {
+                        context.LoadProperty(student, "Groups");
+                        var currentGroup = student.Groups.FirstOrDefault(g => g.StudyRangeID == Configuration.StudyRangeID);
+
+                        if (currentGroup == null)
+                            throw new Exception("Student hasnt a group!");
+
+                        student.CurrentGroupID = currentGroup.ID;
+                    }                    
+
+                    return GetDTO<FacultySecretaryDTO>(student);
                 case UserRoles.Teacher:
                     return GetDTO<TeacherDTO>(user);
                 default:
@@ -528,7 +541,17 @@ namespace StudyingControllerService
                                 (item as IDTOable<TeacherDTO>).Assign(user as TeacherDTO);
                                 break;
                             case UserRoles.Student:
-                                (item as IDTOable<StudentDTO>).Assign(user as StudentDTO);
+                                StudentDTO student = user as StudentDTO;
+                                (item as IDTOable<StudentDTO>).Assign(student);
+
+                                var group = context.Groups.FirstOrDefault(gr=>gr.ID == student.GroupID);
+                                if (group == null)
+                                    throw new NullReferenceException("group must exists in DB");
+
+                                var studentGroup = (item as Student).Groups.FirstOrDefault(gr => gr.ID == student.GroupID);
+
+                                if (studentGroup == null)
+                                    (item as Student).Groups.Add(group);
                                 break;
                             default:
                                 item.Assign(user);
@@ -1011,7 +1034,13 @@ namespace StudyingControllerService
 
                         foreach (var student in practiceTeacher.Students)
                         {
-                            context.LoadProperty(student, "Group");
+                            var currentGroup = student.Groups.FirstOrDefault(g => g.StudyRangeID == Configuration.StudyRangeID);
+                            
+                            if (currentGroup == null)
+                                throw new Exception("Student hasnt a group!");
+
+                            student.CurrentGroupID = currentGroup.ID;
+
                             context.LoadProperty(student, "UserInformation");
                         }
                         result.Add(practiceTeacher.ToDTO());
@@ -1040,12 +1069,18 @@ namespace StudyingControllerService
 
                     foreach (IEnumerable<Student> students in query.ToList())
                     {
-                        //foreach (Student student in students)
-                        //{
-                        //    context.LoadProperty(student, "Group");
-                        //    if (result.Find(g => g.ID == student.GroupID) == null)
-                        //        result.Add(student.Group.ToDTO());
-                        //}
+                        foreach (Student student in students)
+                        {
+                            var currentGroup = student.Groups.FirstOrDefault(g => g.StudyRangeID == Configuration.StudyRangeID);
+
+                            if (currentGroup == null)
+                                throw new Exception("Student hasnt a group!");
+
+                            student.CurrentGroupID = currentGroup.ID;
+
+                            if (result.Find(g => g.ID == currentGroup.ID) == null)
+                                result.Add(currentGroup.ToDTO());
+                        }
                     }
                 }
 
@@ -1094,6 +1129,13 @@ namespace StudyingControllerService
                     {
                         foreach (Student student in students)
                         {
+                            var currentGroup = student.Groups.FirstOrDefault(g => g.StudyRangeID == Configuration.StudyRangeID);
+
+                            if (currentGroup == null)
+                                throw new Exception("Student hasnt a group!");
+
+                            student.CurrentGroupID = currentGroup.ID;
+
                             context.LoadProperty(student, "UserInformation");
                             result.Add(student.ToDTO());
                         }
@@ -1124,6 +1166,7 @@ namespace StudyingControllerService
                     foreach (var student in query.ToList())
                     {
                         context.LoadProperty(student, "UserInformation");
+                        student.CurrentGroupID = groupID;
                         result.Add(student.ToDTO());
                     }
                 }
@@ -1631,13 +1674,18 @@ namespace StudyingControllerService
                    List<LectureDTO> result = new List<LectureDTO>();
 
                    Student student = context.SystemUsers.FirstOrDefault(u => u.ID == studentID) as Student;
-                   //Group group = context.Groups.Include("Lectures").FirstOrDefault(g => g.ID == student.GroupID);
 
-                   //foreach (var lecture in group.Lectures)
-                   //{
-                   //    context.LoadProperty(lecture, "Subject");
-                   //    result.Add(lecture.ToDTO());
-                   //}
+                   var currentGroup = student.Groups.FirstOrDefault(g => g.StudyRangeID == Configuration.StudyRangeID);
+
+                   if (currentGroup == null)
+                       throw new Exception("Student hasnt a group!");
+
+                   context.LoadProperty(currentGroup, "Lectures");
+                   foreach (var lecture in currentGroup.Lectures)
+                   {                        
+                       context.LoadProperty(lecture, "Subject");
+                       result.Add(lecture.ToDTO());
+                   }
 
                    return result;
                }
