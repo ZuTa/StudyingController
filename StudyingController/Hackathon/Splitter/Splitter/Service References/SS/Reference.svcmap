@@ -21,11 +21,11 @@
     <MetadataSource Address="http://localhost:31454/SplitterService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="SplitterService.wsdl" MetadataType="Wsdl" ID="0053a276-259d-4822-b5d3-01113d4c10b3" SourceId="1" SourceUrl="http://localhost:31454/SplitterService.svc?wsdl" />
+    <MetadataFile FileName="SplitterService1.xsd" MetadataType="Schema" ID="d9dd8ece-f368-41bf-aa79-0500b71edef7" SourceId="1" SourceUrl="http://localhost:31454/SplitterService.svc?xsd=xsd1" />
     <MetadataFile FileName="SplitterService.disco" MetadataType="Disco" ID="ae25694a-cd8e-4865-91a9-2f51b29ac962" SourceId="1" SourceUrl="http://localhost:31454/SplitterService.svc?disco" />
     <MetadataFile FileName="SplitterService.xsd" MetadataType="Schema" ID="0fee7aee-5fb4-45a5-a68f-09da199c025d" SourceId="1" SourceUrl="http://localhost:31454/SplitterService.svc?xsd=xsd2" />
-    <MetadataFile FileName="SplitterService1.xsd" MetadataType="Schema" ID="d9dd8ece-f368-41bf-aa79-0500b71edef7" SourceId="1" SourceUrl="http://localhost:31454/SplitterService.svc?xsd=xsd1" />
     <MetadataFile FileName="SplitterService2.xsd" MetadataType="Schema" ID="29259ed5-235e-4972-8877-ab05109c9436" SourceId="1" SourceUrl="http://localhost:31454/SplitterService.svc?xsd=xsd3" />
+    <MetadataFile FileName="SplitterService.wsdl" MetadataType="Wsdl" ID="0053a276-259d-4822-b5d3-01113d4c10b3" SourceId="1" SourceUrl="http://localhost:31454/SplitterService.svc?wsdl" />
     <MetadataFile FileName="SplitterService3.xsd" MetadataType="Schema" ID="ab7911bc-b63a-438b-9450-a33d176d15fe" SourceId="1" SourceUrl="http://localhost:31454/SplitterService.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>
