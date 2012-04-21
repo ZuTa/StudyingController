@@ -21,7 +21,7 @@
         <PasswordBox Name="password" Grid.Row="1" Grid.Column="1"/>
         <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button MaxWidth="100" Grid.Row="2" Margin="4" Content="Register" Command="{Binding RegisterCommand}"/>
-            <Button Grid.Row="2" Margin="4" IsDefault="True" Content="Login" Command="{Binding RegisterCommand}"/>
+            <Button Grid.Row="2" Margin="4" IsDefault="True" Content="Login" Command="{Binding LoginCommand}"/>
         </StackPanel>
     </Grid>
 </UserControl>

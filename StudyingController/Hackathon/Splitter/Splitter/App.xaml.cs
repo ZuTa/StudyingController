@@ -67,11 +67,9 @@ namespace Splitter
         {
             get
             {
+                if (service == null)
+                    service = new SS.SplitterServiceClient("BasicHttpBinding_ISplitterService", "http://localhost:31454/SplitterService.svc");
                 return service;
-            }
-            set
-            {
-                service = value;
             }
         }
 

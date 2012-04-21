@@ -5,12 +5,24 @@ using System.Text;
 using StudyingController.Common;
 using System.Windows.Threading;
 using ModelDTO;
+using System.Security.Cryptography;
 
 namespace Splitter.ViewModels
 {
     public class RegistrationViewModel : LoadableViewModel, IPasswordConsumer
     {
         #region Fields & Properties
+
+        private bool isLoggedIn;
+        public bool IsLoggedIn
+        {
+            get { return isLoggedIn; }
+            set 
+            {
+                OnPropertyChanged("IsLoggedIn");
+                isLoggedIn = value; 
+            }
+        }
 
         private SystemUserDTO user;
         public SystemUserDTO User
@@ -32,7 +44,7 @@ namespace Splitter.ViewModels
                 {
                     passwordSource = value;
                     if (passwordSource != null)
-                        PasswordSource.SetPassword(User.Password);
+                        PasswordSource.SetPassword(user.Password);
                     OnPropertyChanged("PasswordSource");
                 }
             }
@@ -44,10 +56,22 @@ namespace Splitter.ViewModels
             get 
             {
                 if (registerCommand == null)
-                    registerCommand = new RelayCommand((param) => RegisterUser());
+                    registerCommand = new RelayCommand((param) => Register());
                 return registerCommand; 
             }
         }
+
+        private RelayCommand loginCommand;
+        public RelayCommand LoginCommand
+        {
+            get
+            {
+                if (loginCommand == null)
+                    loginCommand = new RelayCommand((param) => Login());
+                return loginCommand;
+            }
+        }
+
 
         #endregion
 
@@ -63,9 +87,33 @@ namespace Splitter.ViewModels
 
         #region Methods
 
-        private void RegisterUser()
+        private void Register()
         {
-            if (SplitterInterop.Service.CanRegister(user)) SplitterInterop.Service.Register(user);
+            if (passwordSource != null)
+                User.Password = passwordSource.GetPassword();
+
+            if (SplitterInterop.Service.CanRegister(User))
+            {
+                SplitterInterop.Service.Register(User);
+                IsLoggedIn = true;
+            }
+            else UserInterop.ShowMessage("Login already exists");
+        }
+
+        private void Login()
+        {
+            try
+            {
+                if (passwordSource != null)
+                    User.Password = passwordSource.GetPassword();
+
+                SplitterInterop.Service.Login(user.Login, HashHelper.ComputeHash(User.Password));
+                IsLoggedIn = true;
+            }
+            catch (Exception ex)
+            {
+                UserInterop.ShowMessage(ex.Message);
+            }
         }
 
         protected override void LoadData()
