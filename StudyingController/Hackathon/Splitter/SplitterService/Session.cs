@@ -32,9 +32,9 @@ namespace SplitterService
 
         #region Constructors
 
-        public Session()
+        public Session(SystemUserDTO user)
         {
-            
+            this.user = user;
 
             SessionID = random.NextDouble();
             SessionID += System.Threading.Interlocked.Increment(ref counter);
