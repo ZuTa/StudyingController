@@ -13,9 +13,9 @@ namespace Splitter.ViewModels
 
         public bool IsUserRegistered
         {
-            get 
+            get
             {
-                return RegistrationViewModel.IsLoggedIn; 
+                return RegistrationViewModel.IsLoggedIn;
             }
         }
 
@@ -42,6 +42,13 @@ namespace Splitter.ViewModels
             :base(userInterop, splitterInterop, dispatcher)
         {
             registrationViewModel = new RegistrationViewModel(userInterop, splitterInterop, dispatcher);
+            registrationViewModel.LoggedIn += new EventHandler(registrationViewModel_LoggedIn);
+        }
+
+        private void registrationViewModel_LoggedIn(object sender, EventArgs e)
+        {
+            OnPropertyChanged("IsUserRegistered");
+            OnPropertyChanged("IsUserNotRegistered");
         }
 
         #endregion 

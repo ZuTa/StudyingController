@@ -19,8 +19,9 @@ namespace Splitter.ViewModels
             get { return isLoggedIn; }
             set 
             {
+                isLoggedIn = value;
+                if (LoggedIn != null) LoggedIn(this, null);
                 OnPropertyChanged("IsLoggedIn");
-                isLoggedIn = value; 
             }
         }
 
@@ -90,7 +91,7 @@ namespace Splitter.ViewModels
         private void Register()
         {
             if (passwordSource != null)
-                User.Password = passwordSource.GetPassword();
+                User.Password = HashHelper.ComputeHash(passwordSource.GetPassword());
 
             if (SplitterInterop.Service.CanRegister(User))
             {
@@ -125,6 +126,12 @@ namespace Splitter.ViewModels
         {
             throw new NotImplementedException();
         }
+
+        #endregion
+
+        #region Events
+
+        public event EventHandler LoggedIn;
 
         #endregion
     }
