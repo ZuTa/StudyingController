@@ -57,6 +57,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Common\ISplitterInterop.cs" />
+    <Compile Include="Common\IPasswordConsumer.cs" />
+    <Compile Include="Common\IPasswordSource.cs" />
+    <Compile Include="Common\IUserInterop.cs" />
     <Compile Include="Service References\SS\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -120,7 +124,6 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Common\" />
     <Folder Include="Model\" />
     <Folder Include="ViewModel\" />
     <Folder Include="View\" />
