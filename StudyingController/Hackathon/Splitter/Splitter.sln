@@ -2,6 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Splitter", "Splitter\Splitter.csproj", "{F7A1B7A1-45F0-4777-B1F7-DCF85112AFFC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EE77083D-26FA-4FFC-B91E-017E65928F62} = {EE77083D-26FA-4FFC-B91E-017E65928F62}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelDTO", "ModelDTO\ModelDTO.csproj", "{81A1B0E5-F08E-450C-8442-BAA1AD032220}"
 EndProject
