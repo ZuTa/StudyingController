@@ -5,6 +5,8 @@ using System.Data;
 using System.Linq;
 using System.Windows;
 using StudyingController.Common;
+using Splitter.ViewModels;
+using System.ServiceModel;
 
 namespace Splitter
 {
@@ -16,16 +18,37 @@ namespace Splitter
         #region Fields & Properties
 
         private MainWindow mainWindow;
+        private HomeViewModel homeViewModel;
 
         #endregion
 
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+            this.DispatcherUnhandledException += new System.Windows.Threading.DispatcherUnhandledExceptionEventHandler(App_DispatcherUnhandledException);
 
             mainWindow = new MainWindow();
 
+            homeViewModel = new HomeViewModel(this, this, mainWindow.Dispatcher);
+            homeViewModel.Load();
+
+            mainWindow.DataContext = homeViewModel;
+
             mainWindow.Show();
+        }
+
+        private void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        {
+            Exception ex = e.Exception;
+            while (ex.InnerException != null)
+                ex = ex.InnerException;
+
+            if (ex is FaultException<SS.SplitterServiceException>)
+                ShowMessage((ex as FaultException<SS.SplitterServiceException>).Detail.Reason);
+            else
+                ShowMessage(ex.Message);
+
+            e.Handled = true;
         }
 
         #region Methods

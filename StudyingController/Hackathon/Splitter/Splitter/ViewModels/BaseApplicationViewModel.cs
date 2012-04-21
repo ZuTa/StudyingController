@@ -12,14 +12,6 @@ namespace Splitter.ViewModels
     {
         #region Field & Properties
 
-        public SystemUserDTO LoggedUser
-        {
-            get
-            {
-                return SplitterInterop.User;
-            }
-        }
-
         private IUserInterop userInterop;
         protected IUserInterop UserInterop
         {
