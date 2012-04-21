@@ -14,7 +14,6 @@ namespace SplitterService
         private static Random random = new Random();
         private static int counter = 0;
 
-        
         public DateTime LastAccessTime { get; set; }
 
         [DataMember]
