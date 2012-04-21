@@ -27,11 +27,11 @@
             <End Role="GroupUser" EntitySet="GroupUser" />
             <End Role="GroupMessage" EntitySet="GroupMessage" />
           </AssociationSet>
-          <AssociationSet Name="FK_GroupUsers_Group" Association="SplitterModel.Store.FK_GroupUsers_Group">
+          <AssociationSet Name="FK_GroupUser_Group" Association="SplitterModel.Store.FK_GroupUser_Group">
             <End Role="Group" EntitySet="Group" />
             <End Role="GroupUser" EntitySet="GroupUser" />
           </AssociationSet>
-          <AssociationSet Name="FK_GroupUsers_SystemUser" Association="SplitterModel.Store.FK_GroupUsers_SystemUser">
+          <AssociationSet Name="FK_GroupUser_SystemUser" Association="SplitterModel.Store.FK_GroupUser_SystemUser">
             <End Role="SystemUser" EntitySet="SystemUser" />
             <End Role="GroupUser" EntitySet="GroupUser" />
           </AssociationSet>
@@ -142,7 +142,7 @@
           </Key>
           <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Login" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Password" Type="binary" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="binary" Nullable="false" MaxLength="32" />
         </EntityType>
         <Association Name="FK_Event_Group">
           <End Role="Group" Type="SplitterModel.Store.Group" Multiplicity="1" />
@@ -180,7 +180,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_GroupUsers_Group">
+        <Association Name="FK_GroupUser_Group">
           <End Role="Group" Type="SplitterModel.Store.Group" Multiplicity="1" />
           <End Role="GroupUser" Type="SplitterModel.Store.GroupUser" Multiplicity="*" />
           <ReferentialConstraint>
@@ -192,7 +192,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_GroupUsers_SystemUser">
+        <Association Name="FK_GroupUser_SystemUser">
           <End Role="SystemUser" Type="SplitterModel.Store.SystemUser" Multiplicity="1" />
           <End Role="GroupUser" Type="SplitterModel.Store.GroupUser" Multiplicity="*" />
           <ReferentialConstraint>

@@ -81,7 +81,7 @@ namespace SplitterService
                     SystemUser user = (from u in context.SystemUsers
                                        where u.Login == login.ToLower()
                                        select u).FirstOrDefault();
-
+                    string s = Encoding.UTF8.GetString(user.Password);
                     if (!(user != null && Encoding.UTF8.GetString(user.Password) == password))
                         throw new Exception("Incorrect login or password");
 
