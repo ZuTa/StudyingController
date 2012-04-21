@@ -8,19 +8,23 @@ namespace ModelDTO
 {
     [DataContract]
     [Flags]
-    public enum UserRoles
+    public enum GroupRoles
     {
         /// <summary>
-        /// Учасник
+        /// Participant
         /// </summary>
         [EnumMember]
-        Participant = 0,
+        Participant = 1,
         /// <summary>
-        /// Головний адміністратор
+        /// Appraiser
         /// </summary>
         [EnumMember]
-        None = 0,
-
+        Appraiser = 2,
+        /// <summary>
+        /// Creator
+        /// </summary>
+        [EnumMember]
+        Creator = 4
     }
 
     [DataContract]
@@ -40,6 +44,14 @@ namespace ModelDTO
         {
             get { return groupID; }
             set { groupID = value; }
+        }
+
+        private GroupRoles groupRole;
+        [DataMember]
+        public GroupRoles GroupRole
+        {
+            get { return groupRole; }
+            set { groupRole = value; }
         }
 
         public GroupUserDTO()
