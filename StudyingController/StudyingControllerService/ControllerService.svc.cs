@@ -112,7 +112,7 @@ namespace StudyingControllerService
                     if (!(user != null && Encoding.UTF8.GetString(user.Password) == password))
                         throw new Exception("У доступі відмовлено!");
 
-                    session = new Session(GetSystemUserDTO(user), Configuration.StudyRange.ToDTO());
+                    session = new Session(GetSystemUserDTO(user,context), Configuration.StudyRange.ToDTO());
 
                     lock (sessions)
                         sessions[session.SessionID] = session;
@@ -126,7 +126,7 @@ namespace StudyingControllerService
             }
         }
 
-        private SystemUserDTO GetSystemUserDTO(SystemUser user)
+        private SystemUserDTO GetSystemUserDTO(SystemUser user, UniversityEntities context)
         {
             switch (user.Role)
             {
@@ -143,18 +143,15 @@ namespace StudyingControllerService
                 case UserRoles.Student:
                     var student = (user as Student);
 
-                    using (UniversityEntities context = new UniversityEntities())
-                    {
-                        context.LoadProperty(student, "Groups");
-                        var currentGroup = student.Groups.FirstOrDefault(g => g.StudyRangeID == Configuration.StudyRangeID);
+                    context.LoadProperty(student, "Groups");
+                    var currentGroup = student.Groups.FirstOrDefault(g => g.StudyRangeID == Configuration.StudyRangeID);
 
-                        if (currentGroup == null)
-                            throw new Exception("Student hasnt a group!");
+                    if (currentGroup == null)
+                        throw new Exception("Student hasnt a group!");
 
-                        student.CurrentGroupID = currentGroup.ID;
-                    }                    
+                    student.CurrentGroupID = currentGroup.ID;
 
-                    return GetDTO<FacultySecretaryDTO>(student);
+                    return GetDTO<StudentDTO>(student);
                 case UserRoles.Teacher:
                     return GetDTO<TeacherDTO>(user);
                 default:
@@ -498,7 +495,7 @@ namespace StudyingControllerService
                 {
                     foreach (SystemUser user in context.SystemUsers.Include("UserInformation"))
                         if (roles.HasFlag(user.Role))
-                            result.Add(GetSystemUserDTO(user));
+                            result.Add(GetSystemUserDTO(user, context));
                 }
 
                 return result;
@@ -1034,6 +1031,7 @@ namespace StudyingControllerService
 
                         foreach (var student in practiceTeacher.Students)
                         {
+                            context.LoadProperty(student, "Groups");
                             var currentGroup = student.Groups.FirstOrDefault(g => g.StudyRangeID == Configuration.StudyRangeID);
                             
                             if (currentGroup == null)

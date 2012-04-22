@@ -283,6 +283,10 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
+        private void VerifyActions()
+        {
+        }
+
         protected override void LoadData()
         {
             if (CurrentWorkspace is LoadableViewModel)
