@@ -163,6 +163,7 @@ namespace StudyingController.ViewModels
         public override void Save()
         {
             GroupDTO groupDTO = Group.ToDTO();
+            groupDTO.StudyRangeID = ControllerInterop.StudyRange.ID;
             ControllerInterop.Service.SaveGroup(ControllerInterop.Session, groupDTO);
             SetUnModified();
         }

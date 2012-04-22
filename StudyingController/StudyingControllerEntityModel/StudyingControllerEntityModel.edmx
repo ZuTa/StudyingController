@@ -502,7 +502,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Control_Attachment_Control">
-          <End Role="Control" Type="UniversityDBModel.Store.Control" Multiplicity="1" />
+          <End Role="Control" Type="UniversityDBModel.Store.Control" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Control_Attachment" Type="UniversityDBModel.Store.Control_Attachment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Control">
@@ -748,7 +750,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_LectureControl_ControlInformation">
-          <End Role="Control" Type="UniversityDBModel.Store.Control" Multiplicity="1" />
+          <End Role="Control" Type="UniversityDBModel.Store.Control" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="LectureControl" Type="UniversityDBModel.Store.LectureControl" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Control">
@@ -760,7 +764,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_LectureControl_Lecture">
-          <End Role="Lecture" Type="UniversityDBModel.Store.Lecture" Multiplicity="1" />
+          <End Role="Lecture" Type="UniversityDBModel.Store.Lecture" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="LectureControl" Type="UniversityDBModel.Store.LectureControl" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Lecture">
@@ -772,7 +778,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_LectureControlMark_LectureControl1">
-          <End Role="LectureControl" Type="UniversityDBModel.Store.LectureControl" Multiplicity="1" />
+          <End Role="LectureControl" Type="UniversityDBModel.Store.LectureControl" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="LectureControlMark" Type="UniversityDBModel.Store.LectureControlMark" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="LectureControl">
@@ -888,7 +896,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PracticeControl_Practice_Teacher">
-          <End Role="Practice_Teacher" Type="UniversityDBModel.Store.Practice_Teacher" Multiplicity="1" />
+          <End Role="Practice_Teacher" Type="UniversityDBModel.Store.Practice_Teacher" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="PracticeControl" Type="UniversityDBModel.Store.PracticeControl" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Practice_Teacher">
@@ -912,7 +922,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PracticeControlMark_PracticeControl">
-          <End Role="PracticeControl" Type="UniversityDBModel.Store.PracticeControl" Multiplicity="1" />
+          <End Role="PracticeControl" Type="UniversityDBModel.Store.PracticeControl" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="PracticeControlMark" Type="UniversityDBModel.Store.PracticeControlMark" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PracticeControl">
