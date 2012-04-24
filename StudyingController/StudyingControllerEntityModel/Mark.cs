@@ -26,6 +26,7 @@ namespace StudyingControllerEntityModel
             ID = mark.ID;
             MarkValue = mark.MarkValue;
             StudentID = mark.StudentID;
+            Description = mark.Description;
         }
     }
 }

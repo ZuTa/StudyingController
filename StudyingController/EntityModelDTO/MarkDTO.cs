@@ -34,5 +34,13 @@ namespace EntitiesDTO
             get { return markValue; }
             set { markValue = value; }
         }
+
+        protected string description;
+        [DataMember]
+        public string Description
+        {
+            get { return description; }
+            set { description = value; }
+        }
     }
 }

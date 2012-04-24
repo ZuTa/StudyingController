@@ -38,5 +38,13 @@ namespace EntitiesDTO
             set { cathedraID = value; }
         }
 
+        private int studyRangeID;
+        [DataMember]
+        public int StudyRangeID
+        {
+            get { return studyRangeID; }
+            set { studyRangeID = value; }
+        }
+
     }
 }

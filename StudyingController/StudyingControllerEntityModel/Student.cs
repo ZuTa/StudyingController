@@ -8,6 +8,13 @@ namespace StudyingControllerEntityModel
 {
     public partial class Student : IDTOable<StudentDTO>
     {
+        private int currentGroupID;
+        public int CurrentGroupID
+        {
+            get { return currentGroupID; }
+            set { currentGroupID = value; }
+        }
+
         #region Constructors
 
         public Student()
@@ -31,12 +38,14 @@ namespace StudyingControllerEntityModel
                 Login = this.Login,
                 UserInformation = (this.UserInformation as IDTOable<UserInformationDTO>).ToDTO(),
                 Role = this.Role,
+                GroupID = this.CurrentGroupID,
             };
         }
 
         public void Assign(StudentDTO entity)
         {
             base.Assign(entity);
+            this.CurrentGroupID = entity.GroupID;
         }
     }
 }

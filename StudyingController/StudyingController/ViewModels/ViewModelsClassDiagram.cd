@@ -17,7 +17,7 @@
   <Class Name="StudyingController.ViewModels.BaseApplicationViewModel" Collapsed="true">
     <Position X="24.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgAgAAIAAAAAAAAAAAAAAIAAAACAAAAAAAAAAAAAIAA=</HashCode>
+      <HashCode>AgAgAAIAAAAAACAAAAAQAIAAAACAAAAAAAAAAAAAIAA=</HashCode>
       <FileName>ViewModels\BaseApplicationViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -186,7 +186,7 @@
   <Class Name="StudyingController.ViewModels.LectureControlViewModel" Collapsed="true">
     <Position X="23.75" Y="9" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAIAEAAAQAAACAAAAFBAAABAQAAEAEIAAAAAAAAA=</HashCode>
+      <HashCode>AAAABIAEAAAQAgADAACABBACAAAQAgEAEICAAAAAgAA=</HashCode>
       <FileName>ViewModels\LectureControlViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -197,11 +197,11 @@
       <FileName>ViewModels\LectureViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="StudyingController.ViewModels.LessonControlsViewModel" Collapsed="true">
+  <Class Name="StudyingController.ViewModels.PracticeControlsViewModel" Collapsed="true">
     <Position X="16.25" Y="10" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAICAAAKQRgACkEAADAAAIAAACCAAEIAgAACEAAA=</HashCode>
-      <FileName>ViewModels\LessonControlsViewModel.cs</FileName>
+      <FileName>ViewModels\PracticeControlsViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="StudyingController.ViewModels.LessonStuctureViewModel" Collapsed="true">
