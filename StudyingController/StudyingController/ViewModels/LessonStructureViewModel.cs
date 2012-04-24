@@ -28,6 +28,14 @@ namespace StudyingController.ViewModels
             }
         }
 
+        public bool IsVisible
+        {
+            get
+            {
+                return EntitiesProvider.CurrentEntity is TeacherDTO;
+            }
+        }
+
         public bool IsLecturesViewed
         {
             get
@@ -121,7 +129,16 @@ namespace StudyingController.ViewModels
                 viewModel = new PracticeTeacherViewModel(UserInterop, ControllerInterop, Dispatcher, entity as PracticeTeacherDTO);
             else
                 viewModel = null;
+
+            OnIsVisibleChanged();
+
             return viewModel;
+        }
+
+        private void OnIsVisibleChanged()
+        {
+            if (IsVisibleChanged != null)
+                IsVisibleChanged(this, null);
         }
 
         #endregion
@@ -141,7 +158,11 @@ namespace StudyingController.ViewModels
                         Name = "Лекції",
                         Type = CommandTypes.Lecture
                     };
-                    lectureNamedCommand.UpdateEnabledState = () => lectureNamedCommand.IsEnabled = !IsLecturesViewed && isLessonsSelect;
+                    lectureNamedCommand.UpdateEnabledState = () => 
+                        {
+                            lectureNamedCommand.IsEnabled = !IsLecturesViewed && isLessonsSelect;
+                        };
+
                     NamedCommandData practiceNamedCommand = new NamedCommandData
                     {
                         Command = LoadPracticesViewModel,
@@ -149,7 +170,10 @@ namespace StudyingController.ViewModels
                         Name = "Практика",
                         Type = CommandTypes.Practice
                     };
-                    practiceNamedCommand.UpdateEnabledState = () => practiceNamedCommand.IsEnabled = IsLecturesViewed && isLessonsSelect;
+                    practiceNamedCommand.UpdateEnabledState = () =>
+                        {
+                            practiceNamedCommand.IsEnabled = IsLecturesViewed && isLessonsSelect;
+                        };
                     additionalCommands.Add(lectureNamedCommand);
                     additionalCommands.Add(practiceNamedCommand);
                 }
@@ -169,5 +193,6 @@ namespace StudyingController.ViewModels
             get { throw new NotImplementedException(); }
         }
 
+        public event EventHandler IsVisibleChanged;
     }
 }

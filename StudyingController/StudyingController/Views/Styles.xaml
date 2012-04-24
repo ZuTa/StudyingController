@@ -14,6 +14,12 @@
         </DataTemplate.Resources>
     </DataTemplate>
     
+    <!--<Style TargetType="{x:Type Control}">
+        <Style.Setters>
+            <Setter Property="FontSize" Value="16" />
+        </Style.Setters>
+    </Style>-->
+    
     <Style TargetType="{x:Type FrameworkElement}" x:Key="DefaultTextStyle">
         <Setter Property="Margin" Value="5"/>
     </Style>
@@ -97,6 +103,9 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <Style TargetType="Button"> <!--:Key="TreeFontStyle">-->
     </Style>
 
     <Style TargetType="{x:Type Button}" BasedOn="{StaticResource OverridenDefaultButtonStyle}" x:Key="EditableButtonStyle">
