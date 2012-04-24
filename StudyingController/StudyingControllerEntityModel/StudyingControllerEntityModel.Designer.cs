@@ -8,13 +8,12 @@
 //------------------------------------------------------------------------------
 
 using System;
-using System.ComponentModel;
-using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Linq;
-using System.Runtime.Serialization;
+using System.Data.EntityClient;
+using System.ComponentModel;
 using System.Xml.Serialization;
+using System.Runtime.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -375,7 +374,6 @@ namespace StudyingControllerEntityModel
         private ObjectSet<SystemConfiguration> _SystemConfigurations;
 
         #endregion
-
         #region AddTo Methods
     
         /// <summary>
@@ -515,11 +513,11 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
     }
+    
 
     #endregion
-
+    
     #region Entities
     
     /// <summary>
@@ -552,7 +550,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -703,7 +700,6 @@ namespace StudyingControllerEntityModel
         partial void OnTeacherIDChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -768,7 +764,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -797,7 +792,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -876,7 +870,6 @@ namespace StudyingControllerEntityModel
         partial void OnNameChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -985,7 +978,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1124,7 +1116,6 @@ namespace StudyingControllerEntityModel
         partial void OnMaxMarkChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -1173,7 +1164,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1204,7 +1194,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1331,7 +1320,6 @@ namespace StudyingControllerEntityModel
         partial void OnSystemUserIDChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -1412,7 +1400,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1439,7 +1426,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1518,7 +1504,6 @@ namespace StudyingControllerEntityModel
         partial void OnNameChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -1649,7 +1634,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1680,7 +1664,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1708,7 +1691,6 @@ namespace StudyingControllerEntityModel
         partial void OnFacultyIDChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -1751,7 +1733,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1782,7 +1763,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1810,7 +1790,6 @@ namespace StudyingControllerEntityModel
         partial void OnFacultyIDChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -1853,7 +1832,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1886,7 +1864,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -2013,7 +1990,6 @@ namespace StudyingControllerEntityModel
         partial void OnStudyRangeIDChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -2176,7 +2152,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -2203,7 +2178,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -2258,7 +2232,6 @@ namespace StudyingControllerEntityModel
         partial void OnNameChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -2329,7 +2302,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -2360,7 +2332,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -2388,7 +2359,6 @@ namespace StudyingControllerEntityModel
         partial void OnInstituteIDChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -2431,7 +2401,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -2462,7 +2431,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -2490,7 +2458,6 @@ namespace StudyingControllerEntityModel
         partial void OnInstituteIDChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -2533,7 +2500,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -2562,7 +2528,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -2641,7 +2606,6 @@ namespace StudyingControllerEntityModel
         partial void OnSubjectIDChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -2766,7 +2730,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -2799,7 +2762,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -2827,7 +2789,6 @@ namespace StudyingControllerEntityModel
         partial void OnLectureIDChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -2892,7 +2853,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -2923,7 +2883,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -2951,7 +2910,6 @@ namespace StudyingControllerEntityModel
         partial void OnLectureControlIDChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -2994,7 +2952,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -3085,7 +3042,6 @@ namespace StudyingControllerEntityModel
         partial void OnMarkValueChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -3128,7 +3084,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -3155,7 +3110,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -3210,7 +3164,6 @@ namespace StudyingControllerEntityModel
         partial void OnSubjectIDChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -3297,7 +3250,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -3330,7 +3282,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -3358,7 +3309,6 @@ namespace StudyingControllerEntityModel
         partial void OnPracticeIDChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -3461,7 +3411,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -3492,7 +3441,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -3520,7 +3468,6 @@ namespace StudyingControllerEntityModel
         partial void OnPracticeControlIDChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -3563,7 +3510,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -3592,7 +3538,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -3671,7 +3616,6 @@ namespace StudyingControllerEntityModel
         partial void OnTeacherIDChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -3796,7 +3740,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -3825,7 +3768,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -3904,7 +3846,6 @@ namespace StudyingControllerEntityModel
         partial void OnFacultyIDChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -3969,7 +3910,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -3998,7 +3938,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -4069,7 +4008,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -4098,7 +4036,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -4177,7 +4114,6 @@ namespace StudyingControllerEntityModel
         partial void OnPartChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -4226,7 +4162,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -4255,7 +4190,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -4334,7 +4268,6 @@ namespace StudyingControllerEntityModel
         partial void OnNameChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -4421,7 +4354,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -4448,7 +4380,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -4503,7 +4434,6 @@ namespace StudyingControllerEntityModel
         partial void OnStudyRangeIDChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -4546,7 +4476,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -4581,7 +4510,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -4684,7 +4612,6 @@ namespace StudyingControllerEntityModel
         partial void OniUserRoleChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -4749,7 +4676,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -4780,7 +4706,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -4808,7 +4733,6 @@ namespace StudyingControllerEntityModel
         partial void OnCathedraIDChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -4917,7 +4841,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -4946,7 +4869,6 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -5049,7 +4971,6 @@ namespace StudyingControllerEntityModel
         partial void OnEmailChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -5092,10 +5013,8 @@ namespace StudyingControllerEntityModel
         }
 
         #endregion
-
     }
 
     #endregion
-
     
 }

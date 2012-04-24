@@ -289,8 +289,8 @@ namespace StudyingController.ViewModels
 
         protected override void LoadData()
         {
-            if (CurrentWorkspace is LoadableViewModel)
-                (CurrentWorkspace as LoadableViewModel).Load();
+            foreach (BaseApplicationViewModel workspace in workspaces)
+                if (workspace is SaveableViewModel) (workspace as SaveableViewModel).Load();
         }
 
         protected override void ClearData()
@@ -390,8 +390,8 @@ namespace StudyingController.ViewModels
 
         private void ClearWorkspaces()
         {
-            while (workspaces.Count > 0)
-                PopWorkspace();
+            foreach (BaseApplicationViewModel workspace in workspaces)
+                if (workspace is SaveableViewModel) (workspace as SaveableViewModel).Load();
         }
 
         private void OnCurrentWorkspaceChanged()
@@ -408,6 +408,8 @@ namespace StudyingController.ViewModels
         private void SaveCurrentWorkspace()
         {
             (CurrentWorkspace as BaseSaveableViewModel).Save();
+            if (workspaces.Peek() is PracticeControlViewModel && !(workspaces.Peek() as PracticeControlViewModel).IsExisted || workspaces.Peek() is LectureControlViewModel && !(workspaces.Peek() as LectureControlViewModel).IsExisted) PopWorkspace();
+            (CurrentWorkspace as BaseSaveableViewModel).Load();
         }
 
         private void RollbackCurrentWorkspace()
