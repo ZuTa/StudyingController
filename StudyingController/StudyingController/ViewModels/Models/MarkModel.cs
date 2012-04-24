@@ -67,7 +67,11 @@ namespace StudyingController.ViewModels.Models
         public string Description
         {
             get { return description; }
-            set { description = value; }
+            set 
+            { 
+                description = value;
+                OnPropertyChanged("Description");
+            }
         }
         #endregion
 
@@ -95,9 +99,10 @@ namespace StudyingController.ViewModels.Models
 
             MarkDTO mark = (entity as MarkDTO);
 
-            studentID = mark.StudentID;
+            StudentID = mark.StudentID;
             student = mark.Student;
-            markValue = mark.MarkValue;
+            MarkValue = mark.MarkValue;
+            Description = mark.Description;
         }
 
         protected virtual bool IsMarkValid(out string error)
