@@ -28,7 +28,8 @@ namespace StudyingControllerEntityModel
                 MarkValue = this.MarkValue,
                 PracticeControlID = this.PracticeControlID,
                 StudentID = this.StudentID,
-                Student = this.Student.ToDTO()
+                Student = this.Student.ToDTO(),
+                Description = this.Description
             };
             return mark;
         }
