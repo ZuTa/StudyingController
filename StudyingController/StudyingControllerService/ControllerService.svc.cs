@@ -131,7 +131,7 @@ namespace StudyingControllerService
             switch (user.Role)
             {
                 case UserRoles.None:
-                    throw new Exception("What the fuck?! This role cannot be stored into DB");
+                    throw new Exception("Unknown user's role! This role cannot be stored into DB");
                 case UserRoles.InstituteAdmin:
                     return GetDTO<InstituteAdminDTO>(user);
                 case UserRoles.FacultyAdmin:
