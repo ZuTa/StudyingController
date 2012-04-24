@@ -159,6 +159,7 @@
     <Compile Include="ViewModels\EditableViewModel.cs" />
     <Compile Include="ViewModels\UniversityStructureViewModel.cs" />
     <Compile Include="ViewModels\UserInformationViewModel.cs" />
+    <Compile Include="ViewModels\UserProfileViewModel.cs" />
     <Compile Include="ViewModels\UsersStructureViewModel.cs" />
     <Compile Include="ViewModels\UsersTreeViewModel.cs" />
     <Compile Include="Views\AttachmentsView.xaml.cs">
@@ -250,6 +251,9 @@
     </Compile>
     <Compile Include="Views\UserInformationView.xaml.cs">
       <DependentUpon>UserInformationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserProfileView.xaml.cs">
+      <DependentUpon>UserProfileView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UsersTreeView.xaml.cs">
       <DependentUpon>UsersTreeView.xaml</DependentUpon>
@@ -387,6 +391,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\UserInformationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserProfileView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -568,6 +576,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Themes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\person %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\person %282%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
