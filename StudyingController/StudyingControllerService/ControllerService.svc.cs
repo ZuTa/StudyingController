@@ -1579,9 +1579,35 @@ namespace StudyingControllerService
             try
             {
                 CheckSession(session);
+                /*                
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    Practice practice = context.Practices.Include("PracticeControls").FirstOrDefault(p => p.ID == practiceID);
+                    Lecture lecture = context.Lectures.Include("LectureControls").FirstOrDefault(l => l.ID == lectureID);
+
+
+                    foreach (LectureControlDTO control in controls)
+                        if (lecture.LectureControls.FirstOrDefault(lc => lc.ID == control.ID) == null) context.AddToControls(new LectureControl(control));
+                        else
+                        {
+                            var query = context.Controls.FirstOrDefault(c => c.ID == control.ID);
+                            if (query != null) (query as Control).Assign(control);
+                        }
+
+                    List<LectureControl> toRemove = new List<LectureControl>();
+                    foreach (var lectureControl in lecture.LectureControls)
+                        if (controls.Find(c => c.ID == lectureControl.ID) == null) toRemove.Add(lectureControl);
+
+                    foreach (var lc in toRemove)
+                    {
+                        lecture.LectureControls.Remove(lc);
+                        context.Controls.DeleteObject(lc);
+                    }
+                    context.SaveChanges();
+                }
+*/
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    PracticeTeacher practice = context.PracticeTeachers.Include("PracticeControls").FirstOrDefault(p => p.PracticeID == practiceID);
                     
                     foreach (PracticeControlDTO control in controls)
                         if (practice.PracticeControls.FirstOrDefault(pc => pc.ID == control.ID) == null) context.AddToControls(new PracticeControl(control));
@@ -1688,7 +1714,7 @@ namespace StudyingControllerService
                    List<LectureDTO> result = new List<LectureDTO>();
 
                    Student student = context.SystemUsers.FirstOrDefault(u => u.ID == studentID) as Student;
-
+                   context.LoadProperty(student, "Groups");
                    var currentGroup = student.Groups.FirstOrDefault(g => g.StudyRangeID == Configuration.StudyRangeID);
 
                    if (currentGroup == null)
@@ -1848,7 +1874,6 @@ namespace StudyingControllerService
                    var item = context.Controls.FirstOrDefault(c => c.ID == control.ID);
                    if (item == null)
                    {
-                       PracticeControl pc = new PracticeControl(control);
                        context.AddToControls(new PracticeControl(control));
                    }
                    else
@@ -1879,7 +1904,14 @@ namespace StudyingControllerService
                            foreach (var student in practice.Students)
                            {
                                context.LoadProperty(student, "UserInformation");
-                               context.LoadProperty(student, "Group");
+                               
+                               context.LoadProperty(student, "Groups");
+                               var currentGroup = student.Groups.FirstOrDefault(g => g.StudyRangeID == Configuration.StudyRangeID);
+
+                               if (currentGroup == null)
+                                   throw new Exception("Student hasnt a group!");
+
+                               student.CurrentGroupID = currentGroup.ID;
                            }
 
                            result.Add(practice.ToDTO());

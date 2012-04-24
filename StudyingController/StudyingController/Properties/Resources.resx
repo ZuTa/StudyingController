@@ -258,4 +258,28 @@
   <data name="ErrorDate" xml:space="preserve">
     <value>Невірна дата</value>
   </data>
+  <data name="FacultyAdminTxt" xml:space="preserve">
+    <value>Адміністратор</value>
+  </data>
+  <data name="FacultySecretaryTxt" xml:space="preserve">
+    <value>Секретар</value>
+  </data>
+  <data name="InstituteAdminTxt" xml:space="preserve">
+    <value>Адміністратор</value>
+  </data>
+  <data name="InstituteSecretaryTxt" xml:space="preserve">
+    <value>Секретар</value>
+  </data>
+  <data name="MainAdminTxt" xml:space="preserve">
+    <value>Головний адміністратор</value>
+  </data>
+  <data name="MainSecretaryTxt" xml:space="preserve">
+    <value>Головний секретар</value>
+  </data>
+  <data name="StudentTxt" xml:space="preserve">
+    <value>Студент</value>
+  </data>
+  <data name="TeacherTxt" xml:space="preserve">
+    <value>Викладач</value>
+  </data>
 </root>

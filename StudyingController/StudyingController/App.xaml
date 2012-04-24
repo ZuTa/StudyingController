@@ -133,6 +133,10 @@
                 <v:ControlMarksView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type vm:UserProfileViewModel}">
+                <v:UserProfileView/>
+            </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

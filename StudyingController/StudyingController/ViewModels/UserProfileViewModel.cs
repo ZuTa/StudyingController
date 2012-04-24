@@ -16,10 +16,77 @@ namespace StudyingController.ViewModels
         public SystemUserDTO User
         {
             get { return user; }
-            set { user = value; }
+            set 
+            {
+                user = value;
+
+                OnPropertyChanged("RoleText");
+            }
         }
 
+        private InstituteDTO institute;
+        public InstituteDTO Institute
+        {
+            get { return institute; }
+            set { institute = value; }
+        }
 
+        public bool IsInstituteNotNull
+        {
+            get
+            {
+                return Institute != null;
+            }
+        }
+        public bool IsFacultyNotNull
+        {
+            get
+            {
+                return Faculty != null;
+            }
+        }
+        public bool IsCathedraNotNull
+        {
+            get
+            {
+                return Cathedra != null;
+            }
+        }
+        public bool IsGroupNotNull
+        {
+            get
+            {
+                return Group != null;
+            }
+        }
+        private FacultyDTO faculty;
+        public FacultyDTO Faculty
+        {
+            get { return faculty; }
+            set { faculty = value; }
+        }
+
+        private CathedraDTO cathedra;
+        public CathedraDTO Cathedra
+        {
+            get { return cathedra; }
+            set { cathedra = value; }
+        }
+
+        private GroupDTO group;
+        public GroupDTO Group
+        {
+            get { return group; }
+            set { group = value; }
+        }
+
+        public string RoleText
+        {
+            get
+            {
+                return User.Role.GetText<ResourceNameAttribute>();
+            }
+        }
         #endregion
 
         #region Constructors
@@ -36,11 +103,61 @@ namespace StudyingController.ViewModels
 
         protected override void LoadData()
         {
+            switch (user.Role)
+            {
+                case UserRoles.MainAdmin:
+                case UserRoles.MainSecretary:
+                    break;
+               case UserRoles.InstituteAdmin:
+                    institute = ControllerInterop.Service.GetInstituteByID(ControllerInterop.Session, (user as InstituteAdminDTO).InstituteID);
+                    break;
+               case UserRoles.InstituteSecretary:
+                    institute = ControllerInterop.Service.GetInstituteByID(ControllerInterop.Session, (user as InstituteSecretaryDTO).InstituteID);
+                    break;
+                case UserRoles.FacultyAdmin:
+                    faculty = ControllerInterop.Service.GetFacultyByID(ControllerInterop.Session, (user as FacultyAdminDTO).FacultyID);
+                    institute = ControllerInterop.Service.GetInstituteByID(ControllerInterop.Session, faculty.InstituteID);
+                    break;
+                case UserRoles.FacultySecretary:
+                    faculty = ControllerInterop.Service.GetFacultyByID(ControllerInterop.Session, (user as FacultySecretaryDTO).FacultyID);
+                    institute = ControllerInterop.Service.GetInstituteByID(ControllerInterop.Session, faculty.InstituteID);
+                    break;
+                case UserRoles.Teacher:
+                    cathedra = ControllerInterop.Service.GetCathedraByID(ControllerInterop.Session, (user as TeacherDTO).CathedraID);
+                    faculty = ControllerInterop.Service.GetFacultyByID(ControllerInterop.Session, cathedra.FacultyID);
+                    institute = ControllerInterop.Service.GetInstituteByID(ControllerInterop.Session, faculty.InstituteID);
+                    break;
+                case UserRoles.Student:
+                    group = ControllerInterop.Service.GetGroupByID(ControllerInterop.Session, (user as StudentDTO).GroupID);
+                    cathedra = ControllerInterop.Service.GetCathedraByID(ControllerInterop.Session, group.CathedraID);
+                    faculty = ControllerInterop.Service.GetFacultyByID(ControllerInterop.Session, cathedra.FacultyID);
+                    institute = ControllerInterop.Service.GetInstituteByID(ControllerInterop.Session, faculty.InstituteID);
+                    break;
+            }
 
+            OnPropertyChanged("RoleText");
+
+            OnPropertiesChanged();
         }
 
         protected override void ClearData()
         {
+            institute = null;
+            faculty = null;
+            group = null;
+            cathedra = null;
+        }
+
+        private void OnPropertiesChanged()
+        {
+            OnPropertyChanged("Institute");
+            OnPropertyChanged("IsInstituteNotNull");
+            OnPropertyChanged("Faculty");
+            OnPropertyChanged("IsFacultyNotNull");
+            OnPropertyChanged("Cathedra");
+            OnPropertyChanged("IsCathedraNotNull");
+            OnPropertyChanged("Group");
+            OnPropertyChanged("IsGroupNotNull");
         }
 
         #endregion

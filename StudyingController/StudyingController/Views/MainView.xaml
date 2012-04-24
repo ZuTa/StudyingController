@@ -17,6 +17,9 @@
             </Grid.RowDefinitions>
             <ToolBarTray>
                 <ToolBar>
+                    <Button Command="{Binding HomeCommand}" ToolTip="Моя сторінка" Style="{StaticResource MenuButtonStyle}">
+                        <Image Source="/StudyingController;component/Images/devid.png" Stretch="Fill" />
+                    </Button>
                     <Button Command="{Binding LogoutCommand}" ToolTip="Вийти" Style="{StaticResource MenuButtonStyle}">
                         <Image Source="/StudyingController;component/Images/application_exit.png" Stretch="Fill" />
                     </Button>
@@ -146,7 +149,7 @@
             </Grid>
         </Grid>
 
-        <Control Grid.Row="0" Style="{StaticResource BusyAnimationStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding IsLoading, Converter={StaticResource B2V}}"/>
+        <!--<Control Grid.Row="0" Style="{StaticResource BusyAnimationStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="{Binding IsLoading, Converter={StaticResource B2V}}"/>-->
 
         <StatusBar Grid.Row="1">
             <StatusBarItem>

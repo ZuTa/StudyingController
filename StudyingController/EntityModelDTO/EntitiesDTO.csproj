@@ -64,6 +64,7 @@
     <Compile Include="LectureControlMarkDTO.cs" />
     <Compile Include="LectureDTO.cs" />
     <Compile Include="MarkDTO.cs" />
+    <Compile Include="ResourceNameAttribute.cs" />
     <Compile Include="NamedEntityDTO.cs" />
     <Compile Include="PluralizeNameAttribute.cs" />
     <Compile Include="PracticeControlDTO.cs" />
