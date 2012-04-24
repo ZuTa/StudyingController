@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="b9c6e80d-b4bc-4552-a8f1-8d08ff4bc330" name="UMLStudent" linkedPackageId="132335f1-8fdc-46d2-ab84-c46ec70db633" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <profileInstances>
+    <packageHasProfileInstances Id="deeed532-adba-440f-8465-50c4a2cf634c">
+      <profileInstance Id="6740f2b6-74e2-4725-b169-bde7b4fef490" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="4a6c3233-98b6-4d3e-bdaf-4f9664dcaf78">
+      <profileInstance Id="850ca4a6-95c2-4a82-9389-31d14ac8d3a4" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="472da4e2-012c-4fb9-ba25-a7de71463b7c" name="Студент" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="402df5a8-de78-4933-baa2-f231c14e0d35" />
+        <targetEnds>
+          <association Id="4b5f0be8-b2fd-4c04-81b7-9ecfcd302602" isDerived="false" sourceEndRoleName="Студент" targetEndRoleName="Переглядати контролі" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="48b4d453-41b0-4b42-9846-6390aaa76284" LastKnownName="Переглядати контролі" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="84ac21ba-3913-459a-8ff3-3bf7550be9b3" name="Студент" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="9e368f92-be3a-4c28-a102-9a0e29c2b785" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="7aa404ef-cc62-4643-b294-7540169e1fbf" name="Переглядати контролі" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="76bf0505-1f8b-4fdd-8c55-0f21620d37f1" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="16e6543b-8e62-47b2-84c1-2a0f6048e76a" />
+          </association>
+          <association Id="402c38a7-50d3-4087-92d8-a2211e0249db" isDerived="false" sourceEndRoleName="Студент" targetEndRoleName="Змінювати інформацію про себе" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="a0d6ee4c-acd8-4667-b000-04e8f643745d" LastKnownName="Редагуватти інформацію про себе" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="fb9e7da8-ec94-4e29-baad-86cd276b63d6" name="Студент" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="366b02cf-af59-4c27-b475-1ef00e6e428c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="7a685931-8451-4bab-b6e7-97b0a50e3b87" name="Змінювати інформацію про себе" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="7206051f-40b8-4ff5-b959-fba53578ddef" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="c41ef126-1670-46b8-b789-99ef325f7981" />
+          </association>
+          <association Id="feea4d37-edac-4605-8378-bf3674e39a96" isDerived="false" sourceEndRoleName="Студент" targetEndRoleName="Переглядати останні повідомлення системи" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="370d7f33-cd53-4e8c-832d-794cc9b979ee" LastKnownName="Переглядати оповіщення системи" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="526269a5-eb54-4064-a5d4-c4e748f64a8b" name="Студент" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="37f96ac0-5e72-4763-bd79-405ac5a65809" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="fd9b00a8-4fa6-446a-800a-80eedc70b5ef" name="Переглядати останні повідомлення системи" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="e2ce81e5-ec1c-4370-b0a6-164e7e75b5a6" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="f6e9388a-cd4e-4ed2-9d11-bd19f7b989cb" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="48b4d453-41b0-4b42-9846-6390aaa76284" name="Переглядати контролі" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e779835e-71fb-4216-9a65-1a96758e108f" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="b8de07d6-26e6-459c-b577-1a98005a16bb" name="Переглядати інформацію про контроль" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="384993bd-6dfa-4926-89c2-163c7f6a5ba5" />
+        <extendedCases>
+          <extend Id="c160c689-25dd-4050-aa3b-5ae53961b732">
+            <useCaseMoniker Id="48b4d453-41b0-4b42-9846-6390aaa76284" LastKnownName="Переглядати контролі" />
+            <elementDefinition Id="5e39ba83-e09c-43ce-b55e-ecb80112f1c2" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="a37127cf-71e6-4357-a68f-36ddc190ee42" name="Обговорювати конроль" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="7d3c3366-72b6-4785-acb5-c43cf73f0ef3" />
+        <extendedCases>
+          <extend Id="c06f192f-db9f-46bd-87d4-eea00e0cc141">
+            <useCaseMoniker Id="48b4d453-41b0-4b42-9846-6390aaa76284" LastKnownName="Переглядати контролі" />
+            <elementDefinition Id="7d1e794f-3b73-4b53-97db-47f577fefd98" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include Id="1bc4459b-376c-42fc-a182-d2342522f14d">
+            <useCaseMoniker Id="41731ee4-baa3-4726-8f5a-545b9e7095af" LastKnownName="Залишати повідомлення" />
+            <elementDefinition Id="8535efc7-983b-4f8a-a96b-84958700d0d3" />
+          </include>
+          <include Id="17c1575c-ea2c-47bf-b195-a488443bacb0">
+            <useCaseMoniker Id="06f58221-666a-45a7-8fa9-73fe388a91c8" LastKnownName="Читати повідомлення інших користувачів" />
+            <elementDefinition Id="986da1a0-b00e-4c0f-909c-d0c0bd362a9d" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="41731ee4-baa3-4726-8f5a-545b9e7095af" name="Залишати повідомлення" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="28686a60-ddf7-422b-a8a7-e7be27ea9b50" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="06f58221-666a-45a7-8fa9-73fe388a91c8" name="Читати повідомлення інших користувачів" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="2c831b57-6bae-42b9-973b-01dfd13c214b" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="a0d6ee4c-acd8-4667-b000-04e8f643745d" name="Редагуватти інформацію про себе" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f932a0e3-dbde-438a-9821-31f04dfb25fb" />
+        <subjects>
+          <subsystemMoniker Id="dfe48569-1616-4664-aa5b-8d9d6dcca81b" LastKnownName="Профайл" />
+        </subjects>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="370d7f33-cd53-4e8c-832d-794cc9b979ee" name="Переглядати оповіщення системи" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b586dd87-f2f1-47bd-9d8d-12011de52b7d" />
+        <additions>
+          <include Id="78ff6484-da65-4562-9d2f-fcf1f03f8e24">
+            <useCaseMoniker Id="a4f41ad7-c386-4650-b4ab-1383f805e544" LastKnownName="Системні оповіщення" />
+            <elementDefinition Id="932214e6-2293-42eb-988e-5e2a72e24955" />
+          </include>
+          <include Id="32c350cb-9908-49fc-8dc1-07c453b14c3b">
+            <useCaseMoniker Id="6fa7fe86-8580-4512-b28f-c109aa8430f3" LastKnownName="Оповіщення про нові контролі" />
+            <elementDefinition Id="80437453-6097-4ef4-956d-ebe6bcd82cff" />
+          </include>
+          <include Id="2a14b8b0-cefa-48cd-90f3-6904c57c4300">
+            <useCaseMoniker Id="18d71ff7-163a-49b4-93ad-4e912da5df65" LastKnownName="Оповіщення про нові повідомлення в обговорені контролів" />
+            <elementDefinition Id="3d863acf-4b86-4b3d-a7d8-f979b0fcc47a" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker Id="10d04140-51e1-4b8a-8e3a-785b9aec062e" LastKnownName="Система оповіщень" />
+        </subjects>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="76e5aaeb-ff10-409a-adfb-3ac5c5417bc2" name="Змінювати логін, пароль, e-mail" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="cf08d20a-0033-4ede-94fc-ee38d34fe2b8" />
+        <extendedCases>
+          <extend Id="acd70ee6-3b4a-4405-b7d1-ec6d0f5d988f">
+            <useCaseMoniker Id="a0d6ee4c-acd8-4667-b000-04e8f643745d" LastKnownName="Редагуватти інформацію про себе" />
+            <elementDefinition Id="1d690a98-d985-4056-bda6-49239bffcc54" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker Id="dfe48569-1616-4664-aa5b-8d9d6dcca81b" LastKnownName="Профайл" />
+        </subjects>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="78f694a7-0c33-4912-9831-ed5051707d2e" name="Змінювати фото" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="8108fc38-a523-4b95-a007-d0cdf42abd13" />
+        <extendedCases>
+          <extend Id="7daa882d-ec7c-44e3-92ad-ed2ab38ead15">
+            <useCaseMoniker Id="a0d6ee4c-acd8-4667-b000-04e8f643745d" LastKnownName="Редагуватти інформацію про себе" />
+            <elementDefinition Id="4cd5cbb4-3f56-4808-b54f-4116f535f09a" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker Id="dfe48569-1616-4664-aa5b-8d9d6dcca81b" LastKnownName="Профайл" />
+        </subjects>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="10d04140-51e1-4b8a-8e3a-785b9aec062e" name="Система оповіщень" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="755f2ab7-0b26-4dad-bf7c-c277debcedda" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="a4f41ad7-c386-4650-b4ab-1383f805e544" name="Системні оповіщення" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="2f42ed80-b9ce-429a-b936-98b8261edacc" />
+        <subjects>
+          <subsystemMoniker Id="10d04140-51e1-4b8a-8e3a-785b9aec062e" LastKnownName="Система оповіщень" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="6fa7fe86-8580-4512-b28f-c109aa8430f3" name="Оповіщення про нові контролі" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e438e45d-be0b-4489-aa73-2fef516a443d" />
+        <subjects>
+          <subsystemMoniker Id="10d04140-51e1-4b8a-8e3a-785b9aec062e" LastKnownName="Система оповіщень" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="18d71ff7-163a-49b4-93ad-4e912da5df65" name="Оповіщення про нові повідомлення в обговорені контролів" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="025495b2-bdd0-4f1f-8b24-575ecaf8c9e5" />
+        <subjects>
+          <subsystemMoniker Id="10d04140-51e1-4b8a-8e3a-785b9aec062e" LastKnownName="Система оповіщень" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="dfe48569-1616-4664-aa5b-8d9d6dcca81b" name="Профайл" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="29e8ccb1-930b-44ed-9cd5-b1a5390d2584" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="132335f1-8fdc-46d2-ab84-c46ec70db633" name="ModelingProject">
+    <elementDefinition Id="6126932b-a0fc-4c12-819c-d94f72bd991f" />
+  </package>
+</useCaseModelRoot>

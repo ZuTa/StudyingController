@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/dsltools/UseCaseModel"
   dslVersion="1.0.0.0"
   Id="6126932b-a0fc-4c12-819c-d94f72bd991f"
   name="ModelingProject" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -842,6 +842,162 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
+          <association
+            Id="16e6543b-8e62-47b2-84c1-2a0f6048e76a"
+            isDerived="false"
+            sourceEndRoleName="Студент"
+            targetEndRoleName="Переглядати контролі"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="e779835e-71fb-4216-9a65-1a96758e108f"
+              LastKnownName="Переглядати контролі"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9e368f92-be3a-4c28-a102-9a0e29c2b785"
+                  name="Студент"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="76bf0505-1f8b-4fdd-8c55-0f21620d37f1"
+                  name="Переглядати контролі"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="23882877-db0b-4a55-8fcc-43083577eb7c"
+            isDerived="false"
+            sourceEndRoleName="Студент"
+            targetEndRoleName="Переглядати власну інформацію"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="cfa5a3c8-270a-4c1a-ad01-1126f878a453"
+              LastKnownName="Переглядати власну інформацію"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="1c1b4705-5673-4967-918f-79a5132954f1"
+                  name="Студент"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="516c0732-c43a-434c-a8a3-10e10e67c61f"
+                  name="Переглядати власну інформацію"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="c41ef126-1670-46b8-b789-99ef325f7981"
+            isDerived="false"
+            sourceEndRoleName="Студент"
+            targetEndRoleName="Змінювати інформацію про себе"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="f932a0e3-dbde-438a-9821-31f04dfb25fb"
+              LastKnownName="Редагуватти інформацію про себе"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="366b02cf-af59-4c27-b475-1ef00e6e428c"
+                  name="Студент"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="7206051f-40b8-4ff5-b959-fba53578ddef"
+                  name="Змінювати інформацію про себе"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="f6e9388a-cd4e-4ed2-9d11-bd19f7b989cb"
+            isDerived="false"
+            sourceEndRoleName="Студент"
+            targetEndRoleName="Переглядати останні повідомлення системи"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="b586dd87-f2f1-47bd-9d8d-12011de52b7d"
+              LastKnownName="Переглядати оповіщення системи"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="37f96ac0-5e72-4763-bd79-405ac5a65809"
+                  name="Студент"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e2ce81e5-ec1c-4370-b0a6-164e7e75b5a6"
+                  name="Переглядати останні повідомлення системи"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
         </targetEnds>
       </actor>
     </packageHasNamedElement>
@@ -1363,6 +1519,248 @@
           </include>
         </additions>
       </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="e779835e-71fb-4216-9a65-1a96758e108f"
+        name="Переглядати контролі"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="384993bd-6dfa-4926-89c2-163c7f6a5ba5"
+        name="Переглядати інформацію про контроль"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="5e39ba83-e09c-43ce-b55e-ecb80112f1c2">
+            <useCaseMoniker
+              Id="e779835e-71fb-4216-9a65-1a96758e108f"
+              LastKnownName="Переглядати контролі"
+              LastKnownLocation="ModelingProject.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="7d3c3366-72b6-4785-acb5-c43cf73f0ef3"
+        name="Обговорювати конроль"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="7d1e794f-3b73-4b53-97db-47f577fefd98">
+            <useCaseMoniker
+              Id="e779835e-71fb-4216-9a65-1a96758e108f"
+              LastKnownName="Переглядати контролі"
+              LastKnownLocation="ModelingProject.uml" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include
+            Id="8535efc7-983b-4f8a-a96b-84958700d0d3">
+            <useCaseMoniker
+              Id="28686a60-ddf7-422b-a8a7-e7be27ea9b50"
+              LastKnownName="Залишати повідомлення"
+              LastKnownLocation="ModelingProject.uml" />
+          </include>
+          <include
+            Id="986da1a0-b00e-4c0f-909c-d0c0bd362a9d">
+            <useCaseMoniker
+              Id="2c831b57-6bae-42b9-973b-01dfd13c214b"
+              LastKnownName="Читати повідомлення інших користувачів"
+              LastKnownLocation="ModelingProject.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="28686a60-ddf7-422b-a8a7-e7be27ea9b50"
+        name="Залишати повідомлення"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="2c831b57-6bae-42b9-973b-01dfd13c214b"
+        name="Читати повідомлення інших користувачів"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="cfa5a3c8-270a-4c1a-ad01-1126f878a453"
+        name="Переглядати власну інформацію"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="f932a0e3-dbde-438a-9821-31f04dfb25fb"
+        name="Редагуватти інформацію про себе"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="b4fa73d2-6243-4b48-a9e8-66d5101e724e">
+            <useCaseMoniker
+              Id="cfa5a3c8-270a-4c1a-ad01-1126f878a453"
+              LastKnownName="Переглядати власну інформацію"
+              LastKnownLocation="ModelingProject.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="29e8ccb1-930b-44ed-9cd5-b1a5390d2584"
+            LastKnownName="Профайл"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="b586dd87-f2f1-47bd-9d8d-12011de52b7d"
+        name="Переглядати оповіщення системи"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="932214e6-2293-42eb-988e-5e2a72e24955">
+            <useCaseMoniker
+              Id="2f42ed80-b9ce-429a-b936-98b8261edacc"
+              LastKnownName="Системні оповіщення"
+              LastKnownLocation="ModelingProject.uml" />
+          </include>
+          <include
+            Id="80437453-6097-4ef4-956d-ebe6bcd82cff">
+            <useCaseMoniker
+              Id="e438e45d-be0b-4489-aa73-2fef516a443d"
+              LastKnownName="Оповіщення про нові контролі"
+              LastKnownLocation="ModelingProject.uml" />
+          </include>
+          <include
+            Id="3d863acf-4b86-4b3d-a7d8-f979b0fcc47a">
+            <useCaseMoniker
+              Id="025495b2-bdd0-4f1f-8b24-575ecaf8c9e5"
+              LastKnownName="Оповіщення про нові повідомлення в обговорені контролів"
+              LastKnownLocation="ModelingProject.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="755f2ab7-0b26-4dad-bf7c-c277debcedda"
+            LastKnownName="Система оповіщень"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="cf08d20a-0033-4ede-94fc-ee38d34fe2b8"
+        name="Змінювати логін, пароль, e-mail"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="1d690a98-d985-4056-bda6-49239bffcc54">
+            <useCaseMoniker
+              Id="f932a0e3-dbde-438a-9821-31f04dfb25fb"
+              LastKnownName="Редагуватти інформацію про себе"
+              LastKnownLocation="ModelingProject.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="29e8ccb1-930b-44ed-9cd5-b1a5390d2584"
+            LastKnownName="Профайл"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="8108fc38-a523-4b95-a007-d0cdf42abd13"
+        name="Змінювати фото"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="4cd5cbb4-3f56-4808-b54f-4116f535f09a">
+            <useCaseMoniker
+              Id="f932a0e3-dbde-438a-9821-31f04dfb25fb"
+              LastKnownName="Редагуватти інформацію про себе"
+              LastKnownLocation="ModelingProject.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="29e8ccb1-930b-44ed-9cd5-b1a5390d2584"
+            LastKnownName="Профайл"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="755f2ab7-0b26-4dad-bf7c-c277debcedda"
+        name="Система оповіщень"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="2f42ed80-b9ce-429a-b936-98b8261edacc"
+        name="Системні оповіщення"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="755f2ab7-0b26-4dad-bf7c-c277debcedda"
+            LastKnownName="Система оповіщень"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="e438e45d-be0b-4489-aa73-2fef516a443d"
+        name="Оповіщення про нові контролі"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="755f2ab7-0b26-4dad-bf7c-c277debcedda"
+            LastKnownName="Система оповіщень"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="025495b2-bdd0-4f1f-8b24-575ecaf8c9e5"
+        name="Оповіщення про нові повідомлення в обговорені контролів"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="755f2ab7-0b26-4dad-bf7c-c277debcedda"
+            LastKnownName="Система оповіщень"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="29e8ccb1-930b-44ed-9cd5-b1a5390d2584"
+        name="Профайл"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType
