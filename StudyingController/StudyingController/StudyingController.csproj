@@ -547,9 +547,6 @@
     <Resource Include="Images\user.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\genPass.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\Learn_Lesson-icon.png" />
   </ItemGroup>
   <ItemGroup>
@@ -582,6 +579,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\devid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\genPass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\circle_grey.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

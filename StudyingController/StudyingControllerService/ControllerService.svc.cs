@@ -1942,7 +1942,7 @@ namespace StudyingControllerService
                        {
                            PracticeControl pc = q as PracticeControl;
                            context.LoadProperty(pc, "Practice_Teacher");
-                           context.LoadProperty(pc, "PracticeControlMarks");
+                           //context.LoadProperty(pc, "PracticeControlMarks");
                            foreach (var m in pc.PracticeControlMarks)
                            {
                                context.LoadProperty(m, "Student");
@@ -1971,7 +1971,7 @@ namespace StudyingControllerService
                            LectureControl lc = q as LectureControl;
 
                            context.LoadProperty(lc, "Lecture");
-                           context.LoadProperty(lc, "LectureControlMarks");
+                           //context.LoadProperty(lc, "LectureControlMarks");
                            foreach (var m in lc.LectureControlMarks)
                            {
                                context.LoadProperty(m, "Student");

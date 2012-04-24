@@ -223,7 +223,7 @@
     <value>Викладачі</value>
   </data>
   <data name="GeneratePassword" xml:space="preserve">
-    <value>/StudyingController;component/Images/genPass.jpg</value>
+    <value>/StudyingController;component/Images/genPass.png</value>
   </data>
   <data name="Lecture" xml:space="preserve">
     <value>/StudyingController;component/Images/lect.png</value>

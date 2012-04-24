@@ -28,7 +28,7 @@
                     <Button ToolTip="Структура" Command="{Binding Path=UniversityStructureCommand}" Visibility="{Binding Path=IsUserAdminOrSecretary, Converter={StaticResource B2V}}" Style="{StaticResource MenuButtonStyle}">
                         <Image Source="/StudyingController;component/Images/department.png" Stretch="Fill" />
                     </Button>
-                    <Button Margin="3" ToolTip="Користувачі" Width="32" Height="32" Command="{Binding Path=UsersStructureCommand}" Visibility="{Binding Path=IsUserAdminOrSecretary, Converter={StaticResource B2V}}" Style="{StaticResource MenuButtonStyle}">
+                    <Button Margin="3" ToolTip="Користувачі" Width="55" Height="55" Command="{Binding Path=UsersStructureCommand}" Visibility="{Binding Path=IsUserAdminOrSecretary, Converter={StaticResource B2V}}" Style="{StaticResource MenuButtonStyle}">
                         <Image Source="/StudyingController;component/Images/people.png" Stretch="Fill" />
                     </Button>
                     <Button ToolTip="Контролі" Command="{Binding Path=ControlStructureCommand}" Visibility="{Binding Path=IsUserAdminOrTeacher, Converter={StaticResource B2V}}" Style="{StaticResource MenuButtonStyle}">
@@ -63,7 +63,7 @@
                             <Image Source="/StudyingController;component/Images/1327612523_Add.png" Stretch="Fill" />
                         </Button.Content>
                     </Button>
-                    <Button ToolTip="Видалити" Visibility="{Binding Path=IsManipulateable, Converter={StaticResource B2V}}" Width="32" Height="32" Command="{Binding Path=CurrentWorkspace.RemoveCommand}" IsEnabled="{Binding CurrentWorkspace.CanRemove}" Style="{StaticResource MenuButtonStyle}">
+                    <Button ToolTip="Видалити" Visibility="{Binding Path=IsManipulateable, Converter={StaticResource B2V}}" Width="55" Height="55" Command="{Binding Path=CurrentWorkspace.RemoveCommand}" IsEnabled="{Binding CurrentWorkspace.CanRemove}" Style="{StaticResource MenuButtonStyle}">
                         <Image Source="/StudyingController;component/Images/1327612550_delete.png" Stretch="Fill" />
                     </Button>
                 </ToolBar>
@@ -78,7 +78,7 @@
                 <ToolBar IsEnabled="{Binding Path=CurrentWorkspace.IsEnabled}" Visibility="{Binding Path=HasAdditionalCommands, Converter={StaticResource B2V}}" ItemsSource="{Binding CurrentWorkspace.AdditionalCommands}">
                     <ToolBar.ItemTemplate>
                         <DataTemplate>
-                            <Button ToolTip="{Binding Path=Name}" Command="{Binding Path=Command}" IsEnabled="{Binding Path=IsEnabled}" Width="32" Height="32" Style="{StaticResource MenuButtonStyle}">
+                            <Button ToolTip="{Binding Path=Name}" Command="{Binding Path=Command}" IsEnabled="{Binding Path=IsEnabled}" Width="55" Height="55" Style="{StaticResource MenuButtonStyle}">
                                 <Button.Content>
                                     <Image Source="{Binding Path=Type, Converter={StaticResource E2P}}" Stretch="Fill"/>
                                 </Button.Content>
