@@ -2,7 +2,7 @@
 <useCaseDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="UMLTeacher">
   <useCaseModelRootMoniker Id="5db8ffe1-ca86-424c-9f03-61d7566bcf4d" />
   <nestedChildShapes>
-    <actorShape Id="d922ca63-f65e-4018-a198-ee32e1467e82" absoluteBounds="4.5, 0.75, 0.75, 0.75" isReference="false" heightOffset="0">
+    <actorShape Id="d922ca63-f65e-4018-a198-ee32e1467e82" absoluteBounds="4.5, 0.75, 1.375, 1.375" isReference="false" imagePath="C:\Users\ZuTa\Downloads\man_grey.png" heightOffset="0">
       <actorMoniker Id="c89d778f-6f48-4fec-886f-f1550ebe7d07" LastKnownName="Викладач" />
       <relativeChildShapes />
     </actorShape>
