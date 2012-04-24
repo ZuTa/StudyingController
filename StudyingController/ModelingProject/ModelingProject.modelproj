@@ -23,6 +23,27 @@
   <Import Project="$(VSToolsPath)\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" Condition="false" />
   <ItemGroup>
+    <Content Include="UMLAdmin.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UMLAdmin.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>UMLAdmin.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="UMLFacultyAdmin.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UMLFacultyAdmin.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>UMLFacultyAdmin.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="UMLFacultySecretary.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UMLFacultySecretary.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>UMLFacultySecretary.usecasediagram</DependentUpon>
+    </Content>
     <Content Include="UMLStudent.usecasediagram">
       <SubType>Content</SubType>
     </Content>

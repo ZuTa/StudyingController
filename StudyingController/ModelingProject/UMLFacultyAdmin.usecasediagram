@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="1b97d52d-e4da-409e-a7aa-985fdfb16c86" name="UMLFacultyAdmin" linkedPackageId="3755bb5c-f3d1-4648-8280-7b5e6846ac9c" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <profileInstances>
+    <packageHasProfileInstances Id="e3bb1f5d-9513-473c-b534-21735111a764">
+      <profileInstance Id="4b1b81cf-81e1-425b-b8fa-f6d91e3bc97e" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="ce86183f-8f4f-4bfd-b390-1553576f9cd9">
+      <profileInstance Id="40f4d4df-4508-4efc-a0c4-a91aded416d7" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="f50f9b65-b7d2-4d82-b7ad-b755a29c66b0" name="Адміністратор факультету" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f5f8e292-2b06-44a7-b763-64ca16efc632" />
+        <targetEnds>
+          <association Id="5240f971-6fe1-4713-915f-e0059e0b78c0" isDerived="false" sourceEndRoleName="Адміністратор факультету" targetEndRoleName="Керувати адміністраторами факультету" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="d865a89e-2eaa-41f1-a739-dec5eb8a0747" LastKnownName="Керувати адміністраторами факультету" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d945f027-a397-4289-8630-e67a19e2a591" name="Адміністратор факультету" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="01eda34c-24a6-47ac-afef-37a19f9c2b2f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="199872cb-636f-4ca8-b92f-016273d743f7" name="Керувати адміністраторами факультету" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="7bccce11-070a-4a60-bea8-0e6b2d5a144d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="0321b390-ba64-4e12-a75a-627812d16f17" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="d865a89e-2eaa-41f1-a739-dec5eb8a0747" name="Керувати адміністраторами факультету" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="909cf8a7-0b94-4a4b-8d87-e3fe62817ca0" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="3755bb5c-f3d1-4648-8280-7b5e6846ac9c" name="ModelingProject">
+    <elementDefinition Id="6126932b-a0fc-4c12-819c-d94f72bd991f" />
+  </package>
+</useCaseModelRoot>

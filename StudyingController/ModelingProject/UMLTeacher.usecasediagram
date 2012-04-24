@@ -18,7 +18,161 @@
     <useCaseModelRootHasTypes>
       <actor Id="c89d778f-6f48-4fec-886f-f1550ebe7d07" name="Викладач" isAbstract="false" isLeaf="false">
         <elementDefinition Id="06ac9795-1ab5-49a9-aa0e-8db874fec384" />
+        <targetEnds>
+          <association Id="721e8e86-4a29-44b4-8d4b-daa46e828237" isDerived="false" sourceEndRoleName="Викладач" targetEndRoleName="Керувати контролями" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="d857f817-d740-4227-8e1b-96e828362366" LastKnownName="Керувати контролями" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b4b48e88-389c-4b98-929d-f1683adfaf55" name="Викладач" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="9fb0bebd-6846-4446-8dcb-c378c93e541f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a863caea-6a19-49ef-92e8-8342bbaf4403" name="Керувати контролями" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="8615ceaf-3c57-4bfe-b555-e73325498b37" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="f0f46130-aec9-43e7-8747-0b82363aa4e5" />
+          </association>
+          <association Id="64cb7306-9e21-4285-92ac-3a300f86266f" isDerived="false" sourceEndRoleName="Викладач" targetEndRoleName="Система оповіщень" isLeaf="false" isAbstract="false">
+            <subsystemMoniker Id="167506f0-941b-438a-8fd3-af4d758ebdb7" LastKnownName="Система оповіщень" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4ab025b3-df2c-40ac-82d2-f5db563b7a52" name="Викладач" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="2b3f9391-51ae-4c6a-8d28-a0424680c8bf" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3d62f91b-5cb3-48aa-9085-fd9a928e80a4" name="Система оповіщень" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="1ca34760-94fa-485d-9b07-8290a4a88bc1" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="a749093e-3d8e-42ee-9b4c-b68933caf685" />
+          </association>
+          <association Id="e658bb61-1896-4965-a721-66db83534461" isDerived="false" sourceEndRoleName="Викладач" targetEndRoleName="Керувати файлами" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="edcb2dd8-ebc5-43c4-9ca1-5ccf3fbab2c2" LastKnownName="Керувати файлами" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b8cd4a91-14a1-4aef-bdb6-b941c46a44a0" name="Викладач" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="39c24a55-ead7-4913-9768-7c60e6daa33e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0d0e4aab-6e76-4722-a9d4-508809718636" name="Керувати файлами" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="58f63ebb-b6e6-47c4-99e2-0e2bdc892748" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="e043613e-d4ee-46db-b913-1b1acba9fe09" />
+          </association>
+        </targetEnds>
       </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="d857f817-d740-4227-8e1b-96e828362366" name="Керувати контролями" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d24328a0-e3cd-4db9-af47-a67413047d86" />
+        <targetEnds>
+          <association Id="54b98dbb-a5bb-406f-ab77-be5074a427fd" isDerived="false" sourceEndRoleName="Керувати контролями" targetEndRoleName="Обговорення контролів" isLeaf="false" isAbstract="false">
+            <subsystemMoniker Id="73d3d8bf-b543-43a5-9c2d-e16da423e867" LastKnownName="Обговорення контролів" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9843ce43-b6db-41c1-9758-2ae22dea02cb" name="Керувати контролями" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="18ff1c0a-762d-4c58-82a7-9b202ee49f38" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8034fc6f-e0c7-449a-b72a-e533a0414a86" name="Обговорення контролів" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="5ed51ae3-b695-4c54-b884-64653b91f198" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="92887c23-ab02-4a1f-86c6-207ef1f6231d" />
+          </association>
+        </targetEnds>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="91d09b0c-886b-4985-96b1-22367403f701" name="Додавати, видаляти, редагувати контролі" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="70a15baa-5523-4caa-831b-455a7d49b9ec" />
+        <extendedCases>
+          <extend Id="c43955e7-805f-4967-8b02-ae65b7c2e507">
+            <useCaseMoniker Id="d857f817-d740-4227-8e1b-96e828362366" LastKnownName="Керувати контролями" />
+            <elementDefinition Id="5394ca08-b997-4ce6-8200-0dd473d75fdb" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="dcd98f20-accc-42cd-aede-d23b2e5db103" name="Редагувати дату проведення контролів" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="1f0643d8-2cee-45d6-8d92-d5816451c6fc" />
+        <extendedCases>
+          <extend Id="a29016dd-7096-4e92-9e11-a43350296473">
+            <useCaseMoniker Id="d857f817-d740-4227-8e1b-96e828362366" LastKnownName="Керувати контролями" />
+            <elementDefinition Id="62b23b74-c658-4883-9dd8-01a72e38f2b9" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="167506f0-941b-438a-8fd3-af4d758ebdb7" name="Система оповіщень" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="755f2ab7-0b26-4dad-bf7c-c277debcedda" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="d23bb9e8-848a-4558-b433-0775510fdac3" name="Виставляти оцінки студентам та коментувати їх" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="3a3d6546-1b7e-47f3-966e-07c12f85a5ad" />
+        <extendedCases>
+          <extend Id="0290e389-f416-41f5-b6b8-57febe5897d3">
+            <useCaseMoniker Id="d857f817-d740-4227-8e1b-96e828362366" LastKnownName="Керувати контролями" />
+            <elementDefinition Id="1607feec-25cb-4d60-87c7-818e38bd69c6" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="edcb2dd8-ebc5-43c4-9ca1-5ccf3fbab2c2" name="Керувати файлами" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="8b259abd-536c-4c74-a577-f9c5dacd897f" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="810e6777-6024-44a0-bc10-4202ad085125" name="Додавати файли у власну бібліотеку" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="83d4c1d3-2b5b-4aea-a27b-a66e8821b716" />
+        <extendedCases>
+          <extend Id="18abdf52-85a7-4277-a709-386f955696fa">
+            <useCaseMoniker Id="edcb2dd8-ebc5-43c4-9ca1-5ccf3fbab2c2" LastKnownName="Керувати файлами" />
+            <elementDefinition Id="baecaf2a-ff21-45e1-8dcc-3a1cfce7f7f5" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="dcdab9f1-abe5-483e-a3dd-d2c0015efe59" name="Редагувати інформацію про файли" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="4827c2a6-4ee0-40a7-8bd9-98d5a81592f7" />
+        <extendedCases>
+          <extend Id="49d8fff8-6dbb-451d-9ea5-48ca6113e148">
+            <useCaseMoniker Id="edcb2dd8-ebc5-43c4-9ca1-5ccf3fbab2c2" LastKnownName="Керувати файлами" />
+            <elementDefinition Id="3558eb82-3477-4693-9fba-91c15856bb59" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="0d440f4e-58c0-475d-8edc-a2f785c97424" name="Видаляти файли" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="93a3a3d8-58f2-42f6-8190-f6a0a51e1aca" />
+        <extendedCases>
+          <extend Id="1e04e384-3dba-41c6-8826-dbcb4fd1d562">
+            <useCaseMoniker Id="edcb2dd8-ebc5-43c4-9ca1-5ccf3fbab2c2" LastKnownName="Керувати файлами" />
+            <elementDefinition Id="1d38b801-1b28-43f2-b5cc-4ca91b67b9e9" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="73d3d8bf-b543-43a5-9c2d-e16da423e867" name="Обговорення контролів" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="b4dda128-dbef-4c6f-ac48-06d9fa12f7b5" />
+      </subsystem>
     </useCaseModelRootHasTypes>
   </packagedElements>
   <package Id="c829d7c2-ba15-4aff-a283-ec11759644c6" name="ModelingProject">

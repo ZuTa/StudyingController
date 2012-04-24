@@ -73,6 +73,24 @@
     <useCaseModelRootHasTypes>
       <useCase Id="48b4d453-41b0-4b42-9846-6390aaa76284" name="Переглядати контролі" isAbstract="false" isLeaf="false">
         <elementDefinition Id="e779835e-71fb-4216-9a65-1a96758e108f" />
+        <targetEnds>
+          <association Id="184bfb44-c6b1-469b-a34b-83f3de57dd25" isDerived="false" sourceEndRoleName="Переглядати контролі" targetEndRoleName="Обговорення контролів" isLeaf="false" isAbstract="false">
+            <subsystemMoniker Id="87667251-36e3-4959-8e65-b01e2e6d8939" LastKnownName="Обговорення контролів" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="7250f6b9-2264-48d0-a568-7369780007fb" name="Переглядати контролі" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="daa1f394-8e3d-4275-8c58-cb0d61e0e7d6" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="303bbb52-4968-498e-87cb-8c7b40961036" name="Обговорення контролів" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="365e9aca-57de-41ab-ab63-8f18bb0396a4" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="08f7b0c4-fd35-43d8-9007-f90e61fd7ade" />
+          </association>
+        </targetEnds>
       </useCase>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
@@ -89,12 +107,6 @@
     <useCaseModelRootHasTypes>
       <useCase Id="a37127cf-71e6-4357-a68f-36ddc190ee42" name="Обговорювати конроль" isAbstract="false" isLeaf="false">
         <elementDefinition Id="7d3c3366-72b6-4785-acb5-c43cf73f0ef3" />
-        <extendedCases>
-          <extend Id="c06f192f-db9f-46bd-87d4-eea00e0cc141">
-            <useCaseMoniker Id="48b4d453-41b0-4b42-9846-6390aaa76284" LastKnownName="Переглядати контролі" />
-            <elementDefinition Id="7d1e794f-3b73-4b53-97db-47f577fefd98" />
-          </extend>
-        </extendedCases>
         <additions>
           <include Id="1bc4459b-376c-42fc-a182-d2342522f14d">
             <useCaseMoniker Id="41731ee4-baa3-4726-8f5a-545b9e7095af" LastKnownName="Залишати повідомлення" />
@@ -105,16 +117,25 @@
             <elementDefinition Id="986da1a0-b00e-4c0f-909c-d0c0bd362a9d" />
           </include>
         </additions>
+        <subjects>
+          <subsystemMoniker Id="87667251-36e3-4959-8e65-b01e2e6d8939" LastKnownName="Обговорення контролів" />
+        </subjects>
       </useCase>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
       <useCase Id="41731ee4-baa3-4726-8f5a-545b9e7095af" name="Залишати повідомлення" isAbstract="false" isLeaf="false">
         <elementDefinition Id="28686a60-ddf7-422b-a8a7-e7be27ea9b50" />
+        <subjects>
+          <subsystemMoniker Id="87667251-36e3-4959-8e65-b01e2e6d8939" LastKnownName="Обговорення контролів" />
+        </subjects>
       </useCase>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
       <useCase Id="06f58221-666a-45a7-8fa9-73fe388a91c8" name="Читати повідомлення інших користувачів" isAbstract="false" isLeaf="false">
         <elementDefinition Id="2c831b57-6bae-42b9-973b-01dfd13c214b" />
+        <subjects>
+          <subsystemMoniker Id="87667251-36e3-4959-8e65-b01e2e6d8939" LastKnownName="Обговорення контролів" />
+        </subjects>
       </useCase>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
@@ -207,6 +228,11 @@
     <useCaseModelRootHasTypes>
       <subsystem Id="dfe48569-1616-4664-aa5b-8d9d6dcca81b" name="Профайл" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="29e8ccb1-930b-44ed-9cd5-b1a5390d2584" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="87667251-36e3-4959-8e65-b01e2e6d8939" name="Обговорення контролів" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="b4dda128-dbef-4c6f-ac48-06d9fa12f7b5" />
       </subsystem>
     </useCaseModelRootHasTypes>
   </packagedElements>

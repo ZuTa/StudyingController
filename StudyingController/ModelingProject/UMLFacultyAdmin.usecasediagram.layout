@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="UMLFacultyAdmin">
+  <useCaseModelRootMoniker Id="1b97d52d-e4da-409e-a7aa-985fdfb16c86" />
+  <nestedChildShapes>
+    <actorShape Id="b2cd7dfc-39e8-4cb1-a9e8-7f1913ae5f6c" absoluteBounds="4.5, 0.75, 1.375, 1.375" isReference="false" imagePath="C:\Users\ZuTa\Downloads\personal.png" heightOffset="0">
+      <actorMoniker Id="f50f9b65-b7d2-4d82-b7ad-b755a29c66b0" LastKnownName="Адміністратор факультету" />
+      <relativeChildShapes />
+    </actorShape>
+    <useCaseShape Id="aaa824ba-53d3-40ec-b9c0-30f2b76d0c28" absoluteBounds="2.375, 2.5, 1, 0.875" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="d865a89e-2eaa-41f1-a739-dec5eb8a0747" LastKnownName="Керувати адміністраторами факультету" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseAssociationConnector edgePoints="[(4.5 : 1.88344594594595); (3.2766686777462 : 2.67695815497544)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="5240f971-6fe1-4713-915f-e0059e0b78c0" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="b2cd7dfc-39e8-4cb1-a9e8-7f1913ae5f6c" />
+        <useCaseShapeMoniker Id="aaa824ba-53d3-40ec-b9c0-30f2b76d0c28" />
+      </nodes>
+    </useCaseAssociationConnector>
+  </nestedChildShapes>
+</useCaseDiagram>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<useCaseDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 13.625, 8.5" name="UMLStudent">
+<useCaseDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 15.625, 8.5" name="UMLStudent">
   <useCaseModelRootMoniker Id="b9c6e80d-b4bc-4552-a8f1-8d08ff4bc330" />
   <nestedChildShapes>
     <actorShape Id="37610297-9e56-4f7e-a3a0-c4adc6c2cd47" absoluteBounds="6.75, 0.75, 1, 1" isReference="false" imagePath="C:\Users\ZuTa\Downloads\young_bruce_wayne.png" heightOffset="0">
@@ -30,42 +30,6 @@
         <useCaseShapeMoniker Id="23a26e44-4480-4659-854e-773790ebc6ee" />
       </nodes>
     </extendConnector>
-    <useCaseShape Id="4e206802-bd57-42b0-bdcb-eaf457af7fbe" absoluteBounds="11.5, 3.25, 1.25, 0.5" customColor="LimeGreen" heightOffset="0">
-      <useCaseMoniker Id="a37127cf-71e6-4357-a68f-36ddc190ee42" LastKnownName="Обговорювати конроль" />
-      <relativeChildShapes />
-    </useCaseShape>
-    <extendConnector edgePoints="[(11.7880914397354 : 3.28943214983462); (11.0154344047215 : 2.80652150295095)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«extend»">
-      <extendMoniker Id="c06f192f-db9f-46bd-87d4-eea00e0cc141" />
-      <relativeChildShapes />
-      <nodes>
-        <useCaseShapeMoniker Id="4e206802-bd57-42b0-bdcb-eaf457af7fbe" />
-        <useCaseShapeMoniker Id="23a26e44-4480-4659-854e-773790ebc6ee" />
-      </nodes>
-    </extendConnector>
-    <useCaseShape Id="7fcf23e0-36f4-4ecc-969b-999f57485b72" absoluteBounds="10.125, 4.25, 1.125, 0.75" customColor="LimeGreen" heightOffset="0">
-      <useCaseMoniker Id="41731ee4-baa3-4726-8f5a-545b9e7095af" LastKnownName="Залишати повідомлення" />
-      <relativeChildShapes />
-    </useCaseShape>
-    <includeConnector edgePoints="[(11.8405555876318 : 3.72260867054902); (11.0522623812749 : 4.33953378856748)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«include»">
-      <includeMoniker Id="1bc4459b-376c-42fc-a182-d2342522f14d" />
-      <relativeChildShapes />
-      <nodes>
-        <useCaseShapeMoniker Id="4e206802-bd57-42b0-bdcb-eaf457af7fbe" />
-        <useCaseShapeMoniker Id="7fcf23e0-36f4-4ecc-969b-999f57485b72" />
-      </nodes>
-    </includeConnector>
-    <useCaseShape Id="9115197d-783a-496f-b73e-45d3d3f2fcf0" absoluteBounds="11.625, 4.125, 1.75, 0.75" customColor="LimeGreen" heightOffset="0">
-      <useCaseMoniker Id="06f58221-666a-45a7-8fa9-73fe388a91c8" LastKnownName="Читати повідомлення інших користувачів" />
-      <relativeChildShapes />
-    </useCaseShape>
-    <includeConnector edgePoints="[(12.2177127830814 : 3.74723408821707); (12.3611566665392 : 4.12975111077124)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«include»">
-      <includeMoniker Id="17c1575c-ea2c-47bf-b195-a488443bacb0" />
-      <relativeChildShapes />
-      <nodes>
-        <useCaseShapeMoniker Id="4e206802-bd57-42b0-bdcb-eaf457af7fbe" />
-        <useCaseShapeMoniker Id="9115197d-783a-496f-b73e-45d3d3f2fcf0" />
-      </nodes>
-    </includeConnector>
     <SubsystemShape Id="fec6d028-7088-4815-b4df-b6fbe90f9954" absoluteBounds="3.75, 2.625, 4.25, 3" customColor="White">
       <subsystemMoniker Id="10d04140-51e1-4b8a-8e3a-785b9aec062e" LastKnownName="Система оповіщень" />
       <nestedChildShapes>
@@ -77,7 +41,7 @@
           <useCaseMoniker Id="a4f41ad7-c386-4650-b4ab-1383f805e544" LastKnownName="Системні оповіщення" />
           <relativeChildShapes />
         </useCaseShape>
-        <useCaseShape Id="19f40545-101c-4fe7-912c-1fb69ce62b46" absoluteBounds="5.625, 4.75, 1, 0.75" customColor="Salmon" heightOffset="0">
+        <useCaseShape Id="19f40545-101c-4fe7-912c-1fb69ce62b46" absoluteBounds="5.25, 4.625, 1, 0.75" customColor="Salmon" heightOffset="0">
           <useCaseMoniker Id="6fa7fe86-8580-4512-b28f-c109aa8430f3" LastKnownName="Оповіщення про нові контролі" />
           <relativeChildShapes />
         </useCaseShape>
@@ -103,7 +67,7 @@
         <useCaseShapeMoniker Id="a2563b4c-6caf-4e1e-a562-f8710e79b4b2" />
       </nodes>
     </includeConnector>
-    <includeConnector edgePoints="[(5.76811870990264 : 3.74845788105304); (6.02956517044889 : 4.75689422887428)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«include»">
+    <includeConnector edgePoints="[(5.6999985209726 : 3.74996302431508); (5.73500674544716 : 4.62516863617911)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«include»">
       <includeMoniker Id="32c350cb-9908-49fc-8dc1-07c453b14c3b" />
       <relativeChildShapes />
       <nodes>
@@ -158,6 +122,47 @@
       <nodes>
         <actorShapeMoniker Id="37610297-9e56-4f7e-a3a0-c4adc6c2cd47" />
         <useCaseShapeMoniker Id="b5f085ba-5519-4d0f-bb90-892e2a32364f" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <SubsystemShape Id="440d3983-85ad-4c20-bcec-2f8315ca5fb2" absoluteBounds="11.25, 3.5, 4.125, 2.625" customColor="White">
+      <subsystemMoniker Id="87667251-36e3-4959-8e65-b01e2e6d8939" LastKnownName="Обговорення контролів" />
+      <nestedChildShapes>
+        <useCaseShape Id="4e206802-bd57-42b0-bdcb-eaf457af7fbe" absoluteBounds="12.375, 4, 1.25, 0.5" customColor="LimeGreen" heightOffset="0">
+          <useCaseMoniker Id="a37127cf-71e6-4357-a68f-36ddc190ee42" LastKnownName="Обговорювати конроль" />
+          <relativeChildShapes />
+        </useCaseShape>
+        <useCaseShape Id="7fcf23e0-36f4-4ecc-969b-999f57485b72" absoluteBounds="11.375, 5.125, 1.125, 0.75" customColor="LimeGreen" heightOffset="0">
+          <useCaseMoniker Id="41731ee4-baa3-4726-8f5a-545b9e7095af" LastKnownName="Залишати повідомлення" />
+          <relativeChildShapes />
+        </useCaseShape>
+        <includeConnector edgePoints="[(12.7988107917258 : 4.48669318620493); (12.2148195717392 : 5.17374168030677)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«include»">
+          <includeMoniker Id="1bc4459b-376c-42fc-a182-d2342522f14d" />
+          <relativeChildShapes />
+          <nodes>
+            <useCaseShapeMoniker Id="4e206802-bd57-42b0-bdcb-eaf457af7fbe" />
+            <useCaseShapeMoniker Id="7fcf23e0-36f4-4ecc-969b-999f57485b72" />
+          </nodes>
+        </includeConnector>
+        <useCaseShape Id="9115197d-783a-496f-b73e-45d3d3f2fcf0" absoluteBounds="13.5, 5.125, 1.75, 0.75" customColor="LimeGreen" heightOffset="0">
+          <useCaseMoniker Id="06f58221-666a-45a7-8fa9-73fe388a91c8" LastKnownName="Читати повідомлення інших користувачів" />
+          <relativeChildShapes />
+        </useCaseShape>
+        <includeConnector edgePoints="[(13.2517116339163 : 4.47882875810569); (14.001883172264 : 5.16080288387639)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«include»">
+          <includeMoniker Id="17c1575c-ea2c-47bf-b195-a488443bacb0" />
+          <relativeChildShapes />
+          <nodes>
+            <useCaseShapeMoniker Id="4e206802-bd57-42b0-bdcb-eaf457af7fbe" />
+            <useCaseShapeMoniker Id="9115197d-783a-496f-b73e-45d3d3f2fcf0" />
+          </nodes>
+        </includeConnector>
+      </nestedChildShapes>
+    </SubsystemShape>
+    <useCaseAssociationConnector edgePoints="[(10.9454631993913 : 2.83079477158338); (11.7447916666667 : 3.5)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="184bfb44-c6b1-469b-a34b-83f3de57dd25" />
+      <relativeChildShapes />
+      <nodes>
+        <useCaseShapeMoniker Id="23a26e44-4480-4659-854e-773790ebc6ee" />
+        <SubsystemShapeMoniker Id="440d3983-85ad-4c20-bcec-2f8315ca5fb2" />
       </nodes>
     </useCaseAssociationConnector>
   </nestedChildShapes>

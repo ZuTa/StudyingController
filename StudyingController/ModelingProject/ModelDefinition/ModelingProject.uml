@@ -402,6 +402,45 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
+          <association
+            Id="0321b390-ba64-4e12-a75a-627812d16f17"
+            isDerived="false"
+            sourceEndRoleName="Адміністратор факультету"
+            targetEndRoleName="Керувати адміністраторами факультету"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="909cf8a7-0b94-4a4b-8d87-e3fe62817ca0"
+              LastKnownName="Керувати адміністраторами факультету"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="01eda34c-24a6-47ac-afef-37a19f9c2b2f"
+                  name="Адміністратор факультету"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="7bccce11-070a-4a60-bea8-0e6b2d5a144d"
+                  name="Керувати адміністраторами факультету"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
         </targetEnds>
       </actor>
     </packageHasNamedElement>
@@ -627,6 +666,123 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
+          <association
+            Id="f0f46130-aec9-43e7-8747-0b82363aa4e5"
+            isDerived="false"
+            sourceEndRoleName="Викладач"
+            targetEndRoleName="Керувати контролями"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="d24328a0-e3cd-4db9-af47-a67413047d86"
+              LastKnownName="Керувати контролями"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9fb0bebd-6846-4446-8dcb-c378c93e541f"
+                  name="Викладач"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8615ceaf-3c57-4bfe-b555-e73325498b37"
+                  name="Керувати контролями"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="a749093e-3d8e-42ee-9b4c-b68933caf685"
+            isDerived="false"
+            sourceEndRoleName="Викладач"
+            targetEndRoleName="Система оповіщень"
+            isLeaf="false"
+            isAbstract="false">
+            <subsystemMoniker
+              Id="755f2ab7-0b26-4dad-bf7c-c277debcedda"
+              LastKnownName="Система оповіщень"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2b3f9391-51ae-4c6a-8d28-a0424680c8bf"
+                  name="Викладач"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="1ca34760-94fa-485d-9b07-8290a4a88bc1"
+                  name="Система оповіщень"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="e043613e-d4ee-46db-b913-1b1acba9fe09"
+            isDerived="false"
+            sourceEndRoleName="Викладач"
+            targetEndRoleName="Керувати файлами"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="8b259abd-536c-4c74-a577-f9c5dacd897f"
+              LastKnownName="Керувати файлами"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="39c24a55-ead7-4913-9768-7c60e6daa33e"
+                  name="Викладач"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="58f63ebb-b6e6-47c4-99e2-0e2bdc892748"
+                  name="Керувати файлами"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
         </targetEnds>
       </actor>
     </packageHasNamedElement>
@@ -783,6 +939,45 @@
                 <memberEnd
                   Id="d042992e-7da5-4091-83d7-b7cb1356a036"
                   name="Генерує пароль"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="0c273c82-df96-49d5-a908-2952da263535"
+            isDerived="false"
+            sourceEndRoleName="Секретар факультету"
+            targetEndRoleName="Керувати факультетом"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="3db03179-54f4-419c-a415-59407601d144"
+              LastKnownName="Керувати факультетом"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="91b07f20-8e1b-433b-844c-d4c2f872106e"
+                  name="Секретар факультету"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6dde714c-c654-49c3-8ddd-015b0262b497"
+                  name="Керувати факультетом"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -1525,7 +1720,49 @@
         Id="e779835e-71fb-4216-9a65-1a96758e108f"
         name="Переглядати контролі"
         isAbstract="false"
-        isLeaf="false" />
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="08f7b0c4-fd35-43d8-9007-f90e61fd7ade"
+            isDerived="false"
+            sourceEndRoleName="Переглядати контролі"
+            targetEndRoleName="Обговорення контролів"
+            isLeaf="false"
+            isAbstract="false">
+            <subsystemMoniker
+              Id="b4dda128-dbef-4c6f-ac48-06d9fa12f7b5"
+              LastKnownName="Обговорення контролів"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="daa1f394-8e3d-4275-8c58-cb0d61e0e7d6"
+                  name="Переглядати контролі"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="365e9aca-57de-41ab-ab63-8f18bb0396a4"
+                  name="Обговорення контролів"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </useCase>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
@@ -1550,15 +1787,6 @@
         name="Обговорювати конроль"
         isAbstract="false"
         isLeaf="false">
-        <extendedCases>
-          <extend
-            Id="7d1e794f-3b73-4b53-97db-47f577fefd98">
-            <useCaseMoniker
-              Id="e779835e-71fb-4216-9a65-1a96758e108f"
-              LastKnownName="Переглядати контролі"
-              LastKnownLocation="ModelingProject.uml" />
-          </extend>
-        </extendedCases>
         <additions>
           <include
             Id="8535efc7-983b-4f8a-a96b-84958700d0d3">
@@ -1575,6 +1803,12 @@
               LastKnownLocation="ModelingProject.uml" />
           </include>
         </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="b4dda128-dbef-4c6f-ac48-06d9fa12f7b5"
+            LastKnownName="Обговорення контролів"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
       </useCase>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -1582,14 +1816,28 @@
         Id="28686a60-ddf7-422b-a8a7-e7be27ea9b50"
         name="Залишати повідомлення"
         isAbstract="false"
-        isLeaf="false" />
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="b4dda128-dbef-4c6f-ac48-06d9fa12f7b5"
+            LastKnownName="Обговорення контролів"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
         Id="2c831b57-6bae-42b9-973b-01dfd13c214b"
         name="Читати повідомлення інших користувачів"
         isAbstract="false"
-        isLeaf="false" />
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="b4dda128-dbef-4c6f-ac48-06d9fa12f7b5"
+            LastKnownName="Обговорення контролів"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
@@ -1761,6 +2009,613 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="d24328a0-e3cd-4db9-af47-a67413047d86"
+        name="Керувати контролями"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="92887c23-ab02-4a1f-86c6-207ef1f6231d"
+            isDerived="false"
+            sourceEndRoleName="Керувати контролями"
+            targetEndRoleName="Обговорення контролів"
+            isLeaf="false"
+            isAbstract="false">
+            <subsystemMoniker
+              Id="b4dda128-dbef-4c6f-ac48-06d9fa12f7b5"
+              LastKnownName="Обговорення контролів"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="18ff1c0a-762d-4c58-82a7-9b202ee49f38"
+                  name="Керувати контролями"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5ed51ae3-b695-4c54-b884-64653b91f198"
+                  name="Обговорення контролів"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="70a15baa-5523-4caa-831b-455a7d49b9ec"
+        name="Додавати, видаляти, редагувати контролі"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="5394ca08-b997-4ce6-8200-0dd473d75fdb">
+            <useCaseMoniker
+              Id="d24328a0-e3cd-4db9-af47-a67413047d86"
+              LastKnownName="Керувати контролями"
+              LastKnownLocation="ModelingProject.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="1f0643d8-2cee-45d6-8d92-d5816451c6fc"
+        name="Редагувати дату проведення контролів"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="62b23b74-c658-4883-9dd8-01a72e38f2b9">
+            <useCaseMoniker
+              Id="d24328a0-e3cd-4db9-af47-a67413047d86"
+              LastKnownName="Керувати контролями"
+              LastKnownLocation="ModelingProject.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="3a3d6546-1b7e-47f3-966e-07c12f85a5ad"
+        name="Виставляти оцінки студентам та коментувати їх"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="1607feec-25cb-4d60-87c7-818e38bd69c6">
+            <useCaseMoniker
+              Id="d24328a0-e3cd-4db9-af47-a67413047d86"
+              LastKnownName="Керувати контролями"
+              LastKnownLocation="ModelingProject.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="8b259abd-536c-4c74-a577-f9c5dacd897f"
+        name="Керувати файлами"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="83d4c1d3-2b5b-4aea-a27b-a66e8821b716"
+        name="Додавати файли у власну бібліотеку"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="baecaf2a-ff21-45e1-8dcc-3a1cfce7f7f5">
+            <useCaseMoniker
+              Id="8b259abd-536c-4c74-a577-f9c5dacd897f"
+              LastKnownName="Керувати файлами"
+              LastKnownLocation="ModelingProject.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="4827c2a6-4ee0-40a7-8bd9-98d5a81592f7"
+        name="Редагувати інформацію про файли"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="3558eb82-3477-4693-9fba-91c15856bb59">
+            <useCaseMoniker
+              Id="8b259abd-536c-4c74-a577-f9c5dacd897f"
+              LastKnownName="Керувати файлами"
+              LastKnownLocation="ModelingProject.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="93a3a3d8-58f2-42f6-8190-f6a0a51e1aca"
+        name="Видаляти файли"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="1d38b801-1b28-43f2-b5cc-4ca91b67b9e9">
+            <useCaseMoniker
+              Id="8b259abd-536c-4c74-a577-f9c5dacd897f"
+              LastKnownName="Керувати файлами"
+              LastKnownLocation="ModelingProject.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="b4dda128-dbef-4c6f-ac48-06d9fa12f7b5"
+        name="Обговорення контролів"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="f72c8cf7-ebf2-41c9-8872-600cfaf1f754"
+        name="UseCase1"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="909cf8a7-0b94-4a4b-8d87-e3fe62817ca0"
+        name="Керувати адміністраторами факультету"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="3db03179-54f4-419c-a415-59407601d144"
+        name="Керувати факультетом"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="c6398de0-3dc6-42b4-8cf9-253e1ed0ca0c"
+            isDerived="false"
+            sourceEndRoleName="Керувати факультетом"
+            targetEndRoleName="CRUD"
+            isLeaf="false"
+            isAbstract="false">
+            <subsystemMoniker
+              Id="d2e65c11-8db9-4a4e-a6e8-59d91459c00a"
+              LastKnownName="CRUD"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="749e6666-24b5-4ad3-9f70-965e29b684ef"
+                  name="Керувати факультетом"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="99acc012-e689-42f7-bd53-49a0ae2e9aa2"
+                  name="CRUD"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="4a5ae510-579d-472d-9852-d568db3622e3"
+        name="UseCase2"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="d0db0ca9-0cf6-4fcd-a9af-e4ec47dfdc65"
+        name="Керувати кафедрами"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="4a934369-3321-487c-9f80-413316a4e132">
+            <useCaseMoniker
+              Id="909cf8a7-0b94-4a4b-8d87-e3fe62817ca0"
+              LastKnownName="Керувати адміністраторами факультету"
+              LastKnownLocation="ModelingProject.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="8c530bae-8f87-402f-bb43-80b4f46efa1d"
+        name="Керувати групами"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="5ee299f7-8e02-4c8c-8c53-4d041eafebcd">
+            <useCaseMoniker
+              Id="d0db0ca9-0cf6-4fcd-a9af-e4ec47dfdc65"
+              LastKnownName="Керувати кафедрами"
+              LastKnownLocation="ModelingProject.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="abda7d89-f61f-4b45-81b9-cb41fedb6d42"
+        name="Керувати напрямками(спеціальностями)"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="68d5780f-5fb5-4c57-b8ed-4009c16e6f4d">
+            <useCaseMoniker
+              Id="909cf8a7-0b94-4a4b-8d87-e3fe62817ca0"
+              LastKnownName="Керувати адміністраторами факультету"
+              LastKnownLocation="ModelingProject.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="2ebd4afc-853c-48c3-8a9a-d0cdbbc85109"
+        name="Керувати предметами"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="79e5848f-67f6-4e23-9568-40a3bd8fed28">
+            <useCaseMoniker
+              Id="d0db0ca9-0cf6-4fcd-a9af-e4ec47dfdc65"
+              LastKnownName="Керувати кафедрами"
+              LastKnownLocation="ModelingProject.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="c7aff651-0e77-4af0-8f94-0103af3d2983"
+        name="Керувати напрямками(спеціальностями)"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="bbff9b4a-a11b-476b-a94d-b775c1a97256"
+            isDerived="false"
+            sourceEndRoleName="Керувати напрямками(спеціальностями)"
+            targetEndRoleName="CRUD"
+            isLeaf="false"
+            isAbstract="false">
+            <subsystemMoniker
+              Id="d2e65c11-8db9-4a4e-a6e8-59d91459c00a"
+              LastKnownName="CRUD"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b69f7ede-ace5-4f9e-b020-69532e9246a7"
+                  name="Керувати напрямками(спеціальностями)"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="51c25010-d0cc-4c05-802a-c2ed4dc5492b"
+                  name="CRUD"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <extendedCases>
+          <extend
+            Id="152a2a54-ef9b-43c3-ba68-bcb6cbb6338f">
+            <useCaseMoniker
+              Id="3db03179-54f4-419c-a415-59407601d144"
+              LastKnownName="Керувати факультетом"
+              LastKnownLocation="ModelingProject.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="20b3fe13-c466-4a5c-b3d5-08758a021902"
+        name="Керувати кафедрами"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="1ca81039-64ba-4287-abfc-6e1e274367c0"
+            isDerived="false"
+            sourceEndRoleName="Керувати кафедрами"
+            targetEndRoleName="CRUD"
+            isLeaf="false"
+            isAbstract="false">
+            <subsystemMoniker
+              Id="d2e65c11-8db9-4a4e-a6e8-59d91459c00a"
+              LastKnownName="CRUD"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="7dc31316-d24f-4d49-afb1-f79dc076d31e"
+                  name="Керувати кафедрами"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="04acab8b-27e5-4821-9af4-8c1f51cf0dab"
+                  name="CRUD"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <extendedCases>
+          <extend
+            Id="9b39956d-fd1e-4154-b98c-261a172acf73">
+            <useCaseMoniker
+              Id="3db03179-54f4-419c-a415-59407601d144"
+              LastKnownName="Керувати факультетом"
+              LastKnownLocation="ModelingProject.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="8c941d9b-279e-46e2-9989-1a2f044a227a"
+        name="Керувати групами"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="4072d41b-1e31-43fd-9653-d885cf754f55"
+            isDerived="false"
+            sourceEndRoleName="Керувати групами"
+            targetEndRoleName="CRUD"
+            isLeaf="false"
+            isAbstract="false">
+            <subsystemMoniker
+              Id="d2e65c11-8db9-4a4e-a6e8-59d91459c00a"
+              LastKnownName="CRUD"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e4961d4a-a34b-46a6-ab3d-15bb5fa4f6b3"
+                  name="Керувати групами"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6958edd0-cd8a-4200-afcc-0bf5d16b3c9b"
+                  name="CRUD"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <extendedCases>
+          <extend
+            Id="bb94f275-e9c8-4628-b77b-32e115f1ce5d">
+            <useCaseMoniker
+              Id="20b3fe13-c466-4a5c-b3d5-08758a021902"
+              LastKnownName="Керувати кафедрами"
+              LastKnownLocation="ModelingProject.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="e2b2c74d-5755-48f1-bffb-8c3d2b12205a"
+        name="Керувати предметами"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="4a6367d2-ebc3-4645-87d9-7dc4cde8a010"
+            isDerived="false"
+            sourceEndRoleName="Керувати предметами"
+            targetEndRoleName="CRUD"
+            isLeaf="false"
+            isAbstract="false">
+            <subsystemMoniker
+              Id="d2e65c11-8db9-4a4e-a6e8-59d91459c00a"
+              LastKnownName="CRUD"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="cca9b065-6b45-44e9-97a7-75ef49611967"
+                  name="Керувати предметами"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4519c880-afb6-468d-a4af-9dd5892b993d"
+                  name="CRUD"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <extendedCases>
+          <extend
+            Id="2bc5be29-4b15-4491-9552-05bec2495f61">
+            <useCaseMoniker
+              Id="20b3fe13-c466-4a5c-b3d5-08758a021902"
+              LastKnownName="Керувати кафедрами"
+              LastKnownLocation="ModelingProject.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="b65b9c11-f244-430b-b489-a73240d1c9c2"
+        name="UseCase3"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="d2e65c11-8db9-4a4e-a6e8-59d91459c00a"
+        name="CRUD"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="48772eee-4178-43d3-9dd5-acec4763568e"
+        name="Створити"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="d2e65c11-8db9-4a4e-a6e8-59d91459c00a"
+            LastKnownName="CRUD"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="df2342c6-58ee-414c-b12d-1641f0c2c286"
+        name="Видалити"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="d2e65c11-8db9-4a4e-a6e8-59d91459c00a"
+            LastKnownName="CRUD"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="43c7efd2-fc3b-4363-a009-53e176d37322"
+        name="Редагувати"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="d2e65c11-8db9-4a4e-a6e8-59d91459c00a"
+            LastKnownName="CRUD"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="6dc1b05c-8774-45c3-bf82-b8747f7f3034"
+        name="Читати"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="d2e65c11-8db9-4a4e-a6e8-59d91459c00a"
+            LastKnownName="CRUD"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType
