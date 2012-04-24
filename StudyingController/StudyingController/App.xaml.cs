@@ -50,6 +50,8 @@ namespace StudyingController
             mainViewModel = new MainViewModel(this, this, mainWindow.Dispatcher);
             mainViewModel.Logout += new EventHandler(mainViewModel_Logout);
 
+            mainViewModel.Load();
+
             mainWindow.DataContext = mainViewModel;
         }
 

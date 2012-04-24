@@ -176,6 +176,8 @@ namespace StudyingController.ViewModels
         private AttachmentsViewModel attachmentsViewModel;
         private ControlStructureViewModel controlStructureViewModel;
 
+        private UserProfileViewModel userProfileViewModel;
+
         #endregion
 
         #region Constructors
@@ -184,6 +186,8 @@ namespace StudyingController.ViewModels
             : base(userInterop, controllerInterop, dispatcher)
         {
             workspaces = new Stack<BaseApplicationViewModel>();
+
+            userProfileViewModel = new UserProfileViewModel(userInterop, controllerInterop, dispatcher, controllerInterop.User);
         }
 
         #endregion
@@ -220,6 +224,17 @@ namespace StudyingController.ViewModels
                 if (logoutCommand == null)
                     logoutCommand = new RelayCommand(param => OnLogout());
                 return logoutCommand;
+            }
+        }
+
+        private RelayCommand homeCommand;
+        public RelayCommand HomeCommand
+        {
+            get
+            {
+                if (homeCommand == null)
+                    homeCommand = new RelayCommand(param => PushWorkspace(userProfileViewModel));
+                return homeCommand;
             }
         }
 
@@ -289,8 +304,14 @@ namespace StudyingController.ViewModels
 
         protected override void LoadData()
         {
-            foreach (BaseApplicationViewModel workspace in workspaces)
-                if (workspace is SaveableViewModel) (workspace as SaveableViewModel).Load();
+            if (workspaces.Count == 0)
+                PushWorkspace(userProfileViewModel);
+            else
+            {
+                foreach (BaseApplicationViewModel workspace in workspaces)
+                    if (workspace is LoadableViewModel)
+                        (workspace as LoadableViewModel).Load();
+            }
         }
 
         protected override void ClearData()
@@ -371,7 +392,6 @@ namespace StudyingController.ViewModels
 
         private void PushWorkspace(BaseApplicationViewModel viewModel)
         {
-            Load();
             //if (viewModel is LoadableViewModel)
             //    (viewModel as LoadableViewModel).Load();
 
@@ -379,6 +399,8 @@ namespace StudyingController.ViewModels
             SubscribeToEvents(viewModel);
 
             OnCurrentWorkspaceChanged();
+
+            Load();
         }
 
         private void PopWorkspace()

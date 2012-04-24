@@ -1688,7 +1688,7 @@ namespace StudyingControllerService
                    List<LectureDTO> result = new List<LectureDTO>();
 
                    Student student = context.SystemUsers.FirstOrDefault(u => u.ID == studentID) as Student;
-
+                   context.LoadProperty(student, "Groups");
                    var currentGroup = student.Groups.FirstOrDefault(g => g.StudyRangeID == Configuration.StudyRangeID);
 
                    if (currentGroup == null)
@@ -1879,7 +1879,14 @@ namespace StudyingControllerService
                            foreach (var student in practice.Students)
                            {
                                context.LoadProperty(student, "UserInformation");
-                               context.LoadProperty(student, "Group");
+                               
+                               context.LoadProperty(student, "Groups");
+                               var currentGroup = student.Groups.FirstOrDefault(g => g.StudyRangeID == Configuration.StudyRangeID);
+
+                               if (currentGroup == null)
+                                   throw new Exception("Student hasnt a group!");
+
+                               student.CurrentGroupID = currentGroup.ID;
                            }
 
                            result.Add(practice.ToDTO());
