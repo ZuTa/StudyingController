@@ -41,7 +41,8 @@ namespace StudyingController.ViewModels.Models
                 ID = this.ID,
                 MarkValue = this.MarkValue,
                 PracticeControlID = this.PracticeControlID,
-                StudentID = this.StudentID
+                StudentID = this.StudentID,
+                Description = this.Description
             };
             return mark;
         }

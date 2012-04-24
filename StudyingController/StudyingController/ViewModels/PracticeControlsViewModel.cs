@@ -149,7 +149,7 @@ namespace StudyingController.ViewModels
 
         private void AddControl()
         {
-            OnControlOpened(new PracticeControlModel(){ PracticeID = OriginalLesson.ID });
+            OnControlOpened(new PracticeControlModel() { PracticeID = OriginalLesson.ID, Date = DateTime.Now });
         }
 
         public override void Save()

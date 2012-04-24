@@ -61,6 +61,14 @@ namespace StudyingController.ViewModels.Models
                 }
             }
         }
+
+        private string description;
+        [Validateable]
+        public string Description
+        {
+            get { return description; }
+            set { description = value; }
+        }
         #endregion
 
         #region Constructors

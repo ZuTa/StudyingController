@@ -13,10 +13,19 @@ namespace StudyingController.ViewModels
     {
         #region Fields & Properties
 
+        public bool IsExisted
+        {
+            get
+            {
+                return OriginalControl.ID != 0;
+            }
+        }
+
         public override bool CanSave
         {
             get
             {
+                if (!IsExisted) return base.CanSave;
                 return base.CanSave && MarksViewModel != null && MarksViewModel.CanSave || base.CanSave && MarksViewModel == null; ;
             }
         }
@@ -96,7 +105,7 @@ namespace StudyingController.ViewModels
 
             Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
 
-            MarksViewModel.ViewModelChanged += new EventHandler(MarksViewModel_ViewModelChanged);
+            if (IsExisted) MarksViewModel.ViewModelChanged += new EventHandler(MarksViewModel_ViewModelChanged);
         }
 
         #endregion

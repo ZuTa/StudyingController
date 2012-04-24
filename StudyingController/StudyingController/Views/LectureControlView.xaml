@@ -22,8 +22,7 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="200"/>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Row="0" Grid.Column="0" Text="Назва:" Style="{StaticResource TextBlockStyle}"/>
             <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Control.Name, UpdateSourceTrigger=PropertyChanged,
@@ -34,7 +33,7 @@
                                                             ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" Style="{StaticResource ValidationTextBoxToolTipStyle}"/>
 
             <TextBlock Grid.Row="2" Grid.Column="0" Text="Опис:" Style="{StaticResource TextBlockStyle}"/>
-            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Control.Description, UpdateSourceTrigger=PropertyChanged,
+            <TextBox Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" AcceptsReturn="True" Text="{Binding Control.Description, UpdateSourceTrigger=PropertyChanged,
                                                             ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" Style="{StaticResource ValidationTextBoxToolTipStyle}"/>
 
             <TextBlock Grid.Row="3" Grid.Column="0" Text="Максимальний бал:" Style="{StaticResource TextBlockStyle}"/>
@@ -46,7 +45,7 @@
             </StackPanel>
         </Grid>
 
-        <Expander Grid.Column="1"  ExpandDirection="Right" IsExpanded="True">
+        <Expander Grid.Column="1"  ExpandDirection="Right" IsExpanded="True" Visibility = "{Binding IsExisted, Converter={StaticResource B2V}}">
             <TabControl TabStripPlacement="Right">
                 <TabItem ToolTip="Запитання-відповіді">
                     <TabItem.Header>
