@@ -45,6 +45,7 @@ namespace StudyingControllerEntityModel
         public void Assign(StudentDTO entity)
         {
             base.Assign(entity);
+            this.CurrentGroupID = entity.GroupID;
         }
     }
 }

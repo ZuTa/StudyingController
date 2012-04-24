@@ -42,8 +42,6 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_Attachment_Teacher", "Teacher", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.Teacher), "Attachment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Attachment), true)]
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_ControlMessage_Control", "Control", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.Control), "ControlMessage", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.ControlMessage), true)]
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_ControlMessage_SystemUser", "SystemUser", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.SystemUser), "ControlMessage", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.ControlMessage), true)]
-[assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_Control_Attachment_Attachment", "Attachment", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.Attachment), "Control_Attachment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.ControlAttachment), true)]
-[assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_Control_Attachment_Control", "Control", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.Control), "Control_Attachment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.ControlAttachment), true)]
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_Group_StudyRange", "StudyRange", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.StudyRange), "Group", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Group), true)]
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_Mark_Student", "Student", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.Student), "Mark", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Mark), true)]
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_Practice_Teacher_Practice", "Practice", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.Practice), "Practice_Teacher", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.PracticeTeacher), true)]
@@ -52,6 +50,7 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "Practice_Teacher_Student", "Practice_Teacher", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.PracticeTeacher), "Student", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Student))]
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "Student_Group", "Group", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Group), "Student", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Student))]
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_System_Configuration_StudyRange", "StudyRange", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.StudyRange), "System_Configuration", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.SystemConfiguration), true)]
+[assembly: EdmRelationshipAttribute("UniversityDBModel", "Control_Attachment", "Attachment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Attachment), "Control", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Control))]
 
 #endregion
 
@@ -346,22 +345,6 @@ namespace StudyingControllerEntityModel
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<ControlAttachment> ControlAttachments
-        {
-            get
-            {
-                if ((_ControlAttachments == null))
-                {
-                    _ControlAttachments = base.CreateObjectSet<ControlAttachment>("ControlAttachments");
-                }
-                return _ControlAttachments;
-            }
-        }
-        private ObjectSet<ControlAttachment> _ControlAttachments;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<PracticeTeacher> PracticeTeachers
         {
             get
@@ -513,14 +496,6 @@ namespace StudyingControllerEntityModel
         public void AddToControlMessages(ControlMessage controlMessage)
         {
             base.AddObject("ControlMessages", controlMessage);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the ControlAttachments EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToControlAttachments(ControlAttachment controlAttachment)
-        {
-            base.AddObject("ControlAttachments", controlAttachment);
         }
     
         /// <summary>
@@ -776,18 +751,18 @@ namespace StudyingControllerEntityModel
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "FK_Control_Attachment_Attachment", "Control_Attachment")]
-        public EntityCollection<ControlAttachment> ControlAttachments
+        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "Control_Attachment", "Control")]
+        public EntityCollection<Control> Controls
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ControlAttachment>("UniversityDBModel.FK_Control_Attachment_Attachment", "Control_Attachment");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Control>("UniversityDBModel.Control_Attachment", "Control");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ControlAttachment>("UniversityDBModel.FK_Control_Attachment_Attachment", "Control_Attachment", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Control>("UniversityDBModel.Control_Attachment", "Control", value);
                 }
             }
         }
@@ -1181,207 +1156,18 @@ namespace StudyingControllerEntityModel
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "FK_Control_Attachment_Control", "Control_Attachment")]
-        public EntityCollection<ControlAttachment> ControlAttachments
+        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "Control_Attachment", "Attachment")]
+        public EntityCollection<Attachment> Attachments
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ControlAttachment>("UniversityDBModel.FK_Control_Attachment_Control", "Control_Attachment");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Attachment>("UniversityDBModel.Control_Attachment", "Attachment");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ControlAttachment>("UniversityDBModel.FK_Control_Attachment_Control", "Control_Attachment", value);
-                }
-            }
-        }
-
-        #endregion
-
-    }
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="UniversityDBModel", Name="ControlAttachment")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class ControlAttachment : EntityObject
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new ControlAttachment object.
-        /// </summary>
-        /// <param name="id">Initial value of the ID property.</param>
-        /// <param name="attachmentID">Initial value of the AttachmentID property.</param>
-        /// <param name="controlID">Initial value of the ControlID property.</param>
-        public static ControlAttachment CreateControlAttachment(global::System.Int32 id, global::System.Int32 attachmentID, global::System.Int32 controlID)
-        {
-            ControlAttachment controlAttachment = new ControlAttachment();
-            controlAttachment.ID = id;
-            controlAttachment.AttachmentID = attachmentID;
-            controlAttachment.ControlID = controlID;
-            return controlAttachment;
-        }
-
-        #endregion
-
-        #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                if (_ID != value)
-                {
-                    OnIDChanging(value);
-                    ReportPropertyChanging("ID");
-                    _ID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("ID");
-                    OnIDChanged();
-                }
-            }
-        }
-        private global::System.Int32 _ID;
-        partial void OnIDChanging(global::System.Int32 value);
-        partial void OnIDChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 AttachmentID
-        {
-            get
-            {
-                return _AttachmentID;
-            }
-            set
-            {
-                OnAttachmentIDChanging(value);
-                ReportPropertyChanging("AttachmentID");
-                _AttachmentID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("AttachmentID");
-                OnAttachmentIDChanged();
-            }
-        }
-        private global::System.Int32 _AttachmentID;
-        partial void OnAttachmentIDChanging(global::System.Int32 value);
-        partial void OnAttachmentIDChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 ControlID
-        {
-            get
-            {
-                return _ControlID;
-            }
-            set
-            {
-                OnControlIDChanging(value);
-                ReportPropertyChanging("ControlID");
-                _ControlID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("ControlID");
-                OnControlIDChanged();
-            }
-        }
-        private global::System.Int32 _ControlID;
-        partial void OnControlIDChanging(global::System.Int32 value);
-        partial void OnControlIDChanged();
-
-        #endregion
-
-    
-        #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "FK_Control_Attachment_Attachment", "Attachment")]
-        public Attachment Attachment
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Attachment>("UniversityDBModel.FK_Control_Attachment_Attachment", "Attachment").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Attachment>("UniversityDBModel.FK_Control_Attachment_Attachment", "Attachment").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Attachment> AttachmentReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Attachment>("UniversityDBModel.FK_Control_Attachment_Attachment", "Attachment");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Attachment>("UniversityDBModel.FK_Control_Attachment_Attachment", "Attachment", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "FK_Control_Attachment_Control", "Control")]
-        public Control Control
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Control>("UniversityDBModel.FK_Control_Attachment_Control", "Control").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Control>("UniversityDBModel.FK_Control_Attachment_Control", "Control").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Control> ControlReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Control>("UniversityDBModel.FK_Control_Attachment_Control", "Control");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Control>("UniversityDBModel.FK_Control_Attachment_Control", "Control", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Attachment>("UniversityDBModel.Control_Attachment", "Attachment", value);
                 }
             }
         }

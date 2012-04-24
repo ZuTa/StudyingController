@@ -517,7 +517,22 @@ namespace StudyingControllerService
                     var item = context.SystemUsers.Include("UserInformation").FirstOrDefault(gr => gr.ID == user.ID);
 
                     if (item == null)
-                        context.AddToSystemUsers(GetSystemUser(user));
+                    {
+                        SystemUser systemUser = GetSystemUser(user);
+
+                        if(systemUser is Student)
+                        {
+                            Student student = (systemUser as Student);
+                            
+                            var group = context.Groups.FirstOrDefault(gr => gr.ID == student.CurrentGroupID);
+                            if (group == null)
+                                throw new Exception("Group can't be null");
+
+                            student.Groups.Add(group);
+                        }
+
+                        context.AddToSystemUsers(systemUser);
+                    }
                     else
                     {
                         switch (item.Role)
@@ -539,9 +554,10 @@ namespace StudyingControllerService
                                 break;
                             case UserRoles.Student:
                                 StudentDTO student = user as StudentDTO;
+                                context.LoadProperty(item, "Groups");
                                 (item as IDTOable<StudentDTO>).Assign(student);
 
-                                var group = context.Groups.FirstOrDefault(gr=>gr.ID == student.GroupID);
+                                var group = context.Groups.FirstOrDefault(gr => gr.ID == student.GroupID);
                                 if (group == null)
                                     throw new NullReferenceException("group must exists in DB");
 
