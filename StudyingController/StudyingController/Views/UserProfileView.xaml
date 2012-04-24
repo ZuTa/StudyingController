@@ -19,17 +19,17 @@
             
             <StackPanel Grid.Column="0">
                 <Image Grid.Column="0" Source="/StudyingController;component/Images/person%20%282%29.png" Stretch="Fill"/>
-                <TextBlock Text="Admin" HorizontalAlignment="Center"/>
+                <TextBlock Text="{Binding RoleText}" HorizontalAlignment="Center"/>
             </StackPanel>
             
             <StackPanel Grid.Column="1" Margin="10,0">
-                <TextBlock Text="{Binding}"/>
+                <TextBlock Text="{Binding User}"/>
             </StackPanel>
         </Grid>
 
         <StackPanel Grid.Row="1">
             <TextBlock Text="Останні події"/>
-            <ContentControl  Focusable="False" Content="{Binding}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            
         </StackPanel>
 
     </Grid>

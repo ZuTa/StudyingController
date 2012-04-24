@@ -18,48 +18,56 @@ namespace EntitiesDTO
         /// <summary>
         /// Головний адміністратор
         /// </summary>
+        [ResourceName("MainAdminTxt")]
         [PluralizeName("MainAdminsTxt")]
         [EnumMember]
         MainAdmin = 1,
         /// <summary>
         /// Адміністратор інституту
         /// </summary>
+        [ResourceName("InstituteAdminTxt")]
         [PluralizeName("InstituteAdminsTxt")]
         [EnumMember]
         InstituteAdmin = 2,
         /// <summary>
         /// Адміністратор факультет
         /// </summary>
+        [ResourceName("FacultyAdminTxt")]
         [PluralizeName("FacultyAdminsTxt")]
         [EnumMember]
         FacultyAdmin = 4,
         /// <summary>
         /// Головний секретар
         /// </summary>
+        [ResourceName("MainSecretaryTxt")]
         [PluralizeName("MainSecretariesTxt")]
         [EnumMember]
         MainSecretary = 8,
         /// <summary>
         /// Секретар інституту
         /// </summary>
+        [ResourceName("InstituteSecretaryTxt")]
         [PluralizeName("InstituteSecretariesTxt")]
         [EnumMember]
         InstituteSecretary = 16,
         /// <summary>
         /// Секретар факультету
         /// </summary>
+        [ResourceName("FacultySecretaryTxt")]
         [PluralizeName("FacultySecretariesTxt")]
         [EnumMember]
         FacultySecretary = 32,
         /// <summary>
         /// Викладач
         /// </summary>
+        [ResourceName("TeacherTxt")]
         [PluralizeName("TeachersTxt")]
         [EnumMember]
         Teacher = 64,
         /// <summary>
         /// Студент
         /// </summary>
+        [ResourceName("StudentTxt")]
         [PluralizeName("StudentsTxt")]
         [EnumMember]
         Student = 128

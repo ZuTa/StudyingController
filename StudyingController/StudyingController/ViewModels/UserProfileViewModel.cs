@@ -16,10 +16,21 @@ namespace StudyingController.ViewModels
         public SystemUserDTO User
         {
             get { return user; }
-            set { user = value; }
+            set 
+            {
+                user = value;
+
+                OnPropertyChanged("RoleText");
+            }
         }
 
-
+        private string RoleText
+        {
+            get
+            {
+                return User.Role.GetText<ResourceNameAttribute>();
+            }
+        }
         #endregion
 
         #region Constructors
