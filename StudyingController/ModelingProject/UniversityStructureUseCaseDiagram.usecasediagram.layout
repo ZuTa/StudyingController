@@ -10,7 +10,7 @@
       <actorMoniker Id="c496f75f-aac1-4051-9b05-e358bd42d57a" LastKnownName="Головний секретар" />
       <relativeChildShapes />
     </actorShape>
-    <useCaseGeneralizationConnector edgePoints="[(6 : 1.25); (4.875 : 1.25)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110">
+    <useCaseGeneralizationConnector edgePoints="[(6 : 1.25); (4.875 : 1.25)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110">
       <generalizationMoniker Id="4faec99a-0f84-4e88-bcd1-009747e8c096" />
       <relativeChildShapes />
       <nodes>
@@ -22,7 +22,7 @@
       <actorMoniker Id="a24be112-0915-4f36-8492-fee2486804ab" LastKnownName="Адміністратор інституту" />
       <relativeChildShapes />
     </actorShape>
-    <useCaseGeneralizationConnector edgePoints="[(6 : 1.35294117647059); (2.5 : 2.07352941176471)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110">
+    <useCaseGeneralizationConnector edgePoints="[(6 : 1.35294117647059); (2.5 : 2.07352941176471)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110">
       <generalizationMoniker Id="3ef9d06e-5c47-436e-b078-b1c996741299" />
       <relativeChildShapes />
       <nodes>
@@ -34,7 +34,7 @@
       <actorMoniker Id="13e2864e-3ee8-4878-84ea-60225c4f1653" LastKnownName="Адміністратор факультету" />
       <relativeChildShapes />
     </actorShape>
-    <useCaseGeneralizationConnector edgePoints="[(2.5 : 2.13586956521739); (7.75 : 2.36413043478261)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110">
+    <useCaseGeneralizationConnector edgePoints="[(2.5 : 2.13586956521739); (7.75 : 2.36413043478261)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110">
       <generalizationMoniker Id="483308ee-7503-40f4-b4fa-df83069d2b9a" />
       <relativeChildShapes />
       <nodes>
@@ -46,7 +46,7 @@
       <actorMoniker Id="c425201c-abc3-439a-bc83-54d9c44cb502" LastKnownName="Секретар інституту" />
       <relativeChildShapes />
     </actorShape>
-    <useCaseGeneralizationConnector edgePoints="[(3.875 : 1.38461538461538); (1.375 : 2.05769230769231)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110">
+    <useCaseGeneralizationConnector edgePoints="[(3.875 : 1.38461538461538); (1.375 : 2.05769230769231)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110">
       <generalizationMoniker Id="6bb29742-c95b-45e8-813a-4ce8ea912f3c" />
       <relativeChildShapes />
       <nodes>
@@ -54,7 +54,7 @@
         <actorShapeMoniker Id="d2bd4dab-7c3c-4b03-9884-e534b9d93664" />
       </nodes>
     </useCaseGeneralizationConnector>
-    <useCaseGeneralizationConnector edgePoints="[(2 : 2.125); (1.375 : 2.125)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110">
+    <useCaseGeneralizationConnector edgePoints="[(2 : 2.125); (1.375 : 2.125)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110">
       <generalizationMoniker Id="cd81f80f-bcc8-4627-b738-3fce6b13fec3" />
       <relativeChildShapes />
       <nodes>
@@ -66,11 +66,19 @@
       <actorMoniker Id="d42f7b6d-ecd3-4332-a184-2169affdec87" LastKnownName="Викладач" />
       <relativeChildShapes />
     </actorShape>
+    <useCaseGeneralizationConnector edgePoints="[(7.84259259259259 : 2.625); (3.90740740740741 : 8.875)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110">
+      <generalizationMoniker Id="80798889-1b75-4108-aabe-2ca8159cf959" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="6237eb82-84f2-4bbd-b2b9-3797b101904c" />
+        <actorShapeMoniker Id="8e4fba8a-580e-4d34-a0d9-dee1b52110c5" />
+      </nodes>
+    </useCaseGeneralizationConnector>
     <actorShape Id="2470c2d3-00dc-41e1-a142-1fc58e070c1b" absoluteBounds="8.75, 3.125, 0.5, 0.5" isReference="false" heightOffset="0">
       <actorMoniker Id="a5a0ea10-a945-4a23-bad3-970e125e75bd" LastKnownName="Секретар факультету" />
       <relativeChildShapes />
     </actorShape>
-    <useCaseGeneralizationConnector edgePoints="[(1.375 : 2.16468253968254); (8.75 : 3.33531746031746)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110">
+    <useCaseGeneralizationConnector edgePoints="[(1.375 : 2.16468253968254); (8.75 : 3.33531746031746)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110">
       <generalizationMoniker Id="a1cb54b9-9835-478e-8fd3-63749bead605" />
       <relativeChildShapes />
       <nodes>
@@ -78,7 +86,7 @@
         <actorShapeMoniker Id="2470c2d3-00dc-41e1-a142-1fc58e070c1b" />
       </nodes>
     </useCaseGeneralizationConnector>
-    <useCaseGeneralizationConnector edgePoints="[(8.25 : 2.625); (8.75 : 3.125)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110">
+    <useCaseGeneralizationConnector edgePoints="[(8.25 : 2.625); (8.75 : 3.125)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110">
       <generalizationMoniker Id="002b5e1d-40f4-400d-9ad1-bc89afac4b48" />
       <relativeChildShapes />
       <nodes>

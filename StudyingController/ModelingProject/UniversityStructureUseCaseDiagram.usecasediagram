@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" dslVersion="1.0.0.0" Id="2ff5a089-73a3-4cbf-8f48-fd3d1c7281b6" name="Структура університету" linkedPackageId="4b081483-1044-4cdd-85de-5322dd23c673" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="2ff5a089-73a3-4cbf-8f48-fd3d1c7281b6" name="Структура університету" linkedPackageId="4b081483-1044-4cdd-85de-5322dd23c673" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
   <ownedCommentsInternal>
     <comment Id="cd8f403a-488b-45fa-9188-f1f339d3cc02">
       <elementDefinition Id="32964765-777c-445b-8580-9fe3c2a5af5a" />
@@ -84,6 +84,10 @@
           <generalization Id="002b5e1d-40f4-400d-9ad1-bc89afac4b48" isSubstitutable="false">
             <actorMoniker Id="a5a0ea10-a945-4a23-bad3-970e125e75bd" LastKnownName="Секретар факультету" />
             <elementDefinition Id="14cc209d-9a28-4582-9608-36c520887888" />
+          </generalization>
+          <generalization Id="80798889-1b75-4108-aabe-2ca8159cf959" isSubstitutable="false">
+            <actorMoniker Id="d42f7b6d-ecd3-4332-a184-2169affdec87" LastKnownName="Викладач" />
+            <elementDefinition Id="801bd3b7-d5c8-4475-a3cc-632d1d6a72c9" />
           </generalization>
         </generalsInternal>
       </actor>

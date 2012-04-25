@@ -137,7 +137,7 @@
       </useCase>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
-      <useCase Id="810e6777-6024-44a0-bc10-4202ad085125" name="Додавати файли у власну бібліотеку" isAbstract="false" isLeaf="false">
+      <useCase Id="810e6777-6024-44a0-bc10-4202ad085125" name="Завантажувати файли у власну бібліотеку" isAbstract="false" isLeaf="false">
         <elementDefinition Id="83d4c1d3-2b5b-4aea-a27b-a66e8821b716" />
         <extendedCases>
           <extend Id="18abdf52-85a7-4277-a709-386f955696fa">
@@ -173,6 +173,28 @@
       <subsystem Id="73d3d8bf-b543-43a5-9c2d-e16da423e867" name="Обговорення контролів" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="b4dda128-dbef-4c6f-ac48-06d9fa12f7b5" />
       </subsystem>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="e317a9f0-c8c4-4f17-b27f-fa689dfb3d68" name="Скачувати файли" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="2a28e475-739b-4152-a5b4-5c0e1d464d13" />
+        <extendedCases>
+          <extend Id="6c0d5058-0e6c-4878-acd9-065a5a5f0380">
+            <useCaseMoniker Id="edcb2dd8-ebc5-43c4-9ca1-5ccf3fbab2c2" LastKnownName="Керувати файлами" />
+            <elementDefinition Id="00db4357-82ef-4245-8a27-32c5dbfa8bef" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="fa2d6970-8bb0-4cb2-809a-e65471985d8f" name="Відкривати файли" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="8f63c80a-7026-4c9c-bbf0-a0a3a089f1f0" />
+        <extendedCases>
+          <extend Id="20063d1f-ebca-47ab-8c96-24b0fe00fb01">
+            <useCaseMoniker Id="edcb2dd8-ebc5-43c4-9ca1-5ccf3fbab2c2" LastKnownName="Керувати файлами" />
+            <elementDefinition Id="62228842-8c57-4627-8c1e-29b6d815d7e7" />
+          </extend>
+        </extendedCases>
+      </useCase>
     </useCaseModelRootHasTypes>
   </packagedElements>
   <package Id="c829d7c2-ba15-4aff-a283-ec11759644c6" name="ModelingProject">

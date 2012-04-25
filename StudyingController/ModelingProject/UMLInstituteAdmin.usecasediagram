@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="d5bc9530-fe54-43bb-95c2-3ce718382f89" name="UMLInstituteAdmin" linkedPackageId="cd5ada33-3f38-4c64-8659-48249501e0da" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <profileInstances>
+    <packageHasProfileInstances Id="5f536258-e415-4d5c-b6f7-8d3428fa4384">
+      <profileInstance Id="8e420001-78bf-425c-ae12-060171345442" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="26fc14cf-c652-4e4e-97b3-b6c82fd6ba61">
+      <profileInstance Id="321a4458-7183-4275-b3ee-ed6ba31efe43" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="3438dfa2-a23e-4086-92b0-f382ac683d1d" name="Адміністратор інституту" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="1cc9c6d2-8883-4173-8a97-4d505f633434" />
+        <generalsInternal>
+          <generalization Id="249f4e4b-565b-4bb5-96ac-d93eeb56f792" isSubstitutable="false">
+            <actorMoniker Id="e0e2f29c-6073-423c-a16f-05292072cd79" LastKnownName="Адміністратор факультету" />
+            <elementDefinition Id="d59db387-176d-40ea-b831-41e73764138d" />
+          </generalization>
+          <generalization Id="bc466ab3-886a-4c27-9eab-c306f5767cca" isSubstitutable="false">
+            <actorMoniker Id="3244d725-2980-410c-aa1d-bc0bda6a5b22" LastKnownName="Секретар інституту" />
+            <elementDefinition Id="5761e825-a4bf-44c8-825b-b233ffd56a84" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association Id="50a579c7-ddbb-4042-a28e-04366fc8f664" isDerived="false" sourceEndRoleName="Адміністратор інституту" targetEndRoleName="Керувати адміністраторами інституту" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="c5eff12e-2015-492f-b9bb-924c8e3361bf" LastKnownName="Керувати адміністраторами інституту" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="585673bc-099e-495d-bdbe-a5217179edea" name="Адміністратор інституту" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="010d2548-fd66-4271-9725-a405de70bc16" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="fa77312d-018f-4101-abb8-0061d039b793" name="Керувати адміністраторами інституту" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="559a3ded-63fa-447d-b919-54c5e702427e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="4b48a924-feba-4f50-ae3e-dc3302999b4a" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="3244d725-2980-410c-aa1d-bc0bda6a5b22" name="Секретар інституту" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="4204e043-4044-4dde-94ae-5bbf8941989b" />
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="e0e2f29c-6073-423c-a16f-05292072cd79" name="Адміністратор факультету" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f5f8e292-2b06-44a7-b763-64ca16efc632" />
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="c5eff12e-2015-492f-b9bb-924c8e3361bf" name="Керувати адміністраторами інституту" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="adff30aa-d3bf-4d33-8c80-3990a6b29640" />
+        <targetEnds>
+          <association Id="71d48150-ecd0-4020-a74c-18656c3597bc" isDerived="false" sourceEndRoleName="Керувати адміністраторами інституту" targetEndRoleName="CRUD" isLeaf="false" isAbstract="false">
+            <subsystemMoniker Id="b4b87b5a-68a4-401e-acc7-e2a361c0b283" LastKnownName="CRUD" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f3165689-0e34-474d-8879-6dd783761c03" name="Керувати адміністраторами інституту" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="bae62d35-2d47-4ca6-ad40-5f58a17ddd05" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9df7117e-42be-4657-b798-eccc2f2072e9" name="CRUD" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="ee17f5bb-cb1a-45b8-9715-21433fa812f1" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="5c4a8065-545a-4354-aa9e-7a1998ef456b" />
+          </association>
+        </targetEnds>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="b4b87b5a-68a4-401e-acc7-e2a361c0b283" name="CRUD" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="d2e65c11-8db9-4a4e-a6e8-59d91459c00a" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="cd5ada33-3f38-4c64-8659-48249501e0da" name="ModelingProject">
+    <elementDefinition Id="6126932b-a0fc-4c12-819c-d94f72bd991f" />
+  </package>
+</useCaseModelRoot>

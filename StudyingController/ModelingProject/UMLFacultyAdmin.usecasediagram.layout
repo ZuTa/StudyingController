@@ -2,20 +2,55 @@
 <useCaseDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="UMLFacultyAdmin">
   <useCaseModelRootMoniker Id="1b97d52d-e4da-409e-a7aa-985fdfb16c86" />
   <nestedChildShapes>
-    <actorShape Id="b2cd7dfc-39e8-4cb1-a9e8-7f1913ae5f6c" absoluteBounds="4.5, 0.75, 1.375, 1.375" isReference="false" imagePath="C:\Users\ZuTa\Downloads\personal.png" heightOffset="0">
+    <actorShape Id="b2cd7dfc-39e8-4cb1-a9e8-7f1913ae5f6c" absoluteBounds="5.5, 1, 1.375, 1.375" isReference="false" imagePath="C:\Users\ZuTa\Downloads\personal.png" heightOffset="0">
       <actorMoniker Id="f50f9b65-b7d2-4d82-b7ad-b755a29c66b0" LastKnownName="Адміністратор факультету" />
       <relativeChildShapes />
     </actorShape>
-    <useCaseShape Id="aaa824ba-53d3-40ec-b9c0-30f2b76d0c28" absoluteBounds="2.375, 2.5, 1, 0.875" customColor="238, 237, 131" heightOffset="0">
+    <useCaseShape Id="aaa824ba-53d3-40ec-b9c0-30f2b76d0c28" absoluteBounds="4, 3.75, 1, 0.875" customColor="LimeGreen" heightOffset="0">
       <useCaseMoniker Id="d865a89e-2eaa-41f1-a739-dec5eb8a0747" LastKnownName="Керувати адміністраторами факультету" />
       <relativeChildShapes />
     </useCaseShape>
-    <useCaseAssociationConnector edgePoints="[(4.5 : 1.88344594594595); (3.2766686777462 : 2.67695815497544)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+    <useCaseAssociationConnector edgePoints="[(5.7234375 : 2.375); (4.75427399795271 : 3.8107977808108)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
       <associationMoniker Id="5240f971-6fe1-4713-915f-e0059e0b78c0" />
       <relativeChildShapes />
       <nodes>
         <actorShapeMoniker Id="b2cd7dfc-39e8-4cb1-a9e8-7f1913ae5f6c" />
         <useCaseShapeMoniker Id="aaa824ba-53d3-40ec-b9c0-30f2b76d0c28" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <actorShape Id="0a60e941-e702-4549-a791-01987202281c" absoluteBounds="2, 0.75, 1.125, 1.125" isReference="false" imagePath="C:\Users\ZuTa\Downloads\user_female.png" heightOffset="0">
+      <actorMoniker Id="82943f69-673d-4f37-8df9-100f808a8b27" LastKnownName="Секретар факультету" />
+      <relativeChildShapes />
+    </actorShape>
+    <useCaseGeneralizationConnector edgePoints="[(5.5 : 1.61637931034483); (3.125 : 1.37068965517241)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110">
+      <generalizationMoniker Id="2834a873-5c22-4ceb-a591-a6ebad96592f" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="b2cd7dfc-39e8-4cb1-a9e8-7f1913ae5f6c" />
+        <actorShapeMoniker Id="0a60e941-e702-4549-a791-01987202281c" />
+      </nodes>
+    </useCaseGeneralizationConnector>
+    <actorShape Id="78c8b600-964b-45d6-9d83-4138487a5c09" absoluteBounds="9.375, 0.75, 1.125, 1.125" isReference="false" imagePath="C:\Users\ZuTa\Downloads\man_grey.png" heightOffset="0">
+      <actorMoniker Id="bf343984-a64d-4a94-becc-fc22e4a85da4" LastKnownName="Викладач" />
+      <relativeChildShapes />
+    </actorShape>
+    <useCaseGeneralizationConnector edgePoints="[(6.875 : 1.61875); (9.375 : 1.36875)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110">
+      <generalizationMoniker Id="8174f257-e26f-49e2-8ca5-013ef7014645" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="b2cd7dfc-39e8-4cb1-a9e8-7f1913ae5f6c" />
+        <actorShapeMoniker Id="78c8b600-964b-45d6-9d83-4138487a5c09" />
+      </nodes>
+    </useCaseGeneralizationConnector>
+    <SubsystemShape Id="368ac848-5ebc-46db-aa9e-66bd3ed9c94a" absoluteBounds="6.75, 4.125, 1.5, 1" customColor="LimeGreen">
+      <subsystemMoniker Id="3e7b0f28-04f1-4d04-950c-ded1bf0ca9a9" LastKnownName="CRUD" />
+    </SubsystemShape>
+    <useCaseAssociationConnector edgePoints="[(4.99319696191607 : 4.25942455694609); (6.75 : 4.515625)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="a17faa2d-301a-4853-9ead-95ffd12ce0a6" />
+      <relativeChildShapes />
+      <nodes>
+        <useCaseShapeMoniker Id="aaa824ba-53d3-40ec-b9c0-30f2b76d0c28" />
+        <SubsystemShapeMoniker Id="368ac848-5ebc-46db-aa9e-66bd3ed9c94a" />
       </nodes>
     </useCaseAssociationConnector>
   </nestedChildShapes>
