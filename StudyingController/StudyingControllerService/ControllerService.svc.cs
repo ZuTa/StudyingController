@@ -1942,7 +1942,7 @@ namespace StudyingControllerService
                        {
                            PracticeControl pc = q as PracticeControl;
                            context.LoadProperty(pc, "Practice_Teacher");
-                           //context.LoadProperty(pc, "PracticeControlMarks");
+                           context.LoadProperty(pc, "PracticeControlMarks");
                            foreach (var m in pc.PracticeControlMarks)
                            {
                                context.LoadProperty(m, "Student");
@@ -1971,7 +1971,7 @@ namespace StudyingControllerService
                            LectureControl lc = q as LectureControl;
 
                            context.LoadProperty(lc, "Lecture");
-                           //context.LoadProperty(lc, "LectureControlMarks");
+                           context.LoadProperty(lc, "LectureControlMarks");
                            foreach (var m in lc.LectureControlMarks)
                            {
                                context.LoadProperty(m, "Student");
@@ -2036,7 +2036,13 @@ namespace StudyingControllerService
                             foreach (var e in toEdit)
                             {
                                 var elem = context.Marks.Where(m => m.ID == e.ID).FirstOrDefault();
-                                elem.Assign(e);
+                                if (elem == null)
+                                {
+                                    PracticeControlMark pcm = new PracticeControlMark(e as PracticeControlMarkDTO);
+                                    context.Marks.AddObject(pcm);
+                                }
+                                else
+                                    elem.Assign(e);
                             }
                         }
                         else
@@ -2057,7 +2063,13 @@ namespace StudyingControllerService
                             foreach (var e in toEdit)
                             {
                                 var elem = context.Marks.Where(m => m.ID == e.ID).FirstOrDefault();
-                                elem.Assign(e);
+                                if (elem == null)
+                                {
+                                    LectureControlMark lcm = new LectureControlMark(e as LectureControlMarkDTO);
+                                    context.Marks.AddObject(lcm);
+                                }
+                                else
+                                    elem.Assign(e);
                             }
                         }
                         context.SaveChanges();

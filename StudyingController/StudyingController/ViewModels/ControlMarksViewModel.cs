@@ -18,7 +18,7 @@ namespace StudyingController.ViewModels
         {
             get
             {
-                return base.CanSave && IsModelsValid();
+                return IsModelsValid();//base.CanSave && IsModelsValid();
             }
         }
 
