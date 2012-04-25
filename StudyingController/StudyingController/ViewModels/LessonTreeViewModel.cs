@@ -164,6 +164,8 @@ namespace StudyingController.ViewModels
 
         #region Events
 
+       // event EventHandler 
+
         #endregion
     }
 }

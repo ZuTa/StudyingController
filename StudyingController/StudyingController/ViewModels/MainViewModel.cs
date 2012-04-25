@@ -90,7 +90,7 @@ namespace StudyingController.ViewModels
         {
             get
             {
-                return CurrentWorkspace is IAdditionalCommands;
+                return (CurrentWorkspace is IAdditionalCommands) && (CurrentWorkspace as IAdditionalCommands).IsVisible;
             }
         }
 
@@ -340,7 +340,10 @@ namespace StudyingController.ViewModels
         private void OpenLessonsStructure()
         {
             if (lectureStructureViewModel == null)
+            {
                 lectureStructureViewModel = new LessonStuctureViewModel(UserInterop, ControllerInterop, Dispatcher);
+                lectureStructureViewModel.IsVisibleChanged += new EventHandler(lectureStructureViewModel_IsVisibleChanged);
+            }
 
             ChangeCurrentWorkspace(lectureStructureViewModel);
         }
@@ -453,6 +456,11 @@ namespace StudyingController.ViewModels
         private void ControlStructureViewModel_WorkspaceChanged(BaseApplicationViewModel viewModel)
         {
             PushWorkspace(viewModel);
+        }
+
+        private void lectureStructureViewModel_IsVisibleChanged(object sender, EventArgs e)
+        {
+            OnPropertyChanged("HasAdditionalCommands");
         }
 
         #endregion

@@ -430,5 +430,11 @@ namespace StudyingController.ViewModels
 
         #region Events
         #endregion
+
+
+        public bool IsVisible
+        {
+            get { return true; }
+        }
     }
 }

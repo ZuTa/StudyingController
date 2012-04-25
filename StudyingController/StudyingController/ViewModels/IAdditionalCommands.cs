@@ -11,5 +11,7 @@ namespace StudyingController.ViewModels
         ObservableCollection<NamedCommandData> AdditionalCommands { get; }
 
         void UpdateCommandsEnabledState();
+
+        bool IsVisible { get; }
     }
 }
