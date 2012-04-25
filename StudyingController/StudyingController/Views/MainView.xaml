@@ -153,10 +153,7 @@
 
         <StatusBar Grid.Row="1">
             <StatusBarItem>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Користувач : "/>
-                    <TextBlock Text="{Binding LoggedUser}"/>
-                </StackPanel>
+                <TextBlock Text="{Binding LoggedUser}"/>
             </StatusBarItem>
             <Separator/>
             <StatusBarItem Content="{Binding StudyRange}"/>

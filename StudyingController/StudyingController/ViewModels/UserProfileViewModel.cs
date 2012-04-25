@@ -24,6 +24,22 @@ namespace StudyingController.ViewModels
             }
         }
 
+        public DateTime CurrentDate
+        {
+            get
+            {
+                return DateTime.Now;
+            }
+        }
+
+        public DateTime NewYearDate
+        {
+            get
+            {
+                return new DateTime(CurrentDate.Year, 1, 1, 0, 0, 1);
+            }
+        }
+
         private InstituteDTO institute;
         public InstituteDTO Institute
         {
