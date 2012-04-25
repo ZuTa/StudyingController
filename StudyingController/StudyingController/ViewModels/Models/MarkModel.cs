@@ -71,6 +71,7 @@ namespace StudyingController.ViewModels.Models
             { 
                 description = value;
                 OnPropertyChanged("Description");
+                OnModelChanged();
             }
         }
         #endregion
