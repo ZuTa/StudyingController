@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<useCaseDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="UMLFacultyAdmin">
+<useCaseDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 12.625, 8.5" name="UMLFacultyAdmin">
   <useCaseModelRootMoniker Id="1b97d52d-e4da-409e-a7aa-985fdfb16c86" />
   <nestedChildShapes>
     <actorShape Id="b2cd7dfc-39e8-4cb1-a9e8-7f1913ae5f6c" absoluteBounds="5.5, 1, 1.375, 1.375" isReference="false" imagePath="C:\Users\ZuTa\Downloads\personal.png" heightOffset="0">
       <actorMoniker Id="f50f9b65-b7d2-4d82-b7ad-b755a29c66b0" LastKnownName="Адміністратор факультету" />
       <relativeChildShapes />
     </actorShape>
-    <useCaseShape Id="aaa824ba-53d3-40ec-b9c0-30f2b76d0c28" absoluteBounds="4, 3.75, 1, 0.875" customColor="LimeGreen" heightOffset="0">
+    <useCaseShape Id="aaa824ba-53d3-40ec-b9c0-30f2b76d0c28" absoluteBounds="2.75, 3.375, 1, 0.875" customColor="LimeGreen" heightOffset="0">
       <useCaseMoniker Id="d865a89e-2eaa-41f1-a739-dec5eb8a0747" LastKnownName="Керувати адміністраторами факультету" />
       <relativeChildShapes />
     </useCaseShape>
-    <useCaseAssociationConnector edgePoints="[(5.7234375 : 2.375); (4.75427399795271 : 3.8107977808108)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+    <useCaseAssociationConnector edgePoints="[(5.5 : 2.18484042553191); (3.63535582030806 : 3.53373195977715)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
       <associationMoniker Id="5240f971-6fe1-4713-915f-e0059e0b78c0" />
       <relativeChildShapes />
       <nodes>
@@ -22,7 +22,7 @@
       <actorMoniker Id="82943f69-673d-4f37-8df9-100f808a8b27" LastKnownName="Секретар факультету" />
       <relativeChildShapes />
     </actorShape>
-    <useCaseGeneralizationConnector edgePoints="[(5.5 : 1.61637931034483); (3.125 : 1.37068965517241)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110">
+    <useCaseGeneralizationConnector edgePoints="[(5.5 : 1.61637931034483); (3.125 : 1.37068965517241)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110">
       <generalizationMoniker Id="2834a873-5c22-4ceb-a591-a6ebad96592f" />
       <relativeChildShapes />
       <nodes>
@@ -34,7 +34,7 @@
       <actorMoniker Id="bf343984-a64d-4a94-becc-fc22e4a85da4" LastKnownName="Викладач" />
       <relativeChildShapes />
     </actorShape>
-    <useCaseGeneralizationConnector edgePoints="[(6.875 : 1.61875); (9.375 : 1.36875)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110">
+    <useCaseGeneralizationConnector edgePoints="[(6.875 : 1.61875); (9.375 : 1.36875)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110">
       <generalizationMoniker Id="8174f257-e26f-49e2-8ca5-013ef7014645" />
       <relativeChildShapes />
       <nodes>
@@ -42,14 +42,78 @@
         <actorShapeMoniker Id="78c8b600-964b-45d6-9d83-4138487a5c09" />
       </nodes>
     </useCaseGeneralizationConnector>
-    <SubsystemShape Id="368ac848-5ebc-46db-aa9e-66bd3ed9c94a" absoluteBounds="6.75, 4.125, 1.5, 1" customColor="LimeGreen">
+    <useCaseShape Id="28393a9a-54fd-4c41-b712-53d2dda6d59b" absoluteBounds="8, 4.625, 1, 0.75" customColor="Salmon" heightOffset="0">
+      <useCaseMoniker Id="de9dccc5-05e1-481d-9e24-8240112f1614" LastKnownName="Керувати опитуваннями студентів" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseAssociationConnector edgePoints="[(6.66745283018868 : 2.375); (8.26807458061445 : 4.66778250736664)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="7c1f9a37-efdc-452b-825a-01cd9df3014a" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="b2cd7dfc-39e8-4cb1-a9e8-7f1913ae5f6c" />
+        <useCaseShapeMoniker Id="28393a9a-54fd-4c41-b712-53d2dda6d59b" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <useCaseShape Id="332524f0-b341-4da2-ae42-79a3733ac135" absoluteBounds="7.625, 6.25, 1, 0.5" customColor="Salmon" heightOffset="0">
+      <useCaseMoniker Id="3b586d6f-a173-4acd-a3dd-0fef0faff7aa" LastKnownName="По предметах" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <extendConnector edgePoints="[(8.1870173672946 : 6.25193053082158); (8.40785573247491 : 5.36857707010037)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«extend»">
+      <extendMoniker Id="43ea31ff-22b0-4842-94e7-886c86188d14" />
+      <relativeChildShapes />
+      <nodes>
+        <useCaseShapeMoniker Id="332524f0-b341-4da2-ae42-79a3733ac135" />
+        <useCaseShapeMoniker Id="28393a9a-54fd-4c41-b712-53d2dda6d59b" />
+      </nodes>
+    </extendConnector>
+    <useCaseShape Id="50af9322-8715-4d2a-8467-46a1c2d1bbab" absoluteBounds="9.625, 6.125, 1, 0.5" customColor="Salmon" heightOffset="0">
+      <useCaseMoniker Id="6e717f10-965a-4d1b-a637-5d52d4bfc65c" LastKnownName="По викладачах" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <extendConnector edgePoints="[(9.87063534393668 : 6.15976836794642); (8.83165375715793 : 5.28063010221055)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«extend»">
+      <extendMoniker Id="fa07ac89-ea7e-4ffa-9f05-58f4006b5b9c" />
+      <relativeChildShapes />
+      <nodes>
+        <useCaseShapeMoniker Id="50af9322-8715-4d2a-8467-46a1c2d1bbab" />
+        <useCaseShapeMoniker Id="28393a9a-54fd-4c41-b712-53d2dda6d59b" />
+      </nodes>
+    </extendConnector>
+    <useCaseShape Id="366d4e06-fa18-43c6-af76-3113e9a2e154" absoluteBounds="11.375, 3.5, 1, 0.5" customColor="Salmon" heightOffset="0">
+      <useCaseMoniker Id="fb84d1a9-6b27-4644-bb10-2659aa3b38d2" LastKnownName="Керувати звітами" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseAssociationConnector edgePoints="[(6.875 : 1.93681318681319); (11.4702476267406 : 3.60322166684001)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="9b3fb4de-1b02-4a48-a3ca-befb2b13c246" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="b2cd7dfc-39e8-4cb1-a9e8-7f1913ae5f6c" />
+        <useCaseShapeMoniker Id="366d4e06-fa18-43c6-af76-3113e9a2e154" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <SubsystemShape Id="368ac848-5ebc-46db-aa9e-66bd3ed9c94a" absoluteBounds="5, 3.875, 1.5, 1" customColor="LimeGreen">
       <subsystemMoniker Id="3e7b0f28-04f1-4d04-950c-ded1bf0ca9a9" LastKnownName="CRUD" />
     </SubsystemShape>
-    <useCaseAssociationConnector edgePoints="[(4.99319696191607 : 4.25942455694609); (6.75 : 4.515625)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+    <useCaseAssociationConnector edgePoints="[(3.73424646629843 : 3.92145545491715); (5 : 4.20625)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
       <associationMoniker Id="a17faa2d-301a-4853-9ead-95ffd12ce0a6" />
       <relativeChildShapes />
       <nodes>
         <useCaseShapeMoniker Id="aaa824ba-53d3-40ec-b9c0-30f2b76d0c28" />
+        <SubsystemShapeMoniker Id="368ac848-5ebc-46db-aa9e-66bd3ed9c94a" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <useCaseAssociationConnector edgePoints="[(8.02148779778326 : 4.89124722676892); (6.5 : 4.54545454545455)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Red" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="1f62c4a9-ea5c-4441-bad7-00a8cc5118bd" />
+      <relativeChildShapes />
+      <nodes>
+        <useCaseShapeMoniker Id="28393a9a-54fd-4c41-b712-53d2dda6d59b" />
+        <SubsystemShapeMoniker Id="368ac848-5ebc-46db-aa9e-66bd3ed9c94a" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <useCaseAssociationConnector edgePoints="[(11.3850979706098 : 3.799990002999); (6.5 : 4.2984693877551)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Red" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="385dd1f6-2c96-4bd1-a22e-cf18109bb11c" />
+      <relativeChildShapes />
+      <nodes>
+        <useCaseShapeMoniker Id="366d4e06-fa18-43c6-af76-3113e9a2e154" />
         <SubsystemShapeMoniker Id="368ac848-5ebc-46db-aa9e-66bd3ed9c94a" />
       </nodes>
     </useCaseAssociationConnector>

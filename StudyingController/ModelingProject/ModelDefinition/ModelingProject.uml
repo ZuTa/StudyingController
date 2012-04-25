@@ -615,6 +615,84 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
+          <association
+            Id="759cbaac-446f-4273-a795-f4980d4f4ac5"
+            isDerived="false"
+            sourceEndRoleName="Адміністратор факультету"
+            targetEndRoleName="Опитування"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="d4a114e4-6628-451c-b330-2a06a9f464b6"
+              LastKnownName="Керувати опитуваннями студентів"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="621197c6-e851-4f41-935f-21df5781ddc9"
+                  name="Адміністратор факультету"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c8683d58-901b-4275-8786-6e986d10aadd"
+                  name="Опитування"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="84fff2fc-41d4-4e85-9d2a-86b83eda2ffa"
+            isDerived="false"
+            sourceEndRoleName="Адміністратор факультету"
+            targetEndRoleName="Керувати звітами"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="b62b31b9-f2bb-47ba-8f2e-67f596f5c3d6"
+              LastKnownName="Керувати звітами"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="fc11bd53-64a5-4e06-aace-4c239094194e"
+                  name="Адміністратор факультету"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4cc89513-688e-46d4-ae23-c045bcb89d4e"
+                  name="Керувати звітами"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
         </targetEnds>
       </actor>
     </packageHasNamedElement>
@@ -3593,6 +3671,138 @@
         name="UseCase5"
         isAbstract="false"
         isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="d4a114e4-6628-451c-b330-2a06a9f464b6"
+        name="Керувати опитуваннями студентів"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="27925f6c-b9bd-4cf8-ad87-8ddd03197acc"
+            isDerived="false"
+            sourceEndRoleName="Керувати опитуваннями студентів"
+            targetEndRoleName="CRUD"
+            isLeaf="false"
+            isAbstract="false">
+            <subsystemMoniker
+              Id="d2e65c11-8db9-4a4e-a6e8-59d91459c00a"
+              LastKnownName="CRUD"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="48f30f8a-6c36-4e03-8db9-cf3c88faf58d"
+                  name="Керувати опитуваннями студентів"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="fcd74e5c-f408-4b35-a7ea-31157808805b"
+                  name="CRUD"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="1a3c096b-4e99-465e-b67f-e345960378b0"
+        name="По предметах"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="8553da4b-bce8-4d13-994d-c0321b148740">
+            <useCaseMoniker
+              Id="d4a114e4-6628-451c-b330-2a06a9f464b6"
+              LastKnownName="Керувати опитуваннями студентів"
+              LastKnownLocation="ModelingProject.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="01232a90-02de-4310-a236-f1c1ce881b55"
+        name="По викладачах"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="95fa6d60-d860-484d-8ece-b5c7b1190c48">
+            <useCaseMoniker
+              Id="d4a114e4-6628-451c-b330-2a06a9f464b6"
+              LastKnownName="Керувати опитуваннями студентів"
+              LastKnownLocation="ModelingProject.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="b62b31b9-f2bb-47ba-8f2e-67f596f5c3d6"
+        name="Керувати звітами"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="0af307d8-c2bd-4fa3-915c-723d0cb4b8ba"
+            isDerived="false"
+            sourceEndRoleName="Керувати звітами"
+            targetEndRoleName="CRUD"
+            isLeaf="false"
+            isAbstract="false">
+            <subsystemMoniker
+              Id="d2e65c11-8db9-4a4e-a6e8-59d91459c00a"
+              LastKnownName="CRUD"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="163c9f22-fdfd-4946-a44d-bdeedf8ffc00"
+                  name="Керувати звітами"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="30bffa66-2c8e-4720-9533-8459d3415695"
+                  name="CRUD"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </useCase>
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType
