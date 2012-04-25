@@ -14,6 +14,14 @@ namespace StudyingController.ViewModels
     {
         #region Fields & Properties
 
+        public bool IsUserNotSecretary
+        {
+            get
+            {
+                return !(IsUserFacultySecretary || IsUserInstituteSecretary || IsUserMainSecretary);
+            }
+        }
+
         public bool IsUserMainAdmin
         {
             get
