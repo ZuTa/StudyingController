@@ -72,6 +72,13 @@
       <SubType>Content</SubType>
       <DependentUpon>UMLStudent.usecasediagram</DependentUpon>
     </Content>
+    <Content Include="UMLSystem.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UMLSystem.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>UMLSystem.usecasediagram</DependentUpon>
+    </Content>
     <Content Include="UMLTeacher.usecasediagram">
       <SubType>Content</SubType>
     </Content>

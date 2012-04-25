@@ -1,1 +1,22 @@
-﻿ 
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="UMLSystem">
+  <useCaseModelRootMoniker Id="5876f458-215e-4876-8135-fe86c9980577" />
+  <nestedChildShapes>
+    <actorShape Id="93bb4670-f098-4f23-bd27-3a4259a165cb" absoluteBounds="4.125, 0.875, 1.375, 1.25" isReference="false" imagePath="C:\Users\ZuTa\Downloads\preferences_system_login.png" heightOffset="0">
+      <actorMoniker Id="efa91623-b453-489c-bf82-6969d8b7207d" LastKnownName="Система" />
+      <relativeChildShapes />
+    </actorShape>
+    <useCaseShape Id="6280015d-e0cd-4f3f-a88c-ab7a1540477f" absoluteBounds="1.375, 3, 1, 0.875" customColor="Salmon" heightOffset="0">
+      <useCaseMoniker Id="404b5648-d31c-4c7c-992f-c756f58f93eb" LastKnownName="Відправляти оповіщення користувачам" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseAssociationConnector edgePoints="[(4.125 : 1.95345744680851); (2.27427066856537 : 3.17415126115901)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="b94cb70d-4fac-4717-ad2e-c8c10c3fe2cb" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="93bb4670-f098-4f23-bd27-3a4259a165cb" />
+        <useCaseShapeMoniker Id="6280015d-e0cd-4f3f-a88c-ab7a1540477f" />
+      </nodes>
+    </useCaseAssociationConnector>
+  </nestedChildShapes>
+</useCaseDiagram>

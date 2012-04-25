@@ -3531,6 +3531,69 @@
         </targetEnds>
       </useCase>
     </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="86e0a5a3-ac46-4429-b9c9-0d8fa3a7d64f"
+        name="Система"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="01eb0793-6ff0-4d26-aef1-9f4b0eaaa28b"
+            isDerived="false"
+            sourceEndRoleName="Система"
+            targetEndRoleName="Відправляти оповіщення користувачам"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="6e1c91fc-204c-49e4-a93d-5563ba2d1d73"
+              LastKnownName="Відправляти оповіщення користувачам"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8035e0d6-51fa-4f5c-b44e-637732b64a9d"
+                  name="Система"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d7b6ddfd-0921-4db9-9dce-4369379f2016"
+                  name="Відправляти оповіщення користувачам"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="6e1c91fc-204c-49e4-a93d-5563ba2d1d73"
+        name="Відправляти оповіщення користувачам"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="11d44ac4-ef44-41aa-b19e-b6b97ac819e8"
+        name="UseCase5"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
   </packagedElements>
   <primitiveType
     Id="220a3521-e091-4221-bae9-3ef9018e845c"
