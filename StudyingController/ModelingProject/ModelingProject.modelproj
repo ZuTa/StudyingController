@@ -23,12 +23,61 @@
   <Import Project="$(VSToolsPath)\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" Condition="false" />
   <ItemGroup>
+    <Content Include="UMLMainAdmin.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UMLMainAdmin.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>UMLMainAdmin.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="UMLFacultyAdmin.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UMLFacultyAdmin.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>UMLFacultyAdmin.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="UMLFacultySecretary.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UMLFacultySecretary.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>UMLFacultySecretary.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="UMLInstituteAdmin.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UMLInstituteAdmin.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>UMLInstituteAdmin.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="UMLInstituteSecretary.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UMLInstituteSecretary.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>UMLInstituteSecretary.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="UMLMainSecretary.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UMLMainSecretary.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>UMLMainSecretary.usecasediagram</DependentUpon>
+    </Content>
     <Content Include="UMLStudent.usecasediagram">
       <SubType>Content</SubType>
     </Content>
     <Content Include="UMLStudent.usecasediagram.layout">
       <SubType>Content</SubType>
       <DependentUpon>UMLStudent.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="UMLSystem.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UMLSystem.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>UMLSystem.usecasediagram</DependentUpon>
     </Content>
     <Content Include="UMLTeacher.usecasediagram">
       <SubType>Content</SubType>

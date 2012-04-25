@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="1b97d52d-e4da-409e-a7aa-985fdfb16c86" name="UMLFacultyAdmin" linkedPackageId="3755bb5c-f3d1-4648-8280-7b5e6846ac9c" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="f50f9b65-b7d2-4d82-b7ad-b755a29c66b0" name="Адміністратор факультету" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f5f8e292-2b06-44a7-b763-64ca16efc632" />
+        <generalsInternal>
+          <generalization Id="2834a873-5c22-4ceb-a591-a6ebad96592f" isSubstitutable="false">
+            <actorMoniker Id="82943f69-673d-4f37-8df9-100f808a8b27" LastKnownName="Секретар факультету" />
+            <elementDefinition Id="14cc209d-9a28-4582-9608-36c520887888" />
+          </generalization>
+          <generalization Id="8174f257-e26f-49e2-8ca5-013ef7014645" isSubstitutable="false">
+            <actorMoniker Id="bf343984-a64d-4a94-becc-fc22e4a85da4" LastKnownName="Викладач" />
+            <elementDefinition Id="801bd3b7-d5c8-4475-a3cc-632d1d6a72c9" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association Id="5240f971-6fe1-4713-915f-e0059e0b78c0" isDerived="false" sourceEndRoleName="Адміністратор факультету" targetEndRoleName="Керувати адміністраторами факультету" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="d865a89e-2eaa-41f1-a739-dec5eb8a0747" LastKnownName="Керувати адміністраторами факультету" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d945f027-a397-4289-8630-e67a19e2a591" name="Адміністратор факультету" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="01eda34c-24a6-47ac-afef-37a19f9c2b2f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="199872cb-636f-4ca8-b92f-016273d743f7" name="Керувати адміністраторами факультету" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="7bccce11-070a-4a60-bea8-0e6b2d5a144d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="0321b390-ba64-4e12-a75a-627812d16f17" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="d865a89e-2eaa-41f1-a739-dec5eb8a0747" name="Керувати адміністраторами факультету" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="909cf8a7-0b94-4a4b-8d87-e3fe62817ca0" />
+        <targetEnds>
+          <association Id="a17faa2d-301a-4853-9ead-95ffd12ce0a6" isDerived="false" sourceEndRoleName="Керувати адміністраторами факультету" targetEndRoleName="CRUD" isLeaf="false" isAbstract="false">
+            <subsystemMoniker Id="3e7b0f28-04f1-4d04-950c-ded1bf0ca9a9" LastKnownName="CRUD" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9826fa89-f96f-4ade-b10f-4cd3372995e7" name="Керувати адміністраторами факультету" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="624a34a4-3a60-4993-a2e4-e27727b9deac" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="683e5afa-a796-45be-af98-b4a1e00ac390" name="CRUD" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="d5aff381-5557-429a-a299-978dd2064b84" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="4ee4a2d8-4727-4183-b6a7-f5211e59bceb" />
+          </association>
+        </targetEnds>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="82943f69-673d-4f37-8df9-100f808a8b27" name="Секретар факультету" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="0ba6352a-735b-4562-b43b-4e45b4bca574" />
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="bf343984-a64d-4a94-becc-fc22e4a85da4" name="Викладач" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="06ac9795-1ab5-49a9-aa0e-8db874fec384" />
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="3e7b0f28-04f1-4d04-950c-ded1bf0ca9a9" name="CRUD" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="d2e65c11-8db9-4a4e-a6e8-59d91459c00a" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="3755bb5c-f3d1-4648-8280-7b5e6846ac9c" name="ModelingProject">
+    <elementDefinition Id="6126932b-a0fc-4c12-819c-d94f72bd991f" />
+    <profileInstances>
+      <packageHasProfileInstances Id="e3bb1f5d-9513-473c-b534-21735111a764">
+        <profileInstance Id="4b1b81cf-81e1-425b-b8fa-f6d91e3bc97e" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="ce86183f-8f4f-4bfd-b390-1553576f9cd9">
+        <profileInstance Id="40f4d4df-4508-4efc-a0c4-a91aded416d7" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

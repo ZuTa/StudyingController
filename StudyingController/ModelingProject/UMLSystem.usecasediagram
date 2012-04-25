@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="5876f458-215e-4876-8135-fe86c9980577" name="UMLSystem" linkedPackageId="0a1a3089-824d-4ec8-9842-46a63077346c" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <profileInstances>
+    <packageHasProfileInstances Id="a2521990-e13c-40ac-8b78-9fac248b72fe">
+      <profileInstance Id="dc092608-f297-4383-a619-0303f65e2976" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="144b7d99-bed4-4239-a568-0437778b10aa">
+      <profileInstance Id="a30845c2-364a-46af-8680-548c3c0a4836" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="efa91623-b453-489c-bf82-6969d8b7207d" name="Система" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="86e0a5a3-ac46-4429-b9c9-0d8fa3a7d64f" />
+        <targetEnds>
+          <association Id="b94cb70d-4fac-4717-ad2e-c8c10c3fe2cb" isDerived="false" sourceEndRoleName="Система" targetEndRoleName="Відправляти оповіщення користувачам" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="404b5648-d31c-4c7c-992f-c756f58f93eb" LastKnownName="Відправляти оповіщення користувачам" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="011ee5ef-f258-4eeb-a5a4-cf3e1648d11e" name="Система" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="8035e0d6-51fa-4f5c-b44e-637732b64a9d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3eff017a-1772-4dd0-919b-7122121c9aea" name="Відправляти оповіщення користувачам" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="d7b6ddfd-0921-4db9-9dce-4369379f2016" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="01eb0793-6ff0-4d26-aef1-9f4b0eaaa28b" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="404b5648-d31c-4c7c-992f-c756f58f93eb" name="Відправляти оповіщення користувачам" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="6e1c91fc-204c-49e4-a93d-5563ba2d1d73" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="0a1a3089-824d-4ec8-9842-46a63077346c" name="ModelingProject">
+    <elementDefinition Id="6126932b-a0fc-4c12-819c-d94f72bd991f" />
+  </package>
+</useCaseModelRoot>

@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="UMLAdmin">
+  <useCaseModelRootMoniker Id="f5ea5cb2-e4f4-4782-8ed6-ba3205ebd507" />
+  <nestedChildShapes>
+    <actorShape Id="6ae9f423-29cf-408a-80d3-11d66e3ae143" absoluteBounds="4.25, 1.625, 1.375, 1.375" isReference="false" imagePath="C:\Users\ZuTa\Downloads\personal.png" heightOffset="0">
+      <actorMoniker Id="dc899192-cabd-4b19-86cc-6c8d424e9948" LastKnownName="Головний адміністратор" />
+      <relativeChildShapes />
+    </actorShape>
+    <actorShape Id="3f99bc2d-e00c-429d-b6c9-efa5661d50a7" absoluteBounds="1.125, 0.75, 0.875, 0.875" isReference="false" imagePath="C:\Users\ZuTa\Downloads\user_female.png" heightOffset="0">
+      <actorMoniker Id="f6205427-1755-4e91-8f2f-c93da86c7e44" LastKnownName="Головний секретар" />
+      <relativeChildShapes />
+    </actorShape>
+    <useCaseGeneralizationConnector edgePoints="[(4.25 : 2.08333333333333); (2 : 1.33333333333333)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110">
+      <generalizationMoniker Id="ad6e3d1b-39b9-46aa-acaf-ef3d7f5880d6" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="6ae9f423-29cf-408a-80d3-11d66e3ae143" />
+        <actorShapeMoniker Id="3f99bc2d-e00c-429d-b6c9-efa5661d50a7" />
+      </nodes>
+    </useCaseGeneralizationConnector>
+    <actorShape Id="1e97ef5a-9de3-42c7-bc68-edc07a854dd5" absoluteBounds="7.25, 0.75, 0.75, 0.75" isReference="false" imagePath="C:\Users\ZuTa\Downloads\personal.png" heightOffset="0">
+      <actorMoniker Id="0fdc1dee-5f29-40a3-96aa-f3b3ab3a0c8f" LastKnownName="Адміністратор інституту" />
+      <relativeChildShapes />
+    </actorShape>
+    <useCaseGeneralizationConnector edgePoints="[(5.625 : 2.00872093023256); (7.25 : 1.2906976744186)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110">
+      <generalizationMoniker Id="26f5ca0b-9e18-4510-b30f-393b87d5c6b3" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="6ae9f423-29cf-408a-80d3-11d66e3ae143" />
+        <actorShapeMoniker Id="1e97ef5a-9de3-42c7-bc68-edc07a854dd5" />
+      </nodes>
+    </useCaseGeneralizationConnector>
+    <useCaseShape Id="29244e05-ce44-4ac9-ade6-33ad2f56e669" absoluteBounds="2.625, 3.375, 1, 0.875" customColor="LimeGreen" heightOffset="0">
+      <useCaseMoniker Id="a59ae929-1a48-431c-b193-847f2d9c1079" LastKnownName="Керувати головними адміністраторами" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseAssociationConnector edgePoints="[(4.25 : 2.88146551724138); (3.48825835204872 : 3.51187239830451)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="b6fea3e5-f299-4a30-8dd0-e0f74fd53c3d" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="6ae9f423-29cf-408a-80d3-11d66e3ae143" />
+        <useCaseShapeMoniker Id="29244e05-ce44-4ac9-ade6-33ad2f56e669" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <SubsystemShape Id="dc23a490-471e-4a97-88ff-a8a271162cd7" absoluteBounds="4.75, 4.625, 1.5, 1" customColor="LimeGreen">
+      <subsystemMoniker Id="84f936c0-f943-41a4-bee4-a5a274f4eacf" LastKnownName="CRUD" />
+    </SubsystemShape>
+    <useCaseAssociationConnector edgePoints="[(3.54774445151549 : 4.04612193373224); (4.75 : 4.71052631578947)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="56778240-9c80-4caa-a553-30e839111d91" />
+      <relativeChildShapes />
+      <nodes>
+        <useCaseShapeMoniker Id="29244e05-ce44-4ac9-ade6-33ad2f56e669" />
+        <SubsystemShapeMoniker Id="dc23a490-471e-4a97-88ff-a8a271162cd7" />
+      </nodes>
+    </useCaseAssociationConnector>
+  </nestedChildShapes>
+</useCaseDiagram>
