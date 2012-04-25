@@ -21,6 +21,14 @@ namespace StudyingController.ViewModels
             }
         }
 
+        public bool IsNotStudent
+        {
+            get
+            {
+                return ControllerInterop.User.Role != UserRoles.Student;
+            }
+        }
+
         public override bool CanSave
         {
             get

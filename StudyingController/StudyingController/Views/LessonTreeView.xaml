@@ -6,6 +6,11 @@
              xmlns:common="clr-namespace:StudyingController.Common"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
     <TreeView IsEnabled="{Binding IsNotBusy}" ItemsSource="{Binding Tree.Nodes}" common:TreeViewHelper.SelectedEntityChangedCommand="{Binding SelectedEntityChangedCommand}" common:TreeViewHelper.SelectedEntity="{Binding CurrentEntity}">
         <TreeView.ItemTemplate>
             <HierarchicalDataTemplate ItemsSource = "{Binding Path=Children}">
@@ -56,4 +61,42 @@
             </Style>
         </TreeView.ItemContainerStyle>
     </TreeView>
+    <Border Grid.Row="1" BorderBrush="Gray" BorderThickness="1">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" Margin="2">
+                <Image Source="/StudyingController;component/Images/home.png" Height="16" Width="16"></Image>
+                <Label Content="Інститут"></Label>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="2">
+                <Image Source="/StudyingController;component/Images/gnome_go_home.png" Height="16" Width="16"></Image>
+                <Label Content="Факультет"></Label>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="2">
+                <Image Source="/StudyingController;component/Images/board.png" Height="16" Width="16"></Image>
+                <Label Content="Кафедра"></Label>
+            </StackPanel>
+                <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="2">
+                    <Image Source="/StudyingController;component/Images/lect.png" Height="16" Width="16"></Image>
+                    <Label Content="Лекція"></Label>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" Margin="2">
+                    <Image Source="/StudyingController;component/Images/pract.png" Height="16" Width="16"></Image>
+                    <Label Content="Практика"></Label>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" Margin="2">
+                    <Image Source="/StudyingController;component/Images/people.png" Height="16" Width="16"></Image>
+                    <Label Content="Викладач"></Label>
+                </StackPanel>
+            </Grid>
+    </Border>
+    </Grid>
 </UserControl>

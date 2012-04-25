@@ -7,7 +7,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
+            <RowDefinition />
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         
@@ -16,7 +16,7 @@
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
         
-        <ListView Grid.Row="0" Grid.Column="0" ItemsSource="{Binding Controls}" SelectedValue="{Binding CurrentControl}" SelectionMode="Single">
+        <ListView Grid.Row="0" Grid.Column="0" ItemsSource="{Binding Controls}" SelectedValue="{Binding CurrentControl}" SelectionMode="Single" VerticalAlignment="Stretch">
             <ListView.View>
                 <GridView AllowsColumnReorder="False">
                     <GridViewColumn Header="Назва" DisplayMemberBinding="{Binding Name}" Width="auto"/>

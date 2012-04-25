@@ -31,7 +31,7 @@
                     <Button Margin="3" ToolTip="Користувачі" Width="55" Height="55" Command="{Binding Path=UsersStructureCommand}" Visibility="{Binding Path=IsUserAdminOrSecretary, Converter={StaticResource B2V}}" Style="{StaticResource MenuButtonStyle}">
                         <Image Source="/StudyingController;component/Images/people.png" Stretch="Fill" />
                     </Button>
-                    <Button ToolTip="Контролі" Command="{Binding Path=ControlStructureCommand}" Visibility="{Binding Path=IsUserAdminOrTeacher, Converter={StaticResource B2V}}" Style="{StaticResource MenuButtonStyle}">
+                    <Button ToolTip="Контролі" Command="{Binding Path=ControlStructureCommand}" Visibility="{Binding Path=IsUserNotSecretary, Converter={StaticResource B2V}}" Style="{StaticResource MenuButtonStyle}">
                         <Image Source="/StudyingController;component/Images/book_cd_vide.png" Stretch="Fill" />
                     </Button>
                     <Button x:Name="btn_Lessons" ToolTip="Пари"  Visibility="{Binding Path=IsUserAdminOrSecretary, Converter={StaticResource B2V}}" Command="{Binding Path=LessonCommand}" Style="{StaticResource MenuButtonStyle}">
