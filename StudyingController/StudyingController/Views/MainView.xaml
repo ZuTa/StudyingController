@@ -15,7 +15,7 @@
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition  Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <ToolBarTray>
+            <ToolBarTray >
                 <ToolBar>
                     <Button Command="{Binding HomeCommand}" ToolTip="Моя сторінка" Style="{StaticResource MenuButtonStyle}">
                         <Image Source="/StudyingController;component/Images/devid.png" Stretch="Fill" />
