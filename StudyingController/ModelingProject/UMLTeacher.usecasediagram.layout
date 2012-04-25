@@ -10,7 +10,7 @@
       <useCaseMoniker Id="d857f817-d740-4227-8e1b-96e828362366" LastKnownName="Керувати контролями" />
       <relativeChildShapes />
     </useCaseShape>
-    <useCaseAssociationConnector edgePoints="[(4.375 : 2.125); (3.72360679774998 : 2.77639320225002)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+    <useCaseAssociationConnector edgePoints="[(4.375 : 2.125); (3.72360679774998 : 2.77639320225002)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
       <associationMoniker Id="721e8e86-4a29-44b4-8d4b-daa46e828237" />
       <relativeChildShapes />
       <nodes>
@@ -30,11 +30,11 @@
         <useCaseShapeMoniker Id="8cf079d8-b084-4559-b5c3-91f2bf329cf6" />
       </nodes>
     </extendConnector>
-    <useCaseShape Id="5733ca5c-f21a-415f-afd2-0f2a60fba483" absoluteBounds="1.5, 4, 1, 1" customColor="LimeGreen" heightOffset="0">
+    <useCaseShape Id="5733ca5c-f21a-415f-afd2-0f2a60fba483" absoluteBounds="1, 4.25, 1, 1" customColor="LimeGreen" heightOffset="0">
       <useCaseMoniker Id="dcd98f20-accc-42cd-aede-d23b2e5db103" LastKnownName="Редагувати дату проведення контролів" />
       <relativeChildShapes />
     </useCaseShape>
-    <extendConnector edgePoints="[(2.35355339059327 : 4.14644660940673); (3.27639320225002 : 3.22360679774998)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«extend»">
+    <extendConnector edgePoints="[(1.87628834735344 : 4.42074769606574); (3.25193053082158 : 3.21706078553111)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«extend»">
       <extendMoniker Id="a29016dd-7096-4e92-9e11-a43350296473" />
       <relativeChildShapes />
       <nodes>
@@ -42,11 +42,11 @@
         <useCaseShapeMoniker Id="8cf079d8-b084-4559-b5c3-91f2bf329cf6" />
       </nodes>
     </extendConnector>
-    <useCaseShape Id="e097043d-a102-4294-96f5-2c6ba5f83555" absoluteBounds="3, 4.25, 1.125, 1" customColor="LimeGreen" heightOffset="0">
+    <useCaseShape Id="e097043d-a102-4294-96f5-2c6ba5f83555" absoluteBounds="1.875, 5.375, 1.125, 1" customColor="LimeGreen" heightOffset="0">
       <useCaseMoniker Id="d23bb9e8-848a-4558-b433-0775510fdac3" LastKnownName="Виставляти оцінки студентам та коментувати їх" />
       <relativeChildShapes />
     </useCaseShape>
-    <extendConnector edgePoints="[(3.54465184865544 : 4.25025176235232); (3.50892714820844 : 3.24996014983636)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«extend»">
+    <extendConnector edgePoints="[(2.61305293749596 : 5.39997440442271); (3.40914675125766 : 3.24583820247927)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«extend»">
       <extendMoniker Id="0290e389-f416-41f5-b6b8-57febe5897d3" />
       <relativeChildShapes />
       <nodes>
@@ -58,7 +58,7 @@
       <useCaseMoniker Id="edcb2dd8-ebc5-43c4-9ca1-5ccf3fbab2c2" LastKnownName="Керувати файлами" />
       <relativeChildShapes />
     </useCaseShape>
-    <useCaseAssociationConnector edgePoints="[(5.75 : 1.55666666666667); (9.27758190075069 : 2.16811419613012)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+    <useCaseAssociationConnector edgePoints="[(5.75 : 1.55666666666667); (9.27758190075069 : 2.16811419613012)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
       <associationMoniker Id="e658bb61-1896-4965-a721-66db83534461" />
       <relativeChildShapes />
       <nodes>
@@ -70,7 +70,7 @@
       <useCaseMoniker Id="810e6777-6024-44a0-bc10-4202ad085125" LastKnownName="Завантажувати файли у власну бібліотеку" />
       <relativeChildShapes />
     </useCaseShape>
-    <extendConnector edgePoints="[(9.05292607077201 : 3.89310283318027); (9.64624789582247 : 2.49455853127561)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«extend»">
+    <extendConnector edgePoints="[(9.05292607077201 : 3.89310283318027); (9.64624789582247 : 2.49455853127561)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="Black" useCaseStereotype="«extend»">
       <extendMoniker Id="18abdf52-85a7-4277-a709-386f955696fa" />
       <relativeChildShapes />
       <nodes>
@@ -82,7 +82,7 @@
       <useCaseMoniker Id="dcdab9f1-abe5-483e-a3dd-d2c0015efe59" LastKnownName="Редагувати інформацію про файли" />
       <relativeChildShapes />
     </useCaseShape>
-    <extendConnector edgePoints="[(10.2828557324749 : 4.38142292989963); (9.8120173672946 : 2.49806946917842)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«extend»">
+    <extendConnector edgePoints="[(10.2828557324749 : 4.38142292989963); (9.8120173672946 : 2.49806946917842)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="Black" useCaseStereotype="«extend»">
       <extendMoniker Id="49d8fff8-6dbb-451d-9ea5-48ca6113e148" />
       <relativeChildShapes />
       <nodes>
@@ -94,7 +94,7 @@
       <useCaseMoniker Id="0d440f4e-58c0-475d-8edc-a2f785c97424" LastKnownName="Видаляти файли" />
       <relativeChildShapes />
     </useCaseShape>
-    <extendConnector edgePoints="[(11.9964899367183 : 4.15951644621056); (10.0035100632817 : 2.46548355378944)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«extend»">
+    <extendConnector edgePoints="[(11.9964899367183 : 4.15951644621056); (10.0035100632817 : 2.46548355378944)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="Black" useCaseStereotype="«extend»">
       <extendMoniker Id="1e04e384-3dba-41c6-8826-dbcb4fd1d562" />
       <relativeChildShapes />
       <nodes>
@@ -106,7 +106,7 @@
       <useCaseMoniker Id="e317a9f0-c8c4-4f17-b27f-fa689dfb3d68" LastKnownName="Скачувати файли" />
       <relativeChildShapes />
     </useCaseShape>
-    <extendConnector edgePoints="[(13.0274889515763 : 3.94525290598772); (10.0975110484237 : 2.42974709401228)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«extend»">
+    <extendConnector edgePoints="[(13.0274889515763 : 3.94525290598772); (10.0975110484237 : 2.42974709401228)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="Black" useCaseStereotype="«extend»">
       <extendMoniker Id="6c0d5058-0e6c-4878-acd9-065a5a5f0380" />
       <relativeChildShapes />
       <nodes>
@@ -118,7 +118,7 @@
       <useCaseMoniker Id="fa2d6970-8bb0-4cb2-809a-e65471985d8f" LastKnownName="Відкривати файли" />
       <relativeChildShapes />
     </useCaseShape>
-    <extendConnector edgePoints="[(14.5256583509747 : 3.04594305849579); (10.2243416490253 : 2.32905694150421)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«extend»">
+    <extendConnector edgePoints="[(14.5256583509747 : 3.04594305849579); (10.2243416490253 : 2.32905694150421)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="Black" useCaseStereotype="«extend»">
       <extendMoniker Id="20063d1f-ebca-47ab-8c96-24b0fe00fb01" />
       <relativeChildShapes />
       <nodes>
@@ -126,10 +126,22 @@
         <useCaseShapeMoniker Id="f2cd7c19-5a53-4590-b490-8dd9bd813b94" />
       </nodes>
     </extendConnector>
+    <useCaseShape Id="71c0ccbd-bd2e-4055-a564-3f7b2151d170" absoluteBounds="3.5, 6.125, 1, 0.75" customColor="Salmon" heightOffset="0">
+      <useCaseMoniker Id="f2a157c7-0120-455a-b71d-1ac974874a1c" LastKnownName="Керувати файлами контроля" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <extendConnector edgePoints="[(3.94673343818287 : 6.12713406728007); (3.53562352499395 : 3.24936467495768)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«extend»">
+      <extendMoniker Id="b0c101ce-cb8b-4fcb-92c0-205fd027b52d" />
+      <relativeChildShapes />
+      <nodes>
+        <useCaseShapeMoniker Id="71c0ccbd-bd2e-4055-a564-3f7b2151d170" />
+        <useCaseShapeMoniker Id="8cf079d8-b084-4559-b5c3-91f2bf329cf6" />
+      </nodes>
+    </extendConnector>
     <SubsystemShape Id="d3cd0de6-6487-4a08-87b5-5af1ab1eb214" absoluteBounds="6, 3, 1.5, 1" customColor="Salmon">
       <subsystemMoniker Id="167506f0-941b-438a-8fd3-af4d758ebdb7" LastKnownName="Система оповіщень" />
     </SubsystemShape>
-    <useCaseAssociationConnector edgePoints="[(5.625 : 2.125); (6.34090909090909 : 3)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+    <useCaseAssociationConnector edgePoints="[(5.625 : 2.125); (6.34090909090909 : 3)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
       <associationMoniker Id="64cb7306-9e21-4285-92ac-3a300f86266f" />
       <relativeChildShapes />
       <nodes>
@@ -145,6 +157,14 @@
       <relativeChildShapes />
       <nodes>
         <useCaseShapeMoniker Id="8cf079d8-b084-4559-b5c3-91f2bf329cf6" />
+        <SubsystemShapeMoniker Id="c5eb8d8e-e80e-4a53-b422-69aa538b02b8" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <useCaseAssociationConnector edgePoints="[(4.2051823386644 : 6.15802943555934); (4.825 : 5.125)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="e2835591-26fe-422b-871a-444c43941aba" />
+      <relativeChildShapes />
+      <nodes>
+        <useCaseShapeMoniker Id="71c0ccbd-bd2e-4055-a564-3f7b2151d170" />
         <SubsystemShapeMoniker Id="c5eb8d8e-e80e-4a53-b422-69aa538b02b8" />
       </nodes>
     </useCaseAssociationConnector>

@@ -3804,6 +3804,64 @@
         </targetEnds>
       </useCase>
     </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="ca765f57-e3f5-4055-88cc-561f689eea65"
+        name="Керувати файлами контроля"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="07484516-91d8-44f9-8c45-53a7cb170ba4"
+            isDerived="false"
+            sourceEndRoleName="Керувати файлами контроля"
+            targetEndRoleName="Обговорення контролів"
+            isLeaf="false"
+            isAbstract="false">
+            <subsystemMoniker
+              Id="b4dda128-dbef-4c6f-ac48-06d9fa12f7b5"
+              LastKnownName="Обговорення контролів"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="1e5a2b99-4620-4141-bb0a-439402517ebd"
+                  name="Керувати файлами контроля"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ca87672e-5252-4152-8d4f-68ecd59e743e"
+                  name="Обговорення контролів"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <extendedCases>
+          <extend
+            Id="087af502-9b4d-4e0c-baa7-3ee2cc063e7a">
+            <useCaseMoniker
+              Id="d24328a0-e3cd-4db9-af47-a67413047d86"
+              LastKnownName="Керувати контролями"
+              LastKnownLocation="ModelingProject.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
   </packagedElements>
   <primitiveType
     Id="220a3521-e091-4221-bae9-3ef9018e845c"

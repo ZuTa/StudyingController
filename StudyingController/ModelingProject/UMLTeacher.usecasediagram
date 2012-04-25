@@ -1,19 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="5db8ffe1-ca86-424c-9f03-61d7566bcf4d" name="UMLTeacher" linkedPackageId="c829d7c2-ba15-4aff-a283-ec11759644c6" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
-  <profileInstances>
-    <packageHasProfileInstances Id="bed31cb0-d67d-4e7f-8a8e-785d693740b7">
-      <profileInstance Id="d5ebae90-f293-4f93-9146-f4ee806a19ac" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="fcf3dc16-b5e6-4cd1-808c-0a8b93e7961c">
-      <profileInstance Id="2c188866-550d-4a95-be52-b8b248c03eb6" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-  </profileInstances>
   <packagedElements>
     <useCaseModelRootHasTypes>
       <actor Id="c89d778f-6f48-4fec-886f-f1550ebe7d07" name="Викладач" isAbstract="false" isLeaf="false">
@@ -196,8 +182,51 @@
         </extendedCases>
       </useCase>
     </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="f2a157c7-0120-455a-b71d-1ac974874a1c" name="Керувати файлами контроля" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ca765f57-e3f5-4055-88cc-561f689eea65" />
+        <targetEnds>
+          <association Id="e2835591-26fe-422b-871a-444c43941aba" isDerived="false" sourceEndRoleName="Керувати файлами контроля" targetEndRoleName="Обговорення контролів" isLeaf="false" isAbstract="false">
+            <subsystemMoniker Id="73d3d8bf-b543-43a5-9c2d-e16da423e867" LastKnownName="Обговорення контролів" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="18666a41-d0e2-4e88-9755-59407508deac" name="Керувати файлами контроля" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="1e5a2b99-4620-4141-bb0a-439402517ebd" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c4143a87-2bf2-4573-941c-ffe38f917e49" name="Обговорення контролів" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="ca87672e-5252-4152-8d4f-68ecd59e743e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="07484516-91d8-44f9-8c45-53a7cb170ba4" />
+          </association>
+        </targetEnds>
+        <extendedCases>
+          <extend Id="b0c101ce-cb8b-4fcb-92c0-205fd027b52d">
+            <useCaseMoniker Id="d857f817-d740-4227-8e1b-96e828362366" LastKnownName="Керувати контролями" />
+            <elementDefinition Id="087af502-9b4d-4e0c-baa7-3ee2cc063e7a" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
   </packagedElements>
   <package Id="c829d7c2-ba15-4aff-a283-ec11759644c6" name="ModelingProject">
     <elementDefinition Id="6126932b-a0fc-4c12-819c-d94f72bd991f" />
+    <profileInstances>
+      <packageHasProfileInstances Id="bed31cb0-d67d-4e7f-8a8e-785d693740b7">
+        <profileInstance Id="d5ebae90-f293-4f93-9146-f4ee806a19ac" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="fcf3dc16-b5e6-4cd1-808c-0a8b93e7961c">
+        <profileInstance Id="2c188866-550d-4a95-be52-b8b248c03eb6" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </useCaseModelRoot>
