@@ -4,10 +4,11 @@
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
             mc:Ignorable="d" 
-            d:DesignHeight="300" d:DesignWidth="300" >
+            d:DesignHeight="300" d:DesignWidth="300" 
+            xmlns:res="clr-namespace:StudyingController.Properties">
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MaxWidth="350" MinWidth="250" MaxHeight="400" MinHeight="320" IsEnabled="{Binding IsNotBusy}">
         <StackPanel Margin="40,20,40,20">
-            <GroupBox Header="Користувач">
+            <GroupBox Header="{x:Static res:Resources.CtrlUser}">
                 <Grid >
                     <Grid.RowDefinitions>
                         <RowDefinition></RowDefinition>
@@ -19,38 +20,40 @@
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" Content="Логін:"></Label>
+                    <Label Grid.Row="0" Grid.Column="0" Content="{x:Static res:Resources.CtrlLogin}"></Label>
                     <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Style="{StaticResource ValidationTextBoxToolTipStyle}"
                              Text="{Binding Path=LoginConfig.Login, UpdateSourceTrigger=PropertyChanged,
                                                                                     ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" IsEnabled="{Binding CanChange}"></TextBox>
-                    <Label Grid.Row="1" Grid.Column="0" Content="Пароль:"></Label>
+                    <Label Grid.Row="1" Grid.Column="0" Content="{x:Static res:Resources.CtrlPassword}"></Label>
                     <PasswordBox Name="password" Grid.Row="1" Grid.Column="1" Margin="5" IsEnabled="{Binding CanChange}"></PasswordBox>
-                    <CheckBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Content="Запам'ятати" IsChecked="{Binding Path=LoginConfig.IsMemorizeLogin, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding CanChange}"></CheckBox>
-                    <CheckBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Content="Автологін" IsChecked="{Binding Path=LoginConfig.IsAutologin, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding CanChange}"></CheckBox>
+                    <CheckBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Content="{x:Static res:Resources.CtrlRemember}" IsChecked="{Binding Path=LoginConfig.IsMemorizeLogin, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding CanChange}"></CheckBox>
+                    <CheckBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Content="{x:Static res:Resources.CtrlAutologin}" IsChecked="{Binding Path=LoginConfig.IsAutologin, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding CanChange}"></CheckBox>
                 </Grid>
             </GroupBox>
-            <GroupBox HorizontalAlignment="Stretch" Header="Зв'язок" Margin="0,5,0,0">
+            <GroupBox HorizontalAlignment="Stretch" Header="{x:Static res:Resources.CtrlConnection}" Margin="0,5,0,0">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="5.399"></ColumnDefinition>
+                        <ColumnDefinition Width="18.231"/>
+                        <ColumnDefinition Width="29.769"/>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" Content="Сервер:"></Label>
-                    <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Style="{StaticResource ValidationTextBoxToolTipStyle}"
+                    <Label Grid.Row="0" Grid.Column="0" Content="{x:Static res:Resources.CtrlServer}" Grid.ColumnSpan="3"></Label>
+                    <TextBox Grid.Row="0" Grid.Column="3" Margin="5" Style="{StaticResource ValidationTextBoxToolTipStyle}"
                              Text="{Binding Path=LoginConfig.Server, UpdateSourceTrigger=PropertyChanged,
                                                                                     ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" IsEnabled="{Binding CanChange}"></TextBox>
-                    <Label Grid.Row="1" Grid.Column="0" Content="Порт:"></Label>
-                    <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Style="{StaticResource ValidationTextBoxToolTipStyle}"
+                    <Label Grid.Row="1" Grid.Column="0" Content="{x:Static res:Resources.CtrlPort}" Grid.ColumnSpan="3"></Label>
+                    <TextBox Grid.Row="1" Grid.Column="3" Margin="5" Style="{StaticResource ValidationTextBoxToolTipStyle}"
                              Text="{Binding Path=LoginConfig.Port, UpdateSourceTrigger=PropertyChanged,
                                                                                     ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" IsEnabled="{Binding CanChange}"></TextBox>
                 </Grid>
             </GroupBox>
-            
-            <Button MinHeight="20" MaxHeight="40" MinWidth="50" MaxWidth="100" Margin="0,5,0,0" IsDefault="True" Content="Увійти" Command="{Binding Path=LoginCommand}" IsEnabled="{Binding CanChange}"></Button>
+
+            <Button MinHeight="20" MaxHeight="40" MinWidth="50" MaxWidth="100" Margin="0,5,0,0" IsDefault="True" Content="{x:Static res:Resources.CtrlEnter}" Command="{Binding Path=LoginCommand}" IsEnabled="{Binding CanChange}"></Button>
             
             <TextBlock MaxWidth="230" HorizontalAlignment="Center" Margin="5" TextWrapping="Wrap" Text="{Binding Path=LoginDataError, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
         </StackPanel>

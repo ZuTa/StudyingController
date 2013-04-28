@@ -282,4 +282,34 @@
   <data name="TeacherTxt" xml:space="preserve">
     <value>Викладач</value>
   </data>
+  <data name="CtrlAutologin" xml:space="preserve">
+    <value>Автологін</value>
+  </data>
+  <data name="CtrlConnection" xml:space="preserve">
+    <value>Зв'язок</value>
+  </data>
+  <data name="CtrlEnter" xml:space="preserve">
+    <value>Вхід</value>
+  </data>
+  <data name="CtrlLogin" xml:space="preserve">
+    <value>Логін:</value>
+  </data>
+  <data name="CtrlMainTitle" xml:space="preserve">
+    <value>Інтерактивно-інформаційна система Studying Controller</value>
+  </data>
+  <data name="CtrlPassword" xml:space="preserve">
+    <value>Пароль:</value>
+  </data>
+  <data name="CtrlPort" xml:space="preserve">
+    <value>Порт:</value>
+  </data>
+  <data name="CtrlRemember" xml:space="preserve">
+    <value>Запам'ятати</value>
+  </data>
+  <data name="CtrlServer" xml:space="preserve">
+    <value>Сервер:</value>
+  </data>
+  <data name="CtrlUser" xml:space="preserve">
+    <value>Користувач</value>
+  </data>
 </root>

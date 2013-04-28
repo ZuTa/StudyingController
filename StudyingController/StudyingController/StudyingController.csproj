@@ -72,6 +72,11 @@
     <Compile Include="Converters\ReadOnlyModeToBoolConverter.cs" />
     <Compile Include="Converters\PictureEnumToPictureConverter.cs" />
     <Compile Include="Converters\UniversalToLocalDateConverter.cs" />
+    <Compile Include="Properties\Resources.en-US.Designer.cs">
+      <DependentUpon>Resources.en-US.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="ViewModels\AttachmentsViewModel.cs" />
     <Compile Include="ViewModels\BaseSaveableViewModel.cs" />
     <Compile Include="ViewModels\BaseTreeViewModel.cs" />
@@ -417,8 +422,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Properties\Resources.en-US.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.en-US.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config">
