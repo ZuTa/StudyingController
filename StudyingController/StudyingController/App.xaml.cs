@@ -29,7 +29,7 @@ namespace StudyingController
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US"); 
+            //Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US"); 
             this.DispatcherUnhandledException += new System.Windows.Threading.DispatcherUnhandledExceptionEventHandler(App_DispatcherUnhandledException);
             
             mainWindow = new MainWindow();

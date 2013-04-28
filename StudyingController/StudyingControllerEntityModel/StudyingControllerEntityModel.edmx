@@ -2084,7 +2084,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="StudyingControllerEntityModel" ZoomLevel="86">
-        <EntityTypeShape EntityType="UniversityDBModel.SystemUser" Width="1.5" PointX="3.5" PointY="0.5" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="UniversityDBModel.SystemUser" Width="1.5" PointX="7.375" PointY="0.5" Height="0.4" IsExpanded="true" />
         <EntityTypeShape EntityType="UniversityDBModel.FacultyAdmin" Width="1.5" PointX="4.25" PointY="1.75" Height="0.4" IsExpanded="false" />
         <InheritanceConnector EntityType="UniversityDBModel.FacultyAdmin" ManuallyRouted="false">
           <ConnectorPoint PointX="4.25" PointY="0.9" />
@@ -2102,7 +2102,7 @@
           <ConnectorPoint PointX="5.40625" PointY="3.125" />
           <ConnectorPoint PointX="5.40625" PointY="2.15" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="UniversityDBModel.UserInformation" Width="1.5" PointX="0.5" PointY="0.5" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="UniversityDBModel.UserInformation" Width="1.5" PointX="0.5" PointY="0.5" Height="0.4" IsExpanded="true" />
         <AssociationConnector Association="UniversityDBModel.FK_UserInformation_SystemUser" >
           <ConnectorPoint PointX="3.5" PointY="0.7" />
           <ConnectorPoint PointX="2" PointY="0.7" />
