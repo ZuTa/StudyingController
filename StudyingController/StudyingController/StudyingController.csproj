@@ -165,6 +165,7 @@
     <Compile Include="ViewModels\UniversityStructureViewModel.cs" />
     <Compile Include="ViewModels\UserInformationViewModel.cs" />
     <Compile Include="ViewModels\UserProfileViewModel.cs" />
+    <Compile Include="ViewModels\UserRateListViewModel.cs" />
     <Compile Include="ViewModels\UsersStructureViewModel.cs" />
     <Compile Include="ViewModels\UsersTreeViewModel.cs" />
     <Compile Include="Views\AttachmentsView.xaml.cs">
@@ -259,6 +260,9 @@
     </Compile>
     <Compile Include="Views\UserProfileView.xaml.cs">
       <DependentUpon>UserProfileView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserRateListView.xaml.cs">
+      <DependentUpon>UserRateListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UsersTreeView.xaml.cs">
       <DependentUpon>UsersTreeView.xaml</DependentUpon>
@@ -402,6 +406,10 @@
     <Page Include="Views\UserProfileView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserRateListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\UsersTreeView.xaml">
       <SubType>Designer</SubType>

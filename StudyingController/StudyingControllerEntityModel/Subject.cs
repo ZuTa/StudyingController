@@ -30,7 +30,8 @@ namespace StudyingControllerEntityModel
             {
                 ID = this.ID,
                 Name = this.Name,
-                CathedraID = this.CathedraID
+                CathedraID = this.CathedraID,
+                Rate = this.Rate
             };
         }
         public void Assign(SubjectDTO entity)
@@ -38,6 +39,7 @@ namespace StudyingControllerEntityModel
             this.ID = entity.ID;
             this.Name = entity.Name;
             this.CathedraID = entity.CathedraID;
+            this.Rate = entity.Rate;
         }
 
 

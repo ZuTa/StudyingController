@@ -180,6 +180,7 @@ namespace StudyingController.ViewModels
 
         private LessonStuctureViewModel lectureStructureViewModel;
         private UniversityStructureViewModel universityStructureViewModel;
+        private UserRateListViewModel userRateListViewModel;
         private UsersStructureViewModel usersStructureViewModel;
         private AttachmentsViewModel attachmentsViewModel;
         private ControlStructureViewModel controlStructureViewModel;
@@ -201,6 +202,17 @@ namespace StudyingController.ViewModels
         #endregion
 
         #region Commands
+
+        private RelayCommand rateCommand;
+        public RelayCommand RateCommand
+        {
+            get
+            {
+                if (rateCommand == null)
+                    rateCommand = new RelayCommand((param) => OpenUserRates());
+                return rateCommand;
+            }
+        }
 
         private RelayCommand universityStructureCommand;
         public RelayCommand UniversityStructureCommand
@@ -354,6 +366,14 @@ namespace StudyingController.ViewModels
             }
 
             ChangeCurrentWorkspace(lectureStructureViewModel);
+        }
+
+        private void OpenUserRates()
+        {
+            if (userRateListViewModel == null)
+                userRateListViewModel = new UserRateListViewModel(UserInterop, ControllerInterop, Dispatcher);
+
+            ChangeCurrentWorkspace(userRateListViewModel);
         }
 
         private void OpenUniversityStructure()

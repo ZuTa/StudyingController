@@ -22,5 +22,13 @@ namespace EntitiesDTO
             get { return cathedraID; }
             set { cathedraID = value; }
         }
+
+        private int rate;
+        [DataMember]
+        public int Rate
+        {
+            get { return rate; }
+            set { rate = value; }
+        }
     }
 }
