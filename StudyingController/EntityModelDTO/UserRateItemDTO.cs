@@ -14,5 +14,11 @@ namespace EntitiesDTO
 
         [DataMember]
         public double Rate { get; set; }
+
+        public decimal RateDecimal 
+        {
+            get { return Convert.ToDecimal(Rate); }
+            set { Rate = Decimal.ToDouble(value); }
+        }
     }
 }

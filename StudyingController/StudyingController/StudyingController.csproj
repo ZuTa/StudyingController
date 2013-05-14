@@ -67,6 +67,8 @@
     <Compile Include="Common\PasswordGenerator.cs" />
     <Compile Include="Common\TreeViewHelper.cs" />
     <Compile Include="Common\ViewHelper.cs" />
+    <Compile Include="Controls\RatingsControl.xaml.cs" />
+    <Compile Include="Controls\StarControl.xaml.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\EditModeToVisibilityConverter.cs" />
     <Compile Include="Converters\ReadOnlyModeToBoolConverter.cs" />
@@ -166,6 +168,7 @@
     <Compile Include="ViewModels\UserInformationViewModel.cs" />
     <Compile Include="ViewModels\UserProfileViewModel.cs" />
     <Compile Include="ViewModels\UserRateListViewModel.cs" />
+    <Compile Include="ViewModels\UserRateStructureViewModel.cs" />
     <Compile Include="ViewModels\UsersStructureViewModel.cs" />
     <Compile Include="ViewModels\UsersTreeViewModel.cs" />
     <Compile Include="Views\AttachmentsView.xaml.cs">
@@ -267,6 +270,14 @@
     <Compile Include="Views\UsersTreeView.xaml.cs">
       <DependentUpon>UsersTreeView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\RatingsControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\StarControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -608,6 +619,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\preferences_desktop_notification %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\star.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

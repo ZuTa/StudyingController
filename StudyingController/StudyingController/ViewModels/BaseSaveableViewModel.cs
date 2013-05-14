@@ -20,7 +20,7 @@ namespace StudyingController.ViewModels
         public abstract bool IsModified { get;}
 
         private EditModes editMode;
-        public EditModes EditMode
+        public virtual EditModes EditMode
         {
             get { return editMode; }
             set { editMode = value; }

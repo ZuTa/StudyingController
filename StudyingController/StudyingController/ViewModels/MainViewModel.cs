@@ -180,7 +180,7 @@ namespace StudyingController.ViewModels
 
         private LessonStuctureViewModel lectureStructureViewModel;
         private UniversityStructureViewModel universityStructureViewModel;
-        private UserRateListViewModel userRateListViewModel;
+        private UserRateStructureViewModel userRateStructureViewModel;
         private UsersStructureViewModel usersStructureViewModel;
         private AttachmentsViewModel attachmentsViewModel;
         private ControlStructureViewModel controlStructureViewModel;
@@ -370,10 +370,10 @@ namespace StudyingController.ViewModels
 
         private void OpenUserRates()
         {
-            if (userRateListViewModel == null)
-                userRateListViewModel = new UserRateListViewModel(UserInterop, ControllerInterop, Dispatcher);
+            if (userRateStructureViewModel == null)
+                userRateStructureViewModel = new UserRateStructureViewModel(UserInterop, ControllerInterop, Dispatcher);
 
-            ChangeCurrentWorkspace(userRateListViewModel);
+            ChangeCurrentWorkspace(userRateStructureViewModel);
         }
 
         private void OpenUniversityStructure()
