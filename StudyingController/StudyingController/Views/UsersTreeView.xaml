@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:common="clr-namespace:StudyingController.Common"
+             xmlns:res="clr-namespace:StudyingController.Properties"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <TreeView IsEnabled="{Binding IsNotBusy}" ItemsSource="{Binding Tree.Nodes}" common:TreeViewHelper.SelectedEntityChangedCommand="{Binding SelectedEntityChangedCommand}" common:TreeViewHelper.SelectedEntity="{Binding CurrentEntity}">
