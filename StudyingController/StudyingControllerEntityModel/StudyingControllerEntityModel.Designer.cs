@@ -50,7 +50,6 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "Practice_Teacher_Student", "Practice_Teacher", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.PracticeTeacher), "Student", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Student))]
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "Student_Group", "Group", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Group), "Student", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Student))]
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_System_Configuration_StudyRange", "StudyRange", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.StudyRange), "System_Configuration", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.SystemConfiguration), true)]
-[assembly: EdmRelationshipAttribute("UniversityDBModel", "Control_Attachment", "Attachment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Attachment), "Control", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Control))]
 
 #endregion
 
@@ -744,28 +743,6 @@ namespace StudyingControllerEntityModel
                 }
             }
         }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "Control_Attachment", "Control")]
-        public EntityCollection<Control> Controls
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Control>("UniversityDBModel.Control_Attachment", "Control");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Control>("UniversityDBModel.Control_Attachment", "Control", value);
-                }
-            }
-        }
 
         #endregion
 
@@ -1146,28 +1123,6 @@ namespace StudyingControllerEntityModel
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ControlMessage>("UniversityDBModel.FK_ControlMessage_Control", "ControlMessage", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "Control_Attachment", "Attachment")]
-        public EntityCollection<Attachment> Attachments
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Attachment>("UniversityDBModel.Control_Attachment", "Attachment");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Attachment>("UniversityDBModel.Control_Attachment", "Attachment", value);
                 }
             }
         }
@@ -4269,12 +4224,14 @@ namespace StudyingControllerEntityModel
         /// <param name="id">Initial value of the ID property.</param>
         /// <param name="cathedraID">Initial value of the CathedraID property.</param>
         /// <param name="name">Initial value of the Name property.</param>
-        public static Subject CreateSubject(global::System.Int32 id, global::System.Int32 cathedraID, global::System.String name)
+        /// <param name="rate">Initial value of the Rate property.</param>
+        public static Subject CreateSubject(global::System.Int32 id, global::System.Int32 cathedraID, global::System.String name, global::System.Int32 rate)
         {
             Subject subject = new Subject();
             subject.ID = id;
             subject.CathedraID = cathedraID;
             subject.Name = name;
+            subject.Rate = rate;
             return subject;
         }
 
@@ -4356,6 +4313,30 @@ namespace StudyingControllerEntityModel
         private global::System.String _Name;
         partial void OnNameChanging(global::System.String value);
         partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Rate
+        {
+            get
+            {
+                return _Rate;
+            }
+            set
+            {
+                OnRateChanging(value);
+                ReportPropertyChanging("Rate");
+                _Rate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Rate");
+                OnRateChanged();
+            }
+        }
+        private global::System.Int32 _Rate;
+        partial void OnRateChanging(global::System.Int32 value);
+        partial void OnRateChanged();
 
         #endregion
 

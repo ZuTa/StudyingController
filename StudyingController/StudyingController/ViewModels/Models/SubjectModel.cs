@@ -24,6 +24,20 @@ namespace StudyingController.ViewModels.Models
             }
         }
 
+        private int rate;
+        public int Rate
+        {
+            get { return rate; }
+            set
+            {
+                if (rate != value)
+                {
+                    rate = value;
+                    OnPropertyChanged("Rate");
+                }
+            }
+        }
+
         #endregion
 
         #region Constructors
@@ -49,6 +63,7 @@ namespace StudyingController.ViewModels.Models
 
             SubjectDTO subject = entity as SubjectDTO;
             this.CathedraID = subject.CathedraID;
+            this.Rate = subject.Rate;
         }
 
         public SubjectDTO ToDTO()
@@ -58,7 +73,14 @@ namespace StudyingController.ViewModels.Models
                 ID = this.ID,
                 Name = this.Name,
                 CathedraID = this.CathedraID,
+                Rate = this.Rate,
             };
+        }
+
+        protected override string Validate(string property)
+        {
+            //TODO: Add validation
+            return base.Validate(property);
         }
         #endregion
     }

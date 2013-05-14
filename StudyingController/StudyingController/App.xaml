@@ -137,6 +137,10 @@
                 <v:UserProfileView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type vm:UserRateListViewModel}">
+                <v:UserRateListView/>
+            </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>
