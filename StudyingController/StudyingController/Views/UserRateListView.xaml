@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:controls ="clr-namespace:Controls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     
@@ -14,7 +15,13 @@
                 <GridViewColumn Header="Рейтинг">
                     <GridViewColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Rate}"/>
+                            <controls:RatingsControl Value="{Binding Rate}"  StarForegroundColor="Orange"  BackgroundColor="White" NumberOfStars="5" Maximum="100">
+                                <controls:RatingsControl.ToolTip>
+                                    <TextBlock Text="{Binding Rate}"></TextBlock>
+                                </controls:RatingsControl.ToolTip>
+
+                            </controls:RatingsControl>
+                                <!--<TextBlock Text="{Binding Rate}"/>-->
                         </DataTemplate>
                     </GridViewColumn.CellTemplate>
                 </GridViewColumn>

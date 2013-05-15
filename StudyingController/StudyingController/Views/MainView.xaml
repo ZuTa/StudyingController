@@ -25,7 +25,9 @@
                     </Button>
                 </ToolBar>
                 <ToolBar>
-                    <Button Content="Rate" Command="{Binding Path=RateCommand}" />
+                    <Button ToolTip="Рейтинг" Command="{Binding Path=RateCommand}" Visibility="{Binding Path=IsUserAdminOrSecretary, Converter={StaticResource B2V}}" Style="{StaticResource MenuButtonStyle}">
+                        <Image Source="/StudyingController;component/Images/star.png" Stretch="Fill" />
+                    </Button>
                     <Button ToolTip="Структура" Command="{Binding Path=UniversityStructureCommand}" Visibility="{Binding Path=IsUserAdminOrSecretary, Converter={StaticResource B2V}}" Style="{StaticResource MenuButtonStyle}">
                         <Image Source="/StudyingController;component/Images/department.png" Stretch="Fill" />
                     </Button>

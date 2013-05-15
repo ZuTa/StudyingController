@@ -202,6 +202,5 @@ namespace StudyingController.ViewModels
 
         #endregion
 
-       
     }
 }
