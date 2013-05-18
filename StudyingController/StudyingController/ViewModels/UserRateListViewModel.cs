@@ -11,22 +11,27 @@ namespace StudyingController.ViewModels
 {
     public class UserRateListViewModel : SaveableViewModel
     {
+        private BaseEntityDTO entity;
         private ObservableCollection<UserRateItemDTO> rates;
         public ReadOnlyObservableCollection<UserRateItemDTO> Rates { get; private set; }
 
         public UserRateListViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, BaseEntityDTO entity)
             : base(userInterop, controllerInterop, dispatcher)
         {
+            this.entity = entity;
             rates = new ObservableCollection<UserRateItemDTO>();
-
             Rates = new ReadOnlyObservableCollection<UserRateItemDTO>(rates);
-            
         }
 
         protected override void LoadData()
         {
-            rates.Add( new UserRateItemDTO { Rate = 50, User = new SystemUserDTO { UserInformation = new UserInformationDTO { FirstName = "Max", LastName ="Pyzhov"}}});
-            rates.Add(new UserRateItemDTO { Rate = 27, User = new SystemUserDTO { UserInformation = new UserInformationDTO { FirstName = "Artemko", LastName = "Jermak" } } });
+            foreach (var r in ControllerInterop.Service.GetStudentRateList(this.ControllerInterop.Session, entity))
+            {
+                r.Rate *= 100;
+                rates.Add(r);
+            }
+            //rates.Add( new UserRateItemDTO { Rate = 50, User = new SystemUserDTO { UserInformation = new UserInformationDTO { FirstName = "Max", LastName ="Pyzhov"}}});
+            //rates.Add(new UserRateItemDTO { Rate = 27, User = new SystemUserDTO { UserInformation = new UserInformationDTO { FirstName = "Artemko", LastName = "Jermak" } } });
         }
 
         protected override void ClearData()

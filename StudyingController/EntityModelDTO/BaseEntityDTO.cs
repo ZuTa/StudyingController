@@ -8,6 +8,10 @@ using System.Data.Objects.DataClasses;
 namespace EntitiesDTO
 {
     [DataContract]
+    [KnownType(typeof(InstituteDTO))]
+    [KnownType(typeof(FacultyDTO))]
+    [KnownType(typeof(CathedraDTO))]
+    [KnownType(typeof(GroupDTO))]
     public abstract class BaseEntityDTO 
     {
         private int id;

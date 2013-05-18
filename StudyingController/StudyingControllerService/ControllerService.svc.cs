@@ -2115,20 +2115,43 @@ namespace StudyingControllerService
                 using (UniversityEntities context = new UniversityEntities())
                 {
                     var students = new List<Student>();
-                    var subjectIDs = new List<int>();
                     var groupIDs = new List<int>();
 
                     if (universityStructureItem is InstituteDTO)
                     {
-                        groupIDs.AddRange(context.Institutes.Where(i => i.ID == universityStructureItem.ID).First().Faculties.SelectMany(f => f.Cathedras.SelectMany(c => c.Groups.Select(g => g.ID))));
+                        groupIDs.AddRange(context.Institutes.Where(i => i.ID == universityStructureItem.ID).AsEnumerable().Select(i => 
+                        {
+                            context.LoadProperty(i, "Faculties");
+                            return i;
+                        }).First().Faculties.SelectMany(f =>
+                        {
+                            context.LoadProperty(f, "Cathedras");
+                            return f.Cathedras;
+                        }).SelectMany(c =>
+                        {
+                            context.LoadProperty(c, "Groups");
+                            return c.Groups.Select(g => g.ID);
+                        }));
                     }
                     else if (universityStructureItem is FacultyDTO)
                     {
-                        groupIDs.AddRange(context.Faculties.Where(f => f.ID == universityStructureItem.ID).First().Cathedras.SelectMany(c => c.Groups.Select(g => g.ID)));
+                        groupIDs.AddRange(context.Faculties.Where(f => f.ID == universityStructureItem.ID).AsEnumerable().Select(f => 
+                        { 
+                            context.LoadProperty(f, "Cathedras"); 
+                            return f; 
+                        }).First().Cathedras.SelectMany(c => 
+                        { 
+                            context.LoadProperty(c, "Groups"); 
+                            return c.Groups.Select(g => g.ID); 
+                        }));
                     }
                     else if (universityStructureItem is CathedraDTO)
                     {
-                        groupIDs.AddRange(context.Cathedras.Where(c => c.ID == universityStructureItem.ID).First().Groups.Select(g => g.ID));
+                        groupIDs.AddRange(context.Cathedras.Where(c => c.ID == universityStructureItem.ID).AsEnumerable().SelectMany(c =>
+                        {
+                            context.LoadProperty(c, "Groups");
+                            return c.Groups.Select(g => g.ID);
+                        }));
                     }
                     else if (universityStructureItem is GroupDTO)
                     {
@@ -2144,29 +2167,57 @@ namespace StudyingControllerService
                         var group = context.Groups.Where(g => g.ID == groupID).First();
                         if (group != null)
                         {
-                            students = group.Students.ToList();
-                            var lectureSubjectIDs = group.Lectures.Select(l => l.Subject.ID);
-                            var practiceSubjectIDs = students.SelectMany(student => student.Practice_Teacher.Select(pt => pt.Practice.Subject.ID));
-
-                            subjectIDs = lectureSubjectIDs.Intersect(practiceSubjectIDs).ToList();
+                            context.LoadProperty(group, "Students");
+                            context.LoadProperty(group, "Lectures");
+                            
+                            students.AddRange(group.Students);
                         }
                     }
 
-                    result = students.Select<Student, UserRateItemDTO>(student => new UserRateItemDTO()
+                    result = students.Select<Student, UserRateItemDTO>(student => 
                     {
-                        Rate = Convert.ToDouble(subjectIDs.Average(subjectID =>
+                        context.LoadProperty(student, "Groups");
+                        var lectureControls = student.Groups.SelectMany(g =>
+                            {
+                                context.LoadProperty(g, "Lectures");
+                                return g.Lectures.SelectMany(l => 
+                                {
+                                    context.LoadProperty(l, "LectureControls");
+                                    return l.LectureControls;
+                                });
+                            });
+
+                        context.LoadProperty(student, "Practice_Teacher");
+
+                        var practiceControls = student.Practice_Teacher.SelectMany(pt =>
+                            {
+                                context.LoadProperty(pt, "Practice");
+                                return pt.Practice.PracticeControls;
+                            });
+
+                        var lectureMarksSum = (lectureControls.Select(lc =>
                         {
-                            var lectureControls = context.Lectures.Where(l => l.SubjectID == subjectID).SelectMany(l => l.LectureControls);
-                            var lectureRate = (lectureControls.Sum(lc => lc.LectureControlMarks.First(lcm => lcm.StudentID == student.ID).MarkValue)) / lectureControls.Sum(lc => lc.MaxMark);
+                            context.LoadProperty(lc, "LectureControlMarks");
+                            return lc;
+                        }).Sum(lc => lc.LectureControlMarks.First(lcm => lcm.StudentID == student.ID).MarkValue));
 
-                            var practiceControls = context.Practices.Where(s => s.SubjectID == subjectID).SelectMany(s => s.PracticeControls);
-                            var practiceRate = (practiceControls.Sum(pc => pc.PracticeControlMarks.First(pcm => pcm.StudentID == student.ID).MarkValue)) / practiceControls.Sum(pc => pc.MaxMark);
+                        var lectureMaxSum = lectureControls.Sum(lc => lc.MaxMark);
 
-                            return (lectureRate + practiceRate) / 2;
-                        })),
+                        var practiceMarksSum = (practiceControls.Select(pc =>
+                        {
+                            context.LoadProperty(pc, "PracticeControlMarks");
+                            return pc;
+                        }).Sum(pc => pc.PracticeControlMarks.First(pcm => pcm.StudentID == student.ID).MarkValue));
 
-                        User = student.ToDTO()
-                    }).ToList();
+                        var practiceMaxSum = practiceControls.Sum(pc => pc.MaxMark);
+
+                        context.LoadProperty(student, "UserInformation");
+                        return new UserRateItemDTO()
+                        {
+                            Rate = (lectureControls.Any() || practiceControls.Any()) ? Convert.ToDouble((lectureMarksSum + practiceMarksSum) / (lectureMaxSum + practiceMaxSum)) : 0,
+                            User = student.ToDTO()
+                        };
+                    }).OrderByDescending(elem => elem.Rate).ToList();
                 }
                 return result;
             }
