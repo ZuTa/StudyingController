@@ -20,13 +20,28 @@ namespace StudyingController.ViewModels
             rates = new ObservableCollection<UserRateItemDTO>();
 
             Rates = new ReadOnlyObservableCollection<UserRateItemDTO>(rates);
-            
+
         }
 
         protected override void LoadData()
         {
-            rates.Add( new UserRateItemDTO { Rate = 50, User = new SystemUserDTO { UserInformation = new UserInformationDTO { FirstName = "Max", LastName ="Pyzhov"}}});
-            rates.Add(new UserRateItemDTO { Rate = 27, User = new SystemUserDTO { UserInformation = new UserInformationDTO { FirstName = "Artemko", LastName = "Jermak" } } });
+            rates.Add(new UserRateItemDTO { Rate = 100, User = new SystemUserDTO { UserInformation = new UserInformationDTO { FirstName = "Максим", LastName = "Пижов" } } });
+            rates.Add(new UserRateItemDTO { Rate = 100, User = new SystemUserDTO { UserInformation = new UserInformationDTO { FirstName = "Артем", LastName = "Єрмак" } } });
+            rates.Add(new UserRateItemDTO { Rate = 100, User = new SystemUserDTO { UserInformation = new UserInformationDTO { FirstName = "Тарас", LastName = "Зубик" } } });
+            rates.Add(new UserRateItemDTO { Rate = 100, User = new SystemUserDTO { UserInformation = new UserInformationDTO { FirstName = "Юрій", LastName = "Здебський" } } });
+            rates.Add(new UserRateItemDTO { Rate = 100, User = new SystemUserDTO { UserInformation = new UserInformationDTO { FirstName = "Ярослав", LastName = "Страх" } } });
+            rates.Add(new UserRateItemDTO { Rate = 100, User = new SystemUserDTO { UserInformation = new UserInformationDTO { FirstName = "Дмитро", LastName = "Редько" } } });
+            rates.Add(new UserRateItemDTO { Rate = 100, User = new SystemUserDTO { UserInformation = new UserInformationDTO { FirstName = "Дмитро", LastName = "Гиць" } } });
+            rates.Add(new UserRateItemDTO { Rate = 100, User = new SystemUserDTO { UserInformation = new UserInformationDTO { FirstName = "Вікторія", LastName = "Яременко" } } });
+            rates.Add(new UserRateItemDTO { Rate = 100, User = new SystemUserDTO { UserInformation = new UserInformationDTO { FirstName = "Олена", LastName = "Сем\'янків" } } });
+            rates.Add(new UserRateItemDTO { Rate = 100, User = new SystemUserDTO { UserInformation = new UserInformationDTO { FirstName = "Юлія", LastName = "Юр\'єва" } } });
+            rates.Add(new UserRateItemDTO { Rate = 100, User = new SystemUserDTO { UserInformation = new UserInformationDTO { FirstName = "Ілля", LastName = "Шумілов" } } });
+            rates.Add(new UserRateItemDTO { Rate = 100, User = new SystemUserDTO { UserInformation = new UserInformationDTO { FirstName = "Олександр", LastName = "Кочубеєнко" } } });
+            Random rand = new Random();
+
+            rates.ToList().ForEach(item => item.Rate = rand.Next(100));
+            rates = new ObservableCollection<UserRateItemDTO>(rates.OrderBy(item => -item.Rate).ToList());
+            Rates = new ReadOnlyObservableCollection<UserRateItemDTO>(rates);
         }
 
         protected override void ClearData()
