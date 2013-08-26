@@ -255,5 +255,9 @@ namespace StudyingControllerService
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
         void SaveMarks(Session session, ControlDTO control, List<MarkDTO> marks);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        List<UserRateItemDTO> GetStudentRateList(Session session, BaseEntityDTO universityStructureItem);
     }
 }
