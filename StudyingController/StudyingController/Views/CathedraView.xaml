@@ -1,7 +1,67 @@
-﻿<Button Width="300" Height="300">    
-  <StackPanel Orientation="Vertical">        
-    <TextBlock FontSize="18" FontFamily="Elephant">Hello</TextBlock>        
-    <Image Height="100" Source="path to source" />        
-    <Ellipse Height="100" Fill="Blue"/>     
-  </StackPanel>
-</Button>
+﻿<UserControl x:Class="StudyingController.Views.CathedraView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Назва :" Style="{StaticResource TextBlockStyle}"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=Cathedra.Name, UpdateSourceTrigger=PropertyChanged,
+                                                            ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
+                 Style="{StaticResource ValidationTextBoxToolTipStyle}"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Факультет :" Style="{StaticResource TextBlockStyle}"/>
+        <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Faculties}" SelectedValue="{Binding Cathedra.Faculty, UpdateSourceTrigger=PropertyChanged,
+                                                            ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" Style="{StaticResource ValidationComboBoxToolTipStyle}"/>
+
+        <TextBlock Grid.Row="2" Grid.ColumnSpan="2" Text="Предмети :" Style="{StaticResource TextBlockStyle}"/>
+
+        <Grid Grid.Row="3" Grid.ColumnSpan="2" Margin="5,0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="btnAdd" Grid.Row="0" Grid.Column="1" Command="{Binding AddSubjectCommand}" ToolTip="Додати" Style="{StaticResource EditableButtonStyle}">
+                <Image Source="/StudyingController;component/Images/1327612523_Add.png" Stretch="Fill" />
+            </Button>
+            <Button x:Name="btnRemove" Grid.Row="1" Grid.Column="1" Command="{Binding RemoveSubjectCommand}" CommandParameter="{Binding ElementName=lbSubjects, Path=SelectedItem}" ToolTip="Видалити" Style="{StaticResource EditableButtonStyle}">
+                <Image Source="/StudyingController;component/Images/1327612550_delete.png" Stretch="Fill" />
+            </Button>
+
+            <ListBox HorizontalContentAlignment="Stretch" x:Name="lbSubjects" Grid.RowSpan="3" ItemsSource="{Binding Cathedra.Subjects}" SelectionChanged="lbSubjects_SelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100*"/>
+                                <ColumnDefinition Width="20*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBox Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" Style="{StaticResource ValidationTextBoxToolTipStyle}" GotFocus="TextBox_GotFocus"/>
+                            <TextBox Grid.Column="1" Text="{Binding Path=Rate, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" Style="{StaticResource ValidationTextBoxToolTipStyle}" GotFocus="TextBox_GotFocus"/>
+                        </Grid>
+
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+
+    </Grid>
+</UserControl>
