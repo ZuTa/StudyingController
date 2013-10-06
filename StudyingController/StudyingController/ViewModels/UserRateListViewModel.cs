@@ -30,8 +30,6 @@ namespace StudyingController.ViewModels
                 r.Rate *= 100;
                 rates.Add(r);
             }
-            //rates.Add( new UserRateItemDTO { Rate = 50, User = new SystemUserDTO { UserInformation = new UserInformationDTO { FirstName = "Max", LastName ="Pyzhov"}}});
-            //rates.Add(new UserRateItemDTO { Rate = 27, User = new SystemUserDTO { UserInformation = new UserInformationDTO { FirstName = "Artemko", LastName = "Jermak" } } });
         }
 
         protected override void ClearData()

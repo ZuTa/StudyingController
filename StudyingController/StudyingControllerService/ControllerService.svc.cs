@@ -2195,19 +2195,21 @@ namespace StudyingControllerService
                                 return pt.Practice.PracticeControls;
                             });
 
-                        var lectureMarksSum = (lectureControls.Select(lc =>
+                        var lectureMarksSum = lectureControls.Sum(lc =>
                         {
                             context.LoadProperty(lc, "LectureControlMarks");
-                            return lc;
-                        }).Sum(lc => lc.LectureControlMarks.First(lcm => lcm.StudentID == student.ID).MarkValue));
+                            var mark = lc.LectureControlMarks.FirstOrDefault(lcm => lcm.StudentID == student.ID);
+                            return mark != null ? mark.MarkValue : 0;
+                        });
 
                         var lectureMaxSum = lectureControls.Sum(lc => lc.MaxMark);
 
-                        var practiceMarksSum = (practiceControls.Select(pc =>
+                        var practiceMarksSum = practiceControls.Sum(pc =>
                         {
                             context.LoadProperty(pc, "PracticeControlMarks");
-                            return pc;
-                        }).Sum(pc => pc.PracticeControlMarks.First(pcm => pcm.StudentID == student.ID).MarkValue));
+                            var mark = pc.PracticeControlMarks.FirstOrDefault(pcm => pcm.StudentID == student.ID);
+                            return mark != null ? mark.MarkValue : 0;
+                        });
 
                         var practiceMaxSum = practiceControls.Sum(pc => pc.MaxMark);
 

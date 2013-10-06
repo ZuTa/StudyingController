@@ -4,7 +4,7 @@
                  xmlns:vm="clr-namespace:StudyingController.ViewModels"
                  xmlns:v="clr-namespace:StudyingController.Views">
     <Application.Resources>
-        <ResourceDictionary>            
+        <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Views/Styles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
