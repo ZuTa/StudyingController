@@ -557,15 +557,6 @@
   <wsdl:message name="IControllerService_SaveMarks_ControllerServiceExceptionFault_FaultMessage">
     <wsdl:part xmlns:q61="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q61:ControllerServiceException" />
   </wsdl:message>
-  <wsdl:message name="IControllerService_GetStudentRateList_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetStudentRateList" />
-  </wsdl:message>
-  <wsdl:message name="IControllerService_GetStudentRateList_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetStudentRateListResponse" />
-  </wsdl:message>
-  <wsdl:message name="IControllerService_GetStudentRateList_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q62="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q62:ControllerServiceException" />
-  </wsdl:message>
   <wsdl:portType name="IControllerService">
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/IControllerService/Login" message="tns:IControllerService_Login_InputMessage" />
@@ -871,11 +862,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IControllerService/SaveMarks" message="tns:IControllerService_SaveMarks_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IControllerService/SaveMarksResponse" message="tns:IControllerService_SaveMarks_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IControllerService/SaveMarksControllerServiceExceptionFault" name="ControllerServiceExceptionFault" message="tns:IControllerService_SaveMarks_ControllerServiceExceptionFault_FaultMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetStudentRateList">
-      <wsdl:input wsaw:Action="http://tempuri.org/IControllerService/GetStudentRateList" message="tns:IControllerService_GetStudentRateList_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IControllerService/GetStudentRateListResponse" message="tns:IControllerService_GetStudentRateList_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IControllerService/GetStudentRateListControllerServiceExceptionFault" name="ControllerServiceExceptionFault" message="tns:IControllerService_GetStudentRateList_ControllerServiceExceptionFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IControllerService" type="tns:IControllerService">
@@ -1602,18 +1588,6 @@
     </wsdl:operation>
     <wsdl:operation name="SaveMarks">
       <soap:operation soapAction="http://tempuri.org/IControllerService/SaveMarks" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ControllerServiceExceptionFault">
-        <soap:fault use="literal" name="ControllerServiceExceptionFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="GetStudentRateList">
-      <soap:operation soapAction="http://tempuri.org/IControllerService/GetStudentRateList" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
