@@ -17,12 +17,12 @@ namespace StudyingController.SCS {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Session", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.FacultyAdminDTO))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.TeacherDTO))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.StudentDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.InstituteSecretaryDTO))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.FacultySecretaryDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.StudentDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.TeacherDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.FacultyAdminDTO))]
     public partial class Session : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -272,12 +272,12 @@ namespace StudyingController.SCS {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/SaveUser", ReplyAction="http://tempuri.org/IControllerService/SaveUserResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/SaveUserControllerServiceExceptionFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultyAdminDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.TeacherDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.StudentDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteSecretaryDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultySecretaryDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.StudentDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.TeacherDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultyAdminDTO))]
         void SaveUser(StudyingController.SCS.Session session, EntitiesDTO.SystemUserDTO user);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/SaveUser", ReplyAction="http://tempuri.org/IControllerService/SaveUserResponse")]
@@ -633,12 +633,12 @@ namespace StudyingController.SCS {
             "nFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.LectureControlDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.PracticeControlDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultyAdminDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.TeacherDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.StudentDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteSecretaryDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultySecretaryDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.StudentDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.TeacherDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultyAdminDTO))]
         void SaveControlMessage(StudyingController.SCS.Session session, EntitiesDTO.ControlMessageDTO message);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/SaveControlMessage", ReplyAction="http://tempuri.org/IControllerService/SaveControlMessageResponse")]
@@ -761,32 +761,33 @@ namespace StudyingController.SCS {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/GetStudentRateList", ReplyAction="http://tempuri.org/IControllerService/GetStudentRateListResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/GetStudentRateListControllerServiceExceptio" +
             "nFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.SystemUserDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.UserInformationDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultyAdminDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.NamedEntityDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.CathedraDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultyDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.SpecializationDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.CathedraDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.SubjectDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.GroupDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.ControlDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.LectureControlDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.PracticeControlDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.AttachmentDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultyDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.SystemUserDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.UserInformationDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteSecretaryDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultySecretaryDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.StudentDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.TeacherDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.LectureDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.StudentDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteSecretaryDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultySecretaryDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultyAdminDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.PracticeTeacherDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.PracticeDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.ControlMessageDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.MarkDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.PracticeControlMarkDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.LectureControlMarkDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.PracticeControlMarkDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.NotificationDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.StudyRangeDTO))]
         System.Collections.Generic.List<EntitiesDTO.UserRateItemDTO> GetStudentRateList(StudyingController.SCS.Session session, EntitiesDTO.BaseEntityDTO universityStructureItem);
         
@@ -794,6 +795,16 @@ namespace StudyingController.SCS {
         System.IAsyncResult BeginGetStudentRateList(StudyingController.SCS.Session session, EntitiesDTO.BaseEntityDTO universityStructureItem, System.AsyncCallback callback, object asyncState);
         
         System.Collections.Generic.List<EntitiesDTO.UserRateItemDTO> EndGetStudentRateList(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/GetNotifications", ReplyAction="http://tempuri.org/IControllerService/GetNotificationsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/GetNotificationsControllerServiceExceptionF" +
+            "ault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        System.Collections.Generic.List<EntitiesDTO.NotificationDTO> GetNotifications(StudyingController.SCS.Session session, int userID);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/GetNotifications", ReplyAction="http://tempuri.org/IControllerService/GetNotificationsResponse")]
+        System.IAsyncResult BeginGetNotifications(StudyingController.SCS.Session session, int userID, System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.Generic.List<EntitiesDTO.NotificationDTO> EndGetNotifications(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1562,6 +1573,25 @@ namespace StudyingController.SCS {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetNotificationsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetNotificationsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.Generic.List<EntitiesDTO.NotificationDTO> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.Generic.List<EntitiesDTO.NotificationDTO>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class ControllerServiceClient : System.ServiceModel.ClientBase<StudyingController.SCS.IControllerService>, StudyingController.SCS.IControllerService {
         
         private BeginOperationDelegate onBeginLoginDelegate;
@@ -1936,6 +1966,12 @@ namespace StudyingController.SCS {
         
         private System.Threading.SendOrPostCallback onGetStudentRateListCompletedDelegate;
         
+        private BeginOperationDelegate onBeginGetNotificationsDelegate;
+        
+        private EndOperationDelegate onEndGetNotificationsDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetNotificationsCompletedDelegate;
+        
         public ControllerServiceClient() {
         }
         
@@ -2078,6 +2114,8 @@ namespace StudyingController.SCS {
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> SaveMarksCompleted;
         
         public event System.EventHandler<GetStudentRateListCompletedEventArgs> GetStudentRateListCompleted;
+        
+        public event System.EventHandler<GetNotificationsCompletedEventArgs> GetNotificationsCompleted;
         
         public StudyingController.SCS.Session Login(string login1, string password) {
             return base.Channel.Login(login1, password);
@@ -5285,6 +5323,58 @@ namespace StudyingController.SCS {
             base.InvokeAsync(this.onBeginGetStudentRateListDelegate, new object[] {
                         session,
                         universityStructureItem}, this.onEndGetStudentRateListDelegate, this.onGetStudentRateListCompletedDelegate, userState);
+        }
+        
+        public System.Collections.Generic.List<EntitiesDTO.NotificationDTO> GetNotifications(StudyingController.SCS.Session session, int userID) {
+            return base.Channel.GetNotifications(session, userID);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetNotifications(StudyingController.SCS.Session session, int userID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetNotifications(session, userID, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.Collections.Generic.List<EntitiesDTO.NotificationDTO> EndGetNotifications(System.IAsyncResult result) {
+            return base.Channel.EndGetNotifications(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetNotifications(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            StudyingController.SCS.Session session = ((StudyingController.SCS.Session)(inValues[0]));
+            int userID = ((int)(inValues[1]));
+            return this.BeginGetNotifications(session, userID, callback, asyncState);
+        }
+        
+        private object[] OnEndGetNotifications(System.IAsyncResult result) {
+            System.Collections.Generic.List<EntitiesDTO.NotificationDTO> retVal = this.EndGetNotifications(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetNotificationsCompleted(object state) {
+            if ((this.GetNotificationsCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetNotificationsCompleted(this, new GetNotificationsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetNotificationsAsync(StudyingController.SCS.Session session, int userID) {
+            this.GetNotificationsAsync(session, userID, null);
+        }
+        
+        public void GetNotificationsAsync(StudyingController.SCS.Session session, int userID, object userState) {
+            if ((this.onBeginGetNotificationsDelegate == null)) {
+                this.onBeginGetNotificationsDelegate = new BeginOperationDelegate(this.OnBeginGetNotifications);
+            }
+            if ((this.onEndGetNotificationsDelegate == null)) {
+                this.onEndGetNotificationsDelegate = new EndOperationDelegate(this.OnEndGetNotifications);
+            }
+            if ((this.onGetNotificationsCompletedDelegate == null)) {
+                this.onGetNotificationsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetNotificationsCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetNotificationsDelegate, new object[] {
+                        session,
+                        userID}, this.onEndGetNotificationsDelegate, this.onGetNotificationsCompletedDelegate, userState);
         }
     }
 }

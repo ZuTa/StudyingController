@@ -312,6 +312,26 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style TargetType="Border" x:Key="MessageBorderStyle">
+        <Setter Property="Opacity" Value="0.6"/>
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Border.MouseEnter">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetProperty="(Border.Opacity)" To="1" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="Border.MouseLeave">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Duration="0:0:1" Storyboard.TargetProperty="(Border.Opacity)" To="0.6" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>
 
     

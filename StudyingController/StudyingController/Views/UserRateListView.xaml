@@ -12,7 +12,7 @@
             <GridView>
                 <GridViewColumn Width="100" Header="Ім'я" DisplayMemberBinding="{Binding User.UserInformation.FirstName}"/>
                 <GridViewColumn Width="100" Header="Прізвище" DisplayMemberBinding="{Binding User.UserInformation.LastName}"/>
-                <GridViewColumn Header="Рейтинг">
+                <GridViewColumn Width="100" Header="Рейтинг">
                     <GridViewColumn.CellTemplate>
                         <DataTemplate>
                             <controls:RatingsControl Value="{Binding Rate}"  StarForegroundColor="Orange"  BackgroundColor="White" NumberOfStars="5" Maximum="100">

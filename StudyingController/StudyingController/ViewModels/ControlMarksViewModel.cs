@@ -152,7 +152,7 @@ namespace StudyingController.ViewModels
         protected override void ClearData()
         {
             if (Marks != null)
-                Marks = null;
+                Marks.Clear();
         }
 
         private void UpdateProperties()

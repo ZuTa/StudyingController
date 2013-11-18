@@ -61,6 +61,7 @@
     <Compile Include="LectureControl.cs" />
     <Compile Include="LectureControlMark.cs" />
     <Compile Include="Mark.cs" />
+    <Compile Include="Notification.cs" />
     <Compile Include="Practice.cs" />
     <Compile Include="PracticeControl.cs" />
     <Compile Include="PracticeControlMark.cs" />
