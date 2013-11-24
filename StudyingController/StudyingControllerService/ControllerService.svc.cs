@@ -2286,7 +2286,7 @@ namespace StudyingControllerService
                 }
                 return resultList;
             }
-            catch (Exception ex)
+                catch (Exception ex)
             {
                 throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
             }

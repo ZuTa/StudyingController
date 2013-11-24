@@ -67,12 +67,18 @@ namespace DataBaseGeneration
                     // USERS AND USER INFORMATIONS
                     using (Stream resourceStream = assembly.GetManifestResourceStream("DataBaseGeneration.Scripts.users.sql"))
                     {
-                        Console.WriteLine("Adding users..");
+                        Console.WriteLine("Adding users...");
 
                         server.ConnectionContext.ExecuteNonQuery(ReadAllText(resourceStream));
                     }
 
+                    // NOTIFICATIONS
+                    using (Stream resourceStream = assembly.GetManifestResourceStream("DataBaseGeneration.Scripts.notifications.sql"))
+                    {
+                        Console.WriteLine("Adding notifications...");
 
+                        server.ConnectionContext.ExecuteNonQuery(ReadAllText(resourceStream));
+                    }
 
                     Console.WriteLine("Data filled!");
                 }
