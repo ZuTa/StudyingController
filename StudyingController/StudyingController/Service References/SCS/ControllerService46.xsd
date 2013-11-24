@@ -876,4 +876,19 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetStudentRateList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q117="http://schemas.datacontract.org/2004/07/StudyingControllerService" minOccurs="0" name="session" nillable="true" type="q117:Session" />
+        <xs:element xmlns:q118="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="universityStructureItem" nillable="true" type="q118:BaseEntityDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStudentRateListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q119="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="GetStudentRateListResult" nillable="true" type="q119:ArrayOfUserRateItemDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

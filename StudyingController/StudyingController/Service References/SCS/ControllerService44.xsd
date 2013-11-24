@@ -485,4 +485,17 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="LectureControlMarkDTO" nillable="true" type="tns:LectureControlMarkDTO" />
+  <xs:complexType name="ArrayOfUserRateItemDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserRateItemDTO" nillable="true" type="tns:UserRateItemDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserRateItemDTO" nillable="true" type="tns:ArrayOfUserRateItemDTO" />
+  <xs:complexType name="UserRateItemDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Rate" type="xs:double" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:SystemUserDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserRateItemDTO" nillable="true" type="tns:UserRateItemDTO" />
 </xs:schema>

@@ -457,7 +457,6 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="packages.config" />
     <None Include="Properties\DataSources\EntitiesDTO.AttachmentDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.CathedraDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.ControlDTO.datasource" />
