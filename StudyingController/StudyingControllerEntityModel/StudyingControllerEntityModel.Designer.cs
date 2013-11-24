@@ -50,6 +50,7 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "Practice_Teacher_Student", "Practice_Teacher", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.PracticeTeacher), "Student", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Student))]
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "Student_Group", "Group", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Group), "Student", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Student))]
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_System_Configuration_StudyRange", "StudyRange", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.StudyRange), "System_Configuration", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.SystemConfiguration), true)]
+[assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_Notification_SystemUser", "SystemUser", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.SystemUser), "Notification", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Notification), true)]
 
 #endregion
 
@@ -372,6 +373,22 @@ namespace StudyingControllerEntityModel
             }
         }
         private ObjectSet<SystemConfiguration> _SystemConfigurations;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Notification> Notifications
+        {
+            get
+            {
+                if ((_Notifications == null))
+                {
+                    _Notifications = base.CreateObjectSet<Notification>("Notifications");
+                }
+                return _Notifications;
+            }
+        }
+        private ObjectSet<Notification> _Notifications;
 
         #endregion
 
@@ -511,6 +528,14 @@ namespace StudyingControllerEntityModel
         public void AddToSystemConfigurations(SystemConfiguration systemConfiguration)
         {
             base.AddObject("SystemConfigurations", systemConfiguration);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Notifications EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToNotifications(Notification notification)
+        {
+            base.AddObject("Notifications", notification);
         }
 
         #endregion
@@ -3113,6 +3138,183 @@ namespace StudyingControllerEntityModel
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="UniversityDBModel", Name="Notification")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Notification : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Notification object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="message">Initial value of the Message property.</param>
+        /// <param name="userID">Initial value of the UserID property.</param>
+        /// <param name="date">Initial value of the Date property.</param>
+        public static Notification CreateNotification(global::System.Int32 id, global::System.String message, global::System.Int32 userID, global::System.DateTime date)
+        {
+            Notification notification = new Notification();
+            notification.ID = id;
+            notification.Message = message;
+            notification.UserID = userID;
+            notification.Date = date;
+            return notification;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Message
+        {
+            get
+            {
+                return _Message;
+            }
+            set
+            {
+                OnMessageChanging(value);
+                ReportPropertyChanging("Message");
+                _Message = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Message");
+                OnMessageChanged();
+            }
+        }
+        private global::System.String _Message;
+        partial void OnMessageChanging(global::System.String value);
+        partial void OnMessageChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 UserID
+        {
+            get
+            {
+                return _UserID;
+            }
+            set
+            {
+                OnUserIDChanging(value);
+                ReportPropertyChanging("UserID");
+                _UserID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UserID");
+                OnUserIDChanged();
+            }
+        }
+        private global::System.Int32 _UserID;
+        partial void OnUserIDChanging(global::System.Int32 value);
+        partial void OnUserIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime Date
+        {
+            get
+            {
+                return _Date;
+            }
+            set
+            {
+                OnDateChanging(value);
+                ReportPropertyChanging("Date");
+                _Date = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Date");
+                OnDateChanged();
+            }
+        }
+        private global::System.DateTime _Date;
+        partial void OnDateChanging(global::System.DateTime value);
+        partial void OnDateChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "FK_Notification_SystemUser", "SystemUser")]
+        public SystemUser SystemUser
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SystemUser>("UniversityDBModel.FK_Notification_SystemUser", "SystemUser").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SystemUser>("UniversityDBModel.FK_Notification_SystemUser", "SystemUser").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<SystemUser> SystemUserReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SystemUser>("UniversityDBModel.FK_Notification_SystemUser", "SystemUser");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SystemUser>("UniversityDBModel.FK_Notification_SystemUser", "SystemUser", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="UniversityDBModel", Name="Practice")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -4749,6 +4951,28 @@ namespace StudyingControllerEntityModel
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ControlMessage>("UniversityDBModel.FK_ControlMessage_SystemUser", "ControlMessage", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "FK_Notification_SystemUser", "Notification")]
+        public EntityCollection<Notification> Notifications
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Notification>("UniversityDBModel.FK_Notification_SystemUser", "Notification");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Notification>("UniversityDBModel.FK_Notification_SystemUser", "Notification", value);
                 }
             }
         }

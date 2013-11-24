@@ -127,6 +127,7 @@
     <Compile Include="ViewModels\Models\LectureModel.cs" />
     <Compile Include="ViewModels\Models\MarkModel.cs" />
     <Compile Include="ViewModels\Models\NamedModel.cs" />
+    <Compile Include="ViewModels\Models\NotificationModel.cs" />
     <Compile Include="ViewModels\Models\PracticeControlMarkModel.cs" />
     <Compile Include="ViewModels\Models\PracticeControlModel.cs" />
     <Compile Include="ViewModels\Models\PracticeTeacherModel.cs" />
@@ -468,6 +469,7 @@
     <None Include="Properties\DataSources\EntitiesDTO.LectureControlDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.LectureDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.MarkDTO.datasource" />
+    <None Include="Properties\DataSources\EntitiesDTO.NotificationDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.PracticeControlDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.PracticeTeacherDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.SpecializationDTO.datasource" />

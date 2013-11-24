@@ -18,6 +18,36 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="BaseEntityDTO" nillable="true" type="tns:BaseEntityDTO" />
+  <xs:complexType name="CathedraDTO">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:NamedEntityDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Faculty" nillable="true" type="tns:FacultyDTO" />
+          <xs:element minOccurs="0" name="FacultyID" type="xs:int" />
+          <xs:element minOccurs="0" name="Subjects" nillable="true" type="tns:ArrayOfSubjectDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CathedraDTO" nillable="true" type="tns:CathedraDTO" />
+  <xs:complexType name="NamedEntityDTO">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseEntityDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="NamedEntityDTO" nillable="true" type="tns:NamedEntityDTO" />
+  <xs:complexType name="InstituteDTO">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:NamedEntityDTO">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="InstituteDTO" nillable="true" type="tns:InstituteDTO" />
   <xs:complexType name="GroupDTO">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:NamedEntityDTO">
@@ -32,28 +62,16 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="GroupDTO" nillable="true" type="tns:GroupDTO" />
-  <xs:complexType name="NamedEntityDTO">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:BaseEntityDTO">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="NamedEntityDTO" nillable="true" type="tns:NamedEntityDTO" />
-  <xs:complexType name="CathedraDTO">
+  <xs:complexType name="SpecializationDTO">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:NamedEntityDTO">
         <xs:sequence>
-          <xs:element minOccurs="0" name="Faculty" nillable="true" type="tns:FacultyDTO" />
           <xs:element minOccurs="0" name="FacultyID" type="xs:int" />
-          <xs:element minOccurs="0" name="Subjects" nillable="true" type="tns:ArrayOfSubjectDTO" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:element name="CathedraDTO" nillable="true" type="tns:CathedraDTO" />
+  <xs:element name="SpecializationDTO" nillable="true" type="tns:SpecializationDTO" />
   <xs:complexType name="FacultyDTO">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:NamedEntityDTO">
@@ -66,30 +84,12 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="FacultyDTO" nillable="true" type="tns:FacultyDTO" />
-  <xs:complexType name="InstituteDTO">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:NamedEntityDTO">
-        <xs:sequence />
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="InstituteDTO" nillable="true" type="tns:InstituteDTO" />
   <xs:complexType name="ArrayOfSpecializationDTO">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="SpecializationDTO" nillable="true" type="tns:SpecializationDTO" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfSpecializationDTO" nillable="true" type="tns:ArrayOfSpecializationDTO" />
-  <xs:complexType name="SpecializationDTO">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:NamedEntityDTO">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="FacultyID" type="xs:int" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="SpecializationDTO" nillable="true" type="tns:SpecializationDTO" />
   <xs:complexType name="ArrayOfSubjectDTO">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="SubjectDTO" nillable="true" type="tns:SubjectDTO" />
@@ -205,6 +205,17 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="UserInformationDTO" nillable="true" type="tns:UserInformationDTO" />
+  <xs:complexType name="InstituteSecretaryDTO">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SystemUserDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Institute" nillable="true" type="tns:InstituteDTO" />
+          <xs:element minOccurs="0" name="InstituteID" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="InstituteSecretaryDTO" nillable="true" type="tns:InstituteSecretaryDTO" />
   <xs:complexType name="FacultySecretaryDTO">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:SystemUserDTO">
@@ -227,6 +238,17 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="InstituteAdminDTO" nillable="true" type="tns:InstituteAdminDTO" />
+  <xs:complexType name="StudentDTO">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:SystemUserDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Group" nillable="true" type="tns:GroupDTO" />
+          <xs:element minOccurs="0" name="GroupID" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StudentDTO" nillable="true" type="tns:StudentDTO" />
   <xs:complexType name="TeacherDTO">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:SystemUserDTO">
@@ -264,28 +286,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfGroupDTO" nillable="true" type="tns:ArrayOfGroupDTO" />
-  <xs:complexType name="StudentDTO">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:SystemUserDTO">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Group" nillable="true" type="tns:GroupDTO" />
-          <xs:element minOccurs="0" name="GroupID" type="xs:int" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="StudentDTO" nillable="true" type="tns:StudentDTO" />
-  <xs:complexType name="InstituteSecretaryDTO">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:SystemUserDTO">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Institute" nillable="true" type="tns:InstituteDTO" />
-          <xs:element minOccurs="0" name="InstituteID" type="xs:int" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="InstituteSecretaryDTO" nillable="true" type="tns:InstituteSecretaryDTO" />
   <xs:complexType name="FacultyAdminDTO">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:SystemUserDTO">
@@ -465,16 +465,6 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="MarkDTO" nillable="true" type="tns:MarkDTO" />
-  <xs:complexType name="PracticeControlMarkDTO">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:MarkDTO">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="PracticeControlID" type="xs:int" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="PracticeControlMarkDTO" nillable="true" type="tns:PracticeControlMarkDTO" />
   <xs:complexType name="LectureControlMarkDTO">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:MarkDTO">
@@ -485,6 +475,16 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="LectureControlMarkDTO" nillable="true" type="tns:LectureControlMarkDTO" />
+  <xs:complexType name="PracticeControlMarkDTO">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:MarkDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PracticeControlID" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PracticeControlMarkDTO" nillable="true" type="tns:PracticeControlMarkDTO" />
   <xs:complexType name="ArrayOfUserRateItemDTO">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="UserRateItemDTO" nillable="true" type="tns:UserRateItemDTO" />
@@ -498,4 +498,22 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="UserRateItemDTO" nillable="true" type="tns:UserRateItemDTO" />
+  <xs:complexType name="ArrayOfNotificationDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="NotificationDTO" nillable="true" type="tns:NotificationDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfNotificationDTO" nillable="true" type="tns:ArrayOfNotificationDTO" />
+  <xs:complexType name="NotificationDTO">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseEntityDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="NotificationDTO" nillable="true" type="tns:NotificationDTO" />
 </xs:schema>

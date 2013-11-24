@@ -259,5 +259,9 @@ namespace StudyingControllerService
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
         List<UserRateItemDTO> GetStudentRateList(Session session, BaseEntityDTO universityStructureItem);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        List<NotificationDTO> GetNotifications(Session session, int userID);
     }
 }

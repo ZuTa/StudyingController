@@ -5,6 +5,8 @@ using System.Text;
 using StudyingController.Common;
 using System.Windows.Threading;
 using EntitiesDTO;
+using System.Collections.ObjectModel;
+using StudyingController.ViewModels.Models;
 
 namespace StudyingController.ViewModels
 {
@@ -103,6 +105,14 @@ namespace StudyingController.ViewModels
                 return User.Role.GetText<ResourceNameAttribute>();
             }
         }
+
+        private ObservableCollection<NotificationModel> notifications;
+        public ObservableCollection<NotificationModel> Notifications
+        {
+            get { return notifications; }
+            set { notifications = value; }
+        }
+
         #endregion
 
         #region Constructors
@@ -111,6 +121,7 @@ namespace StudyingController.ViewModels
             : base(userInterop, controllerInterop, dispatcher)
         {
             this.user = user;
+            this.notifications = new ObservableCollection<NotificationModel>();
         }
 
         #endregion
@@ -124,10 +135,10 @@ namespace StudyingController.ViewModels
                 case UserRoles.MainAdmin:
                 case UserRoles.MainSecretary:
                     break;
-               case UserRoles.InstituteAdmin:
+                case UserRoles.InstituteAdmin:
                     institute = ControllerInterop.Service.GetInstituteByID(ControllerInterop.Session, (user as InstituteAdminDTO).InstituteID);
                     break;
-               case UserRoles.InstituteSecretary:
+                case UserRoles.InstituteSecretary:
                     institute = ControllerInterop.Service.GetInstituteByID(ControllerInterop.Session, (user as InstituteSecretaryDTO).InstituteID);
                     break;
                 case UserRoles.FacultyAdmin:
@@ -150,6 +161,8 @@ namespace StudyingController.ViewModels
                     institute = ControllerInterop.Service.GetInstituteByID(ControllerInterop.Session, faculty.InstituteID);
                     break;
             }
+
+            this.LoadNotifications();
 
             OnPropertyChanged("RoleText");
 
@@ -174,6 +187,16 @@ namespace StudyingController.ViewModels
             OnPropertyChanged("IsCathedraNotNull");
             OnPropertyChanged("Group");
             OnPropertyChanged("IsGroupNotNull");
+        }
+
+        private void LoadNotifications()
+        {
+            this.notifications.Clear();
+
+            foreach (var notification in ControllerInterop.Service.GetNotifications(ControllerInterop.Session, user.ID))
+            {
+                this.notifications.Add(new NotificationModel(notification));
+            }
         }
 
         #endregion

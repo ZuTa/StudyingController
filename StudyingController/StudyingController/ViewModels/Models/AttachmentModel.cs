@@ -10,8 +10,6 @@ namespace StudyingController.ViewModels.Models
     {
         #region Fields & Properties
 
-        
-
         private string size;
         public string Size
         {

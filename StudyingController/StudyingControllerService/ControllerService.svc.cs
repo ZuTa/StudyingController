@@ -7,6 +7,7 @@ using System.ServiceModel.Web;
 using System.Text;
 using StudyingControllerEntityModel;
 using EntitiesDTO;
+using System.Globalization;
 
 namespace StudyingControllerService
 {
@@ -111,29 +112,29 @@ namespace StudyingControllerService
 
                     if (!(user != null && Encoding.UTF8.GetString(user.Password) == password))
                     {
-#if DEBUG
-                        if (user == null)
-                        {
-                            user = new SystemUser();
-                            user.Login = login;
-                            user.Password = Encoding.UTF8.GetBytes(password);
-                            user.iUserRole = 1;
-                            var userInformation = new UserInformation()
-                            {
-                                FirstName = login,
-                                LastName = login
-                            };
-                            //context.AddToUserInformations(userInformation);
-                            //context.SaveChanges();
+//#if DEBUG
+//                        if (user == null)
+//                        {
+//                            user = new SystemUser();
+//                            user.Login = login;
+//                            user.Password = Encoding.UTF8.GetBytes(password);
+//                            user.iUserRole = 1;
+//                            var userInformation = new UserInformation()
+//                            {
+//                                FirstName = login,
+//                                LastName = login
+//                            };
+//                            //context.AddToUserInformations(userInformation);
+//                            //context.SaveChanges();
 
-                            user.UserInformation = userInformation;
+//                            user.UserInformation = userInformation;
 
-                            context.AddToSystemUsers(user);
-                            context.SaveChanges();
-                        }
-#else
+//                            context.AddToSystemUsers(user);
+//                            context.SaveChanges();
+//                        }
+//#else
                         throw new Exception("У доступі відмовлено!");
-#endif
+//#endif
                     }
 
                     session = new Session(GetSystemUserDTO(user, context));
@@ -2043,6 +2044,8 @@ namespace StudyingControllerService
                     var q = context.Controls.FirstOrDefault(p => p.ID == control.ID);
                     if (q != null)
                     {
+                        var toEdit = new List<MarkDTO>();
+                        var toAdd = new List<MarkDTO>();
                         if (control is PracticeControlDTO)
                         {
                             PracticeControl pc = q as PracticeControl;
@@ -2050,8 +2053,8 @@ namespace StudyingControllerService
                             context.LoadProperty(pc.Practice_Teacher, "Students");
                             context.LoadProperty(pc, "PracticeControlMarks");
 
-                            var toAdd = marks.Where(m => pc.PracticeControlMarks.ToList().Find(p => p.StudentID == m.StudentID) == null).ToList();
-                            var toEdit = marks.Where(m => pc.PracticeControlMarks.ToList().Find(p => p.StudentID == m.StudentID) != null).ToList();
+                            toAdd = marks.Where(m => pc.PracticeControlMarks.ToList().Find(p => p.StudentID == m.StudentID) == null).ToList();
+                            toEdit = marks.Where(m => pc.PracticeControlMarks.ToList().Find(p => p.StudentID == m.StudentID && p.MarkValue != m.MarkValue) != null).ToList();
                             foreach (var a in toAdd)
                             {
                                 PracticeControlMark pcm = new PracticeControlMark(a as PracticeControlMarkDTO);
@@ -2076,8 +2079,8 @@ namespace StudyingControllerService
                             context.LoadProperty(lc.Lecture, "Groups");
                             context.LoadProperty(lc, "LectureControlMarks");
 
-                            var toAdd = marks.Where(m => lc.LectureControlMarks.ToList().Find(l => l.StudentID == m.StudentID) == null).ToList();
-                            var toEdit = marks.Where(m => lc.LectureControlMarks.ToList().Find(l => l.StudentID == m.StudentID) != null).ToList();
+                            toAdd = marks.Where(m => lc.LectureControlMarks.ToList().Find(l => l.StudentID == m.StudentID) == null).ToList();
+                            toEdit = marks.Where(m => lc.LectureControlMarks.ToList().Find(l => l.StudentID == m.StudentID) != null).ToList();
 
                             foreach (var a in toAdd)
                             {
@@ -2095,6 +2098,39 @@ namespace StudyingControllerService
                                 else
                                     elem.Assign(e);
                             }
+                        }
+
+                        List<MarkDTO> toNotify = toAdd.Count == 0 ? toEdit : toAdd;
+                        foreach (var mark in toNotify)
+                        {
+                            var notification = new NotificationDTO();
+                            var subjectName = string.Empty;
+                            if (control is LectureControlDTO)
+                            {
+                                var lectureID = (control as LectureControlDTO).LectureID;
+                                var lecture = context.Lectures.Where(l => l.ID == lectureID).First();
+                                context.LoadProperty(lecture, "Subject");
+                                subjectName = lecture.Subject.Name;
+                            }
+
+                            if (control is PracticeControlDTO)
+                            {
+                                var practiceID = (control as PracticeControlDTO).PracticeID;
+                                var practice = context.Practices.Where(p => p.ID == practiceID).First();
+                                context.LoadProperty(practice, "Subject");
+                                subjectName = practice.Subject.Name;
+                            }
+
+                            notification.Message = string.Format(
+                                StudyingControllerService.Resource.ResourceManager.GetString("NewMarkNotificationMessage"),
+                                mark.MarkValue.ToString("0.00"),
+                                control.Name,
+                                subjectName);
+
+                            notification.UserID = mark.StudentID;
+                            notification.Date = DateTime.Now;
+
+                            context.Notifications.AddObject(new Notification(notification));
                         }
                         context.SaveChanges();
                     }
@@ -2226,7 +2262,34 @@ namespace StudyingControllerService
             catch (Exception ex)
             {
                 throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
-            }    
+            }
+        }
+
+        public List<NotificationDTO> GetNotifications(Session session, int userID)
+        {
+            try
+            {
+                this.CheckSession(session);
+                var resultList = new List<NotificationDTO>();
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var query = (from notification 
+                                      in context.Notifications 
+                                      where notification.UserID == userID
+                                      orderby notification.Date descending
+                                  select notification).Take(10);
+                    
+                    foreach (var n in query.ToList())
+                    {
+                        resultList.Add(n.ToDTO());
+                    }
+                }
+                return resultList;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
         }
     }
 }

@@ -22,6 +22,7 @@
           <EntitySet Name="LectureControl" EntityType="UniversityDBModel.Store.LectureControl" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="LectureControlMark" EntityType="UniversityDBModel.Store.LectureControlMark" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Mark" EntityType="UniversityDBModel.Store.Mark" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Notification" EntityType="UniversityDBModel.Store.Notification" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Practice" EntityType="UniversityDBModel.Store.Practice" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Practice_Teacher" EntityType="UniversityDBModel.Store.Practice_Teacher" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Practice_Teacher_Student" EntityType="UniversityDBModel.Store.Practice_Teacher_Student" store:Type="Tables" Schema="dbo" />
@@ -135,6 +136,10 @@
           <AssociationSet Name="FK_Mark_Student" Association="UniversityDBModel.Store.FK_Mark_Student">
             <End Role="Student" EntitySet="Student" />
             <End Role="Mark" EntitySet="Mark" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notification_SystemUser" Association="UniversityDBModel.Store.FK_Notification_SystemUser">
+            <End Role="SystemUser" EntitySet="SystemUser" />
+            <End Role="Notification" EntitySet="Notification" />
           </AssociationSet>
           <AssociationSet Name="FK_Practice_Subject" Association="UniversityDBModel.Store.FK_Practice_Subject">
             <End Role="Subject" EntitySet="Subject" />
@@ -343,6 +348,15 @@
           <Property Name="StudentID" Type="int" Nullable="false" />
           <Property Name="Mark" Type="decimal" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Message" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Practice">
           <Key>
@@ -775,7 +789,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Mark_Student">
-          <End Role="Student" Type="UniversityDBModel.Store.Student" Multiplicity="1" />
+          <End Role="Student" Type="UniversityDBModel.Store.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Mark" Type="UniversityDBModel.Store.Mark" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Student">
@@ -783,6 +799,18 @@
             </Principal>
             <Dependent Role="Mark">
               <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notification_SystemUser">
+          <End Role="SystemUser" Type="UniversityDBModel.Store.SystemUser" Multiplicity="1" />
+          <End Role="Notification" Type="UniversityDBModel.Store.Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Notification">
+              <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -947,7 +975,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Student_Group_Student">
-          <End Role="Student" Type="UniversityDBModel.Store.Student" Multiplicity="1" />
+          <End Role="Student" Type="UniversityDBModel.Store.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Student_Group" Type="UniversityDBModel.Store.Student_Group" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Student">
@@ -1186,6 +1216,11 @@
             <End Role="StudyRange" EntitySet="StudyRanges" />
             <End Role="System_Configuration" EntitySet="SystemConfigurations" />
           </AssociationSet>
+          <EntitySet Name="Notifications" EntityType="UniversityDBModel.Notification" />
+          <AssociationSet Name="FK_Notification_SystemUser" Association="UniversityDBModel.FK_Notification_SystemUser">
+            <End Role="SystemUser" EntitySet="SystemUsers" />
+            <End Role="Notification" EntitySet="Notifications" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="SystemUser" Abstract="false">
           <Key>
@@ -1197,6 +1232,7 @@
           <Property Name="iUserRole" Type="Int32" Nullable="false" DefaultValue="0" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Public" />
           <NavigationProperty Name="UserInformation" Relationship="UniversityDBModel.FK_UserInformation_SystemUser" FromRole="SystemUser" ToRole="UserInformation" />
           <NavigationProperty Name="ControlMessages" Relationship="UniversityDBModel.FK_ControlMessage_SystemUser" FromRole="SystemUser" ToRole="ControlMessage" />
+          <NavigationProperty Name="Notifications" Relationship="UniversityDBModel.FK_Notification_SystemUser" FromRole="SystemUser" ToRole="Notification" />
         </EntityType>
         <EntityType Name="FacultyAdmin" BaseType="UniversityDBModel.SystemUser">
           <Property Name="FacultyID" Nullable="false" Type="Int32" />
@@ -1772,6 +1808,28 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Message" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="DateTime" Name="Date" Nullable="false" Precision="3" />
+          <NavigationProperty Name="SystemUser" Relationship="UniversityDBModel.FK_Notification_SystemUser" FromRole="Notification" ToRole="SystemUser" />
+        </EntityType>
+        <Association Name="FK_Notification_SystemUser">
+          <End Type="UniversityDBModel.SystemUser" Role="SystemUser" Multiplicity="1" />
+          <End Type="UniversityDBModel.Notification" Role="Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Notification">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2024,6 +2082,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Notifications">
+            <EntityTypeMapping TypeName="UniversityDBModel.Notification">
+              <MappingFragment StoreEntitySet="Notification">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -2045,7 +2113,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="StudyingControllerEntityModel" ZoomLevel="90">
+      <Diagram Name="StudyingControllerEntityModel" ZoomLevel="93">
         <EntityTypeShape EntityType="UniversityDBModel.SystemUser" Width="1.5" PointX="7.375" PointY="0.5" Height="0.4" IsExpanded="false" />
         <EntityTypeShape EntityType="UniversityDBModel.FacultyAdmin" Width="1.5" PointX="4.25" PointY="1.75" Height="0.4" IsExpanded="false" />
         <InheritanceConnector EntityType="UniversityDBModel.FacultyAdmin" ManuallyRouted="false">
@@ -2064,7 +2132,7 @@
           <ConnectorPoint PointX="5.40625" PointY="3.125" />
           <ConnectorPoint PointX="5.40625" PointY="2.15" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="UniversityDBModel.UserInformation" Width="1.5" PointX="0.5" PointY="0.5" Height="0.4" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.UserInformation" Width="1.5" PointX="0.75" PointY="0.5" Height="0.4" IsExpanded="false" />
         <AssociationConnector Association="UniversityDBModel.FK_UserInformation_SystemUser" >
           <ConnectorPoint PointX="3.5" PointY="0.7" />
           <ConnectorPoint PointX="2" PointY="0.7" />
@@ -2155,7 +2223,7 @@
         </AssociationConnector>
         <EntityTypeShape EntityType="UniversityDBModel.Lecture" Width="1.5" PointX="0.625" PointY="6.625" Height="0.4" IsExpanded="false" />
         <EntityTypeShape EntityType="UniversityDBModel.Practice" Width="1.5" PointX="5.875" PointY="5.125" Height="0.4" IsExpanded="false" />
-        <EntityTypeShape EntityType="UniversityDBModel.Subject" Width="1.5" PointX="0.5" PointY="4" Height="0.4" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.Subject" Width="1.5" PointX="0.5" PointY="4" Height="0.4" IsExpanded="false" />
         <AssociationConnector Association="UniversityDBModel.FK_Subject_Cathedra" >
           <ConnectorPoint PointX="2" PointY="3.3277692307692308" />
           <ConnectorPoint PointX="2.2603254257436078" PointY="3.6519819656359607" />
@@ -2199,8 +2267,8 @@
           <ConnectorPoint PointX="1.25" PointY="7.025" />
           <ConnectorPoint PointX="1.25" PointY="9" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="UniversityDBModel.Control" Width="1.5" PointX="2.625" PointY="9.25" Height="0.4" IsExpanded="true" />
-        <EntityTypeShape EntityType="UniversityDBModel.PracticeControl" Width="1.5" PointX="4.5" PointY="9" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="UniversityDBModel.Control" Width="1.5" PointX="2.625" PointY="9.25" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="UniversityDBModel.PracticeControl" Width="1.375" PointX="4.5" PointY="9" Height="0.4" IsExpanded="false" />
         <AssociationConnector Association="UniversityDBModel.FK_PracticeControl_Practice" >
           <ConnectorPoint PointX="6.1250025" PointY="5.525" />
           <ConnectorPoint PointX="6.1250025" PointY="9.325" />
@@ -2220,7 +2288,7 @@
           <ConnectorPoint PointX="4.625" PointY="8.75" />
           <ConnectorPoint PointX="4.625" PointY="9.125" />
         </InheritanceConnector>
-        <EntityTypeShape EntityType="UniversityDBModel.LectureControlMark" Width="2" PointX="3.25" PointY="12.375" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="UniversityDBModel.LectureControlMark" Width="2" PointX="3.25" PointY="12.375" Height="0.4" IsExpanded="true" />
         <AssociationConnector Association="UniversityDBModel.Lecture_Group" >
           <ConnectorPoint PointX="4.70312625" PointY="4.525" />
           <ConnectorPoint PointX="4.70312625" PointY="6.825" />
@@ -2256,7 +2324,7 @@
           <ConnectorPoint PointX="5.625" PointY="11.075" />
         </InheritanceConnector>
         <EntityTypeShape EntityType="UniversityDBModel.StudyRange" Width="1.5" PointX="8.375" PointY="5.125" Height="0.4" IsExpanded="false" />
-        <EntityTypeShape EntityType="UniversityDBModel.Attachment" Width="1.5" PointX="2.875" PointY="5.875" Height="0.4" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.Attachment" Width="1.5" PointX="2.875" PointY="5.875" Height="0.4" IsExpanded="false" />
         <AssociationConnector Association="UniversityDBModel.FK_Attachment_Teacher" >
           <ConnectorPoint PointX="2" PointY="1.9500000000000002" />
           <ConnectorPoint PointX="2.3125" PointY="1.9500000000000002" />
@@ -2364,11 +2432,13 @@
           <ConnectorPoint PointX="3.335937125" PointY="4.1937475" />
           <ConnectorPoint PointX="3.335937125" PointY="2.15" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="UniversityDBModel.SystemConfiguration" Width="1.5" PointX="11" PointY="4.5" Height="1.595683593749996" />
+        <EntityTypeShape EntityType="UniversityDBModel.SystemConfiguration" Width="1.5" PointX="11" PointY="4.5" Height="1.595683593749996" IsExpanded="false" />
         <AssociationConnector Association="UniversityDBModel.FK_System_Configuration_StudyRange" >
           <ConnectorPoint PointX="9.875" PointY="5.325" />
           <ConnectorPoint PointX="11" PointY="5.325" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="UniversityDBModel.Notification" Width="1.5" PointX="13.5" PointY="0.75" />
+        <AssociationConnector Association="UniversityDBModel.FK_Notification_SystemUser" />
         </Diagram>
     </Diagrams>
   </Designer>

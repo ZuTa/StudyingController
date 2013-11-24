@@ -82,6 +82,11 @@
     <Compile Include="ControllerServiceException.cs" />
     <Compile Include="IControllerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
     <Compile Include="Session.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -96,6 +101,13 @@
       <Project>{8A8BED45-E1BD-4EF8-8544-E0EE09AD57FF}</Project>
       <Name>StudyingControllerEntityModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
