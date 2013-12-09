@@ -91,7 +91,7 @@
                 </ToolBar>
                 <ToolBar Visibility="{Binding Path=AllowExport, Converter={StaticResource B2V}}">
                     <Button ToolTip="Експорт в Excel" Style="{StaticResource MenuButtonStyle}" Command="{Binding Path=ExportToExcelCommand}" IsEnabled="{Binding CurrentWorkspace.AllowExportToExcel}">
-                        <Image Source="/StudyingController;component/Images/refresh_blue.png" Stretch="Fill" />
+                        <Image Source="/StudyingController;component/Images/excel.png" Stretch="Fill" />
                     </Button>
                 </ToolBar>
             </ToolBarTray>
