@@ -11,7 +11,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(2, 'Іван', 'Адмін', 'panas@admin.com')
+	(2, N'Іван', N'Адмін', 'panas@admin.com')
 GO
 ------------------------------------------------------
 INSERT INTO [SystemUser]
@@ -22,7 +22,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(3, 'Петро', 'Адмін', 'panas@admin.com')
+	(3, N'Петро', N'Адмін', 'panas@admin.com')
 GO
 ------------------------------------------------------
 INSERT INTO [SystemUser]
@@ -33,7 +33,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(4, 'Василь', 'Адмін', 'panas@admin.com')
+	(4, N'Василь', N'Адмін', 'panas@admin.com')
 GO
 -----------------------------------------------------
 INSERT INTO [SystemUser]
@@ -44,7 +44,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(5, 'Олег', 'Адмін', 'panas@admin.com')
+	(5, N'Олег', N'Адмін', 'panas@admin.com')
 GO
 ----------------------------------------------------
 --Main secretaries
@@ -57,7 +57,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(6, 'Ольга', 'Секретар', 'panas@admin.com')
+	(6, N'Ольга', N'Секретар', 'panas@admin.com')
 GO
 ------------------------------------------------------
 INSERT INTO [SystemUser]
@@ -68,7 +68,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(7, 'Олена', 'Секретар', 'panas@admin.com')
+	(7, N'Олена', N'Секретар', 'panas@admin.com')
 GO
 ------------------------------------------------------
 INSERT INTO [SystemUser]
@@ -79,7 +79,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(8, 'Катерина', 'Секретар', 'panas@admin.com')
+	(8, N'Катерина', N'Секретар', 'panas@admin.com')
 GO
 -----------------------------------------------------
 INSERT INTO [SystemUser]
@@ -90,7 +90,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(9, 'Анастасія', 'Секретар', 'panas@admin.com')
+	(9, N'Анастасія', N'Секретар', 'panas@admin.com')
 GO
 ----------------------------------------------------
 INSERT INTO [SystemUser]
@@ -101,7 +101,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(10, 'Інна', 'Секретар', 'panas@admin.com')
+	(10, N'Інна', N'Секретар', 'panas@admin.com')
 GO
 ----------------------------------------------------
 --Institute administrators
@@ -114,7 +114,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(11, 'Антон', 'Адмін', 'panas@admin.com')
+	(11, N'Антон', N'Адмін', 'panas@admin.com')
 GO
 INSERT INTO [InstituteAdmin]
   ([SystemUserID], [InstituteID])
@@ -130,7 +130,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(12, 'Андрій', 'Адмін', 'panas@admin.com')
+	(12, N'Андрій', N'Адмін', 'panas@admin.com')
 GO
 INSERT INTO [InstituteAdmin]
   ([SystemUserID], [InstituteID])
@@ -146,7 +146,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(13, 'Педро', 'Адмін', 'panas@admin.com')
+	(13, N'Педро', N'Адмін', 'panas@admin.com')
 GO
 INSERT INTO [InstituteAdmin]
   ([SystemUserID], [InstituteID])
@@ -164,7 +164,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(14, 'Вікторія', 'Секретар', 'panas@admin.com')
+	(14, N'Вікторія', N'Секретар', 'panas@admin.com')
 GO
 INSERT INTO [InstituteSecretary]
   ([SystemUserID], [InstituteID])
@@ -180,7 +180,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(15, 'Алла', 'Секретар', 'panas@admin.com')
+	(15, N'Алла', N'Секретар', 'panas@admin.com')
 GO
 INSERT INTO [InstituteSecretary]
   ([SystemUserID], [InstituteID])
@@ -196,7 +196,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(16, 'Євгенія', 'Секретар', 'panas@admin.com')
+	(16, N'Євгенія', N'Секретар', 'panas@admin.com')
 GO
 INSERT INTO [InstituteSecretary]
   ([SystemUserID], [InstituteID])
@@ -214,7 +214,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(17, 'Максим', 'Адмін', 'panas@admin.com')
+	(17, N'Максим', N'Адмін', 'panas@admin.com')
 GO
 INSERT INTO [FacultyAdmin]
   ([SystemUserID], [FacultyID])
@@ -230,7 +230,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(18, 'Артем', 'Адмін', 'panas@admin.com')
+	(18, N'Артем', N'Адмін', 'panas@admin.com')
 GO
 INSERT INTO [FacultyAdmin]
   ([SystemUserID], [FacultyID])
@@ -246,7 +246,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(19, 'Тарас', 'Адмін', 'panas@admin.com')
+	(19, N'Тарас', N'Адмін', 'panas@admin.com')
 GO
 INSERT INTO [FacultyAdmin]
   ([SystemUserID], [FacultyID])
@@ -262,7 +262,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(20, 'Юрій', 'Адмін', 'panas@admin.com')
+	(20, N'Юрій', N'Адмін', 'panas@admin.com')
 GO
 INSERT INTO [FacultyAdmin]
   ([SystemUserID], [FacultyID])
@@ -278,7 +278,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(21, 'Ярослав', 'Адмін', 'panas@admin.com')
+	(21, N'Ярослав', N'Адмін', 'panas@admin.com')
 GO
 INSERT INTO [FacultyAdmin]
   ([SystemUserID], [FacultyID])
@@ -294,7 +294,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(22, 'Микола', 'Адмін', 'panas@admin.com')
+	(22, N'Микола', N'Адмін', 'panas@admin.com')
 GO
 INSERT INTO [FacultyAdmin]
   ([SystemUserID], [FacultyID])
@@ -310,7 +310,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(23, 'Роман', 'Адмін', 'panas@admin.com')
+	(23, N'Роман', N'Адмін', 'panas@admin.com')
 GO
 INSERT INTO [FacultyAdmin]
   ([SystemUserID], [FacultyID])
@@ -326,7 +326,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(24, 'Олександр', 'Адмін', 'panas@admin.com')
+	(24, N'Олександр', N'Адмін', 'panas@admin.com')
 GO
 INSERT INTO [FacultyAdmin]
   ([SystemUserID], [FacultyID])
@@ -342,7 +342,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(25, 'Валентин', 'Адмін', 'panas@admin.com')
+	(25, N'Валентин', N'Адмін', 'panas@admin.com')
 GO
 INSERT INTO [FacultyAdmin]
   ([SystemUserID], [FacultyID])
@@ -358,7 +358,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(26, 'Валерій', 'Адмін', 'panas@admin.com')
+	(26, N'Валерій', N'Адмін', 'panas@admin.com')
 GO
 INSERT INTO [FacultyAdmin]
   ([SystemUserID], [FacultyID])
@@ -374,7 +374,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(27, 'Віктор', 'Адмін', 'panas@admin.com')
+	(27, N'Віктор', N'Адмін', 'panas@admin.com')
 GO
 INSERT INTO [FacultyAdmin]
   ([SystemUserID], [FacultyID])
@@ -390,7 +390,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(28, 'Вірослав', 'Адмін', 'panas@admin.com')
+	(28, N'Вірослав', N'Адмін', 'panas@admin.com')
 GO
 INSERT INTO [FacultyAdmin]
   ([SystemUserID], [FacultyID])
@@ -406,7 +406,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(29, 'Віталій', 'Адмін', 'panas@admin.com')
+	(29, N'Віталій', N'Адмін', 'panas@admin.com')
 GO
 INSERT INTO [FacultyAdmin]
   ([SystemUserID], [FacultyID])
@@ -422,7 +422,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(30, 'Влад', 'Адмін', 'panas@admin.com')
+	(30, N'Влад', N'Адмін', 'panas@admin.com')
 GO
 INSERT INTO [FacultyAdmin]
   ([SystemUserID], [FacultyID])
@@ -440,7 +440,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(31, 'Аврора', 'Секретар', 'panas@admin.com')
+	(31, N'Аврора', N'Секретар', 'panas@admin.com')
 GO
 INSERT INTO [FacultySecretary]
   ([SystemUserID], [FacultyID])
@@ -456,7 +456,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(32, 'Агата', 'Секретар', 'panas@admin.com')
+	(32, N'Агата', N'Секретар', 'panas@admin.com')
 GO
 INSERT INTO [FacultySecretary]
   ([SystemUserID], [FacultyID])
@@ -472,7 +472,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(33, 'Ада', 'Секретар', 'panas@admin.com')
+	(33, N'Ада', N'Секретар', 'panas@admin.com')
 GO
 INSERT INTO [FacultySecretary]
   ([SystemUserID], [FacultyID])
@@ -488,7 +488,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(34, 'Алевтина', 'Секретар', 'panas@admin.com')
+	(34, N'Алевтина', N'Секретар', 'panas@admin.com')
 GO
 INSERT INTO [FacultySecretary]
   ([SystemUserID], [FacultyID])
@@ -504,7 +504,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(35, 'Аліна', 'Секретар', 'panas@admin.com')
+	(35, N'Аліна', N'Секретар', 'panas@admin.com')
 GO
 INSERT INTO [FacultySecretary]
   ([SystemUserID], [FacultyID])
@@ -520,7 +520,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(36, 'Аліса', 'Секретар', 'panas@admin.com')
+	(36, N'Аліса', N'Секретар', 'panas@admin.com')
 GO
 INSERT INTO [FacultySecretary]
   ([SystemUserID], [FacultyID])
@@ -536,7 +536,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(37, 'Альбіна', 'Секретар', 'panas@admin.com')
+	(37, N'Альбіна', N'Секретар', 'panas@admin.com')
 GO
 INSERT INTO [FacultySecretary]
   ([SystemUserID], [FacultyID])
@@ -552,7 +552,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(38, 'Анатолія', 'Секретар', 'panas@admin.com')
+	(38, N'Анатолія', N'Секретар', 'panas@admin.com')
 GO
 INSERT INTO [FacultySecretary]
   ([SystemUserID], [FacultyID])
@@ -568,7 +568,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(39, 'Ангеліна', 'Секретар', 'panas@admin.com')
+	(39, N'Ангеліна', N'Секретар', 'panas@admin.com')
 GO
 INSERT INTO [FacultySecretary]
   ([SystemUserID], [FacultyID])
@@ -584,7 +584,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(40, 'Анжела', 'Секретар', 'panas@admin.com')
+	(40, N'Анжела', N'Секретар', 'panas@admin.com')
 GO
 INSERT INTO [FacultySecretary]
   ([SystemUserID], [FacultyID])
@@ -600,7 +600,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(41, 'Антоніна', 'Секретар', 'panas@admin.com')
+	(41, N'Антоніна', N'Секретар', 'panas@admin.com')
 GO
 INSERT INTO [FacultySecretary]
   ([SystemUserID], [FacultyID])
@@ -616,7 +616,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(42, 'Анфіса', 'Секретар', 'panas@admin.com')
+	(42, N'Анфіса', N'Секретар', 'panas@admin.com')
 GO
 INSERT INTO [FacultySecretary]
   ([SystemUserID], [FacultyID])
@@ -632,7 +632,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(43, 'Аполлонія', 'Секретар', 'panas@admin.com')
+	(43, N'Аполлонія', N'Секретар', 'panas@admin.com')
 GO
 INSERT INTO [FacultySecretary]
   ([SystemUserID], [FacultyID])
@@ -648,7 +648,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(44, 'Афіна', 'Секретар', 'panas@admin.com')
+	(44, N'Афіна', N'Секретар', 'panas@admin.com')
 GO
 INSERT INTO [FacultySecretary]
   ([SystemUserID], [FacultyID])
@@ -666,7 +666,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(45, 'Раїса', 'Викладач', 'teacher@admin.com')
+	(45, N'Раїса', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -682,7 +682,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(46, 'Ярослав', 'Викладач', 'teacher@admin.com')
+	(46, N'Ярослав', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -698,7 +698,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(47, 'Ізяслав', 'Викладач', 'teacher@admin.com')
+	(47, N'Ізяслав', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -714,7 +714,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(48, 'Златомир', 'Викладач', 'teacher@admin.com')
+	(48, N'Златомир', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -730,7 +730,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(49, 'Княжослав', 'Викладач', 'teacher@admin.com')
+	(49, N'Княжослав', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -746,7 +746,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(50, 'Анфіса', 'Викладач', 'teacher@admin.com')
+	(50, N'Анфіса', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -762,7 +762,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(51, 'Стефаній', 'Викладач', 'teacher@admin.com')
+	(51, N'Стефаній', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -778,7 +778,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(52, 'Любомир', 'Викладач', 'teacher@admin.com')
+	(52, N'Любомир', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -794,7 +794,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(53, 'Добряна', 'Викладач', 'teacher@admin.com')
+	(53, N'Добряна', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -810,7 +810,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(54, 'Назарій', 'Викладач', 'teacher@admin.com')
+	(54, N'Назарій', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -826,7 +826,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(55, 'Агата', 'Викладач', 'teacher@admin.com')
+	(55, N'Агата', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -842,7 +842,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(56, 'Олелько', 'Викладач', 'teacher@admin.com')
+	(56, N'Олелько', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -858,7 +858,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(57, 'Двалін', 'Викладач', 'teacher@admin.com')
+	(57, N'Двалін', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -874,7 +874,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(58, 'Олена', 'Викладач', 'teacher@admin.com')
+	(58, N'Олена', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -890,7 +890,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(59, 'Двалін', 'Викладач', 'teacher@admin.com')
+	(59, N'Двалін', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -906,7 +906,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(60, 'Назар', 'Викладач', 'teacher@admin.com')
+	(60, N'Назар', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -922,7 +922,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(61, 'Володимир', 'Викладач', 'teacher@admin.com')
+	(61, N'Володимир', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -938,7 +938,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(62, 'Євстафій', 'Викладач', 'teacher@admin.com')
+	(62, N'Євстафій', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -954,7 +954,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(63, 'Ізяслав', 'Викладач', 'teacher@admin.com')
+	(63, N'Ізяслав', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -970,7 +970,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(64, 'Омелян', 'Викладач', 'teacher@admin.com')
+	(64, N'Омелян', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -986,7 +986,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(65, 'Орест', 'Викладач', 'teacher@admin.com')
+	(65, N'Орест', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1002,7 +1002,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(66, 'Олесь', 'Викладач', 'teacher@admin.com')
+	(66, N'Олесь', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1018,7 +1018,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(67, 'Святослав', 'Викладач', 'teacher@admin.com')
+	(67, N'Святослав', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1034,7 +1034,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(68, 'Віта', 'Викладач', 'teacher@admin.com')
+	(68, N'Віта', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1050,7 +1050,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(69, 'Божан', 'Викладач', 'teacher@admin.com')
+	(69, N'Божан', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1066,7 +1066,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(70, 'Пилип', 'Викладач', 'teacher@admin.com')
+	(70, N'Пилип', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1082,7 +1082,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(71, 'Богдана', 'Викладач', 'teacher@admin.com')
+	(71, N'Богдана', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1098,7 +1098,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(72, 'Ярило', 'Викладач', 'teacher@admin.com')
+	(72, N'Ярило', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1114,7 +1114,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(73, 'Уляна', 'Викладач', 'teacher@admin.com')
+	(73, N'Уляна', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1130,7 +1130,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(74, 'Борислав', 'Викладач', 'teacher@admin.com')
+	(74, N'Борислав', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1146,7 +1146,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(75, 'Валерія', 'Викладач', 'teacher@admin.com')
+	(75, N'Валерія', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1162,7 +1162,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(76, 'Оксана', 'Викладач', 'teacher@admin.com')
+	(76, N'Оксана', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1178,7 +1178,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(77, 'Сіріус', 'Викладач', 'teacher@admin.com')
+	(77, N'Сіріус', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1194,7 +1194,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(78, 'Максим', 'Викладач', 'teacher@admin.com')
+	(78, N'Максим', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1210,7 +1210,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(79, 'Сварг', 'Викладач', 'teacher@admin.com')
+	(79, N'Сварг', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1226,7 +1226,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(80, 'Остап', 'Викладач', 'teacher@admin.com')
+	(80, N'Остап', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1242,7 +1242,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(81, 'Ітринатор', 'Викладач', 'teacher@admin.com')
+	(81, N'Ітринатор', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1258,7 +1258,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(82, 'Роксолана', 'Викладач', 'teacher@admin.com')
+	(82, N'Роксолана', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1274,7 +1274,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(83, 'Вербан', 'Викладач', 'teacher@admin.com')
+	(83, N'Вербан', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1290,7 +1290,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(84, 'Арагог', 'Викладач', 'teacher@admin.com')
+	(84, N'Арагог', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1306,7 +1306,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(85, 'Аврелія', 'Викладач', 'teacher@admin.com')
+	(85, N'Аврелія', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1322,7 +1322,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(86, 'Томас', 'Викладач', 'teacher@admin.com')
+	(86, N'Томас', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1338,7 +1338,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(87, 'Родослав', 'Викладач', 'teacher@admin.com')
+	(87, N'Родослав', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1354,7 +1354,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(88, 'Ніна', 'Викладач', 'teacher@admin.com')
+	(88, N'Ніна', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1370,7 +1370,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(89, 'Анжела', 'Викладач', 'teacher@admin.com')
+	(89, N'Анжела', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1386,7 +1386,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(90, 'Злотодан', 'Викладач', 'teacher@admin.com')
+	(90, N'Злотодан', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1402,7 +1402,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(91, 'Осмомисл', 'Викладач', 'teacher@admin.com')
+	(91, N'Осмомисл', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1418,7 +1418,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(92, 'Братислав', 'Викладач', 'teacher@admin.com')
+	(92, N'Братислав', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1434,7 +1434,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(93, 'Григорій', 'Викладач', 'teacher@admin.com')
+	(93, N'Григорій', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1450,7 +1450,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(94, 'Квай-Гон', 'Викладач', 'teacher@admin.com')
+	(94, N'Квай-Гон', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1466,7 +1466,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(95, 'Назар', 'Викладач', 'teacher@admin.com')
+	(95, N'Назар', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1482,7 +1482,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(96, 'Злотодан', 'Викладач', 'teacher@admin.com')
+	(96, N'Злотодан', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1498,7 +1498,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(97, 'Ілля', 'Викладач', 'teacher@admin.com')
+	(97, N'Ілля', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1514,7 +1514,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(98, 'Леголас', 'Викладач', 'teacher@admin.com')
+	(98, N'Леголас', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1530,7 +1530,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(99, 'Милодух', 'Викладач', 'teacher@admin.com')
+	(99, N'Милодух', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1546,7 +1546,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(100, 'Мирон', 'Викладач', 'teacher@admin.com')
+	(100, N'Мирон', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1562,7 +1562,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(101, 'Норі', 'Викладач', 'teacher@admin.com')
+	(101, N'Норі', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1578,7 +1578,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(102, 'Потап', 'Викладач', 'teacher@admin.com')
+	(102, N'Потап', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1594,7 +1594,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(103, 'Зіновій', 'Викладач', 'teacher@admin.com')
+	(103, N'Зіновій', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1610,7 +1610,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(104, 'Забава', 'Викладач', 'teacher@admin.com')
+	(104, N'Забава', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1626,7 +1626,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(105, 'Світлана', 'Викладач', 'teacher@admin.com')
+	(105, N'Світлана', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1642,7 +1642,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(106, 'Ольга', 'Викладач', 'teacher@admin.com')
+	(106, N'Ольга', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1658,7 +1658,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(107, 'Любомир', 'Викладач', 'teacher@admin.com')
+	(107, N'Любомир', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1674,7 +1674,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(108, 'Ада', 'Викладач', 'teacher@admin.com')
+	(108, N'Ада', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1690,7 +1690,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(109, 'Антонія', 'Викладач', 'teacher@admin.com')
+	(109, N'Антонія', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1706,7 +1706,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(110, 'Богуслава', 'Викладач', 'teacher@admin.com')
+	(110, N'Богуслава', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1722,7 +1722,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(111, 'Людмила', 'Викладач', 'teacher@admin.com')
+	(111, N'Людмила', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1738,7 +1738,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(112, 'Томас', 'Викладач', 'teacher@admin.com')
+	(112, N'Томас', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1754,7 +1754,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(113, 'Ібрагім', 'Викладач', 'teacher@admin.com')
+	(113, N'Ібрагім', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1770,7 +1770,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(114, 'Петро', 'Викладач', 'teacher@admin.com')
+	(114, N'Петро', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1786,7 +1786,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(115, 'Квай-Гон', 'Викладач', 'teacher@admin.com')
+	(115, N'Квай-Гон', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1802,7 +1802,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(116, 'Гостомисл', 'Викладач', 'teacher@admin.com')
+	(116, N'Гостомисл', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1818,7 +1818,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(117, 'Том', 'Викладач', 'teacher@admin.com')
+	(117, N'Том', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1834,7 +1834,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(118, 'Захар', 'Викладач', 'teacher@admin.com')
+	(118, N'Захар', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1850,7 +1850,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(119, 'Дана', 'Викладач', 'teacher@admin.com')
+	(119, N'Дана', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1866,7 +1866,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(120, 'Леся', 'Викладач', 'teacher@admin.com')
+	(120, N'Леся', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1882,7 +1882,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(121, 'Оксана', 'Викладач', 'teacher@admin.com')
+	(121, N'Оксана', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1898,7 +1898,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(122, 'Ярема', 'Викладач', 'teacher@admin.com')
+	(122, N'Ярема', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1914,7 +1914,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(123, 'Орі', 'Викладач', 'teacher@admin.com')
+	(123, N'Орі', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1930,7 +1930,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(124, 'Ясен', 'Викладач', 'teacher@admin.com')
+	(124, N'Ясен', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1946,7 +1946,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(125, 'Рон', 'Викладач', 'teacher@admin.com')
+	(125, N'Рон', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1962,7 +1962,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(126, 'Сонцедар', 'Викладач', 'teacher@admin.com')
+	(126, N'Сонцедар', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1978,7 +1978,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(127, 'Маркіян', 'Викладач', 'teacher@admin.com')
+	(127, N'Маркіян', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -1994,7 +1994,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(128, 'Либідь', 'Викладач', 'teacher@admin.com')
+	(128, N'Либідь', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2010,7 +2010,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(129, 'Щек', 'Викладач', 'teacher@admin.com')
+	(129, N'Щек', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2026,7 +2026,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(130, 'Максим', 'Викладач', 'teacher@admin.com')
+	(130, N'Максим', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2042,7 +2042,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(131, 'Світослав', 'Викладач', 'teacher@admin.com')
+	(131, N'Світослав', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2058,7 +2058,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(132, 'Осмомисл', 'Викладач', 'teacher@admin.com')
+	(132, N'Осмомисл', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2074,7 +2074,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(133, 'Раїса', 'Викладач', 'teacher@admin.com')
+	(133, N'Раїса', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2090,7 +2090,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(134, 'Квай-Гон', 'Викладач', 'teacher@admin.com')
+	(134, N'Квай-Гон', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2106,7 +2106,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(135, 'Микола', 'Викладач', 'teacher@admin.com')
+	(135, N'Микола', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2122,7 +2122,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(136, 'Дана', 'Викладач', 'teacher@admin.com')
+	(136, N'Дана', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2138,7 +2138,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(137, 'Устим', 'Викладач', 'teacher@admin.com')
+	(137, N'Устим', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2154,7 +2154,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(138, 'Зиновій', 'Викладач', 'teacher@admin.com')
+	(138, N'Зиновій', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2170,7 +2170,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(139, 'Балін', 'Викладач', 'teacher@admin.com')
+	(139, N'Балін', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2186,7 +2186,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(140, 'Афіна', 'Викладач', 'teacher@admin.com')
+	(140, N'Афіна', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2202,7 +2202,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(141, 'Гордій', 'Викладач', 'teacher@admin.com')
+	(141, N'Гордій', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2218,7 +2218,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(142, 'Іванна', 'Викладач', 'teacher@admin.com')
+	(142, N'Іванна', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2234,7 +2234,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(143, 'Гордій', 'Викладач', 'teacher@admin.com')
+	(143, N'Гордій', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2250,7 +2250,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(144, 'Руслана', 'Викладач', 'teacher@admin.com')
+	(144, N'Руслана', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2266,7 +2266,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(145, 'Любослав', 'Викладач', 'teacher@admin.com')
+	(145, N'Любослав', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2282,7 +2282,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(146, 'Любава', 'Викладач', 'teacher@admin.com')
+	(146, N'Любава', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2298,7 +2298,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(147, 'Вероніка', 'Викладач', 'teacher@admin.com')
+	(147, N'Вероніка', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2314,7 +2314,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(148, 'Ада', 'Викладач', 'teacher@admin.com')
+	(148, N'Ада', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2330,7 +2330,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(149, 'Богдан', 'Викладач', 'teacher@admin.com')
+	(149, N'Богдан', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2346,7 +2346,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(150, 'Денис', 'Викладач', 'teacher@admin.com')
+	(150, N'Денис', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2362,7 +2362,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(151, 'Георгій', 'Викладач', 'teacher@admin.com')
+	(151, N'Георгій', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2378,7 +2378,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(152, 'Арагорн', 'Викладач', 'teacher@admin.com')
+	(152, N'Арагорн', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2394,7 +2394,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(153, 'Доброслав', 'Викладач', 'teacher@admin.com')
+	(153, N'Доброслав', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2410,7 +2410,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(154, 'Руслан', 'Викладач', 'teacher@admin.com')
+	(154, N'Руслан', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2426,7 +2426,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(155, 'Остромир', 'Викладач', 'teacher@admin.com')
+	(155, N'Остромир', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2442,7 +2442,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(156, 'Лукян', 'Викладач', 'teacher@admin.com')
+	(156, N'Лукян', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2458,7 +2458,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(157, 'Назар', 'Викладач', 'teacher@admin.com')
+	(157, N'Назар', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2474,7 +2474,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(158, 'Тарас', 'Викладач', 'teacher@admin.com')
+	(158, N'Тарас', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2490,7 +2490,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(159, 'Дана', 'Викладач', 'teacher@admin.com')
+	(159, N'Дана', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2506,7 +2506,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(160, 'Ібрагім', 'Викладач', 'teacher@admin.com')
+	(160, N'Ібрагім', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2522,7 +2522,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(161, 'Остап', 'Викладач', 'teacher@admin.com')
+	(161, N'Остап', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2538,7 +2538,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(162, 'Острозор', 'Викладач', 'teacher@admin.com')
+	(162, N'Острозор', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2554,7 +2554,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(163, 'Арагорн', 'Викладач', 'teacher@admin.com')
+	(163, N'Арагорн', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2570,7 +2570,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(164, 'Жадан', 'Викладач', 'teacher@admin.com')
+	(164, N'Жадан', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2586,7 +2586,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(165, 'Віктор', 'Викладач', 'teacher@admin.com')
+	(165, N'Віктор', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2602,7 +2602,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(166, 'Кий', 'Викладач', 'teacher@admin.com')
+	(166, N'Кий', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2618,7 +2618,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(167, 'Юрій', 'Викладач', 'teacher@admin.com')
+	(167, N'Юрій', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2634,7 +2634,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(168, 'Дарій', 'Викладач', 'teacher@admin.com')
+	(168, N'Дарій', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2650,7 +2650,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(169, 'Люк', 'Викладач', 'teacher@admin.com')
+	(169, N'Люк', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2666,7 +2666,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(170, 'Жадан', 'Викладач', 'teacher@admin.com')
+	(170, N'Жадан', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2682,7 +2682,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(171, 'Сварг', 'Викладач', 'teacher@admin.com')
+	(171, N'Сварг', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2698,7 +2698,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(172, 'Анна', 'Викладач', 'teacher@admin.com')
+	(172, N'Анна', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2714,7 +2714,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(173, 'Гостомисл', 'Викладач', 'teacher@admin.com')
+	(173, N'Гостомисл', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2730,7 +2730,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(174, 'Леголас', 'Викладач', 'teacher@admin.com')
+	(174, N'Леголас', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2746,7 +2746,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(175, 'Ярополк', 'Викладач', 'teacher@admin.com')
+	(175, N'Ярополк', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2762,7 +2762,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(176, 'Норі', 'Викладач', 'teacher@admin.com')
+	(176, N'Норі', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2778,7 +2778,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(177, 'Милован', 'Викладач', 'teacher@admin.com')
+	(177, N'Милован', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2794,7 +2794,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(178, 'Енакін', 'Викладач', 'teacher@admin.com')
+	(178, N'Енакін', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2810,7 +2810,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(179, 'Денис', 'Викладач', 'teacher@admin.com')
+	(179, N'Денис', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2826,7 +2826,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(180, 'Братислав', 'Викладач', 'teacher@admin.com')
+	(180, N'Братислав', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2842,7 +2842,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(181, 'Забава', 'Викладач', 'teacher@admin.com')
+	(181, N'Забава', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2858,7 +2858,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(182, 'Аріадна', 'Викладач', 'teacher@admin.com')
+	(182, N'Аріадна', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2874,7 +2874,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(183, 'Леся', 'Викладач', 'teacher@admin.com')
+	(183, N'Леся', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2890,7 +2890,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(184, 'Корній', 'Викладач', 'teacher@admin.com')
+	(184, N'Корній', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2906,7 +2906,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(185, 'Градимир', 'Викладач', 'teacher@admin.com')
+	(185, N'Градимир', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2922,7 +2922,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(186, 'Петро', 'Викладач', 'teacher@admin.com')
+	(186, N'Петро', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2938,7 +2938,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(187, 'Дарій', 'Викладач', 'teacher@admin.com')
+	(187, N'Дарій', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2954,7 +2954,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(188, 'Корній', 'Викладач', 'teacher@admin.com')
+	(188, N'Корній', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2970,7 +2970,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(189, 'Сварг', 'Викладач', 'teacher@admin.com')
+	(189, N'Сварг', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -2986,7 +2986,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(190, 'Піппін', 'Викладач', 'teacher@admin.com')
+	(190, N'Піппін', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3002,7 +3002,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(191, 'Зорян', 'Викладач', 'teacher@admin.com')
+	(191, N'Зорян', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3018,7 +3018,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(192, 'Гаррі', 'Викладач', 'teacher@admin.com')
+	(192, N'Гаррі', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3034,7 +3034,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(193, 'Олексій', 'Викладач', 'teacher@admin.com')
+	(193, N'Олексій', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3050,7 +3050,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(194, 'Аліса', 'Викладач', 'teacher@admin.com')
+	(194, N'Аліса', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3066,7 +3066,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(195, 'Гордій', 'Викладач', 'teacher@admin.com')
+	(195, N'Гордій', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3082,7 +3082,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(196, 'Аврелія', 'Викладач', 'teacher@admin.com')
+	(196, N'Аврелія', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3098,7 +3098,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(197, 'Гертруда', 'Викладач', 'teacher@admin.com')
+	(197, N'Гертруда', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3114,7 +3114,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(198, 'Маряна', 'Викладач', 'teacher@admin.com')
+	(198, N'Маряна', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3130,7 +3130,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(199, 'Галина', 'Викладач', 'teacher@admin.com')
+	(199, N'Галина', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3146,7 +3146,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(200, 'Арагорн', 'Викладач', 'teacher@admin.com')
+	(200, N'Арагорн', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3162,7 +3162,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(201, 'Градислав', 'Викладач', 'teacher@admin.com')
+	(201, N'Градислав', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3178,7 +3178,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(202, 'Осмомисл', 'Викладач', 'teacher@admin.com')
+	(202, N'Осмомисл', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3194,7 +3194,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(203, 'Сіріус', 'Викладач', 'teacher@admin.com')
+	(203, N'Сіріус', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3210,7 +3210,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(204, 'Анастасія', 'Викладач', 'teacher@admin.com')
+	(204, N'Анастасія', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3226,7 +3226,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(205, 'Ярополк', 'Викладач', 'teacher@admin.com')
+	(205, N'Ярополк', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3242,7 +3242,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(206, 'Киян', 'Викладач', 'teacher@admin.com')
+	(206, N'Киян', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3258,7 +3258,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(207, 'Дана', 'Викладач', 'teacher@admin.com')
+	(207, N'Дана', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3274,7 +3274,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(208, 'Влад', 'Викладач', 'teacher@admin.com')
+	(208, N'Влад', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3290,7 +3290,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(209, 'Людмила', 'Викладач', 'teacher@admin.com')
+	(209, N'Людмила', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3306,7 +3306,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(210, 'Милован', 'Викладач', 'teacher@admin.com')
+	(210, N'Милован', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3322,7 +3322,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(211, 'Роксолана', 'Викладач', 'teacher@admin.com')
+	(211, N'Роксолана', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3338,7 +3338,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(212, 'Києслав', 'Викладач', 'teacher@admin.com')
+	(212, N'Києслав', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3354,7 +3354,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(213, 'Івантослав', 'Викладач', 'teacher@admin.com')
+	(213, N'Івантослав', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3370,7 +3370,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(214, 'Аврелія', 'Викладач', 'teacher@admin.com')
+	(214, N'Аврелія', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3386,7 +3386,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(215, 'Осмомисл', 'Викладач', 'teacher@admin.com')
+	(215, N'Осмомисл', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3402,7 +3402,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(216, 'Віта', 'Викладач', 'teacher@admin.com')
+	(216, N'Віта', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3418,7 +3418,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(217, 'Турбог', 'Викладач', 'teacher@admin.com')
+	(217, N'Турбог', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3434,7 +3434,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(218, 'Юрій', 'Викладач', 'teacher@admin.com')
+	(218, N'Юрій', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3450,7 +3450,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(219, 'Кілі', 'Викладач', 'teacher@admin.com')
+	(219, N'Кілі', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3466,7 +3466,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(220, 'Стефаній', 'Викладач', 'teacher@admin.com')
+	(220, N'Стефаній', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3482,7 +3482,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(221, 'Том', 'Викладач', 'teacher@admin.com')
+	(221, N'Том', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3498,7 +3498,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(222, 'Дивозір', 'Викладач', 'teacher@admin.com')
+	(222, N'Дивозір', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3514,7 +3514,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(223, 'Ярило', 'Викладач', 'teacher@admin.com')
+	(223, N'Ярило', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3530,7 +3530,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(224, 'Кілі', 'Викладач', 'teacher@admin.com')
+	(224, N'Кілі', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3546,7 +3546,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(225, 'Ольга', 'Викладач', 'teacher@admin.com')
+	(225, N'Ольга', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3562,7 +3562,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(226, 'Ратимир', 'Викладач', 'teacher@admin.com')
+	(226, N'Ратимир', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3578,7 +3578,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(227, 'Злат', 'Викладач', 'teacher@admin.com')
+	(227, N'Злат', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3594,7 +3594,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(228, 'Остап', 'Викладач', 'teacher@admin.com')
+	(228, N'Остап', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3610,7 +3610,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(229, 'Ірина', 'Викладач', 'teacher@admin.com')
+	(229, N'Ірина', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3626,7 +3626,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(230, 'Тома', 'Викладач', 'teacher@admin.com')
+	(230, N'Тома', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3642,7 +3642,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(231, 'Дмитро', 'Викладач', 'teacher@admin.com')
+	(231, N'Дмитро', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3658,7 +3658,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(232, 'Остромир', 'Викладач', 'teacher@admin.com')
+	(232, N'Остромир', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3674,7 +3674,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(233, 'Захар', 'Викладач', 'teacher@admin.com')
+	(233, N'Захар', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3690,7 +3690,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(234, 'Гліб', 'Викладач', 'teacher@admin.com')
+	(234, N'Гліб', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3706,7 +3706,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(235, 'Любов', 'Викладач', 'teacher@admin.com')
+	(235, N'Любов', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3722,7 +3722,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(236, 'Златомир', 'Викладач', 'teacher@admin.com')
+	(236, N'Златомир', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3738,7 +3738,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(237, 'Том', 'Викладач', 'teacher@admin.com')
+	(237, N'Том', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3754,7 +3754,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(238, 'Всеволод', 'Викладач', 'teacher@admin.com')
+	(238, N'Всеволод', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3770,7 +3770,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(239, 'Антонія', 'Викладач', 'teacher@admin.com')
+	(239, N'Антонія', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3786,7 +3786,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(240, 'Зінаїда', 'Викладач', 'teacher@admin.com')
+	(240, N'Зінаїда', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3802,7 +3802,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(241, 'Антонія', 'Викладач', 'teacher@admin.com')
+	(241, N'Антонія', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3818,7 +3818,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(242, 'Балін', 'Викладач', 'teacher@admin.com')
+	(242, N'Балін', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3834,7 +3834,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(243, 'Олександр', 'Викладач', 'teacher@admin.com')
+	(243, N'Олександр', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3850,7 +3850,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(244, 'Том', 'Викладач', 'teacher@admin.com')
+	(244, N'Том', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3866,7 +3866,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(245, 'Гендальф', 'Викладач', 'teacher@admin.com')
+	(245, N'Гендальф', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3882,7 +3882,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(246, 'Русана', 'Викладач', 'teacher@admin.com')
+	(246, N'Русана', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3898,7 +3898,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(247, 'Юрій', 'Викладач', 'teacher@admin.com')
+	(247, N'Юрій', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3914,7 +3914,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(248, 'Анна', 'Викладач', 'teacher@admin.com')
+	(248, N'Анна', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3930,7 +3930,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(249, 'Влад', 'Викладач', 'teacher@admin.com')
+	(249, N'Влад', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3946,7 +3946,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(250, 'Любомудр', 'Викладач', 'teacher@admin.com')
+	(250, N'Любомудр', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3962,7 +3962,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(251, 'Арагог', 'Викладач', 'teacher@admin.com')
+	(251, N'Арагог', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3978,7 +3978,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(252, 'Вербан', 'Викладач', 'teacher@admin.com')
+	(252, N'Вербан', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -3994,7 +3994,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(253, 'Інга', 'Викладач', 'teacher@admin.com')
+	(253, N'Інга', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4010,7 +4010,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(254, 'Владислав', 'Викладач', 'teacher@admin.com')
+	(254, N'Владислав', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4026,7 +4026,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(255, 'Маряна', 'Викладач', 'teacher@admin.com')
+	(255, N'Маряна', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4042,7 +4042,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(256, 'Світлана', 'Викладач', 'teacher@admin.com')
+	(256, N'Світлана', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4058,7 +4058,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(257, 'Злата', 'Викладач', 'teacher@admin.com')
+	(257, N'Злата', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4074,7 +4074,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(258, 'Пилип', 'Викладач', 'teacher@admin.com')
+	(258, N'Пилип', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4090,7 +4090,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(259, 'Валерія', 'Викладач', 'teacher@admin.com')
+	(259, N'Валерія', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4106,7 +4106,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(260, 'Обі', 'Викладач', 'teacher@admin.com')
+	(260, N'Обі', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4122,7 +4122,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(261, 'Балін', 'Викладач', 'teacher@admin.com')
+	(261, N'Балін', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4138,7 +4138,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(262, 'Захар', 'Викладач', 'teacher@admin.com')
+	(262, N'Захар', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4154,7 +4154,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(263, 'Зиновій', 'Викладач', 'teacher@admin.com')
+	(263, N'Зиновій', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4170,7 +4170,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(264, 'Меланія', 'Викладач', 'teacher@admin.com')
+	(264, N'Меланія', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4186,7 +4186,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(265, 'Гаврило', 'Викладач', 'teacher@admin.com')
+	(265, N'Гаврило', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4202,7 +4202,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(266, 'Любослав', 'Викладач', 'teacher@admin.com')
+	(266, N'Любослав', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4218,7 +4218,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(267, 'Норі', 'Викладач', 'teacher@admin.com')
+	(267, N'Норі', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4234,7 +4234,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(268, 'Вербан', 'Викладач', 'teacher@admin.com')
+	(268, N'Вербан', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4250,7 +4250,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(269, 'Віолетта', 'Викладач', 'teacher@admin.com')
+	(269, N'Віолетта', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4266,7 +4266,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(270, 'Георгій', 'Викладач', 'teacher@admin.com')
+	(270, N'Георгій', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4282,7 +4282,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(271, 'Ян', 'Викладач', 'teacher@admin.com')
+	(271, N'Ян', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4298,7 +4298,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(272, 'Милослав', 'Викладач', 'teacher@admin.com')
+	(272, N'Милослав', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4314,7 +4314,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(273, 'Ніна', 'Викладач', 'teacher@admin.com')
+	(273, N'Ніна', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4330,7 +4330,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(274, 'Гордій', 'Викладач', 'teacher@admin.com')
+	(274, N'Гордій', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4346,7 +4346,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(275, 'Любов', 'Викладач', 'teacher@admin.com')
+	(275, N'Любов', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4362,7 +4362,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(276, 'Філі', 'Викладач', 'teacher@admin.com')
+	(276, N'Філі', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4378,7 +4378,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(277, 'Варвара', 'Викладач', 'teacher@admin.com')
+	(277, N'Варвара', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4394,7 +4394,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(278, 'Пилип', 'Викладач', 'teacher@admin.com')
+	(278, N'Пилип', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4410,7 +4410,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(279, 'Софія', 'Викладач', 'teacher@admin.com')
+	(279, N'Софія', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4426,7 +4426,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(280, 'Тамара', 'Викладач', 'teacher@admin.com')
+	(280, N'Тамара', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4442,7 +4442,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(281, 'Ляна', 'Викладач', 'teacher@admin.com')
+	(281, N'Ляна', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4458,7 +4458,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(282, 'Олелько', 'Викладач', 'teacher@admin.com')
+	(282, N'Олелько', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4474,7 +4474,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(283, 'Зорепад', 'Викладач', 'teacher@admin.com')
+	(283, N'Зорепад', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4490,7 +4490,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(284, 'Микола', 'Викладач', 'teacher@admin.com')
+	(284, N'Микола', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4506,7 +4506,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(285, 'Олена', 'Викладач', 'teacher@admin.com')
+	(285, N'Олена', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4522,7 +4522,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(286, 'Падме', 'Викладач', 'teacher@admin.com')
+	(286, N'Падме', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4538,7 +4538,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(287, 'Ярема', 'Викладач', 'teacher@admin.com')
+	(287, N'Ярема', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4554,7 +4554,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(288, 'Квай-Гон', 'Викладач', 'teacher@admin.com')
+	(288, N'Квай-Гон', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4570,7 +4570,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(289, 'Жадан', 'Викладач', 'teacher@admin.com')
+	(289, N'Жадан', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4586,7 +4586,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(290, 'Маряна', 'Викладач', 'teacher@admin.com')
+	(290, N'Маряна', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4602,7 +4602,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(291, 'Мирослав', 'Викладач', 'teacher@admin.com')
+	(291, N'Мирослав', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4618,7 +4618,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(292, 'Сварг', 'Викладач', 'teacher@admin.com')
+	(292, N'Сварг', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4634,7 +4634,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(293, 'Любомисл', 'Викладач', 'teacher@admin.com')
+	(293, N'Любомисл', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4650,7 +4650,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(294, 'Сіріус', 'Викладач', 'teacher@admin.com')
+	(294, N'Сіріус', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4666,7 +4666,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(295, 'Вікторія', 'Викладач', 'teacher@admin.com')
+	(295, N'Вікторія', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4682,7 +4682,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(296, 'Любомудр', 'Викладач', 'teacher@admin.com')
+	(296, N'Любомудр', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4698,7 +4698,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(297, 'Богуслава', 'Викладач', 'teacher@admin.com')
+	(297, N'Богуслава', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4714,7 +4714,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(298, 'Сварг', 'Викладач', 'teacher@admin.com')
+	(298, N'Сварг', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4730,7 +4730,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(299, 'Ніна', 'Викладач', 'teacher@admin.com')
+	(299, N'Ніна', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4746,7 +4746,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(300, 'Юрій', 'Викладач', 'teacher@admin.com')
+	(300, N'Юрій', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4762,7 +4762,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(301, 'Либідь', 'Викладач', 'teacher@admin.com')
+	(301, N'Либідь', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4778,7 +4778,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(302, 'Олексій', 'Викладач', 'teacher@admin.com')
+	(302, N'Олексій', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4794,7 +4794,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(303, 'Рон', 'Викладач', 'teacher@admin.com')
+	(303, N'Рон', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
@@ -4810,7 +4810,7 @@ GO
 INSERT INTO [UserInformation]
   ([SystemUserID], [FirstName], [LastName], [Email])
 VALUES 
-	(304, 'Тамара', 'Викладач', 'teacher@admin.com')
+	(304, N'Тамара', N'Викладач', 'teacher@admin.com')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])

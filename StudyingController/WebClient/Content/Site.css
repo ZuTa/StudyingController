@@ -1,0 +1,67 @@
+﻿body {
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+}
+
+a {
+    background: none;
+    color: deepskyblue;
+    text-decoration: none;
+}
+
+    a:hover {
+        color: black;
+        text-decoration: none;
+    }
+
+.Content {
+    margin: 0 auto;
+    max-width: 960px;
+    float: none;
+}
+
+#LoginBar {
+    float: right;
+    text-align: left;
+    padding: 5px;
+    max-width: 150px;
+}
+
+    #LoginBar a {
+        text-decoration: none;
+        background-color: lightgray;
+        border-radius: 3px;
+        padding: 2px;
+    }
+
+#LoginForm {
+    max-width: 300px;
+}
+    #LoginForm ol {
+        list-style: none;
+    }
+
+    
+.HomePageHeader {
+    text-align: center;
+}
+
+#MainContent {
+    min-height: 500px;
+}
+
+#Footer {
+    background-color: lightgray;
+    text-align: center;
+}
+
+ul#Menu {
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+    ul#Menu li {
+        display: inline;
+        list-style: none;
+        background-color: lightgray;
+        padding: 3px;
+    }

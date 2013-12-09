@@ -112,7 +112,7 @@ namespace StudyingControllerService
 
                     if (!(user != null && Encoding.UTF8.GetString(user.Password) == password))
                     {
-#if DEBUG
+//#if DEBUG
                         if (user == null)
                         {
                             user = new SystemUser();
@@ -132,9 +132,9 @@ namespace StudyingControllerService
                             context.AddToSystemUsers(user);
                             context.SaveChanges();
                         }
-#else
-                        throw new Exception("У доступі відмовлено!");
-#endif
+//#else
+//                        throw new Exception("У доступі відмовлено!");
+//#endif
                     }
 
                     session = new Session(GetSystemUserDTO(user, context));
