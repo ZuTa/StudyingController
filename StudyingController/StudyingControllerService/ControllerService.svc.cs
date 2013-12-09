@@ -24,32 +24,32 @@ namespace StudyingControllerService
 
         private Dictionary<double, Session> sessions = new Dictionary<double, Session>();
 
-        private SystemConfiguration configuration;
-        public SystemConfiguration Configuration
-        {
-            get
-            {
-                if (configuration == null)
-                {
-                    try
-                    {
-                        SystemConfiguration result = null;
+        //private SystemConfiguration configuration;
+        //public SystemConfiguration Configuration
+        //{
+        //    get
+        //    {
+        //        if (configuration == null)
+        //        {
+        //            try
+        //            {
+        //                SystemConfiguration result = null;
 
-                        using (UniversityEntities context = new UniversityEntities())
-                        {
-                            result = context.SystemConfigurations.Include("StudyRange").FirstOrDefault();
-                        }
+        //                using (UniversityEntities context = new UniversityEntities())
+        //                {
+        //                    result = context.SystemConfigurations.Include("StudyRange").FirstOrDefault();
+        //                }
 
-                        return result;
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
-                    }
-                }
-                return configuration;
-            }
-        }
+        //                return result;
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+        //            }
+        //        }
+        //        return configuration;
+        //    }
+        //}
 
         #endregion
 
@@ -113,31 +113,31 @@ namespace StudyingControllerService
                     if (!(user != null && Encoding.UTF8.GetString(user.Password) == password))
                     {
 //#if DEBUG
-//                        if (user == null)
-//                        {
-//                            user = new SystemUser();
-//                            user.Login = login;
-//                            user.Password = Encoding.UTF8.GetBytes(password);
-//                            user.iUserRole = 1;
-//                            var userInformation = new UserInformation()
-//                            {
-//                                FirstName = login,
-//                                LastName = login
-//                            };
-//                            //context.AddToUserInformations(userInformation);
-//                            //context.SaveChanges();
+                        if (user == null)
+                        {
+                            user = new SystemUser();
+                            user.Login = login;
+                            user.Password = Encoding.UTF8.GetBytes(password);
+                            user.iUserRole = 1;
+                            var userInformation = new UserInformation()
+                            {
+                                FirstName = login,
+                                LastName = login
+                            };
+                            context.AddToUserInformations(userInformation);
+                            context.SaveChanges();
 
-//                            user.UserInformation = userInformation;
+                            user.UserInformation = userInformation;
 
-//                            context.AddToSystemUsers(user);
-//                            context.SaveChanges();
-//                        }
+                            context.AddToSystemUsers(user);
+                            context.SaveChanges();
+                        }
 //#else
-                        throw new Exception("У доступі відмовлено!");
+//                        throw new Exception("У доступі відмовлено!");
 //#endif
                     }
 
-                    session = new Session(GetSystemUserDTO(user, context), Configuration.StudyRange.ToDTO());
+                    session = new Session(GetSystemUserDTO(user, context));
 
                     lock (sessions)
                         sessions[session.SessionID] = session;
@@ -169,7 +169,7 @@ namespace StudyingControllerService
                     var student = (user as Student);
 
                     context.LoadProperty(student, "Groups");
-                    var currentGroup = student.Groups.FirstOrDefault(g => g.StudyRangeID == Configuration.StudyRangeID);
+                    var currentGroup = student.Groups.FirstOrDefault();//(g => g.StudyRangeID == Configuration.StudyRangeID);
 
                     if (currentGroup == null)
                         throw new Exception("Student hasnt a group!");
@@ -1073,7 +1073,7 @@ namespace StudyingControllerService
                         foreach (var student in practiceTeacher.Students)
                         {
                             context.LoadProperty(student, "Groups");
-                            var currentGroup = student.Groups.FirstOrDefault(g => g.StudyRangeID == Configuration.StudyRangeID);
+                            var currentGroup = student.Groups.FirstOrDefault();//(g => g.StudyRangeID == Configuration.StudyRangeID);
 
                             if (currentGroup == null)
                                 throw new Exception("Student hasnt a group!");
@@ -1110,7 +1110,7 @@ namespace StudyingControllerService
                     {
                         foreach (Student student in students)
                         {
-                            var currentGroup = student.Groups.FirstOrDefault(g => g.StudyRangeID == Configuration.StudyRangeID);
+                            var currentGroup = student.Groups.FirstOrDefault();// (g => g.StudyRangeID == Configuration.StudyRangeID);
 
                             if (currentGroup == null)
                                 throw new Exception("Student hasnt a group!");
@@ -1168,7 +1168,7 @@ namespace StudyingControllerService
                     {
                         foreach (Student student in students)
                         {
-                            var currentGroup = student.Groups.FirstOrDefault(g => g.StudyRangeID == Configuration.StudyRangeID);
+                            var currentGroup = student.Groups.FirstOrDefault();// (g => g.StudyRangeID == Configuration.StudyRangeID);
 
                             if (currentGroup == null)
                                 throw new Exception("Student hasnt a group!");
@@ -1740,7 +1740,7 @@ namespace StudyingControllerService
 
                     Student student = context.SystemUsers.FirstOrDefault(u => u.ID == studentID) as Student;
                     context.LoadProperty(student, "Groups");
-                    var currentGroup = student.Groups.FirstOrDefault(g => g.StudyRangeID == Configuration.StudyRangeID);
+                    var currentGroup = student.Groups.FirstOrDefault();// (g => g.StudyRangeID == Configuration.StudyRangeID);
 
                     if (currentGroup == null)
                         throw new Exception("Student hasnt a group!");
@@ -1931,7 +1931,7 @@ namespace StudyingControllerService
                                 context.LoadProperty(student, "UserInformation");
 
                                 context.LoadProperty(student, "Groups");
-                                var currentGroup = student.Groups.FirstOrDefault(g => g.StudyRangeID == Configuration.StudyRangeID);
+                                var currentGroup = student.Groups.FirstOrDefault();// (g => g.StudyRangeID == Configuration.StudyRangeID);
 
                                 if (currentGroup == null)
                                     throw new Exception("Student hasnt a group!");
@@ -2286,7 +2286,7 @@ namespace StudyingControllerService
                 }
                 return resultList;
             }
-            catch (Exception ex)
+                catch (Exception ex)
             {
                 throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
             }

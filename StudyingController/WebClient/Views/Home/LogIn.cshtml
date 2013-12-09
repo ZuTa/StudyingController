@@ -1,0 +1,28 @@
+﻿@model ThinClient.Models.LoginConfig
+
+@{
+    ViewBag.Title = "Вхід";
+}
+
+<div id="LoginForm">
+    <form method="post" action="">
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.Login, "Логін")
+            </li>
+            <li>
+                @Html.TextBoxFor(m => m.Login)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Password, "Пароль")
+            </li>
+            <li>
+                @Html.PasswordFor(m => m.Password)
+            </li>
+            <li>
+                <input type="submit" value="Увійти" />
+            </li>
+        </ol>
+    </form>
+    <p>@ViewBag.Message</p>
+</div>

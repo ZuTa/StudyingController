@@ -40,10 +40,10 @@ namespace StudyingControllerService
 
         #region Constructors
 
-        public Session(SystemUserDTO user, StudyRangeDTO studyRange)
+        public Session(SystemUserDTO user)
         {
             this.user = user;
-            this.studyRange = studyRange;
+            //this.studyRange = studyRange;
 
             SessionID = random.NextDouble();
             SessionID += System.Threading.Interlocked.Increment(ref counter);
