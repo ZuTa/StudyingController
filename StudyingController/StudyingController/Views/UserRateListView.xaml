@@ -10,8 +10,8 @@
     <ListView ItemsSource="{Binding Rates}">
         <ListView.View>
             <GridView>
-                <GridViewColumn Width="100" Header="Ім'я" DisplayMemberBinding="{Binding User.UserInformation.FirstName}"/>
-                <GridViewColumn Width="100" Header="Прізвище" DisplayMemberBinding="{Binding User.UserInformation.LastName}"/>
+                <GridViewColumn Width="100" Header="Ім'я" DisplayMemberBinding="{Binding Student.UserInformation.FirstName}"/>
+                <GridViewColumn Width="100" Header="Прізвище" DisplayMemberBinding="{Binding Student.UserInformation.LastName}"/>
                 <GridViewColumn Width="100" Header="Рейтинг">
                     <GridViewColumn.CellTemplate>
                         <DataTemplate>

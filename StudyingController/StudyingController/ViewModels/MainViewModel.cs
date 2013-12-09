@@ -143,6 +143,11 @@ namespace StudyingController.ViewModels
             }
         }
 
+        public bool AllowExport
+        {
+            get { return CurrentWorkspace is IExportable; }
+        }
+
         private Stack<BaseApplicationViewModel> workspaces;
 
         public BaseApplicationViewModel CurrentWorkspace
@@ -312,7 +317,18 @@ namespace StudyingController.ViewModels
 
                 return controlStructureCommand;
             }
-        }
+        }
+
+        private RelayCommand exportToExcelCommand;
+        public RelayCommand ExportToExcelCommand
+        {
+            get
+            {
+                if (exportToExcelCommand == null)
+                    exportToExcelCommand = new RelayCommand(param => ExportToExcel());
+                return exportToExcelCommand;
+            }
+        }
 
         #endregion
 
@@ -456,6 +472,7 @@ namespace StudyingController.ViewModels
             OnPropertyChanged("HasAdditionalCommands");
             OnPropertyChanged("IsManipulateableOrRefreshable");
             OnPropertyChanged("IsRefreshable");
+            OnPropertyChanged("AllowExport");
         }
 
         private void SaveCurrentWorkspace()
@@ -468,6 +485,11 @@ namespace StudyingController.ViewModels
         private void RollbackCurrentWorkspace()
         {
             (CurrentWorkspace as BaseSaveableViewModel).Rollback();
+        }
+
+        private void ExportToExcel()
+        {
+            (CurrentWorkspace as IExportable).ExportToExcel();
         }
 
         #endregion

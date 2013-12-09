@@ -34,6 +34,30 @@ namespace StudyingController.ViewModels.Models
                 OnPropertyChanged("Cathedra");
             }
         }
+
+        private int specializationId;
+        [Validateable]
+        public int SpecializationId
+        {
+            get { return specializationId; }
+            set
+            {
+                specializationId = value;
+                OnPropertyChanged("SpecializationId");
+            }
+        }
+
+        private int cathedraId;
+        [Validateable]
+        public int CathedraId
+        {
+            get { return cathedraId; }
+            set
+            {
+                cathedraId = value;
+                OnPropertyChanged("CathedraId");
+            }
+        }
         #endregion
 
         #region Constructors
@@ -43,6 +67,8 @@ namespace StudyingController.ViewModels.Models
         {
             this.cathedra = group.Cathedra;
             this.specialization = group.Specialization;
+            this.cathedraId = group.CathedraID;
+            this.specializationId = group.SpecializationID;
         }
 
         #endregion
@@ -56,6 +82,8 @@ namespace StudyingController.ViewModels.Models
             GroupDTO group = entity as GroupDTO;
             this.Cathedra = group.Cathedra;
             this.Specialization = group.Specialization;
+            this.cathedraId = group.CathedraID;
+            this.specializationId = group.SpecializationID;
         }
 
         public GroupDTO ToDTO()
@@ -64,8 +92,8 @@ namespace StudyingController.ViewModels.Models
             {
                 ID = this.ID,
                 Name = this.Name,
-                CathedraID = this.cathedra.ID,
-                SpecializationID = this.specialization.ID
+                CathedraID = this.cathedraId,
+                SpecializationID = this.specializationId
             };
         }
 

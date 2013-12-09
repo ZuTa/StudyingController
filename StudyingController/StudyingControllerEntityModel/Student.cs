@@ -38,7 +38,7 @@ namespace StudyingControllerEntityModel
                 Login = this.Login,
                 UserInformation = (this.UserInformation as IDTOable<UserInformationDTO>).ToDTO(),
                 Role = this.Role,
-                GroupID = this.CurrentGroupID,
+                GroupID = this.Groups.First().ID
             };
         }
 

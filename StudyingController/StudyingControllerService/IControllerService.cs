@@ -263,5 +263,25 @@ namespace StudyingControllerService
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
         List<NotificationDTO> GetNotifications(Session session, int userID);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        GroupDTO GetGroup(Session session, int id);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        SpecializationDTO GetSpecialization(Session session, int id);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        CathedraDTO GetCathedra(Session session, int id);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        FacultyDTO GetFaculty(Session session, int id);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        InstituteDTO GetInstitute(Session session, int id);
     }
 }

@@ -12,7 +12,7 @@ using System.Globalization;
 namespace StudyingControllerService
 {
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, IncludeExceptionDetailInFaults = true)]
-    public class ControllerService : IControllerService
+    public partial class ControllerService : IControllerService
     {
         #region Fields & Properties
 
@@ -2253,7 +2253,7 @@ namespace StudyingControllerService
                         return new UserRateItemDTO()
                         {
                             Rate = (lectureControls.Any() || practiceControls.Any()) ? Convert.ToDouble((lectureMarksSum + practiceMarksSum) / (lectureMaxSum + practiceMaxSum)) : 0,
-                            User = student.ToDTO()
+                            Student = student.ToDTO()
                         };
                     }).OrderByDescending(elem => elem.Rate).ToList();
                 }
@@ -2291,5 +2291,107 @@ namespace StudyingControllerService
                 throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
             }
         }
+
+        public GroupDTO GetGroup(Session session, int id)
+        {
+            try
+            {
+                this.CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var query = (from item
+                                      in context.Groups
+                                 where item.ID == id
+                                 select item).FirstOrDefault();
+                    return query == null ? null : query.ToDTO();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public SpecializationDTO GetSpecialization(Session session, int id)
+        {
+            try
+            {
+                this.CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var query = (from item
+                                      in context.Specializations
+                                 where item.ID == id
+                                 select item).FirstOrDefault();
+                    return query == null ? null : query.ToDTO();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public CathedraDTO GetCathedra(Session session, int id)
+        {
+            try
+            {
+                this.CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var query = (from item
+                                      in context.Cathedras
+                                 where item.ID == id
+                                 select item).FirstOrDefault();
+                    return query == null ? null : query.ToDTO();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public FacultyDTO GetFaculty(Session session, int id)
+        {
+            try
+            {
+                this.CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var query = (from item
+                                      in context.Faculties
+                                 where item.ID == id
+                                 select item).FirstOrDefault();
+                    return query == null ? null : query.ToDTO();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public InstituteDTO GetInstitute(Session session, int id)
+        {
+            try
+            {
+                this.CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var query = (from item
+                                      in context.Institutes
+                                 where item.ID == id
+                                 select item).FirstOrDefault();
+                    return query == null? null : query.ToDTO();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+
     }
 }

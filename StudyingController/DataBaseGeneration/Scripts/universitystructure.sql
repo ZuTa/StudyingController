@@ -142,80 +142,226 @@ INSERT INTO [Faculty]
 VALUES 
 	('Факультет іноземних мов та військового перекладу', 1)
 GO
+----------------------------------------
+----------------------------------------
+--Specializations
 
+--ID = 1
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+	('Прикладна математика', 1)
+GO
+----------------------------------------
+
+--ID = 2
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+	('Інформатика', 1)
+GO
+----------------------------------------
+
+--ID = 3
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+	('Соціальна інформатика', 1)
+GO
+----------------------------------------
+
+--ID = 4
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+	('Програмна інженерія', 1)
+GO
+----------------------------------------
+
+--ID = 5
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+	('Системний аналіз', 1)
+GO
+----------------------------------------
+
+--ID = 6
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+	('Математика', 2)
+GO
+----------------------------------------
+
+--ID = 7
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+	('Статистика', 2)
+GO
+----------------------------------------
+
+--ID = 8
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+	('Актуарна та фінансова математика', 2)
+GO
+----------------------------------------
+
+--ID = 9
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+	('Теоретична та прикладна механіка', 2)
+GO
+----------------------------------------
+
+--ID = 10
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+	('Радіофізика', 3)
+GO
+----------------------------------------
+
+--ID = 11
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+	('Компютерна інженерія', 3)
+GO
+----------------------------------------
+
+--ID = 12
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+	('Радіотехніка', 3)
+GO
+----------------------------------------
+
+--ID = 13
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+	('Фізика', 4)
+GO
+----------------------------------------
+
+--ID = 14
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+	('Оптотехніка', 4)
+GO
+----------------------------------------
+
+--ID = 15
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+	('Астрономія', 4)
+GO
+----------------------------------------
+
+--ID = 16
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+	('Лазерна та оптоелектронна техніка', 4)
+GO
+----------------------------------------
+
+--ID = 17
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+	('Фізика конденсованого стану', 4)
+GO
+----------------------------------------
+
+--ID = 18
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+	('Фізика ядра та фізика високих енергій', 4)
+GO
+----------------------------------------
 ----------------------------------------
 ----------------------------------------
 --Cathedras
 
 --ID = 1
 INSERT INTO [Cathedra]
-  ( [Name], [FacultyID])
+  ( [Name], [FacultyID], [DefaultSpecializationID])
 VALUES 
-	('Обчислювальної математики', 1)
+	('Обчислювальної математики', 1, 1)
 GO
 ----------------------------------------
 
 --ID = 2
 INSERT INTO [Cathedra]
-  ( [Name], [FacultyID])
+  ( [Name], [FacultyID], [DefaultSpecializationID])
 VALUES 
-	('Моделювання складних систем', 1)
+	('Моделювання складних систем', 1, 1)
 GO
 ----------------------------------------
 
 --ID = 3
 INSERT INTO [Cathedra]
-  ( [Name], [FacultyID])
+  ( [Name], [FacultyID], [DefaultSpecializationID])
 VALUES 
-	('Дослідження операцій', 1)
+	('Дослідження операцій', 1, 1)
 GO
 ----------------------------------------
 
 --ID = 4
 INSERT INTO [Cathedra]
-  ( [Name], [FacultyID])
+  ( [Name], [FacultyID], [DefaultSpecializationID])
 VALUES 
-	('Теоретичної кібернетики', 1)
+	('Теоретичної кібернетики', 1,2)
 GO
 ----------------------------------------
 
 --ID = 5
 INSERT INTO [Cathedra]
-  ( [Name], [FacultyID])
+  ( [Name], [FacultyID], [DefaultSpecializationID])
 VALUES 
-	('Теорії та технології програмування', 1)
+	('Теорії та технології програмування', 1,2)
 GO
 ----------------------------------------
 
 --ID = 6
 INSERT INTO [Cathedra]
-  ( [Name], [FacultyID])
+  ( [Name], [FacultyID], [DefaultSpecializationID])
 VALUES 
-	('Математичної інформатики', 1)
+	('Математичної інформатики', 1,2)
 GO
 ----------------------------------------
 
 --ID = 7
 INSERT INTO [Cathedra]
-  ( [Name], [FacultyID])
+  ( [Name], [FacultyID], [DefaultSpecializationID])
 VALUES 
-	('Системного аналізу і теорії прийняття рішень', 1)
+	('Системного аналізу і теорії прийняття рішень', 1,5)
 GO
 ----------------------------------------
 
 --ID = 8
 INSERT INTO [Cathedra]
-  ( [Name], [FacultyID])
+  ( [Name], [FacultyID], [DefaultSpecializationID])
 VALUES 
-	('Інформаційних систем', 1)
+	('Інформаційних систем', 1,4)
 GO
 ----------------------------------------
 
 --ID = 9
 INSERT INTO [Cathedra]
-  ( [Name], [FacultyID])
+  ( [Name], [FacultyID], [DefaultSpecializationID])
 VALUES 
-	('Прикладної статистики', 1)
+	('Прикладної статистики', 1,5)
 GO
 ----------------------------------------
 
@@ -560,8 +706,43 @@ INSERT INTO [Cathedra]
 VALUES 
 	('Кафедра математичного та програмного забезпечення АСУ', 7)
 GO
-----------------------------------------
-
 
 ----------------------------------------
 ----------------------------------------
+--Study ranges
+
+--ID = 1
+INSERT INTO [StudyRange]
+  ( [Year],[Part])
+VALUES 
+	(2013, 1)
+GO
+
+----------------------------------------
+----------------------------------------
+--Groups
+
+INSERT INTO [Group]
+	([Name], [SpecializationID], [CathedraID], [StudyRangeID])
+	SELECT dbo.ABBREVIATION([C].Name) + '-1', [C].[DefaultSpecializationID], [C].[ID], 1
+	FROM [Cathedra] AS [C]
+	WHERE [C].[DefaultSpecializationID] IS NOT NULL
+GO
+INSERT INTO [Group]
+	([Name], [SpecializationID], [CathedraID], [StudyRangeID])
+	SELECT dbo.ABBREVIATION([C].Name) + '-2', [C].[DefaultSpecializationID], [C].[ID], 1
+	FROM [Cathedra] AS [C]
+	WHERE [C].[DefaultSpecializationID] IS NOT NULL
+GO
+INSERT INTO [Group]
+	([Name], [SpecializationID], [CathedraID], [StudyRangeID])
+	SELECT dbo.ABBREVIATION([C].Name) + '-3', [C].[DefaultSpecializationID], [C].[ID], 1
+	FROM [Cathedra] AS [C]
+	WHERE [C].[DefaultSpecializationID] IS NOT NULL
+GO
+INSERT INTO [Group]
+	([Name], [SpecializationID], [CathedraID], [StudyRangeID])
+	SELECT dbo.ABBREVIATION([C].Name) + '-4', [C].[DefaultSpecializationID], [C].[ID], 1
+	FROM [Cathedra] AS [C]
+	WHERE [C].[DefaultSpecializationID] IS NOT NULL
+

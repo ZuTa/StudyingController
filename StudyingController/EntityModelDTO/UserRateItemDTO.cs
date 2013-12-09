@@ -10,7 +10,7 @@ namespace EntitiesDTO
     public class UserRateItemDTO
     {
         [DataMember]
-        public SystemUserDTO User { get; set; }
+        public StudentDTO Student { get; set; }
 
         [DataMember]
         public double Rate { get; set; }

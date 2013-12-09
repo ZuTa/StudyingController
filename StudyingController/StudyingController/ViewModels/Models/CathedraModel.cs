@@ -24,6 +24,18 @@ namespace StudyingController.ViewModels.Models
             }
         }
 
+        private int facultyId;
+        [Validateable]
+        public int FacultyId
+        {
+            get { return facultyId; }
+            set
+            {
+                facultyId = value;
+                OnPropertyChanged("FacultyId");
+            }
+        }
+
         private ObservableCollection<SubjectModel> subjects;
         public ObservableCollection<SubjectModel> Subjects
         {
@@ -49,6 +61,7 @@ namespace StudyingController.ViewModels.Models
             subjects.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(subjects_CollectionChanged);
             foreach(SubjectModel model in subjects)
                 model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(model_PropertyChanged);
+            this.facultyId = cathedra.FacultyID;
         }
 
         #endregion
