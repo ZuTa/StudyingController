@@ -8,13 +8,13 @@ GO
 SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[SystemUser](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[Login] [nvarchar](50) NOT NULL,
-	[Password] [binary](32) NOT NULL,
-	[UserRole] [int] NOT NULL,
+        [ID] [int] IDENTITY(1,1) NOT NULL,
+        [Login] [nvarchar](50) NOT NULL,
+        [Password] [binary](32) NOT NULL,
+        [UserRole] [int] NOT NULL,
  CONSTRAINT [PK_SystemUser] PRIMARY KEY CLUSTERED 
 (
-	[ID] ASC
+        [ID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -26,12 +26,12 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[StudyRange](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[Year] [int] NOT NULL,
-	[Part] [int] NOT NULL,
+        [ID] [int] IDENTITY(1,1) NOT NULL,
+        [Year] [int] NOT NULL,
+        [Part] [int] NOT NULL,
  CONSTRAINT [PK_StudyRange] PRIMARY KEY CLUSTERED 
 (
-	[ID] ASC
+        [ID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -41,14 +41,14 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Control](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[Name] [nvarchar](50) NOT NULL,
-	[Date] [datetime] NOT NULL,
-	[Description] [nvarchar](max) NULL,
-	[MaxMark] [decimal](18, 0) NOT NULL,
+        [ID] [int] IDENTITY(1,1) NOT NULL,
+        [Name] [nvarchar](50) NOT NULL,
+        [Date] [datetime] NOT NULL,
+        [Description] [nvarchar](max) NULL,
+        [MaxMark] [decimal](18, 0) NOT NULL,
  CONSTRAINT [PK_Control] PRIMARY KEY CLUSTERED 
 (
-	[ID] ASC
+        [ID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -58,11 +58,11 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Institute](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[Name] [nvarchar](255) NOT NULL,
+        [ID] [int] IDENTITY(1,1) NOT NULL,
+        [Name] [nvarchar](255) NOT NULL,
  CONSTRAINT [PK_Institute] PRIMARY KEY CLUSTERED 
 (
-	[ID] ASC
+        [ID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -72,12 +72,12 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Faculty](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[InstituteID] [int] NULL,
-	[Name] [nvarchar](255) NOT NULL,
+        [ID] [int] IDENTITY(1,1) NOT NULL,
+        [InstituteID] [int] NULL,
+        [Name] [nvarchar](255) NOT NULL,
  CONSTRAINT [PK_Faculty] PRIMARY KEY CLUSTERED 
 (
-	[ID] ASC
+        [ID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -87,14 +87,14 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[ControlMessage](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[Text] [nvarchar](max) NULL,
-	[Date] [datetime] NOT NULL,
-	[ControlID] [int] NOT NULL,
-	[SystemUserID] [int] NOT NULL,
+        [ID] [int] IDENTITY(1,1) NOT NULL,
+        [Text] [nvarchar](max) NULL,
+        [Date] [datetime] NOT NULL,
+        [ControlID] [int] NOT NULL,
+        [SystemUserID] [int] NOT NULL,
  CONSTRAINT [PK_ControlMessage] PRIMARY KEY CLUSTERED 
 (
-	[ID] ASC
+        [ID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -104,13 +104,13 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Notification](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[Message] [nvarchar](500) NOT NULL,
-	[UserID] [int] NOT NULL,
-	[Date] [datetime] NOT NULL,
+        [ID] [int] IDENTITY(1,1) NOT NULL,
+        [Message] [nvarchar](500) NOT NULL,
+        [UserID] [int] NOT NULL,
+        [Date] [datetime] NOT NULL,
  CONSTRAINT [PK_Notification] PRIMARY KEY CLUSTERED 
 (
-	[ID] ASC
+        [ID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -120,11 +120,11 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[InstituteSecretary](
-	[InstituteID] [int] NOT NULL,
-	[SystemUserID] [int] NOT NULL,
+        [InstituteID] [int] NOT NULL,
+        [SystemUserID] [int] NOT NULL,
  CONSTRAINT [PK_SystemUser_InstituteSecretary] PRIMARY KEY CLUSTERED 
 (
-	[SystemUserID] ASC
+        [SystemUserID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -134,11 +134,11 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[InstituteAdmin](
-	[InstituteID] [int] NOT NULL,
-	[SystemUserID] [int] NOT NULL,
+        [InstituteID] [int] NOT NULL,
+        [SystemUserID] [int] NOT NULL,
  CONSTRAINT [PK_SystemUser_InstituteAdmin] PRIMARY KEY CLUSTERED 
 (
-	[SystemUserID] ASC
+        [SystemUserID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -148,13 +148,13 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[UserInformation](
-	[SystemUserID] [int] NOT NULL,
-	[FirstName] [nvarchar](50) NOT NULL,
-	[LastName] [nvarchar](50) NOT NULL,
-	[Email] [nvarchar](50) NULL,
+        [SystemUserID] [int] NOT NULL,
+        [FirstName] [nvarchar](50) NOT NULL,
+        [LastName] [nvarchar](50) NOT NULL,
+        [Email] [nvarchar](50) NULL,
  CONSTRAINT [PK_UserInformation] PRIMARY KEY CLUSTERED 
 (
-	[SystemUserID] ASC
+        [SystemUserID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -164,11 +164,11 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[System_Configuration](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[StudyRangeID] [int] NOT NULL,
+        [ID] [int] IDENTITY(1,1) NOT NULL,
+        [StudyRangeID] [int] NOT NULL,
  CONSTRAINT [PK_SystemConfiguration] PRIMARY KEY CLUSTERED 
 (
-	[ID] ASC
+        [ID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -178,10 +178,10 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Student](
-	[SystemUserID] [int] NOT NULL,
+        [SystemUserID] [int] NOT NULL,
  CONSTRAINT [PK_SystemUser_Student] PRIMARY KEY CLUSTERED 
 (
-	[SystemUserID] ASC
+        [SystemUserID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -191,12 +191,12 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Specialization](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[Name] [nvarchar](50) NOT NULL,
-	[FacultyID] [int] NOT NULL,
+        [ID] [int] IDENTITY(1,1) NOT NULL,
+        [Name] [nvarchar](50) NOT NULL,
+        [FacultyID] [int] NOT NULL,
  CONSTRAINT [PK_Specialization] PRIMARY KEY CLUSTERED 
 (
-	[ID] ASC
+        [ID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -206,11 +206,11 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[FacultySecretary](
-	[FacultyID] [int] NOT NULL,
-	[SystemUserID] [int] NOT NULL,
+        [FacultyID] [int] NOT NULL,
+        [SystemUserID] [int] NOT NULL,
  CONSTRAINT [PK_SystemUser_FacultySecretary] PRIMARY KEY CLUSTERED 
 (
-	[SystemUserID] ASC
+        [SystemUserID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -220,11 +220,11 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[FacultyAdmin](
-	[FacultyID] [int] NOT NULL,
-	[SystemUserID] [int] NOT NULL,
+        [FacultyID] [int] NOT NULL,
+        [SystemUserID] [int] NOT NULL,
  CONSTRAINT [PK_SystemUser_FacultyAdmin] PRIMARY KEY CLUSTERED 
 (
-	[SystemUserID] ASC
+        [SystemUserID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -234,13 +234,13 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Mark](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[StudentID] [int] NOT NULL,
-	[Mark] [decimal](18, 0) NOT NULL,
-	[Description] [nvarchar](max) NULL,
+        [ID] [int] IDENTITY(1,1) NOT NULL,
+        [StudentID] [int] NOT NULL,
+        [Mark] [decimal](18, 0) NOT NULL,
+        [Description] [nvarchar](max) NULL,
  CONSTRAINT [PK_Mark] PRIMARY KEY CLUSTERED 
 (
-	[ID] ASC
+        [ID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -250,13 +250,13 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Cathedra](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[FacultyID] [int] NOT NULL,
-	[DefaultSpecializationID] [int] NULL,
-	[Name] [nvarchar](255) NOT NULL,
+        [ID] [int] IDENTITY(1,1) NOT NULL,
+        [FacultyID] [int] NOT NULL,
+        [DefaultSpecializationID] [int] NULL,
+        [Name] [nvarchar](255) NOT NULL,
  CONSTRAINT [PK_Cathedra] PRIMARY KEY CLUSTERED 
 (
-	[ID] ASC
+        [ID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -266,14 +266,14 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Group](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[Name] [nvarchar](50) NOT NULL,
-	[SpecializationID] [int] NOT NULL,
-	[CathedraID] [int] NOT NULL,
-	[StudyRangeID] [int] NOT NULL,
+        [ID] [int] IDENTITY(1,1) NOT NULL,
+        [Name] [nvarchar](50) NOT NULL,
+        [SpecializationID] [int] NOT NULL,
+        [CathedraID] [int] NOT NULL,
+        [StudyRangeID] [int] NOT NULL,
  CONSTRAINT [PK_Group] PRIMARY KEY CLUSTERED 
 (
-	[ID] ASC
+        [ID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -283,13 +283,13 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Subject](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[CathedraID] [int] NOT NULL,
-	[Name] [nvarchar](255) NOT NULL,
-	[Rate] [int] NOT NULL,
+        [ID] [int] IDENTITY(1,1) NOT NULL,
+        [CathedraID] [int] NOT NULL,
+        [Name] [nvarchar](255) NOT NULL,
+        [Rate] [int] NOT NULL,
  CONSTRAINT [PK_Subject] PRIMARY KEY CLUSTERED 
 (
-	[ID] ASC
+        [ID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -299,11 +299,11 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Teacher](
-	[CathedraID] [int] NOT NULL,
-	[SystemUserID] [int] NOT NULL,
+        [CathedraID] [int] NOT NULL,
+        [SystemUserID] [int] NOT NULL,
  CONSTRAINT [PK_SystemUser_Teacher] PRIMARY KEY CLUSTERED 
 (
-	[SystemUserID] ASC
+        [SystemUserID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -313,12 +313,12 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Student_Group](
-	[GroupID] [int] NOT NULL,
-	[StudentID] [int] NOT NULL,
+        [GroupID] [int] NOT NULL,
+        [StudentID] [int] NOT NULL,
  CONSTRAINT [PK_Student_Group] PRIMARY KEY NONCLUSTERED 
 (
-	[GroupID] ASC,
-	[StudentID] ASC
+        [GroupID] ASC,
+        [StudentID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -328,11 +328,11 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Practice](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[SubjectID] [int] NOT NULL,
+        [ID] [int] IDENTITY(1,1) NOT NULL,
+        [SubjectID] [int] NOT NULL,
  CONSTRAINT [PK_Practice] PRIMARY KEY CLUSTERED 
 (
-	[ID] ASC
+        [ID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -342,12 +342,12 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Lecture](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[TeacherID] [int] NOT NULL,
-	[SubjectID] [int] NOT NULL,
+        [ID] [int] IDENTITY(1,1) NOT NULL,
+        [TeacherID] [int] NOT NULL,
+        [SubjectID] [int] NOT NULL,
  CONSTRAINT [PK_Lecture] PRIMARY KEY CLUSTERED 
 (
-	[ID] ASC
+        [ID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -359,15 +359,15 @@ GO
 SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[Attachment](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[Name] [nvarchar](50) NOT NULL,
-	[Description] [nvarchar](max) NULL,
-	[DateAdded] [datetime] NOT NULL,
-	[Data] [varbinary](max) NOT NULL,
-	[TeacherID] [int] NOT NULL,
+        [ID] [int] IDENTITY(1,1) NOT NULL,
+        [Name] [nvarchar](50) NOT NULL,
+        [Description] [nvarchar](max) NULL,
+        [DateAdded] [datetime] NOT NULL,
+        [Data] [varbinary](max) NOT NULL,
+        [TeacherID] [int] NOT NULL,
  CONSTRAINT [PK_Attachment] PRIMARY KEY CLUSTERED 
 (
-	[ID] ASC
+        [ID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -379,12 +379,12 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Control_Attachment](
-	[Attachment_ID] [int] NOT NULL,
-	[Control_ID] [int] NOT NULL,
+        [Attachment_ID] [int] NOT NULL,
+        [Control_ID] [int] NOT NULL,
  CONSTRAINT [PK_Control_Attachment] PRIMARY KEY NONCLUSTERED 
 (
-	[Attachment_ID] ASC,
-	[Control_ID] ASC
+        [Attachment_ID] ASC,
+        [Control_ID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -394,11 +394,11 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[LectureControl](
-	[LectureID] [int] NOT NULL,
-	[ControlID] [int] NOT NULL,
+        [LectureID] [int] NOT NULL,
+        [ControlID] [int] NOT NULL,
  CONSTRAINT [PK_Control_LectureControl] PRIMARY KEY CLUSTERED 
 (
-	[ControlID] ASC
+        [ControlID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -408,12 +408,12 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Lecture_Group](
-	[GroupID] [int] NOT NULL,
-	[LectureID] [int] NOT NULL,
+        [GroupID] [int] NOT NULL,
+        [LectureID] [int] NOT NULL,
  CONSTRAINT [PK_Lecture_Group] PRIMARY KEY NONCLUSTERED 
 (
-	[GroupID] ASC,
-	[LectureID] ASC
+        [GroupID] ASC,
+        [LectureID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -423,12 +423,12 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Practice_Teacher](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[PracticeID] [int] NOT NULL,
-	[TeacherID] [int] NOT NULL,
+        [ID] [int] IDENTITY(1,1) NOT NULL,
+        [PracticeID] [int] NOT NULL,
+        [TeacherID] [int] NOT NULL,
  CONSTRAINT [PK_PracticeTeacher] PRIMARY KEY CLUSTERED 
 (
-	[ID] ASC
+        [ID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -438,11 +438,11 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[LectureControlMark](
-	[LectureControlID] [int] NOT NULL,
-	[MarkID] [int] NOT NULL,
+        [LectureControlID] [int] NOT NULL,
+        [MarkID] [int] NOT NULL,
  CONSTRAINT [PK_Mark_LectureControlMark] PRIMARY KEY CLUSTERED 
 (
-	[MarkID] ASC
+        [MarkID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -452,11 +452,11 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[PracticeControl](
-	[PracticeID] [int] NOT NULL,
-	[ControlID] [int] NOT NULL,
+        [PracticeID] [int] NOT NULL,
+        [ControlID] [int] NOT NULL,
  CONSTRAINT [PK_Control_PracticeControl] PRIMARY KEY CLUSTERED 
 (
-	[ControlID] ASC
+        [ControlID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -466,12 +466,12 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Practice_Teacher_Student](
-	[Practice_TeacherID] [int] NOT NULL,
-	[StudentID] [int] NOT NULL,
+        [Practice_TeacherID] [int] NOT NULL,
+        [StudentID] [int] NOT NULL,
  CONSTRAINT [PK_Practice_Teacher_Student] PRIMARY KEY NONCLUSTERED 
 (
-	[Practice_TeacherID] ASC,
-	[StudentID] ASC
+        [Practice_TeacherID] ASC,
+        [StudentID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -481,11 +481,11 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[PracticeControlMark](
-	[PracticeControlID] [int] NOT NULL,
-	[MarkID] [int] NOT NULL,
+        [PracticeControlID] [int] NOT NULL,
+        [MarkID] [int] NOT NULL,
  CONSTRAINT [PK_Mark_PracticeControlMark] PRIMARY KEY CLUSTERED 
 (
-	[MarkID] ASC
+        [MarkID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO

@@ -7,7 +7,7 @@ GO
 INSERT INTO [Institute]
   ( [Name])
 VALUES 
-	(N'Військовий інститут')
+        (N'Військовий інститут')
 GO
 ----------------------------------------
 
@@ -15,7 +15,7 @@ GO
 INSERT INTO [Institute]
   ( [Name])
 VALUES 
-	(N'Інститут філології')
+        (N'Інститут філології')
 GO
 ----------------------------------------
 
@@ -23,7 +23,7 @@ GO
 INSERT INTO [Institute]
   ( [Name])
 VALUES 
-	(N'Інститут журналістики')
+        (N'Інститут журналістики')
 GO
 ----------------------------------------
 ----------------------------------------
@@ -33,7 +33,7 @@ GO
 INSERT INTO [Faculty]
   ( [Name])
 VALUES 
-	(N'Кібернетики')
+        (N'Кібернетики')
 GO
 ----------------------------------------
 
@@ -41,7 +41,7 @@ GO
 INSERT INTO [Faculty]
   ( [Name])
 VALUES 
-	(N'Механіко-математичний')
+        (N'Механіко-математичний')
 GO
 ----------------------------------------
 
@@ -49,7 +49,7 @@ GO
 INSERT INTO [Faculty]
   ( [Name])
 VALUES 
-	(N'Радіофізичний')
+        (N'Радіофізичний')
 GO
 ----------------------------------------
 
@@ -57,7 +57,7 @@ GO
 INSERT INTO [Faculty]
   ( [Name])
 VALUES 
-	(N'Фізичний')
+        (N'Фізичний')
 GO
 
 ----------------------------------------
@@ -68,7 +68,7 @@ GO
 INSERT INTO [Faculty]
   ( [Name], [InstituteID])
 VALUES 
-	(N'Військово-гуманітарний', 1)
+        (N'Військово-гуманітарний', 1)
 GO
 ----------------------------------------
 
@@ -76,7 +76,7 @@ GO
 INSERT INTO [Faculty]
   ( [Name], [InstituteID])
 VALUES 
-	(N'Військовий фінансів і права', 1)
+        (N'Військовий фінансів і права', 1)
 GO
 ----------------------------------------
 
@@ -84,7 +84,7 @@ GO
 INSERT INTO [Faculty]
   ( [Name], [InstituteID])
 VALUES 
-	(N'Військової підготовки', 1)
+        (N'Військової підготовки', 1)
 GO
 ----------------------------------------
 
@@ -92,7 +92,7 @@ GO
 INSERT INTO [Faculty]
   ( [Name], [InstituteID])
 VALUES 
-	(N'Соціальних комунікацій', 2)
+        (N'Соціальних комунікацій', 2)
 GO
 ----------------------------------------
 
@@ -100,7 +100,7 @@ GO
 INSERT INTO [Faculty]
   ( [Name], [InstituteID])
 VALUES 
-	(N'Видавничої справи та редагування', 2)
+        (N'Видавничої справи та редагування', 2)
 GO
 ----------------------------------------
 
@@ -108,7 +108,7 @@ GO
 INSERT INTO [Faculty]
   ( [Name], [InstituteID])
 VALUES 
-	(N'Періодичної преси', 2)
+        (N'Періодичної преси', 2)
 GO
 ----------------------------------------
 
@@ -116,7 +116,7 @@ GO
 INSERT INTO [Faculty]
   ( [Name], [InstituteID])
 VALUES 
-	(N'Сучасної української мови, історії та стилістики української мови', 3)
+        (N'Сучасної української мови, історії та стилістики української мови', 3)
 GO
 ----------------------------------------
 
@@ -124,7 +124,7 @@ GO
 INSERT INTO [Faculty]
   ( [Name], [InstituteID])
 VALUES 
-	(N'Історії української літератури та шевченкознавства', 3)
+        (N'Історії української літератури та шевченкознавства', 3)
 GO
 ----------------------------------------
 
@@ -132,7 +132,7 @@ GO
 INSERT INTO [Faculty]
   ( [Name], [InstituteID])
 VALUES 
-	(N'Новітньої української літератури', 3)
+        (N'Новітньої української літератури', 3)
 GO
 ----------------------------------------
 
@@ -140,82 +140,228 @@ GO
 INSERT INTO [Faculty]
   ( [Name], [InstituteID])
 VALUES 
-	(N'Факультет іноземних мов та військового перекладу', 1)
+        (N'Факультет іноземних мов та військового перекладу', 1)
 GO
+----------------------------------------
+----------------------------------------
+--Specializations
 
+--ID = 1
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+        (N'Прикладна математика', 1)
+GO
+----------------------------------------
+
+--ID = 2
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+        (N'Інформатика', 1)
+GO
+----------------------------------------
+
+--ID = 3
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+        (N'Соціальна інформатика', 1)
+GO
+----------------------------------------
+
+--ID = 4
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+        (N'Програмна інженерія', 1)
+GO
+----------------------------------------
+
+--ID = 5
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+        (N'Системний аналіз', 1)
+GO
+----------------------------------------
+
+--ID = 6
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+        (N'Математика', 2)
+GO
+----------------------------------------
+
+--ID = 7
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+        (N'Статистика', 2)
+GO
+----------------------------------------
+
+--ID = 8
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+        (N'Актуарна та фінансова математика', 2)
+GO
+----------------------------------------
+
+--ID = 9
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+        (N'Теоретична та прикладна механіка', 2)
+GO
+----------------------------------------
+
+--ID = 10
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+        (N'Радіофізика', 3)
+GO
+----------------------------------------
+
+--ID = 11
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+        (N'Компютерна інженерія', 3)
+GO
+----------------------------------------
+
+--ID = 12
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+        (N'Радіотехніка', 3)
+GO
+----------------------------------------
+
+--ID = 13
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+        (N'Фізика', 4)
+GO
+----------------------------------------
+
+--ID = 14
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+        (N'Оптотехніка', 4)
+GO
+----------------------------------------
+
+--ID = 15
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+        (N'Астрономія', 4)
+GO
+----------------------------------------
+
+--ID = 16
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+        (N'Лазерна та оптоелектронна техніка', 4)
+GO
+----------------------------------------
+
+--ID = 17
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+        (N'Фізика конденсованого стану', 4)
+GO
+----------------------------------------
+
+--ID = 18
+INSERT INTO [Specialization]
+  ( [Name], [FacultyID])
+VALUES 
+        (N'Фізика ядра та фізика високих енергій', 4)
+GO
+----------------------------------------
 ----------------------------------------
 ----------------------------------------
 --Cathedras
 
 --ID = 1
 INSERT INTO [Cathedra]
-  ( [Name], [FacultyID])
+  ( [Name], [FacultyID], [DefaultSpecializationID])
 VALUES 
-	(N'Обчислювальної математики', 1)
+        (N'Обчислювальної математики', 1, 1)
 GO
 ----------------------------------------
 
 --ID = 2
 INSERT INTO [Cathedra]
-  ( [Name], [FacultyID])
+  ( [Name], [FacultyID], [DefaultSpecializationID])
 VALUES 
-	(N'Моделювання складних систем', 1)
+        (N'Моделювання складних систем', 1, 1)
 GO
 ----------------------------------------
 
 --ID = 3
 INSERT INTO [Cathedra]
-  ( [Name], [FacultyID])
+  ( [Name], [FacultyID], [DefaultSpecializationID])
 VALUES 
-	(N'Дослідження операцій', 1)
+        (N'Дослідження операцій', 1, 1)
 GO
 ----------------------------------------
 
 --ID = 4
 INSERT INTO [Cathedra]
-  ( [Name], [FacultyID])
+  ( [Name], [FacultyID], [DefaultSpecializationID])
 VALUES 
-	(N'Теоретичної кібернетики', 1)
+        (N'Теоретичної кібернетики', 1,2)
 GO
 ----------------------------------------
 
 --ID = 5
 INSERT INTO [Cathedra]
-  ( [Name], [FacultyID])
+  ( [Name], [FacultyID], [DefaultSpecializationID])
 VALUES 
-	(N'Теорії та технології програмування', 1)
+        (N'Теорії та технології програмування', 1,2)
 GO
 ----------------------------------------
 
 --ID = 6
 INSERT INTO [Cathedra]
-  ( [Name], [FacultyID])
+  ( [Name], [FacultyID], [DefaultSpecializationID])
 VALUES 
-	(N'Математичної інформатики', 1)
+        (N'Математичної інформатики', 1,2)
 GO
 ----------------------------------------
 
 --ID = 7
 INSERT INTO [Cathedra]
-  ( [Name], [FacultyID])
+  ( [Name], [FacultyID], [DefaultSpecializationID])
 VALUES 
-	(N'Системного аналізу і теорії прийняття рішень', 1)
+        (N'Системного аналізу і теорії прийняття рішень', 1,5)
 GO
 ----------------------------------------
 
 --ID = 8
 INSERT INTO [Cathedra]
-  ( [Name], [FacultyID])
+  ( [Name], [FacultyID], [DefaultSpecializationID])
 VALUES 
-	(N'Інформаційних систем', 1)
+        (N'Інформаційних систем', 1,4)
 GO
 ----------------------------------------
 
 --ID = 9
 INSERT INTO [Cathedra]
-  ( [Name], [FacultyID])
+  ( [Name], [FacultyID], [DefaultSpecializationID])
 VALUES 
-	(N'Прикладної статистики', 1)
+        (N'Прикладної статистики', 1,5)
 GO
 ----------------------------------------
 
@@ -223,7 +369,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Соціальних комунікацій', 8)
+        (N'Соціальних комунікацій', 8)
 GO
 ----------------------------------------
 
@@ -231,7 +377,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Видавничої справи та редагування', 9)
+        (N'Видавничої справи та редагування', 9)
 GO
 ----------------------------------------
 
@@ -239,7 +385,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Періодичної преси', 10)
+        (N'Періодичної преси', 10)
 GO
 ----------------------------------------
 
@@ -247,7 +393,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Сучасної української мови, історії та стилістики української мови', 11)
+        (N'Сучасної української мови, історії та стилістики української мови', 11)
 GO
 ----------------------------------------
 
@@ -255,7 +401,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Історії української літератури та шевченкознавства', 12)
+        (N'Історії української літератури та шевченкознавства', 12)
 GO
 ----------------------------------------
 
@@ -263,7 +409,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Новітньої української літератури', 13)
+        (N'Новітньої української літератури', 13)
 GO
 ----------------------------------------
 
@@ -271,7 +417,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Алгебри та математичної логіки', 2)
+        (N'Алгебри та математичної логіки', 2)
 GO
 ----------------------------------------
 
@@ -279,7 +425,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Геометрії', 2)
+        (N'Геометрії', 2)
 GO
 ----------------------------------------
 
@@ -287,7 +433,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Інтегральних та диференціальних рівнянь', 2)
+        (N'Інтегральних та диференціальних рівнянь', 2)
 GO
 ----------------------------------------
 
@@ -295,7 +441,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Загальної математики, математичного аналізу', 2)
+        (N'Загальної математики, математичного аналізу', 2)
 GO
 ----------------------------------------
 
@@ -303,21 +449,21 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Математичної фізики', 2)
+        (N'Математичної фізики', 2)
 GO
 
 --ID = 21
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Механіки суцільних середовищ', 2)
+        (N'Механіки суцільних середовищ', 2)
 GO
 
 --ID = 22
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Теоретичної та прикладної механіки', 2)
+        (N'Теоретичної та прикладної механіки', 2)
 GO
 ----------------------------------------
 
@@ -325,7 +471,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Теорії ймовірностей', 2)
+        (N'Теорії ймовірностей', 2)
 GO
 ----------------------------------------
 
@@ -333,7 +479,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Статистики та актуарної математики', 2)
+        (N'Статистики та актуарної математики', 2)
 GO
 ----------------------------------------
 
@@ -341,7 +487,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Математики і теоретичної радіофізики', 3)
+        (N'Математики і теоретичної радіофізики', 3)
 GO
 ----------------------------------------
 
@@ -349,7 +495,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Електрофізики', 3)
+        (N'Електрофізики', 3)
 GO
 ----------------------------------------
 
@@ -357,7 +503,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Фізичної електроніки', 3)
+        (N'Фізичної електроніки', 3)
 GO
 ----------------------------------------
 
@@ -366,7 +512,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Квантової радіофізики', 3)
+        (N'Квантової радіофізики', 3)
 GO
 ----------------------------------------
 
@@ -374,7 +520,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Компютерної інженерії', 3)
+        (N'Компютерної інженерії', 3)
 GO
 ----------------------------------------
 
@@ -382,7 +528,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Нанофізики і наноелектроніки', 3)
+        (N'Нанофізики і наноелектроніки', 3)
 GO
 ----------------------------------------
 
@@ -390,7 +536,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Медичної радіофізики', 3)
+        (N'Медичної радіофізики', 3)
 GO
 ----------------------------------------
 
@@ -398,7 +544,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Радіотехніки і електронних систем', 3)
+        (N'Радіотехніки і електронних систем', 3)
 GO
 ----------------------------------------
 
@@ -406,7 +552,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Астрономії і фізики космосу', 4)
+        (N'Астрономії і фізики космосу', 4)
 GO
 ----------------------------------------
 
@@ -414,7 +560,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Експериментальної фізики', 4)
+        (N'Експериментальної фізики', 4)
 GO
 ----------------------------------------
 
@@ -422,7 +568,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Загальної фізики', 4)
+        (N'Загальної фізики', 4)
 GO
 ----------------------------------------
 
@@ -430,7 +576,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Квантової теорії поля', 4)
+        (N'Квантової теорії поля', 4)
 GO
 ----------------------------------------
 
@@ -438,7 +584,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Молекулярної фізики', 4)
+        (N'Молекулярної фізики', 4)
 GO
 ----------------------------------------
 
@@ -446,7 +592,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Оптики', 4)
+        (N'Оптики', 4)
 GO
 ----------------------------------------
 
@@ -454,7 +600,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Теоретичної фізики', 4)
+        (N'Теоретичної фізики', 4)
 GO
 ----------------------------------------
 
@@ -462,7 +608,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Фізики металів', 4)
+        (N'Фізики металів', 4)
 GO
 ----------------------------------------
 
@@ -470,7 +616,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Фізики функціональних матеріалів', 4)
+        (N'Фізики функціональних матеріалів', 4)
 GO
 ----------------------------------------
 
@@ -478,7 +624,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Ядерної фізики', 4)
+        (N'Ядерної фізики', 4)
 GO
 ----------------------------------------
 
@@ -486,7 +632,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Кафедра військової преси та інформації', 14)
+        (N'Кафедра військової преси та інформації', 14)
 GO
 ----------------------------------------
 
@@ -494,7 +640,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Кафедра військового перекладу та спеціальної мовної підготовки', 14)
+        (N'Кафедра військового перекладу та спеціальної мовної підготовки', 14)
 GO
 ----------------------------------------
 
@@ -502,7 +648,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Кафедра топогеодезичного та навігаційного забезпечення військ', 14)
+        (N'Кафедра топогеодезичного та навігаційного забезпечення військ', 14)
 GO
 ----------------------------------------
 
@@ -510,7 +656,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Кафедра військової педагогіки та психології', 5)
+        (N'Кафедра військової педагогіки та психології', 5)
 GO
 ----------------------------------------
 
@@ -518,7 +664,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Кафедра загальновійськових дисциплін', 5)
+        (N'Кафедра загальновійськових дисциплін', 5)
 GO
 ----------------------------------------
 
@@ -526,7 +672,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Кафедра тактики', 5)
+        (N'Кафедра тактики', 5)
 GO
 ----------------------------------------
 
@@ -534,7 +680,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Кафедра фінансів збройних сил', 6)
+        (N'Кафедра фінансів збройних сил', 6)
 GO
 ----------------------------------------
 
@@ -542,7 +688,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Кафедра бухгалтерcького обліку, звітності та контрольно-ревізійної роботи', 6)
+        (N'Кафедра бухгалтерcького обліку, звітності та контрольно-ревізійної роботи', 6)
 GO
 ----------------------------------------
 
@@ -550,7 +696,7 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Кафедра військового права', 6)
+        (N'Кафедра військового права', 6)
 GO
 ----------------------------------------
 
@@ -558,10 +704,45 @@ GO
 INSERT INTO [Cathedra]
   ( [Name], [FacultyID])
 VALUES 
-	(N'Кафедра математичного та програмного забезпечення АСУ', 7)
+        (N'Кафедра математичного та програмного забезпечення АСУ', 7)
 GO
-----------------------------------------
-
 
 ----------------------------------------
 ----------------------------------------
+--Study ranges
+
+--ID = 1
+INSERT INTO [StudyRange]
+  ( [Year],[Part])
+VALUES 
+        (2013, 1)
+GO
+
+----------------------------------------
+----------------------------------------
+--Groups
+
+INSERT INTO [Group]
+        ([Name], [SpecializationID], [CathedraID], [StudyRangeID])
+        SELECT dbo.ABBREVIATION([C].Name) + '-1', [C].[DefaultSpecializationID], [C].[ID], 1
+        FROM [Cathedra] AS [C]
+        WHERE [C].[DefaultSpecializationID] IS NOT NULL
+GO
+INSERT INTO [Group]
+        ([Name], [SpecializationID], [CathedraID], [StudyRangeID])
+        SELECT dbo.ABBREVIATION([C].Name) + '-2', [C].[DefaultSpecializationID], [C].[ID], 1
+        FROM [Cathedra] AS [C]
+        WHERE [C].[DefaultSpecializationID] IS NOT NULL
+GO
+INSERT INTO [Group]
+        ([Name], [SpecializationID], [CathedraID], [StudyRangeID])
+        SELECT dbo.ABBREVIATION([C].Name) + '-3', [C].[DefaultSpecializationID], [C].[ID], 1
+        FROM [Cathedra] AS [C]
+        WHERE [C].[DefaultSpecializationID] IS NOT NULL
+GO
+INSERT INTO [Group]
+        ([Name], [SpecializationID], [CathedraID], [StudyRangeID])
+        SELECT dbo.ABBREVIATION([C].Name) + '-4', [C].[DefaultSpecializationID], [C].[ID], 1
+        FROM [Cathedra] AS [C]
+        WHERE [C].[DefaultSpecializationID] IS NOT NULL
+GO
