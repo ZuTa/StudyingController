@@ -129,7 +129,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\LoginConfig.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\MainModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\SCS\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -141,6 +142,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\userpic.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <None Include="Service References\SCS\ControllerService.disco" />
@@ -225,6 +227,9 @@
     <Content Include="Service References\SCS\ThinClient.SCS.UserRateItemDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Views\Home\LogOut.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\UserPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
