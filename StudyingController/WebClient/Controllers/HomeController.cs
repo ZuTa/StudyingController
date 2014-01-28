@@ -20,19 +20,56 @@ namespace ThinClient.Controllers
         }
 
         [HttpPost]
-        public ActionResult LogIn(LoginConfig loginConfig)
+        public ActionResult LogIn(LoginModel loginConfig)
         {
-            var serviceClient = new SCS.ControllerServiceClient();
-            var session = serviceClient.Login(loginConfig.Login, loginConfig.Password);
-
-            if (session != null)
+            try
             {
-                this.Session["Session"] = session;
-                return RedirectToAction("Index");
+                var serviceClient = new SCS.ControllerServiceClient();
+                var session = serviceClient.Login(loginConfig.Login, loginConfig.Password);
+
+                if (session != null)
+                {
+                    this.Session["Session"] = session;
+                    return RedirectToAction("UserPage");
+                }
+            }
+            catch(Exception ex)
+            {
+                ViewBag.Error = ex.Message;
             }
 
-            ViewBag.Message = "Unsuccessful login.";
             return View();
+        }
+
+        public ActionResult LogOut()
+        {
+            this.Session["Session"] = null;
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult About()
+        {
+            return View();
+        }
+
+        public ActionResult UserPage()
+        {
+            if (this.Session["Session"] != null)
+            {
+                var session = (SCS.Session)this.Session["Session"];
+
+                var model = new MainModel();
+                model.Name = session.User.UserInformation.FirstName + ' ' + session.User.UserInformation.LastName;
+                model.AdditionalInfo = session.User.UserInformation.Email;
+
+                var serviceClient = new SCS.ControllerServiceClient();
+                model.Notifications = serviceClient.GetNotifications(session, session.User.ID).ToList();
+
+                return View(model);
+            }
+
+            ViewBag.Error = "Спочатку увійдіть в систему!";
+            return View("Index");
         }
     }
 }

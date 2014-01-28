@@ -34,7 +34,7 @@ a {
     }
 
 #LoginForm {
-    max-width: 300px;
+    /*max-width: 300px;*/
 }
     #LoginForm ol {
         list-style: none;
@@ -50,6 +50,7 @@ a {
 }
 
 #Footer {
+    color: deepskyblue;
     background-color: lightgray;
     text-align: center;
 }
@@ -65,3 +66,36 @@ ul#Menu {
         background-color: lightgray;
         padding: 3px;
     }
+
+#ErrorPanel {
+    color: red;
+    text-align: center;
+}
+
+.AboutText {
+    text-align:center;
+}
+
+#UserPicture {
+    width: 128px;
+    height: 128px;
+    background-color: transparent;
+}
+
+.BoldLabel {
+    color: black;
+    font-weight: bold;
+}
+
+#NotificationItem {
+    background-color: lightgray;
+    margin: 2px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+    #NotificationItem:hover {
+        color: deepskyblue;
+        cursor: pointer;
+    }
+

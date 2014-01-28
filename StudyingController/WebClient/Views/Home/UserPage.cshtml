@@ -1,0 +1,44 @@
+﻿@model ThinClient.Models.MainModel
+@{
+    ViewBag.Title = "Сторінка користувача";
+}
+
+<table>
+    <tr>
+        <td>
+            <div id="UserPicture">
+                <img src="~/Content/userpic.png" />
+            </div>
+        </td>
+        <td>
+            <div class="BoldLabel">
+                @Model.Name
+            </div>
+            <div>
+                @Model.AdditionalInfo
+            </div>
+        </td>
+    </tr>
+</table>
+<br />
+<div>
+    <div >
+        Останні події:
+    </div>
+    <table style="width: 100%;">
+        @foreach (var n in Model.Notifications)
+        {
+            <tr>
+                <td>
+                    <div id="NotificationItem">
+                        <div style="font-weight: 600">@n.Date.ToString()</div>
+                        <div>@n.Message</div>
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+
+ 

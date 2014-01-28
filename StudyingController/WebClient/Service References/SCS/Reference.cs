@@ -1606,7 +1606,7 @@ namespace ThinClient.SCS {
         private double RateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ThinClient.SCS.SystemUserDTO UserField;
+        private ThinClient.SCS.StudentDTO StudentField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -1632,14 +1632,14 @@ namespace ThinClient.SCS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ThinClient.SCS.SystemUserDTO User {
+        public ThinClient.SCS.StudentDTO Student {
             get {
-                return this.UserField;
+                return this.StudentField;
             }
             set {
-                if ((object.ReferenceEquals(this.UserField, value) != true)) {
-                    this.UserField = value;
-                    this.RaisePropertyChanged("User");
+                if ((object.ReferenceEquals(this.StudentField, value) != true)) {
+                    this.StudentField = value;
+                    this.RaisePropertyChanged("Student");
                 }
             }
         }
@@ -1957,6 +1957,28 @@ namespace ThinClient.SCS {
         [System.ServiceModel.FaultContractAttribute(typeof(ThinClient.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/GetNotificationsControllerServiceExceptionF" +
             "ault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
         ThinClient.SCS.NotificationDTO[] GetNotifications(ThinClient.SCS.Session session, int userID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/GetGroup", ReplyAction="http://tempuri.org/IControllerService/GetGroupResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ThinClient.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/GetGroupControllerServiceExceptionFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        ThinClient.SCS.GroupDTO GetGroup(ThinClient.SCS.Session session, int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/GetSpecialization", ReplyAction="http://tempuri.org/IControllerService/GetSpecializationResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ThinClient.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/GetSpecializationControllerServiceException" +
+            "Fault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        ThinClient.SCS.SpecializationDTO GetSpecialization(ThinClient.SCS.Session session, int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/GetCathedra", ReplyAction="http://tempuri.org/IControllerService/GetCathedraResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ThinClient.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/GetCathedraControllerServiceExceptionFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        ThinClient.SCS.CathedraDTO GetCathedra(ThinClient.SCS.Session session, int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/GetFaculty", ReplyAction="http://tempuri.org/IControllerService/GetFacultyResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ThinClient.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/GetFacultyControllerServiceExceptionFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        ThinClient.SCS.FacultyDTO GetFaculty(ThinClient.SCS.Session session, int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/GetInstitute", ReplyAction="http://tempuri.org/IControllerService/GetInstituteResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ThinClient.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/GetInstituteControllerServiceExceptionFault" +
+            "", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        ThinClient.SCS.InstituteDTO GetInstitute(ThinClient.SCS.Session session, int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2236,6 +2258,26 @@ namespace ThinClient.SCS {
         
         public ThinClient.SCS.NotificationDTO[] GetNotifications(ThinClient.SCS.Session session, int userID) {
             return base.Channel.GetNotifications(session, userID);
+        }
+        
+        public ThinClient.SCS.GroupDTO GetGroup(ThinClient.SCS.Session session, int id) {
+            return base.Channel.GetGroup(session, id);
+        }
+        
+        public ThinClient.SCS.SpecializationDTO GetSpecialization(ThinClient.SCS.Session session, int id) {
+            return base.Channel.GetSpecialization(session, id);
+        }
+        
+        public ThinClient.SCS.CathedraDTO GetCathedra(ThinClient.SCS.Session session, int id) {
+            return base.Channel.GetCathedra(session, id);
+        }
+        
+        public ThinClient.SCS.FacultyDTO GetFaculty(ThinClient.SCS.Session session, int id) {
+            return base.Channel.GetFaculty(session, id);
+        }
+        
+        public ThinClient.SCS.InstituteDTO GetInstitute(ThinClient.SCS.Session session, int id) {
+            return base.Channel.GetInstitute(session, id);
         }
     }
 }

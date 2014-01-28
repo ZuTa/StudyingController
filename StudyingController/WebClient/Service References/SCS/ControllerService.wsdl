@@ -575,6 +575,51 @@
   <wsdl:message name="IControllerService_GetNotifications_ControllerServiceExceptionFault_FaultMessage">
     <wsdl:part xmlns:q63="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q63:ControllerServiceException" />
   </wsdl:message>
+  <wsdl:message name="IControllerService_GetGroup_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGroup" />
+  </wsdl:message>
+  <wsdl:message name="IControllerService_GetGroup_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="IControllerService_GetGroup_ControllerServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q64="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q64:ControllerServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IControllerService_GetSpecialization_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSpecialization" />
+  </wsdl:message>
+  <wsdl:message name="IControllerService_GetSpecialization_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSpecializationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IControllerService_GetSpecialization_ControllerServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q65="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q65:ControllerServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IControllerService_GetCathedra_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCathedra" />
+  </wsdl:message>
+  <wsdl:message name="IControllerService_GetCathedra_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCathedraResponse" />
+  </wsdl:message>
+  <wsdl:message name="IControllerService_GetCathedra_ControllerServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q66="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q66:ControllerServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IControllerService_GetFaculty_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFaculty" />
+  </wsdl:message>
+  <wsdl:message name="IControllerService_GetFaculty_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFacultyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IControllerService_GetFaculty_ControllerServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q67="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q67:ControllerServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IControllerService_GetInstitute_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInstitute" />
+  </wsdl:message>
+  <wsdl:message name="IControllerService_GetInstitute_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInstituteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IControllerService_GetInstitute_ControllerServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q68="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q68:ControllerServiceException" />
+  </wsdl:message>
   <wsdl:portType name="IControllerService">
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/IControllerService/Login" message="tns:IControllerService_Login_InputMessage" />
@@ -890,6 +935,31 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IControllerService/GetNotifications" message="tns:IControllerService_GetNotifications_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IControllerService/GetNotificationsResponse" message="tns:IControllerService_GetNotifications_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IControllerService/GetNotificationsControllerServiceExceptionFault" name="ControllerServiceExceptionFault" message="tns:IControllerService_GetNotifications_ControllerServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGroup">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControllerService/GetGroup" message="tns:IControllerService_GetGroup_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControllerService/GetGroupResponse" message="tns:IControllerService_GetGroup_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IControllerService/GetGroupControllerServiceExceptionFault" name="ControllerServiceExceptionFault" message="tns:IControllerService_GetGroup_ControllerServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSpecialization">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControllerService/GetSpecialization" message="tns:IControllerService_GetSpecialization_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControllerService/GetSpecializationResponse" message="tns:IControllerService_GetSpecialization_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IControllerService/GetSpecializationControllerServiceExceptionFault" name="ControllerServiceExceptionFault" message="tns:IControllerService_GetSpecialization_ControllerServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCathedra">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControllerService/GetCathedra" message="tns:IControllerService_GetCathedra_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControllerService/GetCathedraResponse" message="tns:IControllerService_GetCathedra_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IControllerService/GetCathedraControllerServiceExceptionFault" name="ControllerServiceExceptionFault" message="tns:IControllerService_GetCathedra_ControllerServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFaculty">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControllerService/GetFaculty" message="tns:IControllerService_GetFaculty_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControllerService/GetFacultyResponse" message="tns:IControllerService_GetFaculty_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IControllerService/GetFacultyControllerServiceExceptionFault" name="ControllerServiceExceptionFault" message="tns:IControllerService_GetFaculty_ControllerServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInstitute">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControllerService/GetInstitute" message="tns:IControllerService_GetInstitute_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControllerService/GetInstituteResponse" message="tns:IControllerService_GetInstitute_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IControllerService/GetInstituteControllerServiceExceptionFault" name="ControllerServiceExceptionFault" message="tns:IControllerService_GetInstitute_ControllerServiceExceptionFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IControllerService" type="tns:IControllerService">
@@ -1640,6 +1710,66 @@
     </wsdl:operation>
     <wsdl:operation name="GetNotifications">
       <soap:operation soapAction="http://tempuri.org/IControllerService/GetNotifications" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ControllerServiceExceptionFault">
+        <soap:fault use="literal" name="ControllerServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetGroup">
+      <soap:operation soapAction="http://tempuri.org/IControllerService/GetGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ControllerServiceExceptionFault">
+        <soap:fault use="literal" name="ControllerServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpecialization">
+      <soap:operation soapAction="http://tempuri.org/IControllerService/GetSpecialization" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ControllerServiceExceptionFault">
+        <soap:fault use="literal" name="ControllerServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetCathedra">
+      <soap:operation soapAction="http://tempuri.org/IControllerService/GetCathedra" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ControllerServiceExceptionFault">
+        <soap:fault use="literal" name="ControllerServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFaculty">
+      <soap:operation soapAction="http://tempuri.org/IControllerService/GetFaculty" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ControllerServiceExceptionFault">
+        <soap:fault use="literal" name="ControllerServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetInstitute">
+      <soap:operation soapAction="http://tempuri.org/IControllerService/GetInstitute" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

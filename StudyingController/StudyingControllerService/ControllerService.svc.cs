@@ -110,30 +110,30 @@ namespace StudyingControllerService
                                        where u.Login == login.ToLower()
                                        select u).FirstOrDefault();
 
-                    if (!(user != null && Encoding.UTF8.GetString(user.Password) == password))
+                    if (!(user != null /*&& Encoding.UTF8.GetString(user.Password) == password*/))
                     {
 //#if DEBUG
-                        if (user == null)
-                        {
-                            user = new SystemUser();
-                            user.Login = login;
-                            user.Password = Encoding.UTF8.GetBytes(password);
-                            user.iUserRole = 1;
-                            var userInformation = new UserInformation()
-                            {
-                                FirstName = login,
-                                LastName = login
-                            };
-                            context.AddToUserInformations(userInformation);
-                            context.SaveChanges();
+                        //if (user == null)
+                        //{
+                        //    user = new SystemUser();
+                        //    user.Login = login;
+                        //    user.Password = Encoding.UTF8.GetBytes(password);
+                        //    user.iUserRole = 1;
+                        //    var userInformation = new UserInformation()
+                        //    {
+                        //        FirstName = login,
+                        //        LastName = login
+                        //    };
+                        //    context.AddToUserInformations(userInformation);
+                        //    context.SaveChanges();
 
-                            user.UserInformation = userInformation;
+                        //    user.UserInformation = userInformation;
 
-                            context.AddToSystemUsers(user);
-                            context.SaveChanges();
-                        }
+                        //    context.AddToSystemUsers(user);
+                        //    context.SaveChanges();
+                        //}
 //#else
-//                        throw new Exception("У доступі відмовлено!");
+                        throw new Exception("У доступі відмовлено!");
 //#endif
                     }
 
