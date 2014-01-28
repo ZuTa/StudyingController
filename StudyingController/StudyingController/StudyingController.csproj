@@ -37,9 +37,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -95,6 +92,7 @@
     <Compile Include="ViewModels\ControlChatViewModel.cs" />
     <Compile Include="ViewModels\ControlMarksViewModel.cs" />
     <Compile Include="ViewModels\ControlStructureViewModel.cs" />
+    <Compile Include="ViewModels\PracticeDataViewModel.cs" />
     <Compile Include="ViewModels\FacultyAdminViewModel.cs" />
     <Compile Include="ViewModels\FacultySecretaryViewModel.cs" />
     <Compile Include="ViewModels\FacultyViewModel.cs" />
@@ -109,6 +107,7 @@
     <Compile Include="ViewModels\IRefreshable.cs" />
     <Compile Include="ViewModels\LectureControlViewModel.cs" />
     <Compile Include="ViewModels\LectureControlsViewModel.cs" />
+    <Compile Include="ViewModels\LectureDataViewModel.cs" />
     <Compile Include="ViewModels\LessonTreeViewModel.cs" />
     <Compile Include="ViewModels\LessonStructureViewModel.cs" />
     <Compile Include="ViewModels\LectureViewModel.cs" />
@@ -136,6 +135,7 @@
     <Compile Include="ViewModels\Models\PracticeControlMarkModel.cs" />
     <Compile Include="ViewModels\Models\PracticeControlModel.cs" />
     <Compile Include="ViewModels\Models\PracticeTeacherModel.cs" />
+    <Compile Include="ViewModels\Models\PracticeVisitingModel.cs" />
     <Compile Include="ViewModels\Models\SpecializationModel.cs" />
     <Compile Include="ViewModels\Models\StudentModel.cs" />
     <Compile Include="ViewModels\Models\SubjectModel.cs" />
@@ -143,6 +143,7 @@
     <Compile Include="ViewModels\Models\TeacherModel.cs" />
     <Compile Include="ViewModels\Models\UserInformationModel.cs" />
     <Compile Include="Common\ValidateableAttribute.cs" />
+    <Compile Include="ViewModels\Models\VisitingModel.cs" />
     <Compile Include="ViewModels\PracticeControlsViewModel.cs" />
     <Compile Include="ViewModels\PracticeControlViewModel.cs" />
     <Compile Include="ViewModels\SelectorViewModel.cs" />
@@ -194,6 +195,9 @@
     <Compile Include="Views\ControlMarksView.xaml.cs">
       <DependentUpon>ControlMarksView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PracticeDataView.xaml.cs">
+      <DependentUpon>PracticeDataView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\FacultyAdminView.xaml.cs">
       <DependentUpon>FacultyAdminView.xaml</DependentUpon>
     </Compile>
@@ -220,6 +224,9 @@
     </Compile>
     <Compile Include="Views\LessonControlsView.xaml.cs">
       <DependentUpon>LessonControlsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LectureDataView.xaml.cs">
+      <DependentUpon>LectureDataView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LessonTreeView.xaml.cs">
       <DependentUpon>LessonTreeView.xaml</DependentUpon>
@@ -317,6 +324,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\PracticeDataView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\FacultyAdminView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -352,6 +363,10 @@
     <Page Include="Views\LessonControlsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\LectureDataView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\LessonTreeView.xaml">
       <SubType>Designer</SubType>
@@ -488,8 +503,20 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\SCS\ControllerService.wsdl" />
+    <None Include="Service References\SCS\ControllerService.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\SCS\ControllerService1.wsdl" />
-    <None Include="Service References\SCS\ControllerService11.wsdl" />
+    <None Include="Service References\SCS\ControllerService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SCS\ControllerService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SCS\ControllerService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\SCS\ControllerService4.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -500,18 +527,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\SCS\ControllerService43.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\SCS\ControllerService44.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\SCS\ControllerService45.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\SCS\ControllerService46.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\SCS\ControllerService47.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\SCS\StudyingController.SCS.Session.datasource">
@@ -634,9 +649,6 @@
     <Resource Include="Images\star.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\SCS\ControllerService11.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">
       <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
       <VersionMajor>2</VersionMajor>
@@ -658,6 +670,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\excel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SCS\ControllerService.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

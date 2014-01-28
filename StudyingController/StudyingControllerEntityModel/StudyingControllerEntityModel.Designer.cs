@@ -51,6 +51,9 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "Student_Group", "Group", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Group), "Student", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Student))]
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_System_Configuration_StudyRange", "StudyRange", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.StudyRange), "System_Configuration", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.SystemConfiguration), true)]
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_Notification_SystemUser", "SystemUser", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.SystemUser), "Notification", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Notification), true)]
+[assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_Cathedra_Specialization", "Specialization", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.Specialization), "Cathedra", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Cathedra), true)]
+[assembly: EdmRelationshipAttribute("UniversityDBModel", "LectureVisiting", "Lecture", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(StudyingControllerEntityModel.Lecture), "Visiting", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Visiting))]
+[assembly: EdmRelationshipAttribute("UniversityDBModel", "PracticeVisiting", "Practice", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(StudyingControllerEntityModel.Practice), "Visiting", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Visiting))]
 
 #endregion
 
@@ -389,6 +392,22 @@ namespace StudyingControllerEntityModel
             }
         }
         private ObjectSet<Notification> _Notifications;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Visiting> Visitings
+        {
+            get
+            {
+                if ((_Visitings == null))
+                {
+                    _Visitings = base.CreateObjectSet<Visiting>("Visitings");
+                }
+                return _Visitings;
+            }
+        }
+        private ObjectSet<Visiting> _Visitings;
 
         #endregion
 
@@ -536,6 +555,14 @@ namespace StudyingControllerEntityModel
         public void AddToNotifications(Notification notification)
         {
             base.AddObject("Notifications", notification);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Visitings EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToVisitings(Visiting visiting)
+        {
+            base.AddObject("Visitings", visiting);
         }
 
         #endregion
@@ -876,6 +903,30 @@ namespace StudyingControllerEntityModel
         private global::System.String _Name;
         partial void OnNameChanging(global::System.String value);
         partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> DefaultSpecializationID
+        {
+            get
+            {
+                return _DefaultSpecializationID;
+            }
+            set
+            {
+                OnDefaultSpecializationIDChanging(value);
+                ReportPropertyChanging("DefaultSpecializationID");
+                _DefaultSpecializationID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DefaultSpecializationID");
+                OnDefaultSpecializationIDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _DefaultSpecializationID;
+        partial void OnDefaultSpecializationIDChanging(Nullable<global::System.Int32> value);
+        partial void OnDefaultSpecializationIDChanged();
 
         #endregion
 
@@ -982,6 +1033,44 @@ namespace StudyingControllerEntityModel
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Subject>("UniversityDBModel.FK_Subject_Cathedra", "Subject", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "FK_Cathedra_Specialization", "Specialization")]
+        public Specialization Specialization
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Specialization>("UniversityDBModel.FK_Cathedra_Specialization", "Specialization").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Specialization>("UniversityDBModel.FK_Cathedra_Specialization", "Specialization").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Specialization> SpecializationReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Specialization>("UniversityDBModel.FK_Cathedra_Specialization", "Specialization");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Specialization>("UniversityDBModel.FK_Cathedra_Specialization", "Specialization", value);
                 }
             }
         }
@@ -2744,6 +2833,28 @@ namespace StudyingControllerEntityModel
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "LectureVisiting", "Visiting")]
+        public EntityCollection<Visiting> Visitings
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Visiting>("UniversityDBModel.LectureVisiting", "Visiting");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Visiting>("UniversityDBModel.LectureVisiting", "Visiting", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -3268,48 +3379,6 @@ namespace StudyingControllerEntityModel
         #endregion
 
     
-        #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "FK_Notification_SystemUser", "SystemUser")]
-        public SystemUser SystemUser
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SystemUser>("UniversityDBModel.FK_Notification_SystemUser", "SystemUser").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SystemUser>("UniversityDBModel.FK_Notification_SystemUser", "SystemUser").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<SystemUser> SystemUserReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SystemUser>("UniversityDBModel.FK_Notification_SystemUser", "SystemUser");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SystemUser>("UniversityDBModel.FK_Notification_SystemUser", "SystemUser", value);
-                }
-            }
-        }
-
-        #endregion
-
     }
     
     /// <summary>
@@ -3473,6 +3542,28 @@ namespace StudyingControllerEntityModel
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PracticeTeacher>("UniversityDBModel.FK_Practice_Teacher_Practice", "Practice_Teacher", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "PracticeVisiting", "Visiting")]
+        public EntityCollection<Visiting> Visitings
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Visiting>("UniversityDBModel.PracticeVisiting", "Visiting");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Visiting>("UniversityDBModel.PracticeVisiting", "Visiting", value);
                 }
             }
         }
@@ -4145,6 +4236,28 @@ namespace StudyingControllerEntityModel
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Group>("UniversityDBModel.FK_Group_Specialization", "Group", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "FK_Cathedra_Specialization", "Cathedra")]
+        public EntityCollection<Cathedra> Cathedras
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Cathedra>("UniversityDBModel.FK_Cathedra_Specialization", "Cathedra");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Cathedra>("UniversityDBModel.FK_Cathedra_Specialization", "Cathedra", value);
                 }
             }
         }
@@ -5316,6 +5429,245 @@ namespace StudyingControllerEntityModel
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SystemUser>("UniversityDBModel.FK_UserInformation_SystemUser", "SystemUser", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="UniversityDBModel", Name="Visiting")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Visiting : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Visiting object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="date">Initial value of the Date property.</param>
+        /// <param name="value">Initial value of the Value property.</param>
+        /// <param name="studentID">Initial value of the StudentID property.</param>
+        public static Visiting CreateVisiting(global::System.Int32 id, global::System.DateTime date, global::System.Int32 value, global::System.Int32 studentID)
+        {
+            Visiting visiting = new Visiting();
+            visiting.ID = id;
+            visiting.Date = date;
+            visiting.Value = value;
+            visiting.StudentID = studentID;
+            return visiting;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime Date
+        {
+            get
+            {
+                return _Date;
+            }
+            set
+            {
+                OnDateChanging(value);
+                ReportPropertyChanging("Date");
+                _Date = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Date");
+                OnDateChanged();
+            }
+        }
+        private global::System.DateTime _Date;
+        partial void OnDateChanging(global::System.DateTime value);
+        partial void OnDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Value
+        {
+            get
+            {
+                return _Value;
+            }
+            set
+            {
+                OnValueChanging(value);
+                ReportPropertyChanging("Value");
+                _Value = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Value");
+                OnValueChanged();
+            }
+        }
+        private global::System.Int32 _Value;
+        partial void OnValueChanging(global::System.Int32 value);
+        partial void OnValueChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
+            }
+        }
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 StudentID
+        {
+            get
+            {
+                return _StudentID;
+            }
+            set
+            {
+                OnStudentIDChanging(value);
+                ReportPropertyChanging("StudentID");
+                _StudentID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("StudentID");
+                OnStudentIDChanged();
+            }
+        }
+        private global::System.Int32 _StudentID;
+        partial void OnStudentIDChanging(global::System.Int32 value);
+        partial void OnStudentIDChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "LectureVisiting", "Lecture")]
+        public Lecture Lecture
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Lecture>("UniversityDBModel.LectureVisiting", "Lecture").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Lecture>("UniversityDBModel.LectureVisiting", "Lecture").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Lecture> LectureReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Lecture>("UniversityDBModel.LectureVisiting", "Lecture");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Lecture>("UniversityDBModel.LectureVisiting", "Lecture", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "PracticeVisiting", "Practice")]
+        public Practice Practice
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Practice>("UniversityDBModel.PracticeVisiting", "Practice").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Practice>("UniversityDBModel.PracticeVisiting", "Practice").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Practice> PracticeReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Practice>("UniversityDBModel.PracticeVisiting", "Practice");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Practice>("UniversityDBModel.PracticeVisiting", "Practice", value);
                 }
             }
         }

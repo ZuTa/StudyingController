@@ -79,6 +79,7 @@
     <Compile Include="SystemUser.cs" />
     <Compile Include="Teacher.cs" />
     <Compile Include="UserInformation.cs" />
+    <Compile Include="Visiting.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="StudyingControllerEntityModel.edmx">

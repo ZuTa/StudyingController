@@ -66,39 +66,37 @@ namespace StudyingController.ViewModels
         {
             if (entity is LectureDTO)
             {
-                LectureControlsViewModel lectureControlsViewModel = new LectureControlsViewModel(UserInterop, ControllerInterop, Dispatcher, entity) { EditMode = ControllerInterop.User.Role == UserRoles.Student ? EditModes.ReadOnly : EditModes.Editable };
-                lectureControlsViewModel.ControlOpened += new LectureControlsViewModel.ControlOpenedHandler(lessonControlsViewModel_WorkspaceChanged);
-                return lectureControlsViewModel;
-
+                LectureDataViewModel lectureDataViewModel = new LectureDataViewModel(UserInterop, ControllerInterop, Dispatcher, entity as LectureDTO);
+                lectureDataViewModel.WorkspaceChanged += (vm) =>
+                    {
+                        if (WorkspaceChanged != null)
+                            WorkspaceChanged(vm);
+                    };
+                return lectureDataViewModel;
             }
 
             if (entity is PracticeTeacherDTO)
             {
-                PracticeControlsViewModel practiceControlsViewModel = new PracticeControlsViewModel(UserInterop, ControllerInterop, Dispatcher, entity) { EditMode = ControllerInterop.User.Role == UserRoles.Student ? EditModes.ReadOnly : EditModes.Editable };
-                practiceControlsViewModel.ControlOpened += new PracticeControlsViewModel.ControlOpenedHandler(lessonControlsViewModel_WorkspaceChanged);
-                return practiceControlsViewModel;
+                PracticeDataViewModel practiceDataViewModel = new PracticeDataViewModel(UserInterop, ControllerInterop, Dispatcher, entity as PracticeTeacherDTO);
+                practiceDataViewModel.WorkspaceChanged += (vm) =>
+                {
+                    if (WorkspaceChanged != null)
+                        WorkspaceChanged(vm);
+                };
+                return practiceDataViewModel;
             }
             
             return null;
-        }
-
-        void lessonControlsViewModel_WorkspaceChanged(BaseModel model)
-        {
-            if (WorkspaceChanged != null)
-            {
-                if (model is LectureControlModel) WorkspaceChanged(new LectureControlViewModel(UserInterop, ControllerInterop, Dispatcher, (model as LectureControlModel).ToDTO()) { EditMode = ControllerInterop.User.Role == UserRoles.Student ? EditModes.ReadOnly : EditModes.Editable });
-                else if (model is PracticeControlModel) WorkspaceChanged(new PracticeControlViewModel(UserInterop, ControllerInterop, Dispatcher, (model as PracticeControlModel).ToDTO()) { EditMode = ControllerInterop.User.Role == UserRoles.Student ? EditModes.ReadOnly : EditModes.Editable });
-            }
         }
 
         #endregion
 
         #region Events
 
-        public delegate void ChangeWorkspaceHandler(BaseApplicationViewModel viewModel);
         public event ChangeWorkspaceHandler WorkspaceChanged;
         
         #endregion
-
     }
+
+    public delegate void ChangeWorkspaceHandler(BaseApplicationViewModel viewModel);
 }

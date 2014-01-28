@@ -8,6 +8,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using StudyingController.Common;
 using System.Reflection;
+using System.Diagnostics;
 
 namespace StudyingController.ClientData
 {
@@ -115,7 +116,15 @@ namespace StudyingController.ClientData
 
                 using (Stream fileStream = File.Open(configFilePath, FileMode.Open))
                 {
-                    if(fileStream.Length > 0) instance =  (LoginConfig)xmlSerializer.Deserialize(fileStream);
+                    try
+                    {
+                        if (fileStream.Length > 0) instance = (LoginConfig)xmlSerializer.Deserialize(fileStream);
+                    }
+                    catch(Exception ex)
+                    {
+                        Trace.WriteLine(ex.Message);
+                        return new LoginConfig();
+                    }
                 }
             }
             return instance;

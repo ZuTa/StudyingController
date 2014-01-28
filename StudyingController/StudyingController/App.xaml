@@ -141,6 +141,14 @@
                 <v:UserRateListView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type vm:LectureDataViewModel}">
+                <v:LectureDataView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type vm:PracticeDataViewModel}">
+                <v:PracticeDataView/>
+            </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

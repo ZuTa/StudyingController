@@ -83,7 +83,6 @@ namespace StudyingController.ViewModels
 
         public override void Save()
         {
-
             if (Control is PracticeControlDTO)
             {
                 List<MarkDTO> practiceMarks = new List<MarkDTO>();
