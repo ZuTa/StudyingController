@@ -34,6 +34,6 @@
             <Button Command="{Binding RemoveCommand}" ToolTip="Видалити" Style="{StaticResource EditableButtonStyle}" Visibility="{Binding Path=EditMode, Converter={StaticResource ResourceKey=EM2V}}">
                 <Image Source="/StudyingController;component/Images/remove.png" Stretch="Fill" />
             </Button>
-        </StackPanel>        
+        </StackPanel>
     </Grid>
 </UserControl>

@@ -12,78 +12,50 @@
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <TreeView IsEnabled="{Binding IsNotBusy}" ItemsSource="{Binding Tree.Nodes}" common:TreeViewHelper.SelectedEntityChangedCommand="{Binding SelectedEntityChangedCommand}" common:TreeViewHelper.SelectedEntity="{Binding CurrentEntity}">
-        <TreeView.ItemTemplate>
-            <HierarchicalDataTemplate ItemsSource = "{Binding Path=Children}">
-                <StackPanel Orientation="Horizontal">
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource = "{Binding Path=Children}">
+                    <StackPanel Orientation="Horizontal">
 
-                    <Image Width="16" Height="16" Margin="0,0,5,0">
-                        <Image.Style>
-                            <Style TargetType="{x:Type Image}">
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ImageIndex}" Value="0">
-                                        <Setter Property="Source" Value="/StudyingController;component/Images/home.png"/>
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding ImageIndex}" Value="1">
-                                        <Setter Property="Source" Value="/StudyingController;component/Images/gnome_go_home.png"/>
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding ImageIndex}" Value="2">
-                                        <Setter Property="Source" Value="/StudyingController;component/Images/board.png"/>
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding ImageIndex}" Value="3">
-                                        <Setter Property="Source" Value="/StudyingController;component/Images/circle_grey.png"/>
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Image.Style>
-                    </Image>
+                        <Image Width="16" Height="16" Margin="0,0,5,0">
+                            <Image.Style>
+                                <Style TargetType="{x:Type Image}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ImageIndex}" Value="0">
+                                            <Setter Property="Source" Value="/StudyingController;component/Images/home.png"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ImageIndex}" Value="1">
+                                            <Setter Property="Source" Value="/StudyingController;component/Images/gnome_go_home.png"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ImageIndex}" Value="2">
+                                            <Setter Property="Source" Value="/StudyingController;component/Images/board.png"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ImageIndex}" Value="3">
+                                            <Setter Property="Source" Value="/StudyingController;component/Images/circle_grey.png"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
 
-                    <TextBlock Text="{Binding Path=Name}"/>
-                </StackPanel>
-            </HierarchicalDataTemplate>
-        </TreeView.ItemTemplate>
+                        <TextBlock Text="{Binding Path=Name}"/>
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
 
-        <TreeView.ItemContainerStyle>
-            <Style TargetType="{x:Type TreeViewItem}">
-                <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
-                <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
-                <Setter Property="FontWeight" Value="Normal" />
-               
+            <TreeView.ItemContainerStyle>
+                <Style TargetType="{x:Type TreeViewItem}">
+                    <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+                    <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+                    <Setter Property="FontWeight" Value="Normal" />
+
                     <Style.Triggers>
-                    <Trigger Property="IsSelected" Value="True">
-                        <Setter Property="FontWeight" Value="Bold" />
-                            
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="FontWeight" Value="Bold" />
+
                         </Trigger>
-                </Style.Triggers>
-            </Style>
-        </TreeView.ItemContainerStyle>
-    </TreeView>
-        <Border Grid.Row="1" BorderBrush="Gray" BorderThickness="1">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-                <StackPanel Orientation="Horizontal" Margin="2">
-                    <Image Source="/StudyingController;component/Images/home.png" Height="16" Width="16"></Image>
-                    <Label Content="Інститут"></Label>
-                </StackPanel>
-                <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="2">
-                    <Image Source="/StudyingController;component/Images/gnome_go_home.png" Height="16" Width="16"></Image>
-                    <Label Content="Факультет"></Label>
-                </StackPanel>
-                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="2">
-                    <Image Source="/StudyingController;component/Images/board.png" Height="16" Width="16"></Image>
-                    <Label Content="Кафедра"></Label>
-                </StackPanel>
-                <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" Margin="2">
-                    <Image Source="/StudyingController;component/Images/circle_grey.png" Height="16" Width="16"></Image>
-                    <Label Content="Група"></Label>
-                </StackPanel>
-            </Grid>
-        </Border>
+                    </Style.Triggers>
+                </Style>
+            </TreeView.ItemContainerStyle>
+        </TreeView>
     </Grid>
 </UserControl>

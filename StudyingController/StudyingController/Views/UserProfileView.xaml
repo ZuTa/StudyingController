@@ -21,7 +21,7 @@
             </Grid.ColumnDefinitions>
             
             <StackPanel Grid.Column="0">
-                <Image Grid.Column="0" Source="/StudyingController;component/Images/person (2).png" Stretch="Fill"/>
+                <Image Grid.Column="0" Source="/StudyingController;component/Images/person (2).png" Stretch="Uniform"/>
                 <TextBlock Text="{Binding RoleText}" HorizontalAlignment="Center" FontStyle="Italic"/>
             </StackPanel>
             
@@ -48,7 +48,7 @@
             <ItemsControl ItemsSource="{Binding Notifications}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border x:Name="NotificationBorder" Background="#FF59E885" Margin="3" CornerRadius="3" Style="{StaticResource MessageBorderStyle}">
+                        <Border x:Name="NotificationBorder" Background="#DCDCDC" Margin="3" CornerRadius="3" Style="{StaticResource MessageBorderStyle}">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"/>

@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="StudyingController.Views.LectureDataView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TabControl TabStripPlacement="Right">
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel>
+                        <TextBlock Text="Контролі" Margin="5,0,5,0"></TextBlock>
+                        <StackPanel.LayoutTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                <SkewTransform AngleX="0" AngleY="0"/>
+                                <RotateTransform Angle="90"/>
+                                <TranslateTransform X="0" Y="0"/>
+                            </TransformGroup>
+                        </StackPanel.LayoutTransform>
+                    </StackPanel>
+
+                </TabItem.Header>
+                <ContentControl Content="{Binding LectureControls}">
+                </ContentControl>
+            </TabItem>
+
+            <TabItem> <!--Visibility="{Binding Path=IsNotStudent, Converter={StaticResource B2V}}">-->
+                <TabItem.Header>
+                    <StackPanel>
+                        <TextBlock Text="Відвідування" Margin="5,0,5,0"></TextBlock>
+                        <StackPanel.LayoutTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                <SkewTransform AngleX="0" AngleY="0"/>
+                                <RotateTransform Angle="90"/>
+                                <TranslateTransform X="0" Y="0"/>
+                            </TransformGroup>
+                        </StackPanel.LayoutTransform>
+                    </StackPanel>
+
+                </TabItem.Header>
+                <ContentControl> <!--Content="{Binding MarksViewModel}">-->
+                </ContentControl>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

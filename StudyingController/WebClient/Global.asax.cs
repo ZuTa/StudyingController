@@ -21,5 +21,11 @@ namespace ThinClient
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
+
+        void Application_Error(object sender, EventArgs e)
+        {
+            Response.Clear();
+            Response.Redirect("Index");
+        }
     }
 }

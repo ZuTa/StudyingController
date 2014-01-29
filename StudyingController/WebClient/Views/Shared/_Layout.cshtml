@@ -7,24 +7,31 @@
     @Styles.Render("~/Content/Site.css")
 </head>
 <body>
-    <div id="LoginBar">
-        @if (this.Session["Session"] == null)
-        {
-            @Html.ActionLink("Увійти", "LogIn", "Home")
-        }
-    </div>
     <div class="Content">
         <div id="Header">
             <ul id="Menu">
                 <li>@Html.ActionLink("Головна", "Index", "Home")</li>
+                <li>@Html.ActionLink("Сторінка користувача", "UserPage", "Home")</li>
                 <li>@Html.ActionLink("Про проект", "About", "Home")</li>
+                <li style="float:right;">
+                        @if (this.Session["Session"] == null)
+                        {
+                            @Html.ActionLink("Увійти", "LogIn", "Home")
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Вийти", "LogOut", "Home")
+                        }
+                </li>
             </ul>
         </div>
+        <div id="ErrorPanel">@ViewBag.Error</div>
         <div id="MainContent">
             @RenderBody()
         </div>
         <div id="Footer">
-            ©Studying Controller</br>2013
+            ©Studying Controller<br />
+            @DateTime.Now.Year
         </div>
     </div>
 </body>

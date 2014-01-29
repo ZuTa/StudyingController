@@ -110,30 +110,30 @@ namespace StudyingControllerService
                                        where u.Login == login.ToLower()
                                        select u).FirstOrDefault();
 
-                    if (!(user != null && Encoding.UTF8.GetString(user.Password) == password))
+                    if (!(user != null /*&& Encoding.UTF8.GetString(user.Password) == password*/))
                     {
 //#if DEBUG
-                        if (user == null)
-                        {
-                            user = new SystemUser();
-                            user.Login = login;
-                            user.Password = Encoding.UTF8.GetBytes(password);
-                            user.iUserRole = 1;
-                            var userInformation = new UserInformation()
-                            {
-                                FirstName = login,
-                                LastName = login
-                            };
-                            context.AddToUserInformations(userInformation);
-                            context.SaveChanges();
+                        //if (user == null)
+                        //{
+                        //    user = new SystemUser();
+                        //    user.Login = login;
+                        //    user.Password = Encoding.UTF8.GetBytes(password);
+                        //    user.iUserRole = 1;
+                        //    var userInformation = new UserInformation()
+                        //    {
+                        //        FirstName = login,
+                        //        LastName = login
+                        //    };
+                        //    context.AddToUserInformations(userInformation);
+                        //    context.SaveChanges();
 
-                            user.UserInformation = userInformation;
+                        //    user.UserInformation = userInformation;
 
-                            context.AddToSystemUsers(user);
-                            context.SaveChanges();
-                        }
+                        //    context.AddToSystemUsers(user);
+                        //    context.SaveChanges();
+                        //}
 //#else
-//                        throw new Exception("У доступі відмовлено!");
+                        throw new Exception("У доступі відмовлено!");
 //#endif
                     }
 
@@ -1716,11 +1716,64 @@ namespace StudyingControllerService
                 {
                     var item = context.Controls.FirstOrDefault(c => c.ID == control.ID);
                     if (item == null)
-                        context.AddToControls(new LectureControl(control));
-                    else
-                        item.Assign(control);
+                    {
+                        item = new LectureControl(control);
+                        context.Controls.AddObject(item);
+                        context.SaveChanges();
 
-                    context.SaveChanges();
+                        int lectureID = (item as LectureControl).LectureID;
+                        Lecture lecture = context.Lectures.Include("Groups").Include("Subject").FirstOrDefault(lect => lect.ID == lectureID);
+                        Teacher teacher = context.SystemUsers.Include("UserInformation").First(teach => teach.ID == lecture.TeacherID) as Teacher;
+
+                        foreach (var group in lecture.Groups)
+                        {
+                            foreach (var student in context.Groups.Include("Students").First(gr=>gr.ID == group.ID).Students)
+                            {
+                                context.AddToNotifications(new Notification(new NotificationDTO
+                                {
+                                    Date = DateTime.Now,
+                                    Message = string.Format("Новий контроль ({5}) з предмету \"{0}\" - Л (викладач - {1}) відбудеться {2} об {3}. Максимальна оцінка - {4}.",
+                                           lecture.Subject.Name,
+                                           teacher.UserInformation.LastName,
+                                           item.Date.ToShortDateString(),
+                                           item.Date.ToShortTimeString(),
+                                           item.MaxMark,
+                                           item.Name),
+                                    UserID = student.ID
+                                }));
+                            }
+                        }
+                        context.SaveChanges();
+                    }
+                    else
+                    {
+                        item.Assign(control);
+                        context.SaveChanges();
+
+                        int lectureID = (item as LectureControl).LectureID;
+                        Lecture lecture = context.Lectures.Include("Groups").Include("Subject").FirstOrDefault(lect => lect.ID == lectureID);
+                        Teacher teacher = context.SystemUsers.Include("UserInformation").First(teach => teach.ID == lecture.TeacherID) as Teacher;
+
+                        foreach (var group in lecture.Groups)
+                        {
+                            foreach (var student in context.Groups.Include("Students").First(gr => gr.ID == group.ID).Students)
+                            {
+                                context.AddToNotifications(new Notification(new NotificationDTO
+                                {
+                                    Date = DateTime.Now,
+                                    Message = string.Format("Внесено зміни! Контроль ({5}) з предмету \"{0}\" - Л (викладач - {1}) відбудеться {2} об {3}. Максимальна оцінка - {4}.",
+                                           lecture.Subject.Name,
+                                           teacher.UserInformation.LastName,
+                                           item.Date.ToShortDateString(),
+                                           item.Date.ToShortTimeString(),
+                                           item.MaxMark,
+                                           item.Name),
+                                    UserID = student.ID
+                                }));
+                            }
+                        }
+                        context.SaveChanges();
+                    }
                 }
             }
             catch (Exception ex)
@@ -1899,12 +1952,69 @@ namespace StudyingControllerService
                     var item = context.Controls.FirstOrDefault(c => c.ID == control.ID);
                     if (item == null)
                     {
-                        context.AddToControls(new PracticeControl(control));
+                        item = new PracticeControl(control);
+                        context.Controls.AddObject(item);
+                        context.SaveChanges();
+
+                        int practiceID = (item as PracticeControl).PracticeID;
+                        Practice practice = context.Practices.Include("Subject").FirstOrDefault(prac => prac.ID == practiceID);
+
+                        PracticeControl practiceItem = item as PracticeControl;
+                        context.LoadProperty(practiceItem, "Practice_Teacher");
+
+                        int practiceTeacherID = (item as PracticeControl).Practice_Teacher.ID;
+                        PracticeTeacher practiceTeacher = context.PracticeTeachers.Include("Students").First(pt => pt.ID == practiceTeacherID);
+                        Teacher teacher = context.SystemUsers.Include("UserInformation").First(teach => teach.ID == practiceItem.Practice_Teacher.TeacherID) as Teacher;
+
+                        foreach (var student in practiceTeacher.Students)
+                        {
+                            context.AddToNotifications(new Notification(new NotificationDTO
+                            {
+                                Date = DateTime.Now,
+                                Message = string.Format("Новий контроль ({5}) з предмету \"{0}\" - П (викладач - {1}) відбудеться {2} об {3}. Максимальна оцінка - {4}.",
+                                       practice.Subject.Name,
+                                       teacher.UserInformation.LastName,
+                                       practiceItem.Date.ToShortDateString(),
+                                       practiceItem.Date.ToShortTimeString(),
+                                       practiceItem.MaxMark,
+                                       practiceItem.Name),
+                                UserID = student.ID
+                            }));
+                        }
+                        context.SaveChanges();
                     }
                     else
+                    {
                         item.Assign(control);
+                        context.SaveChanges();
 
-                    context.SaveChanges();
+                        int practiceID = (item as PracticeControl).PracticeID;
+                        Practice practice = context.Practices.Include("Subject").FirstOrDefault(prac => prac.ID == practiceID);
+
+                        PracticeControl practiceItem = item as PracticeControl;
+                        context.LoadProperty(practiceItem, "Practice_Teacher");
+
+                        int practiceTeacherID = (item as PracticeControl).Practice_Teacher.ID;
+                        PracticeTeacher practiceTeacher = context.PracticeTeachers.Include("Students").First(pt => pt.ID == practiceTeacherID);
+                        Teacher teacher = context.SystemUsers.Include("UserInformation").First(teach => teach.ID == practiceItem.Practice_Teacher.TeacherID) as Teacher;
+
+                        foreach (var student in practiceTeacher.Students)
+                        {
+                            context.AddToNotifications(new Notification(new NotificationDTO
+                            {
+                                Date = DateTime.Now,
+                                Message = string.Format("Внесено зміни! Контроль ({5}) з предмету \"{0}\" - П (викладач - {1}) відбудеться {2} об {3}. Максимальна оцінка - {4}.",
+                                       practice.Subject.Name,
+                                       teacher.UserInformation.LastName,
+                                       practiceItem.Date.ToShortDateString(),
+                                       practiceItem.Date.ToShortTimeString(),
+                                       practiceItem.MaxMark,
+                                       practiceItem.Name),
+                                UserID = student.ID
+                            }));
+                        }
+                        context.SaveChanges();
+                    }
                 }
             }
             catch (Exception ex)
@@ -1972,6 +2082,7 @@ namespace StudyingControllerService
                             {
                                 context.LoadProperty(m, "Student");
                                 context.LoadProperty(m.Student, "UserInformation");
+                                context.LoadProperty(m.Student, "Groups");
                                 result.Add(m.ToDTO());
                             }
                             context.LoadProperty(pc.Practice_Teacher, "Students");
@@ -1981,6 +2092,7 @@ namespace StudyingControllerService
                                 if (query == null)
                                 {
                                     context.LoadProperty(s, "UserInformation");
+                                    context.LoadProperty(s, "Groups");
                                     result.Add(new PracticeControlMarkDTO()
                                     {
                                         PracticeControlID = pc.ID,
@@ -2001,6 +2113,7 @@ namespace StudyingControllerService
                             {
                                 context.LoadProperty(m, "Student");
                                 context.LoadProperty(m.Student, "UserInformation");
+                                context.LoadProperty(m.Student, "Groups");
                                 result.Add(m.ToDTO());
                             }
                             context.LoadProperty(lc.Lecture, "Groups");

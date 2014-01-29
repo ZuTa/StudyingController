@@ -15,7 +15,7 @@
                 <GridViewColumn Width="100" Header="Рейтинг">
                     <GridViewColumn.CellTemplate>
                         <DataTemplate>
-                            <controls:RatingsControl Value="{Binding Rate}"  StarForegroundColor="Orange"  BackgroundColor="White" NumberOfStars="5" Maximum="100">
+                            <controls:RatingsControl Value="{Binding Rate}"  StarForegroundColor="Black"  BackgroundColor="White" NumberOfStars="5" Maximum="100">
                                 <controls:RatingsControl.ToolTip>
                                     <TextBlock Text="{Binding Rate}"></TextBlock>
                                 </controls:RatingsControl.ToolTip>
