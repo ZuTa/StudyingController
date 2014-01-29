@@ -643,9 +643,6 @@
     <Resource Include="Images\preferences_desktop_notification.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\preferences_desktop_notification %281%29.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\star.png" />
   </ItemGroup>
   <ItemGroup>

@@ -83,23 +83,26 @@ namespace StudyingController.ViewModels
 
         public override void Save()
         {
-            if (Control is PracticeControlDTO)
+            if (isModified)
             {
-                List<MarkDTO> practiceMarks = new List<MarkDTO>();
-                foreach (PracticeControlMarkModel pc in Marks)
-                    practiceMarks.Add(pc.ToDTO());
-                ControllerInterop.Service.SaveMarks(ControllerInterop.Session, Control as PracticeControlDTO, practiceMarks);
+                if (Control is PracticeControlDTO)
+                {
+                    List<MarkDTO> practiceMarks = new List<MarkDTO>();
+                    foreach (PracticeControlMarkModel pc in Marks)
+                        practiceMarks.Add(pc.ToDTO());
+                    ControllerInterop.Service.SaveMarks(ControllerInterop.Session, Control as PracticeControlDTO, practiceMarks);
+                }
+                else
+                {
+                    List<MarkDTO> lectureMarks = new List<MarkDTO>();
+                    foreach (LectureControlMarkModel lc in Marks)
+                        lectureMarks.Add(lc.ToDTO());
+                    ControllerInterop.Service.SaveMarks(ControllerInterop.Session, Control as LectureControlDTO, lectureMarks);
+                }
+                ClearData();
+                LoadData();
+                SetUnModified();
             }
-            else
-            {
-                List<MarkDTO> lectureMarks = new List<MarkDTO>();
-                foreach (LectureControlMarkModel lc in Marks)
-                    lectureMarks.Add(lc.ToDTO());
-                ControllerInterop.Service.SaveMarks(ControllerInterop.Session, Control as LectureControlDTO, lectureMarks);
-            }
-            ClearData();
-            LoadData();
-            SetUnModified();
         }
 
         public override void Rollback()

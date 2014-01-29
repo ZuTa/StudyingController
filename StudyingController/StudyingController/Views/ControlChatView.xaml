@@ -45,7 +45,7 @@
                                     <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
 
-                                <Border x:Name="QuestionBorder" Grid.Row="0" Background="#FF59E885" Margin="3" CornerRadius="3" Style="{StaticResource MessageBorderStyle}">
+                                <Border x:Name="QuestionBorder" Grid.Row="0" Background="#DCDCDC" Margin="3" CornerRadius="3" Style="{StaticResource MessageBorderStyle}">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="auto"/>
