@@ -142,6 +142,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\arrow-32.png" />
+    <Content Include="Content\loginArrow.png" />
     <Content Include="Content\userpic.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />

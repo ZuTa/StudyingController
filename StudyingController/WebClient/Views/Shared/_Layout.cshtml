@@ -13,7 +13,7 @@
                 <li>@Html.ActionLink("Головна", "Index", "Home")</li>
                 <li>@Html.ActionLink("Сторінка користувача", "UserPage", "Home")</li>
                 <li>@Html.ActionLink("Про проект", "About", "Home")</li>
-                <li style="float:right;">
+                <li>
                         @if (this.Session["Session"] == null)
                         {
                             @Html.ActionLink("Увійти", "LogIn", "Home")

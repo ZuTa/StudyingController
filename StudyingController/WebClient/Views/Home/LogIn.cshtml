@@ -4,25 +4,22 @@
     ViewBag.Title = "Вхід";
 }
 
-<div id="LoginForm">
-    <form method="post" action="">
-        <ol>
-            <li>
-                @Html.LabelFor(m => m.Login, "Логін")
-            </li>
-            <li>
-                @Html.TextBoxFor(m => m.Login)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Password, "Пароль")
-            </li>
-            <li>
-                @Html.PasswordFor(m => m.Password)
-            </li>
-            <li>
-                <input type="submit" value="Увійти" />
-            </li>
-        </ol>
-    </form>
-    <div style="margin-left: 40px">@ViewBag.Message</div>
-</div>
+<form method="post" action="">
+    <div id="LoginForm">
+        <table>
+            <tr>
+                <td>
+                    @Html.TextBoxFor(m => m.Login, new { @class = "TextField", placeholder = "Введіть логін...", tabindex = 5 })
+                </td>
+                <td rowspan="2">
+                    <input id="LoginButton" class="Button" type="submit" value="" tabindex="7"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.PasswordFor(m => m.Password, new { @class = "TextField", placeholder = "Введіть пароль...", tabindex = 6 })
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>
