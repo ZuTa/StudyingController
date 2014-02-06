@@ -309,4 +309,7 @@
   <data name="CtrlUser" xml:space="preserve">
     <value>User</value>
   </data>
+  <data name="CtrlMainTitle" xml:space="preserve">
+    <value>Interactive information system "Studying Controller"</value>
+  </data>
 </root>
