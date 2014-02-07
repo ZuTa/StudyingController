@@ -92,6 +92,7 @@
     <Compile Include="ViewModels\ControlChatViewModel.cs" />
     <Compile Include="ViewModels\ControlMarksViewModel.cs" />
     <Compile Include="ViewModels\ControlStructureViewModel.cs" />
+    <Compile Include="ViewModels\LectureVisitingsViewModel.cs" />
     <Compile Include="ViewModels\PracticeDataViewModel.cs" />
     <Compile Include="ViewModels\FacultyAdminViewModel.cs" />
     <Compile Include="ViewModels\FacultySecretaryViewModel.cs" />
@@ -143,7 +144,7 @@
     <Compile Include="ViewModels\Models\TeacherModel.cs" />
     <Compile Include="ViewModels\Models\UserInformationModel.cs" />
     <Compile Include="Common\ValidateableAttribute.cs" />
-    <Compile Include="ViewModels\Models\VisitingModel.cs" />
+    <Compile Include="ViewModels\Models\VisitingsModel.cs" />
     <Compile Include="ViewModels\PracticeControlsViewModel.cs" />
     <Compile Include="ViewModels\PracticeControlViewModel.cs" />
     <Compile Include="ViewModels\SelectorViewModel.cs" />
@@ -194,6 +195,9 @@
     </Compile>
     <Compile Include="Views\ControlMarksView.xaml.cs">
       <DependentUpon>ControlMarksView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LectureVisitingsView.xaml.cs">
+      <DependentUpon>LectureVisitingsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PracticeDataView.xaml.cs">
       <DependentUpon>PracticeDataView.xaml</DependentUpon>
@@ -323,6 +327,10 @@
     <Page Include="Views\ControlMarksView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\LectureVisitingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PracticeDataView.xaml">
       <Generator>MSBuild:Compile</Generator>

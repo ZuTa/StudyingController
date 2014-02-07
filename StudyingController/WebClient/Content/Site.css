@@ -37,12 +37,10 @@ a {
     }*/
 
 #LoginForm {
-    /*max-width: 300px;*/
+    display: table;
+    margin: 200px auto;
+    margin-bottom: -200px;
 }
-    #LoginForm ol {
-        list-style: none;
-    }
-
     
 .HomePageHeader {
     text-align: center;
@@ -58,19 +56,18 @@ a {
     text-align: center;
 }
 
-ul#Menu {
+#Menu {
     font-size: 1.3em;
     font-weight: 600;
 }
 
-    ul#Menu li {
+    #Menu li {
         display: inline;
         list-style: none;
         background-color: lightgray;
         padding: 3px !important; 
         margin: 2px;
     }
-
 
 #ErrorPanel {
     color: red;
@@ -79,6 +76,7 @@ ul#Menu {
 
 .AboutText {
     text-align:center;
+    margin: 0px 40px 0px 40px;
 }
 
 #UserPicture {
@@ -92,6 +90,10 @@ ul#Menu {
     font-weight: bold;
 }
 
+.Label {
+    color: deepskyblue;
+}
+
 #NotificationItem {
     background-color: lightgray;
     margin: 2px;
@@ -103,4 +105,27 @@ ul#Menu {
         color: deepskyblue;
         cursor: pointer;
     }
+
+.Button {
+    background-color: lightgray;
+    color: deepskyblue;
+    border: none;
+    padding: 5px;
+}
+
+    .Button:hover {
+        color: black;
+        cursor: pointer;
+    }
+
+.TextField {
+    border: none;
+}
+
+#LoginButton {
+    width: 45px;
+    height: 45px;
+    background-image: url(../Content/loginArrow.png);
+    background-repeat: no-repeat;
+}
 

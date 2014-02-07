@@ -149,6 +149,10 @@
                 <v:PracticeDataView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type vm:LectureVisitingsViewModel}">
+                <v:LectureVisitingsView/>
+            </DataTemplate>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

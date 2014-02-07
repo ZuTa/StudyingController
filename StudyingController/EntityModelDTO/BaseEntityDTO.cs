@@ -16,7 +16,7 @@ namespace EntitiesDTO
     {
         private int id;
         [DataMember]
-        public int ID
+        public virtual int ID
         {
             get { return id; }
             set { id = value; }
