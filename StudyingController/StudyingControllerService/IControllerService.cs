@@ -283,5 +283,9 @@ namespace StudyingControllerService
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
         InstituteDTO GetInstitute(Session session, int id);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        List<VisitingsDTO> GetVisitingsForLecture(Session session, int id);
     }
 }

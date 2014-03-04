@@ -93,6 +93,7 @@
     <Compile Include="ViewModels\ControlMarksViewModel.cs" />
     <Compile Include="ViewModels\ControlStructureViewModel.cs" />
     <Compile Include="ViewModels\LectureVisitingsViewModel.cs" />
+    <Compile Include="ViewModels\Models\VisitingModel.cs" />
     <Compile Include="ViewModels\PracticeDataViewModel.cs" />
     <Compile Include="ViewModels\FacultyAdminViewModel.cs" />
     <Compile Include="ViewModels\FacultySecretaryViewModel.cs" />
@@ -506,6 +507,7 @@
     <None Include="Properties\DataSources\EntitiesDTO.SystemUserDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.TeacherDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.UserRateItemDTO.datasource" />
+    <None Include="Properties\DataSources\EntitiesDTO.VisitingsDTO.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -23,6 +23,14 @@ namespace EntitiesDTO
             set { studentID = value; }
         }
 
+        private string studentName;
+        [DataMember]
+        public string StudentName
+        {
+            get { return studentName; }
+            set { studentName = value; }
+        }
+
         private LectureDTO lecture;
         [DataMember]
         public LectureDTO Lecture
