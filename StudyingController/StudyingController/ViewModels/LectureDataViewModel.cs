@@ -51,17 +51,16 @@ namespace StudyingController.ViewModels
             }
         }
 
-        // Here must be visitings
-        //private ControlMarksViewModel marksViewModel;
-        //public ControlMarksViewModel MarksViewModel
-        //{
-        //    get { return marksViewModel; }
-        //    set 
-        //    { 
-        //        marksViewModel = value;
-        //        OnPropertyChanged("MarksViewModel");
-        //    }
-        //}
+        private LectureVisitingsViewModel lectureVisitings;
+        public LectureVisitingsViewModel LectureVisitings
+        {
+            get { return lectureVisitings; }
+            set 
+            {
+                lectureVisitings = value;
+                OnPropertyChanged("LectureVisitings");
+            }
+        }
 
         public BaseEntityDTO OriginalControl
         {
@@ -89,6 +88,8 @@ namespace StudyingController.ViewModels
 
             LectureControls = new LectureControlsViewModel(UserInterop, ControllerInterop, Dispatcher, lesson) { EditMode = ControllerInterop.User.Role == UserRoles.Student ? EditModes.ReadOnly : EditModes.Editable };
             LectureControls.ControlOpened += new LectureControlsViewModel.ControlOpenedHandler(lessonControlsViewModel_WorkspaceChanged);
+
+            LectureVisitings = new LectureVisitingsViewModel(UserInterop, ControllerInterop, Dispatcher, lesson);
 
             Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
         }
@@ -135,6 +136,7 @@ namespace StudyingController.ViewModels
         {
             //if (IsUserStudent) mark = ControllerInterop.Service.GetLectureMark(ControllerInterop.Session, ControllerInterop.User.ID, Model.ID);
             LectureControls.Load();
+            LectureVisitings.Load();
         }
 
         protected override void ClearData()

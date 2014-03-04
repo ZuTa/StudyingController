@@ -1,12 +1,13 @@
 ﻿using EntitiesDTO;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 
 namespace StudyingController.ViewModels.Models
 {
-    public abstract class VisitingsModel : BaseModel
+    public class VisitingsModel : BaseModel, IDTOable<VisitingsDTO>
     {
         #region Fields & Properties
 
@@ -24,12 +25,22 @@ namespace StudyingController.ViewModels.Models
             set { studentID = value; }
         }
 
-        private List<VisitingDTO> visitings;
+        private string studentName;
+        public string StudentName
+        {
+            get { return studentName; }
+            set { studentName = value; }
+        }
 
-        public List<VisitingDTO> Visitings
+        private ObservableCollection<VisitingModel> visitings;
+
+        public ObservableCollection<VisitingModel> Visitings
         {
             get { return visitings; }
-            set { visitings = value; }
+            set 
+            { 
+                visitings = value;
+            }
         }
         
         #endregion
@@ -39,13 +50,14 @@ namespace StudyingController.ViewModels.Models
         public VisitingsModel(VisitingsDTO visitings)
             : base(visitings)
         {
+            Visitings = new ObservableCollection<VisitingModel>();
             this.Assign(visitings);   
         }
 
         public VisitingsModel()
             : base()
         {
-
+            Visitings = new ObservableCollection<VisitingModel>();
         }
 
         #endregion
@@ -59,7 +71,8 @@ namespace StudyingController.ViewModels.Models
             VisitingsDTO visitings = (entity as VisitingsDTO);
 
             StudentID = visitings.StudentID;
-            this.visitings = visitings.Visitings;
+            StudentName = visitings.StudentName;
+            this.visitings = new ObservableCollection<VisitingModel>(visitings.Visitings.Select(v=>new VisitingModel(v)).ToList());
         }
 
         private void OnModelChanged()
@@ -74,5 +87,16 @@ namespace StudyingController.ViewModels.Models
         public event EventHandler ModelChanged;
 
         #endregion
+
+        public VisitingsDTO ToDTO()
+        {
+            return new VisitingsDTO
+            {
+                ID = this.ID,
+                StudentID = this.StudentID,
+                StudentName = this.StudentName,
+                Visitings = this.Visitings.Select(v=>v.ToDTO()).ToList()
+            };
+        }
     }
 }

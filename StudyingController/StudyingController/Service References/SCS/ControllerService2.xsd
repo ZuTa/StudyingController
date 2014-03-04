@@ -516,4 +516,81 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="NotificationDTO" nillable="true" type="tns:NotificationDTO" />
+  <xs:complexType name="ArrayOfVisitingsDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VisitingsDTO" nillable="true" type="tns:VisitingsDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVisitingsDTO" nillable="true" type="tns:ArrayOfVisitingsDTO" />
+  <xs:complexType name="VisitingsDTO">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseEntityDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Lecture" nillable="true" type="tns:LectureDTO" />
+          <xs:element minOccurs="0" name="Practice" nillable="true" type="tns:PracticeDTO" />
+          <xs:element minOccurs="0" name="StudentID" type="xs:int" />
+          <xs:element minOccurs="0" name="Visitings" nillable="true" type="tns:ArrayOfVisitingDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VisitingsDTO" nillable="true" type="tns:VisitingsDTO" />
+  <xs:complexType name="ArrayOfVisitingDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VisitingDTO" nillable="true" type="tns:VisitingDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVisitingDTO" nillable="true" type="tns:ArrayOfVisitingDTO" />
+  <xs:complexType name="VisitingDTO">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseEntityDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Lecture" nillable="true" type="tns:LectureDTO" />
+          <xs:element minOccurs="0" name="Practice" nillable="true" type="tns:PracticeDTO" />
+          <xs:element minOccurs="0" name="StudentID" type="xs:int" />
+          <xs:element minOccurs="0" name="Value" type="tns:VisitingValue" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VisitingDTO" nillable="true" type="tns:VisitingDTO" />
+  <xs:simpleType name="VisitingValue">
+    <xs:list>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Present">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">0</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Absent">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Sick">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Individual">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:list>
+  </xs:simpleType>
+  <xs:element name="VisitingValue" nillable="true" type="tns:VisitingValue" />
 </xs:schema>
