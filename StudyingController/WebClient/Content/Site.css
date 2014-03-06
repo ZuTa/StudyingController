@@ -38,8 +38,8 @@ a {
 
 #LoginForm {
     display: table;
-    margin: 200px auto;
-    margin-bottom: -200px;
+    margin: auto auto;
+    padding-top: 200px;
 }
     
 .HomePageHeader {
@@ -48,6 +48,7 @@ a {
 
 #MainContent {
     min-height: 500px;
+    margin: 20px;
 }
 
 #Footer {
@@ -92,16 +93,17 @@ a {
 
 .Label {
     color: deepskyblue;
+    padding: 5px;
+    font-weight: bold;
 }
 
-#NotificationItem {
+.InteractiveListItem {
     background-color: lightgray;
     margin: 2px;
     padding: 5px;
-    border-radius: 5px;
 }
 
-    #NotificationItem:hover {
+    .InteractiveListItem:hover {
         color: deepskyblue;
         cursor: pointer;
     }
@@ -129,3 +131,21 @@ a {
     background-repeat: no-repeat;
 }
 
+.ListItem {
+    background-color: lightgray;
+    margin: 2px;
+    padding: 5px;
+}
+
+.OpenIcon {
+    width: 16px;
+    height: 16px;
+    background-image: url(../Content/openIcon.png);
+    display: block;
+    text-indent: -9999px;
+}
+
+.GridHeaderStyle {
+    border-width: 1px;
+    border-color: black;
+}

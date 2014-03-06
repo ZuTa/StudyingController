@@ -24,8 +24,8 @@ namespace ThinClient
 
         void Application_Error(object sender, EventArgs e)
         {
-            Response.Clear();
-            Response.Redirect("Index");
+            //Response.Clear();
+            //Response.Redirect("~/Error");
         }
     }
 }

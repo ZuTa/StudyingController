@@ -58,7 +58,7 @@ namespace ThinClient.Controllers
             {
                 var session = (SCS.Session)this.Session["Session"];
 
-                var model = new MainModel();
+                var model = new UserPageModel();
                 model.Name = session.User.UserInformation.FirstName + ' ' + session.User.UserInformation.LastName;
                 model.AdditionalInfo = session.User.UserInformation.Email;
 

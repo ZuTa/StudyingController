@@ -2505,6 +2505,35 @@ namespace StudyingControllerService
             }
         }
 
+        public ControlDTO GetControlById(Session session, int id)
+        {
+            try
+            {
+                this.CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var query = (from item
+                                      in context.Controls
+                                 where item.ID == id
+                                 select item).FirstOrDefault();
 
+                    if (query != null && query is LectureControl)
+                    {
+                        return (query as LectureControl).ToDTO();
+                    }
+                    
+                    if (query != null && query is PracticeControl)
+                    {
+                        return (query as PracticeControl).ToDTO(); 
+                    }
+
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
     }
 }

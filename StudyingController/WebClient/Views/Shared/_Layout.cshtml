@@ -1,20 +1,44 @@
 ﻿<!DOCTYPE html>
 
+@functions{
+    private bool IsLoggedIn()
+    {
+        return this.Session["Session"] != null;
+    }
+    
+    private bool IsTeacher()
+    {
+        return this.IsLoggedIn() && ((ThinClient.SCS.Session)this.Session["Session"]).User.Role == ThinClient.SCS.UserRoles.Teacher;
+    }
+    }
+
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/Site.css")
+    <script src="../../Scripts/jquery-1.7.1.min.js" type="text/javascript"></script>
 </head>
 <body>
     <div class="Content">
         <div id="Header">
             <ul id="Menu">
                 <li>@Html.ActionLink("Головна", "Index", "Home")</li>
-                <li>@Html.ActionLink("Сторінка користувача", "UserPage", "Home")</li>
+                
+                @if (this.IsLoggedIn())
+                {
+                    <li>@Html.ActionLink("Сторінка користувача", "UserPage", "Home")</li>
+                }
+                
+                @if (this.IsTeacher())
+                {
+                    <li>@Html.ActionLink("Пари", "LessonsView", "ControlsManagement")</li>
+                }
+                
                 <li>@Html.ActionLink("Про проект", "About", "Home")</li>
+                
                 <li>
-                        @if (this.Session["Session"] == null)
+                        @if (!this.IsLoggedIn())
                         {
                             @Html.ActionLink("Увійти", "LogIn", "Home")
                         }

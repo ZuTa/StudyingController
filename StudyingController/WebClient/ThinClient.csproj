@@ -125,12 +125,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ControlsManagementController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ControlModel.cs" />
+    <Compile Include="Models\LectureModel.cs" />
+    <Compile Include="Models\LessonsModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Models\MainModel.cs" />
+    <Compile Include="Models\SecureMarkModel.cs" />
+    <Compile Include="Models\UserPageModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\SCS\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -143,9 +149,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Content\arrow-32.png" />
+    <Content Include="Content\errorIcon.png" />
     <Content Include="Content\loginArrow.png" />
+    <Content Include="Content\openIcon.png" />
     <Content Include="Content\userpic.png" />
     <Content Include="Content\Site.css" />
+    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <None Include="Service References\SCS\ControllerService.disco" />
     <None Include="Service References\SCS\configuration91.svcinfo" />
@@ -164,6 +173,22 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Service References\SCS\configuration911.svcinfo" />
+    <None Include="Scripts\jquery-1.7.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.7.1.js" />
+    <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-2.1.0.debug.js" />
+    <Content Include="Scripts\knockout-2.1.0.js" />
+    <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -171,7 +196,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Service References\SCS\ThinClient.SCS.AttachmentDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -232,6 +259,13 @@
     <Content Include="Views\Home\LogOut.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\UserPage.cshtml" />
+    <Content Include="Views\ControlsManagement\LessonsView.cshtml" />
+    <Content Include="Views\ControlsManagement\LectureView.cshtml" />
+    <Content Include="Views\ControlsManagement\ControlView.cshtml" />
+    <Content Include="Service References\SCS\ThinClient.SCS.ControlDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Views\Shared\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
