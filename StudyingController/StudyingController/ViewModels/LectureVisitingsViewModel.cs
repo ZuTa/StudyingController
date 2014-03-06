@@ -67,6 +67,17 @@ namespace StudyingController.ViewModels
 
         #region Commands
 
+        private RelayCommand addCommand;
+        public RelayCommand AddCommand
+        {
+            get
+            {
+                if (addCommand == null)
+                    addCommand = new RelayCommand((param) => AddVisiting());
+                return addCommand;
+            }
+        }
+
         #endregion
 
         #region Methods
@@ -86,38 +97,38 @@ namespace StudyingController.ViewModels
                     visitingsModel.PropertyChanged -= ModelPropertyChanged;
             }
 
-            //Visitings = ControllerInterop.Service.GetVisitingsForLecture(ControllerInterop.Session, OriginalLesson.ID).ToModelList<VisitingsModel, VisitingsDTO>();
+            Visitings = ControllerInterop.Service.GetVisitingsForLecture(ControllerInterop.Session, OriginalLesson.ID).ToModelList<VisitingsModel, VisitingsDTO>();
 
-            List<VisitingsModel> visits = new List<VisitingsModel>();
-            //visits.Add(new VisitingsModel
-            //{
-            //    ID = 1,
-            //    StudentID = 1,
-            //});
+            //List<VisitingsModel> visits = new List<VisitingsModel>();
+            ////visits.Add(new VisitingsModel
+            ////{
+            ////    ID = 1,
+            ////    StudentID = 1,
+            ////});
           
-            for (int i = 1; i < 10; i++)
-            {
-                var v = new VisitingsModel
-                {
-                    ID = i,
-                    StudentID = i,
-                    StudentName = "Студент " + i.ToString()
-                };
-                for (int j = 1; j < 20; j++)
-                {
-                    v.Visitings.Add(new VisitingModel
-                    {
-                        Date = DateTime.Today.AddDays(j),
-                       // Description = "desc" + j.ToString(),
-                        ID = j,
-                        StudentID = i,
-                        Value = VisitingValue.Present
-                    });
-                }
-                visits.Add(v);
-            }
+            //for (int i = 1; i < 10; i++)
+            //{
+            //    var v = new VisitingsModel
+            //    {
+            //        ID = i,
+            //        StudentID = i,
+            //        StudentName = "Студент " + i.ToString()
+            //    };
+            //    for (int j = 1; j < 20; j++)
+            //    {
+            //        v.Visitings.Add(new VisitingModel
+            //        {
+            //            Date = DateTime.Today.AddDays(j),
+            //           // Description = "desc" + j.ToString(),
+            //            ID = j,
+            //            StudentID = i,
+            //            Value = VisitingValue.Present
+            //        });
+            //    }
+            //    visits.Add(v);
+            //}
 
-            Visitings = new ObservableCollection<VisitingsModel>(visits);
+            //Visitings = new ObservableCollection<VisitingsModel>(visits);
 
             foreach (VisitingsModel visitingsModel in Visitings)
                 visitingsModel.PropertyChanged += ModelPropertyChanged;
@@ -153,6 +164,17 @@ namespace StudyingController.ViewModels
             SetModified();
         }
 
+        private void AddVisiting()
+        {
+            if (Dates.Contains(DateTime.Today))
+            {
+                var visitings = Visitings.ToList();
+                foreach (var vis in visitings)
+                    vis.Visitings.Add(new VisitingModel { Date = DateTime.Today,/* Lecture = vis.*/StudentID = vis.StudentID });
+
+                Visitings = new ObservableCollection<VisitingsModel>(visitings);
+            }
+        }
         #endregion
 
         #region Events

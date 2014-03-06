@@ -16,8 +16,9 @@
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
     </UserControl.Resources>
-
     <Grid>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
@@ -39,36 +40,54 @@
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <Border BorderBrush="DarkGray" 
+                            <DataTemplate>
+
+                                <Border BorderBrush="DarkGray" 
                                     BorderThickness="1"  
                                     Margin="3,0,0,0">
-                                <TextBlock Text="{Binding Date, StringFormat=dd.MM.yyyy}" 
+                                    <StackPanel Orientation="Horizontal">
+
+                                        <TextBlock Text="{Binding Date, StringFormat=dd.MM.yyyy}" 
                                            Padding="3" 
-                                           Width="180" 
+                                           Width="160" 
                                            TextWrapping="Wrap" 
                                            TextAlignment="Center"
                                            FontWeight="Bold"/>
-                            </Border>
-                        </StackPanel>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
+                                        <Button Command="{Binding RemoveCommand}" 
+                                                ToolTip="Видалити" 
+                                                Style="{StaticResource EditableButtonStyle}" 
+                                                Visibility="{Binding Path=EditMode, Converter={StaticResource ResourceKey=EM2V}}"
+                                                Tag="{Binding Date}"
+                                                Margin="0"
+                                                Width="20">
+                                            <Image Source="/StudyingController;component/Images/remove.png" Stretch="Fill" />
+                                        </Button>
+
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
             </ItemsControl>
-        </StackPanel>
-        <ItemsControl  Grid.Row="1" ItemsSource="{Binding Visitings}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Border BorderBrush="DarkGray" 
+                    <Button Command="{Binding AddCommand}" 
+                            ToolTip="Додати" 
+                            Style="{StaticResource EditableButtonStyle}" 
+                            Visibility="{Binding Path=EditMode, Converter={StaticResource ResourceKey=EM2V}}"
+                            Margin="3,0,3,0">
+                        <Image Source="/StudyingController;component/Images/add.png" Stretch="Fill" />
+                    </Button>
+                </StackPanel>
+                <ItemsControl  Grid.Row="1" ItemsSource="{Binding Visitings}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Border BorderBrush="DarkGray" 
                                 BorderThickness="1">
-                            <TextBlock Text="{Binding StudentName}" 
+                                    <TextBlock Text="{Binding StudentName}" 
                                        Width="200" 
                                        Padding="3" 
                                        TextWrapping="Wrap"/>
-                        </Border>
-                        <Grid>
-                            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                                </Border>
+
                                 <ItemsControl ItemsSource="{Binding Visitings}">
                                     <ItemsControl.ItemsPanel>
                                         <ItemsPanelTemplate>
@@ -131,11 +150,11 @@
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>
-                            </ScrollViewer>
-                        </Grid>
-                    </StackPanel>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </UserControl>

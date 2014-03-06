@@ -2511,32 +2511,63 @@ namespace StudyingControllerService
             {
                 CheckSession(session);
 
-                List<VisitingsDTO> result = new List<VisitingsDTO>();
+                //List<VisitingsDTO> result = new List<VisitingsDTO>();
 
-                using (UniversityEntities context = new UniversityEntities())
+                //using (UniversityEntities context = new UniversityEntities())
+                //{
+                //    var query = context.Visitings.Include("Lecture").Where(v => v.Lecture != null && v.Lecture.ID == id).ToList();
+
+                //    foreach (IGrouping<int, Visiting> gr in query.GroupBy(v => v.StudentID))
+                //    {
+                //        var visits = gr.Select(g=>new VisitingDTO
+                //        {
+                //            Date = g.Date,
+                //            Description = g.Description,
+                //            ID = g.ID,
+                //            StudentID = g.StudentID,
+                //            Value = (VisitingValue)g.Value
+                //        }).ToList();
+
+                //        result.Add(new VisitingsDTO()
+                //        {
+                //            StudentID = gr.Key,
+                //            Visitings = visits
+                //        });
+                //    }
+                //}
+
+
+                List<VisitingsDTO> visits = new List<VisitingsDTO>();
+                //visits.Add(new VisitingsModel
+                //{
+                //    ID = 1,
+                //    StudentID = 1,
+                //});
+
+                for (int i = 1; i < 10; i++)
                 {
-                    var query = context.Visitings.Include("Lecture").Where(v => v.Lecture != null && v.Lecture.ID == id).ToList();
-
-                    foreach (IGrouping<int, Visiting> gr in query.GroupBy(v => v.StudentID))
+                    var v = new VisitingsDTO
                     {
-                        var visits = gr.Select(g=>new VisitingDTO
+                        ID = i,
+                        StudentID = i,
+                        StudentName = "Студент " + i.ToString()
+                    };
+                    for (int j = 1; j < 20; j++)
+                    {
+                        v.Visitings.Add(new VisitingDTO
                         {
-                            Date = g.Date,
-                            Description = g.Description,
-                            ID = g.ID,
-                            StudentID = g.StudentID,
-                            Value = (VisitingValue)g.Value
-                        }).ToList();
-
-                        result.Add(new VisitingsDTO()
-                        {
-                            StudentID = gr.Key,
-                            Visitings = visits
+                            Date = DateTime.Today.AddDays(j),
+                            // Description = "desc" + j.ToString(),
+                            ID = j,
+                            StudentID = i,
+                            Value = VisitingValue.Present
                         });
                     }
+                    visits.Add(v);
                 }
 
-                return result;
+                return visits;
+                //return result;
             }
             catch (Exception ex)
             {
