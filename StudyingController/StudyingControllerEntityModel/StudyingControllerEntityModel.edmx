@@ -2624,7 +2624,7 @@
         <EntityTypeShape EntityType="UniversityDBModel.Notification" Width="1.5" PointX="13.5" PointY="0.75" />
         <AssociationConnector Association="UniversityDBModel.FK_Notification_SystemUser" />
         <AssociationConnector Association="UniversityDBModel.FK_Cathedra_Specialization" />
-        <EntityTypeShape EntityType="UniversityDBModel.Visiting" Width="1.5" PointX="3.5" PointY="15.875" />
+        <EntityTypeShape EntityType="UniversityDBModel.Visiting" Width="1.5" PointX="3.375" PointY="14.5" />
         <AssociationConnector Association="UniversityDBModel.LectureVisiting" />
         <AssociationConnector Association="UniversityDBModel.PracticeVisiting" />
         </Diagram>

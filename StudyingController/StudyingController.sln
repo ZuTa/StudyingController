@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+
 # Visual Studio 2012
+
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudyingController", "StudyingController\StudyingController.csproj", "{C1BAAEF3-8BCA-4800-AAB8-0FB5A888AAFB}"
 	ProjectSection(ProjectDependencies) = postProject
 		{42845CD1-D3BD-4DD9-911A-FBD766FFEA58} = {42845CD1-D3BD-4DD9-911A-FBD766FFEA58}

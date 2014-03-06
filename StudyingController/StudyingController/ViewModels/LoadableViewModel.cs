@@ -5,6 +5,7 @@ using System.Text;
 using StudyingController.Common;
 using System.Windows.Threading;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace StudyingController.ViewModels
 {
@@ -59,15 +60,14 @@ namespace StudyingController.ViewModels
         #region Methods
 
         protected abstract void LoadData();
+
         protected abstract void ClearData();
 
         public void Load()
         {
             StartLoading();
-
             ClearData();
             LoadData();
-
             StopLoading();
         }
 

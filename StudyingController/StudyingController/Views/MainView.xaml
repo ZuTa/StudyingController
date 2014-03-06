@@ -130,7 +130,27 @@
                     </ScrollViewer>
                 </Expander>-->
                 </Grid>
-                <ContentControl Margin="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding CurrentWorkspace}"/>
+                <!--<ContentControl>-->
+                <Grid Grid.Column="1" >
+                    <Grid>
+                        <ContentControl Margin="3" 
+                                HorizontalAlignment="Stretch" 
+                                VerticalAlignment="Stretch" 
+                                Content="{Binding CurrentWorkspace}"/>
+                       
+                    </Grid>
+                    <Grid>
+                        <Control Grid.Row="0" 
+                                 Style="{StaticResource BusyAnimationStyle}" 
+                                 HorizontalAlignment="Stretch" 
+                                 VerticalAlignment="Stretch" 
+                                 Visibility="{Binding IsLoading, Converter={StaticResource B2V}}"/>
+                    </Grid>
+                </Grid>
+                
+                
+                
+                <!--</ContentControl>-->
                 <!--    <ScrollViewer Grid.Row="0" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Left" >
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                         <ItemsControl ItemsSource="{Binding PathCommands}" Width="Auto" >

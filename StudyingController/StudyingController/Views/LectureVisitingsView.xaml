@@ -3,9 +3,158 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"  
+             xmlns:local="clr-namespace:EntitiesDTO;assembly=EntitiesDTO" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ObjectDataProvider x:Key="visitingValueData"
+                    MethodName="GetValues" 
+                    ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="local:VisitingValue" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
     <Grid>
-            
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Border BorderBrush="DarkGray" BorderThickness="1">
+                <TextBlock Text="Студент" 
+                           Width="200" 
+                           Padding="3" 
+                           TextWrapping="Wrap" 
+                           TextAlignment="Center"
+                           FontWeight="Bold"/>
+            </Border>
+            <ItemsControl  Grid.Row="1" 
+                           ItemsSource="{Binding Dates}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+
+                                <Border BorderBrush="DarkGray" 
+                                    BorderThickness="1"  
+                                    Margin="3,0,0,0">
+                                    <StackPanel Orientation="Horizontal">
+
+                                        <TextBlock Text="{Binding Date, StringFormat=dd.MM.yyyy}" 
+                                           Padding="3" 
+                                           Width="160" 
+                                           TextWrapping="Wrap" 
+                                           TextAlignment="Center"
+                                           FontWeight="Bold"/>
+                                        <Button Command="{Binding RemoveCommand}" 
+                                                ToolTip="Видалити" 
+                                                Style="{StaticResource EditableButtonStyle}" 
+                                                Visibility="{Binding Path=EditMode, Converter={StaticResource ResourceKey=EM2V}}"
+                                                Tag="{Binding Date}"
+                                                Margin="0"
+                                                Width="20">
+                                            <Image Source="/StudyingController;component/Images/remove.png" Stretch="Fill" />
+                                        </Button>
+
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+            </ItemsControl>
+                    <Button Command="{Binding AddCommand}" 
+                            ToolTip="Додати" 
+                            Style="{StaticResource EditableButtonStyle}" 
+                            Visibility="{Binding Path=EditMode, Converter={StaticResource ResourceKey=EM2V}}"
+                            Margin="3,0,3,0">
+                        <Image Source="/StudyingController;component/Images/add.png" Stretch="Fill" />
+                    </Button>
+                </StackPanel>
+                <ItemsControl  Grid.Row="1" ItemsSource="{Binding Visitings}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Border BorderBrush="DarkGray" 
+                                BorderThickness="1">
+                                    <TextBlock Text="{Binding StudentName}" 
+                                       Width="200" 
+                                       Padding="3" 
+                                       TextWrapping="Wrap"/>
+                                </Border>
+
+                                <ItemsControl ItemsSource="{Binding Visitings}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border BorderBrush="DarkGray" 
+                                            BorderThickness="1" 
+                                            Margin="3,0,0,0">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBox Text="{Binding Description}" 
+                                                     Width="100" 
+                                                     Padding="3" 
+                                                     BorderBrush="Gray" 
+                                                     BorderThickness="0,0,1,0">
+                                                        <TextBox.Style>
+                                                            <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                                                                <Style.Resources>
+                                                                    <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                                                        <VisualBrush.Visual>
+                                                                            <TextBlock Text="Замітка" 
+                                                                               Foreground="LightGray"
+                                                                               FontStyle="Italic"
+                                                                               TextAlignment="Center"/>
+                                                                        </VisualBrush.Visual>
+                                                                    </VisualBrush>
+                                                                </Style.Resources>
+                                                                <Style.Triggers>
+                                                                    <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                                                        <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                                                    </Trigger>
+                                                                    <Trigger Property="Text" Value="{x:Null}">
+                                                                        <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                                                    </Trigger>
+                                                                    <Trigger Property="IsKeyboardFocused" Value="True">
+                                                                        <Setter Property="Background" Value="White" />
+                                                                    </Trigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </TextBox.Style>
+                                                    </TextBox>
+                                                    <ComboBox ItemsSource="{Binding Source={StaticResource visitingValueData}}"
+                                                      SelectedItem="{Binding Path=Value}" 
+                                                      Width="80" 
+                                                      Padding="3,0,3,0" 
+                                                      BorderThickness="0">
+                                                        <ComboBox.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <Label Content="{Binding}"
+                                                               Margin="1" 
+                                                               Padding="0"
+                                                               VerticalAlignment="Center"/>
+                                                            </DataTemplate>
+                                                        </ComboBox.ItemTemplate>
+                                                    </ComboBox>
+                                                </StackPanel>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </UserControl>

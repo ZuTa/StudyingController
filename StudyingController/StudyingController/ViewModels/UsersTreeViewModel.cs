@@ -28,7 +28,6 @@ namespace StudyingController.ViewModels
         protected override void LoadData()
         {
             base.LoadData();
-
             BuildUsersTree();
         }
 
