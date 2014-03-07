@@ -1,8 +1,8 @@
-﻿@model ThinClient.Models.LectureModel
+﻿@model ThinClient.Models.PracticeModel
 
 @{
-    ViewBag.Title = "Контролі - " + "лекція з " +  this.Model.Lecture.Subject.Name;
-    var grid = new WebGrid(this.Model.LectureControls, defaultSort: "Name");
+    ViewBag.Title = "Контролі - " + "практика з " +  this.Model.Practice.Practice.Subject.Name;
+    var grid = new WebGrid(this.Model.PracticeControls, defaultSort: "Name");
 }
 
 <div class="Label">Контролі:</div>

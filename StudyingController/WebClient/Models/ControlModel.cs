@@ -16,11 +16,11 @@ namespace ThinClient.Models
     {
         public ControlDTO Control { get; set; }
 
-        public IEnumerable<SecureMarkModel> Marks { get; set; }
+        public IEnumerable<MarkModel> Marks { get; set; }
 
         public ControlModel()
         {
-            this.Marks = new List<SecureMarkModel>();
+            this.Marks = new List<MarkModel>();
         }
     }
 }

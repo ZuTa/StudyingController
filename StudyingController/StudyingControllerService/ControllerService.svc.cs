@@ -2605,5 +2605,25 @@ namespace StudyingControllerService
                 throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
             }
         }
+
+        public void UpdateMarkValue(Session session, int markId, decimal markValue)
+        {
+            try
+            {
+                this.CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var existingMark = context.Marks.Where(em => em.ID == markId).FirstOrDefault();
+                    existingMark.MarkValue = markValue;
+
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+
+        }
     }
 }

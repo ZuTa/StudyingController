@@ -291,5 +291,9 @@ namespace StudyingControllerService
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
         ControlDTO GetControlById(Session session, int id);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        void UpdateMarkValue(Session session, int markId, decimal markValue);
     }
 }
