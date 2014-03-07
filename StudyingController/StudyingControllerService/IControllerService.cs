@@ -303,5 +303,6 @@ namespace StudyingControllerService
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
         void UpdateMarkValue(Session session, int markId, decimal markValue);
-   }
+}}
+
 }
