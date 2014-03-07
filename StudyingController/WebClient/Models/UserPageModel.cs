@@ -6,7 +6,7 @@ using ThinClient.SCS;
 
 namespace ThinClient.Models
 {
-    public class MainModel
+    public class UserPageModel
     {
         public string Name
         {

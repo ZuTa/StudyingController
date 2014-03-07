@@ -1,0 +1,20 @@
+﻿@model ThinClient.Models.LectureModel
+
+@{
+    ViewBag.Title = "Контролі - " + "лекція з " +  this.Model.Lecture.Subject.Name;
+    var grid = new WebGrid(this.Model.LectureControls, defaultSort: "Name");
+}
+
+<div class="Label">Контролі:</div>
+
+@grid.GetHtml(
+rowStyle: "ListItem",
+columns: grid.Columns(
+grid.Column("Name", header: "Назва"),
+grid.Column("Description", header: "Опис"),
+grid.Column("Date", header: "Дата проведення"),
+grid.Column(
+    "",
+    format: @<text>@Html.ActionLink("Відкрити", "ControlView", "ControlsManagement", 
+        new { controlId = item.ID },
+        new { @class = "OpenIcon", style = "margin: 0px 5px 0px 5px;" })</text>)))

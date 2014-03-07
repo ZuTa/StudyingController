@@ -620,6 +620,33 @@
   <wsdl:message name="IControllerService_GetInstitute_ControllerServiceExceptionFault_FaultMessage">
     <wsdl:part xmlns:q68="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q68:ControllerServiceException" />
   </wsdl:message>
+  <wsdl:message name="IControllerService_GetVisitingsForLecture_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVisitingsForLecture" />
+  </wsdl:message>
+  <wsdl:message name="IControllerService_GetVisitingsForLecture_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVisitingsForLectureResponse" />
+  </wsdl:message>
+  <wsdl:message name="IControllerService_GetVisitingsForLecture_ControllerServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q69="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q69:ControllerServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IControllerService_GetControlById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetControlById" />
+  </wsdl:message>
+  <wsdl:message name="IControllerService_GetControlById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetControlByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IControllerService_GetControlById_ControllerServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q70="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q70:ControllerServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IControllerService_UpdateMarkValue_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateMarkValue" />
+  </wsdl:message>
+  <wsdl:message name="IControllerService_UpdateMarkValue_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateMarkValueResponse" />
+  </wsdl:message>
+  <wsdl:message name="IControllerService_UpdateMarkValue_ControllerServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q71="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q71:ControllerServiceException" />
+  </wsdl:message>
   <wsdl:portType name="IControllerService">
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/IControllerService/Login" message="tns:IControllerService_Login_InputMessage" />
@@ -960,6 +987,21 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IControllerService/GetInstitute" message="tns:IControllerService_GetInstitute_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IControllerService/GetInstituteResponse" message="tns:IControllerService_GetInstitute_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IControllerService/GetInstituteControllerServiceExceptionFault" name="ControllerServiceExceptionFault" message="tns:IControllerService_GetInstitute_ControllerServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVisitingsForLecture">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControllerService/GetVisitingsForLecture" message="tns:IControllerService_GetVisitingsForLecture_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControllerService/GetVisitingsForLectureResponse" message="tns:IControllerService_GetVisitingsForLecture_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IControllerService/GetVisitingsForLectureControllerServiceExceptionFault" name="ControllerServiceExceptionFault" message="tns:IControllerService_GetVisitingsForLecture_ControllerServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetControlById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControllerService/GetControlById" message="tns:IControllerService_GetControlById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControllerService/GetControlByIdResponse" message="tns:IControllerService_GetControlById_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IControllerService/GetControlByIdControllerServiceExceptionFault" name="ControllerServiceExceptionFault" message="tns:IControllerService_GetControlById_ControllerServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMarkValue">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControllerService/UpdateMarkValue" message="tns:IControllerService_UpdateMarkValue_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControllerService/UpdateMarkValueResponse" message="tns:IControllerService_UpdateMarkValue_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IControllerService/UpdateMarkValueControllerServiceExceptionFault" name="ControllerServiceExceptionFault" message="tns:IControllerService_UpdateMarkValue_ControllerServiceExceptionFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IControllerService" type="tns:IControllerService">
@@ -1770,6 +1812,42 @@
     </wsdl:operation>
     <wsdl:operation name="GetInstitute">
       <soap:operation soapAction="http://tempuri.org/IControllerService/GetInstitute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ControllerServiceExceptionFault">
+        <soap:fault use="literal" name="ControllerServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetVisitingsForLecture">
+      <soap:operation soapAction="http://tempuri.org/IControllerService/GetVisitingsForLecture" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ControllerServiceExceptionFault">
+        <soap:fault use="literal" name="ControllerServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetControlById">
+      <soap:operation soapAction="http://tempuri.org/IControllerService/GetControlById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ControllerServiceExceptionFault">
+        <soap:fault use="literal" name="ControllerServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMarkValue">
+      <soap:operation soapAction="http://tempuri.org/IControllerService/UpdateMarkValue" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -1,0 +1,64 @@
+﻿@model ThinClient.Models.ControlModel
+
+<script type="text/javascript" >
+    function IsNumber(n) {
+        return !isNaN(parseFloat(n)) && isFinite(n);
+    }
+
+    var saveHandler = function () {
+        var tr = $(this).parents('tr:first');
+        var id = tr.find("#id").val();
+        var markValue = tr.find("#markValue").val();
+
+        var rgexp = /^\d*([,]\d+)?$/;
+        if (!markValue.match(rgexp)) {
+            alert('Невірний формат!');
+            return;
+        }
+
+        var mark =
+        {
+            "EncryptedId": id,
+            "MarkValue": markValue
+        };
+
+        $.ajax({
+            url: '/ControlsManagement/UpdateMark/',
+            data: JSON.stringify(mark),
+            type: 'POST',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                //alert(data);
+            }
+        });
+    };
+
+    $(function () { 
+        $('.markValueField')
+            .focusout(saveHandler)
+            .keypress(function (event) {
+                if (event.which == 13 || event.which == 9) {
+                    $(this).blur();
+                }
+            });
+    })
+</script>
+
+@{
+    ViewBag.Title = "Контроль - " + this.Model.Control.Name;
+    var grid = new WebGrid(this.Model.Marks, defaultSort: "Name");    
+}
+
+<div class="Label">Оцінки</div>
+
+@grid.GetHtml(
+headerStyle: "GridHeaderStyle",
+rowStyle: "ListItem",
+columns: grid.Columns(
+grid.Column(null, null, format: @<input type="hidden" id="id" value="@item.EncryptedId" />),
+grid.Column("StudentName",
+    header: "Ім'я студента",
+    format: @<text>@item.StudentName</text>),
+grid.Column("MarkValue",
+    header: "Оцінка",
+    format: @<text><input type="text" id="markValue" value="@item.MarkValue" class="markValueField TextField" /></text>)))

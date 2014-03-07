@@ -1,4 +1,4 @@
-﻿@model ThinClient.Models.MainModel
+﻿@model ThinClient.Models.UserPageModel
 @{
     ViewBag.Title = "Сторінка користувача";
 }
@@ -30,7 +30,7 @@
         {
             <tr>
                 <td>
-                    <div id="NotificationItem">
+                    <div class="InteractiveListItem">
                         <div style="font-weight: 600">@n.Date.ToString()</div>
                         <div>@n.Message</div>
                     </div>

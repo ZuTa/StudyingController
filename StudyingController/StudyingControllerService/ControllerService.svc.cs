@@ -2557,7 +2557,42 @@ namespace StudyingControllerService
             }
         }
 
+<<<<<<< HEAD
         public List<VisitingsDTO> GetVisitingsForLecture(Session session, LectureRef lecRef)
+=======
+        public ControlDTO GetControlById(Session session, int id)
+        {
+            try
+            {
+                this.CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var query = (from item
+                                      in context.Controls
+                                 where item.ID == id
+                                 select item).FirstOrDefault();
+
+                    if (query != null && query is LectureControl)
+                    {
+                        return (query as LectureControl).ToDTO();
+                    }
+                    
+                    if (query != null && query is PracticeControl)
+                    {
+                        return (query as PracticeControl).ToDTO(); 
+                    }
+
+                    return null;
+                }
+                            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+       
+        public List<VisitingsDTO> GetVisitingsForLecture(Session session, int id)
+>>>>>>> 31ac52c7a680d39c86a1101d03c086729a957c52
         {
             try
             {
@@ -2672,6 +2707,26 @@ namespace StudyingControllerService
             {
                 throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
             }
+        }
+
+        public void UpdateMarkValue(Session session, int markId, decimal markValue)
+        {
+            try
+            {
+                this.CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var existingMark = context.Marks.Where(em => em.ID == markId).FirstOrDefault();
+                    existingMark.MarkValue = markValue;
+
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+
         }
 
         public void UpdateMarkValue(Session session, int markId, decimal markValue)

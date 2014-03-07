@@ -1,0 +1,40 @@
+﻿@model ThinClient.Models.LessonsModel
+
+@{
+    ViewBag.Title = "Пари";
+}
+
+<table>
+    <tr>
+        <td>
+            <div class="Label">Лекції:</div>
+            @foreach (var lecture in this.Model.Lectures)
+            {
+                <div class="ListItem">
+                    <table>
+                        <tr>
+                            <td>@lecture.Subject.Name</td>
+                            <td>@Html.ActionLink("Відкрити", "LectureView", "ControlsManagement", new { lectureId = lecture.ID }, new { @class = "OpenIcon", style = "margin-left: 10px;" })</td>
+                        </tr>
+                    </table>
+                </div>
+            }
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="Label">Практики:</div>
+            @foreach (var practice in this.Model.Practices)
+            {
+                <div class="ListItem">
+                    <table>
+                        <tr>
+                            <td>@practice.Practice.Subject.Name</td>
+                            <td>@Html.ActionLink("Відкрити", "PracticeView", "ControlsManagement", new { practiceId = practice.ID }, new { @class = "OpenIcon", style = "margin-left: 10px;" })</td>
+                        </tr>
+                    </table>
+                </div>
+            }
+        </td>
+    </tr>
+</table>

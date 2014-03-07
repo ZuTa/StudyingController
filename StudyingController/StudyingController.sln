@@ -1,6 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
+
+# Visual Studio 2012
+
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudyingController", "StudyingController\StudyingController.csproj", "{C1BAAEF3-8BCA-4800-AAB8-0FB5A888AAFB}"
 	ProjectSection(ProjectDependencies) = postProject
 		{42845CD1-D3BD-4DD9-911A-FBD766FFEA58} = {42845CD1-D3BD-4DD9-911A-FBD766FFEA58}
@@ -12,14 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudyingControllerEntityMod
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntitiesDTO", "EntityModelDTO\EntitiesDTO.csproj", "{86B57E17-94BC-45DD-BCC9-2DA0C9C4D596}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "StudyingControllerInstaller", "StudyingControllerInstaller\StudyingControllerInstaller.vdproj", "{3B666A17-E290-4615-85F5-5C3DB75488EB}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudyingControllerWindowsService", "StudyingControllerWindowsService\StudyingControllerWindowsService.csproj", "{B1356A23-8CFA-4DA0-878D-8DF2EC69F88E}"
 	ProjectSection(ProjectDependencies) = postProject
 		{42845CD1-D3BD-4DD9-911A-FBD766FFEA58} = {42845CD1-D3BD-4DD9-911A-FBD766FFEA58}
 	EndProjectSection
-EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "StudyingControllerServiceInstaller", "StudyingControllerServiceInstaller\StudyingControllerServiceInstaller.vdproj", "{998A75E9-8CA9-42CA-971E-1FE3496762AF}"
 EndProject
 Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "ModelingProject", "ModelingProject\ModelingProject.modelproj", "{248EC29A-3CBD-49F1-B931-C673BAA59880}"
 EndProject
@@ -82,12 +81,6 @@ Global
 		{86B57E17-94BC-45DD-BCC9-2DA0C9C4D596}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{86B57E17-94BC-45DD-BCC9-2DA0C9C4D596}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{86B57E17-94BC-45DD-BCC9-2DA0C9C4D596}.Release|x86.ActiveCfg = Release|Any CPU
-		{3B666A17-E290-4615-85F5-5C3DB75488EB}.Debug|Any CPU.ActiveCfg = Debug
-		{3B666A17-E290-4615-85F5-5C3DB75488EB}.Debug|Mixed Platforms.ActiveCfg = Debug
-		{3B666A17-E290-4615-85F5-5C3DB75488EB}.Debug|x86.ActiveCfg = Debug
-		{3B666A17-E290-4615-85F5-5C3DB75488EB}.Release|Any CPU.ActiveCfg = Release
-		{3B666A17-E290-4615-85F5-5C3DB75488EB}.Release|Mixed Platforms.ActiveCfg = Release
-		{3B666A17-E290-4615-85F5-5C3DB75488EB}.Release|x86.ActiveCfg = Release
 		{B1356A23-8CFA-4DA0-878D-8DF2EC69F88E}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{B1356A23-8CFA-4DA0-878D-8DF2EC69F88E}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
 		{B1356A23-8CFA-4DA0-878D-8DF2EC69F88E}.Debug|Mixed Platforms.Build.0 = Debug|x86
@@ -98,12 +91,6 @@ Global
 		{B1356A23-8CFA-4DA0-878D-8DF2EC69F88E}.Release|Mixed Platforms.Build.0 = Release|x86
 		{B1356A23-8CFA-4DA0-878D-8DF2EC69F88E}.Release|x86.ActiveCfg = Release|x86
 		{B1356A23-8CFA-4DA0-878D-8DF2EC69F88E}.Release|x86.Build.0 = Release|x86
-		{998A75E9-8CA9-42CA-971E-1FE3496762AF}.Debug|Any CPU.ActiveCfg = Debug
-		{998A75E9-8CA9-42CA-971E-1FE3496762AF}.Debug|Mixed Platforms.ActiveCfg = Debug
-		{998A75E9-8CA9-42CA-971E-1FE3496762AF}.Debug|x86.ActiveCfg = Debug
-		{998A75E9-8CA9-42CA-971E-1FE3496762AF}.Release|Any CPU.ActiveCfg = Release
-		{998A75E9-8CA9-42CA-971E-1FE3496762AF}.Release|Mixed Platforms.ActiveCfg = Release
-		{998A75E9-8CA9-42CA-971E-1FE3496762AF}.Release|x86.ActiveCfg = Release
 		{248EC29A-3CBD-49F1-B931-C673BAA59880}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{248EC29A-3CBD-49F1-B931-C673BAA59880}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{248EC29A-3CBD-49F1-B931-C673BAA59880}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU

@@ -1,0 +1,19 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    Layout = "_Layout.cshtml";
+    ViewBag.Title = "Помилка";
+}
+
+<table>
+    <tr>
+        <td>
+            <img src="~/Content/errorIcon.png"/ style="margin: 20px;">
+        </td>
+        <td>
+            <div class="Label">Деталі помилки:</div>
+            <div>@this.Model.Exception</div>
+        </td>
+    </tr>
+</table>
+
