@@ -2557,9 +2557,6 @@ namespace StudyingControllerService
             }
         }
 
-<<<<<<< HEAD
-        public List<VisitingsDTO> GetVisitingsForLecture(Session session, LectureRef lecRef)
-=======
         public ControlDTO GetControlById(Session session, int id)
         {
             try
@@ -2591,8 +2588,8 @@ namespace StudyingControllerService
             }
         }
        
-        public List<VisitingsDTO> GetVisitingsForLecture(Session session, int id)
->>>>>>> 31ac52c7a680d39c86a1101d03c086729a957c52
+        public List<VisitingsDTO> GetVisitingsForLecture(Session session, LectureRef lecRef)
+
         {
             try
             {
@@ -2653,7 +2650,6 @@ namespace StudyingControllerService
                 throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
             }
         }
-
 
         public void SaveVisitingsForLecture(Session session, LectureRef lecRef, List<VisitingDTO> visitings)
         {
@@ -2728,6 +2724,7 @@ namespace StudyingControllerService
             }
 
         }
+
 
         public void UpdateMarkValue(Session session, int markId, decimal markValue)
         {
