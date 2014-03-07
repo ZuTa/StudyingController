@@ -883,6 +883,28 @@ namespace StudyingController.SCS {
         System.IAsyncResult BeginSaveVisitingsForLecture(StudyingController.SCS.Session session, EntitiesDTO.LectureRef lecture, System.Collections.Generic.List<EntitiesDTO.VisitingDTO> visitings, System.AsyncCallback callback, object asyncState);
         
         void EndSaveVisitingsForLecture(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/GetControlById", ReplyAction="http://tempuri.org/IControllerService/GetControlByIdResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/GetControlByIdControllerServiceExceptionFau" +
+            "lt", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.LectureControlDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.PracticeControlDTO))]
+        EntitiesDTO.ControlDTO GetControlById(StudyingController.SCS.Session session, int id);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/GetControlById", ReplyAction="http://tempuri.org/IControllerService/GetControlByIdResponse")]
+        System.IAsyncResult BeginGetControlById(StudyingController.SCS.Session session, int id, System.AsyncCallback callback, object asyncState);
+        
+        EntitiesDTO.ControlDTO EndGetControlById(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/UpdateMarkValue", ReplyAction="http://tempuri.org/IControllerService/UpdateMarkValueResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/UpdateMarkValueControllerServiceExceptionFa" +
+            "ult", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        void UpdateMarkValue(StudyingController.SCS.Session session, int markId, decimal markValue);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/UpdateMarkValue", ReplyAction="http://tempuri.org/IControllerService/UpdateMarkValueResponse")]
+        System.IAsyncResult BeginUpdateMarkValue(StudyingController.SCS.Session session, int markId, decimal markValue, System.AsyncCallback callback, object asyncState);
+        
+        void EndUpdateMarkValue(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1803,6 +1825,25 @@ namespace StudyingController.SCS {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetControlByIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetControlByIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public EntitiesDTO.ControlDTO Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((EntitiesDTO.ControlDTO)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class ControllerServiceClient : System.ServiceModel.ClientBase<StudyingController.SCS.IControllerService>, StudyingController.SCS.IControllerService {
         
         private BeginOperationDelegate onBeginLoginDelegate;
@@ -2231,6 +2272,18 @@ namespace StudyingController.SCS {
         
         private System.Threading.SendOrPostCallback onSaveVisitingsForLectureCompletedDelegate;
         
+        private BeginOperationDelegate onBeginGetControlByIdDelegate;
+        
+        private EndOperationDelegate onEndGetControlByIdDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetControlByIdCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginUpdateMarkValueDelegate;
+        
+        private EndOperationDelegate onEndUpdateMarkValueDelegate;
+        
+        private System.Threading.SendOrPostCallback onUpdateMarkValueCompletedDelegate;
+        
         public ControllerServiceClient() {
         }
         
@@ -2391,6 +2444,10 @@ namespace StudyingController.SCS {
         public event System.EventHandler<GetVisitingsForLectureCompletedEventArgs> GetVisitingsForLectureCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> SaveVisitingsForLectureCompleted;
+        
+        public event System.EventHandler<GetControlByIdCompletedEventArgs> GetControlByIdCompleted;
+        
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> UpdateMarkValueCompleted;
         
         public StudyingController.SCS.Session Login(string login1, string password) {
             return base.Channel.Login(login1, password);
@@ -6067,6 +6124,111 @@ namespace StudyingController.SCS {
                         session,
                         lecture,
                         visitings}, this.onEndSaveVisitingsForLectureDelegate, this.onSaveVisitingsForLectureCompletedDelegate, userState);
+        }
+        
+        public EntitiesDTO.ControlDTO GetControlById(StudyingController.SCS.Session session, int id) {
+            return base.Channel.GetControlById(session, id);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetControlById(StudyingController.SCS.Session session, int id, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetControlById(session, id, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public EntitiesDTO.ControlDTO EndGetControlById(System.IAsyncResult result) {
+            return base.Channel.EndGetControlById(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetControlById(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            StudyingController.SCS.Session session = ((StudyingController.SCS.Session)(inValues[0]));
+            int id = ((int)(inValues[1]));
+            return this.BeginGetControlById(session, id, callback, asyncState);
+        }
+        
+        private object[] OnEndGetControlById(System.IAsyncResult result) {
+            EntitiesDTO.ControlDTO retVal = this.EndGetControlById(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetControlByIdCompleted(object state) {
+            if ((this.GetControlByIdCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetControlByIdCompleted(this, new GetControlByIdCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetControlByIdAsync(StudyingController.SCS.Session session, int id) {
+            this.GetControlByIdAsync(session, id, null);
+        }
+        
+        public void GetControlByIdAsync(StudyingController.SCS.Session session, int id, object userState) {
+            if ((this.onBeginGetControlByIdDelegate == null)) {
+                this.onBeginGetControlByIdDelegate = new BeginOperationDelegate(this.OnBeginGetControlById);
+            }
+            if ((this.onEndGetControlByIdDelegate == null)) {
+                this.onEndGetControlByIdDelegate = new EndOperationDelegate(this.OnEndGetControlById);
+            }
+            if ((this.onGetControlByIdCompletedDelegate == null)) {
+                this.onGetControlByIdCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetControlByIdCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetControlByIdDelegate, new object[] {
+                        session,
+                        id}, this.onEndGetControlByIdDelegate, this.onGetControlByIdCompletedDelegate, userState);
+        }
+        
+        public void UpdateMarkValue(StudyingController.SCS.Session session, int markId, decimal markValue) {
+            base.Channel.UpdateMarkValue(session, markId, markValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginUpdateMarkValue(StudyingController.SCS.Session session, int markId, decimal markValue, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginUpdateMarkValue(session, markId, markValue, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public void EndUpdateMarkValue(System.IAsyncResult result) {
+            base.Channel.EndUpdateMarkValue(result);
+        }
+        
+        private System.IAsyncResult OnBeginUpdateMarkValue(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            StudyingController.SCS.Session session = ((StudyingController.SCS.Session)(inValues[0]));
+            int markId = ((int)(inValues[1]));
+            decimal markValue = ((decimal)(inValues[2]));
+            return this.BeginUpdateMarkValue(session, markId, markValue, callback, asyncState);
+        }
+        
+        private object[] OnEndUpdateMarkValue(System.IAsyncResult result) {
+            this.EndUpdateMarkValue(result);
+            return null;
+        }
+        
+        private void OnUpdateMarkValueCompleted(object state) {
+            if ((this.UpdateMarkValueCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.UpdateMarkValueCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void UpdateMarkValueAsync(StudyingController.SCS.Session session, int markId, decimal markValue) {
+            this.UpdateMarkValueAsync(session, markId, markValue, null);
+        }
+        
+        public void UpdateMarkValueAsync(StudyingController.SCS.Session session, int markId, decimal markValue, object userState) {
+            if ((this.onBeginUpdateMarkValueDelegate == null)) {
+                this.onBeginUpdateMarkValueDelegate = new BeginOperationDelegate(this.OnBeginUpdateMarkValue);
+            }
+            if ((this.onEndUpdateMarkValueDelegate == null)) {
+                this.onEndUpdateMarkValueDelegate = new EndOperationDelegate(this.OnEndUpdateMarkValue);
+            }
+            if ((this.onUpdateMarkValueCompletedDelegate == null)) {
+                this.onUpdateMarkValueCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnUpdateMarkValueCompleted);
+            }
+            base.InvokeAsync(this.onBeginUpdateMarkValueDelegate, new object[] {
+                        session,
+                        markId,
+                        markValue}, this.onEndUpdateMarkValueDelegate, this.onUpdateMarkValueCompletedDelegate, userState);
         }
     }
 }

@@ -112,7 +112,7 @@ namespace StudyingControllerService
 
                     if (!(user != null /*&& Encoding.UTF8.GetString(user.Password) == password*/))
                     {
-//#if DEBUG
+                        //#if DEBUG
                         //if (user == null)
                         //{
                         //    user = new SystemUser();
@@ -132,9 +132,9 @@ namespace StudyingControllerService
                         //    context.AddToSystemUsers(user);
                         //    context.SaveChanges();
                         //}
-//#else
+                        //#else
                         throw new Exception("У доступі відмовлено!");
-//#endif
+                        //#endif
                     }
 
                     session = new Session(GetSystemUserDTO(user, context));
@@ -1727,7 +1727,7 @@ namespace StudyingControllerService
 
                         foreach (var group in lecture.Groups)
                         {
-                            foreach (var student in context.Groups.Include("Students").First(gr=>gr.ID == group.ID).Students)
+                            foreach (var student in context.Groups.Include("Students").First(gr => gr.ID == group.ID).Students)
                             {
                                 context.AddToNotifications(new Notification(new NotificationDTO
                                 {
@@ -2268,7 +2268,7 @@ namespace StudyingControllerService
 
                     if (universityStructureItem is InstituteDTO)
                     {
-                        groupIDs.AddRange(context.Institutes.Where(i => i.ID == universityStructureItem.ID).AsEnumerable().Select(i => 
+                        groupIDs.AddRange(context.Institutes.Where(i => i.ID == universityStructureItem.ID).AsEnumerable().Select(i =>
                         {
                             context.LoadProperty(i, "Faculties");
                             return i;
@@ -2284,14 +2284,14 @@ namespace StudyingControllerService
                     }
                     else if (universityStructureItem is FacultyDTO)
                     {
-                        groupIDs.AddRange(context.Faculties.Where(f => f.ID == universityStructureItem.ID).AsEnumerable().Select(f => 
-                        { 
-                            context.LoadProperty(f, "Cathedras"); 
-                            return f; 
-                        }).First().Cathedras.SelectMany(c => 
-                        { 
-                            context.LoadProperty(c, "Groups"); 
-                            return c.Groups.Select(g => g.ID); 
+                        groupIDs.AddRange(context.Faculties.Where(f => f.ID == universityStructureItem.ID).AsEnumerable().Select(f =>
+                        {
+                            context.LoadProperty(f, "Cathedras");
+                            return f;
+                        }).First().Cathedras.SelectMany(c =>
+                        {
+                            context.LoadProperty(c, "Groups");
+                            return c.Groups.Select(g => g.ID);
                         }));
                     }
                     else if (universityStructureItem is CathedraDTO)
@@ -2318,18 +2318,18 @@ namespace StudyingControllerService
                         {
                             context.LoadProperty(group, "Students");
                             context.LoadProperty(group, "Lectures");
-                            
+
                             students.AddRange(group.Students);
                         }
                     }
 
-                    result = students.Select<Student, UserRateItemDTO>(student => 
+                    result = students.Select<Student, UserRateItemDTO>(student =>
                     {
                         context.LoadProperty(student, "Groups");
                         var lectureControls = student.Groups.SelectMany(g =>
                             {
                                 context.LoadProperty(g, "Lectures");
-                                return g.Lectures.SelectMany(l => 
+                                return g.Lectures.SelectMany(l =>
                                 {
                                     context.LoadProperty(l, "LectureControls");
                                     return l.LectureControls;
@@ -2386,12 +2386,12 @@ namespace StudyingControllerService
                 var resultList = new List<NotificationDTO>();
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    var query = (from notification 
-                                      in context.Notifications 
-                                      where notification.UserID == userID
-                                      orderby notification.Date descending
-                                  select notification).Take(10);
-                    
+                    var query = (from notification
+                                      in context.Notifications
+                                 where notification.UserID == userID
+                                 orderby notification.Date descending
+                                 select notification).Take(10);
+
                     foreach (var n in query.ToList())
                     {
                         resultList.Add(n.ToDTO());
@@ -2399,7 +2399,7 @@ namespace StudyingControllerService
                 }
                 return resultList;
             }
-                catch (Exception ex)
+            catch (Exception ex)
             {
                 throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
             }
@@ -2496,7 +2496,7 @@ namespace StudyingControllerService
                                       in context.Institutes
                                  where item.ID == id
                                  select item).FirstOrDefault();
-                    return query == null? null : query.ToDTO();
+                    return query == null ? null : query.ToDTO();
                 }
             }
             catch (Exception ex)
@@ -2527,6 +2527,36 @@ namespace StudyingControllerService
             }
         }
 
+        public ControlDTO GetControlById(Session session, int id)
+        {
+            try
+            {
+                this.CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var query = (from item in context.Controls
+                                 where item.ID == id
+                                 select item).FirstOrDefault();
+
+                    if (query != null && query is LectureControl)
+                    {
+                        return (query as LectureControl).ToDTO();
+                    }
+
+                    if (query != null && query is PracticeControl)
+                    {
+                        return (query as PracticeControl).ToDTO();
+                    }
+
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
         public List<VisitingsDTO> GetVisitingsForLecture(Session session, LectureRef lecRef)
         {
             try
@@ -2537,33 +2567,33 @@ namespace StudyingControllerService
 
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    Lecture lecture = context.Lectures.First(c=>c.ID == lecRef.ID) as Lecture;
+                    Lecture lecture = context.Lectures.First(c => c.ID == lecRef.ID) as Lecture;
 
-                            context.LoadProperty(lecture, "Groups");
-                            foreach (Group g in lecture.Groups)
+                    context.LoadProperty(lecture, "Groups");
+                    foreach (Group g in lecture.Groups)
+                    {
+                        context.LoadProperty(g, "Students");
+                        foreach (Student s in g.Students)
+                        {
+                            context.LoadProperty(s, "UserInformation");
+                            result.Add(new VisitingsDTO
                             {
-                                context.LoadProperty(g, "Students");
-                                foreach (Student s in g.Students)
-                                {
-                                    context.LoadProperty(s, "UserInformation");
-                                    result.Add(new VisitingsDTO
-                                    {
-                                        Lecture = new LectureRef{ ID = lecture.ID}, 
-                                        Student = new StudentRef{ ID = s.ID, Name = s.UserInformation.LastName + " " + s.UserInformation.FirstName}
-                                    });
-                                }
-                            }
-                    
-                            context.LoadProperty(lecture, "Visitings");
-                    var dates = lecture.Visitings.Select(v=>v.Date).Distinct();
+                                Lecture = new LectureRef { ID = lecture.ID },
+                                Student = new StudentRef { ID = s.ID, Name = s.UserInformation.LastName + " " + s.UserInformation.FirstName }
+                            });
+                        }
+                    }
 
-                    foreach(var res in result)
+                    context.LoadProperty(lecture, "Visitings");
+                    var dates = lecture.Visitings.Select(v => v.Date).Distinct();
+
+                    foreach (var res in result)
                     {
                         res.Visitings = new List<VisitingDTO>();
-                        foreach(var dat in dates)
+                        foreach (var dat in dates)
                         {
-                            Visiting visiting = lecture.Visitings.FirstOrDefault(v=>v.Date == dat && v.StudentID== res.Student.ID);
-                            if(visiting == null)
+                            Visiting visiting = lecture.Visitings.FirstOrDefault(v => v.Date == dat && v.StudentID == res.Student.ID);
+                            if (visiting == null)
                             {
                                 visiting = new Visiting
                                 {
@@ -2642,6 +2672,26 @@ namespace StudyingControllerService
             {
                 throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
             }
+        }
+
+        public void UpdateMarkValue(Session session, int markId, decimal markValue)
+        {
+            try
+            {
+                this.CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var existingMark = context.Marks.Where(em => em.ID == markId).FirstOrDefault();
+                    existingMark.MarkValue = markValue;
+
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+
         }
     }
 }
