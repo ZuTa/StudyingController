@@ -243,7 +243,7 @@ namespace StudyingControllerService
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
         void SavePracticeControl(Session session, PracticeControlDTO control);
-       
+
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
         List<PracticeTeacherDTO> GetStudentPractices(Session session, int studentID);
@@ -303,6 +303,5 @@ namespace StudyingControllerService
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
         void UpdateMarkValue(Session session, int markId, decimal markValue);
-}}
-
+    }
 }
