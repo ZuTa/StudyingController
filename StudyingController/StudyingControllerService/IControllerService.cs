@@ -286,7 +286,6 @@ namespace StudyingControllerService
 
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
-
         StudentDTO GetStudent(Session session, int id);
 
         [OperationContract]
@@ -304,5 +303,5 @@ namespace StudyingControllerService
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
         void UpdateMarkValue(Session session, int markId, decimal markValue);
-}
+   }
 }
