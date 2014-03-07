@@ -82,7 +82,7 @@ namespace EntitiesDTO
     [KnownType(typeof(TeacherDTO))]
     [KnownType(typeof(StudentDTO))]
 
-    public class SystemUserDTO : BaseEntityDTO
+    public class SystemUserDTO : NamedEntityDTO
     {
         private string login;
         [DataMember]
@@ -106,6 +106,14 @@ namespace EntitiesDTO
         {
             get { return role; }
             set { role = value; }
+        }
+
+        private string name;
+        [DataMember]
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
         }
 
         private UserInformationDTO userInformation;

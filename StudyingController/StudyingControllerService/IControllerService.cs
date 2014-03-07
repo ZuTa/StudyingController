@@ -286,6 +286,14 @@ namespace StudyingControllerService
 
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
-        List<VisitingsDTO> GetVisitingsForLecture(Session session, int id);
+        StudentDTO GetStudent(Session session, int id);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        List<VisitingsDTO> GetVisitingsForLecture(Session session, LectureRef lecture);
+
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        void SaveVisitingsForLecture(Session session, LectureRef lecture, List<VisitingDTO> visitings);
     }
 }

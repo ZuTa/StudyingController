@@ -83,6 +83,11 @@ namespace StudyingController.ViewModels
         public PracticeDataViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, PracticeTeacherDTO lesson)
             : base(userInterop, controllerInterop, dispatcher)
         {
+            InitControl(lesson);
+        }
+
+        public void InitControl(PracticeTeacherDTO lesson)
+        {
             originalEntity = lesson;
 
             Model = new PracticeTeacherModel(lesson);

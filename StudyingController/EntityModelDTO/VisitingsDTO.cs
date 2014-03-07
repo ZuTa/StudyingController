@@ -15,37 +15,14 @@ namespace EntitiesDTO
             set{ }
         }
 
-        private int studentID;
         [DataMember]
-        public int StudentID
-        {
-            get { return studentID; }
-            set { studentID = value; }
-        }
+        public StudentRef Student { get; set; }
 
-        private string studentName;
         [DataMember]
-        public string StudentName
-        {
-            get { return studentName; }
-            set { studentName = value; }
-        }
+        public LectureRef Lecture { get; set; }
 
-        private LectureDTO lecture;
         [DataMember]
-        public LectureDTO Lecture
-        {
-            get { return lecture; }
-            set { lecture = value; }
-        }
-
-        private PracticeDTO practice;
-        [DataMember]
-        public PracticeDTO Practice
-        {
-            get { return practice; }
-            set { practice = value; }
-        }
+        public PracticeRef Practice { get; set; }
 
         private List<VisitingDTO> visitings;
         [DataMember]

@@ -18,11 +18,11 @@ namespace StudyingController.SCS {
     [System.Runtime.Serialization.DataContractAttribute(Name="Session", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.FacultySecretaryDTO))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.TeacherDTO))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.StudentDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.TeacherDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.FacultyAdminDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.InstituteSecretaryDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.StudentDTO))]
     public partial class Session : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -273,11 +273,11 @@ namespace StudyingController.SCS {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/SaveUser", ReplyAction="http://tempuri.org/IControllerService/SaveUserResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/SaveUserControllerServiceExceptionFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultySecretaryDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.TeacherDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.StudentDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.TeacherDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultyAdminDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteSecretaryDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.StudentDTO))]
         void SaveUser(StudyingController.SCS.Session session, EntitiesDTO.SystemUserDTO user);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/SaveUser", ReplyAction="http://tempuri.org/IControllerService/SaveUserResponse")]
@@ -634,11 +634,11 @@ namespace StudyingController.SCS {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.LectureControlDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.PracticeControlDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultySecretaryDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.TeacherDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.StudentDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.TeacherDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultyAdminDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteSecretaryDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.StudentDTO))]
         void SaveControlMessage(StudyingController.SCS.Session session, EntitiesDTO.ControlMessageDTO message);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/SaveControlMessage", ReplyAction="http://tempuri.org/IControllerService/SaveControlMessageResponse")]
@@ -762,31 +762,31 @@ namespace StudyingController.SCS {
         [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/GetStudentRateListControllerServiceExceptio" +
             "nFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.NamedEntityDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.GroupDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.CathedraDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultyDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.SpecializationDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.SubjectDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.GroupDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.SystemUserDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.UserInformationDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultySecretaryDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.TeacherDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.LectureDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultyAdminDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteSecretaryDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.StudentDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.ControlDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.LectureControlDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.PracticeControlDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.AttachmentDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.SystemUserDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.UserInformationDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultySecretaryDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.TeacherDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.LectureDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.StudentDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultyAdminDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteSecretaryDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.PracticeTeacherDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.PracticeDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.ControlMessageDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.MarkDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.LectureControlMarkDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.PracticeControlMarkDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.LectureControlMarkDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.NotificationDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.VisitingsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.VisitingDTO))]
@@ -855,15 +855,34 @@ namespace StudyingController.SCS {
         
         EntitiesDTO.InstituteDTO EndGetInstitute(System.IAsyncResult result);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/GetStudent", ReplyAction="http://tempuri.org/IControllerService/GetStudentResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/GetStudentControllerServiceExceptionFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        EntitiesDTO.StudentDTO GetStudent(StudyingController.SCS.Session session, int id);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/GetStudent", ReplyAction="http://tempuri.org/IControllerService/GetStudentResponse")]
+        System.IAsyncResult BeginGetStudent(StudyingController.SCS.Session session, int id, System.AsyncCallback callback, object asyncState);
+        
+        EntitiesDTO.StudentDTO EndGetStudent(System.IAsyncResult result);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/GetVisitingsForLecture", ReplyAction="http://tempuri.org/IControllerService/GetVisitingsForLectureResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/GetVisitingsForLectureControllerServiceExce" +
             "ptionFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
-        System.Collections.Generic.List<EntitiesDTO.VisitingsDTO> GetVisitingsForLecture(StudyingController.SCS.Session session, int id);
+        System.Collections.Generic.List<EntitiesDTO.VisitingsDTO> GetVisitingsForLecture(StudyingController.SCS.Session session, EntitiesDTO.LectureRef lecture);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/GetVisitingsForLecture", ReplyAction="http://tempuri.org/IControllerService/GetVisitingsForLectureResponse")]
-        System.IAsyncResult BeginGetVisitingsForLecture(StudyingController.SCS.Session session, int id, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginGetVisitingsForLecture(StudyingController.SCS.Session session, EntitiesDTO.LectureRef lecture, System.AsyncCallback callback, object asyncState);
         
         System.Collections.Generic.List<EntitiesDTO.VisitingsDTO> EndGetVisitingsForLecture(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/SaveVisitingsForLecture", ReplyAction="http://tempuri.org/IControllerService/SaveVisitingsForLectureResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/SaveVisitingsForLectureControllerServiceExc" +
+            "eptionFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        void SaveVisitingsForLecture(StudyingController.SCS.Session session, EntitiesDTO.LectureRef lecture, System.Collections.Generic.List<EntitiesDTO.VisitingDTO> visitings);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/SaveVisitingsForLecture", ReplyAction="http://tempuri.org/IControllerService/SaveVisitingsForLectureResponse")]
+        System.IAsyncResult BeginSaveVisitingsForLecture(StudyingController.SCS.Session session, EntitiesDTO.LectureRef lecture, System.Collections.Generic.List<EntitiesDTO.VisitingDTO> visitings, System.AsyncCallback callback, object asyncState);
+        
+        void EndSaveVisitingsForLecture(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1746,6 +1765,25 @@ namespace StudyingController.SCS {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetStudentCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetStudentCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public EntitiesDTO.StudentDTO Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((EntitiesDTO.StudentDTO)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class GetVisitingsForLectureCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
@@ -2175,11 +2213,23 @@ namespace StudyingController.SCS {
         
         private System.Threading.SendOrPostCallback onGetInstituteCompletedDelegate;
         
+        private BeginOperationDelegate onBeginGetStudentDelegate;
+        
+        private EndOperationDelegate onEndGetStudentDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetStudentCompletedDelegate;
+        
         private BeginOperationDelegate onBeginGetVisitingsForLectureDelegate;
         
         private EndOperationDelegate onEndGetVisitingsForLectureDelegate;
         
         private System.Threading.SendOrPostCallback onGetVisitingsForLectureCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginSaveVisitingsForLectureDelegate;
+        
+        private EndOperationDelegate onEndSaveVisitingsForLectureDelegate;
+        
+        private System.Threading.SendOrPostCallback onSaveVisitingsForLectureCompletedDelegate;
         
         public ControllerServiceClient() {
         }
@@ -2336,7 +2386,11 @@ namespace StudyingController.SCS {
         
         public event System.EventHandler<GetInstituteCompletedEventArgs> GetInstituteCompleted;
         
+        public event System.EventHandler<GetStudentCompletedEventArgs> GetStudentCompleted;
+        
         public event System.EventHandler<GetVisitingsForLectureCompletedEventArgs> GetVisitingsForLectureCompleted;
+        
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> SaveVisitingsForLectureCompleted;
         
         public StudyingController.SCS.Session Login(string login1, string password) {
             return base.Channel.Login(login1, password);
@@ -5858,13 +5912,65 @@ namespace StudyingController.SCS {
                         id}, this.onEndGetInstituteDelegate, this.onGetInstituteCompletedDelegate, userState);
         }
         
-        public System.Collections.Generic.List<EntitiesDTO.VisitingsDTO> GetVisitingsForLecture(StudyingController.SCS.Session session, int id) {
-            return base.Channel.GetVisitingsForLecture(session, id);
+        public EntitiesDTO.StudentDTO GetStudent(StudyingController.SCS.Session session, int id) {
+            return base.Channel.GetStudent(session, id);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetVisitingsForLecture(StudyingController.SCS.Session session, int id, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetVisitingsForLecture(session, id, callback, asyncState);
+        public System.IAsyncResult BeginGetStudent(StudyingController.SCS.Session session, int id, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetStudent(session, id, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public EntitiesDTO.StudentDTO EndGetStudent(System.IAsyncResult result) {
+            return base.Channel.EndGetStudent(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetStudent(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            StudyingController.SCS.Session session = ((StudyingController.SCS.Session)(inValues[0]));
+            int id = ((int)(inValues[1]));
+            return this.BeginGetStudent(session, id, callback, asyncState);
+        }
+        
+        private object[] OnEndGetStudent(System.IAsyncResult result) {
+            EntitiesDTO.StudentDTO retVal = this.EndGetStudent(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetStudentCompleted(object state) {
+            if ((this.GetStudentCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetStudentCompleted(this, new GetStudentCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetStudentAsync(StudyingController.SCS.Session session, int id) {
+            this.GetStudentAsync(session, id, null);
+        }
+        
+        public void GetStudentAsync(StudyingController.SCS.Session session, int id, object userState) {
+            if ((this.onBeginGetStudentDelegate == null)) {
+                this.onBeginGetStudentDelegate = new BeginOperationDelegate(this.OnBeginGetStudent);
+            }
+            if ((this.onEndGetStudentDelegate == null)) {
+                this.onEndGetStudentDelegate = new EndOperationDelegate(this.OnEndGetStudent);
+            }
+            if ((this.onGetStudentCompletedDelegate == null)) {
+                this.onGetStudentCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetStudentCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetStudentDelegate, new object[] {
+                        session,
+                        id}, this.onEndGetStudentDelegate, this.onGetStudentCompletedDelegate, userState);
+        }
+        
+        public System.Collections.Generic.List<EntitiesDTO.VisitingsDTO> GetVisitingsForLecture(StudyingController.SCS.Session session, EntitiesDTO.LectureRef lecture) {
+            return base.Channel.GetVisitingsForLecture(session, lecture);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetVisitingsForLecture(StudyingController.SCS.Session session, EntitiesDTO.LectureRef lecture, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetVisitingsForLecture(session, lecture, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -5874,8 +5980,8 @@ namespace StudyingController.SCS {
         
         private System.IAsyncResult OnBeginGetVisitingsForLecture(object[] inValues, System.AsyncCallback callback, object asyncState) {
             StudyingController.SCS.Session session = ((StudyingController.SCS.Session)(inValues[0]));
-            int id = ((int)(inValues[1]));
-            return this.BeginGetVisitingsForLecture(session, id, callback, asyncState);
+            EntitiesDTO.LectureRef lecture = ((EntitiesDTO.LectureRef)(inValues[1]));
+            return this.BeginGetVisitingsForLecture(session, lecture, callback, asyncState);
         }
         
         private object[] OnEndGetVisitingsForLecture(System.IAsyncResult result) {
@@ -5891,11 +5997,11 @@ namespace StudyingController.SCS {
             }
         }
         
-        public void GetVisitingsForLectureAsync(StudyingController.SCS.Session session, int id) {
-            this.GetVisitingsForLectureAsync(session, id, null);
+        public void GetVisitingsForLectureAsync(StudyingController.SCS.Session session, EntitiesDTO.LectureRef lecture) {
+            this.GetVisitingsForLectureAsync(session, lecture, null);
         }
         
-        public void GetVisitingsForLectureAsync(StudyingController.SCS.Session session, int id, object userState) {
+        public void GetVisitingsForLectureAsync(StudyingController.SCS.Session session, EntitiesDTO.LectureRef lecture, object userState) {
             if ((this.onBeginGetVisitingsForLectureDelegate == null)) {
                 this.onBeginGetVisitingsForLectureDelegate = new BeginOperationDelegate(this.OnBeginGetVisitingsForLecture);
             }
@@ -5907,7 +6013,60 @@ namespace StudyingController.SCS {
             }
             base.InvokeAsync(this.onBeginGetVisitingsForLectureDelegate, new object[] {
                         session,
-                        id}, this.onEndGetVisitingsForLectureDelegate, this.onGetVisitingsForLectureCompletedDelegate, userState);
+                        lecture}, this.onEndGetVisitingsForLectureDelegate, this.onGetVisitingsForLectureCompletedDelegate, userState);
+        }
+        
+        public void SaveVisitingsForLecture(StudyingController.SCS.Session session, EntitiesDTO.LectureRef lecture, System.Collections.Generic.List<EntitiesDTO.VisitingDTO> visitings) {
+            base.Channel.SaveVisitingsForLecture(session, lecture, visitings);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginSaveVisitingsForLecture(StudyingController.SCS.Session session, EntitiesDTO.LectureRef lecture, System.Collections.Generic.List<EntitiesDTO.VisitingDTO> visitings, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginSaveVisitingsForLecture(session, lecture, visitings, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public void EndSaveVisitingsForLecture(System.IAsyncResult result) {
+            base.Channel.EndSaveVisitingsForLecture(result);
+        }
+        
+        private System.IAsyncResult OnBeginSaveVisitingsForLecture(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            StudyingController.SCS.Session session = ((StudyingController.SCS.Session)(inValues[0]));
+            EntitiesDTO.LectureRef lecture = ((EntitiesDTO.LectureRef)(inValues[1]));
+            System.Collections.Generic.List<EntitiesDTO.VisitingDTO> visitings = ((System.Collections.Generic.List<EntitiesDTO.VisitingDTO>)(inValues[2]));
+            return this.BeginSaveVisitingsForLecture(session, lecture, visitings, callback, asyncState);
+        }
+        
+        private object[] OnEndSaveVisitingsForLecture(System.IAsyncResult result) {
+            this.EndSaveVisitingsForLecture(result);
+            return null;
+        }
+        
+        private void OnSaveVisitingsForLectureCompleted(object state) {
+            if ((this.SaveVisitingsForLectureCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.SaveVisitingsForLectureCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void SaveVisitingsForLectureAsync(StudyingController.SCS.Session session, EntitiesDTO.LectureRef lecture, System.Collections.Generic.List<EntitiesDTO.VisitingDTO> visitings) {
+            this.SaveVisitingsForLectureAsync(session, lecture, visitings, null);
+        }
+        
+        public void SaveVisitingsForLectureAsync(StudyingController.SCS.Session session, EntitiesDTO.LectureRef lecture, System.Collections.Generic.List<EntitiesDTO.VisitingDTO> visitings, object userState) {
+            if ((this.onBeginSaveVisitingsForLectureDelegate == null)) {
+                this.onBeginSaveVisitingsForLectureDelegate = new BeginOperationDelegate(this.OnBeginSaveVisitingsForLecture);
+            }
+            if ((this.onEndSaveVisitingsForLectureDelegate == null)) {
+                this.onEndSaveVisitingsForLectureDelegate = new EndOperationDelegate(this.OnEndSaveVisitingsForLecture);
+            }
+            if ((this.onSaveVisitingsForLectureCompletedDelegate == null)) {
+                this.onSaveVisitingsForLectureCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnSaveVisitingsForLectureCompleted);
+            }
+            base.InvokeAsync(this.onBeginSaveVisitingsForLectureDelegate, new object[] {
+                        session,
+                        lecture,
+                        visitings}, this.onEndSaveVisitingsForLectureDelegate, this.onSaveVisitingsForLectureCompletedDelegate, userState);
         }
     }
 }

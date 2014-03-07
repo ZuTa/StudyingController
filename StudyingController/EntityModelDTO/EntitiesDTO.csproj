@@ -67,6 +67,11 @@
     <Compile Include="MarkDTO.cs" />
     <Compile Include="NotificationDTO.cs" />
     <Compile Include="PracticeVisitingDTO.cs" />
+    <Compile Include="References\BaseRef.cs" />
+    <Compile Include="References\LectureRef.cs" />
+    <Compile Include="References\NamedRef.cs" />
+    <Compile Include="References\PracticeRef.cs" />
+    <Compile Include="References\StudentRef.cs" />
     <Compile Include="ResourceNameAttribute.cs" />
     <Compile Include="NamedEntityDTO.cs" />
     <Compile Include="PluralizeNameAttribute.cs" />
@@ -85,6 +90,12 @@
     <Compile Include="UserRateItemDTO.cs" />
     <Compile Include="VisitingDTO.cs" />
     <Compile Include="VisitingsDTO.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{394b1151-0b45-441e-b90e-abbed2f0ce65}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

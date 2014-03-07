@@ -10,7 +10,7 @@ using StudyingController.ViewModels.Models;
 
 namespace StudyingController.ViewModels
 {
-    public class ControlStructureViewModel : EditableViewModel
+    public class ControlStructureViewModel : EditableViewModel, IExportable
     {
         #region Fields & Properties
 
@@ -27,6 +27,9 @@ namespace StudyingController.ViewModels
                 }
             }
         }
+
+        private LectureDataViewModel lectureDataViewModel;
+        private PracticeDataViewModel practiceDataViewModel;
 
         #endregion
 
@@ -66,27 +69,44 @@ namespace StudyingController.ViewModels
         {
             if (entity is LectureDTO)
             {
-                LectureDataViewModel lectureDataViewModel = new LectureDataViewModel(UserInterop, ControllerInterop, Dispatcher, entity as LectureDTO);
-                lectureDataViewModel.WorkspaceChanged += (vm) =>
-                    {
-                        if (WorkspaceChanged != null)
-                            WorkspaceChanged(vm);
-                    };
+                if (lectureDataViewModel == null)
+                {
+                    lectureDataViewModel = new LectureDataViewModel(UserInterop, ControllerInterop, Dispatcher, entity as LectureDTO);
+                    lectureDataViewModel.PropertyChanged += lectureDataViewModel_PropertyChanged;
+                    lectureDataViewModel.WorkspaceChanged += (vm) =>
+                        {
+                            if (WorkspaceChanged != null)
+                                WorkspaceChanged(vm);
+                        };
+                }
+                else
+                    lectureDataViewModel.InitControl(entity as LectureDTO);
                 return lectureDataViewModel;
             }
 
             if (entity is PracticeTeacherDTO)
             {
-                PracticeDataViewModel practiceDataViewModel = new PracticeDataViewModel(UserInterop, ControllerInterop, Dispatcher, entity as PracticeTeacherDTO);
-                practiceDataViewModel.WorkspaceChanged += (vm) =>
+                if (practiceDataViewModel == null)
                 {
-                    if (WorkspaceChanged != null)
-                        WorkspaceChanged(vm);
-                };
+                    practiceDataViewModel = new PracticeDataViewModel(UserInterop, ControllerInterop, Dispatcher, entity as PracticeTeacherDTO);
+                    practiceDataViewModel.WorkspaceChanged += (vm) =>
+                    {
+                        if (WorkspaceChanged != null)
+                            WorkspaceChanged(vm);
+                    };
+                }
+                else
+                    practiceDataViewModel.InitControl(entity as PracticeTeacherDTO);
                 return practiceDataViewModel;
             }
-            
+
             return null;
+        }
+
+        private void lectureDataViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "SelectedIndex")
+                UpdateProperties();
         }
 
         #endregion
@@ -96,6 +116,28 @@ namespace StudyingController.ViewModels
         public event ChangeWorkspaceHandler WorkspaceChanged;
         
         #endregion
+
+        protected override void UpdateProperties()
+        {
+            base.UpdateProperties();
+            OnPropertyChanged("AllowExportToExcel");
+        }
+
+        public bool AllowExportToExcel
+        {
+            get
+            {
+                return EntitiesProvider.CurrentEntity as LectureDTO != null
+                    && lectureDataViewModel != null
+                    && lectureDataViewModel.AllowExportToExcel;
+            }
+        }
+
+        public void ExportToExcel()
+        {
+            lectureDataViewModel.ExportToExcel();
+        }
+
     }
 
     public delegate void ChangeWorkspaceHandler(BaseApplicationViewModel viewModel);

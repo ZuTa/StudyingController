@@ -2213,7 +2213,7 @@ namespace StudyingControllerService
                             }
                         }
 
-                        List<MarkDTO> toNotify = toAdd.Count == 0 ? toEdit : toAdd;
+                        List<MarkDTO> toNotify = toAdd.Concat(toEdit).ToList();
                         foreach (var mark in toNotify)
                         {
                             var notification = new NotificationDTO();
@@ -2505,69 +2505,138 @@ namespace StudyingControllerService
             }
         }
 
-        public List<VisitingsDTO> GetVisitingsForLecture(Session session, int id)
+        public StudentDTO GetStudent(Session session, int id)
+        {
+            try
+            {
+                this.CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var query = (from item
+                                      in context.SystemUsers.Include("UserInformation")
+                                 where item.ID == id
+                                 select item).FirstOrDefault();
+                    if (query != null)
+                        context.LoadProperty(query as Student, "Groups");
+                    return query == null ? null : (query as Student).ToDTO();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public List<VisitingsDTO> GetVisitingsForLecture(Session session, LectureRef lecRef)
         {
             try
             {
                 CheckSession(session);
 
-                //List<VisitingsDTO> result = new List<VisitingsDTO>();
+                List<VisitingsDTO> result = new List<VisitingsDTO>();
 
-                //using (UniversityEntities context = new UniversityEntities())
-                //{
-                //    var query = context.Visitings.Include("Lecture").Where(v => v.Lecture != null && v.Lecture.ID == id).ToList();
-
-                //    foreach (IGrouping<int, Visiting> gr in query.GroupBy(v => v.StudentID))
-                //    {
-                //        var visits = gr.Select(g=>new VisitingDTO
-                //        {
-                //            Date = g.Date,
-                //            Description = g.Description,
-                //            ID = g.ID,
-                //            StudentID = g.StudentID,
-                //            Value = (VisitingValue)g.Value
-                //        }).ToList();
-
-                //        result.Add(new VisitingsDTO()
-                //        {
-                //            StudentID = gr.Key,
-                //            Visitings = visits
-                //        });
-                //    }
-                //}
-
-
-                List<VisitingsDTO> visits = new List<VisitingsDTO>();
-                //visits.Add(new VisitingsModel
-                //{
-                //    ID = 1,
-                //    StudentID = 1,
-                //});
-
-                for (int i = 1; i < 10; i++)
+                using (UniversityEntities context = new UniversityEntities())
                 {
-                    var v = new VisitingsDTO
+                    Lecture lecture = context.Lectures.First(c=>c.ID == lecRef.ID) as Lecture;
+
+                            context.LoadProperty(lecture, "Groups");
+                            foreach (Group g in lecture.Groups)
+                            {
+                                context.LoadProperty(g, "Students");
+                                foreach (Student s in g.Students)
+                                {
+                                    context.LoadProperty(s, "UserInformation");
+                                    result.Add(new VisitingsDTO
+                                    {
+                                        Lecture = new LectureRef{ ID = lecture.ID}, 
+                                        Student = new StudentRef{ ID = s.ID, Name = s.UserInformation.LastName + " " + s.UserInformation.FirstName}
+                                    });
+                                }
+                            }
+                    
+                            context.LoadProperty(lecture, "Visitings");
+                    var dates = lecture.Visitings.Select(v=>v.Date).Distinct();
+
+                    foreach(var res in result)
                     {
-                        ID = i,
-                        StudentID = i,
-                        StudentName = "Студент " + i.ToString()
-                    };
-                    for (int j = 1; j < 20; j++)
-                    {
-                        v.Visitings.Add(new VisitingDTO
+                        res.Visitings = new List<VisitingDTO>();
+                        foreach(var dat in dates)
                         {
-                            Date = DateTime.Today.AddDays(j),
-                            // Description = "desc" + j.ToString(),
-                            ID = j,
-                            StudentID = i,
-                            Value = VisitingValue.Present
-                        });
+                            Visiting visiting = lecture.Visitings.FirstOrDefault(v=>v.Date == dat && v.StudentID== res.Student.ID);
+                            if(visiting == null)
+                            {
+                                visiting = new Visiting
+                                {
+                                    Date = dat,
+                                    Lecture = lecture,
+                                    StudentID = res.Student.ID,
+                                };
+
+                                context.Visitings.AddObject(visiting);
+                                context.SaveChanges();
+                            }
+
+                            res.Visitings.Add(visiting.ToDTO());
+                        }
                     }
-                    visits.Add(v);
                 }
 
-                return visits;
-                //return result;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+
+        public void SaveVisitingsForLecture(Session session, LectureRef lecRef, List<VisitingDTO> visitings)
+        {
+            try
+            {
+                CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var lecture = context.Lectures.FirstOrDefault(l => l.ID == lecRef.ID);
+                    if (lecture != null)
+                    {
+                        var toEdit = new List<VisitingDTO>();
+                        var toAdd = new List<VisitingDTO>();
+
+                        context.LoadProperty(lecture, "Groups");
+                        context.LoadProperty(lecture, "Visitings");
+
+                        toAdd = visitings.Where(v => lecture.Visitings.ToList().Find(lv => lv.StudentID == v.Student.ID) == null).ToList();
+                        toEdit = visitings.Where(v => lecture.Visitings.ToList().Find(lv => lv.StudentID == v.Student.ID) != null).ToList();
+
+                        foreach (var a in toAdd)
+                        {
+                            Visiting vis = new Visiting(a as VisitingDTO);
+                            vis.Lecture = lecture;
+                            context.Visitings.AddObject(vis);
+                        }
+
+                        foreach (var e in toEdit)
+                        {
+                            var elem = context.Visitings.Where(v => v.ID == e.ID).FirstOrDefault();
+                            if (elem == null)
+                            {
+                                Visiting vis = new Visiting(e as VisitingDTO);
+                                vis.Lecture = lecture;
+                                context.Visitings.AddObject(vis);
+                            }
+                            else
+                            {
+                                //elem.Assign(e);
+                                //elem.Lecture = lecture;
+                                elem.Value = (int)e.Value;
+                                elem.Description = e.Description;
+                                elem.Date = e.Date;
+                            }
+                        }
+                    }
+                    context.SaveChanges();
+                }
             }
             catch (Exception ex)
             {

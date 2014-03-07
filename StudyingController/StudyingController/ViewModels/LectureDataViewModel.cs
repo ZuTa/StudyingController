@@ -9,18 +9,37 @@ using System.Windows.Threading;
 
 namespace StudyingController.ViewModels
 {
-    public class LectureDataViewModel : SaveableViewModel
+    public class LectureDataViewModel : SaveableViewModel, IExportable
     {
         #region Fields & Properties
+
+        private int selectedIndex;
+        public int SelectedIndex
+        {
+            get { return selectedIndex; }
+            set
+            {
+                selectedIndex = value;
+                OnPropertyChanged("SelectedIndex");
+            }
+        }
+
+        public bool IsExisted
+        {
+            get
+            {
+                return OriginalControl.ID != 0;
+            }
+        }
 
         public override bool CanSave
         {
             get
             {
-                return base.CanSave;
-                    //&& MarksViewModel != null 
-                    //&& MarksViewModel.CanSave 
-                    //|| base.CanSave && MarksViewModel == null;
+                return base.CanSave
+                    && LectureVisitings != null 
+                    && LectureVisitings.CanSave 
+                    || base.CanSave && LectureVisitings == null;
             }
         }
 
@@ -28,7 +47,7 @@ namespace StudyingController.ViewModels
         {
             get
             {
-                return base.IsModified ;//|| (MarksViewModel != null && MarksViewModel.IsModified);
+                return base.IsModified || (LectureVisitings != null && LectureVisitings.IsModified);
             }
         }
 
@@ -82,6 +101,11 @@ namespace StudyingController.ViewModels
         public LectureDataViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, LectureDTO lesson)
             : base(userInterop, controllerInterop, dispatcher)
         {
+            InitControl(lesson);
+        }
+
+        public void InitControl(LectureDTO lesson)
+        {
             originalEntity = lesson;
 
             Model = new LectureModel(lesson);
@@ -92,6 +116,12 @@ namespace StudyingController.ViewModels
             LectureVisitings = new LectureVisitingsViewModel(UserInterop, ControllerInterop, Dispatcher, lesson);
 
             Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+
+            if (IsExisted)
+            {
+                LectureVisitings.ViewModified += LectureVisitings_ViewChanged;
+                LectureVisitings.ViewUnModified += LectureVisitings_ViewChanged;
+            }
         }
 
         void lessonControlsViewModel_WorkspaceChanged(BaseModel model)
@@ -116,14 +146,14 @@ namespace StudyingController.ViewModels
 
         public override void Save()
         {
-            //MarksViewModel.Save();
+            LectureVisitings.Save();
             SetUnModified();
         }
 
         public override void Rollback()
         {
             //Control.Assign(OriginalControl);
-            //MarksViewModel.Rollback();
+            LectureVisitings.Rollback();
             SetUnModified();
         }
 
@@ -134,7 +164,6 @@ namespace StudyingController.ViewModels
 
         protected override void LoadData()
         {
-            //if (IsUserStudent) mark = ControllerInterop.Service.GetLectureMark(ControllerInterop.Session, ControllerInterop.User.ID, Model.ID);
             LectureControls.Load();
             LectureVisitings.Load();
         }
@@ -145,12 +174,22 @@ namespace StudyingController.ViewModels
 
         #endregion
 
-        //private void MarksViewModel_ViewModelChanged(object sender, EventArgs e)
-        //{
-        //    if (MarksViewModel.IsModified)
-        //        SetModified();
-        //    else
-        //        SetUnModified();
-        //}
+        void LectureVisitings_ViewChanged(object sender, EventArgs e)
+        {
+            if (LectureVisitings.IsModified)
+                SetModified();
+            else
+                SetUnModified();
+        }
+
+        public bool AllowExportToExcel
+        {
+            get { return SelectedIndex == 1 && LectureVisitings.AllowExportToExcel; }
+        }
+
+        public void ExportToExcel()
+        {
+            LectureVisitings.ExportToExcel();
+        }
     }
 }

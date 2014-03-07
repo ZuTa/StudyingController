@@ -105,6 +105,48 @@
         </Setter>
     </Style>
 
+    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource OverridenDefaultButtonStyle}" x:Key="LeftMenuButtonStyle">
+        <Setter Property="Width" Value="150"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Margin" Value="1"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Name="border" Padding="1" BorderThickness="1" CornerRadius="0">
+                        <ContentPresenter Content="{TemplateBinding Property=ContentControl.Content}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="DodgerBlue" />
+                            <Setter TargetName="border" Property="Background">
+                                <Setter.Value>
+                                    <SolidColorBrush>
+                                        <SolidColorBrush.Color>
+                                            <Color A="200" R="194" G="224" B="255" />
+                                        </SolidColorBrush.Color>
+                                    </SolidColorBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter TargetName="border" Property="BorderBrush" Value="LightGray" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="DodgerBlue" />
+                            <Setter TargetName="border" Property="Background" Value="LightSkyBlue" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="LeftMenuTextBlockStyle">
+        <Setter Property="Margin" Value="2"/>
+    </Style>
+
     <Style TargetType="Button"> <!--:Key="TreeFontStyle">-->
     </Style>
 
@@ -170,7 +212,7 @@
     <Color x:Key="UnfilledColor" A="0" B="155" R="155" G="155"/>
 
     <Style x:Key="BusyAnimationStyle" TargetType="Control">
-        <Setter Property="Background" Value="Black"/>
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Control">

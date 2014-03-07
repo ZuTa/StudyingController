@@ -47,5 +47,6 @@ namespace StudyingControllerEntityModel
             base.Assign(entity);
             this.CurrentGroupID = entity.GroupID;
         }
+
     }
 }

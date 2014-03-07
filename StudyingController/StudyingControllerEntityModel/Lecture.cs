@@ -23,6 +23,14 @@ namespace StudyingControllerEntityModel
 
         #region Methods
 
+        public LectureRef ToRef()
+        {
+            return new LectureRef
+            {
+                ID = this.ID,
+            };
+        }
+
         public LectureDTO ToDTO()
         {
             return new LectureDTO

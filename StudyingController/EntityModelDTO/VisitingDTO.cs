@@ -25,8 +25,6 @@ namespace EntitiesDTO
     }
 
     [DataContract]
-    [KnownType(typeof(UserInformationDTO))]
-    [KnownType(typeof(FacultyAdminDTO))]
     public class VisitingDTO : BaseEntityDTO
     {
         private DateTime date;
@@ -53,25 +51,25 @@ namespace EntitiesDTO
             set { description = value; }
         }
 
-        private int studentID;
+        private StudentRef student;
         [DataMember]
-        public int StudentID
+        public StudentRef Student
         {
-            get { return studentID; }
-            set { studentID = value; }
+            get { return student; }
+            set { student = value; }
         }
 
-        private LectureDTO lecture;
+        private LectureRef lecture;
         [DataMember]
-        public LectureDTO Lecture
+        public LectureRef Lecture
         {
             get { return lecture; }
             set { lecture = value; }
         }
 
-        private PracticeDTO practice;
+        private PracticeRef practice;
         [DataMember]
-        public PracticeDTO Practice
+        public PracticeRef Practice
         {
             get { return practice; }
             set { practice = value; }

@@ -11,6 +11,7 @@ namespace EntitiesDTO
         public string Name
         {
             get { return string.Format("{0} {1}", UserInformation.LastName, UserInformation.FirstName); }
+            set { }
         }
 
         private GroupDTO group;

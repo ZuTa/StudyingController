@@ -16,36 +16,12 @@
                 <RowDefinition  Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <ToolBarTray >
-                <ToolBar>
-                    <Button Command="{Binding HomeCommand}" ToolTip="Моя сторінка" Style="{StaticResource MenuButtonStyle}">
-                        <Image Source="/StudyingController;component/Images/devid.png" Stretch="Fill" />
+                <ToolBar Visibility="{Binding Path=IsSaveable, Converter={StaticResource B2V}}">
+                    <Button ToolTip="Зберегти" IsEnabled="{Binding CurrentWorkspace.CanSave}" Command="{Binding SaveCurrentWorkspaceCommand}" Style="{StaticResource MenuButtonStyle}">
+                        <Image x:Name="img" Source="/StudyingController;component/Images/floppy.png" Stretch="Fill" />
                     </Button>
-                    <Button Command="{Binding LogoutCommand}" ToolTip="Вийти" Style="{StaticResource MenuButtonStyle}">
-                        <Image Source="/StudyingController;component/Images/application_exit.png" Stretch="Fill" />
-                    </Button>
-                </ToolBar>
-                <ToolBar>
-                    <Button ToolTip="Рейтинг" Command="{Binding Path=RateCommand}" Visibility="{Binding Path=IsUserAdminOrSecretary, Converter={StaticResource B2V}}" Style="{StaticResource MenuButtonStyle}">
-                        <Image Source="/StudyingController;component/Images/star.png" Stretch="Fill" />
-                    </Button>
-                    <Button ToolTip="Структура" Command="{Binding Path=UniversityStructureCommand}" Visibility="{Binding Path=IsUserAdminOrSecretary, Converter={StaticResource B2V}}" Style="{StaticResource MenuButtonStyle}">
-                        <Image Source="/StudyingController;component/Images/department.png" Stretch="Fill" />
-                    </Button>
-                    <Button Margin="3" ToolTip="Користувачі" Width="55" Height="55" Command="{Binding Path=UsersStructureCommand}" Visibility="{Binding Path=IsUserAdminOrSecretary, Converter={StaticResource B2V}}" Style="{StaticResource MenuButtonStyle}">
-                        <Image Source="/StudyingController;component/Images/people.png" Stretch="Fill" />
-                    </Button>
-                    <Button ToolTip="Контролі" Command="{Binding Path=ControlStructureCommand}" Visibility="{Binding Path=IsUserNotSecretary, Converter={StaticResource B2V}}" Style="{StaticResource MenuButtonStyle}">
-                        <Image Source="/StudyingController;component/Images/book_cd_vide.png" Stretch="Fill" />
-                    </Button>
-                    <Button x:Name="btn_Lessons" ToolTip="Пари"  Visibility="{Binding Path=IsUserAdminOrSecretary, Converter={StaticResource B2V}}" Command="{Binding Path=LessonCommand}" Style="{StaticResource MenuButtonStyle}">
-                        <Button.Content>
-                            <Image Source="/StudyingController;component/Images/Learn_Lesson-icon.png" Stretch="Fill" />
-                        </Button.Content>
-                    </Button>
-                    <Button Command="{Binding Path=AttachmentCommand}" Visibility="{Binding Path=IsUserTeacher, Converter={StaticResource B2V}}" Style="{StaticResource MenuButtonStyle}">
-                        <Button.Content>
-                            <Image Source="/StudyingController;component/Images/attachment.png" Stretch="Fill"/>
-                        </Button.Content>
+                    <Button ToolTip="Відмінити" IsEnabled="{Binding CurrentWorkspace.IsModified}" Command="{Binding RollbackCurrentWorkspaceCommand}" Style="{StaticResource MenuButtonStyle}">
+                        <Image Source="/StudyingController;component/Images/cancel_dv.png" Stretch="Fill" />
                     </Button>
                 </ToolBar>
                 <ToolBar Visibility="{Binding Path=IsManipulateableOrRefreshable, Converter={StaticResource B2V}}">
@@ -70,14 +46,6 @@
                         <Image Source="/StudyingController;component/Images/1327612550_delete.png" Stretch="Fill" />
                     </Button>
                 </ToolBar>
-                <ToolBar Visibility="{Binding Path=IsSaveable, Converter={StaticResource B2V}}">
-                    <Button ToolTip="Зберегти" IsEnabled="{Binding CurrentWorkspace.CanSave}" Command="{Binding SaveCurrentWorkspaceCommand}" Style="{StaticResource MenuButtonStyle}">
-                        <Image x:Name="img" Source="/StudyingController;component/Images/floppy.png" Stretch="Fill" />
-                    </Button>
-                    <Button ToolTip="Відмінити" IsEnabled="{Binding CurrentWorkspace.IsModified}" Command="{Binding RollbackCurrentWorkspaceCommand}" Style="{StaticResource MenuButtonStyle}">
-                        <Image Source="/StudyingController;component/Images/cancel_dv.png" Stretch="Fill" />
-                    </Button>
-                </ToolBar>
                 <ToolBar IsEnabled="{Binding Path=CurrentWorkspace.IsEnabled}" Visibility="{Binding Path=HasAdditionalCommands, Converter={StaticResource B2V}}" ItemsSource="{Binding CurrentWorkspace.AdditionalCommands}">
                     <ToolBar.ItemTemplate>
                         <DataTemplate>
@@ -98,9 +66,76 @@
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0" Margin="3">
+                    <StackPanel>
+                        <Button Command="{Binding HomeCommand}" ToolTip="Моя сторінка" Style="{StaticResource LeftMenuButtonStyle}">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/StudyingController;component/Images/devid.png" Stretch="Fill" />
+                                    <TextBlock Text="Моя сторінка" VerticalAlignment="Center" Style="{StaticResource LeftMenuTextBlockStyle}"></TextBlock>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <Button Command="{Binding LogoutCommand}" ToolTip="Вийти" Style="{StaticResource LeftMenuButtonStyle}">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/StudyingController;component/Images/application_exit.png" Stretch="Fill" />
+                                    <TextBlock Text="Вийти" VerticalAlignment="Center" Style="{StaticResource LeftMenuTextBlockStyle}"></TextBlock>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <Button ToolTip="Рейтинг" Command="{Binding Path=RateCommand}" Visibility="{Binding Path=IsUserAdminOrSecretary, Converter={StaticResource B2V}}" Style="{StaticResource LeftMenuButtonStyle}">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/StudyingController;component/Images/star.png" Stretch="Fill" />
+                                    <TextBlock Text="Рейтинг" VerticalAlignment="Center" Style="{StaticResource LeftMenuTextBlockStyle}"></TextBlock>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <Button ToolTip="Структура" Command="{Binding Path=UniversityStructureCommand}" Visibility="{Binding Path=IsUserAdminOrSecretary, Converter={StaticResource B2V}}" Style="{StaticResource LeftMenuButtonStyle}">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/StudyingController;component/Images/department.png" Stretch="Fill" />
+                                    <TextBlock Text="Структура" VerticalAlignment="Center" Style="{StaticResource LeftMenuTextBlockStyle}"></TextBlock>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <Button Margin="3" ToolTip="Користувачі" Command="{Binding Path=UsersStructureCommand}" Visibility="{Binding Path=IsUserAdminOrSecretary, Converter={StaticResource B2V}}" Style="{StaticResource LeftMenuButtonStyle}">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/StudyingController;component/Images/people.png" />
+                                    <TextBlock Text="Користувачі" VerticalAlignment="Center" Style="{StaticResource LeftMenuTextBlockStyle}"></TextBlock>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <Button ToolTip="Контролі" Command="{Binding Path=ControlStructureCommand}" Visibility="{Binding Path=IsUserNotSecretary, Converter={StaticResource B2V}}" Style="{StaticResource LeftMenuButtonStyle}">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/StudyingController;component/Images/book_cd_vide.png" Stretch="Fill" />
+                                    <TextBlock Text="Контролі" VerticalAlignment="Center" Style="{StaticResource LeftMenuTextBlockStyle}"></TextBlock>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <Button x:Name="btn_Lessons" ToolTip="Пари"  Visibility="{Binding Path=IsUserAdminOrSecretary, Converter={StaticResource B2V}}" Command="{Binding Path=LessonCommand}" Style="{StaticResource LeftMenuButtonStyle}">
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                    <Image Source="/StudyingController;component/Images/Learn_Lesson-icon.png" Stretch="Fill" />
+                                    <TextBlock Text="Пари" VerticalAlignment="Center" Style="{StaticResource LeftMenuTextBlockStyle}"></TextBlock>
+                                    </StackPanel>
+                                </Button.Content>
+                        </Button>
+                        <Button Command="{Binding Path=AttachmentCommand}" Visibility="{Binding Path=IsUserTeacher, Converter={StaticResource B2V}}" Style="{StaticResource LeftMenuButtonStyle}">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/StudyingController;component/Images/attachment.png" Stretch="Fill"/>
+                                    <TextBlock Text="Файли" VerticalAlignment="Center" Style="{StaticResource LeftMenuTextBlockStyle}"></TextBlock>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                    </StackPanel>
                     <!--<Expander IsExpanded="True" ExpandDirection="Right">
                     <ContentControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding UserInformationViewModel}"/>
                 </Expander>-->
@@ -131,7 +166,25 @@
                 </Expander>-->
                 </Grid>
                 <!--<ContentControl>-->
-                <Grid Grid.Column="1" >
+                <Separator  Grid.Column="1" BorderThickness="2">
+                    <Separator.LayoutTransform>
+                        <RotateTransform Angle="90">
+                            
+                        </RotateTransform>
+                    </Separator.LayoutTransform>
+                    <Separator.BorderBrush>
+                        <LinearGradientBrush>
+                            <GradientStopCollection>
+                                <GradientStop Color="LightGray" Offset="0.01"></GradientStop>
+                                <GradientStop Color="DarkGray" Offset="0.1"></GradientStop>
+                                <GradientStop Color="Black" Offset="0.5"></GradientStop>
+                                <GradientStop Color="DarkGray" Offset="0.9"></GradientStop>
+                                <GradientStop Color="LightGray" Offset="0.99"></GradientStop>
+                            </GradientStopCollection>
+                        </LinearGradientBrush>
+                    </Separator.BorderBrush>
+                </Separator>
+                <Grid Grid.Column="2" >
                     <Grid>
                         <ContentControl Margin="3" 
                                 HorizontalAlignment="Stretch" 

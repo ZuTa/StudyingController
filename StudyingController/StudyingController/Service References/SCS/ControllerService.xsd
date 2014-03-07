@@ -981,7 +981,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetVisitingsForLecture">
+  <xs:element name="GetStudent">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q132="http://schemas.datacontract.org/2004/07/StudyingControllerService" minOccurs="0" name="session" nillable="true" type="q132:Session" />
@@ -989,11 +989,40 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetStudentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q133="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="GetStudentResult" nillable="true" type="q133:StudentDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetVisitingsForLecture">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q134="http://schemas.datacontract.org/2004/07/StudyingControllerService" minOccurs="0" name="session" nillable="true" type="q134:Session" />
+        <xs:element xmlns:q135="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="lecture" nillable="true" type="q135:LectureRef" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetVisitingsForLectureResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q133="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="GetVisitingsForLectureResult" nillable="true" type="q133:ArrayOfVisitingsDTO" />
+        <xs:element xmlns:q136="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="GetVisitingsForLectureResult" nillable="true" type="q136:ArrayOfVisitingsDTO" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveVisitingsForLecture">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q137="http://schemas.datacontract.org/2004/07/StudyingControllerService" minOccurs="0" name="session" nillable="true" type="q137:Session" />
+        <xs:element xmlns:q138="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="lecture" nillable="true" type="q138:LectureRef" />
+        <xs:element xmlns:q139="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="visitings" nillable="true" type="q139:ArrayOfVisitingDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveVisitingsForLectureResponse">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>
