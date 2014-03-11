@@ -19,9 +19,9 @@ namespace StudyingController.ViewModels.Models
             set { lectures = value; }
         }
 
-        private CathedraDTO cathedra;
+        private CathedraRef cathedra;
         [Validateable]
-        public CathedraDTO Cathedra
+        public CathedraRef Cathedra
         {
             get { return cathedra; }
             set
@@ -61,8 +61,13 @@ namespace StudyingController.ViewModels.Models
                 Login = this.Login,
                 Password = this.Password,
                 Role = this.Role,
-                UserInformation = this.UserInformation.ToDTO(),
-                CathedraID = this.Cathedra.ID
+                Cathedra = this.Cathedra,
+                FirstName = this.FirstName,
+                MiddleName = this.MiddleName,
+                LastName = this.LastName,
+                Picture = this.Picture,
+                Birth = this.Birth,
+                Email = this.Email
             };
         }
 

@@ -39,7 +39,10 @@ namespace StudyingController.ViewModels
         public BaseModel Model
         {
             get { return model; }
-            set { model = value; }
+            set 
+            { 
+                model = value;
+            }
         }
         
         #endregion

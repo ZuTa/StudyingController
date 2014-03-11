@@ -144,7 +144,12 @@ namespace StudyingController.ViewModels
             throw new NotImplementedException();
         }
 
-        protected override void LoadData()
+        protected override object LoadDataFromServer()
+        {
+            return null;
+        }
+
+        protected override void AfterDataLoaded()
         {
             if (IsUserStudent) mark = ControllerInterop.Service.GetPracticeMark(ControllerInterop.Session, ControllerInterop.User.ID, Model.ID);
         }

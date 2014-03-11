@@ -93,6 +93,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{394b1151-0b45-441e-b90e-abbed2f0ce65}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EntityModelDTO\EntitiesDTO.csproj">
       <Project>{86B57E17-94BC-45DD-BCC9-2DA0C9C4D596}</Project>
       <Name>EntitiesDTO</Name>

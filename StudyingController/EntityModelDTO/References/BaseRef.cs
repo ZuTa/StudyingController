@@ -11,10 +11,5 @@ namespace EntitiesDTO
     {
         [DataMember]
         public int ID { get; set; }
-
-        //public virtual TOutput ToDataBaseObject<TOutput, TInput>(TInput obj)
-        //{
-        //    TOutput dbObj = new 
-        //}
     }
 }

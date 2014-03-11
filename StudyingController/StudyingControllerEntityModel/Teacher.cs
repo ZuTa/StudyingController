@@ -28,13 +28,18 @@ namespace StudyingControllerEntityModel
             {
                 ID = this.ID,
                 Login = this.Login,
-                UserInformation = (this.UserInformation as IDTOable<UserInformationDTO>).ToDTO(),
                 Role = this.Role,
-                CathedraID = this.CathedraID,
-                Lectures = this.Lectures.ToDTOList<LectureDTO, Lecture>()
+                FirstName = this.FirstName,
+                MiddleName = this.MiddleName,
+                LastName = this.LastName,
+                Picture = this.Picture,
+                Birth = this.Birth.HasValue ? this.Birth.Value: DateTime.MinValue,
+                Email = this.Email,
+                Cathedra = new CathedraRef{ID = this.CathedraID},
+                Lectures = this.Lectures.Select(l=> new LectureRef{ID = l.ID}).ToList() //ToDTOList<LectureDTO, Lecture>()
             };
             if (this.Cathedra != null)
-                teacher.Cathedra = this.Cathedra.ToDTO();
+                teacher.Cathedra = new CathedraRef { ID = Cathedra.ID, Name = Cathedra.Name };
             return teacher;
         }
 
@@ -42,7 +47,7 @@ namespace StudyingControllerEntityModel
         {
             base.Assign(entity);
 
-            CathedraID = entity.CathedraID;
+            CathedraID = entity.Cathedra.ID;
         }
     }
 }

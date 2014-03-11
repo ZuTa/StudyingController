@@ -79,7 +79,6 @@
     <Compile Include="Subject.cs" />
     <Compile Include="SystemUser.cs" />
     <Compile Include="Teacher.cs" />
-    <Compile Include="UserInformation.cs" />
     <Compile Include="Visiting.cs" />
   </ItemGroup>
   <ItemGroup>

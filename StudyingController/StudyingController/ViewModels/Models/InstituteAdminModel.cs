@@ -41,8 +41,13 @@ namespace StudyingController.ViewModels.Models
                 Login = this.Login,
                 Role = this.Role,
                 Password = this.Password,
-                UserInformation = this.UserInformation.ToDTO(),
-                InstituteID = Institute.ID
+                InstituteID = Institute.ID,
+                FirstName = this.FirstName,
+                MiddleName = this.MiddleName,
+                LastName = this.LastName,
+                Picture = this.Picture,
+                Birth = this.Birth,
+                Email = this.Email
             };
         }
 

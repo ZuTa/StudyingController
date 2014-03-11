@@ -6,6 +6,7 @@ using EntitiesDTO;
 using StudyingController.ViewModels.Models;
 using StudyingController.Common;
 using System.Windows.Threading;
+using Common;
 
 namespace StudyingController.ViewModels
 {
@@ -85,21 +86,27 @@ namespace StudyingController.ViewModels
             SetUnModified();
         }
 
-        protected override void LoadData()
+        protected override object LoadDataFromServer()
         {
-            Cathedras = ControllerInterop.Service.GetAllCathedras(ControllerInterop.Session);
+            return ControllerInterop.Service.GetAllCathedras(ControllerInterop.Session);
+        }
+
+        protected override void AfterDataLoaded()
+        {
+            base.AfterDataLoaded();
+
+            Cathedras = DataSource as List<CathedraDTO>;
 
             TeacherDTO teacher = originalEntity as TeacherDTO;
             if (teacher.Exists())
             {
                 teacher.Cathedra = (from cathedra in cathedras
-                                    where cathedra.ID == OriginalTeacher.CathedraID
-                                    select cathedra).FirstOrDefault();
+                                    where cathedra.ID == OriginalTeacher.Cathedra.ID
+                                    select cathedra).FirstOrDefault().CopyTo(()=>new CathedraRef());
             }
 
             Model = new TeacherModel(teacher);
             this.Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
-
         }
 
         protected override void ClearData()

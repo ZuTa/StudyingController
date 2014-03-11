@@ -22,6 +22,21 @@ namespace StudyingControllerEntityModel
             }
         }
 
+        public string Name
+        {
+            get { return string.Format("{0} {1} {2}", LastName, FirstName, MiddleName); }
+        }
+
+        public string ShortName
+        {
+            get
+            {
+                return LastName
+                + (!string.IsNullOrEmpty(FirstName) ? FirstName[0] + "." : "")
+                + (!string.IsNullOrEmpty(MiddleName) ? MiddleName[0] + "." : "");
+            }
+        }
+
         #region Constructors
 
         public SystemUser()
@@ -30,7 +45,6 @@ namespace StudyingControllerEntityModel
 
         public SystemUser(SystemUserDTO user)
         {
-            UserInformation = new StudyingControllerEntityModel.UserInformation();
             Assign(user);
         }        
 
@@ -44,7 +58,12 @@ namespace StudyingControllerEntityModel
                 Login = this.Login,
                 Password = Encoding.UTF8.GetString(this.Password),
                 Role = this.Role,
-                UserInformation = (this.UserInformation as IDTOable<UserInformationDTO>).ToDTO()
+                FirstName = this.FirstName,
+                MiddleName = this.MiddleName,
+                LastName = this.LastName,
+                Picture = this.Picture,
+                Birth = this.Birth.HasValue ? this.Birth.Value: DateTime.MinValue,
+                Email = this.Email,
             };
 
             return user;
@@ -56,7 +75,7 @@ namespace StudyingControllerEntityModel
             Role = entity.Role;
             Login = entity.Login;
             Password = Encoding.UTF8.GetBytes(entity.Password);
-            UserInformation.Assign(entity.UserInformation);
+            
         }
     }
 }

@@ -89,8 +89,15 @@ namespace StudyingController.ViewModels
             throw new NotImplementedException();
         }
 
-        protected override void LoadData()
+        protected override object LoadDataFromServer()
         {
+            return ControllerInterop.Service.GetVisitingsForLecture(ControllerInterop.Session, new LectureRef { ID = OriginalLesson.ID });
+        }
+
+        protected override void AfterDataLoaded()
+        {
+            base.AfterDataLoaded();
+
             BaseEntityDTO lesson = originalEntity as BaseEntityDTO;
 
             if (Visitings != null)
@@ -102,7 +109,7 @@ namespace StudyingController.ViewModels
                 }
             }
 
-            Visitings = ControllerInterop.Service.GetVisitingsForLecture(ControllerInterop.Session, new LectureRef { ID = OriginalLesson.ID }).ToModelList<VisitingsModel, VisitingsDTO>();
+            Visitings = (DataSource as List<VisitingsDTO>).ToModelList<VisitingsModel, VisitingsDTO>();
 
             foreach (VisitingsModel visitingsModel in Visitings)
             {
@@ -132,7 +139,7 @@ namespace StudyingController.ViewModels
 
         public override void Rollback()
         {
-            LoadData();
+            Load();
             SetUnModified();
         }
 
@@ -196,8 +203,8 @@ namespace StudyingController.ViewModels
                 data.Last().Add(counter++.ToString());
 
                 StudentModel user = new StudentModel(ControllerInterop.Service.GetStudent(ControllerInterop.Session, vis.Student.ID));
-                data.Last().Add(user.UserInformation.FirstName);
-                data.Last().Add(user.UserInformation.LastName);
+                data.Last().Add(user.FirstName);
+                data.Last().Add(user.LastName);
 
                 //GroupModel group = new GroupModel(ControllerInterop.Service.GetGroup(ControllerInterop.Session, user.Group.ID));
                 //data.Last().Add(group.Name);

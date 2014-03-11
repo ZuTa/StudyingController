@@ -84,17 +84,23 @@ namespace StudyingController.ViewModels
             SetUnModified();
         }
 
-        protected override void LoadData()
+        protected override object LoadDataFromServer()
         {
-            Faculties = ControllerInterop.Service.GetAllFaculties(ControllerInterop.Session);
+            return ControllerInterop.Service.GetAllFaculties(ControllerInterop.Session);
+        }
+
+        protected override void AfterDataLoaded()
+        {
+            base.AfterDataLoaded();
+            Faculties = DataSource as List<FacultyDTO>;
 
             FacultyAdminDTO admin = originalEntity as FacultyAdminDTO;
 
             if (admin.Exists())
             {
                 admin.Faculty = (from faculty in faculties
-                                        where faculty.ID == OriginalFacultyAdmin.FacultyID
-                                        select faculty).FirstOrDefault();
+                                 where faculty.ID == OriginalFacultyAdmin.FacultyID
+                                 select faculty).FirstOrDefault();
             }
 
             Model = new FacultyAdminModel(admin);

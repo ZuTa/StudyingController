@@ -85,9 +85,15 @@ namespace StudyingController.ViewModels
             SetUnModified();
         }
 
-        protected override void LoadData()
+        protected override object LoadDataFromServer()
         {
-            Institutes = ControllerInterop.Service.GetInstitutes(ControllerInterop.Session);
+            return ControllerInterop.Service.GetInstitutes(ControllerInterop.Session);
+        }
+
+        protected override void AfterDataLoaded()
+        {
+            base.AfterDataLoaded();
+            Institutes = (DataSource as List<InstituteDTO>);
 
             InstituteSecretaryDTO instituteSecretary = originalEntity as InstituteSecretaryDTO;
             if (originalEntity.Exists())

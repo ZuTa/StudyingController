@@ -7,5 +7,13 @@ namespace EntitiesDTO
 {
     public class InstituteDTO : NamedEntityDTO
     {
+        //public InstituteRef ToRef()
+        //{
+        //    return new InstituteRef
+        //    {
+        //        ID = this.ID,
+        //        Name = this.Name
+        //    };
+        //}
     }
 }

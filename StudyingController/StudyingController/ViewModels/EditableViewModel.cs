@@ -116,8 +116,14 @@ namespace StudyingController.ViewModels
             CurrentWorkspace.Rollback();
         }
 
-        protected override void LoadData()
+        protected override object LoadDataFromServer()
         {
+            return null;
+        }
+
+        protected override void AfterDataLoaded()
+        {
+            base.AfterDataLoaded();
             Refresh();
         }
 
@@ -162,15 +168,19 @@ namespace StudyingController.ViewModels
         {
             if (viewModel != null)
             {
-                viewModel.Load();
+                viewModel.Load().ContinueWith((task) =>
+                    {
+                        Dispatcher.Invoke(new Action(() =>
+                            {
+                                UnsubscribeFromEvents();
 
-                UnsubscribeFromEvrents();
+                                CurrentWorkspace = viewModel;
 
-                CurrentWorkspace = viewModel;
+                                UpdateProperties();
 
-                UpdateProperties();
-
-                SubscribeToEvents();
+                                SubscribeToEvents();
+                            }));
+                    }, System.Threading.Tasks.TaskContinuationOptions.ExecuteSynchronously);
             }
             else
             {
@@ -188,7 +198,7 @@ namespace StudyingController.ViewModels
             }
         }
 
-        private void UnsubscribeFromEvrents()
+        private void UnsubscribeFromEvents()
         {
             if (CurrentWorkspace != null)
             {

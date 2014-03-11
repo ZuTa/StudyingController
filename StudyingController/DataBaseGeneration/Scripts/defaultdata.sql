@@ -25,11 +25,7 @@ GO
 USE [UniversityDB] 
 GO
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'admin', convert(binary,''),1)
+	( 'admin', convert(binary,''),1, N'Адміністратор', N'admin', N'Адмін', N'admin@admin.com' )
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(1, N'Панас', N'Адмінич', 'panas@admin.com')

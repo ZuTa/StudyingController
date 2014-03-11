@@ -81,7 +81,7 @@ namespace StudyingControllerWindowsService
             //bnd.Security.Transport.ProxyCredentialType = HttpProxyCredentialType.None;
             //host.AddServiceEndpoint(typeof(IControllerService), bnd, "ControllerService");
 
-            CheckStudyRanges();
+            //CheckStudyRanges();
 
             host.Open();
         }

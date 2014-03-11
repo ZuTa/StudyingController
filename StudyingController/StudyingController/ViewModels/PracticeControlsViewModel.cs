@@ -109,7 +109,12 @@ namespace StudyingController.ViewModels
             throw new NotImplementedException();
         }
 
-        protected override void LoadData()
+        protected override object LoadDataFromServer()
+        {
+            return ControllerInterop.Service.GetPracticeControls(ControllerInterop.Session, OriginalLesson.ID);
+        }
+
+        protected override void AfterDataLoaded()
         {
             BaseEntityDTO lesson = originalEntity as BaseEntityDTO;
 
@@ -119,7 +124,7 @@ namespace StudyingController.ViewModels
                     controlModel.PropertyChanged -= ModelPropertyChanged;
             }
 
-            Controls = ControllerInterop.Service.GetPracticeControls(ControllerInterop.Session, OriginalLesson.ID).ToModelList<PracticeControlModel, PracticeControlDTO>();
+            Controls = (DataSource as List<PracticeControlDTO>).ToModelList<PracticeControlModel, PracticeControlDTO>();
 
             foreach (ControlModel controlModel in Controls)
                 controlModel.PropertyChanged += ModelPropertyChanged;
@@ -160,7 +165,7 @@ namespace StudyingController.ViewModels
 
         public override void Rollback()
         {
-            LoadData();
+            Load();
             SetUnModified();
         }
 

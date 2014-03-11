@@ -111,7 +111,7 @@ namespace StudyingController.ViewModels
         {
             if (Faculty != null && Group != null)
             {
-                Cathedras = ControllerInterop.Service.GetCathedras(ControllerInterop.Session, Faculty.ID);
+                Cathedras = ControllerInterop.Service.GetCathedras(ControllerInterop.Session, new FacultyRef { ID = Faculty.ID });
                 if (Group.Cathedra != null) Group.Cathedra = (from cathedra in Cathedras
                                                               where cathedra.ID == Group.Cathedra.ID
                                                               select cathedra).FirstOrDefault();
@@ -132,9 +132,16 @@ namespace StudyingController.ViewModels
                 cathedras.Clear();
         }
 
-        protected override void LoadData()
+        protected override object LoadDataFromServer()
         {
-            Faculties = ControllerInterop.Service.GetAllFaculties(ControllerInterop.Session);
+            return ControllerInterop.Service.GetAllFaculties(ControllerInterop.Session);
+        }
+
+        protected override void AfterDataLoaded()
+        {
+            base.AfterDataLoaded();
+
+            Faculties = (DataSource as List<FacultyDTO>);
 
             GroupDTO group = originalEntity as GroupDTO;
 
@@ -149,7 +156,7 @@ namespace StudyingController.ViewModels
             }
 
             Model = new GroupModel(group);
-//TODO:CHANGE THIS FUCKING CODE
+
             if (originalEntity.Exists())
             {
                 Faculty = (from faculty in faculties

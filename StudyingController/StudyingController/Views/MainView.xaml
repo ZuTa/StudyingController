@@ -135,6 +135,14 @@
                                 </StackPanel>
                             </Button.Content>
                         </Button>
+                        <Button Command="{Binding Path=SettingsCommand}" Visibility="{Binding Path=IsUserAdminOrSecretary, Converter={StaticResource B2V}}" Style="{StaticResource LeftMenuButtonStyle}">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <!--<Image Source="/StudyingController;component/Images/attachment.png" Stretch="Fill"/>-->
+                                    <TextBlock Text="Налаштування" VerticalAlignment="Center" Style="{StaticResource LeftMenuTextBlockStyle}"></TextBlock>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
                     </StackPanel>
                     <!--<Expander IsExpanded="True" ExpandDirection="Right">
                     <ContentControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding UserInformationViewModel}"/>

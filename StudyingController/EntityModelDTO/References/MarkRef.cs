@@ -7,7 +7,8 @@ using System.Text;
 namespace EntitiesDTO
 {
     [DataContract]
-    public class StudentRef : SystemUserRef
+    public class MarkRef : BaseRef
     {
+        public decimal Value { get; set; }
     }
 }

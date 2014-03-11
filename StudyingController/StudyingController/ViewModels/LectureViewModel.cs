@@ -76,7 +76,7 @@ namespace StudyingController.ViewModels
         {
             this.originalEntity = lecture;
 
-            this.selector = new SelectorViewModel(userInterop, controllerInterop, dispatcher, ControllerInterop.Service.GetTeacher(ControllerInterop.Session, lecture.TeacherID).Cathedra.Faculty, selector_SelectorItemChanged, false);
+            //this.selector = new SelectorViewModel(userInterop, controllerInterop, dispatcher, ControllerInterop.Service.GetTeacher(ControllerInterop.Session, lecture.TeacherID).Cathedra.Faculty, selector_SelectorItemChanged, false);
         }
 
         #endregion
@@ -128,7 +128,7 @@ namespace StudyingController.ViewModels
                 }
                 else if (entity is CathedraDTO)
                 {
-                    List<GroupDTO> cathedraGroups = ControllerInterop.Service.GetGroups(ControllerInterop.Session, entity.ID);
+                    List<GroupDTO> cathedraGroups = ControllerInterop.Service.GetGroups(ControllerInterop.Session, new CathedraRef { ID = entity.ID });
                     UsedGroups = new ObservableCollection<GroupDTO>((from g in usedGroups
                                                                      where cathedraGroups.Find(st => st.ID == g.ID) != null
                                                                      select g).ToList());
@@ -172,7 +172,12 @@ namespace StudyingController.ViewModels
             Selector.Helper.Entity = Selector.CurrentEntity;
         }
 
-        protected override void LoadData()
+        protected override object LoadDataFromServer()
+        {
+            return null;
+        }
+
+        protected override void AfterDataLoaded()
         {
             Model = new LectureModel(originalEntity as LectureDTO);
             Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);

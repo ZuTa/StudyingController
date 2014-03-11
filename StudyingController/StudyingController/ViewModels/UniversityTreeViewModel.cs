@@ -6,6 +6,7 @@ using StudyingController.Common;
 using System.Windows.Threading;
 using StudyingController.SCS;
 using EntitiesDTO;
+using Common;
 
 namespace StudyingController.ViewModels
 {
@@ -31,10 +32,14 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
-        protected override void LoadData()
+        protected override object LoadDataFromServer()
         {
-            base.LoadData();
+            return ControllerInterop.Service.GetUniversityTree(ControllerInterop.Session, ControllerInterop.Session.User.CopyTo(() => new SystemUserRef()));
+        }
 
+        protected override void AfterDataLoaded()
+        {
+            base.AfterDataLoaded();
             BuildUniversityTree();
         }
 
@@ -67,7 +72,11 @@ namespace StudyingController.ViewModels
 
         private void LoadInstitutes()
         {
-            List<InstituteDTO> institutes = ControllerInterop.Service.GetInstitutes(ControllerInterop.Session);
+            List<InstituteDTO> institutes = (DataSource as List<BaseEntityDTO>)
+                .Where(ds => ds is InstituteDTO)
+                .Select(ds => ds as InstituteDTO)
+                .ToList();
+
             foreach (var institute in institutes)
             {
                 lock (Tree)
@@ -75,7 +84,6 @@ namespace StudyingController.ViewModels
                     TreeNode node = Tree.AppendNode(new TreeNode(institute.Name, institute, institute.ID, 0));
 
                     LoadFaculties(institute.ID, node);
-                    
                 }
             }
         }
@@ -84,9 +92,15 @@ namespace StudyingController.ViewModels
         {
             List<FacultyDTO> faculties;
             if (instituteID.HasValue)
-                faculties = ControllerInterop.Service.GetFaculties(ControllerInterop.Session, instituteID.Value);
+                faculties = (DataSource as List<BaseEntityDTO>)
+                    .Where(ds => ds is FacultyDTO && (ds as FacultyDTO).InstituteID != null && (ds as FacultyDTO).InstituteID == instituteID.Value)
+                    .Select(ds => ds as FacultyDTO)
+                    .ToList();
             else
-                faculties = ControllerInterop.Service.GetFaculties(ControllerInterop.Session, null);
+                faculties = (DataSource as List<BaseEntityDTO>)
+                     .Where(ds => ds is FacultyDTO && (ds as FacultyDTO).InstituteID == null)
+                     .Select(ds => ds as FacultyDTO)
+                     .ToList();
 
             foreach (var faculty in faculties)
             {
@@ -101,13 +115,15 @@ namespace StudyingController.ViewModels
 
         private void LoadCathedras(int facultyID, TreeNode parentNode)
         {
-            List<CathedraDTO> cathedras = ControllerInterop.Service.GetCathedras(ControllerInterop.Session, facultyID);
+            List<CathedraDTO> cathedras = (DataSource as List<BaseEntityDTO>)
+                .Where(ds => ds is CathedraDTO && (ds as CathedraDTO).FacultyID == facultyID)
+                .Select(ds => ds as CathedraDTO)
+                .ToList();
             foreach (var cathedra in cathedras)
             {
                 lock (Tree)
                 {
                     TreeNode node = Tree.AppendNode(new TreeNode(cathedra.Name, cathedra, cathedra.ID, 2), parentNode);
-
                     LoadGroups(cathedra.ID, node);
                 }
             }
@@ -115,7 +131,7 @@ namespace StudyingController.ViewModels
 
         private void LoadGroups(int cathedraID, TreeNode parentNode)
         {
-            List<GroupDTO> groups = ControllerInterop.Service.GetGroups(ControllerInterop.Session, cathedraID);
+            List<GroupDTO> groups = ControllerInterop.Service.GetGroups(ControllerInterop.Session, new CathedraRef { ID = cathedraID });
             foreach (var group in groups)
             {
                 TreeNode node = Tree.AppendNode(new TreeNode(group.Name, group, group.ID, 3), parentNode);

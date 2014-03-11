@@ -9,6 +9,7 @@ using EntitiesDTO;
 
 namespace StudyingControllerService
 {
+
     [ServiceContract]
     public interface IControllerService
     {
@@ -20,13 +21,13 @@ namespace StudyingControllerService
         [FaultContract(typeof(ControllerServiceException))]
         List<InstituteDTO> GetInstitutes(Session session);
 
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        List<FacultyDTO> GetFaculties(Session session, InstituteRef institute);
+
         [OperationContract(Name = "GetAllFaculties")]
         [FaultContract(typeof(ControllerServiceException))]
         List<FacultyDTO> GetFaculties(Session session);
-
-        [OperationContract]
-        [FaultContract(typeof(ControllerServiceException))]
-        List<FacultyDTO> GetFaculties(Session session, int? instituteID);
 
         [OperationContract(Name = "GetAllCathedras")]
         [FaultContract(typeof(ControllerServiceException))]
@@ -34,11 +35,11 @@ namespace StudyingControllerService
 
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
-        List<CathedraDTO> GetCathedras(Session session, int facultyID);
+        List<CathedraDTO> GetCathedras(Session session, FacultyRef faculty);
 
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
-        List<GroupDTO> GetGroups(Session session, int cathedraID);
+        List<GroupDTO> GetGroups(Session session, CathedraRef cathedra);
 
         [OperationContract(Name = "GetAllGroups")]
         [FaultContract(typeof(ControllerServiceException))]
@@ -102,7 +103,7 @@ namespace StudyingControllerService
 
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
-        List<LectureDTO> GetLectures(Session session, int teacherID);
+        List<LectureDTO> GetLectures(Session session, TeacherRef teacher);
 
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
@@ -110,7 +111,7 @@ namespace StudyingControllerService
 
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
-        List<TeacherDTO> GetTeachers(Session session, int cathedraID);
+        List<TeacherDTO> GetTeachers(Session session, CathedraRef cathedra);
 
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
@@ -126,7 +127,7 @@ namespace StudyingControllerService
 
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
-        List<PracticeTeacherDTO> GetPracticesTeacher(Session session, int teacherID);
+        List<PracticeTeacherDTO> GetPracticesTeacher(Session session, TeacherRef teacher);
 
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
@@ -218,7 +219,7 @@ namespace StudyingControllerService
 
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
-        List<LectureDTO> GetStudentLectures(Session session, int studentID);
+        List<LectureDTO> GetStudentLectures(Session session, StudentRef student);
 
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
@@ -246,7 +247,7 @@ namespace StudyingControllerService
 
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
-        List<PracticeTeacherDTO> GetStudentPractices(Session session, int studentID);
+        List<PracticeTeacherDTO> GetStudentPractices(Session session, StudentRef student);
 
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
@@ -302,6 +303,24 @@ namespace StudyingControllerService
 
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
-        void UpdateMarkValue(Session session, int markId, decimal markValue);
+        void UpdateMarkValue(Session session, MarkRef mark);
+
+        [ServiceKnownType(typeof(InstituteDTO))]
+        [ServiceKnownType(typeof(FacultyDTO))]
+        [ServiceKnownType(typeof(CathedraDTO))]
+        [ServiceKnownType(typeof(TeacherDTO))]
+        [ServiceKnownType(typeof(LectureDTO))]
+        [ServiceKnownType(typeof(PracticeTeacherDTO))]
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        List<BaseEntityDTO> GetLessonTree(Session session, SystemUserRef user);
+
+        [ServiceKnownType(typeof(InstituteDTO))]
+        [ServiceKnownType(typeof(FacultyDTO))]
+        [ServiceKnownType(typeof(CathedraDTO))]
+        [ServiceKnownType(typeof(GroupDTO))]
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        List<BaseEntityDTO> GetUniversityTree(Session session, SystemUserRef user);
     }
 }

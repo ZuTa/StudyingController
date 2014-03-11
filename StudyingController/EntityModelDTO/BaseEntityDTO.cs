@@ -12,6 +12,9 @@ namespace EntitiesDTO
     [KnownType(typeof(FacultyDTO))]
     [KnownType(typeof(CathedraDTO))]
     [KnownType(typeof(GroupDTO))]
+    [KnownType(typeof(TeacherDTO))]
+    [KnownType(typeof(LectureDTO))]
+    [KnownType(typeof(PracticeTeacherDTO))]
     public abstract class BaseEntityDTO 
     {
         private int id;

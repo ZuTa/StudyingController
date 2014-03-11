@@ -222,11 +222,11 @@ namespace StudyingController.ViewModels
                         Task.Factory.StartNew(()=>
                             {
                                 (CurrentWorkspace.Model as SystemUserModel).Password = PasswordGenerator.Generate();
-                                MailMessage message = new MailMessage(Properties.Resources.EmailOwner,(CurrentWorkspace.Model as SystemUserModel).UserInformation.Email, Properties.Resources.EmailSubject, Properties.Resources.EmailText + (CurrentWorkspace.Model as SystemUserModel).Password);
+                                MailMessage message = new MailMessage(Properties.Resources.EmailOwner,(CurrentWorkspace.Model as SystemUserModel).Email, Properties.Resources.EmailSubject, Properties.Resources.EmailText + (CurrentWorkspace.Model as SystemUserModel).Password);
                                 MailSender mail = MailSender.GetInstance();
                                 if(mail.SendMessage(message))
                                 {
-                                    UserInterop.ShowMessage(String.Format(Properties.Resources.SuccessSendEmail, (CurrentWorkspace.Model as SystemUserModel).Login, (CurrentWorkspace.Model as SystemUserModel).UserInformation.Email));
+                                    UserInterop.ShowMessage(String.Format(Properties.Resources.SuccessSendEmail, (CurrentWorkspace.Model as SystemUserModel).Login, (CurrentWorkspace.Model as SystemUserModel).Email));
                                     Dispatcher.Invoke(new Action(()=>
                                         (CurrentWorkspace as SaveableViewModel).Save()));
                                 }

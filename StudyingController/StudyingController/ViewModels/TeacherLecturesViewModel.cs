@@ -78,21 +78,28 @@ namespace StudyingController.ViewModels
             unusedSubjects = new ObservableCollection<SubjectDTO>();
             usedSubjects = new ObservableCollection<SubjectDTO>();
 
-            List<SubjectDTO> subjects = ControllerInterop.Service.GetSubjects(ControllerInterop.Session, OriginalTeacher.CathedraID);
+            List<SubjectDTO> subjects = ControllerInterop.Service.GetSubjects(ControllerInterop.Session, OriginalTeacher.Cathedra.ID);
 
-            foreach (SubjectDTO subject in subjects)
-            {
-                if (OriginalTeacher.Lectures.Find(g => g.Subject.ID == subject.ID) == null)
-                    unusedSubjects.Add(subject);
-                else
-                    usedSubjects.Add(subject);
-            }
+            //foreach (SubjectDTO subject in subjects)
+            //{
+            //    if (OriginalTeacher.Lectures.Find(g => g.Subject.ID == subject.ID) == null)
+            //        unusedSubjects.Add(subject);
+            //    else
+            //        usedSubjects.Add(subject);
+            //}
 
             UsedSubjects.CollectionChanged += usedSubjects_CollectionChanged;
         }
 
-        protected override void LoadData()
+        protected override object LoadDataFromServer()
         {
+            return null;
+        }
+
+        protected override void AfterDataLoaded()
+        {
+            base.AfterDataLoaded();
+
             InitializeSubjects();
         }
 

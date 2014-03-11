@@ -4,117 +4,67 @@ GO
 --Main administrators
 
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'admin2', convert(binary,''),1)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(2, N'Іван', N'Адмін', 'panas@admin.com')
+	( 'admin2', convert(binary,''),1, N'Іван', N'admin2', N'Адмін', N'admin@admin.com' )
 GO
 ------------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'admin3', convert(binary,''),1)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(3, N'Петро', N'Адмін', 'panas@admin.com')
+	( 'admin3', convert(binary,''),1, N'Петро', N'admin3', N'Адмін', N'admin@admin.com' )
 GO
 ------------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'admin4', convert(binary,''),1)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(4, N'Василь', N'Адмін', 'panas@admin.com')
+	( 'admin4', convert(binary,''),1, N'Василь', N'admin4', N'Адмін', N'admin@admin.com' )
 GO
 -----------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'admin5', convert(binary,''),1)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(5, N'Олег', N'Адмін', 'panas@admin.com')
+	( 'admin5', convert(binary,''),1, N'Олег', N'admin5', N'Адмін', N'admin@admin.com' )
 GO
 ----------------------------------------------------
 --Main secretaries
 
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'secretary1', convert(binary,''),8)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(6, N'Ольга', N'Секретар', 'panas@admin.com')
+	( 'secretary1', convert(binary,''),8, N'Ольга', N'secretary1', N'Секретар', N'secretary@admin.com' )
 GO
 ------------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'secretary2', convert(binary,''),8)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(7, N'Олена', N'Секретар', 'panas@admin.com')
+	( 'secretary2', convert(binary,''),8, N'Олена', N'secretary2', N'Секретар', N'secretary@admin.com' )
 GO
 ------------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'secretary3', convert(binary,''),8)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(8, N'Катерина', N'Секретар', 'panas@admin.com')
+	( 'secretary3', convert(binary,''),8, N'Катерина', N'secretary3', N'Секретар', N'secretary@admin.com' )
 GO
 -----------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'secretary4', convert(binary,''),8)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(9, N'Анастасія', N'Секретар', 'panas@admin.com')
+	( 'secretary4', convert(binary,''),8, N'Анастасія', N'secretary4', N'Секретар', N'secretary@admin.com' )
 GO
 ----------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'secretary5', convert(binary,''),8)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(10, N'Інна', N'Секретар', 'panas@admin.com')
+	( 'secretary5', convert(binary,''),8, N'Інна', N'secretary5', N'Секретар', N'secretary@admin.com' )
 GO
 ----------------------------------------------------
 --Institute administrators
 
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'admininst1', convert(binary,''),2)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(11, N'Антон', N'Адмін', 'panas@admin.com')
+	( 'admininst1', convert(binary,''),2, N'Антон', N'admininst1', N'Адмін', N'admin@admin.com' )
 GO
 INSERT INTO [InstituteAdmin]
   ([SystemUserID], [InstituteID])
@@ -123,14 +73,9 @@ VALUES
 GO
 ----------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'admininst2', convert(binary,''),2)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(12, N'Андрій', N'Адмін', 'panas@admin.com')
+	( 'admininst2', convert(binary,''),2, N'Андрій', N'admininst2', N'Адмін', N'admin@admin.com' )
 GO
 INSERT INTO [InstituteAdmin]
   ([SystemUserID], [InstituteID])
@@ -139,4682 +84,3377 @@ VALUES
 GO
 ----------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'admininst3', convert(binary,''),2)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(13, N'Педро', N'Адмін', 'panas@admin.com')
+	( 'admininst3', convert(binary,''),2, N'Петро', N'admininst3', N'Адмін', N'admin@admin.com' )
 GO
 INSERT INTO [InstituteAdmin]
   ([SystemUserID], [InstituteID])
 VALUES 
 	(13, 3)
 GO
-----------------------------------------------------
---Institute secretaries
+------------------------------------------------------
+----Institute secretaries
 
-INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'secretaryinst1', convert(binary,''),16)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(14, N'Вікторія', N'Секретар', 'panas@admin.com')
-GO
-INSERT INTO [InstituteSecretary]
-  ([SystemUserID], [InstituteID])
-VALUES 
-	(14, 1)
-GO
-----------------------------------------------------
-INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'secretaryinst2', convert(binary,''),16)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(15, N'Алла', N'Секретар', 'panas@admin.com')
-GO
-INSERT INTO [InstituteSecretary]
-  ([SystemUserID], [InstituteID])
-VALUES 
-	(15, 1)
-GO
-----------------------------------------------------
-INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'secretaryinst3', convert(binary,''),16)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(16, N'Євгенія', N'Секретар', 'panas@admin.com')
-GO
-INSERT INTO [InstituteSecretary]
-  ([SystemUserID], [InstituteID])
-VALUES 
-	(16, 1)
-GO
-----------------------------------------------------
---Faculty administrators
+--INSERT INTO [SystemUser]
+--  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
+--VALUES 
+--	( 'secretaryinst1', convert(binary,''),16)
+--GO
+--INSERT INTO [UserInformation]
+--  ([SystemUserID], [FirstName], [LastName], [Email])
+--VALUES 
+--	(14, N'Вікторія', N'Секретар', 'panas@admin.com')
+--GO
+--INSERT INTO [InstituteSecretary]
+--  ([SystemUserID], [InstituteID])
+--VALUES 
+--	(14, 1, N'', N'admin', N'Адмін', N'admin@admin.com' )
+--GO
+------------------------------------------------------
+--INSERT INTO [SystemUser]
+--  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
+--VALUES 
+--	( 'secretaryinst2', convert(binary,''),16)
+--GO
+--INSERT INTO [UserInformation]
+--  ([SystemUserID], [FirstName], [LastName], [Email])
+--VALUES 
+--	(15, N'Алла', N'Секретар', 'panas@admin.com')
+--GO
+--INSERT INTO [InstituteSecretary]
+--  ([SystemUserID], [InstituteID])
+--VALUES 
+--	(15, 1, N'', N'admin', N'Адмін', N'admin@admin.com' )
+--GO
+------------------------------------------------------
+--INSERT INTO [SystemUser]
+--  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
+--VALUES 
+--	( 'secretaryinst3', convert(binary,''),16)
+--GO
+--INSERT INTO [UserInformation]
+--  ([SystemUserID], [FirstName], [LastName], [Email])
+--VALUES 
+--	(16, N'Євгенія', N'Секретар', 'panas@admin.com')
+--GO
+--INSERT INTO [InstituteSecretary]
+--  ([SystemUserID], [InstituteID])
+--VALUES 
+--	(16, 1, N'', N'admin', N'Адмін', N'admin@admin.com' )
+--GO
+------------------------------------------------------
+----Faculty administrators
 
-INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'adminfacult1', convert(binary,''),4)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(17, N'Максим', N'Адмін', 'panas@admin.com')
-GO
-INSERT INTO [FacultyAdmin]
-  ([SystemUserID], [FacultyID])
-VALUES 
-	(17, 1)
-GO
-----------------------------------------------------
-INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'adminfacult2', convert(binary,''),4)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(18, N'Артем', N'Адмін', 'panas@admin.com')
-GO
-INSERT INTO [FacultyAdmin]
-  ([SystemUserID], [FacultyID])
-VALUES 
-	(18, 2)
-GO
-----------------------------------------------------
-INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'adminfacult3', convert(binary,''),4)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(19, N'Тарас', N'Адмін', 'panas@admin.com')
-GO
-INSERT INTO [FacultyAdmin]
-  ([SystemUserID], [FacultyID])
-VALUES 
-	(19, 3)
-GO
-----------------------------------------------------
-INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'adminfacult4', convert(binary,''),4)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(20, N'Юрій', N'Адмін', 'panas@admin.com')
-GO
-INSERT INTO [FacultyAdmin]
-  ([SystemUserID], [FacultyID])
-VALUES 
-	(20, 4)
-GO
-----------------------------------------------------
-INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'adminfacult5', convert(binary,''),4)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(21, N'Ярослав', N'Адмін', 'panas@admin.com')
-GO
-INSERT INTO [FacultyAdmin]
-  ([SystemUserID], [FacultyID])
-VALUES 
-	(21, 5)
-GO
-----------------------------------------------------
-INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'adminfacult6', convert(binary,''),4)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(22, N'Микола', N'Адмін', 'panas@admin.com')
-GO
-INSERT INTO [FacultyAdmin]
-  ([SystemUserID], [FacultyID])
-VALUES 
-	(22, 6)
-GO
-----------------------------------------------------
-INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'adminfacult7', convert(binary,''),4)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(23, N'Роман', N'Адмін', 'panas@admin.com')
-GO
-INSERT INTO [FacultyAdmin]
-  ([SystemUserID], [FacultyID])
-VALUES 
-	(23, 7)
-GO
-----------------------------------------------------
-INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'adminfacult8', convert(binary,''),4)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(24, N'Олександр', N'Адмін', 'panas@admin.com')
-GO
-INSERT INTO [FacultyAdmin]
-  ([SystemUserID], [FacultyID])
-VALUES 
-	(24, 8)
-GO
-----------------------------------------------------
-INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'adminfacult9', convert(binary,''),4)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(25, N'Валентин', N'Адмін', 'panas@admin.com')
-GO
-INSERT INTO [FacultyAdmin]
-  ([SystemUserID], [FacultyID])
-VALUES 
-	(25, 9)
-GO
-----------------------------------------------------
-INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'adminfacult10', convert(binary,''),4)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(26, N'Валерій', N'Адмін', 'panas@admin.com')
-GO
-INSERT INTO [FacultyAdmin]
-  ([SystemUserID], [FacultyID])
-VALUES 
-	(26, 10)
-GO
-----------------------------------------------------
-INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'adminfacult11', convert(binary,''),4)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(27, N'Віктор', N'Адмін', 'panas@admin.com')
-GO
-INSERT INTO [FacultyAdmin]
-  ([SystemUserID], [FacultyID])
-VALUES 
-	(27, 11)
-GO
-----------------------------------------------------
-INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'adminfacult12', convert(binary,''),4)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(28, N'Вірослав', N'Адмін', 'panas@admin.com')
-GO
-INSERT INTO [FacultyAdmin]
-  ([SystemUserID], [FacultyID])
-VALUES 
-	(28, 12)
-GO
-----------------------------------------------------
-INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'adminfacult13', convert(binary,''),4)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(29, N'Віталій', N'Адмін', 'panas@admin.com')
-GO
-INSERT INTO [FacultyAdmin]
-  ([SystemUserID], [FacultyID])
-VALUES 
-	(29, 13)
-GO
-----------------------------------------------------
-INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'adminfacult14', convert(binary,''),4)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(30, N'Влад', N'Адмін', 'panas@admin.com')
-GO
-INSERT INTO [FacultyAdmin]
-  ([SystemUserID], [FacultyID])
-VALUES 
-	(30, 14)
-GO
-----------------------------------------------------
---Faculty secretaries
+--INSERT INTO [SystemUser]
+--  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
+--VALUES 
+--	( 'adminfacult1', convert(binary,''),4)
+--GO
+--INSERT INTO [UserInformation]
+--  ([SystemUserID], [FirstName], [LastName], [Email])
+--VALUES 
+--	(17, N'Максим', N'Адмін', 'panas@admin.com')
+--GO
+--INSERT INTO [FacultyAdmin]
+--  ([SystemUserID], [FacultyID])
+--VALUES 
+--	(17, 1, N'', N'admin', N'Адмін', N'admin@admin.com' )
+--GO
+------------------------------------------------------
+--INSERT INTO [SystemUser]
+--  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
+--VALUES 
+--	( 'adminfacult2', convert(binary,''),4)
+--GO
+--INSERT INTO [UserInformation]
+--  ([SystemUserID], [FirstName], [LastName], [Email])
+--VALUES 
+--	(18, N'Артем', N'Адмін', 'panas@admin.com')
+--GO
+--INSERT INTO [FacultyAdmin]
+--  ([SystemUserID], [FacultyID])
+--VALUES 
+--	(18, 2, N'', N'admininst', N'Адмін', N'admin@admin.com' )
+--GO
+------------------------------------------------------
+--INSERT INTO [SystemUser]
+--  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
+--VALUES 
+--	( 'adminfacult3', convert(binary,''),4)
+--GO
+--INSERT INTO [UserInformation]
+--  ([SystemUserID], [FirstName], [LastName], [Email])
+--VALUES 
+--	(19, N'Тарас', N'Адмін', 'panas@admin.com')
+--GO
+--INSERT INTO [FacultyAdmin]
+--  ([SystemUserID], [FacultyID])
+--VALUES 
+--	(19, 3)
+--GO
+------------------------------------------------------
+--INSERT INTO [SystemUser]
+--  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
+--VALUES 
+--	( 'adminfacult4', convert(binary,''),4)
+--GO
+--INSERT INTO [UserInformation]
+--  ([SystemUserID], [FirstName], [LastName], [Email])
+--VALUES 
+--	(20, N'Юрій', N'Адмін', 'panas@admin.com')
+--GO
+--INSERT INTO [FacultyAdmin]
+--  ([SystemUserID], [FacultyID])
+--VALUES 
+--	(20, 4)
+--GO
+------------------------------------------------------
+--INSERT INTO [SystemUser]
+--  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
+--VALUES 
+--	( 'adminfacult5', convert(binary,''),4)
+--GO
+--INSERT INTO [UserInformation]
+--  ([SystemUserID], [FirstName], [LastName], [Email])
+--VALUES 
+--	(21, N'Ярослав', N'Адмін', 'panas@admin.com')
+--GO
+--INSERT INTO [FacultyAdmin]
+--  ([SystemUserID], [FacultyID])
+--VALUES 
+--	(21, 5)
+--GO
+------------------------------------------------------
+--INSERT INTO [SystemUser]
+--  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
+--VALUES 
+--	( 'adminfacult6', convert(binary,''),4)
+--GO
+--INSERT INTO [UserInformation]
+--  ([SystemUserID], [FirstName], [LastName], [Email])
+--VALUES 
+--	(22, N'Микола', N'Адмін', 'panas@admin.com')
+--GO
+--INSERT INTO [FacultyAdmin]
+--  ([SystemUserID], [FacultyID])
+--VALUES 
+--	(22, 6)
+--GO
+------------------------------------------------------
+--INSERT INTO [SystemUser]
+--  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
+--VALUES 
+--	( 'adminfacult7', convert(binary,''),4)
+--GO
+--INSERT INTO [UserInformation]
+--  ([SystemUserID], [FirstName], [LastName], [Email])
+--VALUES 
+--	(23, N'Роман', N'Адмін', 'panas@admin.com')
+--GO
+--INSERT INTO [FacultyAdmin]
+--  ([SystemUserID], [FacultyID])
+--VALUES 
+--	(23, 7)
+--GO
+------------------------------------------------------
+--INSERT INTO [SystemUser]
+--  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
+--VALUES 
+--	( 'adminfacult8', convert(binary,''),4)
+--GO
+--INSERT INTO [UserInformation]
+--  ([SystemUserID], [FirstName], [LastName], [Email])
+--VALUES 
+--	(24, N'Олександр', N'Адмін', 'panas@admin.com')
+--GO
+--INSERT INTO [FacultyAdmin]
+--  ([SystemUserID], [FacultyID])
+--VALUES 
+--	(24, 8, N'', N'secretary', N'Секретар', N'secretary@admin.com' )
+--GO
+------------------------------------------------------
+--INSERT INTO [SystemUser]
+--  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
+--VALUES 
+--	( 'adminfacult9', convert(binary,''),4)
+--GO
+--INSERT INTO [UserInformation]
+--  ([SystemUserID], [FirstName], [LastName], [Email])
+--VALUES 
+--	(25, N'Валентин', N'Адмін', 'panas@admin.com')
+--GO
+--INSERT INTO [FacultyAdmin]
+--  ([SystemUserID], [FacultyID])
+--VALUES 
+--	(25, 9)
+--GO
+------------------------------------------------------
+--INSERT INTO [SystemUser]
+--  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
+--VALUES 
+--	( 'adminfacult10', convert(binary,''),4)
+--GO
+--INSERT INTO [UserInformation]
+--  ([SystemUserID], [FirstName], [LastName], [Email])
+--VALUES 
+--	(26, N'Валерій', N'Адмін', 'panas@admin.com')
+--GO
+--INSERT INTO [FacultyAdmin]
+--  ([SystemUserID], [FacultyID])
+--VALUES 
+--	(26, 10)
+--GO
+------------------------------------------------------
+--INSERT INTO [SystemUser]
+--  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
+--VALUES 
+--	( 'adminfacult11', convert(binary,''),4)
+--GO
+--INSERT INTO [UserInformation]
+--  ([SystemUserID], [FirstName], [LastName], [Email])
+--VALUES 
+--	(27, N'Віктор', N'Адмін', 'panas@admin.com')
+--GO
+--INSERT INTO [FacultyAdmin]
+--  ([SystemUserID], [FacultyID])
+--VALUES 
+--	(27, 11, N'', N'admin', N'Адмін', N'admin@admin.com' )
+--GO
+------------------------------------------------------
+--INSERT INTO [SystemUser]
+--  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
+--VALUES 
+--	( 'adminfacult12', convert(binary,''),4)
+--GO
+--INSERT INTO [UserInformation]
+--  ([SystemUserID], [FirstName], [LastName], [Email])
+--VALUES 
+--	(28, N'Вірослав', N'Адмін', 'panas@admin.com')
+--GO
+--INSERT INTO [FacultyAdmin]
+--  ([SystemUserID], [FacultyID])
+--VALUES 
+--	(28, 12, N'', N'admininst', N'Адмін', N'admin@admin.com' )
+--GO
+------------------------------------------------------
+--INSERT INTO [SystemUser]
+--  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
+--VALUES 
+--	( 'adminfacult13', convert(binary,''),4)
+--GO
+--INSERT INTO [UserInformation]
+--  ([SystemUserID], [FirstName], [LastName], [Email])
+--VALUES 
+--	(29, N'Віталій', N'Адмін', 'panas@admin.com')
+--GO
+--INSERT INTO [FacultyAdmin]
+--  ([SystemUserID], [FacultyID])
+--VALUES 
+--	(29, 13)
+--GO
+------------------------------------------------------
+--INSERT INTO [SystemUser]
+--  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
+--VALUES 
+--	( 'adminfacult14', convert(binary,''),4)
+--GO
+--INSERT INTO [UserInformation]
+--  ([SystemUserID], [FirstName], [LastName], [Email])
+--VALUES 
+--	(30, N'Влад', N'Адмін', 'panas@admin.com')
+--GO
+--INSERT INTO [FacultyAdmin]
+--  ([SystemUserID], [FacultyID])
+--VALUES 
+--	(30, 14)
+--GO
+------------------------------------------------------
+----Faculty secretaries
 
-INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'secretaryfacult1', convert(binary,''),32)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(31, N'Аврора', N'Секретар', 'panas@admin.com')
-GO
-INSERT INTO [FacultySecretary]
-  ([SystemUserID], [FacultyID])
-VALUES 
-	(31, 1)
-GO
-----------------------------------------------------
-INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'secretaryfacult2', convert(binary,''),32)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(32, N'Агата', N'Секретар', 'panas@admin.com')
-GO
-INSERT INTO [FacultySecretary]
-  ([SystemUserID], [FacultyID])
-VALUES 
-	(32, 2)
-GO
-----------------------------------------------------
-INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'secretaryfacult3', convert(binary,''),32)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(33, N'Ада', N'Секретар', 'panas@admin.com')
-GO
-INSERT INTO [FacultySecretary]
-  ([SystemUserID], [FacultyID])
-VALUES 
-	(33, 3)
-GO
-----------------------------------------------------
-INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'secretaryfacult4', convert(binary,''),32)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(34, N'Алевтина', N'Секретар', 'panas@admin.com')
-GO
-INSERT INTO [FacultySecretary]
-  ([SystemUserID], [FacultyID])
-VALUES 
-	(34, 4)
-GO
-----------------------------------------------------
-INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'secretaryfacult5', convert(binary,''),32)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(35, N'Аліна', N'Секретар', 'panas@admin.com')
-GO
-INSERT INTO [FacultySecretary]
-  ([SystemUserID], [FacultyID])
-VALUES 
-	(35, 5)
-GO
-----------------------------------------------------
-INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'secretaryfacult6', convert(binary,''),32)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(36, N'Аліса', N'Секретар', 'panas@admin.com')
-GO
-INSERT INTO [FacultySecretary]
-  ([SystemUserID], [FacultyID])
-VALUES 
-	(36, 6)
-GO
-----------------------------------------------------
-INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'secretaryfacult7', convert(binary,''),32)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(37, N'Альбіна', N'Секретар', 'panas@admin.com')
-GO
-INSERT INTO [FacultySecretary]
-  ([SystemUserID], [FacultyID])
-VALUES 
-	(37, 7)
-GO
-----------------------------------------------------
-INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'secretaryfacult8', convert(binary,''),32)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(38, N'Анатолія', N'Секретар', 'panas@admin.com')
-GO
-INSERT INTO [FacultySecretary]
-  ([SystemUserID], [FacultyID])
-VALUES 
-	(38, 8)
-GO
-----------------------------------------------------
-INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'secretaryfacult9', convert(binary,''),32)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(39, N'Ангеліна', N'Секретар', 'panas@admin.com')
-GO
-INSERT INTO [FacultySecretary]
-  ([SystemUserID], [FacultyID])
-VALUES 
-	(39, 9)
-GO
-----------------------------------------------------
-INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'secretaryfacult10', convert(binary,''),32)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(40, N'Анжела', N'Секретар', 'panas@admin.com')
-GO
-INSERT INTO [FacultySecretary]
-  ([SystemUserID], [FacultyID])
-VALUES 
-	(40, 10)
-GO
-----------------------------------------------------
-INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'secretaryfacult11', convert(binary,''),32)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(41, N'Антоніна', N'Секретар', 'panas@admin.com')
-GO
-INSERT INTO [FacultySecretary]
-  ([SystemUserID], [FacultyID])
-VALUES 
-	(41, 11)
-GO
-----------------------------------------------------
-INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'secretaryfacult12', convert(binary,''),32)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(42, N'Анфіса', N'Секретар', 'panas@admin.com')
-GO
-INSERT INTO [FacultySecretary]
-  ([SystemUserID], [FacultyID])
-VALUES 
-	(42, 12)
-GO
-----------------------------------------------------
-INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'secretaryfacult13', convert(binary,''),32)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(43, N'Аполлонія', N'Секретар', 'panas@admin.com')
-GO
-INSERT INTO [FacultySecretary]
-  ([SystemUserID], [FacultyID])
-VALUES 
-	(43, 13)
-GO
-----------------------------------------------------
-INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'secretaryfacult14', convert(binary,''),32)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(44, N'Афіна', N'Секретар', 'panas@admin.com')
-GO
-INSERT INTO [FacultySecretary]
-  ([SystemUserID], [FacultyID])
-VALUES 
-	(44, 14)
-GO
-----------------------------------------------------
+--INSERT INTO [SystemUser]
+--  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
+--VALUES 
+--	( 'secretaryfacult1', convert(binary,''),32, N'', N'admininst', N'Адмін', N'admin@admin.com' )
+--GO
+--INSERT INTO [UserInformation]
+--  ([SystemUserID], [FirstName], [LastName], [Email])
+--VALUES 
+--	(31, N'Аврора', N'Секретар', 'panas@admin.com')
+--GO
+--INSERT INTO [FacultySecretary]
+--  ([SystemUserID], [FacultyID])
+--VALUES 
+--	(31, 1, N'', N'admin', N'Адмін', N'admin@admin.com' )
+--GO
+------------------------------------------------------
+--INSERT INTO [SystemUser]
+--  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
+--VALUES 
+--	( 'secretaryfacult2', convert(binary,''),32, N'', N'admininst', N'Адмін', N'admin@admin.com' )
+--GO
+--INSERT INTO [UserInformation]
+--  ([SystemUserID], [FirstName], [LastName], [Email])
+--VALUES 
+--	(32, N'Агата', N'Секретар', 'panas@admin.com')
+--GO
+--INSERT INTO [FacultySecretary]
+--  ([SystemUserID], [FacultyID])
+--VALUES 
+--	(32, 2, N'', N'admininst', N'Адмін', N'admin@admin.com' )
+--GO
+------------------------------------------------------
+--INSERT INTO [SystemUser]
+--  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
+--VALUES 
+--	( 'secretaryfacult3', convert(binary,''),32, N'', N'admininst', N'Адмін', N'admin@admin.com' )
+--GO
+--INSERT INTO [UserInformation]
+--  ([SystemUserID], [FirstName], [LastName], [Email])
+--VALUES 
+--	(33, N'Ада', N'Секретар', 'panas@admin.com')
+--GO
+--INSERT INTO [FacultySecretary]
+--  ([SystemUserID], [FacultyID])
+--VALUES 
+--	(33, 3)
+--GO
+------------------------------------------------------
+--INSERT INTO [SystemUser]
+--  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
+--VALUES 
+--	( 'secretaryfacult4', convert(binary,''),32, N'', N'admininst', N'Адмін', N'admin@admin.com' )
+--GO
+--INSERT INTO [UserInformation]
+--  ([SystemUserID], [FirstName], [LastName], [Email])
+--VALUES 
+--	(34, N'Алевтина', N'Секретар', 'panas@admin.com')
+--GO
+--INSERT INTO [FacultySecretary]
+--  ([SystemUserID], [FacultyID])
+--VALUES 
+--	(34, 4)
+--GO
+------------------------------------------------------
+--INSERT INTO [SystemUser]
+--  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
+--VALUES 
+--	( 'secretaryfacult5', convert(binary,''),32, N'', N'admininst', N'Адмін', N'admin@admin.com' )
+--GO
+--INSERT INTO [UserInformation]
+--  ([SystemUserID], [FirstName], [LastName], [Email])
+--VALUES 
+--	(35, N'Аліна', N'Секретар', 'panas@admin.com')
+--GO
+--INSERT INTO [FacultySecretary]
+--  ([SystemUserID], [FacultyID])
+--VALUES 
+--	(35, 5)
+--GO
+------------------------------------------------------
+--INSERT INTO [SystemUser]
+--  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
+--VALUES 
+--	( 'secretaryfacult6', convert(binary,''),32, N'', N'admininst', N'Адмін', N'admin@admin.com' )
+--GO
+--INSERT INTO [UserInformation]
+--  ([SystemUserID], [FirstName], [LastName], [Email])
+--VALUES 
+--	(36, N'Аліса', N'Секретар', 'panas@admin.com')
+--GO
+--INSERT INTO [FacultySecretary]
+--  ([SystemUserID], [FacultyID])
+--VALUES 
+--	(36, 6)
+--GO
+------------------------------------------------------
+--INSERT INTO [SystemUser]
+--  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
+--VALUES 
+--	( 'secretaryfacult7', convert(binary,''),32, N'', N'admininst', N'Адмін', N'admin@admin.com' )
+--GO
+--INSERT INTO [UserInformation]
+--  ([SystemUserID], [FirstName], [LastName], [Email])
+--VALUES 
+--	(37, N'Альбіна', N'Секретар', 'panas@admin.com')
+--GO
+--INSERT INTO [FacultySecretary]
+--  ([SystemUserID], [FacultyID])
+--VALUES 
+--	(37, 7)
+--GO
+------------------------------------------------------
+--INSERT INTO [SystemUser]
+--  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
+--VALUES 
+--	( 'secretaryfacult8', convert(binary,''),32, N'', N'admininst', N'Адмін', N'admin@admin.com' )
+--GO
+--INSERT INTO [UserInformation]
+--  ([SystemUserID], [FirstName], [LastName], [Email])
+--VALUES 
+--	(38, N'Анатолія', N'Секретар', 'panas@admin.com')
+--GO
+--INSERT INTO [FacultySecretary]
+--  ([SystemUserID], [FacultyID])
+--VALUES 
+--	(38, 8, N'', N'secretary', N'Секретар', N'secretary@admin.com' )
+--GO
+------------------------------------------------------
+--INSERT INTO [SystemUser]
+--  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
+--VALUES 
+--	( 'secretaryfacult9', convert(binary,''),32, N'', N'admininst', N'Адмін', N'admin@admin.com' )
+--GO
+--INSERT INTO [UserInformation]
+--  ([SystemUserID], [FirstName], [LastName], [Email])
+--VALUES 
+--	(39, N'Ангеліна', N'Секретар', 'panas@admin.com')
+--GO
+--INSERT INTO [FacultySecretary]
+--  ([SystemUserID], [FacultyID])
+--VALUES 
+--	(39, 9)
+--GO
+------------------------------------------------------
+--INSERT INTO [SystemUser]
+--  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
+--VALUES 
+--	( 'secretaryfacult10', convert(binary,''),32, N'', N'admininst', N'Адмін', N'admin@admin.com' )
+--GO
+--INSERT INTO [UserInformation]
+--  ([SystemUserID], [FirstName], [LastName], [Email])
+--VALUES 
+--	(40, N'Анжела', N'Секретар', 'panas@admin.com')
+--GO
+--INSERT INTO [FacultySecretary]
+--  ([SystemUserID], [FacultyID])
+--VALUES 
+--	(40, 10)
+--GO
+------------------------------------------------------
+--INSERT INTO [SystemUser]
+--  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
+--VALUES 
+--	( 'secretaryfacult11', convert(binary,''),32, N'', N'admininst', N'Адмін', N'admin@admin.com' )
+--GO
+--INSERT INTO [UserInformation]
+--  ([SystemUserID], [FirstName], [LastName], [Email])
+--VALUES 
+--	(41, N'Антоніна', N'Секретар', 'panas@admin.com')
+--GO
+--INSERT INTO [FacultySecretary]
+--  ([SystemUserID], [FacultyID])
+--VALUES 
+--	(41, 11, N'', N'admin', N'Адмін', N'admin@admin.com' )
+--GO
+------------------------------------------------------
+--INSERT INTO [SystemUser]
+--  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
+--VALUES 
+--	( 'secretaryfacult12', convert(binary,''),32, N'', N'admininst', N'Адмін', N'admin@admin.com' )
+--GO
+--INSERT INTO [UserInformation]
+--  ([SystemUserID], [FirstName], [LastName], [Email])
+--VALUES 
+--	(42, N'Анфіса', N'Секретар', 'panas@admin.com')
+--GO
+--INSERT INTO [FacultySecretary]
+--  ([SystemUserID], [FacultyID])
+--VALUES 
+--	(42, 12, N'', N'admininst', N'Адмін', N'admin@admin.com' )
+--GO
+------------------------------------------------------
+--INSERT INTO [SystemUser]
+--  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
+--VALUES 
+--	( 'secretaryfacult13', convert(binary,''),32, N'', N'admininst', N'Адмін', N'admin@admin.com' )
+--GO
+--INSERT INTO [UserInformation]
+--  ([SystemUserID], [FirstName], [LastName], [Email])
+--VALUES 
+--	(43, N'Аполлонія', N'Секретар', 'panas@admin.com')
+--GO
+--INSERT INTO [FacultySecretary]
+--  ([SystemUserID], [FacultyID])
+--VALUES 
+--	(43, 13)
+--GO
+------------------------------------------------------
+--INSERT INTO [SystemUser]
+--  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
+--VALUES 
+--	( 'secretaryfacult14', convert(binary,''),32, N'', N'admininst', N'Адмін', N'admin@admin.com' )
+--GO
+--INSERT INTO [UserInformation]
+--  ([SystemUserID], [FirstName], [LastName], [Email])
+--VALUES 
+--	(44, N'Афіна', N'Секретар', 'panas@admin.com')
+--GO
+--INSERT INTO [FacultySecretary]
+--  ([SystemUserID], [FacultyID])
+--VALUES 
+--	(44, 14)
+--GO
+------------------------------------------------------
 --Teachers
 
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher1', convert(binary,''),64)
+	( 'teacher1', convert(binary,''), 64, N'Віктор', N'teacher1', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(45, N'Раїса', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(45, 1)
+	(14, 1)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher2', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(46, N'Ярослав', N'Викладач', 'teacher@admin.com')
+	( 'teacher2', convert(binary,''), 64, N'Володимир', N'teacher2', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(46, 1)
+	(15, 1)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher3', convert(binary,''),64)
+	( 'teacher3', convert(binary,''), 64, N'Степан', N'teacher3', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(47, N'Ізяслав', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(47, 1)
+	(16, 1)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher4', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(48, N'Златомир', N'Викладач', 'teacher@admin.com')
+	( 'teacher4', convert(binary,''), 64, N'Милослава', N'teacher4', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(48, 1)
+	(17, 1)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher5', convert(binary,''),64)
+	( 'teacher5', convert(binary,''), 64, N'Назарій', N'teacher5', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(49, N'Княжослав', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(49, 1)
+	(18, 1)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher6', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(50, N'Анфіса', N'Викладач', 'teacher@admin.com')
+	( 'teacher6', convert(binary,''), 64, N'Олесь', N'teacher6', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(50, 2)
+	(19, 2)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher7', convert(binary,''),64)
+	( 'teacher7', convert(binary,''), 64, N'Софія', N'teacher7', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(51, N'Стефаній', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(51, 2)
+	(20, 2)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher8', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(52, N'Любомир', N'Викладач', 'teacher@admin.com')
+	( 'teacher8', convert(binary,''), 64, N'Катерина', N'teacher8', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(52, 2)
+	(21, 2)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher9', convert(binary,''),64)
+	( 'teacher9', convert(binary,''), 64, N'Варвара', N'teacher9', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(53, N'Добряна', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(53, 2)
+	(22, 2)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher10', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(54, N'Назарій', N'Викладач', 'teacher@admin.com')
+	( 'teacher10', convert(binary,''), 64, N'Маркіян', N'teacher10', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(54, 2)
+	(23, 2)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher11', convert(binary,''),64)
+	( 'teacher11', convert(binary,''), 64, N'Роман', N'teacher11', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(55, N'Агата', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(55, 3)
+	(24, 3)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher12', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(56, N'Олелько', N'Викладач', 'teacher@admin.com')
+	( 'teacher12', convert(binary,''), 64, N'Владислав', N'teacher12', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(56, 3)
+	(25, 3)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher13', convert(binary,''),64)
+	( 'teacher13', convert(binary,''), 64, N'Тамара', N'teacher13', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(57, N'Двалін', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(57, 3)
+	(26, 3)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher14', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(58, N'Олена', N'Викладач', 'teacher@admin.com')
+	( 'teacher14', convert(binary,''), 64, N'Олена', N'teacher14', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(58, 3)
+	(27, 3)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher15', convert(binary,''),64)
+	( 'teacher15', convert(binary,''), 64, N'Любомир', N'teacher15', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(59, N'Двалін', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(59, 3)
+	(28, 3)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher16', convert(binary,''),64)
+	( 'teacher16', convert(binary,''), 64, N'Милослава', N'teacher16', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(60, N'Назар', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(60, 4)
+	(29, 4)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher17', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(61, N'Володимир', N'Викладач', 'teacher@admin.com')
+	( 'teacher17', convert(binary,''), 64, N'Мирон', N'teacher17', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(61, 4)
+	(30, 4)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher18', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(62, N'Євстафій', N'Викладач', 'teacher@admin.com')
+	( 'teacher18', convert(binary,''), 64, N'Потап', N'teacher18', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(62, 4)
+	(31, 4)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher19', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(63, N'Ізяслав', N'Викладач', 'teacher@admin.com')
+	( 'teacher19', convert(binary,''), 64, N'Сергій', N'teacher19', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(63, 4)
+	(32, 4)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher20', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(64, N'Омелян', N'Викладач', 'teacher@admin.com')
+	( 'teacher20', convert(binary,''), 64, N'Орест', N'teacher20', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(64, 4)
+	(33, 4)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher21', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(65, N'Орест', N'Викладач', 'teacher@admin.com')
+	( 'teacher21', convert(binary,''), 64, N'Орест', N'teacher21', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(65, 5)
+	(34, 5)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher22', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(66, N'Олесь', N'Викладач', 'teacher@admin.com')
+	( 'teacher22', convert(binary,''), 64, N'Галина', N'teacher22', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(66, 5)
+	(35, 5)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher23', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(67, N'Святослав', N'Викладач', 'teacher@admin.com')
+	( 'teacher23', convert(binary,''), 64, N'Софія', N'teacher23', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(67, 5)
+	(36, 5)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher24', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(68, N'Віта', N'Викладач', 'teacher@admin.com')
+	( 'teacher24', convert(binary,''), 64, N'Владислава', N'teacher24', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(68, 5)
+	(37, 5)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher25', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(69, N'Божан', N'Викладач', 'teacher@admin.com')
+	( 'teacher25', convert(binary,''), 64, N'Анжела', N'teacher25', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(69, 5)
+	(38, 5)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher26', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(70, N'Пилип', N'Викладач', 'teacher@admin.com')
+	( 'teacher26', convert(binary,''), 64, N'Уляна', N'teacher26', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(70, 6)
+	(39, 6)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher27', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(71, N'Богдана', N'Викладач', 'teacher@admin.com')
+	( 'teacher27', convert(binary,''), 64, N'Валентина', N'teacher27', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(71, 6)
+	(40, 6)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher28', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(72, N'Ярило', N'Викладач', 'teacher@admin.com')
+	( 'teacher28', convert(binary,''), 64, N'Варвара', N'teacher28', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(72, 6)
+	(41, 6)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher29', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(73, N'Уляна', N'Викладач', 'teacher@admin.com')
+	( 'teacher29', convert(binary,''), 64, N'Зінаїда', N'teacher29', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(73, 6)
+	(42, 6)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher30', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(74, N'Борислав', N'Викладач', 'teacher@admin.com')
+	( 'teacher30', convert(binary,''), 64, N'Святослав', N'teacher30', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(74, 6)
+	(43, 6)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher31', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(75, N'Валерія', N'Викладач', 'teacher@admin.com')
+	( 'teacher31', convert(binary,''), 64, N'Віра', N'teacher31', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(75, 7)
+	(44, 7)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher32', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(76, N'Оксана', N'Викладач', 'teacher@admin.com')
+	( 'teacher32', convert(binary,''), 64, N'Надія', N'teacher32', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(76, 7)
+	(45, 7)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher33', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(77, N'Сіріус', N'Викладач', 'teacher@admin.com')
+	( 'teacher33', convert(binary,''), 64, N'Вікторія', N'teacher33', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(77, 7)
+	(46, 7)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher34', convert(binary,''),64)
+	( 'teacher34', convert(binary,''), 64, N'Аліса', N'teacher34', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(78, N'Максим', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(78, 7)
+	(47, 7)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher35', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(79, N'Сварг', N'Викладач', 'teacher@admin.com')
+	( 'teacher35', convert(binary,''), 64, N'Милослава', N'teacher35', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(79, 7)
+	(48, 7)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher36', convert(binary,''),64)
+	( 'teacher36', convert(binary,''), 64, N'Віолетта', N'teacher36', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(80, N'Остап', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(80, 8)
+	(49, 8)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher37', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(81, N'Ітринатор', N'Викладач', 'teacher@admin.com')
+	( 'teacher37', convert(binary,''), 64, N'Наталія', N'teacher37', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(81, 8)
+	(50, 8)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher38', convert(binary,''),64)
+	( 'teacher38', convert(binary,''), 64, N'Петро', N'teacher38', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(82, N'Роксолана', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(82, 8)
+	(51, 8)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher39', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(83, N'Вербан', N'Викладач', 'teacher@admin.com')
+	( 'teacher39', convert(binary,''), 64, N'Віталіна', N'teacher39', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(83, 8)
+	(52, 8)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher40', convert(binary,''),64)
+	( 'teacher40', convert(binary,''), 64, N'Микола', N'teacher40', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(84, N'Арагог', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(84, 8)
+	(53, 8)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher41', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(85, N'Аврелія', N'Викладач', 'teacher@admin.com')
+	( 'teacher41', convert(binary,''), 64, N'Ігор', N'teacher41', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(85, 9)
+	(54, 9)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher42', convert(binary,''),64)
+	( 'teacher42', convert(binary,''), 64, N'Валентин', N'teacher42', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(86, N'Томас', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(86, 9)
+	(55, 9)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher43', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(87, N'Родослав', N'Викладач', 'teacher@admin.com')
+	( 'teacher43', convert(binary,''), 64, N'Валентин', N'teacher43', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(87, 9)
+	(56, 9)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher44', convert(binary,''),64)
+	( 'teacher44', convert(binary,''), 64, N'Ярема', N'teacher44', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(88, N'Ніна', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(88, 9)
+	(57, 9)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher45', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(89, N'Анжела', N'Викладач', 'teacher@admin.com')
+	( 'teacher45', convert(binary,''), 64, N'Любов', N'teacher45', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(89, 9)
+	(58, 9)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher46', convert(binary,''),64)
+	( 'teacher46', convert(binary,''), 64, N'Владислав', N'teacher46', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(90, N'Злотодан', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(90, 10)
+	(59, 10)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher47', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(91, N'Осмомисл', N'Викладач', 'teacher@admin.com')
+	( 'teacher47', convert(binary,''), 64, N'Георгій', N'teacher47', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(91, 10)
+	(60, 10)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher48', convert(binary,''),64)
+	( 'teacher48', convert(binary,''), 64, N'Лукян', N'teacher48', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(92, N'Братислав', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(92, 10)
+	(61, 10)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher49', convert(binary,''),64)
+	( 'teacher49', convert(binary,''), 64, N'Зінаїда', N'teacher49', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(93, N'Григорій', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(93, 10)
+	(62, 10)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher50', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(94, N'Квай-Гон', N'Викладач', 'teacher@admin.com')
+	( 'teacher50', convert(binary,''), 64, N'Микола', N'teacher50', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(94, 10)
+	(63, 10)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher51', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(95, N'Назар', N'Викладач', 'teacher@admin.com')
+	( 'teacher51', convert(binary,''), 64, N'Жанна', N'teacher51', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(95, 11)
+	(64, 11)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher52', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(96, N'Злотодан', N'Викладач', 'teacher@admin.com')
+	( 'teacher52', convert(binary,''), 64, N'Надія', N'teacher52', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(96, 11)
+	(65, 11)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher53', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(97, N'Ілля', N'Викладач', 'teacher@admin.com')
+	( 'teacher53', convert(binary,''), 64, N'Віктор', N'teacher53', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(97, 11)
+	(66, 11)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher54', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(98, N'Леголас', N'Викладач', 'teacher@admin.com')
+	( 'teacher54', convert(binary,''), 64, N'Ольга', N'teacher54', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(98, 11)
+	(67, 11)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher55', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(99, N'Милодух', N'Викладач', 'teacher@admin.com')
+	( 'teacher55', convert(binary,''), 64, N'Лукян', N'teacher55', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(99, 11)
+	(68, 11)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher56', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(100, N'Мирон', N'Викладач', 'teacher@admin.com')
+	( 'teacher56', convert(binary,''), 64, N'Микита', N'teacher56', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(100, 12)
+	(69, 12)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher57', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(101, N'Норі', N'Викладач', 'teacher@admin.com')
+	( 'teacher57', convert(binary,''), 64, N'Георгій', N'teacher57', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(101, 12)
+	(70, 12)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher58', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(102, N'Потап', N'Викладач', 'teacher@admin.com')
+	( 'teacher58', convert(binary,''), 64, N'Іванна', N'teacher58', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(102, 12)
+	(71, 12)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher59', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(103, N'Зіновій', N'Викладач', 'teacher@admin.com')
+	( 'teacher59', convert(binary,''), 64, N'Лев', N'teacher59', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(103, 12)
+	(72, 12)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher60', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(104, N'Забава', N'Викладач', 'teacher@admin.com')
+	( 'teacher60', convert(binary,''), 64, N'Олег', N'teacher60', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(104, 12)
+	(73, 12)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher61', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(105, N'Світлана', N'Викладач', 'teacher@admin.com')
+	( 'teacher61', convert(binary,''), 64, N'Зоя', N'teacher61', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(105, 13)
+	(74, 13)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher62', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(106, N'Ольга', N'Викладач', 'teacher@admin.com')
+	( 'teacher62', convert(binary,''), 64, N'Микола', N'teacher62', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(106, 13)
+	(75, 13)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher63', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(107, N'Любомир', N'Викладач', 'teacher@admin.com')
+	( 'teacher63', convert(binary,''), 64, N'Віталій', N'teacher63', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(107, 13)
+	(76, 13)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher64', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(108, N'Ада', N'Викладач', 'teacher@admin.com')
+	( 'teacher64', convert(binary,''), 64, N'Денис', N'teacher64', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(108, 13)
+	(77, 13)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher65', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(109, N'Антонія', N'Викладач', 'teacher@admin.com')
+	( 'teacher65', convert(binary,''), 64, N'Богдана', N'teacher65', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(109, 13)
+	(78, 13)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher66', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(110, N'Богуслава', N'Викладач', 'teacher@admin.com')
+	( 'teacher66', convert(binary,''), 64, N'Аліса', N'teacher66', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(110, 14)
+	(79, 14)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher67', convert(binary,''),64)
+	( 'teacher67', convert(binary,''), 64, N'Петро', N'teacher67', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(111, N'Людмила', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(111, 14)
+	(80, 14)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher68', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(112, N'Томас', N'Викладач', 'teacher@admin.com')
+	( 'teacher68', convert(binary,''), 64, N'Олесь', N'teacher68', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(112, 14)
+	(81, 14)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher69', convert(binary,''),64)
+	( 'teacher69', convert(binary,''), 64, N'Вячеслав', N'teacher69', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(113, N'Ібрагім', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(113, 14)
+	(82, 14)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher70', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(114, N'Петро', N'Викладач', 'teacher@admin.com')
+	( 'teacher70', convert(binary,''), 64, N'Анжела', N'teacher70', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(114, 14)
+	(83, 14)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher71', convert(binary,''),64)
+	( 'teacher71', convert(binary,''), 64, N'Світлана', N'teacher71', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(115, N'Квай-Гон', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(115, 15)
+	(84, 15)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher72', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(116, N'Гостомисл', N'Викладач', 'teacher@admin.com')
+	( 'teacher72', convert(binary,''), 64, N'Анастасія', N'teacher72', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(116, 15)
+	(85, 15)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher73', convert(binary,''),64)
+	( 'teacher73', convert(binary,''), 64, N'Зінаїда', N'teacher73', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(117, N'Том', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(117, 15)
+	(86, 15)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher74', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(118, N'Захар', N'Викладач', 'teacher@admin.com')
+	( 'teacher74', convert(binary,''), 64, N'Жадан', N'teacher74', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(118, 15)
+	(87, 15)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher75', convert(binary,''),64)
+	( 'teacher75', convert(binary,''), 64, N'Захар', N'teacher75', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(119, N'Дана', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(119, 15)
+	(88, 15)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher76', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(120, N'Леся', N'Викладач', 'teacher@admin.com')
+	( 'teacher76', convert(binary,''), 64, N'Олексій', N'teacher76', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(120, 16)
+	(89, 16)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher77', convert(binary,''),64)
+	( 'teacher77', convert(binary,''), 64, N'Влада', N'teacher77', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(121, N'Оксана', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(121, 16)
+	(90, 16)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher78', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(122, N'Ярема', N'Викладач', 'teacher@admin.com')
+	( 'teacher78', convert(binary,''), 64, N'Орест', N'teacher78', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(122, 16)
+	(91, 16)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher79', convert(binary,''),64)
+	( 'teacher79', convert(binary,''), 64, N'Милослава', N'teacher79', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(123, N'Орі', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(123, 16)
+	(92, 16)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher80', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(124, N'Ясен', N'Викладач', 'teacher@admin.com')
+	( 'teacher80', convert(binary,''), 64, N'Сергій', N'teacher80', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(124, 16)
+	(93, 16)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher81', convert(binary,''),64)
+	( 'teacher81', convert(binary,''), 64, N'Милослава', N'teacher81', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(125, N'Рон', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(125, 17)
+	(94, 17)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher82', convert(binary,''),64)
+	( 'teacher82', convert(binary,''), 64, N'Михайло', N'teacher82', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(126, N'Сонцедар', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(126, 17)
+	(95, 17)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher83', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(127, N'Маркіян', N'Викладач', 'teacher@admin.com')
+	( 'teacher83', convert(binary,''), 64, N'Милослава', N'teacher83', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(127, 17)
+	(96, 17)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher84', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(128, N'Либідь', N'Викладач', 'teacher@admin.com')
+	( 'teacher84', convert(binary,''), 64, N'Петро', N'teacher84', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(128, 17)
+	(97, 17)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher85', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(129, N'Щек', N'Викладач', 'teacher@admin.com')
+	( 'teacher85', convert(binary,''), 64, N'Дана', N'teacher85', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(129, 17)
+	(98, 17)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher86', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(130, N'Максим', N'Викладач', 'teacher@admin.com')
+	( 'teacher86', convert(binary,''), 64, N'Зоя', N'teacher86', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(130, 18)
+	(99, 18)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher87', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(131, N'Світослав', N'Викладач', 'teacher@admin.com')
+	( 'teacher87', convert(binary,''), 64, N'Леся', N'teacher87', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(131, 18)
+	(100, 18)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher88', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(132, N'Осмомисл', N'Викладач', 'teacher@admin.com')
+	( 'teacher88', convert(binary,''), 64, N'Влада', N'teacher88', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(132, 18)
+	(101, 18)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher89', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(133, N'Раїса', N'Викладач', 'teacher@admin.com')
+	( 'teacher89', convert(binary,''), 64, N'Максим', N'teacher89', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(133, 18)
+	(102, 18)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher90', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(134, N'Квай-Гон', N'Викладач', 'teacher@admin.com')
+	( 'teacher90', convert(binary,''), 64, N'Ян', N'teacher90', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(134, 18)
+	(103, 18)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher91', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(135, N'Микола', N'Викладач', 'teacher@admin.com')
+	( 'teacher91', convert(binary,''), 64, N'Ярослав', N'teacher91', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(135, 19)
+	(104, 19)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher92', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(136, N'Дана', N'Викладач', 'teacher@admin.com')
+	( 'teacher92', convert(binary,''), 64, N'Георгій', N'teacher92', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(136, 19)
+	(105, 19)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher93', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(137, N'Устим', N'Викладач', 'teacher@admin.com')
+	( 'teacher93', convert(binary,''), 64, N'Жадан', N'teacher93', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(137, 19)
+	(106, 19)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher94', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(138, N'Зиновій', N'Викладач', 'teacher@admin.com')
+	( 'teacher94', convert(binary,''), 64, N'Микита', N'teacher94', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(138, 19)
+	(107, 19)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher95', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(139, N'Балін', N'Викладач', 'teacher@admin.com')
+	( 'teacher95', convert(binary,''), 64, N'Ян', N'teacher95', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(139, 19)
+	(108, 19)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher96', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(140, N'Афіна', N'Викладач', 'teacher@admin.com')
+	( 'teacher96', convert(binary,''), 64, N'Наталія', N'teacher96', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(140, 20)
+	(109, 20)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher97', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(141, N'Гордій', N'Викладач', 'teacher@admin.com')
+	( 'teacher97', convert(binary,''), 64, N'Софія', N'teacher97', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(141, 20)
+	(110, 20)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher98', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(142, N'Іванна', N'Викладач', 'teacher@admin.com')
+	( 'teacher98', convert(binary,''), 64, N'Милослава', N'teacher98', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(142, 20)
+	(111, 20)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher99', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(143, N'Гордій', N'Викладач', 'teacher@admin.com')
+	( 'teacher99', convert(binary,''), 64, N'Олеся', N'teacher99', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(143, 20)
+	(112, 20)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher100', convert(binary,''),64)
+	( 'teacher100', convert(binary,''), 64, N'Левко', N'teacher100', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(144, N'Руслана', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(144, 20)
+	(113, 20)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher101', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(145, N'Любослав', N'Викладач', 'teacher@admin.com')
+	( 'teacher101', convert(binary,''), 64, N'Вікторія', N'teacher101', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(145, 21)
+	(114, 21)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher102', convert(binary,''),64)
+	( 'teacher102', convert(binary,''), 64, N'Владислава', N'teacher102', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(146, N'Любава', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(146, 21)
+	(115, 21)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher103', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(147, N'Вероніка', N'Викладач', 'teacher@admin.com')
+	( 'teacher103', convert(binary,''), 64, N'Зіновій', N'teacher103', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(147, 21)
+	(116, 21)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher104', convert(binary,''),64)
+	( 'teacher104', convert(binary,''), 64, N'Дмитро', N'teacher104', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(148, N'Ада', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(148, 21)
+	(117, 21)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher105', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(149, N'Богдан', N'Викладач', 'teacher@admin.com')
+	( 'teacher105', convert(binary,''), 64, N'Назар', N'teacher105', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(149, 21)
+	(118, 21)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher106', convert(binary,''),64)
+	( 'teacher106', convert(binary,''), 64, N'Марта', N'teacher106', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(150, N'Денис', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(150, 22)
+	(119, 22)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher107', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(151, N'Георгій', N'Викладач', 'teacher@admin.com')
+	( 'teacher107', convert(binary,''), 64, N'Георгій', N'teacher107', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(151, 22)
+	(120, 22)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher108', convert(binary,''),64)
+	( 'teacher108', convert(binary,''), 64, N'Милослава', N'teacher108', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(152, N'Арагорн', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(152, 22)
+	(121, 22)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher109', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(153, N'Доброслав', N'Викладач', 'teacher@admin.com')
+	( 'teacher109', convert(binary,''), 64, N'Жанна', N'teacher109', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(153, 22)
+	(122, 22)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher110', convert(binary,''),64)
+	( 'teacher110', convert(binary,''), 64, N'Маряна', N'teacher110', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(154, N'Руслан', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(154, 22)
+	(123, 22)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher111', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(155, N'Остромир', N'Викладач', 'teacher@admin.com')
+	( 'teacher111', convert(binary,''), 64, N'Богдана', N'teacher111', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(155, 23)
+	(124, 23)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher112', convert(binary,''),64)
+	( 'teacher112', convert(binary,''), 64, N'Влада', N'teacher112', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(156, N'Лукян', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(156, 23)
+	(125, 23)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher113', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(157, N'Назар', N'Викладач', 'teacher@admin.com')
+	( 'teacher113', convert(binary,''), 64, N'Оксана', N'teacher113', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(157, 23)
+	(126, 23)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher114', convert(binary,''),64)
+	( 'teacher114', convert(binary,''), 64, N'Дарина', N'teacher114', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(158, N'Тарас', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(158, 23)
+	(127, 23)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher115', convert(binary,''),64)
+	( 'teacher115', convert(binary,''), 64, N'Сергій', N'teacher115', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(159, N'Дана', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(159, 23)
+	(128, 23)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher116', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(160, N'Ібрагім', N'Викладач', 'teacher@admin.com')
+	( 'teacher116', convert(binary,''), 64, N'Остап', N'teacher116', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(160, 24)
+	(129, 24)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher117', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(161, N'Остап', N'Викладач', 'teacher@admin.com')
+	( 'teacher117', convert(binary,''), 64, N'Пилип', N'teacher117', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(161, 24)
+	(130, 24)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher118', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(162, N'Острозор', N'Викладач', 'teacher@admin.com')
+	( 'teacher118', convert(binary,''), 64, N'Анжела', N'teacher118', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(162, 24)
+	(131, 24)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher119', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(163, N'Арагорн', N'Викладач', 'teacher@admin.com')
+	( 'teacher119', convert(binary,''), 64, N'Орест', N'teacher119', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(163, 24)
+	(132, 24)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher120', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(164, N'Жадан', N'Викладач', 'teacher@admin.com')
+	( 'teacher120', convert(binary,''), 64, N'Ксенія', N'teacher120', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(164, 24)
+	(133, 24)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher121', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(165, N'Віктор', N'Викладач', 'teacher@admin.com')
+	( 'teacher121', convert(binary,''), 64, N'Дана', N'teacher121', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(165, 25)
+	(134, 25)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher122', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(166, N'Кий', N'Викладач', 'teacher@admin.com')
+	( 'teacher122', convert(binary,''), 64, N'Анна', N'teacher122', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(166, 25)
+	(135, 25)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher123', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(167, N'Юрій', N'Викладач', 'teacher@admin.com')
+	( 'teacher123', convert(binary,''), 64, N'Владислав', N'teacher123', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(167, 25)
+	(136, 25)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher124', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(168, N'Дарій', N'Викладач', 'teacher@admin.com')
+	( 'teacher124', convert(binary,''), 64, N'Степан', N'teacher124', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(168, 25)
+	(137, 25)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher125', convert(binary,''),64)
+	( 'teacher125', convert(binary,''), 64, N'Віктор', N'teacher125', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(169, N'Люк', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(169, 25)
+	(138, 25)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher126', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(170, N'Жадан', N'Викладач', 'teacher@admin.com')
+	( 'teacher126', convert(binary,''), 64, N'Любов', N'teacher126', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(170, 26)
+	(139, 26)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher127', convert(binary,''),64)
+	( 'teacher127', convert(binary,''), 64, N'Владислава', N'teacher127', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(171, N'Сварг', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(171, 26)
+	(140, 26)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher128', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(172, N'Анна', N'Викладач', 'teacher@admin.com')
+	( 'teacher128', convert(binary,''), 64, N'Пилип', N'teacher128', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(172, 26)
+	(141, 26)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher129', convert(binary,''),64)
+	( 'teacher129', convert(binary,''), 64, N'Валентина', N'teacher129', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(173, N'Гостомисл', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(173, 26)
+	(142, 26)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher130', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(174, N'Леголас', N'Викладач', 'teacher@admin.com')
+	( 'teacher130', convert(binary,''), 64, N'Любомир', N'teacher130', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(174, 26)
+	(143, 26)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	( 'teacher131', convert(binary,''),64)
+	( 'teacher131', convert(binary,''), 64, N'Павло', N'teacher131', N'Викладач', N'teacher@tech.ua')
 GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
-VALUES 
-	(175, N'Ярополк', N'Викладач', 'teacher@admin.com')
-GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(175, 27)
+	(144, 27)
 GO
 ---------------------------------------------------
-INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher132', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+INSERT INTO [SystemUser]
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(176, N'Норі', N'Викладач', 'teacher@admin.com')
+	( 'teacher132', convert(binary,''), 64, N'Леся', N'teacher132', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(176, 27)
+	(145, 27)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher133', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(177, N'Милован', N'Викладач', 'teacher@admin.com')
+	( 'teacher133', convert(binary,''), 64, N'Ростислав', N'teacher133', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(177, 27)
+	(146, 27)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher134', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(178, N'Енакін', N'Викладач', 'teacher@admin.com')
+	( 'teacher134', convert(binary,''), 64, N'Анжела', N'teacher134', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(178, 27)
+	(147, 27)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher135', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(179, N'Денис', N'Викладач', 'teacher@admin.com')
+	( 'teacher135', convert(binary,''), 64, N'Любов', N'teacher135', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(179, 27)
+	(148, 27)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher136', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(180, N'Братислав', N'Викладач', 'teacher@admin.com')
+	( 'teacher136', convert(binary,''), 64, N'Дмитро', N'teacher136', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(180, 28)
+	(149, 28)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher137', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(181, N'Забава', N'Викладач', 'teacher@admin.com')
+	( 'teacher137', convert(binary,''), 64, N'Данило', N'teacher137', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(181, 28)
+	(150, 28)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher138', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(182, N'Аріадна', N'Викладач', 'teacher@admin.com')
+	( 'teacher138', convert(binary,''), 64, N'Владислава', N'teacher138', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(182, 28)
+	(151, 28)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher139', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(183, N'Леся', N'Викладач', 'teacher@admin.com')
+	( 'teacher139', convert(binary,''), 64, N'Володимир', N'teacher139', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(183, 28)
+	(152, 28)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher140', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(184, N'Корній', N'Викладач', 'teacher@admin.com')
+	( 'teacher140', convert(binary,''), 64, N'Милослава', N'teacher140', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(184, 28)
+	(153, 28)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher141', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(185, N'Градимир', N'Викладач', 'teacher@admin.com')
+	( 'teacher141', convert(binary,''), 64, N'Вікторія', N'teacher141', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(185, 29)
+	(154, 29)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher142', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(186, N'Петро', N'Викладач', 'teacher@admin.com')
+	( 'teacher142', convert(binary,''), 64, N'Світлана', N'teacher142', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(186, 29)
+	(155, 29)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher143', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(187, N'Дарій', N'Викладач', 'teacher@admin.com')
+	( 'teacher143', convert(binary,''), 64, N'Ольга', N'teacher143', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(187, 29)
+	(156, 29)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher144', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(188, N'Корній', N'Викладач', 'teacher@admin.com')
+	( 'teacher144', convert(binary,''), 64, N'Остап', N'teacher144', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(188, 29)
+	(157, 29)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher145', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(189, N'Сварг', N'Викладач', 'teacher@admin.com')
+	( 'teacher145', convert(binary,''), 64, N'Олена', N'teacher145', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(189, 29)
+	(158, 29)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher146', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(190, N'Піппін', N'Викладач', 'teacher@admin.com')
+	( 'teacher146', convert(binary,''), 64, N'Людмила', N'teacher146', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(190, 30)
+	(159, 30)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher147', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(191, N'Зорян', N'Викладач', 'teacher@admin.com')
+	( 'teacher147', convert(binary,''), 64, N'Зеновій', N'teacher147', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(191, 30)
+	(160, 30)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher148', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(192, N'Гаррі', N'Викладач', 'teacher@admin.com')
+	( 'teacher148', convert(binary,''), 64, N'Павло', N'teacher148', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(192, 30)
+	(161, 30)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher149', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(193, N'Олексій', N'Викладач', 'teacher@admin.com')
+	( 'teacher149', convert(binary,''), 64, N'Ірина', N'teacher149', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(193, 30)
+	(162, 30)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher150', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(194, N'Аліса', N'Викладач', 'teacher@admin.com')
+	( 'teacher150', convert(binary,''), 64, N'Герасим', N'teacher150', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(194, 30)
+	(163, 30)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher151', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(195, N'Гордій', N'Викладач', 'teacher@admin.com')
+	( 'teacher151', convert(binary,''), 64, N'Пилип', N'teacher151', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(195, 31)
+	(164, 31)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher152', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(196, N'Аврелія', N'Викладач', 'teacher@admin.com')
+	( 'teacher152', convert(binary,''), 64, N'Михайло', N'teacher152', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(196, 31)
+	(165, 31)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher153', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(197, N'Гертруда', N'Викладач', 'teacher@admin.com')
+	( 'teacher153', convert(binary,''), 64, N'Потап', N'teacher153', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(197, 31)
+	(166, 31)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher154', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(198, N'Маряна', N'Викладач', 'teacher@admin.com')
+	( 'teacher154', convert(binary,''), 64, N'Генадій', N'teacher154', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(198, 31)
+	(167, 31)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher155', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(199, N'Галина', N'Викладач', 'teacher@admin.com')
+	( 'teacher155', convert(binary,''), 64, N'Тарас', N'teacher155', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(199, 31)
+	(168, 31)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher156', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(200, N'Арагорн', N'Викладач', 'teacher@admin.com')
+	( 'teacher156', convert(binary,''), 64, N'Олена', N'teacher156', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(200, 32)
+	(169, 32)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher157', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(201, N'Градислав', N'Викладач', 'teacher@admin.com')
+	( 'teacher157', convert(binary,''), 64, N'Анжела', N'teacher157', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(201, 32)
+	(170, 32)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher158', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(202, N'Осмомисл', N'Викладач', 'teacher@admin.com')
+	( 'teacher158', convert(binary,''), 64, N'Віта', N'teacher158', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(202, 32)
+	(171, 32)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher159', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(203, N'Сіріус', N'Викладач', 'teacher@admin.com')
+	( 'teacher159', convert(binary,''), 64, N'Георгій', N'teacher159', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(203, 32)
+	(172, 32)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher160', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(204, N'Анастасія', N'Викладач', 'teacher@admin.com')
+	( 'teacher160', convert(binary,''), 64, N'Степан', N'teacher160', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(204, 32)
+	(173, 32)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher161', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(205, N'Ярополк', N'Викладач', 'teacher@admin.com')
+	( 'teacher161', convert(binary,''), 64, N'Данило', N'teacher161', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(205, 33)
+	(174, 33)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher162', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(206, N'Киян', N'Викладач', 'teacher@admin.com')
+	( 'teacher162', convert(binary,''), 64, N'Віра', N'teacher162', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(206, 33)
+	(175, 33)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher163', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(207, N'Дана', N'Викладач', 'teacher@admin.com')
+	( 'teacher163', convert(binary,''), 64, N'Кузьма', N'teacher163', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(207, 33)
+	(176, 33)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher164', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(208, N'Влад', N'Викладач', 'teacher@admin.com')
+	( 'teacher164', convert(binary,''), 64, N'Роман', N'teacher164', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(208, 33)
+	(177, 33)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher165', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(209, N'Людмила', N'Викладач', 'teacher@admin.com')
+	( 'teacher165', convert(binary,''), 64, N'Петро', N'teacher165', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(209, 33)
+	(178, 33)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher166', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(210, N'Милован', N'Викладач', 'teacher@admin.com')
+	( 'teacher166', convert(binary,''), 64, N'Зоряна', N'teacher166', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(210, 34)
+	(179, 34)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher167', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(211, N'Роксолана', N'Викладач', 'teacher@admin.com')
+	( 'teacher167', convert(binary,''), 64, N'Ігор', N'teacher167', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(211, 34)
+	(180, 34)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher168', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(212, N'Києслав', N'Викладач', 'teacher@admin.com')
+	( 'teacher168', convert(binary,''), 64, N'Марян', N'teacher168', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(212, 34)
+	(181, 34)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher169', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(213, N'Івантослав', N'Викладач', 'teacher@admin.com')
+	( 'teacher169', convert(binary,''), 64, N'Наталія', N'teacher169', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(213, 34)
+	(182, 34)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher170', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(214, N'Аврелія', N'Викладач', 'teacher@admin.com')
+	( 'teacher170', convert(binary,''), 64, N'Мирон', N'teacher170', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(214, 34)
+	(183, 34)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher171', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(215, N'Осмомисл', N'Викладач', 'teacher@admin.com')
+	( 'teacher171', convert(binary,''), 64, N'Любомир', N'teacher171', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(215, 35)
+	(184, 35)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher172', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(216, N'Віта', N'Викладач', 'teacher@admin.com')
+	( 'teacher172', convert(binary,''), 64, N'Дана', N'teacher172', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(216, 35)
+	(185, 35)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher173', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(217, N'Турбог', N'Викладач', 'teacher@admin.com')
+	( 'teacher173', convert(binary,''), 64, N'Тарас', N'teacher173', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(217, 35)
+	(186, 35)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher174', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(218, N'Юрій', N'Викладач', 'teacher@admin.com')
+	( 'teacher174', convert(binary,''), 64, N'Юрій', N'teacher174', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(218, 35)
+	(187, 35)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher175', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(219, N'Кілі', N'Викладач', 'teacher@admin.com')
+	( 'teacher175', convert(binary,''), 64, N'Дмитро', N'teacher175', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(219, 35)
+	(188, 35)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher176', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(220, N'Стефаній', N'Викладач', 'teacher@admin.com')
+	( 'teacher176', convert(binary,''), 64, N'Зоряна', N'teacher176', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(220, 36)
+	(189, 36)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher177', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(221, N'Том', N'Викладач', 'teacher@admin.com')
+	( 'teacher177', convert(binary,''), 64, N'Зоя', N'teacher177', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(221, 36)
+	(190, 36)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher178', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(222, N'Дивозір', N'Викладач', 'teacher@admin.com')
+	( 'teacher178', convert(binary,''), 64, N'Віра', N'teacher178', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(222, 36)
+	(191, 36)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher179', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(223, N'Ярило', N'Викладач', 'teacher@admin.com')
+	( 'teacher179', convert(binary,''), 64, N'Аліна', N'teacher179', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(223, 36)
+	(192, 36)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher180', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(224, N'Кілі', N'Викладач', 'teacher@admin.com')
+	( 'teacher180', convert(binary,''), 64, N'Захар', N'teacher180', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(224, 36)
+	(193, 36)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher181', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(225, N'Ольга', N'Викладач', 'teacher@admin.com')
+	( 'teacher181', convert(binary,''), 64, N'Вероніка', N'teacher181', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(225, 37)
+	(194, 37)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher182', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(226, N'Ратимир', N'Викладач', 'teacher@admin.com')
+	( 'teacher182', convert(binary,''), 64, N'Любомир', N'teacher182', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(226, 37)
+	(195, 37)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher183', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(227, N'Злат', N'Викладач', 'teacher@admin.com')
+	( 'teacher183', convert(binary,''), 64, N'Валерія', N'teacher183', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(227, 37)
+	(196, 37)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher184', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(228, N'Остап', N'Викладач', 'teacher@admin.com')
+	( 'teacher184', convert(binary,''), 64, N'Сергій', N'teacher184', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(228, 37)
+	(197, 37)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher185', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(229, N'Ірина', N'Викладач', 'teacher@admin.com')
+	( 'teacher185', convert(binary,''), 64, N'Леся', N'teacher185', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(229, 37)
+	(198, 37)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher186', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(230, N'Тома', N'Викладач', 'teacher@admin.com')
+	( 'teacher186', convert(binary,''), 64, N'Всеволод', N'teacher186', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(230, 38)
+	(199, 38)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher187', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(231, N'Дмитро', N'Викладач', 'teacher@admin.com')
+	( 'teacher187', convert(binary,''), 64, N'Олег', N'teacher187', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(231, 38)
+	(200, 38)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher188', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(232, N'Остромир', N'Викладач', 'teacher@admin.com')
+	( 'teacher188', convert(binary,''), 64, N'Назар', N'teacher188', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(232, 38)
+	(201, 38)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher189', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(233, N'Захар', N'Викладач', 'teacher@admin.com')
+	( 'teacher189', convert(binary,''), 64, N'Володимир', N'teacher189', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(233, 38)
+	(202, 38)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher190', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(234, N'Гліб', N'Викладач', 'teacher@admin.com')
+	( 'teacher190', convert(binary,''), 64, N'Наталія', N'teacher190', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(234, 38)
+	(203, 38)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher191', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(235, N'Любов', N'Викладач', 'teacher@admin.com')
+	( 'teacher191', convert(binary,''), 64, N'Ярема', N'teacher191', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(235, 39)
+	(204, 39)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher192', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(236, N'Златомир', N'Викладач', 'teacher@admin.com')
+	( 'teacher192', convert(binary,''), 64, N'Пилип', N'teacher192', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(236, 39)
+	(205, 39)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher193', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(237, N'Том', N'Викладач', 'teacher@admin.com')
+	( 'teacher193', convert(binary,''), 64, N'Анастасія', N'teacher193', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(237, 39)
+	(206, 39)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher194', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(238, N'Всеволод', N'Викладач', 'teacher@admin.com')
+	( 'teacher194', convert(binary,''), 64, N'Аліна', N'teacher194', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(238, 39)
+	(207, 39)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher195', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(239, N'Антонія', N'Викладач', 'teacher@admin.com')
+	( 'teacher195', convert(binary,''), 64, N'Галина', N'teacher195', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(239, 39)
+	(208, 39)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher196', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(240, N'Зінаїда', N'Викладач', 'teacher@admin.com')
+	( 'teacher196', convert(binary,''), 64, N'Уляна', N'teacher196', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(240, 40)
+	(209, 40)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher197', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(241, N'Антонія', N'Викладач', 'teacher@admin.com')
+	( 'teacher197', convert(binary,''), 64, N'Владислава', N'teacher197', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(241, 40)
+	(210, 40)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher198', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(242, N'Балін', N'Викладач', 'teacher@admin.com')
+	( 'teacher198', convert(binary,''), 64, N'Ростислав', N'teacher198', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(242, 40)
+	(211, 40)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher199', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(243, N'Олександр', N'Викладач', 'teacher@admin.com')
+	( 'teacher199', convert(binary,''), 64, N'Тамара', N'teacher199', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(243, 40)
+	(212, 40)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher200', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(244, N'Том', N'Викладач', 'teacher@admin.com')
+	( 'teacher200', convert(binary,''), 64, N'Денис', N'teacher200', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(244, 40)
+	(213, 40)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher201', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(245, N'Гендальф', N'Викладач', 'teacher@admin.com')
+	( 'teacher201', convert(binary,''), 64, N'Валентина', N'teacher201', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(245, 41)
+	(214, 41)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher202', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(246, N'Русана', N'Викладач', 'teacher@admin.com')
+	( 'teacher202', convert(binary,''), 64, N'Маряна', N'teacher202', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(246, 41)
+	(215, 41)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher203', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(247, N'Юрій', N'Викладач', 'teacher@admin.com')
+	( 'teacher203', convert(binary,''), 64, N'Тарас', N'teacher203', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(247, 41)
+	(216, 41)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher204', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(248, N'Анна', N'Викладач', 'teacher@admin.com')
+	( 'teacher204', convert(binary,''), 64, N'Ростислав', N'teacher204', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(248, 41)
+	(217, 41)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher205', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(249, N'Влад', N'Викладач', 'teacher@admin.com')
+	( 'teacher205', convert(binary,''), 64, N'Любов', N'teacher205', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(249, 41)
+	(218, 41)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher206', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(250, N'Любомудр', N'Викладач', 'teacher@admin.com')
+	( 'teacher206', convert(binary,''), 64, N'Владислава', N'teacher206', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(250, 42)
+	(219, 42)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher207', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(251, N'Арагог', N'Викладач', 'teacher@admin.com')
+	( 'teacher207', convert(binary,''), 64, N'Ксенія', N'teacher207', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(251, 42)
+	(220, 42)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher208', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(252, N'Вербан', N'Викладач', 'teacher@admin.com')
+	( 'teacher208', convert(binary,''), 64, N'Ніна', N'teacher208', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(252, 42)
+	(221, 42)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher209', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(253, N'Інга', N'Викладач', 'teacher@admin.com')
+	( 'teacher209', convert(binary,''), 64, N'Ольга', N'teacher209', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(253, 42)
+	(222, 42)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher210', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(254, N'Владислав', N'Викладач', 'teacher@admin.com')
+	( 'teacher210', convert(binary,''), 64, N'Дана', N'teacher210', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(254, 42)
+	(223, 42)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher211', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(255, N'Маряна', N'Викладач', 'teacher@admin.com')
+	( 'teacher211', convert(binary,''), 64, N'Денис', N'teacher211', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(255, 43)
+	(224, 43)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher212', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(256, N'Світлана', N'Викладач', 'teacher@admin.com')
+	( 'teacher212', convert(binary,''), 64, N'Олеся', N'teacher212', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(256, 43)
+	(225, 43)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher213', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(257, N'Злата', N'Викладач', 'teacher@admin.com')
+	( 'teacher213', convert(binary,''), 64, N'Георгій', N'teacher213', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(257, 43)
+	(226, 43)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher214', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(258, N'Пилип', N'Викладач', 'teacher@admin.com')
+	( 'teacher214', convert(binary,''), 64, N'Оксана', N'teacher214', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(258, 43)
+	(227, 43)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher215', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(259, N'Валерія', N'Викладач', 'teacher@admin.com')
+	( 'teacher215', convert(binary,''), 64, N'Людмила', N'teacher215', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(259, 43)
+	(228, 43)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher216', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(260, N'Обі', N'Викладач', 'teacher@admin.com')
+	( 'teacher216', convert(binary,''), 64, N'Марта', N'teacher216', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(260, 44)
+	(229, 44)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher217', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(261, N'Балін', N'Викладач', 'teacher@admin.com')
+	( 'teacher217', convert(binary,''), 64, N'Василь', N'teacher217', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(261, 44)
+	(230, 44)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher218', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(262, N'Захар', N'Викладач', 'teacher@admin.com')
+	( 'teacher218', convert(binary,''), 64, N'Дарина', N'teacher218', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(262, 44)
+	(231, 44)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher219', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(263, N'Зиновій', N'Викладач', 'teacher@admin.com')
+	( 'teacher219', convert(binary,''), 64, N'Валерія', N'teacher219', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(263, 44)
+	(232, 44)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher220', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(264, N'Меланія', N'Викладач', 'teacher@admin.com')
+	( 'teacher220', convert(binary,''), 64, N'Назар', N'teacher220', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(264, 44)
+	(233, 44)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher221', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(265, N'Гаврило', N'Викладач', 'teacher@admin.com')
+	( 'teacher221', convert(binary,''), 64, N'Олексій', N'teacher221', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(265, 45)
+	(234, 45)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher222', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(266, N'Любослав', N'Викладач', 'teacher@admin.com')
+	( 'teacher222', convert(binary,''), 64, N'Милослава', N'teacher222', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(266, 45)
+	(235, 45)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher223', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(267, N'Норі', N'Викладач', 'teacher@admin.com')
+	( 'teacher223', convert(binary,''), 64, N'Ігор', N'teacher223', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(267, 45)
+	(236, 45)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher224', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(268, N'Вербан', N'Викладач', 'teacher@admin.com')
+	( 'teacher224', convert(binary,''), 64, N'Богдан', N'teacher224', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(268, 45)
+	(237, 45)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher225', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(269, N'Віолетта', N'Викладач', 'teacher@admin.com')
+	( 'teacher225', convert(binary,''), 64, N'Зоя', N'teacher225', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(269, 45)
+	(238, 45)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher226', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(270, N'Георгій', N'Викладач', 'teacher@admin.com')
+	( 'teacher226', convert(binary,''), 64, N'Ксенія', N'teacher226', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(270, 46)
+	(239, 46)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher227', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(271, N'Ян', N'Викладач', 'teacher@admin.com')
+	( 'teacher227', convert(binary,''), 64, N'Данило', N'teacher227', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(271, 46)
+	(240, 46)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher228', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(272, N'Милослав', N'Викладач', 'teacher@admin.com')
+	( 'teacher228', convert(binary,''), 64, N'Ольга', N'teacher228', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(272, 46)
+	(241, 46)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher229', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(273, N'Ніна', N'Викладач', 'teacher@admin.com')
+	( 'teacher229', convert(binary,''), 64, N'Ірина', N'teacher229', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(273, 46)
+	(242, 46)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher230', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(274, N'Гордій', N'Викладач', 'teacher@admin.com')
+	( 'teacher230', convert(binary,''), 64, N'Євген', N'teacher230', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(274, 46)
+	(243, 46)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher231', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(275, N'Любов', N'Викладач', 'teacher@admin.com')
+	( 'teacher231', convert(binary,''), 64, N'Вячеслав', N'teacher231', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(275, 47)
+	(244, 47)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher232', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(276, N'Філі', N'Викладач', 'teacher@admin.com')
+	( 'teacher232', convert(binary,''), 64, N'Марян', N'teacher232', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(276, 47)
+	(245, 47)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher233', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(277, N'Варвара', N'Викладач', 'teacher@admin.com')
+	( 'teacher233', convert(binary,''), 64, N'Віта', N'teacher233', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(277, 47)
+	(246, 47)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher234', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(278, N'Пилип', N'Викладач', 'teacher@admin.com')
+	( 'teacher234', convert(binary,''), 64, N'Остап', N'teacher234', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(278, 47)
+	(247, 47)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher235', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(279, N'Софія', N'Викладач', 'teacher@admin.com')
+	( 'teacher235', convert(binary,''), 64, N'Ярослав', N'teacher235', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(279, 47)
+	(248, 47)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher236', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(280, N'Тамара', N'Викладач', 'teacher@admin.com')
+	( 'teacher236', convert(binary,''), 64, N'Зоряна', N'teacher236', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(280, 48)
+	(249, 48)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher237', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(281, N'Ляна', N'Викладач', 'teacher@admin.com')
+	( 'teacher237', convert(binary,''), 64, N'Жанна', N'teacher237', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(281, 48)
+	(250, 48)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher238', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(282, N'Олелько', N'Викладач', 'teacher@admin.com')
+	( 'teacher238', convert(binary,''), 64, N'Денис', N'teacher238', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(282, 48)
+	(251, 48)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher239', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(283, N'Зорепад', N'Викладач', 'teacher@admin.com')
+	( 'teacher239', convert(binary,''), 64, N'Вікторія', N'teacher239', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(283, 48)
+	(252, 48)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher240', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(284, N'Микола', N'Викладач', 'teacher@admin.com')
+	( 'teacher240', convert(binary,''), 64, N'Герасим', N'teacher240', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(284, 48)
+	(253, 48)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher241', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(285, N'Олена', N'Викладач', 'teacher@admin.com')
+	( 'teacher241', convert(binary,''), 64, N'Іван', N'teacher241', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(285, 49)
+	(254, 49)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher242', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(286, N'Падме', N'Викладач', 'teacher@admin.com')
+	( 'teacher242', convert(binary,''), 64, N'Потап', N'teacher242', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(286, 49)
+	(255, 49)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher243', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(287, N'Ярема', N'Викладач', 'teacher@admin.com')
+	( 'teacher243', convert(binary,''), 64, N'Орест', N'teacher243', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(287, 49)
+	(256, 49)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher244', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(288, N'Квай-Гон', N'Викладач', 'teacher@admin.com')
+	( 'teacher244', convert(binary,''), 64, N'Мирон', N'teacher244', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(288, 49)
+	(257, 49)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher245', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(289, N'Жадан', N'Викладач', 'teacher@admin.com')
+	( 'teacher245', convert(binary,''), 64, N'Жанна', N'teacher245', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(289, 49)
+	(258, 49)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher246', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(290, N'Маряна', N'Викладач', 'teacher@admin.com')
+	( 'teacher246', convert(binary,''), 64, N'Богдана', N'teacher246', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(290, 50)
+	(259, 50)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher247', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(291, N'Мирослав', N'Викладач', 'teacher@admin.com')
+	( 'teacher247', convert(binary,''), 64, N'Мирон', N'teacher247', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(291, 50)
+	(260, 50)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher248', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(292, N'Сварг', N'Викладач', 'teacher@admin.com')
+	( 'teacher248', convert(binary,''), 64, N'Вікторія', N'teacher248', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(292, 50)
+	(261, 50)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher249', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(293, N'Любомисл', N'Викладач', 'teacher@admin.com')
+	( 'teacher249', convert(binary,''), 64, N'Владислава', N'teacher249', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(293, 50)
+	(262, 50)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher250', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(294, N'Сіріус', N'Викладач', 'teacher@admin.com')
+	( 'teacher250', convert(binary,''), 64, N'Людмила', N'teacher250', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(294, 50)
+	(263, 50)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher251', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(295, N'Вікторія', N'Викладач', 'teacher@admin.com')
+	( 'teacher251', convert(binary,''), 64, N'Ольга', N'teacher251', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(295, 51)
+	(264, 51)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher252', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(296, N'Любомудр', N'Викладач', 'teacher@admin.com')
+	( 'teacher252', convert(binary,''), 64, N'Світлана', N'teacher252', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(296, 51)
+	(265, 51)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher253', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(297, N'Богуслава', N'Викладач', 'teacher@admin.com')
+	( 'teacher253', convert(binary,''), 64, N'Леся', N'teacher253', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(297, 51)
+	(266, 51)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher254', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(298, N'Сварг', N'Викладач', 'teacher@admin.com')
+	( 'teacher254', convert(binary,''), 64, N'Богдана', N'teacher254', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(298, 51)
+	(267, 51)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher255', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(299, N'Ніна', N'Викладач', 'teacher@admin.com')
+	( 'teacher255', convert(binary,''), 64, N'Жанна', N'teacher255', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(299, 51)
+	(268, 51)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher256', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(300, N'Юрій', N'Викладач', 'teacher@admin.com')
+	( 'teacher256', convert(binary,''), 64, N'Жанна', N'teacher256', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(300, 52)
+	(269, 52)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher257', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(301, N'Либідь', N'Викладач', 'teacher@admin.com')
+	( 'teacher257', convert(binary,''), 64, N'Вероніка', N'teacher257', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(301, 52)
+	(270, 52)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher258', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(302, N'Олексій', N'Викладач', 'teacher@admin.com')
+	( 'teacher258', convert(binary,''), 64, N'Тарас', N'teacher258', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(302, 52)
+	(271, 52)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher259', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(303, N'Рон', N'Викладач', 'teacher@admin.com')
+	( 'teacher259', convert(binary,''), 64, N'Віталіна', N'teacher259', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(303, 52)
+	(272, 52)
 GO
 ---------------------------------------------------
 INSERT INTO [SystemUser]
-  ( [Login], [Password], [UserRole])
-VALUES 
-	( 'teacher260', convert(binary,''),64)
-GO
-INSERT INTO [UserInformation]
-  ([SystemUserID], [FirstName], [LastName], [Email])
+  ( [Login], [Password], [UserRole], [FirstName], [MiddleName], [LastName], [Email])
 VALUES 
-	(304, N'Тамара', N'Викладач', 'teacher@admin.com')
+	( 'teacher260', convert(binary,''), 64, N'Борис', N'teacher260', N'Викладач', N'teacher@tech.ua')
 GO
 INSERT INTO [Teacher]
   ([SystemUserID], [CathedraID])
 VALUES 
-	(304, 52)
+	(273, 52)
 GO
 ---------------------------------------------------

@@ -21,7 +21,6 @@ using System.Xml.Serialization;
 
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_Faculty_Institute", "Institute", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(StudyingControllerEntityModel.Institute), "Faculty", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.Faculty), true)]
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_FacultyAdmin_Faculty", "Faculty", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.Faculty), "FacultyAdmin", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.FacultyAdmin), true)]
-[assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_UserInformation_SystemUser", "SystemUser", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.SystemUser), "UserInformation", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(StudyingControllerEntityModel.UserInformation), true)]
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_InstituteAdmin_Institute", "Institute", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.Institute), "InstituteAdmin", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.InstituteAdmin), true)]
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_FacultySecretary_Faculty", "Faculty", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.Faculty), "FacultySecretary", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.FacultySecretary), true)]
 [assembly: EdmRelationshipAttribute("UniversityDBModel", "FK_InstituteSecretary_Institute", "Institute", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(StudyingControllerEntityModel.Institute), "InstituteSecretary", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(StudyingControllerEntityModel.InstituteSecretary), true)]
@@ -152,22 +151,6 @@ namespace StudyingControllerEntityModel
             }
         }
         private ObjectSet<Institute> _Institutes;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<UserInformation> UserInformations
-        {
-            get
-            {
-                if ((_UserInformations == null))
-                {
-                    _UserInformations = base.CreateObjectSet<UserInformation>("UserInformations");
-                }
-                return _UserInformations;
-            }
-        }
-        private ObjectSet<UserInformation> _UserInformations;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -435,14 +418,6 @@ namespace StudyingControllerEntityModel
         public void AddToInstitutes(Institute institute)
         {
             base.AddObject("Institutes", institute);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the UserInformations EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToUserInformations(UserInformation userInformation)
-        {
-            base.AddObject("UserInformations", userInformation);
         }
     
         /// <summary>
@@ -4293,6 +4268,58 @@ namespace StudyingControllerEntityModel
 
         #endregion
 
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String StudentCard
+        {
+            get
+            {
+                return _StudentCard;
+            }
+            set
+            {
+                OnStudentCardChanging(value);
+                ReportPropertyChanging("StudentCard");
+                _StudentCard = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("StudentCard");
+                OnStudentCardChanged();
+            }
+        }
+        private global::System.String _StudentCard;
+        partial void OnStudentCardChanging(global::System.String value);
+        partial void OnStudentCardChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Gradebook
+        {
+            get
+            {
+                return _Gradebook;
+            }
+            set
+            {
+                OnGradebookChanging(value);
+                ReportPropertyChanging("Gradebook");
+                _Gradebook = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Gradebook");
+                OnGradebookChanged();
+            }
+        }
+        private global::System.String _Gradebook;
+        partial void OnGradebookChanging(global::System.String value);
+        partial void OnGradebookChanged();
+
+        #endregion
+
     
         #region Navigation Properties
     
@@ -5002,49 +5029,155 @@ namespace StudyingControllerEntityModel
         private global::System.Int32 _iUserRole = 0;
         partial void OniUserRoleChanging(global::System.Int32 value);
         partial void OniUserRoleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FirstName
+        {
+            get
+            {
+                return _FirstName;
+            }
+            set
+            {
+                OnFirstNameChanging(value);
+                ReportPropertyChanging("FirstName");
+                _FirstName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FirstName");
+                OnFirstNameChanged();
+            }
+        }
+        private global::System.String _FirstName;
+        partial void OnFirstNameChanging(global::System.String value);
+        partial void OnFirstNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MiddleName
+        {
+            get
+            {
+                return _MiddleName;
+            }
+            set
+            {
+                OnMiddleNameChanging(value);
+                ReportPropertyChanging("MiddleName");
+                _MiddleName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("MiddleName");
+                OnMiddleNameChanged();
+            }
+        }
+        private global::System.String _MiddleName;
+        partial void OnMiddleNameChanging(global::System.String value);
+        partial void OnMiddleNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String LastName
+        {
+            get
+            {
+                return _LastName;
+            }
+            set
+            {
+                OnLastNameChanging(value);
+                ReportPropertyChanging("LastName");
+                _LastName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("LastName");
+                OnLastNameChanged();
+            }
+        }
+        private global::System.String _LastName;
+        partial void OnLastNameChanging(global::System.String value);
+        partial void OnLastNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.Byte[] Picture
+        {
+            get
+            {
+                return StructuralObject.GetValidValue(_Picture);
+            }
+            set
+            {
+                OnPictureChanging(value);
+                ReportPropertyChanging("Picture");
+                _Picture = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Picture");
+                OnPictureChanged();
+            }
+        }
+        private global::System.Byte[] _Picture;
+        partial void OnPictureChanging(global::System.Byte[] value);
+        partial void OnPictureChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> Birth
+        {
+            get
+            {
+                return _Birth;
+            }
+            set
+            {
+                OnBirthChanging(value);
+                ReportPropertyChanging("Birth");
+                _Birth = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Birth");
+                OnBirthChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _Birth;
+        partial void OnBirthChanging(Nullable<global::System.DateTime> value);
+        partial void OnBirthChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Email
+        {
+            get
+            {
+                return _Email;
+            }
+            set
+            {
+                OnEmailChanging(value);
+                ReportPropertyChanging("Email");
+                _Email = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Email");
+                OnEmailChanged();
+            }
+        }
+        private global::System.String _Email;
+        partial void OnEmailChanging(global::System.String value);
+        partial void OnEmailChanged();
 
         #endregion
 
     
         #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "FK_UserInformation_SystemUser", "UserInformation")]
-        public UserInformation UserInformation
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<UserInformation>("UniversityDBModel.FK_UserInformation_SystemUser", "UserInformation").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<UserInformation>("UniversityDBModel.FK_UserInformation_SystemUser", "UserInformation").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<UserInformation> UserInformationReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<UserInformation>("UniversityDBModel.FK_UserInformation_SystemUser", "UserInformation");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<UserInformation>("UniversityDBModel.FK_UserInformation_SystemUser", "UserInformation", value);
-                }
-            }
-        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -5254,181 +5387,6 @@ namespace StudyingControllerEntityModel
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PracticeTeacher>("UniversityDBModel.FK_Practice_Teacher_Teacher", "Practice_Teacher", value);
-                }
-            }
-        }
-
-        #endregion
-
-    }
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="UniversityDBModel", Name="UserInformation")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class UserInformation : EntityObject
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new UserInformation object.
-        /// </summary>
-        /// <param name="id">Initial value of the ID property.</param>
-        /// <param name="firstName">Initial value of the FirstName property.</param>
-        /// <param name="lastName">Initial value of the LastName property.</param>
-        public static UserInformation CreateUserInformation(global::System.Int32 id, global::System.String firstName, global::System.String lastName)
-        {
-            UserInformation userInformation = new UserInformation();
-            userInformation.ID = id;
-            userInformation.FirstName = firstName;
-            userInformation.LastName = lastName;
-            return userInformation;
-        }
-
-        #endregion
-
-        #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                if (_ID != value)
-                {
-                    OnIDChanging(value);
-                    ReportPropertyChanging("ID");
-                    _ID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("ID");
-                    OnIDChanged();
-                }
-            }
-        }
-        private global::System.Int32 _ID;
-        partial void OnIDChanging(global::System.Int32 value);
-        partial void OnIDChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String FirstName
-        {
-            get
-            {
-                return _FirstName;
-            }
-            set
-            {
-                OnFirstNameChanging(value);
-                ReportPropertyChanging("FirstName");
-                _FirstName = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("FirstName");
-                OnFirstNameChanged();
-            }
-        }
-        private global::System.String _FirstName;
-        partial void OnFirstNameChanging(global::System.String value);
-        partial void OnFirstNameChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String LastName
-        {
-            get
-            {
-                return _LastName;
-            }
-            set
-            {
-                OnLastNameChanging(value);
-                ReportPropertyChanging("LastName");
-                _LastName = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("LastName");
-                OnLastNameChanged();
-            }
-        }
-        private global::System.String _LastName;
-        partial void OnLastNameChanging(global::System.String value);
-        partial void OnLastNameChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Email
-        {
-            get
-            {
-                return _Email;
-            }
-            set
-            {
-                OnEmailChanging(value);
-                ReportPropertyChanging("Email");
-                _Email = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Email");
-                OnEmailChanged();
-            }
-        }
-        private global::System.String _Email;
-        partial void OnEmailChanging(global::System.String value);
-        partial void OnEmailChanged();
-
-        #endregion
-
-    
-        #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("UniversityDBModel", "FK_UserInformation_SystemUser", "SystemUser")]
-        public SystemUser SystemUser
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SystemUser>("UniversityDBModel.FK_UserInformation_SystemUser", "SystemUser").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SystemUser>("UniversityDBModel.FK_UserInformation_SystemUser", "SystemUser").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<SystemUser> SystemUserReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SystemUser>("UniversityDBModel.FK_UserInformation_SystemUser", "SystemUser");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SystemUser>("UniversityDBModel.FK_UserInformation_SystemUser", "SystemUser", value);
                 }
             }
         }

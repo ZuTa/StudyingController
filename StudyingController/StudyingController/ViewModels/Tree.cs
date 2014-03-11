@@ -119,7 +119,7 @@ namespace StudyingController.ViewModels
         public List<TreeNode> ToList()
         {
             List<TreeNode> result = new List<TreeNode>();
-            foreach (TreeNode node in nodes)
+            foreach (TreeNode node in nodes.ToList())
                 EnumerateNode(node, result);
 
             return result;

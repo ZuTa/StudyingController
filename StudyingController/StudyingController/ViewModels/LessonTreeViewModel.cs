@@ -5,6 +5,8 @@ using System.Text;
 using StudyingController.Common;
 using System.Windows.Threading;
 using EntitiesDTO;
+using System.Diagnostics;
+using Common;
 
 namespace StudyingController.ViewModels
 {
@@ -29,16 +31,19 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
-        protected override void LoadData()
+        protected override object LoadDataFromServer()
         {
-            base.LoadData();
+            return ControllerInterop.Service.GetLessonTree(ControllerInterop.Session, ControllerInterop.Session.User.CopyTo(() => new SystemUserRef()));
+        }
+
+        protected override void AfterDataLoaded()
+        {
+            base.AfterDataLoaded();
             BuildUniversityTree();
         }
 
         private void BuildUniversityTree()
         {
-            StartLoading();
-
             switch (ControllerInterop.Session.User.Role)
             {
                 case UserRoles.MainSecretary:
@@ -63,13 +68,15 @@ namespace StudyingController.ViewModels
                 default:
                     throw new NotImplementedException("Unknown user's role!");
             }
-
-            StopLoading();
         }
 
         private void LoadInstitutes()
         {
-            List<InstituteDTO> institutes = ControllerInterop.Service.GetInstitutes(ControllerInterop.Session);
+            List<InstituteDTO> institutes = (DataSource as List<BaseEntityDTO>)
+                .Where(ds => ds is InstituteDTO)
+                .Select(ds=>ds as InstituteDTO)
+                .ToList();
+
             foreach (var institute in institutes)
             {
                 lock (Tree)
@@ -85,9 +92,15 @@ namespace StudyingController.ViewModels
         {
             List<FacultyDTO> faculties;
             if (instituteID.HasValue)
-                faculties = ControllerInterop.Service.GetFaculties(ControllerInterop.Session, instituteID.Value);
+                faculties = (DataSource as List<BaseEntityDTO>)
+                    .Where(ds => ds is FacultyDTO && (ds as FacultyDTO).InstituteID != null && (ds as FacultyDTO).InstituteID == instituteID.Value)
+                    .Select(ds => ds as FacultyDTO)
+                    .ToList();
             else
-                faculties = ControllerInterop.Service.GetFaculties(ControllerInterop.Session, null);
+                faculties = (DataSource as List<BaseEntityDTO>)
+                     .Where(ds => ds is FacultyDTO && (ds as FacultyDTO).InstituteID == null)
+                     .Select(ds => ds as FacultyDTO)
+                     .ToList();
 
             foreach (var faculty in faculties)
             {
@@ -102,7 +115,10 @@ namespace StudyingController.ViewModels
 
         private void LoadCathedras(int facultyID, TreeNode parentNode)
         {
-            List<CathedraDTO> cathedras = ControllerInterop.Service.GetCathedras(ControllerInterop.Session, facultyID);
+            List<CathedraDTO> cathedras = (DataSource as List<BaseEntityDTO>)
+                .Where(ds => ds is CathedraDTO && (ds as CathedraDTO).FacultyID == facultyID)
+                .Select(ds => ds as CathedraDTO)
+                .ToList();
             foreach (var cathedra in cathedras)
             {
                 lock (Tree)
@@ -115,13 +131,16 @@ namespace StudyingController.ViewModels
 
         private void LoadLectureTeachers(int cathedraID, TreeNode parentNode)
         {
-            List<TeacherDTO> teachers = ControllerInterop.Service.GetTeachers(ControllerInterop.Session, cathedraID);
+            List<TeacherDTO> teachers = (DataSource as List<BaseEntityDTO>)
+                .Where(ds => ds is TeacherDTO && (ds as TeacherDTO).Cathedra.ID == cathedraID)
+                .Select(ds => ds as TeacherDTO)
+                .ToList();
 
             foreach (var teacher in teachers)   
             {
                 lock (Tree)
                 {
-                    TreeNode node = Tree.AppendNode(new TreeNode(teacher.UserInformation.LastName, teacher, teacher.ID, 3), parentNode);
+                    TreeNode node = Tree.AppendNode(new TreeNode(teacher.Name, teacher, teacher.ID, 3), parentNode);
                     LoadLectures(teacher.ID, node);
                     LoadPractices(teacher.ID, node);
                 }
@@ -131,8 +150,13 @@ namespace StudyingController.ViewModels
         private void LoadLectures(int userID, TreeNode parentNode)
         {
             List<LectureDTO> lectures;
-            if (ControllerInterop.User.Role == UserRoles.Student) lectures = ControllerInterop.Service.GetStudentLectures(ControllerInterop.Session, userID);
-            else lectures = ControllerInterop.Service.GetLectures(ControllerInterop.Session, userID);
+            if (ControllerInterop.User.Role == UserRoles.Student)
+                lectures = ControllerInterop.Service.GetStudentLectures(ControllerInterop.Session, ControllerInterop.User.CopyTo(() => new StudentRef()));
+            else
+                lectures = (DataSource as List<BaseEntityDTO>)
+                    .Where(ds => ds is LectureDTO && (ds as LectureDTO).TeacherID == userID)
+                    .Select(ds => ds as LectureDTO)
+                    .ToList();
             
             foreach (var lecture in lectures)
             {
@@ -146,8 +170,14 @@ namespace StudyingController.ViewModels
         private void LoadPractices(int userID, TreeNode parentNode)
         {
             List<PracticeTeacherDTO> practicesTeacher;
-            if (ControllerInterop.User.Role == UserRoles.Student) practicesTeacher = ControllerInterop.Service.GetStudentPractices(ControllerInterop.Session, userID);
-            else practicesTeacher = ControllerInterop.Service.GetPracticesTeacher(ControllerInterop.Session, userID);
+            if (ControllerInterop.User.Role == UserRoles.Student) 
+                practicesTeacher = ControllerInterop.Service.GetStudentPractices(ControllerInterop.Session, ControllerInterop.User.CopyTo(() => new StudentRef()));
+            else
+                practicesTeacher = (DataSource as List<BaseEntityDTO>)
+                    .Where(ds => ds is PracticeTeacherDTO && (ds as PracticeTeacherDTO).TeacherID == userID)
+                    .Select(ds => ds as PracticeTeacherDTO)
+                    .ToList();
+
             foreach (var practice in practicesTeacher)
             {
                 lock (Tree)

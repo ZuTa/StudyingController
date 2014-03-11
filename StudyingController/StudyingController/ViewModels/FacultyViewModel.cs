@@ -101,9 +101,16 @@ namespace StudyingController.ViewModels
             SetUnModified();
         }
 
-        protected override void LoadData()
+        protected override object LoadDataFromServer()
         {
-            Institutes = ControllerInterop.Service.GetInstitutes(ControllerInterop.Session);
+            return ControllerInterop.Service.GetInstitutes(ControllerInterop.Session);
+        }
+
+        protected override void AfterDataLoaded()
+        {
+            base.AfterDataLoaded();
+
+            Institutes = DataSource as List<InstituteDTO>; 
 
             FacultyDTO faculty = originalEntity as FacultyDTO;
 
@@ -116,7 +123,9 @@ namespace StudyingController.ViewModels
 
             Model = new FacultyModel(faculty);
             Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
+            UpdateProperties();
         }
+
 
         protected override void ClearData()
         {

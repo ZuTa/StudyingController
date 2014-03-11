@@ -102,8 +102,8 @@ namespace StudyingController.ViewModels
 
                 data.Add(new List<string>());
                 data.Last().Add(counter++.ToString());
-                data.Last().Add(user.UserInformation.FirstName);
-                data.Last().Add(user.UserInformation.LastName);
+                data.Last().Add(user.FirstName);
+                data.Last().Add(user.LastName);
 
                 GroupModel group = new GroupModel(ControllerInterop.Service.GetGroup(ControllerInterop.Session, rate.Student.GroupID));
                 data.Last().Add(group.Name);

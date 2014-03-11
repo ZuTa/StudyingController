@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 
 namespace EntitiesDTO
 {
+    [DataContract]
     public class PracticeTeacherDTO:BaseEntityDTO
     {
         private List<StudentDTO> students;

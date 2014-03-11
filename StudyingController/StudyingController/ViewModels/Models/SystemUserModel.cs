@@ -40,14 +40,84 @@ namespace StudyingController.ViewModels.Models
             set { role = value; }
         }
 
-        private UserInformationModel userInformation;
-        [Validateable]
-        public UserInformationModel UserInformation
+        public string Name
         {
-            get { return userInformation; }
+            get { return string.Format("{0} {1} {2}", LastName, FirstName, MiddleName); }
+        }
+
+        public string ShortName
+        {
+            get
+            {
+                return LastName
+                + (!string.IsNullOrEmpty(FirstName) ? FirstName[0] + "." : "")
+                + (!string.IsNullOrEmpty(MiddleName) ? MiddleName[0] + "." : "");
+            }
+        }
+
+        private string firstName;
+        public string FirstName
+        {
+            get { return firstName; }
+            set
+            {
+                firstName = value;
+                OnPropertyChanged("FirstName");
+            }
+        }
+
+        private string middleName;
+        public string MiddleName
+        {
+            get { return middleName; }
+            set
+            {
+                middleName = value;
+                OnPropertyChanged("MiddleName");
+            }
+        }
+
+        private string lastName;
+        public string LastName
+        {
+            get { return lastName; }
+            set
+            {
+                lastName = value;
+                OnPropertyChanged("LastName");
+            }
+        }
+
+        private byte[] picture;
+        public byte[] Picture
+        {
+            get { return picture; }
+            set
+            {
+                picture = value;
+                OnPropertyChanged("Picture");
+            }
+        }
+
+        private DateTime birth;
+        public DateTime Birth
+        {
+            get { return birth; }
             set 
             { 
-                userInformation = value;
+                birth = value;
+                OnPropertyChanged("Birth");
+            }
+        }
+
+        private string email;
+        public string Email
+        {
+            get { return email; }
+            set
+            {
+                email = value;
+                OnPropertyChanged("Email");
             }
         }
 
@@ -57,14 +127,6 @@ namespace StudyingController.ViewModels.Models
             this.login = user.Login;
             this.role = user.Role;
             this.password = user.Password;
-            this.userInformation = new UserInformationModel(user.UserInformation);
-
-            userInformation.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(userInformation_PropertyChanged);
-        }
-
-        void userInformation_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            OnPropertyChanged("UserInformation");
         }
 
         public override void Assign(BaseEntityDTO entity)
@@ -75,7 +137,12 @@ namespace StudyingController.ViewModels.Models
             this.Login = user.Login;
             this.Role = user.Role;
             this.Password = user.Password;
-            this.UserInformation.Assign(user.UserInformation);
+            this.FirstName = FirstName;
+            this.MiddleName = MiddleName;
+            this.LastName = LastName;
+            this.Picture = Picture;
+            this.Birth = Birth;
+            this.Email = Email;
         }
 
         public SystemUserDTO ToDTO()
@@ -85,8 +152,12 @@ namespace StudyingController.ViewModels.Models
                 ID = this.ID,
                 Login = this.Login,
                 Password = this.Password,
-                Role = this.Role,
-                UserInformation = this.UserInformation.ToDTO()
+                FirstName = this.FirstName,
+                MiddleName = this.MiddleName,
+                LastName = this.LastName,
+                Picture = this.Picture,
+                Birth = this.Birth,
+                Email = this.Email
             };
         }
 

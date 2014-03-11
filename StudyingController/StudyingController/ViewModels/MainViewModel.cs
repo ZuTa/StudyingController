@@ -330,6 +330,17 @@ namespace StudyingController.ViewModels
             }
         }
 
+        private RelayCommand settingsCommand;
+        public RelayCommand SettingsCommand
+        {
+            get
+            {
+                if (settingsCommand == null)
+                    settingsCommand = new RelayCommand(param => OpenSettings());
+                return settingsCommand;
+            }
+        }
+
         #endregion
 
         #region Methods
@@ -338,15 +349,24 @@ namespace StudyingController.ViewModels
         {
         }
 
-        protected override void LoadData()
+        protected override object LoadDataFromServer()
         {
+            return null;
+        }
+
+        protected override void AfterDataLoaded()
+        {
+            base.AfterDataLoaded();
+
             if (workspaces.Count == 0)
                 PushWorkspace(userProfileViewModel);
             else
             {
-                foreach (BaseApplicationViewModel workspace in workspaces)
-                    if (workspace is LoadableViewModel)
-                        (workspace as LoadableViewModel).Load();
+                //foreach (BaseApplicationViewModel workspace in workspaces)
+                //    if (workspace is LoadableViewModel)
+                //        (workspace as LoadableViewModel).Load();
+               //if( CurrentWorkspace is LoadableViewModel)
+               //    (CurrentWorkspace as LoadableViewModel).Load();
             }
         }
 
@@ -408,6 +428,11 @@ namespace StudyingController.ViewModels
             ChangeCurrentWorkspace(usersStructureViewModel);
         }
 
+        private void OpenSettings()
+        {
+            //(CurrentWorkspace as IExportable).ExportToExcel();
+        }
+
         private void ChangeCurrentWorkspace(BaseApplicationViewModel viewModel)
         {
             ClearWorkspaces();
@@ -459,8 +484,8 @@ namespace StudyingController.ViewModels
 
         private void ClearWorkspaces()
         {
-            foreach (BaseApplicationViewModel workspace in workspaces)
-                if (workspace is SaveableViewModel) (workspace as SaveableViewModel).Load();
+            //foreach (BaseApplicationViewModel workspace in workspaces)
+            //    if (workspace is SaveableViewModel) (workspace as SaveableViewModel).Load();
         }
 
         private void OnCurrentWorkspaceChanged()

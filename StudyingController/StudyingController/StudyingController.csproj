@@ -85,6 +85,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Service References\SCS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\AttachmentsViewModel.cs" />
     <Compile Include="ViewModels\BaseSaveableViewModel.cs" />
     <Compile Include="ViewModels\BaseTreeViewModel.cs" />
@@ -143,7 +148,6 @@
     <Compile Include="ViewModels\Models\SubjectModel.cs" />
     <Compile Include="ViewModels\Models\SystemUserModel.cs" />
     <Compile Include="ViewModels\Models\TeacherModel.cs" />
-    <Compile Include="ViewModels\Models\UserInformationModel.cs" />
     <Compile Include="Common\ValidateableAttribute.cs" />
     <Compile Include="ViewModels\Models\VisitingsModel.cs" />
     <Compile Include="ViewModels\PracticeControlsViewModel.cs" />
@@ -166,11 +170,6 @@
     <Compile Include="Common\IPasswordSource.cs" />
     <Compile Include="Common\IUserInterop.cs" />
     <Compile Include="ClientData\LoginConfig.cs" />
-    <Compile Include="Service References\SCS\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\BaseApplicationViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
@@ -488,6 +487,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\DataSources\EntitiesDTO.AttachmentDTO.datasource" />
+    <None Include="Properties\DataSources\EntitiesDTO.BaseEntityDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.CathedraDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.ControlDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.ControlDTO1.datasource" />
@@ -517,7 +517,6 @@
     <None Include="Service References\SCS\ControllerService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SCS\ControllerService1.wsdl" />
     <None Include="Service References\SCS\ControllerService1.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -525,18 +524,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\SCS\ControllerService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\SCS\ControllerService4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\SCS\ControllerService41.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\SCS\ControllerService42.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\SCS\ControllerService43.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\SCS\StudyingController.SCS.Session.datasource">
@@ -551,24 +538,10 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\SCS\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\SCS\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\SCS\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\SCS\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\SCS\ControllerService1.disco" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{394b1151-0b45-441e-b90e-abbed2f0ce65}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EntityModelDTO\EntitiesDTO.csproj">
       <Project>{86B57E17-94BC-45DD-BCC9-2DA0C9C4D596}</Project>
       <Name>EntitiesDTO</Name>
@@ -679,7 +652,22 @@
     <Resource Include="Images\excel.png" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\SCS\" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Service References\SCS\ControllerService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SCS\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SCS\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SCS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

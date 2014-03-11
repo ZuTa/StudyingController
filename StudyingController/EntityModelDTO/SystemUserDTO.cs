@@ -74,7 +74,6 @@ namespace EntitiesDTO
     }
 
     [DataContract]
-    [KnownType(typeof(UserInformationDTO))]
     [KnownType(typeof(FacultyAdminDTO))]
     [KnownType(typeof(InstituteAdminDTO))]
     [KnownType(typeof(InstituteSecretaryDTO))]
@@ -82,7 +81,7 @@ namespace EntitiesDTO
     [KnownType(typeof(TeacherDTO))]
     [KnownType(typeof(StudentDTO))]
 
-    public class SystemUserDTO : NamedEntityDTO
+    public class SystemUserDTO : BaseEntityDTO
     {
         private string login;
         [DataMember]
@@ -108,30 +107,76 @@ namespace EntitiesDTO
             set { role = value; }
         }
 
-        private string name;
-        [DataMember]
         public string Name
         {
-            get { return name; }
-            set { name = value; }
+            get { return string.Format("{0} {1} {2}", LastName, FirstName, MiddleName); }
         }
 
-        private UserInformationDTO userInformation;
-        [DataMember]
-        public UserInformationDTO UserInformation
+        public string ShortName
         {
-            get { return userInformation; }
-            set { userInformation = value; }
+            get
+            {
+                return LastName
+                + (!string.IsNullOrEmpty(FirstName) ? FirstName[0] + "." : "")
+                + (!string.IsNullOrEmpty(MiddleName) ? MiddleName[0] + "." : "");
+            }
+        }
+
+        private string firstName;
+        [DataMember]
+        public string FirstName
+        {
+            get { return firstName; }
+            set { firstName = value; }
+        }
+
+        private string middleName;
+        [DataMember]
+        public string MiddleName
+        {
+            get { return middleName; }
+            set { middleName = value; }
+        }
+
+        private string lastName;
+        [DataMember]
+        public string LastName
+        {
+            get { return lastName; }
+            set { lastName = value; }
+        }
+
+        private byte[] picture;
+        [DataMember]
+        public byte[] Picture
+        {
+            get { return picture; }
+            set { picture = value; }
+        }
+
+        private DateTime birth;
+        [DataMember]
+        public DateTime Birth
+        {
+            get { return birth; }
+            set { birth = value; }
+        }
+
+        private string email;
+        [DataMember]
+        public string Email
+        {
+            get { return email; }
+            set { email = value; }
         }
 
         public SystemUserDTO()
         {
-            userInformation = new UserInformationDTO();
         }
 
         public override string ToString()
         {
-            return UserInformation.ToString();
+            return Name;
         }
     }
 }

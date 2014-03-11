@@ -85,9 +85,16 @@ namespace StudyingController.ViewModels
             SetUnModified();
         }
 
-        protected override void LoadData()
+        protected override object LoadDataFromServer()
         {
-            Faculties = ControllerInterop.Service.GetAllFaculties(ControllerInterop.Session);
+            return ControllerInterop.Service.GetAllFaculties(ControllerInterop.Session);
+        }
+
+        protected override void AfterDataLoaded()
+        {
+            base.AfterDataLoaded();
+
+            Faculties = DataSource as List<FacultyDTO>;
 
             FacultySecretaryDTO secretary = originalEntity as FacultySecretaryDTO;
 
