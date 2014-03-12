@@ -78,7 +78,11 @@ namespace StudyingController.ViewModels
         {
             this.originalEntity = practiceTeacher;
 
-            //this.selector = new SelectorViewModel(userInterop, controllerInterop, dispatcher, ControllerInterop.Service.GetTeacher(ControllerInterop.Session, practiceTeacher.TeacherID).Cathedra.Faculty, selector_SelectorItemChanged, true);
+            var teacher = ControllerInterop.Service.GetTeacher(ControllerInterop.Session, practiceTeacher.Teacher.ID);
+            var cathedra = ControllerInterop.Service.GetCathedra(ControllerInterop.Session, teacher.Cathedra.ID);
+            var faculty = ControllerInterop.Service.GetFaculty(ControllerInterop.Session, cathedra.FacultyID);
+
+            this.selector = new SelectorViewModel(userInterop, controllerInterop, dispatcher, faculty, selector_SelectorItemChanged, true);
         }
 
         #endregion

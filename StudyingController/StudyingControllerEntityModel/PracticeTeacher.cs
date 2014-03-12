@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using EntitiesDTO;
+using Common;
 
 namespace StudyingControllerEntityModel
 {
@@ -28,18 +29,17 @@ namespace StudyingControllerEntityModel
             return new PracticeTeacherDTO
             {
                 ID = this.ID,
-                PracticeID = this.PracticeID,
-                TeacherID = this.TeacherID,
-                Practice = this.Practice.ToDTO(),
-                Students = this.Students.ToDTOList<StudentDTO,Student>()
+                Practice = this.Practice.CopyTo(()=>new PracticeRef()),
+                Teacher = this.Teacher.CopyTo(()=>new TeacherRef()),
+                Students = this.Students.ToDTOList<StudentDTO, Student>()
             };
         }
 
         public void Assign(PracticeTeacherDTO entity)
         {
             this.ID = entity.ID;
-            this.PracticeID = entity.PracticeID;
-            this.TeacherID = entity.TeacherID;
+            this.PracticeID = entity.Practice.ID;
+            this.TeacherID = entity.Teacher.ID;
             this.Students.Update<Student, StudentDTO>(entity.Students);
         }
 

@@ -268,6 +268,10 @@ namespace StudyingControllerService
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]
         GroupDTO GetGroup(Session session, int id);
+        
+        [OperationContract]
+        [FaultContract(typeof(ControllerServiceException))]
+        PracticeDTO GetPractice(Session session, int id);
 
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]

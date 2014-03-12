@@ -35,7 +35,7 @@ namespace StudyingControllerEntityModel
                 MiddleName = this.MiddleName,
                 LastName = this.LastName,
                 Picture = this.Picture,
-                Birth = this.Birth.HasValue ? this.Birth.Value : DateTime.MinValue,
+                Birth = this.Birth,
                 Email = this.Email
             };
 

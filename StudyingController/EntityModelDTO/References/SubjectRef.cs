@@ -7,9 +7,7 @@ using System.Text;
 namespace EntitiesDTO
 {
     [DataContract]
-    public class LectureRef : BaseRef
+    public class SubjectRef:NamedRef
     {
-        [DataMember]
-        public SubjectRef Subject { get; set; }
     }
 }

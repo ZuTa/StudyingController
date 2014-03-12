@@ -2287,6 +2287,28 @@ namespace StudyingControllerService
             }
         }
 
+        public PracticeDTO GetPractice(Session session, int id)
+        {
+            try
+            {
+                this.CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var query = (from item
+                                      in context.Practices
+                                 where item.ID == id
+                                 select item).FirstOrDefault();
+                    if (query != null)
+                        context.LoadProperty(query, "Subject");
+                    return query == null ? null : query.ToDTO();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
         public SpecializationDTO GetSpecialization(Session session, int id)
         {
             try
@@ -2774,13 +2796,14 @@ namespace StudyingControllerService
         private IEnumerable<PracticeTeacherDTO> InternalGetPracticeTeachers(UniversityEntities context, TeacherRef teacherRef)
         {
             var teacher = teacherRef.ID;
-            var query = from pt in context.PracticeTeachers.Include("Practice").Include("Students")
+            var query = from pt in context.PracticeTeachers.Include("Practice")
                         where pt.TeacherID == teacher
                         select pt;
             foreach (var practiceTeacher in query)
             {
                 context.LoadProperty(practiceTeacher.Practice, "Subject");
-
+                context.LoadProperty(practiceTeacher, "Teacher");
+                context.LoadProperty(practiceTeacher, "Students");
                 foreach (var student in practiceTeacher.Students)
                 {
                     context.LoadProperty(student, "Groups");

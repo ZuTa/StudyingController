@@ -99,13 +99,15 @@ namespace StudyingController.ViewModels.Models
             }
         }
 
-        private DateTime birth;
-        public DateTime Birth
+        private DateTime? birth;
+        public DateTime? Birth
         {
             get { return birth; }
             set 
             { 
                 birth = value;
+                if (birth < new DateTime(1753, 1, 1))
+                    birth = null;
                 OnPropertyChanged("Birth");
             }
         }
@@ -124,9 +126,7 @@ namespace StudyingController.ViewModels.Models
         public SystemUserModel(SystemUserDTO user)
             : base(user)
         {
-            this.login = user.Login;
-            this.role = user.Role;
-            this.password = user.Password;
+            Assign(user);
         }
 
         public override void Assign(BaseEntityDTO entity)
@@ -137,12 +137,12 @@ namespace StudyingController.ViewModels.Models
             this.Login = user.Login;
             this.Role = user.Role;
             this.Password = user.Password;
-            this.FirstName = FirstName;
-            this.MiddleName = MiddleName;
-            this.LastName = LastName;
-            this.Picture = Picture;
-            this.Birth = Birth;
-            this.Email = Email;
+            this.FirstName = user.FirstName;
+            this.MiddleName = user.MiddleName;
+            this.LastName = user.LastName;
+            this.Picture = user.Picture;
+            this.Birth = user.Birth;
+            this.Email = user.Email;
         }
 
         public SystemUserDTO ToDTO()

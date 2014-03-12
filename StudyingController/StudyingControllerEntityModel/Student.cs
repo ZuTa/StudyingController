@@ -44,6 +44,8 @@ namespace StudyingControllerEntityModel
                 Birth = this.Birth.HasValue ? this.Birth.Value: DateTime.MinValue,
                 Email = this.Email,
                 GroupID = this.Groups.First().ID,
+                Gradebook = this.Gradebook,
+                StudentCard = this.StudentCard,
             };
         }
 
@@ -51,6 +53,8 @@ namespace StudyingControllerEntityModel
         {
             base.Assign(entity);
             this.CurrentGroupID = entity.GroupID;
+            this.Gradebook = entity.Gradebook;
+            this.StudentCard = entity.StudentCard;
         }
 
     }

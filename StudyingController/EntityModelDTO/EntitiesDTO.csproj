@@ -76,6 +76,7 @@
     <Compile Include="References\NamedRef.cs" />
     <Compile Include="References\PracticeRef.cs" />
     <Compile Include="References\StudentRef.cs" />
+    <Compile Include="References\SubjectRef.cs" />
     <Compile Include="References\SystemUserRef.cs" />
     <Compile Include="References\TeacherRef.cs" />
     <Compile Include="ResourceNameAttribute.cs" />

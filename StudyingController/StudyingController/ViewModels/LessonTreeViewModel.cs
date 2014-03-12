@@ -174,7 +174,7 @@ namespace StudyingController.ViewModels
                 practicesTeacher = ControllerInterop.Service.GetStudentPractices(ControllerInterop.Session, ControllerInterop.User.CopyTo(() => new StudentRef()));
             else
                 practicesTeacher = (DataSource as List<BaseEntityDTO>)
-                    .Where(ds => ds is PracticeTeacherDTO && (ds as PracticeTeacherDTO).TeacherID == userID)
+                    .Where(ds => ds is PracticeTeacherDTO && (ds as PracticeTeacherDTO).Teacher.ID == userID)
                     .Select(ds => ds as PracticeTeacherDTO)
                     .ToList();
 
@@ -182,7 +182,11 @@ namespace StudyingController.ViewModels
             {
                 lock (Tree)
                 {
-                    TreeNode node = Tree.AppendNode(new TreeNode(practice.Practice.Subject.Name, practice, practice.PracticeID, 5), parentNode);
+                    PracticeDTO pr = ControllerInterop.Service.GetPractice(ControllerInterop.Session, practice.Practice.ID);
+                    if (pr != null)
+                    {
+                        TreeNode node = Tree.AppendNode(new TreeNode(pr.Subject.Name, practice, practice.Practice.ID, 5), parentNode);
+                    }
                 }
             }
         }

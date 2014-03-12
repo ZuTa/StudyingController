@@ -31,7 +31,7 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 
                 <TextBlock Grid.Row="0" Text="{Binding User}" FontWeight="Bold" Margin="0,5"/>

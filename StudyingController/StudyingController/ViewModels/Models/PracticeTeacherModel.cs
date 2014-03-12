@@ -25,15 +25,15 @@ namespace StudyingController.ViewModels.Models
             }
         }
 
-        private int teacherID;
-        public int TeacherID
+        private TeacherRef teacher;
+        public TeacherRef Teacher
         {
-            get { return teacherID; }
-            set { teacherID = value; }
+            get { return teacher; }
+            set { teacher = value; }
         }
 
-        private PracticeDTO practice;
-        public PracticeDTO Practice
+        private PracticeRef practice;
+        public PracticeRef Practice
         {
             get { return practice; }
             set { practice = value; }
@@ -59,7 +59,7 @@ namespace StudyingController.ViewModels.Models
 
             PracticeTeacherDTO pract = entity as PracticeTeacherDTO;
             this.students = pract.Students;
-            this.teacherID = pract.TeacherID;
+            this.teacher = pract.Teacher;
             this.practice = pract.Practice;
         }
 
@@ -69,8 +69,7 @@ namespace StudyingController.ViewModels.Models
             {
                 ID = this.ID,
                 Practice = this.practice,
-                PracticeID = this.practice.ID,
-                TeacherID = this.TeacherID,
+                Teacher = this.Teacher,
                 Students = this.students.ToList()
             };
         }

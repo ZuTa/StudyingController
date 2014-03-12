@@ -10,34 +10,27 @@ namespace EntitiesDTO
     public class PracticeTeacherDTO:BaseEntityDTO
     {
         private List<StudentDTO> students;
+        [DataMember]
         public List<StudentDTO> Students
         {
             get { return students; }
             set { students = value; }
         }
         
-
-        private PracticeDTO practice;
-        public PracticeDTO Practice
+        private PracticeRef practice;
+        [DataMember]
+        public PracticeRef Practice
         {
             get { return practice; }
             set { practice = value; }
         }
 
-        private int practiceID;
+        private TeacherRef teacher;
         [DataMember]
-        public int PracticeID
+        public TeacherRef Teacher
         {
-            get { return practiceID; }
-            set { practiceID = value; }
-        }
-
-        private int teacherID;
-        [DataMember]
-        public int TeacherID
-        {
-            get { return teacherID; }
-            set { teacherID = value; }
+            get { return teacher; }
+            set { teacher = value; }
         }
     }
 }
