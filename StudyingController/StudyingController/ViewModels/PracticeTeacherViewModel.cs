@@ -78,7 +78,7 @@ namespace StudyingController.ViewModels
         {
             this.originalEntity = practiceTeacher;
 
-            this.selector = new SelectorViewModel(userInterop, controllerInterop, dispatcher, ControllerInterop.Service.GetTeacher(ControllerInterop.Session, practiceTeacher.TeacherID).Cathedra.Faculty, selector_SelectorItemChanged, true);
+            //this.selector = new SelectorViewModel(userInterop, controllerInterop, dispatcher, ControllerInterop.Service.GetTeacher(ControllerInterop.Session, practiceTeacher.TeacherID).Cathedra.Faculty, selector_SelectorItemChanged, true);
         }
 
         #endregion
@@ -188,8 +188,15 @@ namespace StudyingController.ViewModels
             Selector.Helper.Entity = Selector.CurrentEntity;
         }
 
-        protected override void LoadData()
+        protected override object LoadDataFromServer()
         {
+            return null;
+        }
+
+        protected override void AfterDataLoaded()
+        {
+            base.AfterDataLoaded();
+
             Model = new PracticeTeacherModel(originalEntity as PracticeTeacherDTO);
             Model.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(ModelPropertyChanged);
 

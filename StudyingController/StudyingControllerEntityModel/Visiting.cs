@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Common;
 
 namespace StudyingControllerEntityModel
 {
@@ -29,8 +30,9 @@ namespace StudyingControllerEntityModel
                 Date = this.Date,
                 Value = (VisitingValue)this.Value,
                 Description = this.Description,
-                Lecture = this.Lecture == null ? null : this.Lecture.ToDTO(),
-                Practice = this.Practice == null ? null : this.Practice.ToDTO()
+                Student = new StudentRef{ ID = StudentID },
+                Lecture = this.Lecture.WithClass(l => l.ToRef()),
+                Practice = this.Practice.WithClass(p => p.ToRef())
             };
         }
 
@@ -40,8 +42,15 @@ namespace StudyingControllerEntityModel
             Date = entity.Date;
             Value = (int)entity.Value;
             Description = entity.Description;
-            Lecture = entity.Lecture == null ? null : new Lecture(entity.Lecture);
-            Practice = entity.Practice == null ? null : new Practice(entity.Practice);
+            StudentID = entity.Student.WithStruct(s=>s.ID);
+            Lecture = entity.Lecture.WithClass(l => new Lecture
+                {
+                    ID = l.ID
+                });
+            Practice = entity.Practice.WithClass(p=> new Practice
+            {
+                ID = p.ID
+            });
         }
     }
 }

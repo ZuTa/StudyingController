@@ -6,7 +6,7 @@ using ThinClient.SCS;
 
 namespace ThinClient.Models
 {
-    public class MarkModel : BaseEntityModel<MarkDTO>
+    public class MarkModel : BaseWebModel<MarkRef>
     {
         public string StudentName
         {
@@ -26,24 +26,29 @@ namespace ThinClient.Models
 
         }
 
-        public MarkModel(MarkDTO mark)
+        public MarkModel(MarkRef mark)
+            : base(mark)
         {
-            this.FillModel(mark);   
         }
 
-        public override void FillModel(MarkDTO entityObject)
+        public override void FillModel(MarkRef refObject)
         {
-            base.FillModel(entityObject);
+            base.FillModel(refObject);
 
-            if (entityObject != null && entityObject.Student != null && entityObject.Student.UserInformation != null)
+            if (refObject != null && refObject.Student != null)
             {
                 this.StudentName = string.Format(
                     "{0} {1}",
-                    entityObject.Student.UserInformation.LastName,
-                    entityObject.Student.UserInformation.FirstName);
+                    refObject.Student.LastName,
+                    refObject.Student.FirstName);
             }
 
-            this.MarkValue = entityObject.MarkValue.ToString();
+            this.MarkValue = refObject.Value.ToString();
+        }
+
+        public override BaseRef GetRefObject()
+        {
+            return base.GetRefObject();
         }
     }
 }

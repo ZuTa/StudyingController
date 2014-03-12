@@ -7,6 +7,6 @@ namespace EntitiesDTO
 {
     public interface ICathedrable
     {
-        int CathedraID { get; set; }
+        CathedraRef Cathedra { get; set; }
     }
 }

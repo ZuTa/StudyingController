@@ -5,6 +5,7 @@ using System.Text;
 using StudyingController.Common;
 using System.Windows.Threading;
 using EntitiesDTO;
+using System.Diagnostics;
 
 namespace StudyingController.ViewModels
 {
@@ -25,16 +26,25 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
-        protected override void LoadData()
+        protected override object LoadDataFromServer()
         {
-            base.LoadData();
+            return null;
+        }
+
+        protected override void AfterDataLoaded()
+        {
+            base.AfterDataLoaded();
             BuildUsersTree();
         }
 
         private void BuildUsersTree()
         {
+            ClearData();
+            string data = "";
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
             UserRoles roles = UserRoles.None;
-
+         
             switch (ControllerInterop.Session.User.Role)
             {
                 case UserRoles.MainAdmin:
@@ -59,10 +69,11 @@ namespace StudyingController.ViewModels
                     throw new NotImplementedException("Unknown user's role!");
             }
 
+            data += sw.ElapsedMilliseconds + " - ";
             StartLoading();
-
+            data += sw.ElapsedMilliseconds + " - ";
             List<SystemUserDTO> users = ControllerInterop.Service.GetUsers(ControllerInterop.Session, roles);
-
+            data += sw.ElapsedMilliseconds + " - ";
             Dictionary<UserRoles, List<SystemUserDTO>> groups = new Dictionary<UserRoles, List<SystemUserDTO>>();
             foreach (SystemUserDTO user in users)
             {
@@ -70,7 +81,7 @@ namespace StudyingController.ViewModels
                     groups.Add(user.Role, new List<SystemUserDTO>());
                 groups[user.Role].Add(user);
             }
-
+            data += sw.ElapsedMilliseconds + " - ";
             foreach (UserRoles role in Enum.GetValues(typeof(UserRoles)))
             {
                 if (role != UserRoles.None)
@@ -80,12 +91,15 @@ namespace StudyingController.ViewModels
                     if (groups.ContainsKey(role))
                     {
                         foreach (SystemUserDTO user in groups[role])
-                            Tree.AppendNode(new TreeNode(user.UserInformation.ToString(), user, user.ID, 1), parentNode);
+                            Tree.AppendNode(new TreeNode(user.Name, user, user.ID, 1), parentNode);
                     }
                 }
             }
-
+            data += sw.ElapsedMilliseconds + " - ";
             StopLoading();
+            data += sw.ElapsedMilliseconds + " - ";
+
+            //System.Windows.Forms.MessageBox.Show(data);
         }
 
         #endregion

@@ -11,25 +11,25 @@ namespace StudyingController.ViewModels.Models
     {
         #region Fields & Properties
 
-        private int studentID;
+        private StudentRef student;
         [Browsable(false)]
-        public int StudentID
+        public StudentRef Student
         {
-            get { return studentID; }
-            set { studentID = value; }
+            get { return student; }
+            set { student = value; }
         }
 
-        private LectureDTO lecture;
+        private LectureRef lecture;
         [Browsable(false)]
-        public LectureDTO Lecture
+        public LectureRef Lecture
         {
             get { return lecture; }
             set { lecture = value; }
         }
 
-        private PracticeDTO practice;
+        private PracticeRef practice;
         [Browsable(false)]
-        public PracticeDTO Practice
+        public PracticeRef Practice
         {
             get { return practice; }
             set { practice = value; }
@@ -95,7 +95,7 @@ namespace StudyingController.ViewModels.Models
             this.Description = visiting.Description;
             this.Lecture = visiting.Lecture;
             this.Practice = visiting.Practice;
-            this.StudentID = visiting.StudentID;
+            this.Student = visiting.Student;
             this.Value = visiting.Value;
         }
 
@@ -121,7 +121,7 @@ namespace StudyingController.ViewModels.Models
                 Description = this.Description,
                 Lecture = this.Lecture,
                 Practice = this.Practice,
-                StudentID = this.StudentID,
+                Student = this.Student,
                 Value = this.Value
             };
         }

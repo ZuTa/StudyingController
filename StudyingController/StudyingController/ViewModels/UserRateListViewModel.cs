@@ -23,9 +23,14 @@ namespace StudyingController.ViewModels
             Rates = new ReadOnlyObservableCollection<UserRateItemDTO>(rates);
         }
 
-        protected override void LoadData()
+        protected override object LoadDataFromServer()
         {
-            foreach (var r in ControllerInterop.Service.GetStudentRateList(this.ControllerInterop.Session, entity))
+            return ControllerInterop.Service.GetStudentRateList(this.ControllerInterop.Session, entity);
+        }
+
+        protected override void AfterDataLoaded()
+        {
+            foreach (var r in DataSource as List<UserRateItemDTO>)
             {
                 r.Rate *= 100;
                 rates.Add(r);

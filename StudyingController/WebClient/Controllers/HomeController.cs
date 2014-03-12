@@ -59,8 +59,8 @@ namespace ThinClient.Controllers
                 var session = (SCS.Session)this.Session["Session"];
 
                 var model = new UserPageModel();
-                model.Name = session.User.UserInformation.FirstName + ' ' + session.User.UserInformation.LastName;
-                model.AdditionalInfo = session.User.UserInformation.Email;
+                model.Name = session.User.FirstName + ' ' + session.User.LastName;
+                model.AdditionalInfo = session.User.Email;
 
                 var serviceClient = new SCS.ControllerServiceClient();
                 model.Notifications = serviceClient.GetNotifications(session, session.User.ID).ToList();

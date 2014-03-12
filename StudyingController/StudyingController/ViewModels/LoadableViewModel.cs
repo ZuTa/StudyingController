@@ -6,6 +6,7 @@ using StudyingController.Common;
 using System.Windows.Threading;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace StudyingController.ViewModels
 {
@@ -46,6 +47,14 @@ namespace StudyingController.ViewModels
             }
         }
 
+        private object dataSource;
+
+        protected object DataSource
+        {
+            get { return dataSource; }
+        }
+
+
         #endregion
 
         #region Constructors
@@ -59,16 +68,52 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
-        protected abstract void LoadData();
+
+        protected virtual void BeforeDataLoading()
+        {
+        }
+
+        /// <summary>
+        /// Only loading from server
+        /// </summary>
+        /// <returns></returns>
+        protected abstract object LoadDataFromServer();
+
+        protected virtual void AfterDataLoaded()
+        {
+        }
 
         protected abstract void ClearData();
 
-        public void Load()
+        public Task Load()
         {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
             StartLoading();
+            Console.WriteLine("{1}. Start loading {0} ms.", sw.ElapsedMilliseconds, this.GetType().Name);
+            sw.Restart();
+            BeforeDataLoading();
+            Console.WriteLine("{1}. Before data loading {0} ms.", sw.ElapsedMilliseconds, this.GetType().Name);
+            sw.Restart();
             ClearData();
-            LoadData();
-            StopLoading();
+            Console.WriteLine("{1}. Clear data {0} ms.", sw.ElapsedMilliseconds, this.GetType().Name);
+            sw.Restart();
+            return Task.Factory.StartNew(() =>
+                {
+                    dataSource = LoadDataFromServer();
+                    //Thread.Sleep(5000);
+                    Console.WriteLine("{1}. Load from server {0} ms.", sw.ElapsedMilliseconds, this.GetType().Name);
+                    sw.Restart();
+                }).ContinueWith((task) =>
+                    {
+                        Dispatcher.Invoke(new Action(() =>
+                            {
+                                AfterDataLoaded();
+                                Console.WriteLine("{1}. After loading {0} ms.", sw.ElapsedMilliseconds, this.GetType().Name);
+                                sw.Restart();
+                                StopLoading();
+                            }));
+                    }, TaskContinuationOptions.ExecuteSynchronously); 
         }
 
         protected virtual void StartLoading(int count = 1)

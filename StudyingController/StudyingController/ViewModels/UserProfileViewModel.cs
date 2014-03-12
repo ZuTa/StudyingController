@@ -128,8 +128,15 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
-        protected override void LoadData()
+        protected override object LoadDataFromServer()
         {
+            return null;
+        }
+
+        protected override void AfterDataLoaded()
+        {
+            base.AfterDataLoaded();
+
             switch (user.Role)
             {
                 case UserRoles.MainAdmin:
@@ -150,7 +157,7 @@ namespace StudyingController.ViewModels
                     institute = ControllerInterop.Service.GetInstituteByID(ControllerInterop.Session, faculty.InstituteID);
                     break;
                 case UserRoles.Teacher:
-                    cathedra = ControllerInterop.Service.GetCathedraByID(ControllerInterop.Session, (user as TeacherDTO).CathedraID);
+                    cathedra = ControllerInterop.Service.GetCathedraByID(ControllerInterop.Session, (user as TeacherDTO).Cathedra.ID);
                     faculty = ControllerInterop.Service.GetFacultyByID(ControllerInterop.Session, cathedra.FacultyID);
                     institute = ControllerInterop.Service.GetInstituteByID(ControllerInterop.Session, faculty.InstituteID);
                     break;

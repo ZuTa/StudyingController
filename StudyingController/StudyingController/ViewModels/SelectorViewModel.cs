@@ -241,7 +241,7 @@ namespace StudyingController.ViewModels
                     institute = (from i in Institutes
                                  where i.ID == entity.ID
                                  select i).FirstOrDefault();
-                    faculties = ControllerInterop.Service.GetFaculties(ControllerInterop.Session, entity.ID);
+                    faculties = ControllerInterop.Service.GetFaculties(ControllerInterop.Session, new InstituteRef { ID = entity.ID });
                     cathedras = null;
                     groups = null;
                 }
@@ -256,7 +256,7 @@ namespace StudyingController.ViewModels
                 groups = null;
                 cathedra = null;
                 group = null;
-                cathedras = ControllerInterop.Service.GetCathedras(ControllerInterop.Session, entity.ID);
+                cathedras = ControllerInterop.Service.GetCathedras(ControllerInterop.Session, new FacultyRef { ID = entity.ID });
                 
                 faculty = (from f in Faculties
                            where f.ID == entity.ID
@@ -268,7 +268,7 @@ namespace StudyingController.ViewModels
                 if (cathedras==null || cathedras.Find(c => c.ID == entity.ID) == null)
                     UpdateProperties(ControllerInterop.Service.GetFacultyByID(ControllerInterop.Session, (entity as CathedraDTO).FacultyID), true);
                 group = null;
-                groups = ControllerInterop.Service.GetGroups(ControllerInterop.Session, entity.ID);
+                groups = ControllerInterop.Service.GetGroups(ControllerInterop.Session, new CathedraRef { ID = entity.ID });
                 cathedra = (from c in Cathedras
                             where c.ID == entity.ID
                             select c).FirstOrDefault();

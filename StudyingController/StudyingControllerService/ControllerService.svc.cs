@@ -8,6 +8,7 @@ using System.Text;
 using StudyingControllerEntityModel;
 using EntitiesDTO;
 using System.Globalization;
+using Common;
 
 namespace StudyingControllerService
 {
@@ -106,13 +107,13 @@ namespace StudyingControllerService
             {
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    SystemUser user = (from u in context.SystemUsers.Include("UserInformation")
+                    SystemUser user = (from u in context.SystemUsers
                                        where u.Login == login.ToLower()
                                        select u).FirstOrDefault();
 
                     if (!(user != null /*&& Encoding.UTF8.GetString(user.Password) == password*/))
                     {
-//#if DEBUG
+                        //#if DEBUG
                         //if (user == null)
                         //{
                         //    user = new SystemUser();
@@ -132,9 +133,9 @@ namespace StudyingControllerService
                         //    context.AddToSystemUsers(user);
                         //    context.SaveChanges();
                         //}
-//#else
+                        //#else
                         throw new Exception("У доступі відмовлено!");
-//#endif
+                        //#endif
                     }
 
                     session = new Session(GetSystemUserDTO(user, context));
@@ -212,17 +213,10 @@ namespace StudyingControllerService
             try
             {
                 CheckSession(session);
-                List<InstituteDTO> result = new List<InstituteDTO>();
-
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    foreach (Institute institute in context.Institutes)
-                    {
-                        result.Add(GetDTO<InstituteDTO>(institute));
-                    }
+                    return InternalGetInstitutes(context).ToList();
                 }
-
-                return result;
             }
             catch (Exception ex)
             {
@@ -230,24 +224,15 @@ namespace StudyingControllerService
             }
         }
 
-        public List<FacultyDTO> GetFaculties(Session session, int? instituteID)
+        public List<FacultyDTO> GetFaculties(Session session, InstituteRef institute)
         {
             try
             {
                 CheckSession(session);
-                List<FacultyDTO> result = new List<FacultyDTO>();
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    var query = from f in context.Faculties.Include("Specializations")
-                                where f.InstituteID == instituteID || (instituteID == null && f.InstituteID == null)
-                                select f;
-                    foreach (var faculty in query)
-                    {
-                        context.LoadProperty(faculty, "Institute");
-                        result.Add(GetDTO<FacultyDTO>(faculty));
-                    }
+                    return InternalGetFaculties(context, institute).ToList();
                 }
-                return result;
             }
             catch (Exception ex)
             {
@@ -274,23 +259,15 @@ namespace StudyingControllerService
             }
         }
 
-        public List<CathedraDTO> GetCathedras(Session session, int facultyID)
+        public List<CathedraDTO> GetCathedras(Session session, FacultyRef faculty)
         {
             try
             {
                 CheckSession(session);
-                List<CathedraDTO> result = new List<CathedraDTO>();
-
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    var query = from c in context.Cathedras.Include("Subjects").Include("Faculty")
-                                where c.FacultyID == facultyID
-                                select c;
-                    foreach (var c in query)
-                        result.Add(GetDTO<CathedraDTO>(c));
+                    return InternalGetCathedras(context, faculty).ToList();
                 }
-
-                return result;
             }
             catch (Exception ex)
             {
@@ -344,23 +321,15 @@ namespace StudyingControllerService
 
         }
 
-        public List<GroupDTO> GetGroups(Session session, int cathedraID)
+        public List<GroupDTO> GetGroups(Session session, CathedraRef cathedra)
         {
             try
             {
                 CheckSession(session);
-                List<GroupDTO> result = new List<GroupDTO>();
-
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    var query = from g in context.Groups.Include("Specialization").Include("Cathedra")
-                                where g.CathedraID == cathedraID
-                                select g;
-                    foreach (var group in query)
-                        result.Add(GetDTO<GroupDTO>(group));
+                    return InternalGetGroups(context, cathedra).ToList();
                 }
-
-                return result;
             }
             catch (Exception ex)
             {
@@ -518,7 +487,7 @@ namespace StudyingControllerService
 
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    foreach (SystemUser user in context.SystemUsers.Include("UserInformation"))
+                    foreach (SystemUser user in context.SystemUsers)
                         if (roles.HasFlag(user.Role))
                             result.Add(GetSystemUserDTO(user, context));
                 }
@@ -539,7 +508,7 @@ namespace StudyingControllerService
 
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    var item = context.SystemUsers.Include("UserInformation").FirstOrDefault(gr => gr.ID == user.ID);
+                    var item = context.SystemUsers.FirstOrDefault(gr => gr.ID == user.ID);
 
                     if (item == null)
                     {
@@ -854,29 +823,15 @@ namespace StudyingControllerService
             }
         }
 
-        public List<LectureDTO> GetLectures(Session session, int teacherID)
+        public List<LectureDTO> GetLectures(Session session, TeacherRef teacher)
         {
             try
             {
                 CheckSession(session);
-
-                List<LectureDTO> result = new List<LectureDTO>();
-
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    var query = from l in context.Lectures.Include("Groups")
-                                where l.TeacherID == teacherID
-                                select l;
-
-                    foreach (var lecture in query)
-                    {
-                        context.LoadProperty(lecture, "Subject");
-                        result.Add(lecture.ToDTO());
-                    }
-
+                    return InternalGetLectures(context, teacher).ToList();
                 }
-
-                return result;
             }
             catch (Exception ex)
             {
@@ -913,34 +868,15 @@ namespace StudyingControllerService
             }
         }
 
-        public List<TeacherDTO> GetTeachers(Session session, int cathedraID)
+        public List<TeacherDTO> GetTeachers(Session session, CathedraRef cathedra)
         {
             try
             {
                 CheckSession(session);
-
-                List<TeacherDTO> result = new List<TeacherDTO>();
-
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    var query = context.Cathedras.Include("Teachers").Where(c => c.ID == cathedraID).Select(c => c.Teachers).FirstOrDefault();
-
-                    if (query != null)
-                    {
-                        foreach (var item in query)
-                        {
-                            context.LoadProperty(item, "UserInformation");
-                            context.LoadProperty(item, "Lectures");
-                            foreach (var lecture in item.Lectures)
-                                context.LoadProperty(lecture, "Subject");
-
-                            result.Add(item.ToDTO());
-                        }
-                    }
-
+                    return InternalGetTeachers(context, cathedra).ToList();
                 }
-
-                return result;
             }
             catch (Exception ex)
             {
@@ -1053,40 +989,15 @@ namespace StudyingControllerService
             }
         }
 
-        public List<PracticeTeacherDTO> GetPracticesTeacher(Session session, int teacherID)
+        public List<PracticeTeacherDTO> GetPracticesTeacher(Session session, TeacherRef teacher)
         {
             try
             {
                 CheckSession(session);
-
-                List<PracticeTeacherDTO> result = new List<PracticeTeacherDTO>();
-
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    var query = from pt in context.PracticeTeachers.Include("Practice").Include("Students")
-                                where pt.TeacherID == teacherID
-                                select pt;
-                    foreach (var practiceTeacher in query)
-                    {
-                        context.LoadProperty(practiceTeacher.Practice, "Subject");
-
-                        foreach (var student in practiceTeacher.Students)
-                        {
-                            context.LoadProperty(student, "Groups");
-                            var currentGroup = student.Groups.FirstOrDefault();//(g => g.StudyRangeID == Configuration.StudyRangeID);
-
-                            if (currentGroup == null)
-                                throw new Exception("Student hasnt a group!");
-
-                            student.CurrentGroupID = currentGroup.ID;
-
-                            context.LoadProperty(student, "UserInformation");
-                        }
-                        result.Add(practiceTeacher.ToDTO());
-                    }
+                   return InternalGetPracticeTeachers(context, teacher).ToList();
                 }
-
-                return result;
             }
             catch (Exception ex)
             {
@@ -1175,7 +1086,6 @@ namespace StudyingControllerService
 
                             student.CurrentGroupID = currentGroup.ID;
 
-                            context.LoadProperty(student, "UserInformation");
                             result.Add(student.ToDTO());
                         }
                     }
@@ -1204,7 +1114,6 @@ namespace StudyingControllerService
                                  select g.Students).FirstOrDefault();
                     foreach (var student in query.ToList())
                     {
-                        context.LoadProperty(student, "UserInformation");
                         student.CurrentGroupID = groupID;
                         result.Add(student.ToDTO());
                     }
@@ -1235,7 +1144,6 @@ namespace StudyingControllerService
                     {
                         foreach (var student in students)
                         {
-                            context.LoadProperty(student, "UserInformation");
                             result.Add(student.ToDTO());
                         }
                     }
@@ -1265,7 +1173,6 @@ namespace StudyingControllerService
                     {
                         foreach (var student in students)
                         {
-                            context.LoadProperty(student, "UserInformation");
                             result.Add(student.ToDTO());
                         }
 
@@ -1296,7 +1203,6 @@ namespace StudyingControllerService
                     {
                         foreach (var student in students)
                         {
-                            context.LoadProperty(student, "UserInformation");
                             result.Add(student.ToDTO());
                         }
                     }
@@ -1458,7 +1364,6 @@ namespace StudyingControllerService
                         var item = cathedra.Teachers.Where(t => t.ID == teacherID).FirstOrDefault();
                         if (item != null)
                         {
-                            context.LoadProperty(item, "UserInformation");
                             context.LoadProperty(item, "Cathedra");
                             context.LoadProperty(item.Cathedra, "Faculty");
                             context.LoadProperty(item.Cathedra.Faculty, "Institute");
@@ -1671,7 +1576,7 @@ namespace StudyingControllerService
                 List<ControlMessageDTO> result = new List<ControlMessageDTO>();
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    var query = context.ControlMessages.Include("SystemUser.UserInformation").Include("Control").Where(cm => cm.ControlID == controlID);
+                    var query = context.ControlMessages.Include("Control").Where(cm => cm.ControlID == controlID);
                     foreach (var item in query)
                         result.Add(item.ToDTO());
                 }
@@ -1723,18 +1628,18 @@ namespace StudyingControllerService
 
                         int lectureID = (item as LectureControl).LectureID;
                         Lecture lecture = context.Lectures.Include("Groups").Include("Subject").FirstOrDefault(lect => lect.ID == lectureID);
-                        Teacher teacher = context.SystemUsers.Include("UserInformation").First(teach => teach.ID == lecture.TeacherID) as Teacher;
+                        Teacher teacher = context.SystemUsers.First(teach => teach.ID == lecture.TeacherID) as Teacher;
 
                         foreach (var group in lecture.Groups)
                         {
-                            foreach (var student in context.Groups.Include("Students").First(gr=>gr.ID == group.ID).Students)
+                            foreach (var student in context.Groups.Include("Students").First(gr => gr.ID == group.ID).Students)
                             {
                                 context.AddToNotifications(new Notification(new NotificationDTO
                                 {
                                     Date = DateTime.Now,
                                     Message = string.Format("Новий контроль ({5}) з предмету \"{0}\" - Л (викладач - {1}) відбудеться {2} об {3}. Максимальна оцінка - {4}.",
                                            lecture.Subject.Name,
-                                           teacher.UserInformation.LastName,
+                                           teacher.ShortName,
                                            item.Date.ToShortDateString(),
                                            item.Date.ToShortTimeString(),
                                            item.MaxMark,
@@ -1752,7 +1657,7 @@ namespace StudyingControllerService
 
                         int lectureID = (item as LectureControl).LectureID;
                         Lecture lecture = context.Lectures.Include("Groups").Include("Subject").FirstOrDefault(lect => lect.ID == lectureID);
-                        Teacher teacher = context.SystemUsers.Include("UserInformation").First(teach => teach.ID == lecture.TeacherID) as Teacher;
+                        Teacher teacher = context.SystemUsers.First(teach => teach.ID == lecture.TeacherID) as Teacher;
 
                         foreach (var group in lecture.Groups)
                         {
@@ -1763,7 +1668,7 @@ namespace StudyingControllerService
                                     Date = DateTime.Now,
                                     Message = string.Format("Внесено зміни! Контроль ({5}) з предмету \"{0}\" - Л (викладач - {1}) відбудеться {2} об {3}. Максимальна оцінка - {4}.",
                                            lecture.Subject.Name,
-                                           teacher.UserInformation.LastName,
+                                           teacher.ShortName,
                                            item.Date.ToShortDateString(),
                                            item.Date.ToShortTimeString(),
                                            item.MaxMark,
@@ -1782,30 +1687,14 @@ namespace StudyingControllerService
             }
         }
 
-        public List<LectureDTO> GetStudentLectures(Session session, int studentID)
+        public List<LectureDTO> GetStudentLectures(Session session, StudentRef student)
         {
             try
             {
                 CheckSession(session);
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    List<LectureDTO> result = new List<LectureDTO>();
-
-                    Student student = context.SystemUsers.FirstOrDefault(u => u.ID == studentID) as Student;
-                    context.LoadProperty(student, "Groups");
-                    var currentGroup = student.Groups.FirstOrDefault();// (g => g.StudyRangeID == Configuration.StudyRangeID);
-
-                    if (currentGroup == null)
-                        throw new Exception("Student hasnt a group!");
-
-                    context.LoadProperty(currentGroup, "Lectures");
-                    foreach (var lecture in currentGroup.Lectures)
-                    {
-                        context.LoadProperty(lecture, "Subject");
-                        result.Add(lecture.ToDTO());
-                    }
-
-                    return result;
+                    return InternalGetStudentLectures(context, student).ToList();
                 }
             }
             catch (Exception ex)
@@ -1964,7 +1853,7 @@ namespace StudyingControllerService
 
                         int practiceTeacherID = (item as PracticeControl).Practice_Teacher.ID;
                         PracticeTeacher practiceTeacher = context.PracticeTeachers.Include("Students").First(pt => pt.ID == practiceTeacherID);
-                        Teacher teacher = context.SystemUsers.Include("UserInformation").First(teach => teach.ID == practiceItem.Practice_Teacher.TeacherID) as Teacher;
+                        Teacher teacher = context.SystemUsers.First(teach => teach.ID == practiceItem.Practice_Teacher.TeacherID) as Teacher;
 
                         foreach (var student in practiceTeacher.Students)
                         {
@@ -1973,7 +1862,7 @@ namespace StudyingControllerService
                                 Date = DateTime.Now,
                                 Message = string.Format("Новий контроль ({5}) з предмету \"{0}\" - П (викладач - {1}) відбудеться {2} об {3}. Максимальна оцінка - {4}.",
                                        practice.Subject.Name,
-                                       teacher.UserInformation.LastName,
+                                       teacher.ShortName,
                                        practiceItem.Date.ToShortDateString(),
                                        practiceItem.Date.ToShortTimeString(),
                                        practiceItem.MaxMark,
@@ -1996,7 +1885,7 @@ namespace StudyingControllerService
 
                         int practiceTeacherID = (item as PracticeControl).Practice_Teacher.ID;
                         PracticeTeacher practiceTeacher = context.PracticeTeachers.Include("Students").First(pt => pt.ID == practiceTeacherID);
-                        Teacher teacher = context.SystemUsers.Include("UserInformation").First(teach => teach.ID == practiceItem.Practice_Teacher.TeacherID) as Teacher;
+                        Teacher teacher = context.SystemUsers.First(teach => teach.ID == practiceItem.Practice_Teacher.TeacherID) as Teacher;
 
                         foreach (var student in practiceTeacher.Students)
                         {
@@ -2005,7 +1894,7 @@ namespace StudyingControllerService
                                 Date = DateTime.Now,
                                 Message = string.Format("Внесено зміни! Контроль ({5}) з предмету \"{0}\" - П (викладач - {1}) відбудеться {2} об {3}. Максимальна оцінка - {4}.",
                                        practice.Subject.Name,
-                                       teacher.UserInformation.LastName,
+                                       teacher.ShortName,
                                        practiceItem.Date.ToShortDateString(),
                                        practiceItem.Date.ToShortTimeString(),
                                        practiceItem.MaxMark,
@@ -2023,37 +1912,15 @@ namespace StudyingControllerService
             }
         }
 
-        public List<PracticeTeacherDTO> GetStudentPractices(Session session, int studentID)
+        public List<PracticeTeacherDTO> GetStudentPractices(Session session, StudentRef student)
         {
             try
             {
                 CheckSession(session);
-                List<PracticeTeacherDTO> result = new List<PracticeTeacherDTO>();
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    foreach (var practice in context.PracticeTeachers.Include("Practice").Include("Students").Include("Teacher"))
-                        if (practice.Students.FirstOrDefault(s => s.ID == studentID) != null)
-                        {
-                            context.LoadProperty(practice.Practice, "Subject");
-
-                            foreach (var student in practice.Students)
-                            {
-                                context.LoadProperty(student, "UserInformation");
-
-                                context.LoadProperty(student, "Groups");
-                                var currentGroup = student.Groups.FirstOrDefault();// (g => g.StudyRangeID == Configuration.StudyRangeID);
-
-                                if (currentGroup == null)
-                                    throw new Exception("Student hasnt a group!");
-
-                                student.CurrentGroupID = currentGroup.ID;
-                            }
-
-                            result.Add(practice.ToDTO());
-                        }
+                    return InternalGetStudentPracticeTeachers(context, student).ToList();
                 }
-
-                return result;
             }
             catch (Exception ex)
             {
@@ -2081,7 +1948,6 @@ namespace StudyingControllerService
                             foreach (var m in pc.PracticeControlMarks)
                             {
                                 context.LoadProperty(m, "Student");
-                                context.LoadProperty(m.Student, "UserInformation");
                                 context.LoadProperty(m.Student, "Groups");
                                 result.Add(m.ToDTO());
                             }
@@ -2091,7 +1957,6 @@ namespace StudyingControllerService
                                 var query = pc.PracticeControlMarks.Where(m => m.StudentID == s.ID).FirstOrDefault();
                                 if (query == null)
                                 {
-                                    context.LoadProperty(s, "UserInformation");
                                     context.LoadProperty(s, "Groups");
                                     result.Add(new PracticeControlMarkDTO()
                                     {
@@ -2112,7 +1977,6 @@ namespace StudyingControllerService
                             foreach (var m in lc.LectureControlMarks)
                             {
                                 context.LoadProperty(m, "Student");
-                                context.LoadProperty(m.Student, "UserInformation");
                                 context.LoadProperty(m.Student, "Groups");
                                 result.Add(m.ToDTO());
                             }
@@ -2125,7 +1989,6 @@ namespace StudyingControllerService
                                     var query = lc.LectureControlMarks.Where(m => m.StudentID == s.ID).FirstOrDefault();
                                     if (query == null)
                                     {
-                                        context.LoadProperty(s, "UserInformation");
                                         result.Add(new LectureControlMarkDTO()
                                         {
                                             LectureControlID = lc.ID,
@@ -2213,7 +2076,7 @@ namespace StudyingControllerService
                             }
                         }
 
-                        List<MarkDTO> toNotify = toAdd.Count == 0 ? toEdit : toAdd;
+                        List<MarkDTO> toNotify = toAdd.Concat(toEdit).ToList();
                         foreach (var mark in toNotify)
                         {
                             var notification = new NotificationDTO();
@@ -2268,7 +2131,7 @@ namespace StudyingControllerService
 
                     if (universityStructureItem is InstituteDTO)
                     {
-                        groupIDs.AddRange(context.Institutes.Where(i => i.ID == universityStructureItem.ID).AsEnumerable().Select(i => 
+                        groupIDs.AddRange(context.Institutes.Where(i => i.ID == universityStructureItem.ID).AsEnumerable().Select(i =>
                         {
                             context.LoadProperty(i, "Faculties");
                             return i;
@@ -2284,14 +2147,14 @@ namespace StudyingControllerService
                     }
                     else if (universityStructureItem is FacultyDTO)
                     {
-                        groupIDs.AddRange(context.Faculties.Where(f => f.ID == universityStructureItem.ID).AsEnumerable().Select(f => 
-                        { 
-                            context.LoadProperty(f, "Cathedras"); 
-                            return f; 
-                        }).First().Cathedras.SelectMany(c => 
-                        { 
-                            context.LoadProperty(c, "Groups"); 
-                            return c.Groups.Select(g => g.ID); 
+                        groupIDs.AddRange(context.Faculties.Where(f => f.ID == universityStructureItem.ID).AsEnumerable().Select(f =>
+                        {
+                            context.LoadProperty(f, "Cathedras");
+                            return f;
+                        }).First().Cathedras.SelectMany(c =>
+                        {
+                            context.LoadProperty(c, "Groups");
+                            return c.Groups.Select(g => g.ID);
                         }));
                     }
                     else if (universityStructureItem is CathedraDTO)
@@ -2318,18 +2181,18 @@ namespace StudyingControllerService
                         {
                             context.LoadProperty(group, "Students");
                             context.LoadProperty(group, "Lectures");
-                            
+
                             students.AddRange(group.Students);
                         }
                     }
 
-                    result = students.Select<Student, UserRateItemDTO>(student => 
+                    result = students.Select<Student, UserRateItemDTO>(student =>
                     {
                         context.LoadProperty(student, "Groups");
                         var lectureControls = student.Groups.SelectMany(g =>
                             {
                                 context.LoadProperty(g, "Lectures");
-                                return g.Lectures.SelectMany(l => 
+                                return g.Lectures.SelectMany(l =>
                                 {
                                     context.LoadProperty(l, "LectureControls");
                                     return l.LectureControls;
@@ -2362,7 +2225,6 @@ namespace StudyingControllerService
 
                         var practiceMaxSum = practiceControls.Sum(pc => pc.MaxMark);
 
-                        context.LoadProperty(student, "UserInformation");
                         return new UserRateItemDTO()
                         {
                             Rate = (lectureControls.Any() || practiceControls.Any()) ? Convert.ToDouble((lectureMarksSum + practiceMarksSum) / (lectureMaxSum + practiceMaxSum)) : 0,
@@ -2386,12 +2248,12 @@ namespace StudyingControllerService
                 var resultList = new List<NotificationDTO>();
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    var query = (from notification 
-                                      in context.Notifications 
-                                      where notification.UserID == userID
-                                      orderby notification.Date descending
-                                  select notification).Take(10);
-                    
+                    var query = (from notification
+                                      in context.Notifications
+                                 where notification.UserID == userID
+                                 orderby notification.Date descending
+                                 select notification).Take(10);
+
                     foreach (var n in query.ToList())
                     {
                         resultList.Add(n.ToDTO());
@@ -2399,7 +2261,7 @@ namespace StudyingControllerService
                 }
                 return resultList;
             }
-                catch (Exception ex)
+            catch (Exception ex)
             {
                 throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
             }
@@ -2496,7 +2358,29 @@ namespace StudyingControllerService
                                       in context.Institutes
                                  where item.ID == id
                                  select item).FirstOrDefault();
-                    return query == null? null : query.ToDTO();
+                    return query == null ? null : query.ToDTO();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public StudentDTO GetStudent(Session session, int id)
+        {
+            try
+            {
+                this.CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var query = (from item
+                                      in context.SystemUsers
+                                 where item.ID == id
+                                 select item).FirstOrDefault();
+                    if (query != null)
+                        context.LoadProperty(query as Student, "Groups");
+                    return query == null ? null : (query as Student).ToDTO();
                 }
             }
             catch (Exception ex)
@@ -2512,8 +2396,7 @@ namespace StudyingControllerService
                 this.CheckSession(session);
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    var query = (from item
-                                      in context.Controls
+                    var query = (from item in context.Controls
                                  where item.ID == id
                                  select item).FirstOrDefault();
 
@@ -2521,84 +2404,75 @@ namespace StudyingControllerService
                     {
                         return (query as LectureControl).ToDTO();
                     }
-                    
+
                     if (query != null && query is PracticeControl)
                     {
-                        return (query as PracticeControl).ToDTO(); 
+                        return (query as PracticeControl).ToDTO();
                     }
 
                     return null;
                 }
-                            }
+            }
             catch (Exception ex)
             {
                 throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
             }
         }
-       
-        public List<VisitingsDTO> GetVisitingsForLecture(Session session, int id)
+
+        public List<VisitingsDTO> GetVisitingsForLecture(Session session, LectureRef lecRef)
         {
             try
             {
                 CheckSession(session);
 
-                //List<VisitingsDTO> result = new List<VisitingsDTO>();
+                List<VisitingsDTO> result = new List<VisitingsDTO>();
 
-                //using (UniversityEntities context = new UniversityEntities())
-                //{
-                //    var query = context.Visitings.Include("Lecture").Where(v => v.Lecture != null && v.Lecture.ID == id).ToList();
-
-                //    foreach (IGrouping<int, Visiting> gr in query.GroupBy(v => v.StudentID))
-                //    {
-                //        var visits = gr.Select(g=>new VisitingDTO
-                //        {
-                //            Date = g.Date,
-                //            Description = g.Description,
-                //            ID = g.ID,
-                //            StudentID = g.StudentID,
-                //            Value = (VisitingValue)g.Value
-                //        }).ToList();
-
-                //        result.Add(new VisitingsDTO()
-                //        {
-                //            StudentID = gr.Key,
-                //            Visitings = visits
-                //        });
-                //    }
-                //}
-
-
-                List<VisitingsDTO> visits = new List<VisitingsDTO>();
-                //visits.Add(new VisitingsModel
-                //{
-                //    ID = 1,
-                //    StudentID = 1,
-                //});
-
-                for (int i = 1; i < 10; i++)
+                using (UniversityEntities context = new UniversityEntities())
                 {
-                    var v = new VisitingsDTO
+                    Lecture lecture = context.Lectures.First(c => c.ID == lecRef.ID) as Lecture;
+
+                    context.LoadProperty(lecture, "Groups");
+                    foreach (Group g in lecture.Groups)
                     {
-                        ID = i,
-                        StudentID = i,
-                        StudentName = "Студент " + i.ToString()
-                    };
-                    for (int j = 1; j < 20; j++)
-                    {
-                        v.Visitings.Add(new VisitingDTO
+                        context.LoadProperty(g, "Students");
+                        foreach (Student s in g.Students)
                         {
-                            Date = DateTime.Today.AddDays(j),
-                            // Description = "desc" + j.ToString(),
-                            ID = j,
-                            StudentID = i,
-                            Value = VisitingValue.Present
-                        });
+                            result.Add(new VisitingsDTO
+                            {
+                                Lecture = new LectureRef { ID = lecture.ID },
+                                Student = new StudentRef { ID = s.ID, Name = s.Name }
+                            });
+                        }
                     }
-                    visits.Add(v);
+
+                    context.LoadProperty(lecture, "Visitings");
+                    var dates = lecture.Visitings.Select(v => v.Date).Distinct();
+
+                    foreach (var res in result)
+                    {
+                        res.Visitings = new List<VisitingDTO>();
+                        foreach (var dat in dates)
+                        {
+                            Visiting visiting = lecture.Visitings.FirstOrDefault(v => v.Date == dat && v.StudentID == res.Student.ID);
+                            if (visiting == null)
+                            {
+                                visiting = new Visiting
+                                {
+                                    Date = dat,
+                                    Lecture = lecture,
+                                    StudentID = res.Student.ID,
+                                };
+
+                                context.Visitings.AddObject(visiting);
+                                context.SaveChanges();
+                            }
+
+                            res.Visitings.Add(visiting.ToDTO());
+                        }
+                    }
                 }
 
-                return visits;
-                //return result;
+                return result;
             }
             catch (Exception ex)
             {
@@ -2606,15 +2480,69 @@ namespace StudyingControllerService
             }
         }
 
-        public void UpdateMarkValue(Session session, int markId, decimal markValue)
+        public void SaveVisitingsForLecture(Session session, LectureRef lecRef, List<VisitingDTO> visitings)
+        {
+            try
+            {
+                CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var lecture = context.Lectures.FirstOrDefault(l => l.ID == lecRef.ID);
+                    if (lecture != null)
+                    {
+                        var toEdit = new List<VisitingDTO>();
+                        var toAdd = new List<VisitingDTO>();
+
+                        context.LoadProperty(lecture, "Groups");
+                        context.LoadProperty(lecture, "Visitings");
+
+                        toAdd = visitings.Where(v => lecture.Visitings.ToList().Find(lv => lv.StudentID == v.Student.ID) == null).ToList();
+                        toEdit = visitings.Where(v => lecture.Visitings.ToList().Find(lv => lv.StudentID == v.Student.ID) != null).ToList();
+
+                        foreach (var a in toAdd)
+                        {
+                            Visiting vis = new Visiting(a as VisitingDTO);
+                            vis.Lecture = lecture;
+                            context.Visitings.AddObject(vis);
+                        }
+
+                        foreach (var e in toEdit)
+                        {
+                            var elem = context.Visitings.Where(v => v.ID == e.ID).FirstOrDefault();
+                            if (elem == null)
+                            {
+                                Visiting vis = new Visiting(e as VisitingDTO);
+                                vis.Lecture = lecture;
+                                context.Visitings.AddObject(vis);
+                            }
+                            else
+                            {
+                                //elem.Assign(e);
+                                //elem.Lecture = lecture;
+                                elem.Value = (int)e.Value;
+                                elem.Description = e.Description;
+                                elem.Date = e.Date;
+                            }
+                        }
+                    }
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public void UpdateMarkValue(Session session, MarkRef mark)
         {
             try
             {
                 this.CheckSession(session);
                 using (UniversityEntities context = new UniversityEntities())
                 {
-                    var existingMark = context.Marks.Where(em => em.ID == markId).FirstOrDefault();
-                    existingMark.MarkValue = markValue;
+                    var existingMark = context.Marks.Where(em => em.ID == mark.ID).FirstOrDefault();
+                    existingMark.MarkValue = mark.Value;
 
                     context.SaveChanges();
                 }
@@ -2623,7 +2551,315 @@ namespace StudyingControllerService
             {
                 throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
             }
+        }
 
+        public List<BaseEntityDTO> GetLessonTree(Session session, SystemUserRef userRef)
+        {
+            try
+            {
+                this.CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    List<BaseEntityDTO> result = new List<BaseEntityDTO>();
+
+                    List<InstituteDTO> institutes = new List<InstituteDTO>();
+                    List<FacultyDTO> faculties = new List<FacultyDTO>();
+                    List<CathedraDTO> cathedras = new List<CathedraDTO>();
+                    List<TeacherDTO> teachers = new List<TeacherDTO>();
+                    List<PracticeTeacherDTO> practices = new List<PracticeTeacherDTO>();
+                    List<LectureDTO> lectures = new List<LectureDTO>();
+
+                    var user = context.SystemUsers.First(s => s.ID == userRef.ID);
+
+                    switch (user.Role)
+                    {
+                        case UserRoles.MainSecretary:
+                        case UserRoles.MainAdmin:
+                            institutes = InternalGetInstitutes(context).ToList();
+
+                            foreach (var ins in institutes)
+                                faculties.AddRange(InternalGetFaculties(context, ins.CopyTo(() => new InstituteRef())));
+                            faculties.AddRange(InternalGetFaculties(context, null));
+
+                            foreach (var fac in faculties)
+                                cathedras.AddRange(InternalGetCathedras(context, fac.CopyTo(() => new FacultyRef())));
+
+                            foreach (var cath in cathedras)
+                                teachers.AddRange(InternalGetTeachers(context, cath.CopyTo(() => new CathedraRef())));
+
+                            foreach (var teach in teachers)
+                            {
+                                practices.AddRange(InternalGetPracticeTeachers(context, teach.CopyTo(() => new TeacherRef())));
+                                lectures.AddRange(InternalGetLectures(context, teach.CopyTo(() => new TeacherRef())));
+                            }
+                            break;
+                        case UserRoles.InstituteAdmin:
+                        case UserRoles.InstituteSecretary:
+                            var instituteId = (user as IInstituteable).InstituteID;
+
+                            faculties.AddRange(InternalGetFaculties(context, new InstituteRef { ID = instituteId }));
+
+                            foreach (var fac in faculties)
+                                cathedras.AddRange(InternalGetCathedras(context, fac.CopyTo(() => new FacultyRef())));
+
+                            foreach (var cath in cathedras)
+                                teachers.AddRange(InternalGetTeachers(context, cath.CopyTo(() => new CathedraRef())));
+
+                            foreach (var teach in teachers)
+                            {
+                                practices.AddRange(InternalGetPracticeTeachers(context, teach.CopyTo(() => new TeacherRef())));
+                                lectures.AddRange(InternalGetLectures(context, teach.CopyTo(() => new TeacherRef())));
+                            }
+                            break;
+                        case UserRoles.FacultyAdmin:
+                        case UserRoles.FacultySecretary:
+                            var facultyId = (user as IFacultyable).FacultyID;
+
+                            cathedras.AddRange(InternalGetCathedras(context, new FacultyRef { ID = facultyId }));
+
+                            foreach (var cath in cathedras)
+                                teachers.AddRange(InternalGetTeachers(context, cath.CopyTo(() => new CathedraRef())));
+
+                            foreach (var teach in teachers)
+                            {
+                                practices.AddRange(InternalGetPracticeTeachers(context, teach.CopyTo(() => new TeacherRef())));
+                                lectures.AddRange(InternalGetLectures(context, teach.CopyTo(() => new TeacherRef())));
+                            }
+                            break;
+                        case UserRoles.Student:
+                            //practices.AddRange(InternalGetStudentPracticeTeachers(context, user.CopyTo(() => new StudentRef())));
+                            //lectures.AddRange(InternalGetStudentLectures(context, user.CopyTo(() => new StudentRef())));
+                            break;
+                        case UserRoles.Teacher:
+                            practices.AddRange(InternalGetPracticeTeachers(context, user.CopyTo(() => new TeacherRef())));
+                            lectures.AddRange(InternalGetLectures(context, user.CopyTo(() => new TeacherRef())));
+                            break;
+                        default:
+                            throw new NotImplementedException("Unknown user's role!");
+                    }
+                    result.AddRange(institutes);
+                    result.AddRange(faculties);
+                    result.AddRange(cathedras);
+                    result.AddRange(teachers);
+                    result.AddRange(practices);
+                    result.AddRange(lectures);
+
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public List<BaseEntityDTO> GetUniversityTree(Session session, SystemUserRef userRef)
+        {
+            try
+            {
+                this.CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    List<BaseEntityDTO> result = new List<BaseEntityDTO>();
+
+                    List<InstituteDTO> institutes = new List<InstituteDTO>();
+                    List<FacultyDTO> faculties = new List<FacultyDTO>();
+                    List<CathedraDTO> cathedras = new List<CathedraDTO>();
+                    List<GroupDTO> groups = new List<GroupDTO>();
+
+                    var user = context.SystemUsers.First(s => s.ID == userRef.ID);
+
+                    switch (user.Role)
+                    {
+                        case UserRoles.MainSecretary:
+                        case UserRoles.MainAdmin:
+                            institutes = InternalGetInstitutes(context).ToList();
+
+                            foreach (var ins in institutes)
+                                faculties.AddRange(InternalGetFaculties(context, ins.CopyTo(() => new InstituteRef())));
+                            faculties.AddRange(InternalGetFaculties(context, null));
+
+                            foreach (var fac in faculties)
+                                cathedras.AddRange(InternalGetCathedras(context, fac.CopyTo(() => new FacultyRef())));
+
+                            foreach (var cath in cathedras)
+                                groups.AddRange(InternalGetGroups(context, cath.CopyTo(() => new CathedraRef())));
+                            break;
+                        case UserRoles.InstituteAdmin:
+                        case UserRoles.InstituteSecretary:
+                            var instituteId = (user as IInstituteable).InstituteID;
+
+                            faculties.AddRange(InternalGetFaculties(context, new InstituteRef { ID = instituteId }));
+
+                            foreach (var fac in faculties)
+                                cathedras.AddRange(InternalGetCathedras(context, fac.CopyTo(() => new FacultyRef())));
+
+                            foreach (var cath in cathedras)
+                                groups.AddRange(InternalGetGroups(context, cath.CopyTo(() => new CathedraRef())));
+                            break;
+                        case UserRoles.FacultyAdmin:
+                        case UserRoles.FacultySecretary:
+                            var facultyId = (user as IFacultyable).FacultyID;
+
+                            cathedras.AddRange(InternalGetCathedras(context, new FacultyRef { ID = facultyId }));
+
+                            foreach (var cath in cathedras)
+                                groups.AddRange(InternalGetGroups(context, cath.CopyTo(() => new CathedraRef())));
+                            break;
+                        default:
+                            throw new NotImplementedException("Unknown user's role!");
+                    }
+                    result.AddRange(institutes);
+                    result.AddRange(faculties);
+                    result.AddRange(cathedras);
+
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        private IEnumerable<InstituteDTO> InternalGetInstitutes(UniversityEntities context)
+        {
+            foreach (Institute institute in context.Institutes)
+            {
+                yield return institute.ToDTO();
+            }
+        }
+
+        private IEnumerable<FacultyDTO> InternalGetFaculties(UniversityEntities context, InstituteRef instituteRef)
+        {
+            int? institute = instituteRef == null? null as int?: instituteRef.ID;
+            var query = context.Faculties.Include("Specializations")
+                        .Where(f => (institute != null && f.InstituteID == institute)
+                        || (institute == null && f.InstituteID == null)).ToList();
+            foreach (var faculty in query)
+            {
+                context.LoadProperty(faculty, "Institute");
+                yield return faculty.ToDTO();
+            }
+        }
+
+        private IEnumerable<CathedraDTO> InternalGetCathedras(UniversityEntities context, FacultyRef facultyRef)
+        {
+            int faculty = facultyRef.ID;
+            var query = from c in context.Cathedras.Include("Subjects").Include("Faculty")
+                        where c.FacultyID == faculty
+                        select c;
+            foreach (var c in query)
+                yield return c.ToDTO();
+        }
+
+        private IEnumerable<TeacherDTO> InternalGetTeachers(UniversityEntities context, CathedraRef cathedraRef)
+        {
+            int cathedra = cathedraRef.ID;
+            var query = context.Cathedras.Include("Teachers").Where(c => c.ID == cathedra).Select(c => c.Teachers).FirstOrDefault();
+
+            if (query != null)
+            {
+                foreach (var item in query)
+                {
+                    context.LoadProperty(item, "Lectures");
+                    foreach (var lecture in item.Lectures)
+                        context.LoadProperty(lecture, "Subject");
+
+                    yield return item.ToDTO();
+                }
+            }
+        }
+
+        private IEnumerable<PracticeTeacherDTO> InternalGetPracticeTeachers(UniversityEntities context, TeacherRef teacherRef)
+        {
+            var teacher = teacherRef.ID;
+            var query = from pt in context.PracticeTeachers.Include("Practice").Include("Students")
+                        where pt.TeacherID == teacher
+                        select pt;
+            foreach (var practiceTeacher in query)
+            {
+                context.LoadProperty(practiceTeacher.Practice, "Subject");
+
+                foreach (var student in practiceTeacher.Students)
+                {
+                    context.LoadProperty(student, "Groups");
+                    var currentGroup = student.Groups.FirstOrDefault();//(g => g.StudyRangeID == Configuration.StudyRangeID);
+
+                    if (currentGroup == null)
+                        throw new Exception("Student hasnt a group!");
+
+                    student.CurrentGroupID = currentGroup.ID;
+                }
+                yield return practiceTeacher.ToDTO();
+            }
+        }
+
+        private IEnumerable<LectureDTO> InternalGetLectures(UniversityEntities context, TeacherRef teacherRef)
+        {
+            int teacher = teacherRef.ID;
+
+            var query = from l in context.Lectures.Include("Groups")
+                        where l.TeacherID == teacher
+                        select l;
+
+            foreach (var lecture in query)
+            {
+                context.LoadProperty(lecture, "Subject");
+                yield return lecture.ToDTO();
+            }
+        }
+
+        private IEnumerable<PracticeTeacherDTO> InternalGetStudentPracticeTeachers(UniversityEntities context, StudentRef studentRef)
+        {
+            int student = studentRef.ID;
+
+            foreach (var practice in context.PracticeTeachers.Include("Practice").Include("Students").Include("Teacher"))
+                if (practice.Students.FirstOrDefault(s => s.ID == student) != null)
+                {
+                    context.LoadProperty(practice.Practice, "Subject");
+
+                    foreach (var stud in practice.Students)
+                    {
+                        context.LoadProperty(stud, "Groups");
+                        var currentGroup = stud.Groups.FirstOrDefault();// (g => g.StudyRangeID == Configuration.StudyRangeID);
+
+                        if (currentGroup == null)
+                            throw new Exception("Student hasnt a group!");
+
+                        stud.CurrentGroupID = currentGroup.ID;
+                    }
+
+                    yield return practice.ToDTO();
+                }
+        }
+
+        private IEnumerable<LectureDTO> InternalGetStudentLectures(UniversityEntities context, StudentRef studentRef)
+        {
+            int studentId = studentRef.ID;
+            Student student = context.SystemUsers.FirstOrDefault(u => u.ID == studentId) as Student;
+            context.LoadProperty(student, "Groups");
+            var currentGroup = student.Groups.FirstOrDefault();// (g => g.StudyRangeID == Configuration.StudyRangeID);
+
+            if (currentGroup == null)
+                throw new Exception("Student hasnt a group!");
+
+            context.LoadProperty(currentGroup, "Lectures");
+            foreach (var lecture in currentGroup.Lectures)
+            {
+                context.LoadProperty(lecture, "Subject");
+                yield return lecture.ToDTO();
+            }
+        }
+
+        private IEnumerable<GroupDTO> InternalGetGroups(UniversityEntities context, CathedraRef cathedraRef)
+        {
+            int cathedra = cathedraRef.ID;
+            var query = from g in context.Groups.Include("Specialization").Include("Cathedra")
+                        where g.CathedraID == cathedra
+                        select g;
+            foreach (var group in query)
+                yield return GetDTO<GroupDTO>(group);
         }
     }
 }

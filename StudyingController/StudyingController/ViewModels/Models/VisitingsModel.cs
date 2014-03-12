@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
@@ -11,29 +12,28 @@ namespace StudyingController.ViewModels.Models
     {
         #region Fields & Properties
 
-        private StudentDTO student;
-
-        public string Student
+        private StudentRef student;
+        public StudentRef Student
         {
-            get { return string.Format("{0} {1}", student.UserInformation.LastName, student.UserInformation.FirstName); }
+            get { return student; }
+            set { student = value; }
         }
 
-        private int studentID;
-        public int StudentID
+        private LectureRef lecture;
+        public LectureRef Lecture
         {
-            get { return studentID; }
-            set { studentID = value; }
+            get { return lecture; }
+            set { lecture = value; }
         }
 
-        private string studentName;
-        public string StudentName
+        private PracticeRef practice;
+        public PracticeRef Practice
         {
-            get { return studentName; }
-            set { studentName = value; }
+            get { return practice; }
+            set { practice = value; }
         }
 
         private ObservableCollection<VisitingModel> visitings;
-
         public ObservableCollection<VisitingModel> Visitings
         {
             get { return visitings; }
@@ -70,9 +70,39 @@ namespace StudyingController.ViewModels.Models
 
             VisitingsDTO visitings = (entity as VisitingsDTO);
 
-            StudentID = visitings.StudentID;
-            StudentName = visitings.StudentName;
-            this.visitings = new ObservableCollection<VisitingModel>(visitings.Visitings.Select(v=>new VisitingModel(v)).ToList());
+            Student = visitings.Student;
+
+            Lecture = visitings.Lecture;
+
+            Practice = visitings.Practice;
+
+            if (this.visitings != null)
+            {
+                this.visitings.CollectionChanged -= visitings_CollectionChanged;
+                foreach (var visiting in this.visitings)
+                {
+                    visiting.PropertyChanged -= visiting_PropertyChanged;
+                }
+            }
+
+            this.visitings = new ObservableCollection<VisitingModel>(visitings.Visitings.OrderBy(v=>v.Date).Select(v=>new VisitingModel(v)).ToList());
+
+            this.visitings.CollectionChanged += visitings_CollectionChanged;
+
+            foreach (var visiting in this.visitings)
+            {
+                visiting.PropertyChanged += visiting_PropertyChanged;
+            }
+        }
+
+        private void visiting_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            OnModelChanged();
+        }
+
+        private void visitings_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            OnPropertyChanged("Visitings");
         }
 
         private void OnModelChanged()
@@ -93,8 +123,9 @@ namespace StudyingController.ViewModels.Models
             return new VisitingsDTO
             {
                 ID = this.ID,
-                StudentID = this.StudentID,
-                StudentName = this.StudentName,
+                Student = this.Student,
+                Lecture = this.Lecture,
+                Practice = this.Practice,
                 Visitings = this.Visitings.Select(v=>v.ToDTO()).ToList()
             };
         }

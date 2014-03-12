@@ -83,6 +83,11 @@ namespace StudyingController.ViewModels
         public PracticeDataViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, PracticeTeacherDTO lesson)
             : base(userInterop, controllerInterop, dispatcher)
         {
+            InitControl(lesson);
+        }
+
+        public void InitControl(PracticeTeacherDTO lesson)
+        {
             originalEntity = lesson;
 
             Model = new PracticeTeacherModel(lesson);
@@ -131,8 +136,14 @@ namespace StudyingController.ViewModels
             throw new NotImplementedException();
         }
 
-        protected override void LoadData()
+        protected override object LoadDataFromServer()
         {
+            return null;
+        }
+
+        protected override void AfterDataLoaded()
+        {
+            base.AfterDataLoaded();
             //if (IsUserStudent) mark = ControllerInterop.Service.GetLectureMark(ControllerInterop.Session, ControllerInterop.User.ID, Model.ID);
             PracticeControls.Load();
         }

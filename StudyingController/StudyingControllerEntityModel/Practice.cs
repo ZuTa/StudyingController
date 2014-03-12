@@ -23,6 +23,14 @@ namespace StudyingControllerEntityModel
 
         #region Methods
 
+        public PracticeRef ToRef()
+        {
+            return new PracticeRef
+            {
+                ID = this.ID,
+            };
+        }
+
         public PracticeDTO ToDTO()
         {
             return new PracticeDTO

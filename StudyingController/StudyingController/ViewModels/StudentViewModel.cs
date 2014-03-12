@@ -141,7 +141,7 @@ namespace StudyingController.ViewModels
         {
             if (Faculty != null)
             {
-                Cathedras = ControllerInterop.Service.GetCathedras(ControllerInterop.Session, Faculty.ID);
+                Cathedras = ControllerInterop.Service.GetCathedras(ControllerInterop.Session, new FacultyRef { ID = Faculty.ID });
                 Groups = new List<GroupDTO>();
                 
                 if (Student.Group != null) Cathedra = (from cathedra in Cathedras
@@ -154,7 +154,7 @@ namespace StudyingController.ViewModels
         {
             if (Cathedra != null)
             {
-                Groups = ControllerInterop.Service.GetGroups(ControllerInterop.Session, Cathedra.ID);
+                Groups = ControllerInterop.Service.GetGroups(ControllerInterop.Session, new CathedraRef { ID = Cathedra.ID });
                 
                 if (Student.Group != null) Student.Group = (from gr in Groups
                                                             where gr.ID == Student.Group.ID
@@ -162,8 +162,14 @@ namespace StudyingController.ViewModels
             }
         }
 
-        protected override void LoadData()
+        protected override object LoadDataFromServer()
         {
+            return null;
+        }
+
+        protected override void AfterDataLoaded()
+        {
+            base.AfterDataLoaded();
             Faculties = ControllerInterop.Service.GetAllFaculties(ControllerInterop.Session);
 
             if (originalEntity.Exists())

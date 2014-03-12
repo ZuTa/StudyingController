@@ -81,7 +81,7 @@ namespace StudyingController.ViewModels
                 if (passwordSource != value)
                 {
                     passwordSource = value;
-                    if (passwordSource != null)
+                    if (passwordSource != null && LoginConfig!=null)
                         PasswordSource.SetPassword(LoginConfig.Password);
                     OnPropertyChanged("PasswordSource");
                 }
@@ -122,8 +122,15 @@ namespace StudyingController.ViewModels
 
         #region Methods
 
-        protected override void LoadData()
+        protected override object LoadDataFromServer()
         {
+            return null;
+        }
+
+        protected override void AfterDataLoaded()
+        {
+            base.AfterDataLoaded();
+
             LoginConfig = LoginConfig.Load();
 
             if (loginConfig.IsAutologin)

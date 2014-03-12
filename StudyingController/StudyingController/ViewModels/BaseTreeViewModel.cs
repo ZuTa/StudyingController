@@ -86,11 +86,7 @@ namespace StudyingController.ViewModels
 
         public void Refresh()
         {
-            tree.SaveState();
-
             Load();
-
-            tree.ApplyOldState();
         }
 
         protected virtual void OnSelectedEntityChanged(BaseEntityDTO entity)
@@ -103,12 +99,22 @@ namespace StudyingController.ViewModels
         {
             previousSelectedEntity = CurrentEntity;
 
-            lock (Tree)
+            //lock (Tree)
                 Tree.Clear();
         }
 
-        protected override void LoadData()
+        protected override void BeforeDataLoading()
         {
+            base.BeforeDataLoading();
+
+            tree.SaveState();
+        }
+
+        protected override void AfterDataLoaded()
+        {
+            base.AfterDataLoaded();
+
+            tree.ApplyOldState();
         }
 
         #endregion

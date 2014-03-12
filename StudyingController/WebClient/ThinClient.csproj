@@ -276,6 +276,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Views\ControlsManagement\PracticeView.cshtml" />
+    <Content Include="Service References\SCS\ThinClient.SCS.BaseEntityDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -299,6 +302,10 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{394b1151-0b45-441e-b90e-abbed2f0ce65}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EntityModelDTO\EntitiesDTO.csproj">
       <Project>{86b57e17-94bc-45dd-bcc9-2da0c9c4d596}</Project>
       <Name>EntitiesDTO</Name>

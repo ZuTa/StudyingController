@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using ThinClient.Common;
 using ThinClient.Models;
 using ThinClient.SCS;
+using Common;
 
 namespace ThinClient.Controllers
 {
@@ -17,8 +18,9 @@ namespace ThinClient.Controllers
             var session = this.GetSession();
             if (session != null)
             {
-                model.Lectures = this.serviceClient.GetLectures(session, session.User.ID).ToList();
-                model.Practices = this.serviceClient.GetPracticesTeacher(session, session.User.ID).ToList();
+                var teacherRef = new TeacherRef() { ID = session.User.ID };
+                model.Lectures = this.serviceClient.GetLectures(session, teacherRef).ToList();
+                model.Practices = this.serviceClient.GetPracticesTeacher(session, teacherRef).ToList();
             }
 
             return View(model);
@@ -30,7 +32,8 @@ namespace ThinClient.Controllers
             var session = this.GetSession();
             if (session != null)
             {
-                model.Lecture = this.serviceClient.GetLectures(session, session.User.ID).FirstOrDefault(l => l.ID == lectureId);
+                var teacherRef = new TeacherRef() { ID = session.User.ID };
+                model.Lecture = this.serviceClient.GetLectures(session, teacherRef).FirstOrDefault(l => l.ID == lectureId);
                 model.LectureControls = this.serviceClient.GetLectureControls(session, lectureId);
             }
 
@@ -43,7 +46,8 @@ namespace ThinClient.Controllers
             var session = this.GetSession();
             if (session != null)
             {
-                model.Practice = this.serviceClient.GetPracticesTeacher(session, session.User.ID).FirstOrDefault(l => l.ID == practiceId);
+                var teacherRef = new TeacherRef() { ID = session.User.ID };
+                model.Practice = this.serviceClient.GetPracticesTeacher(session, teacherRef).FirstOrDefault(l => l.ID == practiceId);
                 model.PracticeControls = this.serviceClient.GetPracticeControls(session, practiceId);
             }
 
@@ -69,9 +73,13 @@ namespace ThinClient.Controllers
             var session = this.GetSession();
             if (session != null)
             {
-                var markId = Convert.ToInt32(Encryptor.Decrypt(mark.EncryptedId));
-                var markValue = Convert.ToDecimal(mark.MarkValue);
-                this.serviceClient.UpdateMarkValue(session, markId, markValue);
+                var markRef = new MarkRef() 
+                {
+                    ID = Convert.ToInt32(Encryptor.Decrypt(mark.EncryptedId)),
+                    Value = Convert.ToDecimal(mark.MarkValue)
+                };
+
+                this.serviceClient.UpdateMarkValue(session, markRef);
             }
 
             string message = "Success";

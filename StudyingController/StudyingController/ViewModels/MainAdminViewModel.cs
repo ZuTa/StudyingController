@@ -79,9 +79,14 @@ namespace StudyingController.ViewModels
             SetUnModified();
         }
 
-        protected override void LoadData()
+        protected override object LoadDataFromServer()
         {
-            // nothing
+            return null;
+        }
+
+        protected override void AfterDataLoaded()
+        {
+            base.AfterDataLoaded();
         }
 
         protected override void ClearData()

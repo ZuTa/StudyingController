@@ -111,9 +111,16 @@ namespace StudyingController.ViewModels
             ControllerInterop.Service.DeleteCathedra(ControllerInterop.Session, Cathedra.ID);
         }
 
-        protected override void LoadData()
+        protected override object LoadDataFromServer()
         {
-            Faculties = ControllerInterop.Service.GetAllFaculties(ControllerInterop.Session);
+            return ControllerInterop.Service.GetAllFaculties(ControllerInterop.Session);
+        }
+
+        protected override void AfterDataLoaded()
+        {
+            base.AfterDataLoaded();
+
+            Faculties = DataSource as List<FacultyDTO>;
 
             CathedraDTO cathedra = originalEntity as CathedraDTO;
 

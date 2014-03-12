@@ -16,7 +16,7 @@ namespace StudyingController.ViewModels.Models
 
         public string Student
         {
-            get { return string.Format("{0} {1}", student.UserInformation.LastName, student.UserInformation.FirstName); }
+            get { return student.Name; }
         }
 
         private int studentID;

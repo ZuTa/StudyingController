@@ -257,7 +257,7 @@ namespace StudyingController.ViewModels
 
             Attachments = new ObservableCollection<AttachmentModel>();
 
-            foreach (var att in ControllerInterop.Service.GetAttachments(ControllerInterop.Session, userID))
+            foreach (var att in (DataSource as List<AttachmentDTO>))
             {
                 AttachmentModel attachmentModel = new AttachmentModel(att);
 
@@ -269,8 +269,15 @@ namespace StudyingController.ViewModels
             Attachments.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(Attachments_CollectionChanged);
         }
 
-        protected override void LoadData()
+        protected override object LoadDataFromServer()
         {
+            return ControllerInterop.Service.GetAttachments(ControllerInterop.Session, user.ID);
+        }
+
+        protected override void AfterDataLoaded()
+        {
+            base.AfterDataLoaded();
+
             InitializeAttachments(user.ID);
         }
 
@@ -285,7 +292,7 @@ namespace StudyingController.ViewModels
         public void Refresh()
         {
             ClearData();
-            LoadData();
+            Load();
             CurrentEntity = Attachments.Where(a => previousAttachments.ToList().Find(p => a.ID == p.ID) == null).FirstOrDefault();
             if(CurrentEntity==null)
                 if (previousSelectedEntity != null)

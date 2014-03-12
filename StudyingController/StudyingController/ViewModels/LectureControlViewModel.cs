@@ -144,8 +144,15 @@ namespace StudyingController.ViewModels
             throw new NotImplementedException();
         }
 
-        protected override void LoadData()
+        protected override object LoadDataFromServer()
         {
+            return null;
+        }
+
+        protected override void AfterDataLoaded()
+        {
+            base.AfterDataLoaded();
+
             if (IsUserStudent) mark = ControllerInterop.Service.GetLectureMark(ControllerInterop.Session, ControllerInterop.User.ID, Model.ID);
         }
 
@@ -154,6 +161,7 @@ namespace StudyingController.ViewModels
         }
 
         #endregion
+
         private void MarksViewModel_ViewModelChanged(object sender, EventArgs e)
         {
             if (MarksViewModel.IsModified)

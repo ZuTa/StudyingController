@@ -9,7 +9,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <TabControl TabStripPlacement="Right">
+        <TabControl TabStripPlacement="Right" SelectedIndex="{Binding Path=SelectedIndex}">
             <TabItem>
                 <TabItem.Header>
                     <StackPanel>
@@ -29,7 +29,7 @@
                 </ContentControl>
             </TabItem>
 
-            <TabItem> <!--Visibility="{Binding Path=IsNotStudent, Converter={StaticResource B2V}}">-->
+            <TabItem Visibility="{Binding Path=IsNotStudent, Converter={StaticResource B2V}}">
                 <TabItem.Header>
                     <StackPanel>
                         <TextBlock Text="Відвідування" Margin="5,0,5,0"></TextBlock>

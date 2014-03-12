@@ -12,28 +12,13 @@ namespace StudyingController.ViewModels
     {
         #region Fields & Properies
 
-        private UserInformationDTO userInformation;
-        public UserInformationDTO UserInformation
-        {
-          get { return userInformation; }
-          set
-          {
-              if (userInformation != value)
-              {
-                  userInformation = value;
-                  OnPropertyChanged("UserInformation");
-              }
-          }
-        }
-
         #endregion
 
         #region Constructors
 
-        public UserInformationViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, UserInformationDTO userInformation)
+        public UserInformationViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher)
             : base(userInterop, controllerInterop, dispatcher)
         {
-            this.UserInformation = userInformation;
         }
 
         #endregion

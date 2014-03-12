@@ -36,9 +36,14 @@ namespace StudyingControllerEntityModel
             {
                 ID = this.ID,
                 Login = this.Login,
-                UserInformation = (this.UserInformation as IDTOable<UserInformationDTO>).ToDTO(),
                 Role = this.Role,
-                GroupID = this.Groups.First().ID
+                FirstName = this.FirstName,
+                MiddleName = this.MiddleName,
+                LastName = this.LastName,
+                Picture = this.Picture,
+                Birth = this.Birth.HasValue ? this.Birth.Value: DateTime.MinValue,
+                Email = this.Email,
+                GroupID = this.Groups.First().ID,
             };
         }
 
@@ -47,5 +52,6 @@ namespace StudyingControllerEntityModel
             base.Assign(entity);
             this.CurrentGroupID = entity.GroupID;
         }
+
     }
 }

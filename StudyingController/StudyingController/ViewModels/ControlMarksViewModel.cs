@@ -100,7 +100,7 @@ namespace StudyingController.ViewModels
                     ControllerInterop.Service.SaveMarks(ControllerInterop.Session, Control as LectureControlDTO, lectureMarks);
                 }
                 ClearData();
-                LoadData();
+                Load();
                 SetUnModified();
             }
         }
@@ -114,16 +114,23 @@ namespace StudyingController.ViewModels
         protected virtual void OnControlChanged()
         {
             ClearData();
-            LoadData();
+            Load();
             SetUnModified();
         }
 
-        protected override void LoadData()
+        protected override object LoadDataFromServer()
         {
+            return ControllerInterop.Service.GetMarks(ControllerInterop.Session, control);
+        }
+
+        protected override void AfterDataLoaded()
+        {
+            base.AfterDataLoaded();
+
             if(Marks!=null)
                 Marks.CollectionChanged -= new System.Collections.Specialized.NotifyCollectionChangedEventHandler(Marks_CollectionChanged);
             Marks = new ObservableCollection<MarkModel>();
-            foreach (MarkDTO m in ControllerInterop.Service.GetMarks(ControllerInterop.Session, control))
+            foreach (MarkDTO m in (DataSource as List<MarkDTO>))
             {
                 if (control is LectureControlDTO)
                 {
