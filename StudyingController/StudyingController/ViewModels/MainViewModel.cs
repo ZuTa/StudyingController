@@ -202,6 +202,7 @@ namespace StudyingController.ViewModels
             workspaces = new Stack<BaseApplicationViewModel>();
 
             userProfileViewModel = new UserProfileViewModel(userInterop, controllerInterop, dispatcher, controllerInterop.User);
+            userProfileViewModel.Load();
         }
 
         #endregion
@@ -258,7 +259,7 @@ namespace StudyingController.ViewModels
             get
             {
                 if (homeCommand == null)
-                    homeCommand = new RelayCommand(param => PushWorkspace(userProfileViewModel));
+                    homeCommand = new RelayCommand(param => ChangeCurrentWorkspace(userProfileViewModel));
                 return homeCommand;
             }
         }
@@ -464,8 +465,8 @@ namespace StudyingController.ViewModels
 
         private void PushWorkspace(BaseApplicationViewModel viewModel)
         {
-            //if (viewModel is LoadableViewModel)
-            //    (viewModel as LoadableViewModel).Load();
+            if (viewModel is LoadableViewModel)
+                (viewModel as LoadableViewModel).Load();
 
             workspaces.Push(viewModel);
             SubscribeToEvents(viewModel);
