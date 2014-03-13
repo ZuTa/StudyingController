@@ -75,7 +75,12 @@ namespace StudyingControllerEntityModel
             Role = entity.Role;
             Login = entity.Login;
             Password = Encoding.UTF8.GetBytes(entity.Password);
-            
+            FirstName = entity.FirstName;
+            MiddleName = entity.MiddleName;
+            LastName = entity.LastName;
+            Picture = entity.Picture;
+            Birth = entity.Birth;
+            Email = entity.Email;
         }
     }
 }

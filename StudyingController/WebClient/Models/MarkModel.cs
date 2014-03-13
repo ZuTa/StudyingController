@@ -34,15 +34,6 @@ namespace ThinClient.Models
         public override void FillModel(MarkRef refObject)
         {
             base.FillModel(refObject);
-
-            if (refObject != null && refObject.Student != null)
-            {
-                this.StudentName = string.Format(
-                    "{0} {1}",
-                    refObject.Student.LastName,
-                    refObject.Student.FirstName);
-            }
-
             this.MarkValue = refObject.Value.ToString();
         }
 

@@ -4,9 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="400" d:DesignWidth="300">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -23,23 +28,49 @@
         <TextBlock Grid.Row="0" Grid.Column="0" Text="Логін :" Style="{StaticResource TextBlockStyle}"/>
         <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=Student.Login, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
                  Style="{StaticResource ValidationTextBoxToolTipStyle}"/>
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="Ім'я :" Style="{StaticResource TextBlockStyle}"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=Student.UserInformation.FirstName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
+        
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Прізвище :" Style="{StaticResource TextBlockStyle}"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=Student.LastName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
                  Style="{StaticResource ValidationTextBoxToolTipStyle}"/>
-        <TextBlock Grid.Row="2" Grid.Column="0" Text="Прізвище :" Style="{StaticResource TextBlockStyle}"/>
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=Student.UserInformation.LastName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
+        
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Ім'я :" Style="{StaticResource TextBlockStyle}"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=Student.FirstName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
                  Style="{StaticResource ValidationTextBoxToolTipStyle}"/>
-        <TextBlock Grid.Row="3" Grid.Column="0" Text="E-mail :" Style="{StaticResource TextBlockStyle}"/>
-        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Path=Student.UserInformation.Email, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
+
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="По батькові :" Style="{StaticResource TextBlockStyle}"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Path=Student.MiddleName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
                  Style="{StaticResource ValidationTextBoxToolTipStyle}"/>
-        <TextBlock Grid.Row="4" Grid.Column="0" Text="Факультет :" Style="{StaticResource TextBlockStyle}"/>
-        <ComboBox Grid.Row="4" Grid.Column="1" ItemsSource="{Binding Faculties}" SelectedValue="{Binding Faculty, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
+
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="Дата народження :" Style="{StaticResource TextBlockStyle}"/>
+
+        <DatePickerTextBox Grid.Row="4" Grid.Column="1" 
+                           Text="{Binding Student.Birth, UpdateSourceTrigger=PropertyChanged,
+                                                            ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
+                           Style="{StaticResource ValidationTextBoxToolTipStyle}"
+                           IsEnabled="True" />
+        
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="E-mail :" Style="{StaticResource TextBlockStyle}"/>
+        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Path=Student.Email, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
+                 Style="{StaticResource ValidationTextBoxToolTipStyle}"/>
+
+        <TextBlock Grid.Row="6" Grid.Column="0" Text="Зображення :" Style="{StaticResource TextBlockStyle}"/>
+        <TextBox Grid.Row="6" Grid.Column="1" Visibility="Hidden" Text="{Binding Path=Student.LastName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
+                 Style="{StaticResource ValidationTextBoxToolTipStyle}"/>
+       
+        <TextBlock Grid.Row="7" Grid.Column="0" Text="Факультет :" Style="{StaticResource TextBlockStyle}"/>
+        <ComboBox Grid.Row="7" Grid.Column="1" ItemsSource="{Binding Faculties}" SelectedValue="{Binding Faculty, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
                  Style="{StaticResource ValidationComboBoxToolTipStyle}"/>
-        <TextBlock Grid.Row="5" Grid.Column="0" Text="Кафедра :" Style="{StaticResource TextBlockStyle}"/>
-        <ComboBox Grid.Row="5" Grid.Column="1" ItemsSource="{Binding Cathedras}" SelectedValue="{Binding Cathedra, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
+        <TextBlock Grid.Row="8" Grid.Column="0" Text="Кафедра :" Style="{StaticResource TextBlockStyle}"/>
+        <ComboBox Grid.Row="8" Grid.Column="1" ItemsSource="{Binding Cathedras}" SelectedValue="{Binding Cathedra, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
                  Style="{StaticResource ValidationComboBoxToolTipStyle}"/>
-        <TextBlock Grid.Row="6" Grid.Column="0" Text="Група :" Style="{StaticResource TextBlockStyle}"/>
-        <ComboBox Grid.Row="6" Grid.Column="1" ItemsSource="{Binding Groups}" SelectedValue="{Binding Student.Group, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
+        <TextBlock Grid.Row="9" Grid.Column="0" Text="Група :" Style="{StaticResource TextBlockStyle}"/>
+        <ComboBox Grid.Row="9" Grid.Column="1" ItemsSource="{Binding Groups}" SelectedValue="{Binding Student.Group, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
                  Style="{StaticResource ValidationComboBoxToolTipStyle}"/>
+        <TextBlock Grid.Row="10" Grid.Column="0" Text="Номер студентського :" Style="{StaticResource TextBlockStyle}"/>
+        <TextBox Grid.Row="10" Grid.Column="1" Text="{Binding Path=Student.LastName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
+                 Style="{StaticResource ValidationTextBoxToolTipStyle}"/>
+        <TextBlock Grid.Row="11" Grid.Column="0" Text="Номер заліковової :" Style="{StaticResource TextBlockStyle}"/>
+        <TextBox Grid.Row="11" Grid.Column="1" Text="{Binding Path=Student.LastName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" 
+                 Style="{StaticResource ValidationTextBoxToolTipStyle}"/>
     </Grid>
 </UserControl>

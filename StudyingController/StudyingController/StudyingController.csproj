@@ -500,6 +500,7 @@
     <None Include="Properties\DataSources\EntitiesDTO.MarkDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.NotificationDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.PracticeControlDTO.datasource" />
+    <None Include="Properties\DataSources\EntitiesDTO.PracticeDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.PracticeTeacherDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.SpecializationDTO.datasource" />
     <None Include="Properties\DataSources\EntitiesDTO.StudentDTO.datasource" />

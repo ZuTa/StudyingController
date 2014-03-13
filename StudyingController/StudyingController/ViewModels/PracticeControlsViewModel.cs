@@ -159,7 +159,7 @@ namespace StudyingController.ViewModels
 
         public override void Save()
         {
-            ControllerInterop.Service.SavePracticeControls(ControllerInterop.Session, (OriginalLesson as PracticeTeacherDTO).PracticeID, Controls.ToDTOList<PracticeControlDTO, PracticeControlModel>());
+            ControllerInterop.Service.SavePracticeControls(ControllerInterop.Session, (OriginalLesson as PracticeTeacherDTO).Practice.ID, Controls.ToDTOList<PracticeControlDTO, PracticeControlModel>());
             SetUnModified();
         }
 

@@ -57,13 +57,13 @@ namespace ThinClient.Controllers
         public ActionResult ControlView(int controlId)
         {
             var model = new ControlModel();
-            var session = this.GetSession();
-            if (session != null)
-            {
-                model.Control = this.serviceClient.GetControlById(session, controlId);
-                model.Marks = this.serviceClient.GetMarks(session, model.Control)
-                    .Select(m => new MarkModel(m)).OrderBy(m => m.StudentName);
-            }
+            //var session = this.GetSession();
+            //if (session != null)
+            //{
+            //    model.Control = this.serviceClient.GetControlById(session, controlId);
+            //    model.Marks = this.serviceClient.GetMarks(session, model.Control)
+            //        .Select(m => new MarkModel(m)).OrderBy(m => m.StudentName);
+            //}
 
             return View(model);
         }

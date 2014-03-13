@@ -154,9 +154,9 @@ namespace EntitiesDTO
             set { picture = value; }
         }
 
-        private DateTime birth;
+        private DateTime? birth;
         [DataMember]
-        public DateTime Birth
+        public DateTime? Birth
         {
             get { return birth; }
             set { birth = value; }

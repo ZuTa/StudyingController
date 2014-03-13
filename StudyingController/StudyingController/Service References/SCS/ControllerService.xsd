@@ -921,7 +921,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetSpecialization">
+  <xs:element name="GetPractice">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q132="http://schemas.datacontract.org/2004/07/StudyingControllerService" minOccurs="0" name="session" nillable="true" type="q132:Session" />
@@ -929,14 +929,14 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetSpecializationResponse">
+  <xs:element name="GetPracticeResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q133="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="GetSpecializationResult" nillable="true" type="q133:SpecializationDTO" />
+        <xs:element xmlns:q133="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="GetPracticeResult" nillable="true" type="q133:PracticeDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetCathedra">
+  <xs:element name="GetSpecialization">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q134="http://schemas.datacontract.org/2004/07/StudyingControllerService" minOccurs="0" name="session" nillable="true" type="q134:Session" />
@@ -944,14 +944,14 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetCathedraResponse">
+  <xs:element name="GetSpecializationResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q135="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="GetCathedraResult" nillable="true" type="q135:CathedraDTO" />
+        <xs:element xmlns:q135="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="GetSpecializationResult" nillable="true" type="q135:SpecializationDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetFaculty">
+  <xs:element name="GetCathedra">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q136="http://schemas.datacontract.org/2004/07/StudyingControllerService" minOccurs="0" name="session" nillable="true" type="q136:Session" />
@@ -959,14 +959,14 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetFacultyResponse">
+  <xs:element name="GetCathedraResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q137="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="GetFacultyResult" nillable="true" type="q137:FacultyDTO" />
+        <xs:element xmlns:q137="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="GetCathedraResult" nillable="true" type="q137:CathedraDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetInstitute">
+  <xs:element name="GetFaculty">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q138="http://schemas.datacontract.org/2004/07/StudyingControllerService" minOccurs="0" name="session" nillable="true" type="q138:Session" />
@@ -974,14 +974,14 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetInstituteResponse">
+  <xs:element name="GetFacultyResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q139="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="GetInstituteResult" nillable="true" type="q139:InstituteDTO" />
+        <xs:element xmlns:q139="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="GetFacultyResult" nillable="true" type="q139:FacultyDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetStudent">
+  <xs:element name="GetInstitute">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q140="http://schemas.datacontract.org/2004/07/StudyingControllerService" minOccurs="0" name="session" nillable="true" type="q140:Session" />
@@ -989,34 +989,49 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetInstituteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q141="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="GetInstituteResult" nillable="true" type="q141:InstituteDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStudent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q142="http://schemas.datacontract.org/2004/07/StudyingControllerService" minOccurs="0" name="session" nillable="true" type="q142:Session" />
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetStudentResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q141="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="GetStudentResult" nillable="true" type="q141:StudentDTO" />
+        <xs:element xmlns:q143="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="GetStudentResult" nillable="true" type="q143:StudentDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetVisitingsForLecture">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q142="http://schemas.datacontract.org/2004/07/StudyingControllerService" minOccurs="0" name="session" nillable="true" type="q142:Session" />
-        <xs:element xmlns:q143="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="lecture" nillable="true" type="q143:LectureRef" />
+        <xs:element xmlns:q144="http://schemas.datacontract.org/2004/07/StudyingControllerService" minOccurs="0" name="session" nillable="true" type="q144:Session" />
+        <xs:element xmlns:q145="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="lecture" nillable="true" type="q145:LectureRef" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetVisitingsForLectureResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q144="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="GetVisitingsForLectureResult" nillable="true" type="q144:ArrayOfVisitingsDTO" />
+        <xs:element xmlns:q146="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="GetVisitingsForLectureResult" nillable="true" type="q146:ArrayOfVisitingsDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SaveVisitingsForLecture">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q145="http://schemas.datacontract.org/2004/07/StudyingControllerService" minOccurs="0" name="session" nillable="true" type="q145:Session" />
-        <xs:element xmlns:q146="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="lecture" nillable="true" type="q146:LectureRef" />
-        <xs:element xmlns:q147="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="visitings" nillable="true" type="q147:ArrayOfVisitingDTO" />
+        <xs:element xmlns:q147="http://schemas.datacontract.org/2004/07/StudyingControllerService" minOccurs="0" name="session" nillable="true" type="q147:Session" />
+        <xs:element xmlns:q148="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="lecture" nillable="true" type="q148:LectureRef" />
+        <xs:element xmlns:q149="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="visitings" nillable="true" type="q149:ArrayOfVisitingDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1028,7 +1043,7 @@
   <xs:element name="GetControlById">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q148="http://schemas.datacontract.org/2004/07/StudyingControllerService" minOccurs="0" name="session" nillable="true" type="q148:Session" />
+        <xs:element xmlns:q150="http://schemas.datacontract.org/2004/07/StudyingControllerService" minOccurs="0" name="session" nillable="true" type="q150:Session" />
         <xs:element minOccurs="0" name="id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -1036,15 +1051,15 @@
   <xs:element name="GetControlByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q149="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="GetControlByIdResult" nillable="true" type="q149:ControlDTO" />
+        <xs:element xmlns:q151="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="GetControlByIdResult" nillable="true" type="q151:ControlDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateMarkValue">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q150="http://schemas.datacontract.org/2004/07/StudyingControllerService" minOccurs="0" name="session" nillable="true" type="q150:Session" />
-        <xs:element xmlns:q151="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="mark" nillable="true" type="q151:MarkRef" />
+        <xs:element xmlns:q152="http://schemas.datacontract.org/2004/07/StudyingControllerService" minOccurs="0" name="session" nillable="true" type="q152:Session" />
+        <xs:element xmlns:q153="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="mark" nillable="true" type="q153:MarkRef" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1056,30 +1071,30 @@
   <xs:element name="GetLessonTree">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q152="http://schemas.datacontract.org/2004/07/StudyingControllerService" minOccurs="0" name="session" nillable="true" type="q152:Session" />
-        <xs:element xmlns:q153="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="user" nillable="true" type="q153:SystemUserRef" />
+        <xs:element xmlns:q154="http://schemas.datacontract.org/2004/07/StudyingControllerService" minOccurs="0" name="session" nillable="true" type="q154:Session" />
+        <xs:element xmlns:q155="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="user" nillable="true" type="q155:SystemUserRef" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetLessonTreeResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q154="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="GetLessonTreeResult" nillable="true" type="q154:ArrayOfBaseEntityDTO" />
+        <xs:element xmlns:q156="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="GetLessonTreeResult" nillable="true" type="q156:ArrayOfBaseEntityDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetUniversityTree">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q155="http://schemas.datacontract.org/2004/07/StudyingControllerService" minOccurs="0" name="session" nillable="true" type="q155:Session" />
-        <xs:element xmlns:q156="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="user" nillable="true" type="q156:SystemUserRef" />
+        <xs:element xmlns:q157="http://schemas.datacontract.org/2004/07/StudyingControllerService" minOccurs="0" name="session" nillable="true" type="q157:Session" />
+        <xs:element xmlns:q158="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="user" nillable="true" type="q158:SystemUserRef" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetUniversityTreeResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q157="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="GetUniversityTreeResult" nillable="true" type="q157:ArrayOfBaseEntityDTO" />
+        <xs:element xmlns:q159="http://schemas.datacontract.org/2004/07/EntitiesDTO" minOccurs="0" name="GetUniversityTreeResult" nillable="true" type="q159:ArrayOfBaseEntityDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

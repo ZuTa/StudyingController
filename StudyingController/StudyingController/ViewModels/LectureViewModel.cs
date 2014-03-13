@@ -71,13 +71,17 @@ namespace StudyingController.ViewModels
             this.selector = new SelectorViewModel(userInterop, controllerInterop, dispatcher, false);
         }
 
-        public LectureViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, LectureDTO lecture)
-            : base(userInterop, controllerInterop, dispatcher)
-        {
-            this.originalEntity = lecture;
+         public LectureViewModel(IUserInterop userInterop, IControllerInterop controllerInterop, Dispatcher dispatcher, LectureDTO lecture)
+             : base(userInterop, controllerInterop, dispatcher)
+         {
+             this.originalEntity = lecture;
 
-            //this.selector = new SelectorViewModel(userInterop, controllerInterop, dispatcher, ControllerInterop.Service.GetTeacher(ControllerInterop.Session, lecture.TeacherID).Cathedra.Faculty, selector_SelectorItemChanged, false);
-        }
+             var teacher = ControllerInterop.Service.GetTeacher(ControllerInterop.Session, lecture.TeacherID);
+             var cathedra = ControllerInterop.Service.GetCathedra(ControllerInterop.Session, teacher.Cathedra.ID);
+             var faculty = ControllerInterop.Service.GetFaculty(ControllerInterop.Session, cathedra.FacultyID);
+
+             this.selector = new SelectorViewModel(userInterop, controllerInterop, dispatcher, faculty, selector_SelectorItemChanged, false);
+         }
 
         #endregion
 

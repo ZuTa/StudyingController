@@ -29,7 +29,7 @@
                 <div class="ListItem">
                     <table>
                         <tr>
-                            <td>@practice.Practice.Subject.Name</td>
+                            <td>@*@practice.P.Subject.Name*@</td>
                             <td>@Html.ActionLink("Відкрити", "PracticeView", "ControlsManagement", new { practiceId = practice.ID }, new { @class = "OpenIcon", style = "margin-left: 10px;" })</td>
                         </tr>
                     </table>

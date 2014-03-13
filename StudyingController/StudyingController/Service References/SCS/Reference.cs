@@ -17,11 +17,11 @@ namespace StudyingController.SCS {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Session", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.FacultySecretaryDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.StudentDTO))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.InstituteSecretaryDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.FacultyAdminDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.FacultySecretaryDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.InstituteSecretaryDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(EntitiesDTO.TeacherDTO))]
     public partial class Session : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -83,6 +83,35 @@ namespace StudyingController.SCS {
                     this.UserField = value;
                     this.RaisePropertyChanged("User");
                 }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SubjectRef", Namespace="http://schemas.datacontract.org/2004/07/EntitiesDTO")]
+    [System.SerializableAttribute()]
+    public partial class SubjectRef : EntitiesDTO.NamedRef, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
             }
         }
         
@@ -272,11 +301,11 @@ namespace StudyingController.SCS {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/SaveUser", ReplyAction="http://tempuri.org/IControllerService/SaveUserResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/SaveUserControllerServiceExceptionFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultySecretaryDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.StudentDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteSecretaryDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultyAdminDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultySecretaryDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteSecretaryDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.TeacherDTO))]
         void SaveUser(StudyingController.SCS.Session session, EntitiesDTO.SystemUserDTO user);
         
@@ -633,11 +662,11 @@ namespace StudyingController.SCS {
             "nFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.LectureControlDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.PracticeControlDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultySecretaryDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.StudentDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteSecretaryDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultyAdminDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultySecretaryDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteSecretaryDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.TeacherDTO))]
         void SaveControlMessage(StudyingController.SCS.Session session, EntitiesDTO.ControlMessageDTO message);
         
@@ -776,11 +805,11 @@ namespace StudyingController.SCS {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.AttachmentDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.LectureDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.SystemUserDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultySecretaryDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.StudentDTO))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteSecretaryDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultyAdminDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.FacultySecretaryDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteAdminDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.InstituteSecretaryDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.TeacherDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.PracticeTeacherDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.ControlMessageDTO))]
@@ -788,6 +817,7 @@ namespace StudyingController.SCS {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.PracticeControlMarkDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.LectureControlMarkDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.NotificationDTO))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.PracticeDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.VisitingsDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.VisitingDTO))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntitiesDTO.StudyRangeDTO))]
@@ -816,6 +846,15 @@ namespace StudyingController.SCS {
         System.IAsyncResult BeginGetGroup(StudyingController.SCS.Session session, int id, System.AsyncCallback callback, object asyncState);
         
         EntitiesDTO.GroupDTO EndGetGroup(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/GetPractice", ReplyAction="http://tempuri.org/IControllerService/GetPracticeResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/GetPracticeControllerServiceExceptionFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        EntitiesDTO.PracticeDTO GetPractice(StudyingController.SCS.Session session, int id);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IControllerService/GetPractice", ReplyAction="http://tempuri.org/IControllerService/GetPracticeResponse")]
+        System.IAsyncResult BeginGetPractice(StudyingController.SCS.Session session, int id, System.AsyncCallback callback, object asyncState);
+        
+        EntitiesDTO.PracticeDTO EndGetPractice(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/GetSpecialization", ReplyAction="http://tempuri.org/IControllerService/GetSpecializationResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(StudyingController.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/GetSpecializationControllerServiceException" +
@@ -1733,6 +1772,25 @@ namespace StudyingController.SCS {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetPracticeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetPracticeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public EntitiesDTO.PracticeDTO Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((EntitiesDTO.PracticeDTO)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class GetSpecializationCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
@@ -2290,6 +2348,12 @@ namespace StudyingController.SCS {
         
         private System.Threading.SendOrPostCallback onGetGroupCompletedDelegate;
         
+        private BeginOperationDelegate onBeginGetPracticeDelegate;
+        
+        private EndOperationDelegate onEndGetPracticeDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetPracticeCompletedDelegate;
+        
         private BeginOperationDelegate onBeginGetSpecializationDelegate;
         
         private EndOperationDelegate onEndGetSpecializationDelegate;
@@ -2502,6 +2566,8 @@ namespace StudyingController.SCS {
         public event System.EventHandler<GetNotificationsCompletedEventArgs> GetNotificationsCompleted;
         
         public event System.EventHandler<GetGroupCompletedEventArgs> GetGroupCompleted;
+        
+        public event System.EventHandler<GetPracticeCompletedEventArgs> GetPracticeCompleted;
         
         public event System.EventHandler<GetSpecializationCompletedEventArgs> GetSpecializationCompleted;
         
@@ -5835,6 +5901,58 @@ namespace StudyingController.SCS {
             base.InvokeAsync(this.onBeginGetGroupDelegate, new object[] {
                         session,
                         id}, this.onEndGetGroupDelegate, this.onGetGroupCompletedDelegate, userState);
+        }
+        
+        public EntitiesDTO.PracticeDTO GetPractice(StudyingController.SCS.Session session, int id) {
+            return base.Channel.GetPractice(session, id);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetPractice(StudyingController.SCS.Session session, int id, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetPractice(session, id, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public EntitiesDTO.PracticeDTO EndGetPractice(System.IAsyncResult result) {
+            return base.Channel.EndGetPractice(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetPractice(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            StudyingController.SCS.Session session = ((StudyingController.SCS.Session)(inValues[0]));
+            int id = ((int)(inValues[1]));
+            return this.BeginGetPractice(session, id, callback, asyncState);
+        }
+        
+        private object[] OnEndGetPractice(System.IAsyncResult result) {
+            EntitiesDTO.PracticeDTO retVal = this.EndGetPractice(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetPracticeCompleted(object state) {
+            if ((this.GetPracticeCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetPracticeCompleted(this, new GetPracticeCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetPracticeAsync(StudyingController.SCS.Session session, int id) {
+            this.GetPracticeAsync(session, id, null);
+        }
+        
+        public void GetPracticeAsync(StudyingController.SCS.Session session, int id, object userState) {
+            if ((this.onBeginGetPracticeDelegate == null)) {
+                this.onBeginGetPracticeDelegate = new BeginOperationDelegate(this.OnBeginGetPractice);
+            }
+            if ((this.onEndGetPracticeDelegate == null)) {
+                this.onEndGetPracticeDelegate = new EndOperationDelegate(this.OnEndGetPractice);
+            }
+            if ((this.onGetPracticeCompletedDelegate == null)) {
+                this.onGetPracticeCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetPracticeCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetPracticeDelegate, new object[] {
+                        session,
+                        id}, this.onEndGetPracticeDelegate, this.onGetPracticeCompletedDelegate, userState);
         }
         
         public EntitiesDTO.SpecializationDTO GetSpecialization(StudyingController.SCS.Session session, int id) {
