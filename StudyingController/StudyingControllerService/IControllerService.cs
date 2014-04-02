@@ -11,7 +11,7 @@ namespace StudyingControllerService
 {
 
     [ServiceContract]
-    public interface IControllerService
+    public interface IControllerService : IRefService
     {
         [OperationContract]
         [FaultContract(typeof(ControllerServiceException))]

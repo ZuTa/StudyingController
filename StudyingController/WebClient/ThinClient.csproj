@@ -280,6 +280,15 @@
     <Content Include="Service References\SCS\ThinClient.SCS.BaseEntityDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\SCS\ThinClient.SCS.PracticeDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\SCS\ThinClient.SCS.LectureRef.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\SCS\ThinClient.SCS.PracticeTeacherRef.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

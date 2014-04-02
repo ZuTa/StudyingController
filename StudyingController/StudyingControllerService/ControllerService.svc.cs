@@ -2884,5 +2884,68 @@ namespace StudyingControllerService
             foreach (var group in query)
                 yield return GetDTO<GroupDTO>(group);
         }
+
+        #region IRefService methods
+
+        public IEnumerable<LectureRef> GetLectureRefsByTeacherId(Session session, int teacherId) 
+        {
+            try
+            {
+                this.CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var resultList = new List<LectureRef>();
+
+                    var lectures = context.Lectures.Where(l => l.TeacherID == teacherId);
+                    foreach (var l in lectures)
+                    {
+                        context.LoadProperty(l, "Subject");
+                        resultList.Add(new LectureRef()
+                        {
+                            ID = l.ID,
+                            Subject = new SubjectRef { ID = l.Subject.ID, Name = l.Subject.Name }
+                        });
+                    }
+
+                    return resultList;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        public IEnumerable<PracticeTeacherRef> GetPracticeTeacherRefsByTeacherId(Session session, int teacherId)
+        {
+            try
+            {
+                this.CheckSession(session);
+                using (UniversityEntities context = new UniversityEntities())
+                {
+                    var resultList = new List<PracticeTeacherRef>();
+
+                    var practiceTeachers = context.PracticeTeachers.Where(pt => pt.TeacherID == teacherId);
+                    foreach (var pt in practiceTeachers)
+                    {
+                        context.LoadProperty(pt, "Practice");
+                        context.LoadProperty(pt.Practice, "Subject");
+                        resultList.Add(new PracticeTeacherRef
+                        {
+                            ID = pt.ID,
+                            Name = pt.Practice.Subject.Name
+                        });
+                    }
+
+                    return resultList;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<ControllerServiceException>(new ControllerServiceException(ex.Message), ex.Message);
+            }
+        }
+
+        #endregion
     }
 }

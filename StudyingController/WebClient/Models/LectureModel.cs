@@ -8,17 +8,25 @@ namespace ThinClient.Models
 {
     public class LectureModel : BaseWebModel<LectureRef>
     {
-        public LectureDTO Lecture { get; set; }
+        public LectureRef Lecture { get; set; }
         public IEnumerable<LectureControlDTO> LectureControls { get; set; }
 
         public LectureModel()
+            : base()
         {
-            this.LectureControls = new List<LectureControlDTO>();        
+        }
+
+        public LectureModel(LectureRef lecture)
+            : base(lecture)
+        {
+            this.FillModel(lecture);
         }
 
         public override void FillModel(LectureRef refObject)
         {
             base.FillModel(refObject);
+
+            this.LectureControls = new List<LectureControlDTO>();
         }
     }
 }

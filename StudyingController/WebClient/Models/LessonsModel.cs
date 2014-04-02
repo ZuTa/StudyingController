@@ -8,13 +8,13 @@ namespace ThinClient.Models
 {
     public class LessonsModel
     {
-        public List<LectureDTO> Lectures { get; set; }
-        public List<PracticeTeacherDTO> Practices { get; set; }
+        public List<LectureRef> Lectures { get; set; }
+        public List<PracticeTeacherRef> Practices { get; set; }
 
         public LessonsModel()
         {
-            this.Lectures = new List<LectureDTO>();
-            this.Practices = new List<PracticeTeacherDTO>();
+            this.Lectures = new List<LectureRef>();
+            this.Practices = new List<PracticeTeacherRef>();
         }
     }
 }

@@ -8,6 +8,24 @@
       <xsd:import schemaLocation="http://localhost:38650/ControllerService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/EntitiesDTO" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IControllerService_GetLectureRefsByTeacherId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLectureRefsByTeacherId" />
+  </wsdl:message>
+  <wsdl:message name="IControllerService_GetLectureRefsByTeacherId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLectureRefsByTeacherIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IControllerService_GetLectureRefsByTeacherId_ControllerServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q1:ControllerServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IControllerService_GetPracticeTeacherRefsByTeacherId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPracticeTeacherRefsByTeacherId" />
+  </wsdl:message>
+  <wsdl:message name="IControllerService_GetPracticeTeacherRefsByTeacherId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPracticeTeacherRefsByTeacherIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IControllerService_GetPracticeTeacherRefsByTeacherId_ControllerServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q2:ControllerServiceException" />
+  </wsdl:message>
   <wsdl:message name="IControllerService_Login_InputMessage">
     <wsdl:part name="parameters" element="tns:Login" />
   </wsdl:message>
@@ -15,7 +33,7 @@
     <wsdl:part name="parameters" element="tns:LoginResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_Login_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q1:ControllerServiceException" />
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q3:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetInstitutes_InputMessage">
     <wsdl:part name="parameters" element="tns:GetInstitutes" />
@@ -24,7 +42,7 @@
     <wsdl:part name="parameters" element="tns:GetInstitutesResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetInstitutes_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q2:ControllerServiceException" />
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q4:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetFaculties_InputMessage">
     <wsdl:part name="parameters" element="tns:GetFaculties" />
@@ -33,7 +51,7 @@
     <wsdl:part name="parameters" element="tns:GetFacultiesResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetFaculties_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q3:ControllerServiceException" />
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q5:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetAllFaculties_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllFaculties" />
@@ -42,7 +60,7 @@
     <wsdl:part name="parameters" element="tns:GetAllFacultiesResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetAllFaculties_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q4:ControllerServiceException" />
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q6:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetAllCathedras_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllCathedras" />
@@ -51,7 +69,7 @@
     <wsdl:part name="parameters" element="tns:GetAllCathedrasResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetAllCathedras_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q5:ControllerServiceException" />
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q7:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetCathedras_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCathedras" />
@@ -60,7 +78,7 @@
     <wsdl:part name="parameters" element="tns:GetCathedrasResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetCathedras_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q6:ControllerServiceException" />
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q8:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetGroups_InputMessage">
     <wsdl:part name="parameters" element="tns:GetGroups" />
@@ -69,7 +87,7 @@
     <wsdl:part name="parameters" element="tns:GetGroupsResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetGroups_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q7:ControllerServiceException" />
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q9:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetAllGroups_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllGroups" />
@@ -78,7 +96,7 @@
     <wsdl:part name="parameters" element="tns:GetAllGroupsResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetAllGroups_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q8:ControllerServiceException" />
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q10:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SaveInstitute_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveInstitute" />
@@ -87,7 +105,7 @@
     <wsdl:part name="parameters" element="tns:SaveInstituteResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SaveInstitute_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q9:ControllerServiceException" />
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q11:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SaveFaculty_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveFaculty" />
@@ -96,7 +114,7 @@
     <wsdl:part name="parameters" element="tns:SaveFacultyResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SaveFaculty_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q10:ControllerServiceException" />
+    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q12:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SaveCathedra_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveCathedra" />
@@ -105,7 +123,7 @@
     <wsdl:part name="parameters" element="tns:SaveCathedraResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SaveCathedra_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q11:ControllerServiceException" />
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q13:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SaveGroup_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveGroup" />
@@ -114,7 +132,7 @@
     <wsdl:part name="parameters" element="tns:SaveGroupResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SaveGroup_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q12:ControllerServiceException" />
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q14:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetUsers_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUsers" />
@@ -123,7 +141,7 @@
     <wsdl:part name="parameters" element="tns:GetUsersResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetUsers_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q13:ControllerServiceException" />
+    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q15:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SaveUser_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveUser" />
@@ -132,7 +150,7 @@
     <wsdl:part name="parameters" element="tns:SaveUserResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SaveUser_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q14:ControllerServiceException" />
+    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q16:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetSpecializations_InputMessage">
     <wsdl:part name="parameters" element="tns:GetSpecializations" />
@@ -141,7 +159,7 @@
     <wsdl:part name="parameters" element="tns:GetSpecializationsResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetSpecializations_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q15:ControllerServiceException" />
+    <wsdl:part xmlns:q17="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q17:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_DeleteInstitute_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteInstitute" />
@@ -150,7 +168,7 @@
     <wsdl:part name="parameters" element="tns:DeleteInstituteResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_DeleteInstitute_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q16:ControllerServiceException" />
+    <wsdl:part xmlns:q18="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q18:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_DeleteFaculty_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteFaculty" />
@@ -159,7 +177,7 @@
     <wsdl:part name="parameters" element="tns:DeleteFacultyResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_DeleteFaculty_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q17="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q17:ControllerServiceException" />
+    <wsdl:part xmlns:q19="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q19:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_DeleteCathedra_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteCathedra" />
@@ -168,7 +186,7 @@
     <wsdl:part name="parameters" element="tns:DeleteCathedraResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_DeleteCathedra_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q18="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q18:ControllerServiceException" />
+    <wsdl:part xmlns:q20="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q20:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_DeleteGroup_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteGroup" />
@@ -177,7 +195,7 @@
     <wsdl:part name="parameters" element="tns:DeleteGroupResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_DeleteGroup_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q19="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q19:ControllerServiceException" />
+    <wsdl:part xmlns:q21="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q21:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_DeleteUser_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteUser" />
@@ -186,7 +204,7 @@
     <wsdl:part name="parameters" element="tns:DeleteUserResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_DeleteUser_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q20="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q20:ControllerServiceException" />
+    <wsdl:part xmlns:q22="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q22:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetGroupByID_InputMessage">
     <wsdl:part name="parameters" element="tns:GetGroupByID" />
@@ -195,7 +213,7 @@
     <wsdl:part name="parameters" element="tns:GetGroupByIDResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetGroupByID_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q21="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q21:ControllerServiceException" />
+    <wsdl:part xmlns:q23="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q23:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetSpecializationByID_InputMessage">
     <wsdl:part name="parameters" element="tns:GetSpecializationByID" />
@@ -204,7 +222,7 @@
     <wsdl:part name="parameters" element="tns:GetSpecializationByIDResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetSpecializationByID_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q22="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q22:ControllerServiceException" />
+    <wsdl:part xmlns:q24="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q24:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetLectures_InputMessage">
     <wsdl:part name="parameters" element="tns:GetLectures" />
@@ -213,7 +231,7 @@
     <wsdl:part name="parameters" element="tns:GetLecturesResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetLectures_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q23="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q23:ControllerServiceException" />
+    <wsdl:part xmlns:q25="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q25:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetLectureGroups_InputMessage">
     <wsdl:part name="parameters" element="tns:GetLectureGroups" />
@@ -222,7 +240,7 @@
     <wsdl:part name="parameters" element="tns:GetLectureGroupsResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetLectureGroups_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q24="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q24:ControllerServiceException" />
+    <wsdl:part xmlns:q26="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q26:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetTeachers_InputMessage">
     <wsdl:part name="parameters" element="tns:GetTeachers" />
@@ -231,7 +249,7 @@
     <wsdl:part name="parameters" element="tns:GetTeachersResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetTeachers_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q25="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q25:ControllerServiceException" />
+    <wsdl:part xmlns:q27="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q27:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetSubjects_InputMessage">
     <wsdl:part name="parameters" element="tns:GetSubjects" />
@@ -240,7 +258,7 @@
     <wsdl:part name="parameters" element="tns:GetSubjectsResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetSubjects_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q26="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q26:ControllerServiceException" />
+    <wsdl:part xmlns:q28="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q28:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SaveLecture_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveLecture" />
@@ -249,7 +267,7 @@
     <wsdl:part name="parameters" element="tns:SaveLectureResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SaveLecture_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q27="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q27:ControllerServiceException" />
+    <wsdl:part xmlns:q29="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q29:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SaveTeacherSubjects_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveTeacherSubjects" />
@@ -258,7 +276,7 @@
     <wsdl:part name="parameters" element="tns:SaveTeacherSubjectsResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SaveTeacherSubjects_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q28="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q28:ControllerServiceException" />
+    <wsdl:part xmlns:q30="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q30:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetPracticesTeacher_InputMessage">
     <wsdl:part name="parameters" element="tns:GetPracticesTeacher" />
@@ -267,7 +285,7 @@
     <wsdl:part name="parameters" element="tns:GetPracticesTeacherResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetPracticesTeacher_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q29="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q29:ControllerServiceException" />
+    <wsdl:part xmlns:q31="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q31:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetGroupsPractice_InputMessage">
     <wsdl:part name="parameters" element="tns:GetGroupsPractice" />
@@ -276,7 +294,7 @@
     <wsdl:part name="parameters" element="tns:GetGroupsPracticeResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetGroupsPractice_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q30="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q30:ControllerServiceException" />
+    <wsdl:part xmlns:q32="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q32:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetTeacherPracticeSubjects_InputMessage">
     <wsdl:part name="parameters" element="tns:GetTeacherPracticeSubjects" />
@@ -285,7 +303,7 @@
     <wsdl:part name="parameters" element="tns:GetTeacherPracticeSubjectsResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetTeacherPracticeSubjects_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q31="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q31:ControllerServiceException" />
+    <wsdl:part xmlns:q33="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q33:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetAllStudents_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllStudents" />
@@ -294,7 +312,7 @@
     <wsdl:part name="parameters" element="tns:GetAllStudentsResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetAllStudents_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q32="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q32:ControllerServiceException" />
+    <wsdl:part xmlns:q34="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q34:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetGroupStudents_InputMessage">
     <wsdl:part name="parameters" element="tns:GetGroupStudents" />
@@ -303,7 +321,7 @@
     <wsdl:part name="parameters" element="tns:GetGroupStudentsResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetGroupStudents_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q33="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q33:ControllerServiceException" />
+    <wsdl:part xmlns:q35="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q35:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetCathedraStudents_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCathedraStudents" />
@@ -312,7 +330,7 @@
     <wsdl:part name="parameters" element="tns:GetCathedraStudentsResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetCathedraStudents_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q34="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q34:ControllerServiceException" />
+    <wsdl:part xmlns:q36="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q36:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetFacultyStudents_InputMessage">
     <wsdl:part name="parameters" element="tns:GetFacultyStudents" />
@@ -321,7 +339,7 @@
     <wsdl:part name="parameters" element="tns:GetFacultyStudentsResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetFacultyStudents_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q35="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q35:ControllerServiceException" />
+    <wsdl:part xmlns:q37="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q37:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetInstituteStudents_InputMessage">
     <wsdl:part name="parameters" element="tns:GetInstituteStudents" />
@@ -330,7 +348,7 @@
     <wsdl:part name="parameters" element="tns:GetInstituteStudentsResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetInstituteStudents_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q36="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q36:ControllerServiceException" />
+    <wsdl:part xmlns:q38="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q38:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SavePracticeTeacher_InputMessage">
     <wsdl:part name="parameters" element="tns:SavePracticeTeacher" />
@@ -339,7 +357,7 @@
     <wsdl:part name="parameters" element="tns:SavePracticeTeacherResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SavePracticeTeacher_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q37="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q37:ControllerServiceException" />
+    <wsdl:part xmlns:q39="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q39:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetFacultyGroups_InputMessage">
     <wsdl:part name="parameters" element="tns:GetFacultyGroups" />
@@ -348,7 +366,7 @@
     <wsdl:part name="parameters" element="tns:GetFacultyGroupsResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetFacultyGroups_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q38="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q38:ControllerServiceException" />
+    <wsdl:part xmlns:q40="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q40:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetInstituteGroups_InputMessage">
     <wsdl:part name="parameters" element="tns:GetInstituteGroups" />
@@ -357,7 +375,7 @@
     <wsdl:part name="parameters" element="tns:GetInstituteGroupsResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetInstituteGroups_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q39="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q39:ControllerServiceException" />
+    <wsdl:part xmlns:q41="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q41:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SavePracticeTeacherSubjects_InputMessage">
     <wsdl:part name="parameters" element="tns:SavePracticeTeacherSubjects" />
@@ -366,7 +384,7 @@
     <wsdl:part name="parameters" element="tns:SavePracticeTeacherSubjectsResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SavePracticeTeacherSubjects_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q40="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q40:ControllerServiceException" />
+    <wsdl:part xmlns:q42="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q42:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetTeacher_InputMessage">
     <wsdl:part name="parameters" element="tns:GetTeacher" />
@@ -375,7 +393,7 @@
     <wsdl:part name="parameters" element="tns:GetTeacherResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetTeacher_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q41="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q41:ControllerServiceException" />
+    <wsdl:part xmlns:q43="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q43:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetInstituteByID_InputMessage">
     <wsdl:part name="parameters" element="tns:GetInstituteByID" />
@@ -384,7 +402,7 @@
     <wsdl:part name="parameters" element="tns:GetInstituteByIDResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetInstituteByID_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q42="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q42:ControllerServiceException" />
+    <wsdl:part xmlns:q44="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q44:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetFacultyByID_InputMessage">
     <wsdl:part name="parameters" element="tns:GetFacultyByID" />
@@ -393,7 +411,7 @@
     <wsdl:part name="parameters" element="tns:GetFacultyByIDResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetFacultyByID_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q43="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q43:ControllerServiceException" />
+    <wsdl:part xmlns:q45="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q45:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetCathedraByID_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCathedraByID" />
@@ -402,7 +420,7 @@
     <wsdl:part name="parameters" element="tns:GetCathedraByIDResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetCathedraByID_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q44="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q44:ControllerServiceException" />
+    <wsdl:part xmlns:q46="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q46:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetLectureControls_InputMessage">
     <wsdl:part name="parameters" element="tns:GetLectureControls" />
@@ -411,7 +429,7 @@
     <wsdl:part name="parameters" element="tns:GetLectureControlsResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetLectureControls_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q45="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q45:ControllerServiceException" />
+    <wsdl:part xmlns:q47="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q47:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SaveLectureControls_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveLectureControls" />
@@ -420,7 +438,7 @@
     <wsdl:part name="parameters" element="tns:SaveLectureControlsResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SaveLectureControls_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q46="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q46:ControllerServiceException" />
+    <wsdl:part xmlns:q48="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q48:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetPracticeControls_InputMessage">
     <wsdl:part name="parameters" element="tns:GetPracticeControls" />
@@ -429,7 +447,7 @@
     <wsdl:part name="parameters" element="tns:GetPracticeControlsResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetPracticeControls_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q47="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q47:ControllerServiceException" />
+    <wsdl:part xmlns:q49="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q49:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SavePracticeControls_InputMessage">
     <wsdl:part name="parameters" element="tns:SavePracticeControls" />
@@ -438,7 +456,7 @@
     <wsdl:part name="parameters" element="tns:SavePracticeControlsResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SavePracticeControls_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q48="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q48:ControllerServiceException" />
+    <wsdl:part xmlns:q50="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q50:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetControlMessages_InputMessage">
     <wsdl:part name="parameters" element="tns:GetControlMessages" />
@@ -447,7 +465,7 @@
     <wsdl:part name="parameters" element="tns:GetControlMessagesResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetControlMessages_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q49="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q49:ControllerServiceException" />
+    <wsdl:part xmlns:q51="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q51:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SaveControlMessage_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveControlMessage" />
@@ -456,7 +474,7 @@
     <wsdl:part name="parameters" element="tns:SaveControlMessageResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SaveControlMessage_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q50="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q50:ControllerServiceException" />
+    <wsdl:part xmlns:q52="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q52:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SaveLectureControl_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveLectureControl" />
@@ -465,7 +483,7 @@
     <wsdl:part name="parameters" element="tns:SaveLectureControlResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SaveLectureControl_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q51="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q51:ControllerServiceException" />
+    <wsdl:part xmlns:q53="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q53:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetStudentLectures_InputMessage">
     <wsdl:part name="parameters" element="tns:GetStudentLectures" />
@@ -474,7 +492,7 @@
     <wsdl:part name="parameters" element="tns:GetStudentLecturesResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetStudentLectures_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q52="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q52:ControllerServiceException" />
+    <wsdl:part xmlns:q54="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q54:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetAttachments_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAttachments" />
@@ -483,7 +501,7 @@
     <wsdl:part name="parameters" element="tns:GetAttachmentsResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetAttachments_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q53="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q53:ControllerServiceException" />
+    <wsdl:part xmlns:q55="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q55:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SaveAttachments_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveAttachments" />
@@ -492,7 +510,7 @@
     <wsdl:part name="parameters" element="tns:SaveAttachmentsResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SaveAttachments_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q54="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q54:ControllerServiceException" />
+    <wsdl:part xmlns:q56="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q56:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_DeleteAttachment_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteAttachment" />
@@ -501,7 +519,7 @@
     <wsdl:part name="parameters" element="tns:DeleteAttachmentResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_DeleteAttachment_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q55="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q55:ControllerServiceException" />
+    <wsdl:part xmlns:q57="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q57:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetLectureMark_InputMessage">
     <wsdl:part name="parameters" element="tns:GetLectureMark" />
@@ -510,7 +528,7 @@
     <wsdl:part name="parameters" element="tns:GetLectureMarkResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetLectureMark_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q56="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q56:ControllerServiceException" />
+    <wsdl:part xmlns:q58="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q58:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetPracticeMark_InputMessage">
     <wsdl:part name="parameters" element="tns:GetPracticeMark" />
@@ -519,7 +537,7 @@
     <wsdl:part name="parameters" element="tns:GetPracticeMarkResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetPracticeMark_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q57="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q57:ControllerServiceException" />
+    <wsdl:part xmlns:q59="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q59:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SavePracticeControl_InputMessage">
     <wsdl:part name="parameters" element="tns:SavePracticeControl" />
@@ -528,7 +546,7 @@
     <wsdl:part name="parameters" element="tns:SavePracticeControlResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SavePracticeControl_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q58="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q58:ControllerServiceException" />
+    <wsdl:part xmlns:q60="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q60:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetStudentPractices_InputMessage">
     <wsdl:part name="parameters" element="tns:GetStudentPractices" />
@@ -537,7 +555,7 @@
     <wsdl:part name="parameters" element="tns:GetStudentPracticesResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetStudentPractices_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q59="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q59:ControllerServiceException" />
+    <wsdl:part xmlns:q61="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q61:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetMarks_InputMessage">
     <wsdl:part name="parameters" element="tns:GetMarks" />
@@ -546,7 +564,7 @@
     <wsdl:part name="parameters" element="tns:GetMarksResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetMarks_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q60="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q60:ControllerServiceException" />
+    <wsdl:part xmlns:q62="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q62:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SaveMarks_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveMarks" />
@@ -555,7 +573,7 @@
     <wsdl:part name="parameters" element="tns:SaveMarksResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SaveMarks_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q61="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q61:ControllerServiceException" />
+    <wsdl:part xmlns:q63="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q63:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetStudentRateList_InputMessage">
     <wsdl:part name="parameters" element="tns:GetStudentRateList" />
@@ -564,7 +582,7 @@
     <wsdl:part name="parameters" element="tns:GetStudentRateListResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetStudentRateList_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q62="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q62:ControllerServiceException" />
+    <wsdl:part xmlns:q64="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q64:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetNotifications_InputMessage">
     <wsdl:part name="parameters" element="tns:GetNotifications" />
@@ -573,7 +591,7 @@
     <wsdl:part name="parameters" element="tns:GetNotificationsResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetNotifications_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q63="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q63:ControllerServiceException" />
+    <wsdl:part xmlns:q65="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q65:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetGroup_InputMessage">
     <wsdl:part name="parameters" element="tns:GetGroup" />
@@ -582,7 +600,16 @@
     <wsdl:part name="parameters" element="tns:GetGroupResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetGroup_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q64="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q64:ControllerServiceException" />
+    <wsdl:part xmlns:q66="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q66:ControllerServiceException" />
+  </wsdl:message>
+  <wsdl:message name="IControllerService_GetPractice_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPractice" />
+  </wsdl:message>
+  <wsdl:message name="IControllerService_GetPractice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPracticeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IControllerService_GetPractice_ControllerServiceExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q67="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q67:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetSpecialization_InputMessage">
     <wsdl:part name="parameters" element="tns:GetSpecialization" />
@@ -591,7 +618,7 @@
     <wsdl:part name="parameters" element="tns:GetSpecializationResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetSpecialization_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q65="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q65:ControllerServiceException" />
+    <wsdl:part xmlns:q68="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q68:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetCathedra_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCathedra" />
@@ -600,7 +627,7 @@
     <wsdl:part name="parameters" element="tns:GetCathedraResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetCathedra_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q66="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q66:ControllerServiceException" />
+    <wsdl:part xmlns:q69="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q69:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetFaculty_InputMessage">
     <wsdl:part name="parameters" element="tns:GetFaculty" />
@@ -609,7 +636,7 @@
     <wsdl:part name="parameters" element="tns:GetFacultyResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetFaculty_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q67="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q67:ControllerServiceException" />
+    <wsdl:part xmlns:q70="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q70:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetInstitute_InputMessage">
     <wsdl:part name="parameters" element="tns:GetInstitute" />
@@ -618,7 +645,7 @@
     <wsdl:part name="parameters" element="tns:GetInstituteResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetInstitute_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q68="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q68:ControllerServiceException" />
+    <wsdl:part xmlns:q71="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q71:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetStudent_InputMessage">
     <wsdl:part name="parameters" element="tns:GetStudent" />
@@ -627,7 +654,7 @@
     <wsdl:part name="parameters" element="tns:GetStudentResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetStudent_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q69="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q69:ControllerServiceException" />
+    <wsdl:part xmlns:q72="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q72:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetVisitingsForLecture_InputMessage">
     <wsdl:part name="parameters" element="tns:GetVisitingsForLecture" />
@@ -636,7 +663,7 @@
     <wsdl:part name="parameters" element="tns:GetVisitingsForLectureResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetVisitingsForLecture_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q70="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q70:ControllerServiceException" />
+    <wsdl:part xmlns:q73="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q73:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SaveVisitingsForLecture_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveVisitingsForLecture" />
@@ -645,7 +672,7 @@
     <wsdl:part name="parameters" element="tns:SaveVisitingsForLectureResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_SaveVisitingsForLecture_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q71="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q71:ControllerServiceException" />
+    <wsdl:part xmlns:q74="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q74:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetControlById_InputMessage">
     <wsdl:part name="parameters" element="tns:GetControlById" />
@@ -654,7 +681,7 @@
     <wsdl:part name="parameters" element="tns:GetControlByIdResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetControlById_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q72="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q72:ControllerServiceException" />
+    <wsdl:part xmlns:q75="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q75:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_UpdateMarkValue_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateMarkValue" />
@@ -663,7 +690,7 @@
     <wsdl:part name="parameters" element="tns:UpdateMarkValueResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_UpdateMarkValue_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q73="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q73:ControllerServiceException" />
+    <wsdl:part xmlns:q76="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q76:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetLessonTree_InputMessage">
     <wsdl:part name="parameters" element="tns:GetLessonTree" />
@@ -672,7 +699,7 @@
     <wsdl:part name="parameters" element="tns:GetLessonTreeResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetLessonTree_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q74="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q74:ControllerServiceException" />
+    <wsdl:part xmlns:q77="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q77:ControllerServiceException" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetUniversityTree_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUniversityTree" />
@@ -681,9 +708,19 @@
     <wsdl:part name="parameters" element="tns:GetUniversityTreeResponse" />
   </wsdl:message>
   <wsdl:message name="IControllerService_GetUniversityTree_ControllerServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q75="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q75:ControllerServiceException" />
+    <wsdl:part xmlns:q78="http://schemas.datacontract.org/2004/07/StudyingControllerService" name="detail" element="q78:ControllerServiceException" />
   </wsdl:message>
   <wsdl:portType name="IControllerService">
+    <wsdl:operation name="GetLectureRefsByTeacherId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRefService/GetLectureRefsByTeacherId" message="tns:IControllerService_GetLectureRefsByTeacherId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRefService/GetLectureRefsByTeacherIdResponse" message="tns:IControllerService_GetLectureRefsByTeacherId_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRefService/GetLectureRefsByTeacherIdControllerServiceExceptionFault" name="ControllerServiceExceptionFault" message="tns:IControllerService_GetLectureRefsByTeacherId_ControllerServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPracticeTeacherRefsByTeacherId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRefService/GetPracticeTeacherRefsByTeacherId" message="tns:IControllerService_GetPracticeTeacherRefsByTeacherId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRefService/GetPracticeTeacherRefsByTeacherIdResponse" message="tns:IControllerService_GetPracticeTeacherRefsByTeacherId_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRefService/GetPracticeTeacherRefsByTeacherIdControllerServiceExceptionFault" name="ControllerServiceExceptionFault" message="tns:IControllerService_GetPracticeTeacherRefsByTeacherId_ControllerServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/IControllerService/Login" message="tns:IControllerService_Login_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IControllerService/LoginResponse" message="tns:IControllerService_Login_OutputMessage" />
@@ -1004,6 +1041,11 @@
       <wsdl:output wsaw:Action="http://tempuri.org/IControllerService/GetGroupResponse" message="tns:IControllerService_GetGroup_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IControllerService/GetGroupControllerServiceExceptionFault" name="ControllerServiceExceptionFault" message="tns:IControllerService_GetGroup_ControllerServiceExceptionFault_FaultMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetPractice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IControllerService/GetPractice" message="tns:IControllerService_GetPractice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IControllerService/GetPracticeResponse" message="tns:IControllerService_GetPractice_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IControllerService/GetPracticeControllerServiceExceptionFault" name="ControllerServiceExceptionFault" message="tns:IControllerService_GetPractice_ControllerServiceExceptionFault_FaultMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetSpecialization">
       <wsdl:input wsaw:Action="http://tempuri.org/IControllerService/GetSpecialization" message="tns:IControllerService_GetSpecialization_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IControllerService/GetSpecializationResponse" message="tns:IControllerService_GetSpecialization_OutputMessage" />
@@ -1062,6 +1104,30 @@
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IControllerService" type="tns:IControllerService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLectureRefsByTeacherId">
+      <soap:operation soapAction="http://tempuri.org/IRefService/GetLectureRefsByTeacherId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ControllerServiceExceptionFault">
+        <soap:fault use="literal" name="ControllerServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetPracticeTeacherRefsByTeacherId">
+      <soap:operation soapAction="http://tempuri.org/IRefService/GetPracticeTeacherRefsByTeacherId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ControllerServiceExceptionFault">
+        <soap:fault use="literal" name="ControllerServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
     <wsdl:operation name="Login">
       <soap:operation soapAction="http://tempuri.org/IControllerService/Login" style="document" />
       <wsdl:input>
@@ -1820,6 +1886,18 @@
     </wsdl:operation>
     <wsdl:operation name="GetGroup">
       <soap:operation soapAction="http://tempuri.org/IControllerService/GetGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ControllerServiceExceptionFault">
+        <soap:fault use="literal" name="ControllerServiceExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetPractice">
+      <soap:operation soapAction="http://tempuri.org/IControllerService/GetPractice" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

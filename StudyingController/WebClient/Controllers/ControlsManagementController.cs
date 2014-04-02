@@ -19,22 +19,22 @@ namespace ThinClient.Controllers
             if (session != null)
             {
                 var teacherRef = new TeacherRef() { ID = session.User.ID };
-                model.Lectures = this.serviceClient.GetLectures(session, teacherRef).ToList();
-                model.Practices = this.serviceClient.GetPracticesTeacher(session, teacherRef).ToList();
+                model.Lectures = this.serviceClient.GetLectureRefsByTeacherId(session, teacherRef.ID).ToList();
+                model.Practices = this.serviceClient.GetPracticeTeacherRefsByTeacherId(session, teacherRef.ID).ToList();
             }
 
             return View(model);
         }
 
-        public ActionResult LectureView(int lectureId)
+        public ActionResult LectureView(string lectureId)
         {
             var model = new LectureModel();
             var session = this.GetSession();
             if (session != null)
             {
                 var teacherRef = new TeacherRef() { ID = session.User.ID };
-                model.Lecture = this.serviceClient.GetLectures(session, teacherRef).FirstOrDefault(l => l.ID == lectureId);
-                model.LectureControls = this.serviceClient.GetLectureControls(session, lectureId);
+                //model.Lecture = this.serviceClient.GetLectures(session, teacherRef).FirstOrDefault(l => l.ID == lectureId);
+                //model.LectureControls = this.serviceClient.GetLectureControls(session, lectureId);
             }
 
             return View(model);

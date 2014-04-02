@@ -14,7 +14,12 @@
                     <table>
                         <tr>
                             <td>@lecture.Subject.Name</td>
-                            <td>@Html.ActionLink("Відкрити", "LectureView", "ControlsManagement", new { lectureId = lecture.ID }, new { @class = "OpenIcon", style = "margin-left: 10px;" })</td>
+                            <td>@Html.ActionLink(
+                            "Відкрити",
+                            "LectureView",
+                            "ControlsManagement",
+                            new { lectureId = ThinClient.Common.Encryptor.Encrypt(lecture.ID.ToString()) }, 
+                            new { @class = "OpenIcon", style = "margin-left: 10px;" })</td>
                         </tr>
                     </table>
                 </div>
@@ -29,7 +34,7 @@
                 <div class="ListItem">
                     <table>
                         <tr>
-                            <td>@*@practice.P.Subject.Name*@</td>
+                            <td>@practice.Name</td>
                             <td>@Html.ActionLink("Відкрити", "PracticeView", "ControlsManagement", new { practiceId = practice.ID }, new { @class = "OpenIcon", style = "margin-left: 10px;" })</td>
                         </tr>
                     </table>

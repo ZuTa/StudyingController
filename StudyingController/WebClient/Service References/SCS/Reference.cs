@@ -134,15 +134,15 @@ namespace ThinClient.SCS {
     [System.Runtime.Serialization.DataContractAttribute(Name="SystemUserDTO", Namespace="http://schemas.datacontract.org/2004/07/EntitiesDTO")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.TeacherDTO))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.InstituteSecretaryDTO))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.StudentDTO))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.FacultySecretaryDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.FacultyAdminDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.FacultySecretaryDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.StudentDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.InstituteAdminDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.InstituteSecretaryDTO))]
     public partial class SystemUserDTO : ThinClient.SCS.BaseEntityDTO {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime BirthField;
+        private System.Nullable<System.DateTime> BirthField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EmailField;
@@ -169,7 +169,7 @@ namespace ThinClient.SCS {
         private ThinClient.SCS.UserRoles RoleField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime Birth {
+        public System.Nullable<System.DateTime> Birth {
             get {
                 return this.BirthField;
             }
@@ -297,6 +297,7 @@ namespace ThinClient.SCS {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.SpecializationDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.SubjectDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.GroupDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.PracticeTeacherRef))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.ControlDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.LectureControlDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.PracticeControlDTO))]
@@ -305,18 +306,19 @@ namespace ThinClient.SCS {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.AttachmentDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.SystemUserDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.TeacherDTO))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.InstituteSecretaryDTO))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.StudentDTO))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.FacultySecretaryDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.FacultyAdminDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.FacultySecretaryDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.StudentDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.InstituteAdminDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.InstituteSecretaryDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.PracticeTeacherDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.LectureDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.ControlMessageDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.MarkDTO))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.PracticeControlMarkDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.LectureControlMarkDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.PracticeControlMarkDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.NotificationDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.PracticeDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.VisitingsDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.VisitingDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.StudyRangeDTO))]
@@ -371,6 +373,7 @@ namespace ThinClient.SCS {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.SpecializationDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.SubjectDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.GroupDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.PracticeTeacherRef))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.ControlDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.LectureControlDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.PracticeControlDTO))]
@@ -680,6 +683,13 @@ namespace ThinClient.SCS {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PracticeTeacherRef", Namespace="http://schemas.datacontract.org/2004/07/EntitiesDTO")]
+    [System.SerializableAttribute()]
+    public partial class PracticeTeacherRef : ThinClient.SCS.NamedEntityDTO {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="ControlDTO", Namespace="http://schemas.datacontract.org/2004/07/EntitiesDTO")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.LectureControlDTO))]
@@ -908,77 +918,38 @@ namespace ThinClient.SCS {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="InstituteSecretaryDTO", Namespace="http://schemas.datacontract.org/2004/07/EntitiesDTO")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="FacultyAdminDTO", Namespace="http://schemas.datacontract.org/2004/07/EntitiesDTO")]
     [System.SerializableAttribute()]
-    public partial class InstituteSecretaryDTO : ThinClient.SCS.SystemUserDTO {
+    public partial class FacultyAdminDTO : ThinClient.SCS.SystemUserDTO {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ThinClient.SCS.InstituteDTO InstituteField;
+        private ThinClient.SCS.FacultyDTO FacultyField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int InstituteIDField;
+        private int FacultyIDField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ThinClient.SCS.InstituteDTO Institute {
+        public ThinClient.SCS.FacultyDTO Faculty {
             get {
-                return this.InstituteField;
+                return this.FacultyField;
             }
             set {
-                if ((object.ReferenceEquals(this.InstituteField, value) != true)) {
-                    this.InstituteField = value;
-                    this.RaisePropertyChanged("Institute");
+                if ((object.ReferenceEquals(this.FacultyField, value) != true)) {
+                    this.FacultyField = value;
+                    this.RaisePropertyChanged("Faculty");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int InstituteID {
+        public int FacultyID {
             get {
-                return this.InstituteIDField;
+                return this.FacultyIDField;
             }
             set {
-                if ((this.InstituteIDField.Equals(value) != true)) {
-                    this.InstituteIDField = value;
-                    this.RaisePropertyChanged("InstituteID");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="StudentDTO", Namespace="http://schemas.datacontract.org/2004/07/EntitiesDTO")]
-    [System.SerializableAttribute()]
-    public partial class StudentDTO : ThinClient.SCS.SystemUserDTO {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ThinClient.SCS.GroupDTO GroupField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int GroupIDField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ThinClient.SCS.GroupDTO Group {
-            get {
-                return this.GroupField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.GroupField, value) != true)) {
-                    this.GroupField = value;
-                    this.RaisePropertyChanged("Group");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int GroupID {
-            get {
-                return this.GroupIDField;
-            }
-            set {
-                if ((this.GroupIDField.Equals(value) != true)) {
-                    this.GroupIDField = value;
-                    this.RaisePropertyChanged("GroupID");
+                if ((this.FacultyIDField.Equals(value) != true)) {
+                    this.FacultyIDField = value;
+                    this.RaisePropertyChanged("FacultyID");
                 }
             }
         }
@@ -1025,38 +996,70 @@ namespace ThinClient.SCS {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="FacultyAdminDTO", Namespace="http://schemas.datacontract.org/2004/07/EntitiesDTO")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StudentDTO", Namespace="http://schemas.datacontract.org/2004/07/EntitiesDTO")]
     [System.SerializableAttribute()]
-    public partial class FacultyAdminDTO : ThinClient.SCS.SystemUserDTO {
+    public partial class StudentDTO : ThinClient.SCS.SystemUserDTO {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ThinClient.SCS.FacultyDTO FacultyField;
+        private string GradebookField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int FacultyIDField;
+        private ThinClient.SCS.GroupDTO GroupField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int GroupIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StudentCardField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ThinClient.SCS.FacultyDTO Faculty {
+        public string Gradebook {
             get {
-                return this.FacultyField;
+                return this.GradebookField;
             }
             set {
-                if ((object.ReferenceEquals(this.FacultyField, value) != true)) {
-                    this.FacultyField = value;
-                    this.RaisePropertyChanged("Faculty");
+                if ((object.ReferenceEquals(this.GradebookField, value) != true)) {
+                    this.GradebookField = value;
+                    this.RaisePropertyChanged("Gradebook");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int FacultyID {
+        public ThinClient.SCS.GroupDTO Group {
             get {
-                return this.FacultyIDField;
+                return this.GroupField;
             }
             set {
-                if ((this.FacultyIDField.Equals(value) != true)) {
-                    this.FacultyIDField = value;
-                    this.RaisePropertyChanged("FacultyID");
+                if ((object.ReferenceEquals(this.GroupField, value) != true)) {
+                    this.GroupField = value;
+                    this.RaisePropertyChanged("Group");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int GroupID {
+            get {
+                return this.GroupIDField;
+            }
+            set {
+                if ((this.GroupIDField.Equals(value) != true)) {
+                    this.GroupIDField = value;
+                    this.RaisePropertyChanged("GroupID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StudentCard {
+            get {
+                return this.StudentCardField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StudentCardField, value) != true)) {
+                    this.StudentCardField = value;
+                    this.RaisePropertyChanged("StudentCard");
                 }
             }
         }
@@ -1103,38 +1106,93 @@ namespace ThinClient.SCS {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PracticeTeacherDTO", Namespace="http://schemas.datacontract.org/2004/07/EntitiesDTO")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="InstituteSecretaryDTO", Namespace="http://schemas.datacontract.org/2004/07/EntitiesDTO")]
     [System.SerializableAttribute()]
-    public partial class PracticeTeacherDTO : ThinClient.SCS.BaseEntityDTO {
+    public partial class InstituteSecretaryDTO : ThinClient.SCS.SystemUserDTO {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int PracticeIDField;
+        private ThinClient.SCS.InstituteDTO InstituteField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int TeacherIDField;
+        private int InstituteIDField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int PracticeID {
+        public ThinClient.SCS.InstituteDTO Institute {
             get {
-                return this.PracticeIDField;
+                return this.InstituteField;
             }
             set {
-                if ((this.PracticeIDField.Equals(value) != true)) {
-                    this.PracticeIDField = value;
-                    this.RaisePropertyChanged("PracticeID");
+                if ((object.ReferenceEquals(this.InstituteField, value) != true)) {
+                    this.InstituteField = value;
+                    this.RaisePropertyChanged("Institute");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int TeacherID {
+        public int InstituteID {
             get {
-                return this.TeacherIDField;
+                return this.InstituteIDField;
             }
             set {
-                if ((this.TeacherIDField.Equals(value) != true)) {
-                    this.TeacherIDField = value;
-                    this.RaisePropertyChanged("TeacherID");
+                if ((this.InstituteIDField.Equals(value) != true)) {
+                    this.InstituteIDField = value;
+                    this.RaisePropertyChanged("InstituteID");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PracticeTeacherDTO", Namespace="http://schemas.datacontract.org/2004/07/EntitiesDTO")]
+    [System.SerializableAttribute()]
+    public partial class PracticeTeacherDTO : ThinClient.SCS.BaseEntityDTO {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ThinClient.SCS.PracticeRef PracticeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ThinClient.SCS.StudentDTO[] StudentsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ThinClient.SCS.TeacherRef TeacherField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ThinClient.SCS.PracticeRef Practice {
+            get {
+                return this.PracticeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PracticeField, value) != true)) {
+                    this.PracticeField = value;
+                    this.RaisePropertyChanged("Practice");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ThinClient.SCS.StudentDTO[] Students {
+            get {
+                return this.StudentsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StudentsField, value) != true)) {
+                    this.StudentsField = value;
+                    this.RaisePropertyChanged("Students");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ThinClient.SCS.TeacherRef Teacher {
+            get {
+                return this.TeacherField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TeacherField, value) != true)) {
+                    this.TeacherField = value;
+                    this.RaisePropertyChanged("Teacher");
                 }
             }
         }
@@ -1302,8 +1360,8 @@ namespace ThinClient.SCS {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="MarkDTO", Namespace="http://schemas.datacontract.org/2004/07/EntitiesDTO")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.PracticeControlMarkDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.LectureControlMarkDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.PracticeControlMarkDTO))]
     public partial class MarkDTO : ThinClient.SCS.BaseEntityDTO {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1373,29 +1431,6 @@ namespace ThinClient.SCS {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PracticeControlMarkDTO", Namespace="http://schemas.datacontract.org/2004/07/EntitiesDTO")]
-    [System.SerializableAttribute()]
-    public partial class PracticeControlMarkDTO : ThinClient.SCS.MarkDTO {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int PracticeControlIDField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int PracticeControlID {
-            get {
-                return this.PracticeControlIDField;
-            }
-            set {
-                if ((this.PracticeControlIDField.Equals(value) != true)) {
-                    this.PracticeControlIDField = value;
-                    this.RaisePropertyChanged("PracticeControlID");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="LectureControlMarkDTO", Namespace="http://schemas.datacontract.org/2004/07/EntitiesDTO")]
     [System.SerializableAttribute()]
     public partial class LectureControlMarkDTO : ThinClient.SCS.MarkDTO {
@@ -1412,6 +1447,29 @@ namespace ThinClient.SCS {
                 if ((this.LectureControlIDField.Equals(value) != true)) {
                     this.LectureControlIDField = value;
                     this.RaisePropertyChanged("LectureControlID");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PracticeControlMarkDTO", Namespace="http://schemas.datacontract.org/2004/07/EntitiesDTO")]
+    [System.SerializableAttribute()]
+    public partial class PracticeControlMarkDTO : ThinClient.SCS.MarkDTO {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PracticeControlIDField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PracticeControlID {
+            get {
+                return this.PracticeControlIDField;
+            }
+            set {
+                if ((this.PracticeControlIDField.Equals(value) != true)) {
+                    this.PracticeControlIDField = value;
+                    this.RaisePropertyChanged("PracticeControlID");
                 }
             }
         }
@@ -1467,6 +1525,45 @@ namespace ThinClient.SCS {
                 if ((this.UserIDField.Equals(value) != true)) {
                     this.UserIDField = value;
                     this.RaisePropertyChanged("UserID");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PracticeDTO", Namespace="http://schemas.datacontract.org/2004/07/EntitiesDTO")]
+    [System.SerializableAttribute()]
+    public partial class PracticeDTO : ThinClient.SCS.BaseEntityDTO {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ThinClient.SCS.SubjectDTO SubjectField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SubjectIDField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ThinClient.SCS.SubjectDTO Subject {
+            get {
+                return this.SubjectField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SubjectField, value) != true)) {
+                    this.SubjectField = value;
+                    this.RaisePropertyChanged("Subject");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SubjectID {
+            get {
+                return this.SubjectIDField;
+            }
+            set {
+                if ((this.SubjectIDField.Equals(value) != true)) {
+                    this.SubjectIDField = value;
+                    this.RaisePropertyChanged("SubjectID");
                 }
             }
         }
@@ -1691,19 +1788,35 @@ namespace ThinClient.SCS {
     [System.Runtime.Serialization.DataContractAttribute(Name="LectureRef", Namespace="http://schemas.datacontract.org/2004/07/EntitiesDTO")]
     [System.SerializableAttribute()]
     public partial class LectureRef : ThinClient.SCS.BaseRef {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ThinClient.SCS.SubjectRef SubjectField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ThinClient.SCS.SubjectRef Subject {
+            get {
+                return this.SubjectField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SubjectField, value) != true)) {
+                    this.SubjectField = value;
+                    this.RaisePropertyChanged("Subject");
+                }
+            }
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="BaseRef", Namespace="http://schemas.datacontract.org/2004/07/EntitiesDTO")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.LectureRef))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.PracticeRef))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.LectureRef))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.MarkRef))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.NamedRef))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.TeacherRef))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.InstituteRef))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.FacultyRef))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.TeacherRef))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.CathedraRef))]
     public partial class BaseRef : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -1780,9 +1893,10 @@ namespace ThinClient.SCS {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="NamedRef", Namespace="http://schemas.datacontract.org/2004/07/EntitiesDTO")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.SubjectRef))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.TeacherRef))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.InstituteRef))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.FacultyRef))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.TeacherRef))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ThinClient.SCS.CathedraRef))]
     public partial class NamedRef : ThinClient.SCS.BaseRef {
         
@@ -1805,6 +1919,13 @@ namespace ThinClient.SCS {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TeacherRef", Namespace="http://schemas.datacontract.org/2004/07/EntitiesDTO")]
+    [System.SerializableAttribute()]
+    public partial class TeacherRef : ThinClient.SCS.NamedRef {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="InstituteRef", Namespace="http://schemas.datacontract.org/2004/07/EntitiesDTO")]
     [System.SerializableAttribute()]
     public partial class InstituteRef : ThinClient.SCS.NamedRef {
@@ -1819,9 +1940,9 @@ namespace ThinClient.SCS {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="TeacherRef", Namespace="http://schemas.datacontract.org/2004/07/EntitiesDTO")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SubjectRef", Namespace="http://schemas.datacontract.org/2004/07/EntitiesDTO")]
     [System.SerializableAttribute()]
-    public partial class TeacherRef : ThinClient.SCS.NamedRef {
+    public partial class SubjectRef : ThinClient.SCS.NamedRef {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
@@ -1951,6 +2072,16 @@ namespace ThinClient.SCS {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SCS.IControllerService")]
     public interface IControllerService {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefService/GetLectureRefsByTeacherId", ReplyAction="http://tempuri.org/IRefService/GetLectureRefsByTeacherIdResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ThinClient.SCS.ControllerServiceException), Action="http://tempuri.org/IRefService/GetLectureRefsByTeacherIdControllerServiceExceptio" +
+            "nFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        ThinClient.SCS.LectureRef[] GetLectureRefsByTeacherId(ThinClient.SCS.Session session, int teacherId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefService/GetPracticeTeacherRefsByTeacherId", ReplyAction="http://tempuri.org/IRefService/GetPracticeTeacherRefsByTeacherIdResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ThinClient.SCS.ControllerServiceException), Action="http://tempuri.org/IRefService/GetPracticeTeacherRefsByTeacherIdControllerService" +
+            "ExceptionFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        ThinClient.SCS.PracticeTeacherRef[] GetPracticeTeacherRefsByTeacherId(ThinClient.SCS.Session session, int teacherId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/Login", ReplyAction="http://tempuri.org/IControllerService/LoginResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(ThinClient.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/LoginControllerServiceExceptionFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
@@ -2256,6 +2387,10 @@ namespace ThinClient.SCS {
         [System.ServiceModel.FaultContractAttribute(typeof(ThinClient.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/GetGroupControllerServiceExceptionFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
         ThinClient.SCS.GroupDTO GetGroup(ThinClient.SCS.Session session, int id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/GetPractice", ReplyAction="http://tempuri.org/IControllerService/GetPracticeResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ThinClient.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/GetPracticeControllerServiceExceptionFault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
+        ThinClient.SCS.PracticeDTO GetPractice(ThinClient.SCS.Session session, int id);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IControllerService/GetSpecialization", ReplyAction="http://tempuri.org/IControllerService/GetSpecializationResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(ThinClient.SCS.ControllerServiceException), Action="http://tempuri.org/IControllerService/GetSpecializationControllerServiceException" +
             "Fault", Name="ControllerServiceException", Namespace="http://schemas.datacontract.org/2004/07/StudyingControllerService")]
@@ -2334,6 +2469,14 @@ namespace ThinClient.SCS {
         
         public ControllerServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public ThinClient.SCS.LectureRef[] GetLectureRefsByTeacherId(ThinClient.SCS.Session session, int teacherId) {
+            return base.Channel.GetLectureRefsByTeacherId(session, teacherId);
+        }
+        
+        public ThinClient.SCS.PracticeTeacherRef[] GetPracticeTeacherRefsByTeacherId(ThinClient.SCS.Session session, int teacherId) {
+            return base.Channel.GetPracticeTeacherRefsByTeacherId(session, teacherId);
         }
         
         public ThinClient.SCS.Session Login(string login1, string password) {
@@ -2590,6 +2733,10 @@ namespace ThinClient.SCS {
         
         public ThinClient.SCS.GroupDTO GetGroup(ThinClient.SCS.Session session, int id) {
             return base.Channel.GetGroup(session, id);
+        }
+        
+        public ThinClient.SCS.PracticeDTO GetPractice(ThinClient.SCS.Session session, int id) {
+            return base.Channel.GetPractice(session, id);
         }
         
         public ThinClient.SCS.SpecializationDTO GetSpecialization(ThinClient.SCS.Session session, int id) {

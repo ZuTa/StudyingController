@@ -81,6 +81,7 @@
     </Compile>
     <Compile Include="ControllerServiceException.cs" />
     <Compile Include="IControllerService.cs" />
+    <Compile Include="IRefService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource.Designer.cs">
       <AutoGen>True</AutoGen>
